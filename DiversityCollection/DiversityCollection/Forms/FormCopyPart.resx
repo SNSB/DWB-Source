@@ -1,0 +1,1228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainerNumberOfCopies.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="splitContainerNumberOfCopies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="splitContainerNumberOfCopies.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanelNumberOfCopies.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericUpDownNumberOfCopies.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="numericUpDownNumberOfCopies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>301, 3</value>
+  </data>
+  <data name="numericUpDownNumberOfCopies.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <metadata name="helpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="numericUpDownNumberOfCopies.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numericUpDownNumberOfCopies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
+  <data name="numericUpDownNumberOfCopies.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numericUpDownNumberOfCopies.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownNumberOfCopies.Name" xml:space="preserve">
+    <value>numericUpDownNumberOfCopies</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownNumberOfCopies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownNumberOfCopies.Parent" xml:space="preserve">
+    <value>tableLayoutPanelNumberOfCopies</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownNumberOfCopies.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 28</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.Text" xml:space="preserve">
+    <value>Please specify the number of copies that should be generated:</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelNumberOfCopiesHeader.Name" xml:space="preserve">
+    <value>labelNumberOfCopiesHeader</value>
+  </data>
+  <data name="&gt;&gt;labelNumberOfCopiesHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelNumberOfCopiesHeader.Parent" xml:space="preserve">
+    <value>tableLayoutPanelNumberOfCopies</value>
+  </data>
+  <data name="&gt;&gt;labelNumberOfCopiesHeader.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonRequeryMultiCopyList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="buttonRequeryMultiCopyList.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonRequeryMultiCopyList.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonRequeryMultiCopyList.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonRequeryMultiCopyList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>341, 0</value>
+  </data>
+  <data name="buttonRequeryMultiCopyList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonRequeryMultiCopyList.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonRequeryMultiCopyList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="buttonRequeryMultiCopyList.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;buttonRequeryMultiCopyList.Name" xml:space="preserve">
+    <value>buttonRequeryMultiCopyList</value>
+  </data>
+  <data name="&gt;&gt;buttonRequeryMultiCopyList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRequeryMultiCopyList.Parent" xml:space="preserve">
+    <value>tableLayoutPanelNumberOfCopies</value>
+  </data>
+  <data name="&gt;&gt;buttonRequeryMultiCopyList.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanelNumberOfCopies.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelNumberOfCopies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanelNumberOfCopies.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelNumberOfCopies.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelNumberOfCopies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>647, 28</value>
+  </data>
+  <data name="tableLayoutPanelNumberOfCopies.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelNumberOfCopies.Name" xml:space="preserve">
+    <value>tableLayoutPanelNumberOfCopies</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelNumberOfCopies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelNumberOfCopies.Parent" xml:space="preserve">
+    <value>splitContainerNumberOfCopies.Panel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelNumberOfCopies.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelNumberOfCopies.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericUpDownNumberOfCopies" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelNumberOfCopiesHeader" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonRequeryMultiCopyList" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="splitContainerNumberOfCopies.Panel1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Panel1.Name" xml:space="preserve">
+    <value>splitContainerNumberOfCopies.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Panel1.Parent" xml:space="preserve">
+    <value>splitContainerNumberOfCopies</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dataGridViewCopies.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dataGridViewCopies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dataGridViewCopies.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dataGridViewCopies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>647, 231</value>
+  </data>
+  <data name="dataGridViewCopies.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewCopies.Name" xml:space="preserve">
+    <value>dataGridViewCopies</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewCopies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewCopies.Parent" xml:space="preserve">
+    <value>splitContainerNumberOfCopies.Panel2</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewCopies.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitContainerNumberOfCopies.Panel2.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Panel2.Name" xml:space="preserve">
+    <value>splitContainerNumberOfCopies.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Panel2.Parent" xml:space="preserve">
+    <value>splitContainerNumberOfCopies</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainerNumberOfCopies.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="splitContainerNumberOfCopies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>647, 263</value>
+  </data>
+  <data name="splitContainerNumberOfCopies.SplitterDistance" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="splitContainerNumberOfCopies.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Name" xml:space="preserve">
+    <value>splitContainerNumberOfCopies</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.Parent" xml:space="preserve">
+    <value>tabPageMultiCopy</value>
+  </data>
+  <data name="&gt;&gt;splitContainerNumberOfCopies.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabControlMain.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
+    <value>Buttons</value>
+  </data>
+  <data name="tabPageMultiCopy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabPageMultiCopy.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabPageMultiCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>647, 263</value>
+  </data>
+  <data name="tabPageMultiCopy.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageMultiCopy.Text" xml:space="preserve">
+    <value>Number of copies</value>
+  </data>
+  <data name="&gt;&gt;tabPageMultiCopy.Name" xml:space="preserve">
+    <value>tabPageMultiCopy</value>
+  </data>
+  <data name="&gt;&gt;tabPageMultiCopy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageMultiCopy.Parent" xml:space="preserve">
+    <value>tabControlMain</value>
+  </data>
+  <data name="&gt;&gt;tabPageMultiCopy.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelIncluded.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="pictureBoxIncludeExternalIdentifier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxIncludeExternalIdentifier.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 207</value>
+  </data>
+  <data name="pictureBoxIncludeExternalIdentifier.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxIncludeExternalIdentifier.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="pictureBoxIncludeExternalIdentifier.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeExternalIdentifier.Name" xml:space="preserve">
+    <value>pictureBoxIncludeExternalIdentifier</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeExternalIdentifier.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeExternalIdentifier.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeExternalIdentifier.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pictureBoxIncludeRegulation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxIncludeRegulation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 46</value>
+  </data>
+  <data name="pictureBoxIncludeRegulation.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxIncludeRegulation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="pictureBoxIncludeRegulation.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeRegulation.Name" xml:space="preserve">
+    <value>pictureBoxIncludeRegulation</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeRegulation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeRegulation.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeRegulation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxIncludeRegulation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeRegulation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkBoxIncludeRegulation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludeRegulation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 46</value>
+  </data>
+  <data name="checkBoxIncludeRegulation.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeRegulation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 17</value>
+  </data>
+  <data name="checkBoxIncludeRegulation.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="checkBoxIncludeRegulation.Text" xml:space="preserve">
+    <value>Include regulations</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeRegulation.Name" xml:space="preserve">
+    <value>checkBoxIncludeRegulation</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeRegulation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeRegulation.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeRegulation.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxIncludeProcessing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeProcessing.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkBoxIncludeProcessing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludeProcessing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 69</value>
+  </data>
+  <data name="checkBoxIncludeProcessing.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeProcessing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 17</value>
+  </data>
+  <data name="checkBoxIncludeProcessing.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBoxIncludeProcessing.Text" xml:space="preserve">
+    <value>Include processing</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeProcessing.Name" xml:space="preserve">
+    <value>checkBoxIncludeProcessing</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeProcessing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeProcessing.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeProcessing.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pictureBoxIncludeProcessing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxIncludeProcessing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 69</value>
+  </data>
+  <data name="pictureBoxIncludeProcessing.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxIncludeProcessing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="pictureBoxIncludeProcessing.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeProcessing.Name" xml:space="preserve">
+    <value>pictureBoxIncludeProcessing</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeProcessing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeProcessing.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeProcessing.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="pictureBoxIncludeSpecimenPartDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxIncludeSpecimenPartDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 115</value>
+  </data>
+  <data name="pictureBoxIncludeSpecimenPartDescription.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxIncludeSpecimenPartDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="pictureBoxIncludeSpecimenPartDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeSpecimenPartDescription.Name" xml:space="preserve">
+    <value>pictureBoxIncludeSpecimenPartDescription</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeSpecimenPartDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeSpecimenPartDescription.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeSpecimenPartDescription.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pictureBoxIncludeReferences.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxIncludeReferences.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 161</value>
+  </data>
+  <data name="pictureBoxIncludeReferences.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxIncludeReferences.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="pictureBoxIncludeReferences.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeReferences.Name" xml:space="preserve">
+    <value>pictureBoxIncludeReferences</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeReferences.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeReferences.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeReferences.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="pictureBoxIncludeTransactions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxIncludeTransactions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 184</value>
+  </data>
+  <data name="pictureBoxIncludeTransactions.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxIncludeTransactions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="pictureBoxIncludeTransactions.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeTransactions.Name" xml:space="preserve">
+    <value>pictureBoxIncludeTransactions</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeTransactions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeTransactions.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeTransactions.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="pictureBoxIncludeAnnotations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxIncludeAnnotations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 230</value>
+  </data>
+  <data name="pictureBoxIncludeAnnotations.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxIncludeAnnotations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="pictureBoxIncludeAnnotations.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeAnnotations.Name" xml:space="preserve">
+    <value>pictureBoxIncludeAnnotations</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeAnnotations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeAnnotations.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeAnnotations.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="checkBoxIncludeExternalIdentifier.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeExternalIdentifier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludeExternalIdentifier.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 207</value>
+  </data>
+  <data name="checkBoxIncludeExternalIdentifier.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeExternalIdentifier.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 17</value>
+  </data>
+  <data name="checkBoxIncludeExternalIdentifier.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="checkBoxIncludeExternalIdentifier.Text" xml:space="preserve">
+    <value>Include external identifier</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeExternalIdentifier.Name" xml:space="preserve">
+    <value>checkBoxIncludeExternalIdentifier</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeExternalIdentifier.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeExternalIdentifier.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeExternalIdentifier.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="checkBoxIncludeReferences.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeReferences.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludeReferences.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 161</value>
+  </data>
+  <data name="checkBoxIncludeReferences.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeReferences.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 17</value>
+  </data>
+  <data name="checkBoxIncludeReferences.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="checkBoxIncludeReferences.Text" xml:space="preserve">
+    <value>Include references</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeReferences.Name" xml:space="preserve">
+    <value>checkBoxIncludeReferences</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeReferences.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeReferences.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeReferences.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="checkBoxIncludeAnnotations.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeAnnotations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludeAnnotations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 230</value>
+  </data>
+  <data name="checkBoxIncludeAnnotations.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeAnnotations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 17</value>
+  </data>
+  <data name="checkBoxIncludeAnnotations.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="checkBoxIncludeAnnotations.Text" xml:space="preserve">
+    <value>Include annotations</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeAnnotations.Name" xml:space="preserve">
+    <value>checkBoxIncludeAnnotations</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeAnnotations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeAnnotations.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeAnnotations.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="checkBoxIncludeTransactions.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeTransactions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludeTransactions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 184</value>
+  </data>
+  <data name="checkBoxIncludeTransactions.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeTransactions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 17</value>
+  </data>
+  <data name="checkBoxIncludeTransactions.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="checkBoxIncludeTransactions.Text" xml:space="preserve">
+    <value>Include transactions</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeTransactions.Name" xml:space="preserve">
+    <value>checkBoxIncludeTransactions</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeTransactions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeTransactions.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeTransactions.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="checkBoxIncludeSpecimenPartDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeSpecimenPartDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludeSpecimenPartDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 115</value>
+  </data>
+  <data name="checkBoxIncludeSpecimenPartDescription.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeSpecimenPartDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 17</value>
+  </data>
+  <data name="checkBoxIncludeSpecimenPartDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="checkBoxIncludeSpecimenPartDescription.Text" xml:space="preserve">
+    <value>Include descriptions</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeSpecimenPartDescription.Name" xml:space="preserve">
+    <value>checkBoxIncludeSpecimenPartDescription</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeSpecimenPartDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeSpecimenPartDescription.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeSpecimenPartDescription.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="pictureBoxIncludeProcessingMethods.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxIncludeProcessingMethods.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 92</value>
+  </data>
+  <data name="pictureBoxIncludeProcessingMethods.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxIncludeProcessingMethods.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 14</value>
+  </data>
+  <data name="pictureBoxIncludeProcessingMethods.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeProcessingMethods.Name" xml:space="preserve">
+    <value>pictureBoxIncludeProcessingMethods</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeProcessingMethods.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeProcessingMethods.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeProcessingMethods.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="checkBoxIncludeProcessingMethods.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeProcessingMethods.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludeProcessingMethods.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 92</value>
+  </data>
+  <data name="checkBoxIncludeProcessingMethods.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeProcessingMethods.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 17</value>
+  </data>
+  <data name="checkBoxIncludeProcessingMethods.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="checkBoxIncludeProcessingMethods.Text" xml:space="preserve">
+    <value>Include processing methods</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeProcessingMethods.Name" xml:space="preserve">
+    <value>checkBoxIncludeProcessingMethods</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeProcessingMethods.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeProcessingMethods.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeProcessingMethods.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="labelInclude.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelInclude.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelInclude.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelInclude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="labelInclude.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelInclude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>641, 20</value>
+  </data>
+  <data name="labelInclude.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="labelInclude.Text" xml:space="preserve">
+    <value>Select the tables that should be included in the copy</value>
+  </data>
+  <data name="labelInclude.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;labelInclude.Name" xml:space="preserve">
+    <value>labelInclude</value>
+  </data>
+  <data name="&gt;&gt;labelInclude.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelInclude.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;labelInclude.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="pictureBoxIncludeRelations.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pictureBoxIncludeRelations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxIncludeRelations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 138</value>
+  </data>
+  <data name="pictureBoxIncludeRelations.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxIncludeRelations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="pictureBoxIncludeRelations.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeRelations.Name" xml:space="preserve">
+    <value>pictureBoxIncludeRelations</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeRelations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeRelations.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxIncludeRelations.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="checkBoxIncludeRelations.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeRelations.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkBoxIncludeRelations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludeRelations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 138</value>
+  </data>
+  <data name="checkBoxIncludeRelations.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeRelations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 17</value>
+  </data>
+  <data name="checkBoxIncludeRelations.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="checkBoxIncludeRelations.Text" xml:space="preserve">
+    <value>Include relations</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeRelations.Name" xml:space="preserve">
+    <value>checkBoxIncludeRelations</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeRelations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeRelations.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeRelations.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="pictureBoxUnitInPart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 23</value>
+  </data>
+  <data name="pictureBoxUnitInPart.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxUnitInPart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="pictureBoxUnitInPart.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxUnitInPart.Name" xml:space="preserve">
+    <value>pictureBoxUnitInPart</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxUnitInPart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxUnitInPart.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxUnitInPart.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="checkBoxIncludeUnitInPart.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeUnitInPart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 23</value>
+  </data>
+  <data name="checkBoxIncludeUnitInPart.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludeUnitInPart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 17</value>
+  </data>
+  <data name="checkBoxIncludeUnitInPart.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="checkBoxIncludeUnitInPart.Text" xml:space="preserve">
+    <value>Include units in part</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeUnitInPart.Name" xml:space="preserve">
+    <value>checkBoxIncludeUnitInPart</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeUnitInPart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeUnitInPart.Parent" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludeUnitInPart.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="tableLayoutPanelIncluded.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelIncluded.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanelIncluded.RowCount" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="tableLayoutPanelIncluded.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelIncluded.Size" type="System.Drawing.Size, System.Drawing">
+    <value>647, 263</value>
+  </data>
+  <data name="tableLayoutPanelIncluded.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelIncluded.Name" xml:space="preserve">
+    <value>tableLayoutPanelIncluded</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelIncluded.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelIncluded.Parent" xml:space="preserve">
+    <value>tabPageIncludedData</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelIncluded.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelIncluded.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="pictureBoxIncludeExternalIdentifier" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pictureBoxIncludeRegulation" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkBoxIncludeRegulation" Row="2" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="checkBoxIncludeProcessing" Row="3" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="pictureBoxIncludeProcessing" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pictureBoxIncludeSpecimenPartDescription" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pictureBoxIncludeReferences" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pictureBoxIncludeTransactions" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pictureBoxIncludeAnnotations" Row="10" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkBoxIncludeExternalIdentifier" Row="9" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="checkBoxIncludeReferences" Row="7" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="checkBoxIncludeAnnotations" Row="10" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="checkBoxIncludeTransactions" Row="8" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="checkBoxIncludeSpecimenPartDescription" Row="5" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="pictureBoxIncludeProcessingMethods" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="checkBoxIncludeProcessingMethods" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelInclude" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="pictureBoxIncludeRelations" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkBoxIncludeRelations" Row="6" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="pictureBoxUnitInPart" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="checkBoxIncludeUnitInPart" Row="1" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="tabPageIncludedData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="tabPageIncludedData.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabPageIncludedData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>647, 263</value>
+  </data>
+  <data name="tabPageIncludedData.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tabPageIncludedData.Text" xml:space="preserve">
+    <value>Include...</value>
+  </data>
+  <data name="&gt;&gt;tabPageIncludedData.Name" xml:space="preserve">
+    <value>tabPageIncludedData</value>
+  </data>
+  <data name="&gt;&gt;tabPageIncludedData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageIncludedData.Parent" xml:space="preserve">
+    <value>tabControlMain</value>
+  </data>
+  <data name="&gt;&gt;tabPageIncludedData.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabControlMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControlMain.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabControlMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>655, 292</value>
+  </data>
+  <data name="tabControlMain.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabControlMain.Name" xml:space="preserve">
+    <value>tabControlMain</value>
+  </data>
+  <data name="&gt;&gt;tabControlMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControlMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControlMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="userControlDialogPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="userControlDialogPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 292</value>
+  </data>
+  <data name="userControlDialogPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="userControlDialogPanel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="userControlDialogPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>655, 27</value>
+  </data>
+  <data name="userControlDialogPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;userControlDialogPanel.Name" xml:space="preserve">
+    <value>userControlDialogPanel</value>
+  </data>
+  <data name="&gt;&gt;userControlDialogPanel.Type" xml:space="preserve">
+    <value>DiversityWorkbench.UserControls.UserControlDialogPanel, DiversityWorkbench, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;userControlDialogPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;userControlDialogPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>138, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>655, 319</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAB
+        AAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAwMDAAMDcwADwyqYABAQEAAgICAAMDAwAERERABYW
+        FgAcHBwAIiIiACkpKQBVVVUATU1NAEJCQgA5OTkAgHz/AFBQ/wCTANYA/+zMAMbW7wDW5+cAkKmtAAAA
+        MwAAAGYAAACZAAAAzAAAMwAAADMzAAAzZgAAM5kAADPMAAAz/wAAZgAAAGYzAABmZgAAZpkAAGbMAABm
+        /wAAmQAAAJkzAACZZgAAmZkAAJnMAACZ/wAAzAAAAMwzAADMZgAAzJkAAMzMAADM/wAA/2YAAP+ZAAD/
+        zAAzAAAAMwAzADMAZgAzAJkAMwDMADMA/wAzMwAAMzMzADMzZgAzM5kAMzPMADMz/wAzZgAAM2YzADNm
+        ZgAzZpkAM2bMADNm/wAzmQAAM5kzADOZZgAzmZkAM5nMADOZ/wAzzAAAM8wzADPMZgAzzJkAM8zMADPM
+        /wAz/zMAM/9mADP/mQAz/8wAM///AGYAAABmADMAZgBmAGYAmQBmAMwAZgD/AGYzAABmMzMAZjNmAGYz
+        mQBmM8wAZjP/AGZmAABmZjMAZmZmAGZmmQBmZswAZpkAAGaZMwBmmWYAZpmZAGaZzABmmf8AZswAAGbM
+        MwBmzJkAZszMAGbM/wBm/wAAZv8zAGb/mQBm/8wAzAD/AP8AzACZmQAAmTOZAJkAmQCZAMwAmQAAAJkz
+        MwCZAGYAmTPMAJkA/wCZZgAAmWYzAJkzZgCZZpkAmWbMAJkz/wCZmTMAmZlmAJmZmQCZmcwAmZn/AJnM
+        AACZzDMAZsxmAJnMmQCZzMwAmcz/AJn/AACZ/zMAmcxmAJn/mQCZ/8wAmf//AMwAAACZADMAzABmAMwA
+        mQDMAMwAmTMAAMwzMwDMM2YAzDOZAMwzzADMM/8AzGYAAMxmMwCZZmYAzGaZAMxmzACZZv8AzJkAAMyZ
+        MwDMmWYAzJmZAMyZzADMmf8AzMwAAMzMMwDMzGYAzMyZAMzMzADMzP8AzP8AAMz/MwCZ/2YAzP+ZAMz/
+        zADM//8AzAAzAP8AZgD/AJkAzDMAAP8zMwD/M2YA/zOZAP8zzAD/M/8A/2YAAP9mMwDMZmYA/2aZAP9m
+        zADMZv8A/5kAAP+ZMwD/mWYA/5mZAP+ZzAD/mf8A/8wAAP/MMwD/zGYA/8yZAP/MzAD/zP8A//8zAMz/
+        ZgD//5kA///MAGZm/wBm/2YAZv//AP9mZgD/Zv8A//9mACEApQBfX18Ad3d3AIaGhgCWlpYAy8vLALKy
+        sgDX19cA3d3dAOPj4wDq6uoA8fHxAPj4+ADw+/8ApKCgAICAgAAAAP8AAP8AAAD//wD/AAAA/wD/AP//
+        AAD///8ACgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoEBAQEBAQEBAQKCgoKCgoK
+        BP////////8ECgoKCgoKCgT/CgoKCgr/BAoKCgoKCgoE/////////wQKCv//////BP8KCgoKCv8ECgr/
+        CgoKCgT/////////BAoK//////8E/woK/wQEBAQKCv8KCgoKBP////8E/wQKCgr//////wT/////BAQK
+        CgoK/woK/woEBAQEBAQKCgoKCv////8K/woKCgoKCgoKCgr/////CgoKCgoKCgoKCgoKCgoKCgoKCgoK
+        CgoKCgoKCgoKCgoKCgoKCgoKCgoKCv//AAD//wAA/AEAAPwBAAD8AQAAAAEAAAABAAAAAQAAAAEAAAAD
+        AAAABwAAAA8AAAD/AAAB/wAAA/8AAP//AAA=
+</value>
+  </data>
+  <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Copy specimen part</value>
+  </data>
+  <data name="&gt;&gt;helpProvider.Name" xml:space="preserve">
+    <value>helpProvider</value>
+  </data>
+  <data name="&gt;&gt;helpProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormCopyPart</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetTransferHistory" targetNamespace="http://tempuri.org/DataSetTransferHistory.xsd" xmlns:mstns="http://tempuri.org/DataSetTransferHistory.xsd" xmlns="http://tempuri.org/DataSetTransferHistory.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+			<Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DiversityCollectionCache_TestConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DiversityCollectionCache_TestConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DiversityCollection.Properties.Settings.GlobalReference.Default.DiversityCollectionCache_TestConnectionString" Provider="Microsoft.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TransferHistoryTableAdapter" GeneratorDataComponentClassName="TransferHistoryTableAdapter" Name="TransferHistory" UserDataComponentName="TransferHistoryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DiversityCollectionCache_TestConnectionString (Settings)" DbObjectName="DiversityCollectionCache_Test.dbo.ProjectTransfer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TransferDate, '' AS Responsible, Settings
+FROM            ProjectTransfer</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TransferDate" DataSetColumn="TransferDate" />
+              <Mapping SourceColumn="Responsible" DataSetColumn="Responsible" />
+              <Mapping SourceColumn="Settings" DataSetColumn="Settings" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetTransferHistory" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetTransferHistory" msprop:Generator_UserDSName="DataSetTransferHistory">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TransferHistory" msprop:Generator_TableClassName="TransferHistoryDataTable" msprop:Generator_TableVarName="tableTransferHistory" msprop:Generator_RowChangedName="TransferHistoryRowChanged" msprop:Generator_TablePropName="TransferHistory" msprop:Generator_RowDeletingName="TransferHistoryRowDeleting" msprop:Generator_RowChangingName="TransferHistoryRowChanging" msprop:Generator_RowEvHandlerName="TransferHistoryRowChangeEventHandler" msprop:Generator_RowDeletedName="TransferHistoryRowDeleted" msprop:Generator_RowClassName="TransferHistoryRow" msprop:Generator_UserTableName="TransferHistory" msprop:Generator_RowEvArgName="TransferHistoryRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TransferDate" msprop:Generator_ColumnVarNameInTable="columnTransferDate" msprop:Generator_ColumnPropNameInRow="TransferDate" msprop:Generator_ColumnPropNameInTable="TransferDateColumn" msprop:Generator_UserColumnName="TransferDate" type="xs:string" />
+              <xs:element name="Responsible" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnResponsible" msprop:Generator_ColumnPropNameInRow="Responsible" msprop:Generator_ColumnPropNameInTable="ResponsibleColumn" msprop:Generator_UserColumnName="Responsible" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Settings" msprop:Generator_ColumnVarNameInTable="columnSettings" msprop:Generator_ColumnPropNameInRow="Settings" msprop:Generator_ColumnPropNameInTable="SettingsColumn" msprop:Generator_UserColumnName="Settings" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

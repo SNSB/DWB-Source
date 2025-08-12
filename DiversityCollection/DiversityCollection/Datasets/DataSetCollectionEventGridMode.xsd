@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetCollectionEventGridMode" targetNamespace="http://tempuri.org/DataSetCollectionEventGridMode.xsd" xmlns:mstns="http://tempuri.org/DataSetCollectionEventGridMode.xsd" xmlns="http://tempuri.org/DataSetCollectionEventGridMode.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+	        <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DiversityCollection_TestConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DiversityCollection_TestConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DiversityCollection.Properties.Settings.GlobalReference.Default.DiversityCollection_TestConnectionString" Provider="Microsoft.Data.SqlClient" />
+	        <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DiversityCollection_GazetteersConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DiversityCollection_GazetteersConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DiversityCollection.Properties.Settings.GlobalReference.Default.DiversityCollection_GazetteersConnectionString" Provider="Microsoft.Data.SqlClient" />
+		</Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FirstLinesEvent_2TableAdapter" GeneratorDataComponentClassName="FirstLinesEvent_2TableAdapter" Name="FirstLinesEvent_2" UserDataComponentName="FirstLinesEvent_2TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DiversityCollection_TestConnectionString (Settings)" DbObjectName="DiversityCollection_Test.dbo.FirstLinesEvent_2" DbObjectType="Function" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        CollectionEventID, Data_withholding_reason_for_collection_event, Collectors_event_number, Collection_day, Collection_month, Collection_year, 
+                         Collection_date_supplement, Collection_time, Collection_time_span, Country, Locality_description, Habitat_description, Collecting_method, Collection_event_notes, 
+                         Named_area, NamedAreaLocation2, Remove_link_to_gazetteer, Distance_to_location, Direction_to_location, Longitude, Latitude, Coordinates_accuracy, 
+                         Link_to_GoogleMaps, Altitude_from, Altitude_to, Altitude_accuracy, MTB, Quadrant, Notes_for_MTB, MTB_accuracy, Sampling_plot, Link_to_SamplingPlots, 
+                         Remove_link_to_SamplingPlots, Accuracy_of_sampling_plot, Latitude_of_sampling_plot, Longitude_of_sampling_plot, Geographic_region, Lithostratigraphy, 
+                         Chronostratigraphy, _CollectionEventID, _CoordinatesAverageLatitudeCache, _CoordinatesAverageLongitudeCache, _CoordinatesLocationNotes, 
+                         _GeographicRegionPropertyURI, _LithostratigraphyPropertyURI, _ChronostratigraphyPropertyURI, _NamedAverageLatitudeCache, _NamedAverageLongitudeCache, 
+                         _LithostratigraphyPropertyHierarchyCache, _ChronostratigraphyPropertyHierarchyCache, _AverageAltitudeCache
+FROM            dbo.FirstLinesEvent_2('1') AS FirstLinesEvent</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CollectionEventID" DataSetColumn="CollectionEventID" />
+              <Mapping SourceColumn="Data_withholding_reason_for_collection_event" DataSetColumn="Data_withholding_reason_for_collection_event" />
+              <Mapping SourceColumn="Collectors_event_number" DataSetColumn="Collectors_event_number" />
+              <Mapping SourceColumn="Collection_day" DataSetColumn="Collection_day" />
+              <Mapping SourceColumn="Collection_month" DataSetColumn="Collection_month" />
+              <Mapping SourceColumn="Collection_year" DataSetColumn="Collection_year" />
+              <Mapping SourceColumn="Collection_date_supplement" DataSetColumn="Collection_date_supplement" />
+              <Mapping SourceColumn="Collection_time" DataSetColumn="Collection_time" />
+              <Mapping SourceColumn="Collection_time_span" DataSetColumn="Collection_time_span" />
+              <Mapping SourceColumn="Country" DataSetColumn="Country" />
+              <Mapping SourceColumn="Locality_description" DataSetColumn="Locality_description" />
+              <Mapping SourceColumn="Habitat_description" DataSetColumn="Habitat_description" />
+              <Mapping SourceColumn="Collecting_method" DataSetColumn="Collecting_method" />
+              <Mapping SourceColumn="Collection_event_notes" DataSetColumn="Collection_event_notes" />
+              <Mapping SourceColumn="Named_area" DataSetColumn="Named_area" />
+              <Mapping SourceColumn="NamedAreaLocation2" DataSetColumn="NamedAreaLocation2" />
+              <Mapping SourceColumn="Remove_link_to_gazetteer" DataSetColumn="Remove_link_to_gazetteer" />
+              <Mapping SourceColumn="Distance_to_location" DataSetColumn="Distance_to_location" />
+              <Mapping SourceColumn="Direction_to_location" DataSetColumn="Direction_to_location" />
+              <Mapping SourceColumn="Longitude" DataSetColumn="Longitude" />
+              <Mapping SourceColumn="Latitude" DataSetColumn="Latitude" />
+              <Mapping SourceColumn="Coordinates_accuracy" DataSetColumn="Coordinates_accuracy" />
+              <Mapping SourceColumn="Link_to_GoogleMaps" DataSetColumn="Link_to_GoogleMaps" />
+              <Mapping SourceColumn="Altitude_from" DataSetColumn="Altitude_from" />
+              <Mapping SourceColumn="Altitude_to" DataSetColumn="Altitude_to" />
+              <Mapping SourceColumn="Altitude_accuracy" DataSetColumn="Altitude_accuracy" />
+              <Mapping SourceColumn="MTB" DataSetColumn="MTB" />
+              <Mapping SourceColumn="Quadrant" DataSetColumn="Quadrant" />
+              <Mapping SourceColumn="Notes_for_MTB" DataSetColumn="Notes_for_MTB" />
+              <Mapping SourceColumn="Sampling_plot" DataSetColumn="Sampling_plot" />
+              <Mapping SourceColumn="Link_to_SamplingPlots" DataSetColumn="Link_to_SamplingPlots" />
+              <Mapping SourceColumn="Remove_link_to_SamplingPlots" DataSetColumn="Remove_link_to_SamplingPlots" />
+              <Mapping SourceColumn="Accuracy_of_sampling_plot" DataSetColumn="Accuracy_of_sampling_plot" />
+              <Mapping SourceColumn="Latitude_of_sampling_plot" DataSetColumn="Latitude_of_sampling_plot" />
+              <Mapping SourceColumn="Longitude_of_sampling_plot" DataSetColumn="Longitude_of_sampling_plot" />
+              <Mapping SourceColumn="Geographic_region" DataSetColumn="Geographic_region" />
+              <Mapping SourceColumn="Lithostratigraphy" DataSetColumn="Lithostratigraphy" />
+              <Mapping SourceColumn="Chronostratigraphy" DataSetColumn="Chronostratigraphy" />
+              <Mapping SourceColumn="_CollectionEventID" DataSetColumn="_CollectionEventID" />
+              <Mapping SourceColumn="_CoordinatesAverageLatitudeCache" DataSetColumn="_CoordinatesAverageLatitudeCache" />
+              <Mapping SourceColumn="_CoordinatesAverageLongitudeCache" DataSetColumn="_CoordinatesAverageLongitudeCache" />
+              <Mapping SourceColumn="_CoordinatesLocationNotes" DataSetColumn="_CoordinatesLocationNotes" />
+              <Mapping SourceColumn="_GeographicRegionPropertyURI" DataSetColumn="_GeographicRegionPropertyURI" />
+              <Mapping SourceColumn="_LithostratigraphyPropertyURI" DataSetColumn="_LithostratigraphyPropertyURI" />
+              <Mapping SourceColumn="_ChronostratigraphyPropertyURI" DataSetColumn="_ChronostratigraphyPropertyURI" />
+              <Mapping SourceColumn="_NamedAverageLatitudeCache" DataSetColumn="_NamedAverageLatitudeCache" />
+              <Mapping SourceColumn="_NamedAverageLongitudeCache" DataSetColumn="_NamedAverageLongitudeCache" />
+              <Mapping SourceColumn="_LithostratigraphyPropertyHierarchyCache" DataSetColumn="_LithostratigraphyPropertyHierarchyCache" />
+              <Mapping SourceColumn="_ChronostratigraphyPropertyHierarchyCache" DataSetColumn="_ChronostratigraphyPropertyHierarchyCache" />
+              <Mapping SourceColumn="_AverageAltitudeCache" DataSetColumn="_AverageAltitudeCache" />
+              <Mapping SourceColumn="MTB_accuracy" DataSetColumn="MTB_accuracy" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GeoCountriesTableAdapter" GeneratorDataComponentClassName="GeoCountriesTableAdapter" Name="GeoCountries" UserDataComponentName="GeoCountriesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DiversityCollection_GazetteersConnectionString (Settings)" DbObjectName="DiversityGazetteer.dbo.GeoCountries" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT     NameEn
+FROM         GeoCountries
+WHERE     (PlaceID &gt; 1)
+ORDER BY NameEn</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NameEn" DataSetColumn="NameEn" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetCollectionEventGridMode" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetCollectionEventGridMode" msprop:Generator_UserDSName="DataSetCollectionEventGridMode">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="FirstLinesEvent_2" msprop:Generator_TableClassName="FirstLinesEvent_2DataTable" msprop:Generator_RowEvArgName="FirstLinesEvent_2RowChangeEvent" msprop:Generator_TableVarName="tableFirstLinesEvent_2" msprop:Generator_TablePropName="FirstLinesEvent_2" msprop:Generator_RowDeletingName="FirstLinesEvent_2RowDeleting" msprop:Generator_UserTableName="FirstLinesEvent_2" msprop:Generator_RowChangingName="FirstLinesEvent_2RowChanging" msprop:Generator_RowDeletedName="FirstLinesEvent_2RowDeleted" msprop:Generator_RowChangedName="FirstLinesEvent_2RowChanged" msprop:Generator_RowEvHandlerName="FirstLinesEvent_2RowChangeEventHandler" msprop:Generator_RowClassName="FirstLinesEvent_2Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CollectionEventID" msprop:Generator_ColumnVarNameInTable="columnCollectionEventID" msprop:Generator_ColumnPropNameInRow="CollectionEventID" msprop:Generator_ColumnPropNameInTable="CollectionEventIDColumn" msprop:Generator_UserColumnName="CollectionEventID" type="xs:int" />
+              <xs:element name="Data_withholding_reason_for_collection_event" msprop:Generator_ColumnVarNameInTable="columnData_withholding_reason_for_collection_event" msprop:Generator_ColumnPropNameInRow="Data_withholding_reason_for_collection_event" msprop:Generator_ColumnPropNameInTable="Data_withholding_reason_for_collection_eventColumn" msprop:Generator_UserColumnName="Data_withholding_reason_for_collection_event" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Collectors_event_number" msprop:Generator_ColumnVarNameInTable="columnCollectors_event_number" msprop:Generator_ColumnPropNameInRow="Collectors_event_number" msprop:Generator_ColumnPropNameInTable="Collectors_event_numberColumn" msprop:Generator_UserColumnName="Collectors_event_number" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Collection_day" msprop:Generator_ColumnVarNameInTable="columnCollection_day" msprop:Generator_ColumnPropNameInRow="Collection_day" msprop:Generator_ColumnPropNameInTable="Collection_dayColumn" msprop:Generator_UserColumnName="Collection_day" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Collection_month" msprop:Generator_ColumnVarNameInTable="columnCollection_month" msprop:Generator_ColumnPropNameInRow="Collection_month" msprop:Generator_ColumnPropNameInTable="Collection_monthColumn" msprop:Generator_UserColumnName="Collection_month" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Collection_year" msprop:Generator_ColumnVarNameInTable="columnCollection_year" msprop:Generator_ColumnPropNameInRow="Collection_year" msprop:Generator_ColumnPropNameInTable="Collection_yearColumn" msprop:Generator_UserColumnName="Collection_year" type="xs:short" minOccurs="0" />
+              <xs:element name="Collection_date_supplement" msprop:Generator_ColumnVarNameInTable="columnCollection_date_supplement" msprop:Generator_ColumnPropNameInRow="Collection_date_supplement" msprop:Generator_ColumnPropNameInTable="Collection_date_supplementColumn" msprop:Generator_UserColumnName="Collection_date_supplement" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Collection_time" msprop:Generator_ColumnVarNameInTable="columnCollection_time" msprop:Generator_ColumnPropNameInRow="Collection_time" msprop:Generator_ColumnPropNameInTable="Collection_timeColumn" msprop:Generator_UserColumnName="Collection_time" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Collection_time_span" msprop:Generator_ColumnVarNameInTable="columnCollection_time_span" msprop:Generator_ColumnPropNameInRow="Collection_time_span" msprop:Generator_ColumnPropNameInTable="Collection_time_spanColumn" msprop:Generator_UserColumnName="Collection_time_span" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Country" msprop:Generator_ColumnVarNameInTable="columnCountry" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_UserColumnName="Country" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Locality_description" msprop:Generator_ColumnVarNameInTable="columnLocality_description" msprop:Generator_ColumnPropNameInRow="Locality_description" msprop:Generator_ColumnPropNameInTable="Locality_descriptionColumn" msprop:Generator_UserColumnName="Locality_description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Habitat_description" msprop:Generator_ColumnVarNameInTable="columnHabitat_description" msprop:Generator_ColumnPropNameInRow="Habitat_description" msprop:Generator_ColumnPropNameInTable="Habitat_descriptionColumn" msprop:Generator_UserColumnName="Habitat_description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Collecting_method" msprop:Generator_ColumnVarNameInTable="columnCollecting_method" msprop:Generator_ColumnPropNameInRow="Collecting_method" msprop:Generator_ColumnPropNameInTable="Collecting_methodColumn" msprop:Generator_UserColumnName="Collecting_method" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Collection_event_notes" msprop:Generator_ColumnVarNameInTable="columnCollection_event_notes" msprop:Generator_ColumnPropNameInRow="Collection_event_notes" msprop:Generator_ColumnPropNameInTable="Collection_event_notesColumn" msprop:Generator_UserColumnName="Collection_event_notes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Named_area" msprop:Generator_ColumnVarNameInTable="columnNamed_area" msprop:Generator_ColumnPropNameInRow="Named_area" msprop:Generator_ColumnPropNameInTable="Named_areaColumn" msprop:Generator_UserColumnName="Named_area" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NamedAreaLocation2" msprop:Generator_ColumnVarNameInTable="columnNamedAreaLocation2" msprop:Generator_ColumnPropNameInRow="NamedAreaLocation2" msprop:Generator_ColumnPropNameInTable="NamedAreaLocation2Column" msprop:Generator_UserColumnName="NamedAreaLocation2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Remove_link_to_gazetteer" msprop:Generator_ColumnVarNameInTable="columnRemove_link_to_gazetteer" msprop:Generator_ColumnPropNameInRow="Remove_link_to_gazetteer" msprop:Generator_ColumnPropNameInTable="Remove_link_to_gazetteerColumn" msprop:Generator_UserColumnName="Remove_link_to_gazetteer" type="xs:int" minOccurs="0" />
+              <xs:element name="Distance_to_location" msprop:Generator_ColumnVarNameInTable="columnDistance_to_location" msprop:Generator_ColumnPropNameInRow="Distance_to_location" msprop:Generator_ColumnPropNameInTable="Distance_to_locationColumn" msprop:Generator_UserColumnName="Distance_to_location" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Direction_to_location" msprop:Generator_ColumnVarNameInTable="columnDirection_to_location" msprop:Generator_ColumnPropNameInRow="Direction_to_location" msprop:Generator_ColumnPropNameInTable="Direction_to_locationColumn" msprop:Generator_UserColumnName="Direction_to_location" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Longitude" msprop:Generator_ColumnVarNameInTable="columnLongitude" msprop:Generator_ColumnPropNameInRow="Longitude" msprop:Generator_ColumnPropNameInTable="LongitudeColumn" msprop:Generator_UserColumnName="Longitude" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Latitude" msprop:Generator_ColumnVarNameInTable="columnLatitude" msprop:Generator_ColumnPropNameInRow="Latitude" msprop:Generator_ColumnPropNameInTable="LatitudeColumn" msprop:Generator_UserColumnName="Latitude" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Coordinates_accuracy" msprop:Generator_ColumnVarNameInTable="columnCoordinates_accuracy" msprop:Generator_ColumnPropNameInRow="Coordinates_accuracy" msprop:Generator_ColumnPropNameInTable="Coordinates_accuracyColumn" msprop:Generator_UserColumnName="Coordinates_accuracy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Link_to_GoogleMaps" msprop:Generator_ColumnVarNameInTable="columnLink_to_GoogleMaps" msprop:Generator_ColumnPropNameInRow="Link_to_GoogleMaps" msprop:Generator_ColumnPropNameInTable="Link_to_GoogleMapsColumn" msprop:Generator_UserColumnName="Link_to_GoogleMaps" type="xs:int" minOccurs="0" />
+              <xs:element name="Altitude_from" msprop:Generator_ColumnVarNameInTable="columnAltitude_from" msprop:Generator_ColumnPropNameInRow="Altitude_from" msprop:Generator_ColumnPropNameInTable="Altitude_fromColumn" msprop:Generator_UserColumnName="Altitude_from" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Altitude_to" msprop:Generator_ColumnVarNameInTable="columnAltitude_to" msprop:Generator_ColumnPropNameInRow="Altitude_to" msprop:Generator_ColumnPropNameInTable="Altitude_toColumn" msprop:Generator_UserColumnName="Altitude_to" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Altitude_accuracy" msprop:Generator_ColumnVarNameInTable="columnAltitude_accuracy" msprop:Generator_ColumnPropNameInRow="Altitude_accuracy" msprop:Generator_ColumnPropNameInTable="Altitude_accuracyColumn" msprop:Generator_UserColumnName="Altitude_accuracy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MTB" msprop:Generator_ColumnVarNameInTable="columnMTB" msprop:Generator_ColumnPropNameInRow="MTB" msprop:Generator_ColumnPropNameInTable="MTBColumn" msprop:Generator_UserColumnName="MTB" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Quadrant" msprop:Generator_ColumnVarNameInTable="columnQuadrant" msprop:Generator_ColumnPropNameInRow="Quadrant" msprop:Generator_ColumnPropNameInTable="QuadrantColumn" msprop:Generator_UserColumnName="Quadrant" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Notes_for_MTB" msprop:Generator_ColumnVarNameInTable="columnNotes_for_MTB" msprop:Generator_ColumnPropNameInRow="Notes_for_MTB" msprop:Generator_ColumnPropNameInTable="Notes_for_MTBColumn" msprop:Generator_UserColumnName="Notes_for_MTB" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sampling_plot" msprop:Generator_ColumnVarNameInTable="columnSampling_plot" msprop:Generator_ColumnPropNameInRow="Sampling_plot" msprop:Generator_ColumnPropNameInTable="Sampling_plotColumn" msprop:Generator_UserColumnName="Sampling_plot" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Link_to_SamplingPlots" msprop:Generator_ColumnVarNameInTable="columnLink_to_SamplingPlots" msprop:Generator_ColumnPropNameInRow="Link_to_SamplingPlots" msprop:Generator_ColumnPropNameInTable="Link_to_SamplingPlotsColumn" msprop:Generator_UserColumnName="Link_to_SamplingPlots" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Remove_link_to_SamplingPlots" msprop:Generator_ColumnVarNameInTable="columnRemove_link_to_SamplingPlots" msprop:Generator_ColumnPropNameInRow="Remove_link_to_SamplingPlots" msprop:Generator_ColumnPropNameInTable="Remove_link_to_SamplingPlotsColumn" msprop:Generator_UserColumnName="Remove_link_to_SamplingPlots" type="xs:int" minOccurs="0" />
+              <xs:element name="Accuracy_of_sampling_plot" msprop:Generator_ColumnVarNameInTable="columnAccuracy_of_sampling_plot" msprop:Generator_ColumnPropNameInRow="Accuracy_of_sampling_plot" msprop:Generator_ColumnPropNameInTable="Accuracy_of_sampling_plotColumn" msprop:Generator_UserColumnName="Accuracy_of_sampling_plot" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Latitude_of_sampling_plot" msprop:Generator_ColumnVarNameInTable="columnLatitude_of_sampling_plot" msprop:Generator_ColumnPropNameInRow="Latitude_of_sampling_plot" msprop:Generator_ColumnPropNameInTable="Latitude_of_sampling_plotColumn" msprop:Generator_UserColumnName="Latitude_of_sampling_plot" type="xs:float" minOccurs="0" />
+              <xs:element name="Longitude_of_sampling_plot" msprop:Generator_ColumnVarNameInTable="columnLongitude_of_sampling_plot" msprop:Generator_ColumnPropNameInRow="Longitude_of_sampling_plot" msprop:Generator_ColumnPropNameInTable="Longitude_of_sampling_plotColumn" msprop:Generator_UserColumnName="Longitude_of_sampling_plot" type="xs:float" minOccurs="0" />
+              <xs:element name="Geographic_region" msprop:Generator_ColumnVarNameInTable="columnGeographic_region" msprop:Generator_ColumnPropNameInRow="Geographic_region" msprop:Generator_ColumnPropNameInTable="Geographic_regionColumn" msprop:Generator_UserColumnName="Geographic_region" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Lithostratigraphy" msprop:Generator_ColumnVarNameInTable="columnLithostratigraphy" msprop:Generator_ColumnPropNameInRow="Lithostratigraphy" msprop:Generator_ColumnPropNameInTable="LithostratigraphyColumn" msprop:Generator_UserColumnName="Lithostratigraphy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Chronostratigraphy" msprop:Generator_ColumnVarNameInTable="columnChronostratigraphy" msprop:Generator_ColumnPropNameInRow="Chronostratigraphy" msprop:Generator_ColumnPropNameInTable="ChronostratigraphyColumn" msprop:Generator_UserColumnName="Chronostratigraphy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_CollectionEventID" msprop:Generator_ColumnVarNameInTable="column_CollectionEventID" msprop:Generator_ColumnPropNameInRow="_CollectionEventID" msprop:Generator_ColumnPropNameInTable="_CollectionEventIDColumn" msprop:Generator_UserColumnName="_CollectionEventID" type="xs:int" minOccurs="0" />
+              <xs:element name="_CoordinatesAverageLatitudeCache" msprop:Generator_ColumnVarNameInTable="column_CoordinatesAverageLatitudeCache" msprop:Generator_ColumnPropNameInRow="_CoordinatesAverageLatitudeCache" msprop:Generator_ColumnPropNameInTable="_CoordinatesAverageLatitudeCacheColumn" msprop:Generator_UserColumnName="_CoordinatesAverageLatitudeCache" type="xs:float" minOccurs="0" />
+              <xs:element name="_CoordinatesAverageLongitudeCache" msprop:Generator_ColumnVarNameInTable="column_CoordinatesAverageLongitudeCache" msprop:Generator_ColumnPropNameInRow="_CoordinatesAverageLongitudeCache" msprop:Generator_ColumnPropNameInTable="_CoordinatesAverageLongitudeCacheColumn" msprop:Generator_UserColumnName="_CoordinatesAverageLongitudeCache" type="xs:float" minOccurs="0" />
+              <xs:element name="_CoordinatesLocationNotes" msprop:Generator_ColumnVarNameInTable="column_CoordinatesLocationNotes" msprop:Generator_ColumnPropNameInRow="_CoordinatesLocationNotes" msprop:Generator_ColumnPropNameInTable="_CoordinatesLocationNotesColumn" msprop:Generator_UserColumnName="_CoordinatesLocationNotes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_GeographicRegionPropertyURI" msprop:Generator_ColumnVarNameInTable="column_GeographicRegionPropertyURI" msprop:Generator_ColumnPropNameInRow="_GeographicRegionPropertyURI" msprop:Generator_ColumnPropNameInTable="_GeographicRegionPropertyURIColumn" msprop:Generator_UserColumnName="_GeographicRegionPropertyURI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_LithostratigraphyPropertyURI" msprop:Generator_ColumnVarNameInTable="column_LithostratigraphyPropertyURI" msprop:Generator_ColumnPropNameInRow="_LithostratigraphyPropertyURI" msprop:Generator_ColumnPropNameInTable="_LithostratigraphyPropertyURIColumn" msprop:Generator_UserColumnName="_LithostratigraphyPropertyURI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_ChronostratigraphyPropertyURI" msprop:Generator_ColumnVarNameInTable="column_ChronostratigraphyPropertyURI" msprop:Generator_ColumnPropNameInRow="_ChronostratigraphyPropertyURI" msprop:Generator_ColumnPropNameInTable="_ChronostratigraphyPropertyURIColumn" msprop:Generator_UserColumnName="_ChronostratigraphyPropertyURI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_NamedAverageLatitudeCache" msprop:Generator_ColumnVarNameInTable="column_NamedAverageLatitudeCache" msprop:Generator_ColumnPropNameInRow="_NamedAverageLatitudeCache" msprop:Generator_ColumnPropNameInTable="_NamedAverageLatitudeCacheColumn" msprop:Generator_UserColumnName="_NamedAverageLatitudeCache" type="xs:float" minOccurs="0" />
+              <xs:element name="_NamedAverageLongitudeCache" msprop:Generator_ColumnVarNameInTable="column_NamedAverageLongitudeCache" msprop:Generator_ColumnPropNameInRow="_NamedAverageLongitudeCache" msprop:Generator_ColumnPropNameInTable="_NamedAverageLongitudeCacheColumn" msprop:Generator_UserColumnName="_NamedAverageLongitudeCache" type="xs:float" minOccurs="0" />
+              <xs:element name="_LithostratigraphyPropertyHierarchyCache" msprop:Generator_ColumnVarNameInTable="column_LithostratigraphyPropertyHierarchyCache" msprop:Generator_ColumnPropNameInRow="_LithostratigraphyPropertyHierarchyCache" msprop:Generator_ColumnPropNameInTable="_LithostratigraphyPropertyHierarchyCacheColumn" msprop:Generator_UserColumnName="_LithostratigraphyPropertyHierarchyCache" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_ChronostratigraphyPropertyHierarchyCache" msprop:Generator_ColumnVarNameInTable="column_ChronostratigraphyPropertyHierarchyCache" msprop:Generator_ColumnPropNameInRow="_ChronostratigraphyPropertyHierarchyCache" msprop:Generator_ColumnPropNameInTable="_ChronostratigraphyPropertyHierarchyCacheColumn" msprop:Generator_UserColumnName="_ChronostratigraphyPropertyHierarchyCache" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_AverageAltitudeCache" msprop:Generator_ColumnVarNameInTable="column_AverageAltitudeCache" msprop:Generator_ColumnPropNameInRow="_AverageAltitudeCache" msprop:Generator_ColumnPropNameInTable="_AverageAltitudeCacheColumn" msprop:Generator_UserColumnName="_AverageAltitudeCache" type="xs:float" minOccurs="0" />
+              <xs:element name="MTB_accuracy" msprop:Generator_ColumnVarNameInTable="columnMTB_accuracy" msprop:Generator_ColumnPropNameInRow="MTB_accuracy" msprop:Generator_ColumnPropNameInTable="MTB_accuracyColumn" msprop:Generator_UserColumnName="MTB_accuracy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GeoCountries" msprop:Generator_TableClassName="GeoCountriesDataTable" msprop:Generator_RowEvArgName="GeoCountriesRowChangeEvent" msprop:Generator_TableVarName="tableGeoCountries" msprop:Generator_TablePropName="GeoCountries" msprop:Generator_RowDeletingName="GeoCountriesRowDeleting" msprop:Generator_UserTableName="GeoCountries" msprop:Generator_RowChangingName="GeoCountriesRowChanging" msprop:Generator_RowDeletedName="GeoCountriesRowDeleted" msprop:Generator_RowChangedName="GeoCountriesRowChanged" msprop:Generator_RowEvHandlerName="GeoCountriesRowChangeEventHandler" msprop:Generator_RowClassName="GeoCountriesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NameEn" msprop:Generator_ColumnVarNameInTable="columnNameEn" msprop:Generator_ColumnPropNameInRow="NameEn" msprop:Generator_ColumnPropNameInTable="NameEnColumn" msprop:Generator_UserColumnName="NameEn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FirstLinesEvent_2" />
+      <xs:field xpath="mstns:CollectionEventID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

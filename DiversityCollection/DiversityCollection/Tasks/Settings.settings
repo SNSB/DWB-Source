@@ -1,0 +1,63 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DiversityCollection.Tasks" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GrafanaDashboards" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TopCollectionID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">-1</Value>
+    </Setting>
+    <Setting Name="ResponsibleAgent" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ResponsibleAgentURI" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PrometheusApiLinks" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DiversityTaxonNamesDatabase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[TNT.DIVERSITYWORKBENCH.DE,5432].DiversityTaxonNames_TaxaVaria</Value>
+    </Setting>
+    <Setting Name="DiversityTaxonNamesProjectID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">380</Value>
+    </Setting>
+    <Setting Name="PestNameUris" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PrometheusServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PrometheusPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">9090</Value>
+    </Setting>
+    <Setting Name="DiversityTaxonNamesBeneficialListID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1192</Value>
+    </Setting>
+    <Setting Name="DiversityTaxonNamesPestListID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1190</Value>
+    </Setting>
+    <Setting Name="BeneficialNameUris" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DiversityTaxonNamesBycatchListID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1193</Value>
+    </Setting>
+    <Setting Name="BycatchNameUris" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ShowScientificName" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IncludeSpecimen" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IncludeCollections" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IncludeTransactions" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetSamplingPlotList" targetNamespace="http://tempuri.org/DataSetSamplingPlotList.xsd" xmlns:mstns="http://tempuri.org/DataSetSamplingPlotList.xsd" xmlns="http://tempuri.org/DataSetSamplingPlotList.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+	        <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DiversityCollection_SamplingPlotsConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DiversityCollection_SamplingPlotsConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DiversityCollection.Properties.Settings.GlobalReference.Default.DiversityCollection_SamplingPlotsConnectionString" Provider="Microsoft.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SamplingPlotTableAdapter" GeneratorDataComponentClassName="SamplingPlotTableAdapter" Name="SamplingPlot" UserDataComponentName="SamplingPlotTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DiversityCollection_SamplingPlotsConnectionString (Settings)" DbObjectName="DiversitySamplingPlots.dbo.SamplingPlot" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        dbo.BaseURL() + CAST(PlotID AS varchar) AS PlotID, dbo.BaseURL() + CAST(PartOfPlotID AS varchar) AS PartOfPlotID, PlotIdentifier AS DisplayText
+FROM            SamplingPlot</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PlotID" DataSetColumn="PlotID" />
+              <Mapping SourceColumn="PartOfPlotID" DataSetColumn="PartOfPlotID" />
+              <Mapping SourceColumn="DisplayText" DataSetColumn="DisplayText" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetSamplingPlotList" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DataSetSamplingPlotList" msprop:Generator_UserDSName="DataSetSamplingPlotList" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SamplingPlot" msprop:Generator_UserTableName="SamplingPlot" msprop:Generator_RowDeletedName="SamplingPlotRowDeleted" msprop:Generator_TableClassName="SamplingPlotDataTable" msprop:Generator_RowChangedName="SamplingPlotRowChanged" msprop:Generator_RowClassName="SamplingPlotRow" msprop:Generator_RowChangingName="SamplingPlotRowChanging" msprop:Generator_RowEvArgName="SamplingPlotRowChangeEvent" msprop:Generator_RowEvHandlerName="SamplingPlotRowChangeEventHandler" msprop:Generator_TablePropName="SamplingPlot" msprop:Generator_TableVarName="tableSamplingPlot" msprop:Generator_RowDeletingName="SamplingPlotRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PlotID" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PlotID" msprop:Generator_ColumnPropNameInRow="PlotID" msprop:Generator_ColumnVarNameInTable="columnPlotID" msprop:Generator_ColumnPropNameInTable="PlotIDColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="285" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PartOfPlotID" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PartOfPlotID" msprop:Generator_ColumnPropNameInRow="PartOfPlotID" msprop:Generator_ColumnVarNameInTable="columnPartOfPlotID" msprop:Generator_ColumnPropNameInTable="PartOfPlotIDColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="285" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DisplayText" msprop:Generator_UserColumnName="DisplayText" msprop:Generator_ColumnPropNameInRow="DisplayText" msprop:Generator_ColumnVarNameInTable="columnDisplayText" msprop:Generator_ColumnPropNameInTable="DisplayTextColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CollectionEventList" msprop:Generator_UserTableName="CollectionEventList" msprop:Generator_RowDeletedName="CollectionEventListRowDeleted" msprop:Generator_TableClassName="CollectionEventListDataTable" msprop:Generator_RowChangedName="CollectionEventListRowChanged" msprop:Generator_RowClassName="CollectionEventListRow" msprop:Generator_RowChangingName="CollectionEventListRowChanging" msprop:Generator_RowEvArgName="CollectionEventListRowChangeEvent" msprop:Generator_RowEvHandlerName="CollectionEventListRowChangeEventHandler" msprop:Generator_TablePropName="CollectionEventList" msprop:Generator_TableVarName="tableCollectionEventList" msprop:Generator_RowDeletingName="CollectionEventListRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CollectionEventID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="CollectionEventID" msprop:Generator_ColumnPropNameInRow="CollectionEventID" msprop:Generator_ColumnVarNameInTable="columnCollectionEventID" msprop:Generator_ColumnPropNameInTable="CollectionEventIDColumn" type="xs:int" />
+              <xs:element name="PlotID" msprop:Generator_UserColumnName="PlotID" msprop:Generator_ColumnPropNameInRow="PlotID" msprop:Generator_ColumnVarNameInTable="columnPlotID" msprop:Generator_ColumnPropNameInTable="PlotIDColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DisplayText" msdata:Caption="CollectorsEventNumber" msprop:Generator_UserColumnName="DisplayText" msprop:Generator_ColumnPropNameInRow="DisplayText" msprop:Generator_ColumnVarNameInTable="columnDisplayText" msprop:Generator_ColumnPropNameInTable="DisplayTextColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CollectionDate" msprop:Generator_UserColumnName="CollectionDate" msprop:Generator_ColumnPropNameInRow="CollectionDate" msprop:Generator_ColumnVarNameInTable="columnCollectionDate" msprop:Generator_ColumnPropNameInTable="CollectionDateColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CollectionSpecimenList" msprop:Generator_UserTableName="CollectionSpecimenList" msprop:Generator_RowDeletedName="CollectionSpecimenListRowDeleted" msprop:Generator_TableClassName="CollectionSpecimenListDataTable" msprop:Generator_RowChangedName="CollectionSpecimenListRowChanged" msprop:Generator_RowClassName="CollectionSpecimenListRow" msprop:Generator_RowChangingName="CollectionSpecimenListRowChanging" msprop:Generator_RowEvArgName="CollectionSpecimenListRowChangeEvent" msprop:Generator_RowEvHandlerName="CollectionSpecimenListRowChangeEventHandler" msprop:Generator_TablePropName="CollectionSpecimenList" msprop:Generator_TableVarName="tableCollectionSpecimenList" msprop:Generator_RowDeletingName="CollectionSpecimenListRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CollectionSpecimenID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="CollectionSpecimenID" msprop:Generator_ColumnPropNameInRow="CollectionSpecimenID" msprop:Generator_ColumnVarNameInTable="columnCollectionSpecimenID" msprop:Generator_ColumnPropNameInTable="CollectionSpecimenIDColumn" type="xs:int" />
+              <xs:element name="CollectionEventID" msprop:Generator_UserColumnName="CollectionEventID" msprop:Generator_ColumnPropNameInRow="CollectionEventID" msprop:Generator_ColumnVarNameInTable="columnCollectionEventID" msprop:Generator_ColumnPropNameInTable="CollectionEventIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="AccessionNumber" msprop:Generator_UserColumnName="AccessionNumber" msprop:Generator_ColumnPropNameInRow="AccessionNumber" msprop:Generator_ColumnVarNameInTable="columnAccessionNumber" msprop:Generator_ColumnPropNameInTable="AccessionNumberColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="IdentificationUnitList" msprop:Generator_UserTableName="IdentificationUnitList" msprop:Generator_RowDeletedName="IdentificationUnitListRowDeleted" msprop:Generator_TableClassName="IdentificationUnitListDataTable" msprop:Generator_RowChangedName="IdentificationUnitListRowChanged" msprop:Generator_RowClassName="IdentificationUnitListRow" msprop:Generator_RowChangingName="IdentificationUnitListRowChanging" msprop:Generator_RowEvArgName="IdentificationUnitListRowChangeEvent" msprop:Generator_RowEvHandlerName="IdentificationUnitListRowChangeEventHandler" msprop:Generator_TablePropName="IdentificationUnitList" msprop:Generator_TableVarName="tableIdentificationUnitList" msprop:Generator_RowDeletingName="IdentificationUnitListRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CollectionSpecimenID" msprop:Generator_UserColumnName="CollectionSpecimenID" msprop:Generator_ColumnPropNameInRow="CollectionSpecimenID" msprop:Generator_ColumnVarNameInTable="columnCollectionSpecimenID" msprop:Generator_ColumnPropNameInTable="CollectionSpecimenIDColumn" type="xs:int" />
+              <xs:element name="IdentificationUnitID" msprop:Generator_UserColumnName="IdentificationUnitID" msprop:Generator_ColumnPropNameInRow="IdentificationUnitID" msprop:Generator_ColumnVarNameInTable="columnIdentificationUnitID" msprop:Generator_ColumnPropNameInTable="IdentificationUnitIDColumn" type="xs:int" />
+              <xs:element name="LastIdentificationCache" msprop:Generator_UserColumnName="LastIdentificationCache" msprop:Generator_ColumnPropNameInRow="LastIdentificationCache" msprop:Generator_ColumnVarNameInTable="columnLastIdentificationCache" msprop:Generator_ColumnPropNameInTable="LastIdentificationCacheColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RelatedUnitID" msprop:Generator_UserColumnName="RelatedUnitID" msprop:Generator_ColumnPropNameInRow="RelatedUnitID" msprop:Generator_ColumnVarNameInTable="columnRelatedUnitID" msprop:Generator_ColumnPropNameInTable="RelatedUnitIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TaxonomicGroup" msprop:Generator_UserColumnName="TaxonomicGroup" msprop:Generator_ColumnPropNameInRow="TaxonomicGroup" msprop:Generator_ColumnVarNameInTable="columnTaxonomicGroup" msprop:Generator_ColumnPropNameInTable="TaxonomicGroupColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UnitIdentifier" msprop:Generator_UserColumnName="UnitIdentifier" msprop:Generator_ColumnPropNameInRow="UnitIdentifier" msprop:Generator_ColumnVarNameInTable="columnUnitIdentifier" msprop:Generator_ColumnPropNameInTable="UnitIdentifierColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UnitDescription" msprop:Generator_UserColumnName="UnitDescription" msprop:Generator_ColumnPropNameInRow="UnitDescription" msprop:Generator_ColumnVarNameInTable="columnUnitDescription" msprop:Generator_ColumnPropNameInTable="UnitDescriptionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Gender" msprop:Generator_UserColumnName="Gender" msprop:Generator_ColumnPropNameInRow="Gender" msprop:Generator_ColumnVarNameInTable="columnGender" msprop:Generator_ColumnPropNameInTable="GenderColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CollectionEventLocalisationList" msprop:Generator_UserTableName="CollectionEventLocalisationList" msprop:Generator_RowDeletedName="CollectionEventLocalisationListRowDeleted" msprop:Generator_TableClassName="CollectionEventLocalisationListDataTable" msprop:Generator_RowChangedName="CollectionEventLocalisationListRowChanged" msprop:Generator_RowClassName="CollectionEventLocalisationListRow" msprop:Generator_RowChangingName="CollectionEventLocalisationListRowChanging" msprop:Generator_RowEvArgName="CollectionEventLocalisationListRowChangeEvent" msprop:Generator_RowEvHandlerName="CollectionEventLocalisationListRowChangeEventHandler" msprop:Generator_TablePropName="CollectionEventLocalisationList" msprop:Generator_TableVarName="tableCollectionEventLocalisationList" msprop:Generator_RowDeletingName="CollectionEventLocalisationListRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CollectionEventID" msprop:Generator_UserColumnName="CollectionEventID" msprop:Generator_ColumnPropNameInRow="CollectionEventID" msprop:Generator_ColumnVarNameInTable="columnCollectionEventID" msprop:Generator_ColumnPropNameInTable="CollectionEventIDColumn" type="xs:int" />
+              <xs:element name="LocalisationSystemID" msprop:Generator_UserColumnName="LocalisationSystemID" msprop:Generator_ColumnPropNameInRow="LocalisationSystemID" msprop:Generator_ColumnVarNameInTable="columnLocalisationSystemID" msprop:Generator_ColumnPropNameInTable="LocalisationSystemIDColumn" type="xs:int" />
+              <xs:element name="Location1" msprop:Generator_UserColumnName="Location1" msprop:Generator_ColumnPropNameInRow="Location1" msprop:Generator_ColumnVarNameInTable="columnLocation1" msprop:Generator_ColumnPropNameInTable="Location1Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Location2" msprop:Generator_UserColumnName="Location2" msprop:Generator_ColumnPropNameInRow="Location2" msprop:Generator_ColumnVarNameInTable="columnLocation2" msprop:Generator_ColumnPropNameInTable="Location2Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LocationAccuracy" msprop:Generator_UserColumnName="LocationAccuracy" msprop:Generator_ColumnPropNameInRow="LocationAccuracy" msprop:Generator_ColumnVarNameInTable="columnLocationAccuracy" msprop:Generator_ColumnPropNameInTable="LocationAccuracyColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LocationNotes" msprop:Generator_UserColumnName="LocationNotes" msprop:Generator_ColumnPropNameInRow="LocationNotes" msprop:Generator_ColumnVarNameInTable="columnLocationNotes" msprop:Generator_ColumnPropNameInTable="LocationNotesColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeterminationDate" msprop:Generator_UserColumnName="DeterminationDate" msprop:Generator_ColumnPropNameInRow="DeterminationDate" msprop:Generator_ColumnVarNameInTable="columnDeterminationDate" msprop:Generator_ColumnPropNameInTable="DeterminationDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DistanceToLocation" msprop:Generator_UserColumnName="DistanceToLocation" msprop:Generator_ColumnPropNameInRow="DistanceToLocation" msprop:Generator_ColumnVarNameInTable="columnDistanceToLocation" msprop:Generator_ColumnPropNameInTable="DistanceToLocationColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DirectionToLocation" msprop:Generator_UserColumnName="DirectionToLocation" msprop:Generator_ColumnPropNameInRow="DirectionToLocation" msprop:Generator_ColumnVarNameInTable="columnDirectionToLocation" msprop:Generator_ColumnPropNameInTable="DirectionToLocationColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ResponsibleName" msprop:Generator_UserColumnName="ResponsibleName" msprop:Generator_ColumnPropNameInRow="ResponsibleName" msprop:Generator_ColumnVarNameInTable="columnResponsibleName" msprop:Generator_ColumnPropNameInTable="ResponsibleNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ResponsibleAgentURI" msprop:Generator_UserColumnName="ResponsibleAgentURI" msprop:Generator_ColumnPropNameInRow="ResponsibleAgentURI" msprop:Generator_ColumnVarNameInTable="columnResponsibleAgentURI" msprop:Generator_ColumnPropNameInTable="ResponsibleAgentURIColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AverageAltitudeCache" msprop:Generator_UserColumnName="AverageAltitudeCache" msprop:Generator_ColumnPropNameInRow="AverageAltitudeCache" msprop:Generator_ColumnVarNameInTable="columnAverageAltitudeCache" msprop:Generator_ColumnPropNameInTable="AverageAltitudeCacheColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="AverageLatitudeCache" msprop:Generator_UserColumnName="AverageLatitudeCache" msprop:Generator_ColumnPropNameInRow="AverageLatitudeCache" msprop:Generator_ColumnVarNameInTable="columnAverageLatitudeCache" msprop:Generator_ColumnPropNameInTable="AverageLatitudeCacheColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="AverageLongitudeCache" msprop:Generator_UserColumnName="AverageLongitudeCache" msprop:Generator_ColumnPropNameInRow="AverageLongitudeCache" msprop:Generator_ColumnVarNameInTable="columnAverageLongitudeCache" msprop:Generator_ColumnPropNameInTable="AverageLongitudeCacheColumn" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SamplingPlotGeography" msprop:Generator_UserTableName="SamplingPlotGeography" msprop:Generator_RowDeletedName="SamplingPlotGeographyRowDeleted" msprop:Generator_TableClassName="SamplingPlotGeographyDataTable" msprop:Generator_RowChangedName="SamplingPlotGeographyRowChanged" msprop:Generator_RowClassName="SamplingPlotGeographyRow" msprop:Generator_RowChangingName="SamplingPlotGeographyRowChanging" msprop:Generator_RowEvArgName="SamplingPlotGeographyRowChangeEvent" msprop:Generator_RowEvHandlerName="SamplingPlotGeographyRowChangeEventHandler" msprop:Generator_TablePropName="SamplingPlotGeography" msprop:Generator_TableVarName="tableSamplingPlotGeography" msprop:Generator_RowDeletingName="SamplingPlotGeographyRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PlotID" msdata:ReadOnly="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="PlotID" msprop:Generator_ColumnPropNameInRow="PlotID" msprop:Generator_ColumnVarNameInTable="columnPlotID" msprop:Generator_ColumnPropNameInTable="PlotIDColumn" type="xs:string" />
+              <xs:element name="Geography" msdata:Caption="Description" msprop:Generator_UserColumnName="Geography" msprop:Generator_ColumnPropNameInRow="Geography" msprop:Generator_ColumnVarNameInTable="columnGeography" msprop:Generator_ColumnPropNameInTable="GeographyColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CollectionEventList" />
+      <xs:field xpath="mstns:CollectionEventID" />
+    </xs:unique>
+    <xs:unique name="CollectionSpecimenList_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CollectionSpecimenList" />
+      <xs:field xpath="mstns:CollectionSpecimenID" />
+    </xs:unique>
+    <xs:unique name="IdentificationUnitList_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:IdentificationUnitList" />
+      <xs:field xpath="mstns:CollectionSpecimenID" />
+      <xs:field xpath="mstns:IdentificationUnitID" />
+    </xs:unique>
+    <xs:unique name="CollectionEventLocalisationList_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CollectionEventLocalisationList" />
+      <xs:field xpath="mstns:CollectionEventID" />
+      <xs:field xpath="mstns:LocalisationSystemID" />
+    </xs:unique>
+    <xs:unique name="SamplingPlotGeography_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SamplingPlotGeography" />
+      <xs:field xpath="mstns:PlotID" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK_SamplingPlot_SamplingPlot" msdata:parent="SamplingPlot" msdata:child="SamplingPlot" msdata:parentkey="PlotID" msdata:childkey="PartOfPlotID" msprop:Generator_UserRelationName="FK_SamplingPlot_SamplingPlot" msprop:Generator_RelationVarName="relationFK_SamplingPlot_SamplingPlot" msprop:Generator_UserChildTable="SamplingPlot" msprop:Generator_UserParentTable="SamplingPlot" msprop:Generator_ParentPropName="SamplingPlotRowParent" msprop:Generator_ChildPropName="GetSamplingPlotRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

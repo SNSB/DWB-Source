@@ -1,0 +1,15 @@
+app.config
+Properties/Settings.settings
+Properties/Settings.Designer.cs
+DiversityCollectionSetup/Debug/*
+DiversityCollectionSetup/Release/*
+DiversityCollectionAllInOneSetup/Debug/*
+DiversityCollectionAllInOneSetup/Release/*
+DiversityCollectionAllInOneSetup/InstallerAdditionalFiles/*
+DiversityCollectionAllInOneSetup/publish/*
+DiversityCollectionAllInOneSetup/syncfiles.bat
+bin/
+obj/
+*.vs/
+*.suo
+*.user

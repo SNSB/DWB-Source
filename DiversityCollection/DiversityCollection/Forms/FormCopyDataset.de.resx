@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonNoEvent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 64</value>
+  </data>
+  <data name="buttonNoEvent.Text" xml:space="preserve">
+    <value>Nur die Daten des Belegs sollen kopiert werden, OHNE die Daten des Sammelereignisses</value>
+  </data>
+  <data name="buttonNoEvent.ToolTip" xml:space="preserve">
+    <value>Diese Option wird nur den Beleg und keine Daten des Sammelereignisse kopieren.</value>
+  </data>
+  <data name="buttonNewEvent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 63</value>
+  </data>
+  <data name="buttonNewEvent.Text" xml:space="preserve">
+    <value>Kopieren der Daten des Sammelereignisses in einen NEUEN Datensatz</value>
+  </data>
+  <data name="buttonNewEvent.ToolTip" xml:space="preserve">
+    <value>Diese Option wird die Daten des Sammelereignisses in einen neuen Datensatz kopieren und den Beleg in dieses neue Sammelereignis eintragen.</value>
+  </data>
+  <data name="treeViewNoEvent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 254</value>
+  </data>
+  <data name="treeViewNoEvent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>365, 68</value>
+  </data>
+  <data name="buttonSameEvent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 62</value>
+  </data>
+  <data name="buttonSameEvent.Text" xml:space="preserve">
+    <value>Der Beleg wurde im SELBEN Sammelereignis gesammelt</value>
+  </data>
+  <data name="buttonSameEvent.ToolTip" xml:space="preserve">
+    <value>Diese Option wird kein neues Sammelereignis anlegen sondern den Beleg in das Sammelereignis des originalen Datensatzes integrieren.</value>
+  </data>
+  <data name="treeViewSameEvent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 109</value>
+  </data>
+  <data name="treeViewSameEvent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>365, 66</value>
+  </data>
+  <data name="treeViewNewEvent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 181</value>
+  </data>
+  <data name="treeViewNewEvent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>365, 67</value>
+  </data>
+  <data name="labelHeaderEvent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 100</value>
+  </data>
+  <data name="labelHeaderEvent.Text" xml:space="preserve">
+    <value>Bitte wählen sie aus, wie das Sammelereignis kopiert werden soll</value>
+  </data>
+  <data name="groupBoxCopy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 50</value>
+  </data>
+  <data name="groupBoxCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>323, 50</value>
+  </data>
+  <data name="groupBoxCopy.Text" xml:space="preserve">
+    <value>Kopierte Daten werden in schwarz dargestellt</value>
+  </data>
+  <data name="groupBoxOriginal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 0</value>
+  </data>
+  <data name="groupBoxOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>323, 50</value>
+  </data>
+  <data name="groupBoxOriginal.Text" xml:space="preserve">
+    <value>Originaldaten werden in grau dargestellt</value>
+  </data>
+  <data name="treeViewCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>317, 31</value>
+  </data>
+  <data name="treeViewOriginal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>317, 31</value>
+  </data>
+  <data name="labelAccessionNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 123</value>
+  </data>
+  <data name="labelAccessionNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 159</value>
+  </data>
+  <data name="labelAccessionNumber.Text" xml:space="preserve">
+    <value>Neue Belegnummer:</value>
+  </data>
+  <data name="textBoxAccessionNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 120</value>
+  </data>
+  <data name="textBoxAccessionNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 20</value>
+  </data>
+  <data name="tabPageEvent.Text" xml:space="preserve">
+    <value>Sammelereignis</value>
+  </data>
+  <data name="tabPageAccNr.Text" xml:space="preserve">
+    <value>Belegnummer</value>
+  </data>
+  <data name="labelHeaderAccNr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>365, 29</value>
+  </data>
+  <data name="labelHeaderAccNr.Text" xml:space="preserve">
+    <value>Die Belegnummer des originalen Datensatzes lautet ...</value>
+  </data>
+  <data name="buttonAccessionNumberSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 23</value>
+  </data>
+  <data name="buttonAccessionNumberSearch.Text" xml:space="preserve">
+    <value>Suche eine freie Belegnummer nach:</value>
+  </data>
+  <data name="textBoxAccNrInitials.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 55</value>
+  </data>
+  <data name="textBoxAccNrInitials.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 20</value>
+  </data>
+  <data name="checkBoxCopyIdentifactions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 17</value>
+  </data>
+  <data name="checkBoxCopyIdentifactions.Text" xml:space="preserve">
+    <value>Alle Objekte und Bestimmungen sollen in den neuen Datensatz kopiert werden</value>
+  </data>
+  <data name="checkBoxAccNr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 17</value>
+  </data>
+  <data name="checkBoxAccNr.Text" xml:space="preserve">
+    <value>Belegnummer für den neuen Datensatz anlegen</value>
+  </data>
+  <data name="labelAccNrExplain1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>393, 0</value>
+  </data>
+  <data name="labelAccNrExplain1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 52</value>
+  </data>
+  <data name="labelAccNrExplain1.Text" xml:space="preserve">
+    <value>Es gibt 2 Optionen die neue Belegnummer einzufügen:</value>
+  </data>
+  <data name="labelAccNrExplain2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>393, 52</value>
+  </data>
+  <data name="labelAccNrExplain2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 65</value>
+  </data>
+  <data name="labelAccNrExplain2.Text" xml:space="preserve">
+    <value>Entweder die Suche nach einer noch nicht vergebenen Belegnummer in der Datenbank nach der links eingegebenen ...</value>
+  </data>
+  <data name="labelAccNrExplain3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>393, 117</value>
+  </data>
+  <data name="labelAccNrExplain3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 165</value>
+  </data>
+  <data name="labelAccNrExplain3.Text" xml:space="preserve">
+    <value>Oder die Eingabe der Belegnummer im Feld links.</value>
+  </data>
+  <data name="tabPageMultiCopy.Text" xml:space="preserve">
+    <value>Anzahl der Kopien</value>
+  </data>
+  <data name="labelNumberOfCopies.Text" xml:space="preserve">
+    <value>Anzahl der Kopien:</value>
+  </data>
+  <data name="labelNumberOfCopiesHeader.Text" xml:space="preserve">
+    <value>Bitte die Anzahl der Kopien angeben die erzeugt werden sollen</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAB
+        AAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAwMDAAMDcwADwyqYABAQEAAgICAAMDAwAERERABYW
+        FgAcHBwAIiIiACkpKQBVVVUATU1NAEJCQgA5OTkAgHz/AFBQ/wCTANYA/+zMAMbW7wDW5+cAkKmtAAAA
+        MwAAAGYAAACZAAAAzAAAMwAAADMzAAAzZgAAM5kAADPMAAAz/wAAZgAAAGYzAABmZgAAZpkAAGbMAABm
+        /wAAmQAAAJkzAACZZgAAmZkAAJnMAACZ/wAAzAAAAMwzAADMZgAAzJkAAMzMAADM/wAA/2YAAP+ZAAD/
+        zAAzAAAAMwAzADMAZgAzAJkAMwDMADMA/wAzMwAAMzMzADMzZgAzM5kAMzPMADMz/wAzZgAAM2YzADNm
+        ZgAzZpkAM2bMADNm/wAzmQAAM5kzADOZZgAzmZkAM5nMADOZ/wAzzAAAM8wzADPMZgAzzJkAM8zMADPM
+        /wAz/zMAM/9mADP/mQAz/8wAM///AGYAAABmADMAZgBmAGYAmQBmAMwAZgD/AGYzAABmMzMAZjNmAGYz
+        mQBmM8wAZjP/AGZmAABmZjMAZmZmAGZmmQBmZswAZpkAAGaZMwBmmWYAZpmZAGaZzABmmf8AZswAAGbM
+        MwBmzJkAZszMAGbM/wBm/wAAZv8zAGb/mQBm/8wAzAD/AP8AzACZmQAAmTOZAJkAmQCZAMwAmQAAAJkz
+        MwCZAGYAmTPMAJkA/wCZZgAAmWYzAJkzZgCZZpkAmWbMAJkz/wCZmTMAmZlmAJmZmQCZmcwAmZn/AJnM
+        AACZzDMAZsxmAJnMmQCZzMwAmcz/AJn/AACZ/zMAmcxmAJn/mQCZ/8wAmf//AMwAAACZADMAzABmAMwA
+        mQDMAMwAmTMAAMwzMwDMM2YAzDOZAMwzzADMM/8AzGYAAMxmMwCZZmYAzGaZAMxmzACZZv8AzJkAAMyZ
+        MwDMmWYAzJmZAMyZzADMmf8AzMwAAMzMMwDMzGYAzMyZAMzMzADMzP8AzP8AAMz/MwCZ/2YAzP+ZAMz/
+        zADM//8AzAAzAP8AZgD/AJkAzDMAAP8zMwD/M2YA/zOZAP8zzAD/M/8A/2YAAP9mMwDMZmYA/2aZAP9m
+        zADMZv8A/5kAAP+ZMwD/mWYA/5mZAP+ZzAD/mf8A/8wAAP/MMwD/zGYA/8yZAP/MzAD/zP8A//8zAMz/
+        ZgD//5kA///MAGZm/wBm/2YAZv//AP9mZgD/Zv8A//9mACEApQBfX18Ad3d3AIaGhgCWlpYAy8vLALKy
+        sgDX19cA3d3dAOPj4wDq6uoA8fHxAPj4+ADw+/8ApKCgAICAgAAAAP8AAP8AAAD//wD/AAAA/wD/AP//
+        AAD///8ACgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoEBAQEBAQEBAQKCgoKCgoK
+        BP////////8ECgoKCgoKCgT/CgoKCgr/BAoKCgoKCgoE/////////wQKCv//////BP8KCgoKCv8ECgr/
+        CgoKCgT/////////BAoK//////8E/woK/wQEBAQKCv8KCgoKBP////8E/wQKCgr//////wT/////BAQK
+        CgoK/woK/woEBAQEBAQKCgoKCv////8K/woKCgoKCgoKCgr/////CgoKCgoKCgoKCgoKCgoKCgoKCgoK
+        CgoKCgoKCgoKCgoKCgoKCgoKCgoKCv//AAD//wAA/AEAAPwBAAD8AQAAAAEAAAABAAAAAQAAAAEAAAAD
+        AAAABwAAAA8AAAD/AAAB/wAAA/8AAP//AAA=
+</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Datensatz kopieren</value>
+  </data>
+</root>

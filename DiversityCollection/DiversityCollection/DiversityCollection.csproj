@@ -1,0 +1,941 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.18362.0</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <ApplicationIcon>DiversityCollection.ico</ApplicationIcon>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+	<FileVersion>$(Version)</FileVersion>
+	<Version>4.6.0</Version>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <UserSecretsId>c8684f5a-1792-4ab1-a0a5-f88869a4fe7c</UserSecretsId>
+	<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
+    <StartupObject>DiversityCollection.Program</StartupObject>
+    <AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="DatabaseUpdates\**" />
+    <Compile Remove="Doku\**" />
+    <Compile Remove="ImportExport\**" />
+    <Compile Remove="MigrationBackup\**" />
+    <EmbeddedResource Remove="DatabaseUpdates\**" />
+    <EmbeddedResource Remove="Doku\**" />
+    <EmbeddedResource Remove="ImportExport\**" />
+    <EmbeddedResource Remove="MigrationBackup\**" />
+    <None Remove="DatabaseUpdates\**" />
+    <None Remove="Doku\**" />
+    <None Remove="ImportExport\**" />
+    <None Remove="MigrationBackup\**" />
+    <Page Remove="DatabaseUpdates\**" />
+    <Page Remove="Doku\**" />
+    <Page Remove="ImportExport\**" />
+    <Page Remove="MigrationBackup\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Update="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Update="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="CacheDatabase\CacheDBsettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CacheDBsettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="CacheDatabase\DataSetCacheDatabase.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCacheDatabase.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="CacheDatabase\DataSetCacheDB.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCacheDB.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="CacheDatabase\DataSetCacheDB_1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCacheDB_1.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="CacheDatabase\DataSetTransferHistory.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetTransferHistory.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="CacheDatabase\Packages\FloraRaster\ResourceFloraRaster.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourceFloraRaster.resx</DependentUpon>
+    </Compile>
+    <Compile Update="CacheDatabase\Packages\ResourcePackages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourcePackages.resx</DependentUpon>
+    </Compile>
+    <Compile Update="CacheDatabase\Packages\UserControlAddOn.cs" />
+    <Compile Update="CacheDatabase\Packages\UserControlPackage.cs" />
+    <Compile Update="CacheDatabase\ReplaceDatabase.cs" />
+    <Compile Update="CacheDatabase\UserControlExchangeCongruence.cs" />
+    <Compile Update="CacheDatabase\UserControlLookupSource.cs" />
+    <Compile Update="CacheDatabase\UserControlLookupSourceMissing.cs" />
+    <Compile Update="CacheDatabase\UserControlLookupSourceTarget.cs" />
+    <Compile Update="CacheDatabase\UserControlOverviewProject.cs" />
+    <Compile Update="CacheDatabase\UserControlPostgresProject.cs" />
+    <Compile Update="CacheDatabase\UserControlProject.cs" />
+    <Compile Update="CacheDatabase\UserControlProjectPostgresTargets.cs" />
+    <Compile Update="CacheDatabase\UserControlTable.cs" />
+    <Compile Update="CacheDatabase\UserControlTransfer.cs" />
+    <Compile Update="Datasets\DataSetAnalysis.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetAnalysis.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetCollection.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCollection.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetCollectionEventGridMode.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCollectionEventGridMode.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetCollectionEventSeries.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCollectionEventSeries.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetCollectionSpecimen.cs">
+      <DependentUpon>DataSetCollectionSpecimen.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetCollectionSpecimen.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCollectionSpecimen.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetCollectionSpecimenGridMode.cs">
+      <DependentUpon>DataSetCollectionSpecimenGridMode.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetCollectionSpecimenGridMode.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCollectionSpecimenGridMode.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetCollectionTask.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCollectionTask.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetExternalDatasource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetExternalDatasource.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetIdentifictionUnitGridMode.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetIdentifictionUnitGridMode.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetImageGrid.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetImageGrid.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetImportWizard.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetImportWizard.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetLoan.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetLoan.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetMethod.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetMethod.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetPartGrid.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetPartGrid.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetProcessing.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetProcessing.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetProperty.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetProperty.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetRegulation.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetRegulation.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetSamplingPlotList.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetSamplingPlotList.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetTask.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetTask.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetTool.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetTool.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetTransaction.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetTransaction.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetTransactionComment.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetTransactionComment.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormMaintenanceText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormMaintenanceText.resx</DependentUpon>
+    </Compile>
+    <Compile Update="KartierungBayern.cs" />
+    <Compile Update="LabelEditor\UserControlLabelColumn.cs" />
+    <Compile Update="LabelEditor\UserControlLabelDetail.cs" />
+    <Compile Update="LabelEditor\UserControlLabelFont.cs" />
+    <Compile Update="LabelEditor\UserControlLabelRow.cs" />
+    <Compile Update="Maintenance\UserControlSynchronizeTerm.cs" />
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Spreadsheet\TargetText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TargetText.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Tasks\DataSetCollectionTask.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCollectionTask.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Tasks\DataSetTask.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetTask.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Tasks\FormIPM_Text.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormIPM_Text.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Tasks\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <None Update="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="CacheDatabase\CacheDBsettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>CacheDBsettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="CacheDatabase\DataSetCacheDatabase.xsc">
+      <DependentUpon>DataSetCacheDatabase.xsd</DependentUpon>
+    </None>
+    <None Update="CacheDatabase\DataSetCacheDatabase.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCacheDatabase.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="CacheDatabase\DataSetCacheDatabase.xss">
+      <DependentUpon>DataSetCacheDatabase.xsd</DependentUpon>
+    </None>
+    <None Update="CacheDatabase\DataSetCacheDB.xsc">
+      <DependentUpon>DataSetCacheDB.xsd</DependentUpon>
+    </None>
+    <None Update="CacheDatabase\DataSetCacheDB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCacheDB.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="CacheDatabase\DataSetCacheDB.xss">
+      <DependentUpon>DataSetCacheDB.xsd</DependentUpon>
+    </None>
+    <None Update="CacheDatabase\DataSetCacheDB_1.xsc">
+      <DependentUpon>DataSetCacheDB_1.xsd</DependentUpon>
+    </None>
+    <None Update="CacheDatabase\DataSetCacheDB_1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCacheDB_1.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="CacheDatabase\DataSetCacheDB_1.xss">
+      <DependentUpon>DataSetCacheDB_1.xsd</DependentUpon>
+    </None>
+    <None Update="CacheDatabase\DataSetTransferHistory.xsc">
+      <DependentUpon>DataSetTransferHistory.xsd</DependentUpon>
+    </None>
+    <None Update="CacheDatabase\DataSetTransferHistory.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetTransferHistory.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="CacheDatabase\DataSetTransferHistory.xss">
+      <DependentUpon>DataSetTransferHistory.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollectionTask.xsc">
+      <DependentUpon>DataSetCollectionTask.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollectionTask.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCollectionTask.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetCollectionTask.xss">
+      <DependentUpon>DataSetCollectionTask.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetMethod.xsc">
+      <DependentUpon>DataSetMethod.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetMethod.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetMethod.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetMethod.xss">
+      <DependentUpon>DataSetMethod.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetProperty.xsc">
+      <DependentUpon>DataSetProperty.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetProperty.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetProperty.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetProperty.xss">
+      <DependentUpon>DataSetProperty.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetRegulation.xsc">
+      <DependentUpon>DataSetRegulation.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetRegulation.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetRegulation.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetRegulation.xss">
+      <DependentUpon>DataSetRegulation.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetTask.xsc">
+      <DependentUpon>DataSetTask.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetTask.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetTask.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetTask.xss">
+      <DependentUpon>DataSetTask.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetTool.xsc">
+      <DependentUpon>DataSetTool.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetTool.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetTool.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetTool.xss">
+      <DependentUpon>DataSetTool.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetTransactionComment.xsc">
+      <DependentUpon>DataSetTransactionComment.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetTransactionComment.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetTransactionComment.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetTransactionComment.xss">
+      <DependentUpon>DataSetTransactionComment.xsd</DependentUpon>
+    </None>
+    <Compile Update="Specimen.cs" />
+    <Compile Update="Tasks\Chart.cs" />
+    <Compile Update="Tasks\IPM.cs" />
+    <Compile Update="Tasks\UserControlChart.cs" />
+    <Compile Update="Tasks\UserControlImages.cs" />
+    <Compile Update="Tasks\UserControlPlan.cs" />
+    <Compile Update="UserControls\UserControlCollectionTask.cs" />
+    <Compile Update="UserControls\UserControlCollectorGroup.cs" />
+    <Compile Update="UserControls\UserControlDatawithholding.cs" />
+    <Compile Update="UserControls\UserControlDatawithholdingSummary.cs" />
+    <Compile Update="UserControls\UserControlEventSeriesTree.cs" />
+    <Compile Update="UserControls\UserControlGoogleMapsWebView.cs" />
+    <Compile Update="UserControls\UserControl_CollectionTask.cs" />
+    <Compile Update="UserControls\UserControl_EventSeriesDescriptor.cs" />
+    <Compile Update="UserControls\UserControl_GIS.cs" />
+    <Compile Update="UserControls\UserControlGIS.cs" />
+    <Compile Update="UserControls\UserControlPermit.cs" />
+    <Compile Update="UserControls\UserControlSpecimenList.cs" />
+    <Compile Update="UserControls\UserControl_Analysis.cs" />
+    <Compile Update="UserControls\UserControl_Collection.cs" />
+    <Compile Update="UserControls\UserControl_Collector.cs" />
+    <Compile Update="UserControls\UserControl_DisplayOrder.cs" />
+    <Compile Update="UserControls\UserControl_DisplayOrderUnit.cs" />
+    <Compile Update="UserControls\UserControl_Event.cs" />
+    <Compile Update="UserControls\UserControl_EventImages.cs" />
+    <Compile Update="UserControls\UserControl_EventLocality.cs" />
+    <Compile Update="UserControls\UserControl_EventProperty.cs" />
+    <Compile Update="UserControls\UserControl_EventSeries.cs" />
+    <Compile Update="UserControls\UserControl_EventSeriesImages.cs" />
+    <Compile Update="UserControls\UserControl_Exsiccata.cs" />
+    <Compile Update="UserControls\UserControl_ExternalIdentifier.cs" />
+    <Compile Update="UserControls\UserControl_GeoAnalysis.cs" />
+    <Compile Update="UserControls\UserControl_Identification.cs" />
+    <Compile Update="UserControls\UserControl_Label.cs" />
+    <Compile Update="UserControls\UserControl_Method.cs" />
+    <Compile Update="UserControls\UserControl_Part.cs" />
+    <Compile Update="UserControls\UserControl_PartDescription.cs" />
+    <Compile Update="UserControls\UserControl_Permit.cs" />
+    <Compile Update="UserControls\UserControl_Print.cs" />
+    <Compile Update="UserControls\UserControl_Processing.cs" />
+    <Compile Update="UserControls\UserControl_ProjectsNotes.cs" />
+    <Compile Update="UserControls\UserControl_Reference.cs" />
+    <Compile Update="UserControls\UserControl_Regulation.cs" />
+    <Compile Update="UserControls\UserControl_Relation.cs" />
+    <Compile Update="UserControls\UserControl_Specimen.cs" />
+    <Compile Update="UserControls\UserControl_SpecimenImages.cs" />
+    <Compile Update="UserControls\UserControl_Transaction.cs" />
+    <Compile Update="UserControls\UserControl_Unit.cs" />
+    <Compile Update="UserControls\UserControl__Data.cs" />
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Tasks\DataSetCollectionTask.xsc">
+      <DependentUpon>DataSetCollectionTask.xsd</DependentUpon>
+    </None>
+    <None Update="Tasks\DataSetCollectionTask.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCollectionTask.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Tasks\DataSetCollectionTask.xss">
+      <DependentUpon>DataSetCollectionTask.xsd</DependentUpon>
+    </None>
+    <None Update="Tasks\DataSetTask.xsc">
+      <DependentUpon>DataSetTask.xsd</DependentUpon>
+    </None>
+    <None Update="Tasks\DataSetTask.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetTask.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Tasks\DataSetTask.xss">
+      <DependentUpon>DataSetTask.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\info.ico" />
+    <None Include="DiversityCollectionSetup\DiversityCollectionSetup.vdproj" />
+    <None Include="Resources\PostgresDatabaseUpdates\DiversityCollectionCacheProjectPG_000002_to_000003.sql" />
+    <Content Include="CacheDatabase\Packages\ABCD\ABCD_000006_to_000007.sql" />
+    <Content Include="CacheDatabase\Packages\ABCD\BayernFlora\ABCD_BayernFlora_000002_to_000003.sql" />
+    <Content Include="CacheDatabase\Packages\ABCD\BayernFlora\ABCD_BayernFlora_000003_to_000004.sql" />
+    <Content Include="CacheDatabase\Packages\LIDO\LIDO_000001_to_000002.sql" />
+    <Content Include="DiversityCollection.ico" />
+    <Content Include="DiversityWorkbench.ico" />
+    <Content Include="Label.xslt" />
+    <Content Include="Loan.xslt" />
+    <None Include="Resources\PostgresDatabaseUpdates\DiversityCollectionCacheProjectPG_000001_to_000002.sql" />
+    <None Include="Resources\PostgresDatabaseUpdates\DiversityCollectionCacheProjectPG_000000_to_000001.sql" />
+    <Content Include="Resources\DatabaseUpdates\DiversityCollectionUpdate_020538_to_020539.sql" />
+    <Content Include="Resources\DatabaseUpdates\DiversityCollectionUpdate_020525_to_020526.sql" />
+    <None Update="Resources\Import\TransformationSchema.xslt">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Datasets\DataSetImportWizard.xsc">
+      <DependentUpon>DataSetImportWizard.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetImportWizard.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetImportWizard.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetImportWizard.xss">
+      <DependentUpon>DataSetImportWizard.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetImageGrid.xsc">
+      <DependentUpon>DataSetImageGrid.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetImageGrid.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetImageGrid.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetImageGrid.xss">
+      <DependentUpon>DataSetImageGrid.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetPartGrid.xsc">
+      <DependentUpon>DataSetPartGrid.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetPartGrid.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPartGrid.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetPartGrid.xss">
+      <DependentUpon>DataSetPartGrid.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetSamplingPlotList.xsc">
+      <DependentUpon>DataSetSamplingPlotList.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetSamplingPlotList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetSamplingPlotList.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetSamplingPlotList.xss">
+      <DependentUpon>DataSetSamplingPlotList.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollectionEventGridMode.xsc">
+      <DependentUpon>DataSetCollectionEventGridMode.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollectionEventGridMode.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCollectionEventGridMode.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetCollectionEventGridMode.xss">
+      <DependentUpon>DataSetCollectionEventGridMode.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetAnalysis.xsc">
+      <DependentUpon>DataSetAnalysis.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetAnalysis.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetAnalysis.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Datasets\DataSetAnalysis.xss">
+      <DependentUpon>DataSetAnalysis.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetIdentifictionUnitGridMode.xsc">
+      <DependentUpon>DataSetIdentifictionUnitGridMode.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetIdentifictionUnitGridMode.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetIdentifictionUnitGridMode.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetIdentifictionUnitGridMode.xss">
+      <DependentUpon>DataSetIdentifictionUnitGridMode.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetExternalDatasource.xsc">
+      <DependentUpon>DataSetExternalDatasource.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetExternalDatasource.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetExternalDatasource.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetExternalDatasource.xss">
+      <DependentUpon>DataSetExternalDatasource.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollectionSpecimenGridMode.xsc">
+      <DependentUpon>DataSetCollectionSpecimenGridMode.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollectionSpecimenGridMode.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCollectionSpecimenGridMode.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetCollectionSpecimenGridMode.xss">
+      <DependentUpon>DataSetCollectionSpecimenGridMode.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollectionEventSeries.xsc">
+      <DependentUpon>DataSetCollectionEventSeries.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollectionEventSeries.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCollectionEventSeries.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetCollectionEventSeries.xss">
+      <DependentUpon>DataSetCollectionEventSeries.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetTransaction.xsc">
+      <DependentUpon>DataSetTransaction.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetTransaction.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetTransaction.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetTransaction.xss">
+      <DependentUpon>DataSetTransaction.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollection.xsc">
+      <DependentUpon>DataSetCollection.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollection.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCollection.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetCollection.xss">
+      <DependentUpon>DataSetCollection.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetLoan.xsc">
+      <DependentUpon>DataSetLoan.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetLoan.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetLoan.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetLoan.xss">
+      <DependentUpon>DataSetLoan.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetProcessing.xsc">
+      <DependentUpon>DataSetProcessing.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetProcessing.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetProcessing.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetProcessing.xss">
+      <DependentUpon>DataSetProcessing.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollectionSpecimen.xsc">
+      <DependentUpon>DataSetCollectionSpecimen.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetCollectionSpecimen.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCollectionSpecimen.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetCollectionSpecimen.xss">
+      <DependentUpon>DataSetCollectionSpecimen.xsd</DependentUpon>
+    </None>
+    <None Update="Tasks\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HtmlTextWriter" Version="3.0.1" />
+    <PackageReference Include="log4net">
+      <Version>3.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3351.48" />
+    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.4654" />
+    <PackageReference Include="Npgsql">
+      <Version>9.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="2.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="CacheDatabase\FormCacheDB.cs" />
+    <Compile Remove="CacheDatabase\FormCacheDB.Designer.cs" />
+    <Compile Remove="CacheDatabase\FormCacheDBAdministration.cs" />
+    <Compile Remove="CacheDatabase\FormCacheDBAdministration.Designer.cs" />
+    <Compile Remove="CacheDatabase\FormCacheDBExport.cs" />
+    <Compile Remove="CacheDatabase\FormCacheDBExport.Designer.cs" />
+    <Compile Remove="CacheDatabase\InterfaceExchangeCongruence.cs" />
+    <Compile Remove="CacheDatabase\InterfaceGazetteer.cs" />
+    <Compile Remove="CacheDatabase\InterfaceScientificTerms.cs" />
+    <Compile Remove="CacheDatabase\InterfaceTaxonomy.cs" />
+    <Compile Remove="CacheDatabase\Packages\ABCD\ResourceABCD.Designer.cs" />
+    <Compile Remove="CacheDatabase\UserControlTaxonomy.cs" />
+    <Compile Remove="CacheDatabase\UserControlTaxonomy.Designer.cs" />
+    <Compile Remove="CacheDatabase\UserControlTaxonSource.cs" />
+    <Compile Remove="CacheDatabase\UserControlTaxonSource.Designer.cs" />
+    <Compile Remove="CacheDatabase\UserControlTransferStep.cs" />
+    <Compile Remove="CacheDatabase\UserControlTransferStep.Designer.cs" />
+    <Compile Remove="Collection_2.cs" />
+    <Compile Remove="DistributionMap\DistributionMap.cs" />
+    <Compile Remove="DistributionMap\DistributionMap.Designer.cs" />
+    <Compile Remove="DistributionMap\FormDistributionMap.cs" />
+    <Compile Remove="DistributionMap\FormDistributionMap.Designer.cs" />
+    <Compile Remove="DistributionMap\FormMapSettings.cs" />
+    <Compile Remove="DistributionMap\FormMapSettings.Designer.cs" />
+    <Compile Remove="DistributionMap\InterfaceDistributionMap.cs" />
+    <Compile Remove="DistributionMap\Setting.cs" />
+    <Compile Remove="DistributionMap\UserControlSetting.cs" />
+    <Compile Remove="DistributionMap\UserControlSetting.Designer.cs" />
+    <Compile Remove="Forms\FormCollectionEventSeries.Designer.cs" />
+    <Compile Remove="Forms\FormCollectionSpecimen_Kopie.cs" />
+    <Compile Remove="Forms\FormCollectionSpecimen_Kopie.Designer.cs" />
+    <Compile Remove="Forms\FormCollection_2.cs" />
+    <Compile Remove="Forms\FormCollection_2.Designer.cs" />
+    <Compile Remove="Forms\FormCurators.cs" />
+    <Compile Remove="Forms\FormCurators.Designer.cs" />
+    <Compile Remove="Forms\FormExportToCacheDB.cs" />
+    <Compile Remove="Forms\FormExportToCacheDB.Designer.cs" />
+    <Compile Remove="Forms\FormImportList.cs" />
+    <Compile Remove="Forms\FormImportList.Designer.cs" />
+    <Compile Remove="Forms\FormImportWizard.cs" />
+    <Compile Remove="Forms\FormImportWizard.Designer.cs" />
+    <Compile Remove="Forms\FormImportWizardCheckError.cs" />
+    <Compile Remove="Forms\FormImportWizardCheckError.Designer.cs" />
+    <Compile Remove="Forms\FormImportWizardSplitSettings.cs" />
+    <Compile Remove="Forms\FormImportWizardSplitSettings.Designer.cs" />
+    <Compile Remove="Forms\FormImportWizardTest.cs" />
+    <Compile Remove="Forms\FormImportWizardTest.Designer.cs" />
+    <Compile Remove="Forms\FormImportWizardTransformation.cs" />
+    <Compile Remove="Forms\FormImportWizardTransformation.Designer.cs" />
+    <Compile Remove="Forms\FormImportWizardTranslation.cs" />
+    <Compile Remove="Forms\FormImportWizardTranslation.Designer.cs" />
+    <Compile Remove="Forms\FormLabelEditor.cs" />
+    <Compile Remove="Forms\FormLabelEditor.Designer.cs" />
+    <Compile Remove="Forms\FormLoan.cs" />
+    <Compile Remove="Forms\FormLoan.Designer.cs" />
+    <Compile Remove="Forms\FormLoanSettings.Designer.cs" />
+    <Compile Remove="Forms\FormSynchronisation.cs" />
+    <Compile Remove="Forms\FormSynchronisation.Designer.cs" />
+    <Compile Remove="Forms\FormSynchronisationSettings.Designer.cs" />
+    <Compile Remove="Import.cs" />
+    <Compile Remove="Import_Column.cs" />
+    <Compile Remove="Import_Step.cs" />
+    <Compile Remove="Import_Table.cs" />
+    <Compile Remove="Tasks\Taxa\Record.cs" />
+    <Compile Remove="Tasks\TaxonGroup.cs" />
+    <Compile Remove="UserControls\UserControlImportAnalysis - Kopie.cs" />
+    <Compile Remove="UserControls\UserControlImportAnalysis.cs" />
+    <Compile Remove="UserControls\UserControlImportAnalysis.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportCollector.cs" />
+    <Compile Remove="UserControls\UserControlImportCollector.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportDate.cs" />
+    <Compile Remove="UserControls\UserControlImportDate.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportEventProperty.cs" />
+    <Compile Remove="UserControls\UserControlImportEventProperty.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportGroup.cs" />
+    <Compile Remove="UserControls\UserControlImportGroup.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportIdentification.cs" />
+    <Compile Remove="UserControls\UserControlImportIdentification.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportInterface.cs" />
+    <Compile Remove="UserControls\UserControlImportItem.cs" />
+    <Compile Remove="UserControls\UserControlImportItem.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportLocalisation.cs" />
+    <Compile Remove="UserControls\UserControlImportLocalisation.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportMethod.cs" />
+    <Compile Remove="UserControls\UserControlImportMethod.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportMethodParameter.cs" />
+    <Compile Remove="UserControls\UserControlImportMethodParameter.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportProcessing.cs" />
+    <Compile Remove="UserControls\UserControlImportProcessing.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportSelector.cs" />
+    <Compile Remove="UserControls\UserControlImportSelector.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportSpecimenRelation.cs" />
+    <Compile Remove="UserControls\UserControlImportSpecimenRelation.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportState.cs" />
+    <Compile Remove="UserControls\UserControlImportState.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportStep.cs" />
+    <Compile Remove="UserControls\UserControlImportStep.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportStorage.cs" />
+    <Compile Remove="UserControls\UserControlImportStorage.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportTable.cs" />
+    <Compile Remove="UserControls\UserControlImportTable.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportTransaction.cs" />
+    <Compile Remove="UserControls\UserControlImportTransaction.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImportUnit.cs" />
+    <Compile Remove="UserControls\UserControlImportUnit.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImport_Column.cs" />
+    <Compile Remove="UserControls\UserControlImport_Column.Designer.cs" />
+    <Compile Remove="UserControls\UserControlImport_ColumnDisplay.cs" />
+    <Compile Remove="UserControls\UserControlImport_ColumnDisplay.Designer.cs" />
+    <Compile Remove="UserControls\UserControlTransaction.cs" />
+    <Compile Remove="UserControls\UserControlTransaction.Designer.cs" />
+    <Compile Remove="UserControls\UserControl_Images.cs" />
+    <Compile Remove="UserControls\UserControl_Images.Designer.cs" />
+    <EmbeddedResource Remove="CacheDatabase\FormCacheDB.resx" />
+    <EmbeddedResource Remove="CacheDatabase\FormCacheDBAdministration.resx" />
+    <EmbeddedResource Remove="CacheDatabase\FormCacheDBExport.resx" />
+    <EmbeddedResource Remove="CacheDatabase\Packages\ABCD\ResourceABCD.resx" />
+    <EmbeddedResource Remove="CacheDatabase\UserControlTaxonomy.resx" />
+    <EmbeddedResource Remove="CacheDatabase\UserControlTaxonSource.resx" />
+    <EmbeddedResource Remove="CacheDatabase\UserControlTransferStep.resx" />
+    <EmbeddedResource Remove="DistributionMap\DistributionMap.resx" />
+    <EmbeddedResource Remove="DistributionMap\FormDistributionMap.resx" />
+    <EmbeddedResource Remove="DistributionMap\FormMapSettings.resx" />
+    <EmbeddedResource Remove="DistributionMap\UserControlSetting.resx" />
+    <EmbeddedResource Remove="Forms\FormCollectionSpecimen_Kopie.resx" />
+    <EmbeddedResource Remove="Forms\FormCollection_2.resx" />
+    <EmbeddedResource Remove="Forms\FormCurators.resx" />
+    <EmbeddedResource Remove="Forms\FormExportToCacheDB.resx" />
+    <EmbeddedResource Remove="Forms\FormImportList.resx" />
+    <EmbeddedResource Remove="Forms\FormImportWizard.resx" />
+    <EmbeddedResource Remove="Forms\FormImportWizardCheckError.resx" />
+    <EmbeddedResource Remove="Forms\FormImportWizardSplitSettings.resx" />
+    <EmbeddedResource Remove="Forms\FormImportWizardTest.resx" />
+    <EmbeddedResource Remove="Forms\FormImportWizardTransformation.resx" />
+    <EmbeddedResource Remove="Forms\FormImportWizardTranslation.resx" />
+    <EmbeddedResource Remove="Forms\FormLabelEditor.resx" />
+    <EmbeddedResource Remove="Forms\FormLabelPrint.resx" />
+    <EmbeddedResource Remove="Forms\FormLoan.resx" />
+    <EmbeddedResource Remove="Forms\FormSynchronisation.resx" />
+    <EmbeddedResource Remove="Forms\_FormCollectionSpecimenText.de.resx" />
+    <EmbeddedResource Remove="Forms\_FormCollectionSpecimenText.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportAnalysis.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportCollector.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportDate.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportEventProperty.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportGroup.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportIdentification.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportItem.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportLocalisation.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportMethod.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportMethodParameter.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportProcessing.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportSelector.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportSpecimenRelation.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportState.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportStep.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportStorage.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportTable.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportTransaction.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImportUnit.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImport_Column.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlImport_ColumnDisplay.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlTransaction.resx" />
+    <EmbeddedResource Remove="UserControls\UserControl_Images.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="appsettings_dc.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DiversityWorkbench\DiversityWorkbench.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="CacheDatabase\Packages\FloraRaster\ResourceFloraRaster.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceFloraRaster.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="CacheDatabase\Packages\ResourcePackages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcePackages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\FormAnalysisText.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\FormMaintenanceText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormMaintenanceText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Spreadsheet\TargetText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TargetText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Tasks\FormIPM_Text.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormIPM_Text.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

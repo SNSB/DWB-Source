@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Display_order_for" xml:space="preserve">
+    <value>Reihenfolge der Anzeige für</value>
+  </data>
+  <data name="External_relation_to" xml:space="preserve">
+    <value>Externe Beziehung zu</value>
+  </data>
+  <data name="Internal_relation_to" xml:space="preserve">
+    <value>Interne Beziehung zu</value>
+  </data>
+  <data name="No_dataset_could_be_found" xml:space="preserve">
+    <value>Es konnte kein Datensatz gefunden werden</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>von</value>
+  </data>
+  <data name="Restrict_to_collection" xml:space="preserve">
+    <value>Einschränkung auf Sammlung</value>
+  </data>
+  <data name="Restrict_to_material" xml:space="preserve">
+    <value>Einschränkung auf Material</value>
+  </data>
+  <data name="Analysis" xml:space="preserve">
+    <value>Analysen</value>
+  </data>
+  <data name="Application_description" xml:space="preserve">
+    <value>Feldbeschreibungen des Programms</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Sammlungen</value>
+  </data>
+  <data name="Collection_managers" xml:space="preserve">
+    <value>Sammlungsverwalter</value>
+  </data>
+  <data name="Connection" xml:space="preserve">
+    <value>Verbindung</value>
+  </data>
+  <data name="Customize_display" xml:space="preserve">
+    <value>Anzeige anpassen</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Daten</value>
+  </data>
+  <data name="Database" xml:space="preserve">
+    <value>Datenbank</value>
+  </data>
+  <data name="Expired_loans" xml:space="preserve">
+    <value>Abgelaufene Ausleihen</value>
+  </data>
+  <data name="Export_list" xml:space="preserve">
+    <value>Liste exportieren</value>
+  </data>
+  <data name="External_datasources" xml:space="preserve">
+    <value>Externe Datenquellen</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Rückmeldung</value>
+  </data>
+  <data name="Feedback_history" xml:space="preserve">
+    <value>Alte Rückmeldungen</value>
+  </data>
+  <data name="Grid" xml:space="preserve">
+    <value>Tabelle</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="Import_list" xml:space="preserve">
+    <value>Liste importieren</value>
+  </data>
+  <data name="Loan_requestors" xml:space="preserve">
+    <value>Anfrageberechtigte</value>
+  </data>
+  <data name="Loan_requests" xml:space="preserve">
+    <value>Leihanfragen</value>
+  </data>
+  <data name="Maintenance" xml:space="preserve">
+    <value>Wartungsarbeiten</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Handbuch</value>
+  </data>
+  <data name="Module_connections" xml:space="preserve">
+    <value>Verbindungen zu Modulen</value>
+  </data>
+  <data name="My_requests" xml:space="preserve">
+    <value>Meine Leihanfragen</value>
+  </data>
+  <data name="Predefined_queries" xml:space="preserve">
+    <value>Vordefinierte Suchen</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Behandlungen</value>
+  </data>
+  <data name="Queries" xml:space="preserve">
+    <value>Vordefinierte Suchen</value>
+  </data>
+  <data name="Query" xml:space="preserve">
+    <value>Suche</value>
+  </data>
+  <data name="Quit" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="Reimport_list" xml:space="preserve">
+    <value>Liste reimportieren</value>
+  </data>
+  <data name="Save_dataset" xml:space="preserve">
+    <value>Datensatz sichern</value>
+  </data>
+  <data name="Scan_mode" xml:space="preserve">
+    <value>Scanner Modus</value>
+  </data>
+  <data name="Show_query" xml:space="preserve">
+    <value>Suchbereich anzeigen</value>
+  </data>
+  <data name="Specimen_scans" xml:space="preserve">
+    <value>Bilder von Belegen</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistik</value>
+  </data>
+  <data name="Transaction" xml:space="preserve">
+    <value>Transaktionen</value>
+  </data>
+  <data name="Transaction_management" xml:space="preserve">
+    <value>Transaktionsverwaltung</value>
+  </data>
+  <data name="Transfer_previous_settings" xml:space="preserve">
+    <value>Alte Einstellungen übernehmen</value>
+  </data>
+  <data name="User_and_projects" xml:space="preserve">
+    <value>Benutzer und Projekte</value>
+  </data>
+  <data name="Versions" xml:space="preserve">
+    <value>Versionen</value>
+  </data>
+  <data name="Organisms" xml:space="preserve">
+    <value>Organismen</value>
+  </data>
+  <data name="Specimens" xml:space="preserve">
+    <value>Belege</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Depending_data" xml:space="preserve">
+    <value>Abhängige Daten</value>
+  </data>
+  <data name="Please_select" xml:space="preserve">
+    <value>Bitte auswählen</value>
+  </data>
+  <data name="Please_delete_all_depending_entries" xml:space="preserve">
+    <value>Bitte löschen sie alle abhängigen Einträge</value>
+  </data>
+  <data name="There_can_only_be_one" xml:space="preserve">
+    <value>Es kann nur einen Eintrag geben von </value>
+  </data>
+  <data name="Values_are_restricted_to" xml:space="preserve">
+    <value>Die Werte sind beschränkt auf</value>
+  </data>
+  <data name="Wrong_entry" xml:space="preserve">
+    <value>Falscher Eintrag</value>
+  </data>
+  <data name="You_can_not_delete_this_entry_here" xml:space="preserve">
+    <value>Dieser Eintrag kann hier nicht gelöscht werden</value>
+  </data>
+  <data name="You_have_no_access_to_this_dataset" xml:space="preserve">
+    <value>Sie haben keinen Zugang zu diesem Datensatz</value>
+  </data>
+  <data name="Label_print" xml:space="preserve">
+    <value>Editketten druck</value>
+  </data>
+</root>

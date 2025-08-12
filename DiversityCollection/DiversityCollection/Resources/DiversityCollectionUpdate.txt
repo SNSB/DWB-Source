@@ -1,0 +1,237 @@
+DECLARE @VERSION VARCHAR(8);
+SET @VERSION = (SELECT DBO.VERSION() AS VARCHAR);
+IF @VERSION = '02.05.00'
+BEGIN
+BEGIN TRANSACTION @VERSION;
+
+--insert a new table for the Interface Compatibility
+
+/****** Objekt:  Table [dbo].[WorkbenchInterfaceCompatibility]    Skriptdatum: 08/08/2008 16:45:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[WorkbenchInterfaceCompatibility]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [WorkbenchInterfaceCompatibility](
+	[ComponentName] [varchar](64) NOT NULL,
+	[ComponentSignature] [uniqueidentifier] NOT NULL,
+	[MajorVersion] [smallint] NOT NULL,
+	[MinorVersion] [smallint] NOT NULL,
+	[ComponentIsCompatible] [bit] NOT NULL CONSTRAINT [DF_WorkbenchInterfaceCompatibility_ComponentIsCompatible]  DEFAULT ((1)),
+	[ComponentIsRequired] [bit] NOT NULL CONSTRAINT [DF_WorkbenchInterfaceCompatibility_ComponentIsRequired]  DEFAULT ((1)),
+	[TestResponsible] [nvarchar](50) NOT NULL,
+	[TestDate] [smalldatetime] NOT NULL CONSTRAINT [DF_WorkbenchInterfaceCompatibility_TestDate]  DEFAULT (getdate()),
+	[InternalNotes] [nvarchar](max) NOT NULL CONSTRAINT [DF_WorkbenchInterfaceCompatibility_InternalNotes]  DEFAULT (''),
+ CONSTRAINT [WbInterfaceCompatibility_PK] PRIMARY KEY NONCLUSTERED 
+(
+	[ComponentSignature] ASC,
+	[MajorVersion] ASC,
+	[MinorVersion] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON, FILLFACTOR = 95) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_PADDING OFF
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnHidden' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentName'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnHidden', @value=N'False' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentName'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnOrder' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentName'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnOrder', @value=0 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentName'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnWidth' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentName'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnWidth', @value=1680 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentName'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Description' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentName'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The name of a component that is used together with the current component. Not Unicode!' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentName'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DisplayControl' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentName'))
+EXEC sys.sp_addextendedproperty @name=N'MS_DisplayControl', @value=N'109' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentName'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_IMEMode' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentName'))
+EXEC sys.sp_addextendedproperty @name=N'MS_IMEMode', @value=N'0' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentName'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnHidden' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentSignature'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnHidden', @value=N'False' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentSignature'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnOrder' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentSignature'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnOrder', @value=N'0' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentSignature'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnWidth' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentSignature'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnWidth', @value=N'1995' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentSignature'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Description' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentSignature'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'NEEDS TO BE REPLACED BY IMPROVED MECHANISM! A unique identifier defining a component of the DiversityWorkbench or compatible applications' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentSignature'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DisplayControl' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentSignature'))
+EXEC sys.sp_addextendedproperty @name=N'MS_DisplayControl', @value=N'109' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentSignature'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnHidden' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'MajorVersion'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnHidden', @value=N'False' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'MajorVersion'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnOrder' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'MajorVersion'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnOrder', @value=0 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'MajorVersion'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnWidth' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'MajorVersion'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnWidth', @value=1320 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'MajorVersion'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Description' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'MajorVersion'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The major number of the version (before the period)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'MajorVersion'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DisplayControl' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'MajorVersion'))
+EXEC sys.sp_addextendedproperty @name=N'MS_DisplayControl', @value=N'109' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'MajorVersion'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnHidden' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'MinorVersion'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnHidden', @value=N'False' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'MinorVersion'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnOrder' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'MinorVersion'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnOrder', @value=0 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'MinorVersion'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnWidth' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'MinorVersion'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnWidth', @value=1320 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'MinorVersion'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Description' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'MinorVersion'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The minor number of the version (after the period)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'MinorVersion'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DisplayControl' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'MinorVersion'))
+EXEC sys.sp_addextendedproperty @name=N'MS_DisplayControl', @value=N'109' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'MinorVersion'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnHidden' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsCompatible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnHidden', @value=N'False' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsCompatible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnOrder' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsCompatible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnOrder', @value=0 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsCompatible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnWidth' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsCompatible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnWidth', @value=2295 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsCompatible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Description' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsCompatible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'True if the application module is compatible, False if incompatible' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsCompatible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DisplayControl' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsCompatible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_DisplayControl', @value=N'106' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsCompatible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Format' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsCompatible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Format', @value=N'Yes/No' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsCompatible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnHidden' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsRequired'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnHidden', @value=N'False' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsRequired'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnOrder' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsRequired'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnOrder', @value=0 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsRequired'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnWidth' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsRequired'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnWidth', @value=2085 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsRequired'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Description' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsRequired'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'False if the module may be missing, True if presence of module is required' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsRequired'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DisplayControl' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsRequired'))
+EXEC sys.sp_addextendedproperty @name=N'MS_DisplayControl', @value=N'106' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsRequired'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Format' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'ComponentIsRequired'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Format', @value=N'Yes/No' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'ComponentIsRequired'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnHidden' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestResponsible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnHidden', @value=N'False' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestResponsible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnOrder' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestResponsible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnOrder', @value=0 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestResponsible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnWidth' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestResponsible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnWidth', @value=1620 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestResponsible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Description' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestResponsible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The name of the developer who tested compatibility between module containing this table and the module with ModuleName' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestResponsible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DisplayControl' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestResponsible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_DisplayControl', @value=N'109' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestResponsible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_IMEMode' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestResponsible'))
+EXEC sys.sp_addextendedproperty @name=N'MS_IMEMode', @value=N'0' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestResponsible'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnHidden' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestDate'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnHidden', @value=N'False' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestDate'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnOrder' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestDate'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnOrder', @value=0 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestDate'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnWidth' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestDate'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnWidth', @value=1950 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestDate'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Description' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestDate'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The date when the compatibility was tested' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestDate'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_IMEMode' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'TestDate'))
+EXEC sys.sp_addextendedproperty @name=N'MS_IMEMode', @value=N'0' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'TestDate'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnHidden' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'InternalNotes'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnHidden', @value=N'False' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'InternalNotes'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnOrder' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'InternalNotes'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnOrder', @value=0 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'InternalNotes'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ColumnWidth' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'InternalNotes'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ColumnWidth', @value=6030 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'InternalNotes'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Description' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'InternalNotes'))
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Internal Notes, should usually be left empty!' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'InternalNotes'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DisplayControl' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'InternalNotes'))
+EXEC sys.sp_addextendedproperty @name=N'MS_DisplayControl', @value=N'109' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'InternalNotes'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_IMEMode' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'COLUMN',N'InternalNotes'))
+EXEC sys.sp_addextendedproperty @name=N'MS_IMEMode', @value=N'0' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'COLUMN',@level2name=N'InternalNotes'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DefaultView' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', NULL,NULL))
+EXEC sys.sp_addextendedproperty @name=N'MS_DefaultView', @value=0x02 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Description' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', NULL,NULL))
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Documentation of version compatibility between the current module and other modules. Must be manually filled after appropriate testing' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_OrderByOn' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', NULL,NULL))
+EXEC sys.sp_addextendedproperty @name=N'MS_OrderByOn', @value=N'False' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_Orientation' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', NULL,NULL))
+EXEC sys.sp_addextendedproperty @name=N'MS_Orientation', @value=0x00 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_TableMaxRecords' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', NULL,NULL))
+EXEC sys.sp_addextendedproperty @name=N'MS_TableMaxRecords', @value=25000 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ConstraintText' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'CONSTRAINT',N'WbInterfaceCompatibility_PK'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ConstraintText', @value=N'No two component entry may have the same Signature and Major and Minor version number!' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'CONSTRAINT',@level2name=N'WbInterfaceCompatibility_PK'
+GO
+/****** Objekt:  Check [WbInterfaceCompatibility_CK_RequiredStrings]    Skriptdatum: 08/08/2008 16:45:11 ******/
+IF NOT EXISTS (SELECT * FROM sys.check_constraints WHERE object_id = OBJECT_ID(N'[dbo].[WbInterfaceCompatibility_CK_RequiredStrings]') AND parent_object_id = OBJECT_ID(N'[WorkbenchInterfaceCompatibility]'))
+ALTER TABLE [WorkbenchInterfaceCompatibility]  WITH NOCHECK ADD  CONSTRAINT [WbInterfaceCompatibility_CK_RequiredStrings] CHECK  ((len([ComponentName])>(1) AND len([TestResponsible])>(1)))
+GO
+ALTER TABLE [WorkbenchInterfaceCompatibility] CHECK CONSTRAINT [WbInterfaceCompatibility_CK_RequiredStrings]
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ConstraintText' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'CONSTRAINT',N'WbInterfaceCompatibility_CK_RequiredStrings'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ConstraintText', @value=N'The fields ''ComponentName'' and ''TestResponsible'' are required!' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'CONSTRAINT',@level2name=N'WbInterfaceCompatibility_CK_RequiredStrings'
+GO
+/****** Objekt:  Check [WbInterfaceCompatibility_CK_Version]    Skriptdatum: 08/08/2008 16:45:11 ******/
+IF NOT EXISTS (SELECT * FROM sys.check_constraints WHERE object_id = OBJECT_ID(N'[dbo].[WbInterfaceCompatibility_CK_Version]') AND parent_object_id = OBJECT_ID(N'[WorkbenchInterfaceCompatibility]'))
+ALTER TABLE [WorkbenchInterfaceCompatibility]  WITH NOCHECK ADD  CONSTRAINT [WbInterfaceCompatibility_CK_Version] CHECK  (([MajorVersion]>(-1) AND [MinorVersion]>(-1)))
+GO
+ALTER TABLE [WorkbenchInterfaceCompatibility] CHECK CONSTRAINT [WbInterfaceCompatibility_CK_Version]
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_ConstraintText' , N'SCHEMA',N'dbo', N'TABLE',N'WorkbenchInterfaceCompatibility', N'CONSTRAINT',N'WbInterfaceCompatibility_CK_Version'))
+EXEC sys.sp_addextendedproperty @name=N'MS_ConstraintText', @value=N'The major and minor version numbers may not be negative' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'WorkbenchInterfaceCompatibility', @level2type=N'CONSTRAINT',@level2name=N'WbInterfaceCompatibility_CK_Version'
+GO
+
+-- insert the value for the client
+
+
+INSERT INTO WorkbenchInterfaceCompatibility
+(ComponentName, ComponentSignature, MajorVersion, MinorVersion, ComponentIsCompatible, ComponentIsRequired, TestResponsible)
+VALUES ('DiversityCollection', 'b4b873d1-e022-436d-8f5a-a274cc41daa4', 2, 5, 1, 0, 'M. Weiss')
+
+
+SET @VERSION = '02.06.00';
+
+COMMIT TRANSACTION @VERSION;
+END

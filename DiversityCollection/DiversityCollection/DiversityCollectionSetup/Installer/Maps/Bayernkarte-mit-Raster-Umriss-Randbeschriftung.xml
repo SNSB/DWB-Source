@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--Map-Image Options-->
+<ImageOptions>
+  <Name>Bayernkarte-mit-Raster-und-Randbeschriftung</Name>
+  <Description></Description>
+  <NWLat>50.72254334</NWLat>
+  <NWLong>8.64230260</NWLong>
+  <SELat>47.07391465</SELat> 
+  <SELong>14.19278883</SELong>
+  <SWLat>47.07391465</SWLat> 
+  <SWLong>8.64230260</SWLong>
+  <NELat>50.72254334</NELat>
+  <NELong>14.19278883</NELong>
+  <ZoomLevel />
+  <Transparency>255</Transparency>
+</ImageOptions>
+

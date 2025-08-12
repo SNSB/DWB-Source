@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Analysis" xml:space="preserve">
+    <value>Analysis</value>
+  </data>
+  <data name="Application_description" xml:space="preserve">
+    <value>Application_description</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Collections</value>
+  </data>
+  <data name="Collection_managers" xml:space="preserve">
+    <value>Collection managers</value>
+  </data>
+  <data name="Connection" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="Customize_display" xml:space="preserve">
+    <value>Customize display</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Database" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Depending_data" xml:space="preserve">
+    <value>Depending data</value>
+  </data>
+  <data name="Display_order_for" xml:space="preserve">
+    <value>Display order for</value>
+  </data>
+  <data name="Expired_loans" xml:space="preserve">
+    <value>Expired loans</value>
+  </data>
+  <data name="Export_list" xml:space="preserve">
+    <value>Export list</value>
+  </data>
+  <data name="External_datasources" xml:space="preserve">
+    <value>External datasources</value>
+  </data>
+  <data name="External_relation_to" xml:space="preserve">
+    <value>External relation to</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Feedback_history" xml:space="preserve">
+    <value>Feedback history</value>
+  </data>
+  <data name="Grid" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Import_list" xml:space="preserve">
+    <value>Import list</value>
+  </data>
+  <data name="Internal_relation_to" xml:space="preserve">
+    <value>Internal relation to</value>
+  </data>
+  <data name="Label_print" xml:space="preserve">
+    <value>Label print</value>
+  </data>
+  <data name="Loan_requestors" xml:space="preserve">
+    <value>Loan requestors</value>
+  </data>
+  <data name="Loan_requests" xml:space="preserve">
+    <value>Loan requests</value>
+  </data>
+  <data name="Maintenance" xml:space="preserve">
+    <value>Maintenance</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="Module_connections" xml:space="preserve">
+    <value>Module connections</value>
+  </data>
+  <data name="My_requests" xml:space="preserve">
+    <value>My requests</value>
+  </data>
+  <data name="No_dataset_could_be_found" xml:space="preserve">
+    <value>No dataset could be found</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="Organisms" xml:space="preserve">
+    <value>Organisms</value>
+  </data>
+  <data name="Please_delete_all_depending_entries" xml:space="preserve">
+    <value>Please delete all depending entries</value>
+  </data>
+  <data name="Please_select" xml:space="preserve">
+    <value>Please select</value>
+  </data>
+  <data name="Predefined_queries" xml:space="preserve">
+    <value>Predefined queries</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Processing</value>
+  </data>
+  <data name="Queries" xml:space="preserve">
+    <value>Queries</value>
+  </data>
+  <data name="Query" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="Quit" xml:space="preserve">
+    <value>Quit</value>
+  </data>
+  <data name="Reimport_list" xml:space="preserve">
+    <value>Reimport list</value>
+  </data>
+  <data name="Restrict_to_collection" xml:space="preserve">
+    <value>Restrict to collection</value>
+  </data>
+  <data name="Restrict_to_material" xml:space="preserve">
+    <value>Restrict to material</value>
+  </data>
+  <data name="Save_dataset" xml:space="preserve">
+    <value>Save dataset</value>
+  </data>
+  <data name="Scan_mode" xml:space="preserve">
+    <value>Scan mode</value>
+  </data>
+  <data name="Show_query" xml:space="preserve">
+    <value>Show query</value>
+  </data>
+  <data name="Specimens" xml:space="preserve">
+    <value>Specimens</value>
+  </data>
+  <data name="Specimen_scans" xml:space="preserve">
+    <value>Specimen scans</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="There_can_only_be_one" xml:space="preserve">
+    <value>There can only be one</value>
+  </data>
+  <data name="Transaction" xml:space="preserve">
+    <value>Transaction</value>
+  </data>
+  <data name="Transaction_management" xml:space="preserve">
+    <value>Transaction management</value>
+  </data>
+  <data name="Transfer_previous_settings" xml:space="preserve">
+    <value>Transfer previous settings</value>
+  </data>
+  <data name="User_and_projects" xml:space="preserve">
+    <value>User and projects</value>
+  </data>
+  <data name="Values_are_restricted_to" xml:space="preserve">
+    <value>Values are restricted to</value>
+  </data>
+  <data name="Versions" xml:space="preserve">
+    <value>Versions</value>
+  </data>
+  <data name="Wrong_entry" xml:space="preserve">
+    <value>Wrong entry</value>
+  </data>
+  <data name="You_can_not_delete_this_entry_here" xml:space="preserve">
+    <value>You can not delete this entry here</value>
+  </data>
+  <data name="You_have_no_access_to_this_dataset" xml:space="preserve">
+    <value>You have no access to this dataset</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="Parts" xml:space="preserve">
+    <value>Parts</value>
+  </data>
+  <data name="All_annotations" xml:space="preserve">
+    <value>All annotations</value>
+  </data>
+  <data name="Backup_database" xml:space="preserve">
+    <value>Backup database</value>
+  </data>
+  <data name="Cache_database" xml:space="preserve">
+    <value>Cache database</value>
+  </data>
+  <data name="Change_password" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="Collection_events" xml:space="preserve">
+    <value>Collection events</value>
+  </data>
+  <data name="Context" xml:space="preserve">
+    <value>Context</value>
+  </data>
+  <data name="Edit_feedback" xml:space="preserve">
+    <value>Edit feedback</value>
+  </data>
+  <data name="Event_series" xml:space="preserve">
+    <value>Event series</value>
+  </data>
+  <data name="External_identifier" xml:space="preserve">
+    <value>External identifier</value>
+  </data>
+  <data name="Image_description" xml:space="preserve">
+    <value>Image description</value>
+  </data>
+  <data name="Kiosk_mode" xml:space="preserve">
+    <value>Kiosk mode</value>
+  </data>
+  <data name="Linked_server" xml:space="preserve">
+    <value>Linked server</value>
+  </data>
+  <data name="Material_categories" xml:space="preserve">
+    <value>Material categories</value>
+  </data>
+  <data name="Methods" xml:space="preserve">
+    <value>Methods</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="Remove_from_project" xml:space="preserve">
+    <value>Remove from project</value>
+  </data>
+  <data name="Remove_specimen" xml:space="preserve">
+    <value>Remove specimen</value>
+  </data>
+  <data name="Retrieval_type" xml:space="preserve">
+    <value>Retrieval type</value>
+  </data>
+  <data name="Site_properties" xml:space="preserve">
+    <value>Site properties</value>
+  </data>
+  <data name="Table_editor" xml:space="preserve">
+    <value>Table editor</value>
+  </data>
+  <data name="Taxonomic_groups" xml:space="preserve">
+    <value>Taxonomic groups</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="To_project" xml:space="preserve">
+    <value>To project</value>
+  </data>
+  <data name="To_transaction" xml:space="preserve">
+    <value>To transaction</value>
+  </data>
+  <data name="Withhold_data" xml:space="preserve">
+    <value>Withhold_data</value>
+  </data>
+  <data name="Create_new_dataset" xml:space="preserve">
+    <value>Do you want to create a new dataset?</value>
+  </data>
+  <data name="Select_Project" xml:space="preserve">
+    <value>Please select a project</value>
+  </data>
+  <data name="Replication" xml:space="preserve">
+    <value>Replication</value>
+  </data>
+  <data name="Resources_directory" xml:space="preserve">
+    <value>Resources directory</value>
+  </data>
+  <data name="Scan_mode_collection" xml:space="preserve">
+    <value>Scan mode collection</value>
+  </data>
+  <data name="Timeout_for_database" xml:space="preserve">
+    <value>Timeout for database</value>
+  </data>
+</root>

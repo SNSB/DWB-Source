@@ -1,0 +1,931 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DiversityCollectionUpdate_000000_to_020622" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_000000_to_020622.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020516_to_020517" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020516_to_020517.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020605_to_020606" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020605_to_020606.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010010_to_010011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010010_to_010011.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010002_to_010003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010002_to_010003.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010026_to_010027" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010026_to_010027.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020542_to_020543" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020542_to_020543.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020563_to_020564" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020563_to_020564.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000002_to_000003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000002_to_000003.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020611_to_020612" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020611_to_020612.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000021_to_000022" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000021_to_000022.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010022_to_010023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010022_to_010023.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020587_to_020588" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020587_to_020588.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010008_to_010009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010008_to_010009.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020512_to_020513" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020512_to_020513.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020533_to_020534" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020533_to_020534.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000003_to_000004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000003_to_000004.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000020_to_000021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000020_to_000021.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020562_to_020563" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020562_to_020563.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="Bavarikon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bavarikon.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020548_to_020549" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020548_to_020549.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020522_to_020523" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020522_to_020523.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020551_to_020552" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020551_to_020552.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020599_to_020600" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020599_to_020600.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010011_to_010012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010011_to_010012.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020612_to_020613" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020612_to_020613.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020627_to_020628" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020627_to_020628.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020613_to_020614" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020613_to_020614.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000017_to_000018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000017_to_000018.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020584_to_020585" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020584_to_020585.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000032_to_000033" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000032_to_000033.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010015_to_010016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010015_to_010016.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000025_to_000026" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000025_to_000026.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020565_to_020566" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020565_to_020566.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020577_to_020578" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020577_to_020578.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000008_to_000009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000008_to_000009.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010003_to_010004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010003_to_010004.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000024_to_000025" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000024_to_000025.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020618_to_020619" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020618_to_020619.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020616_to_020617" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020616_to_020617.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020625_to_020626" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020625_to_020626.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000033_to_000034" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000033_to_000034.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000001_to_000002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000001_to_000002.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000020_to_000021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000020_to_000021.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_000000_to_010000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_000000_to_010000.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000007_to_000008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000007_to_000008.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000025_to_000026" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000025_to_000026.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020635_to_020636" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020635_to_020636.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000004_to_000005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000004_to_000005.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020525_to_020526" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020525_to_020526.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020530_to_020531" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020530_to_020531.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000018_to_000019" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000018_to_000019.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000010_to_000011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000010_to_000011.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020549_to_020550" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020549_to_020550.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020510_to_020511" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020510_to_020511.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020592_to_020593" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020592_to_020593.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="TransformationSchema" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Import\TransformationSchema.xslt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020527_to_020528" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020527_to_020528.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020610_to_020611" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020610_to_020611.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010018_to_010019" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010018_to_010019.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000006_to_000007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000006_to_000007.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020517_to_020518" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020517_to_020518.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020623_to_020624" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020623_to_020624.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020631_to_020632" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020631_to_020632.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000018_to_000019" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000018_to_000019.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000011_to_000012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000011_to_000012.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010001_to_010002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010001_to_010002.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000018_to_000019" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000018_to_000019.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020571_to_020572" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020571_to_020572.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020598_to_020599" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020598_to_020599.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000012_to_000013" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000012_to_000013.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000005_to_000006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000005_to_000006.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020536_to_020537" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020536_to_020537.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000010_to_000011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000010_to_000011.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020628_to_020629" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020628_to_020629.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020637_to_020638" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020637_to_020638.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="CollectionSpecimenTiny" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CollectionSpecimenTiny.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000000_to_000001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000000_to_000001.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000011_to_000012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000011_to_000012.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020555_to_020556" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020555_to_020556.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000003_to_000004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000003_to_000004.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020523_to_020524" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020523_to_020524.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000010_to_000011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000010_to_000011.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020626_to_020627" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020626_to_020627.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020573_to_020574" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020573_to_020574.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020632_to_020633" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020632_to_020633.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000008_to_000009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000008_to_000009.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000015_to_000016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000015_to_000016.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000021_to_000022" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000021_to_000022.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010016_to_010017" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010016_to_010017.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020597_to_020598" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020597_to_020598.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000001_to_000002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000001_to_000002.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000015_to_000016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000015_to_000016.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020531_to_020532" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020531_to_020532.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020540_to_020541" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020540_to_020541.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020524_to_020525" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020524_to_020525.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020638_to_020639" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020638_to_020639.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010006_to_010007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010006_to_010007.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020636_to_020637" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020636_to_020637.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020629_to_020630" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020629_to_020630.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020546_to_020547" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020546_to_020547.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020518_to_020519" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020518_to_020519.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020630_to_020631" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020630_to_020631.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020619_to_020620" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020619_to_020620.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010028_to_010029" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010028_to_010029.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020570_to_020571" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020570_to_020571.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020574_to_020575" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020574_to_020575.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020566_to_020567" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020566_to_020567.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020557_to_020558" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020557_to_020558.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000013_to_000014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000013_to_000014.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020575_to_020576" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020575_to_020576.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010004_to_010005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010004_to_010005.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020589_to_020590" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020589_to_020590.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020534_to_020535" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020534_to_020535.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020624_to_020625" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020624_to_020625.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020521_to_020522" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020521_to_020522.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020639_to_020640" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020639_to_020640.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020585_to_020586" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020585_to_020586.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020633_to_020634" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020633_to_020634.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020535_to_020536" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020535_to_020536.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000029_to_000030" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000029_to_000030.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020586_to_020587" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020586_to_020587.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020602_to_020603" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020602_to_020603.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000017_to_000018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000017_to_000018.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000002_to_000003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000002_to_000003.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020582_to_020583" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020582_to_020583.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020537_to_020538" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020537_to_020538.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="Recording" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Recording.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010020_to_010021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010020_to_010021.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000023_to_000024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000023_to_000024.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000023_to_000024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000023_to_000024.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000000_to_000001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000000_to_000001.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020606_to_020607" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020606_to_020607.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020578_to_020579" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020578_to_020579.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010024_to_010025" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010024_to_010025.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020541_to_020542" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020541_to_020542.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000027_to_000028" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000027_to_000028.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000015_to_000016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000015_to_000016.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020561_to_020562" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020561_to_020562.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020642_to_020643" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020642_to_020643.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020569_to_020570" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020569_to_020570.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020593_to_020594" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020593_to_020594.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020588_to_020589" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020588_to_020589.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020591_to_020592" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020591_to_020592.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020607_to_020608" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020607_to_020608.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020513_to_020514" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020513_to_020514.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010021_to_010022" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010021_to_010022.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010021_to_010023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010021_to_010022.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000003_to_000004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000003_to_000004.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020550_to_020551" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020550_to_020551.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020644_to_020645" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020644_to_020645.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000013_to_000014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000013_to_000014.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000031_to_000032" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000031_to_000032.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020576_to_020577" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020576_to_020577.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000004_to_000005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000004_to_000005.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000005_to_000006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000005_to_000006.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020520_to_020521" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020520_to_020521.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020545_to_020546" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020545_to_020546.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020519_to_020520" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020519_to_020520.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020511_to_020512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020511_to_020512.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020572_to_020573" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020572_to_020573.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020614_to_020615" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020614_to_020615.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000011_to_000012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000011_to_000012.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010012_to_010013" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010012_to_010013.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010023_to_010024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010023_to_010024.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010019_to_010020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010019_to_010020.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010005_to_010006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010005_to_010006.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020514_to_020515" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020514_to_020515.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020604_to_020605" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020604_to_020605.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020547_to_020548" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020547_to_020548.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000028_to_000029" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000028_to_000029.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000009_to_000010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000009_to_000010.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020553_to_020554" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020553_to_020554.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000008_to_000009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000008_to_000009.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000026_to_000027" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000026_to_000027.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000014_to_000015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000014_to_000015.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020601_to_020602" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020601_to_020602.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000006_to_000007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000006_to_000007.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020560_to_020561" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020560_to_020561.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000005_to_000006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000005_to_000006.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020564_to_020565" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020564_to_020565.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020641_to_020642" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020641_to_020642.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020603_to_020604" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020603_to_020604.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010017_to_010018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010017_to_010018.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000030_to_000031" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000030_to_000031.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000014_to_000015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000014_to_000015.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020558_to_020559" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020558_to_020559.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020529_to_020530" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020529_to_020530.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010029_to_010030" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010029_to_010030.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000000_to_000001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000000_to_000001.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000009_to_000010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000009_to_000010.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020643_to_020644" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020643_to_020644.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000019_to_000020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000019_to_000020.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010027_to_010028" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010027_to_010028.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020556_to_020557" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020556_to_020557.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000016_to_000017" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000016_to_000017.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020590_to_020591" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020590_to_020591.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020594_to_020595" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020594_to_020595.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000016_to_000017" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000016_to_000017.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000014_to_000015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000014_to_000015.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010025_to_010026" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010025_to_010026.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020595_to_020596" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020595_to_020596.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010007_to_010008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010007_to_010008.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020620_to_020621" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020620_to_020621.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020539_to_020540" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020539_to_020540.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020567_to_020568" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020567_to_020568.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000004_to_000005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000004_to_000005.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020608_to_020609" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020608_to_020609.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000016_to_000017" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000016_to_000017.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000012_to_000013" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000012_to_000013.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000002_to_000003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000002_to_000003.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000022_to_000023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000022_to_000023.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020580_to_020581" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020580_to_020581.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000006_to_000007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000006_to_000007.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020528_to_020529" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020528_to_020529.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020583_to_020584" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020583_to_020584.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020552_to_020553" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020552_to_020553.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000022_to_000023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000022_to_000023.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020609_to_020610" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020609_to_020610.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020596_to_020597" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020596_to_020597.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020640_to_020641" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020640_to_020641.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020532_to_020533" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020532_to_020533.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020621_to_020622" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020621_to_020622.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020622_to_020623" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020622_to_020623.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000007_to_000008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000007_to_000008.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020634_to_020635" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020634_to_020635.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="IPM_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IPM_256.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020538_to_020539" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020538_to_020539.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000007_to_000008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000007_to_000008.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020568_to_020569" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020568_to_020569.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020617_to_020618" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020617_to_020618.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020515_to_020516" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020515_to_020516.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010000_to_010001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010000_to_010001.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000024_to_000025" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000024_to_000025.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Undo.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000019_to_000020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000019_to_000020.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000012_to_000013" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000012_to_000013.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010009_to_010010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010009_to_010010.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020559_to_020560" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020559_to_020560.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020526_to_020527" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020526_to_020527.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020544_to_020545" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020544_to_020545.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000001_to_000002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000001_to_000002.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020579_to_020580" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020579_to_020580.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020600_to_020601" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020600_to_020601.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020554_to_020555" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020554_to_020555.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000013_to_000014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000013_to_000014.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020581_to_020582" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020581_to_020582.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010014_to_010015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010014_to_010015.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020615_to_020616" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020615_to_020616.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020543_to_020544" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020543_to_020544.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010013_to_010014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010013_to_010014.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000017_to_000018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000017_to_000018.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000009_to_000010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000009_to_000010.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\info.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020645_to_020646" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020645_to_020646.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020646_to_020647" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020646_to_020647.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020647_to_020648" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020647_to_020648.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="HierarchyUpdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HierarchyUpdate.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020648_to_020649" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020648_to_020649.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020649_to_020650" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020649_to_020650.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020650_to_020651" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020650_to_020651.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010030_to_010031" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010030_to_010031.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010031_to_010032" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010031_to_010032.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000019_to_000020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000019_to_000020.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000034_to_000035" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000034_to_000035.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000035_to_000036" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000035_to_000036.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020651_to_020652" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020651_to_020652.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020652_to_020653" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020652_to_020653.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020653_to_020654" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020653_to_020654.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020654_to_020655" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020654_to_020655.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
