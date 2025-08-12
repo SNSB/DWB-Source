@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfSamplingPlotPage.AssignGeoobjectParameters"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Assign Geoobject Parameters" Height="350" Width="660" MinHeight="350" MinWidth="660">
+    <Grid Background="Cornsilk" ClipToBounds="True" Name="gridAssignGeoobjectParameters" Height="Auto" Width="Auto"  Margin="0">
+        <StackPanel Name="Left" Margin="5,0,0,0" HorizontalAlignment="Left" Width="260">
+            <StackPanel>
+                <Label Name="labelSelectInput" Height="30" Padding="0,4">Select input parameter for assignment:</Label>
+            </StackPanel>
+            <StackPanel Name="AssignFields">
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Name="Middle" HorizontalAlignment="Left" Margin="285,0,0,0" Width="170">
+            <StackPanel>
+                <Label Name="labelAssignParameter" Height="30" Padding="0,4">Assign parameter to sample:</Label>
+            </StackPanel>
+            <StackPanel Name="Parameters">
+            </StackPanel>
+            <StackPanel Name="AssignControls" Margin="0,10,0,0" Height="30" VerticalAlignment="Top" Orientation="Horizontal">
+                <Button Name="buttonAssignAll" Margin="5,0,0,0" Padding="2,0" Height="22" Width="45" Click="button_AssignAll_Click" Content="All"/>
+                <Button Name="buttonRemoveAll" Margin="10,0,0,0" Padding="2,0" Height="22" Width="45" Click="button_RemoveAll_Click" Content="None"/>
+                <Button Name="buttonAssignLast" Margin="10,0,0,0" Padding="2,0" Height="22" Width="45" Click="button_AssignLast_Click"  Content="Last"/>
+            </StackPanel>
+            <CheckBox  Margin="5,5,0,0" Name="checkBoxCenterPoint" Content="MTB/Q center point only" Checked="checkBoxCenterPoint_Checked"  Unchecked="checkBoxCenterPoint_Unchecked" />
+        </StackPanel>
+        <StackPanel Name="Right" Margin="469,0,0,0">
+            <StackPanel>
+                <Label Name="labelCurrentlyAssigned" Height="30" Padding="0,4">Currently assigned fields:</Label>
+            </StackPanel>
+            <StackPanel Name="Assigned">
+            </StackPanel>
+            <StackPanel Name="ExitControls" Margin="0,10,0,0" Height="30" VerticalAlignment="Top" Orientation="Horizontal">
+                <Button Name="buttonOK" Margin="5,0,0,0" Padding="2,0" Height="22" Width="67" Click="button_OK_Click"  Content="OK" IsDefault="True"/>
+                <Button x:Name="buttonCancel" Margin="10,0,0,0" Padding="2,0" Height="22" Width="67" Click="button_Cancel_Click"  Content="Cancel" IsCancel="True"/>
+            </StackPanel>
+            <CheckBox  Margin="5,5,0,0" Name="checkBoxSingleObject" Content="Save as single sample" Checked="checkBoxSingleObject_Checked" Unchecked="checkBoxSingleObject_Unchecked"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="WpfSamplingPlotPage.WpfControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:props="clr-namespace:WpfSamplingPlotPage.Properties"
+    Height="439" Width="846" Opacity="1.0" IsHitTestVisible="True" IsTabStop="False" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Name="m_UserControl">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="Help" CanExecute="HelpCanExecute" Executed="HelpExecuted"/>
+    </UserControl.CommandBindings>
+    <Canvas Height="437" Name="m_CanvasPanel" Width="846" ClipToBounds="False">
+        <Canvas Canvas.Left="70" Canvas.Top="75" Height="3000" Name="m_CanvasClip" Width="3000" HorizontalAlignment="Left" VerticalAlignment="Top" ClipToBounds="True" Margin="0" Background="Ivory">
+            <Canvas Canvas.Left="0" Canvas.Top="0" Height="364" Name="m_Canvas" Width="775" HorizontalAlignment="Left" VerticalAlignment="Top" ClipToBounds="False" Margin="0"></Canvas>
+        </Canvas>
+        <Button Canvas.Left="5" Canvas.Top="45" Height="20" x:Name="buttonAdd" Width="41" Click="buttonAddShape_Click" HorizontalAlignment="Stretch" Content="+" />
+        <Button Canvas.Left="30" Canvas.Top="0" Height="20" x:Name="buttonSave" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" Click="buttonSaveShape_Click" IsEnabled="True" Content="{x:Static props:Resources.ctrlSave}" />
+        <Label Canvas.Left="445" Canvas.Top="20" Height="43" Name="labelPosX" Width="65" Background="Transparent" FontSize="11" VerticalAlignment="Stretch"></Label>
+        <Slider Canvas.Left="310" Canvas.Top="25" Height="20" Name="sliderZoom" Width="100" Foreground="Red" ValueChanged="sliderZoom_ValueChanged" MouseDoubleClick="sliderZoom_MouseDoubleClick" GotFocus="sliderZoom_GotFocus"  Cursor="Hand" />
+        <RadioButton Padding="1" Canvas.Left="60" Canvas.Top="25" Height="15" Name="radioButtonShift" Width="50" Checked="radioButtonShift_Checked" IsChecked="True" Background="White" FontSize="11">Shift</RadioButton>
+        <RadioButton Padding="1" Canvas.Left="110" Canvas.Top="55" Height="15" Name="radioButtonDrawPolygon" Width="45" Checked="radioButtonDrawPolygon_Checked" FontSize="11">Area</RadioButton>
+        <RadioButton Padding="1" Canvas.Left="110" Canvas.Top="25" Height="15" Name="radioButtonDrawObjects" Width="50" Checked="radioButtonDrawObjects_Checked" FontSize="11">Point</RadioButton>
+        <Button Canvas.Left="5" Canvas.Top="0" Height="20" x:Name="buttonLoad" Width="20" Click="buttonLoad_Click" IsEnabled="True" Content="{x:Static props:Resources.ctrlLoad}" />
+        <Button Canvas.Left="165" Canvas.Top="46" Height="18" Name="buttonMultiShape" Width="35" Click="buttonMultiShape_Click" IsEnabled="True" FontSize="9" Padding="1,0,1,1" Content="{x:Static props:Resources.ctrlNext}" />
+        <RadioButton Padding="1" Canvas.Left="60" Canvas.Top="55" Height="15" IsChecked="False" Name="radioButtonEdit" Width="50" Checked="radioButtonEdit_Checked" FontSize="11">Edit</RadioButton>
+        <TextBox Canvas.Left="215" Canvas.Top="0" Height="20" Padding="2,0" Name="textBoxIdentifier" Width="85" TextChanged="textBoxIdentifier_TextChanged" FontSize="12" />
+        <Label Canvas.Left="190" Canvas.Top="-2" Height="24" x:Name="labelIdentifier" Width="26" Content="{x:Static props:Resources.ctrlIdentifier}" FontSize="11" />
+        <Label Canvas.Left="300" Canvas.Top="-2" Height="24" Name="labelText" Width="36" FontSize="11">Text:</Label>
+        <TextBox Canvas.Left="335" Canvas.Top="0" Height="20" Padding="2,0" Name="textBoxSampleText" Width="511" HorizontalAlignment="Left" TextChanged="textBoxSampleText_TextChanged" FontSize="12" />
+        <RadioButton Padding="1" Canvas.Left="110" Canvas.Top="40" Height="15" Name="radioButtonDrawLine" Width="45" Checked="radioButtonDrawLine_Checked" FontSize="11">Line</RadioButton>
+        <ComboBox Canvas.Left="205" Canvas.Top="24" Height="20" Name="comboBoxBrushes" Width="96" DropDownClosed="comboBoxBrushes_DropDownClosed" SelectionChanged="comboBoxBrushes_SelectionChanged" BorderThickness="1" />
+        <Label Canvas.Left="165" Canvas.Top="24" Height="20" Name="labelColor" Padding="3" Width="35" Content="{x:Static props:Resources.ctrlColor}" FontSize="11" />
+        <RadioButton Padding="1" Canvas.Left="10" Canvas.Top="25" Height="15" Name="radioButtonMap" Width="45" Checked="radioButtonMap_Checked" Unchecked="radioButtonMap_Unchecked" IsChecked="False" FontSize="11">Map</RadioButton>
+        <CheckBox Padding="1" Canvas.Left="205" Canvas.Top="50" Height="16" x:Name="checkBoxStroke" Width="52" Checked="checkBoxStroke_Checked" Unchecked="checkBoxStroke_Unchecked" IsChecked="False" Content="{x:Static props:Resources.ctrlStroke}" IsEnabled="True" FontSize="11" />
+        <CheckBox Padding="1" Canvas.Left="260" Canvas.Top="50" Height="16" x:Name="checkBoxFill" Width="55" Checked="checkBoxFill_Checked" Unchecked="checkBoxFill_Unchecked" IsChecked="False" Content="{x:Static props:Resources.ctrlFill}" FontSize="11" />
+        <Label Canvas.Left="310" Canvas.Top="45" Height="23" Name="labelSlider" Width="112.716" FontSize="11"></Label>
+        <RadioButton Padding="1" Canvas.Left="60" Canvas.Top="40" Height="15" Name="radioButtonAdapt" Width="50" Checked="radioButtonAdapt_Checked" Unchecked="radioButtonAdapt_Unchecked" FontSize="11">Adapt</RadioButton>
+        <Label Canvas.Left="420" Canvas.Top="50" Height="25" Name="labelInstruction" Width="720" VerticalAlignment="Top" FontSize="11"></Label>
+        <StackPanel Name="stackPanelProgress" Canvas.Left="420" Canvas.Top="54" Orientation="Horizontal" Visibility="Collapsed" >
+            <Label Name="labelProgressPercent" Height="16" Width="40" Padding="1,0,5,0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="11"></Label>
+            <ProgressBar Name="progressBarSaveSamples" Background="Beige" Canvas.Left="460" Canvas.Top="54" Height="16" Width="200" Value="0" BorderThickness="1" BorderBrush="Black" />
+            <Button Name="buttonProgressCancel" Height="16" Width="16" Padding="0" VerticalAlignment="Center" Margin="0" Click="buttonProgressCancel_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <Image Source="/WpfSamplingPlotPage;component/Stop2.ico" HorizontalAlignment="Center" VerticalAlignment="Center" Width="16" Height="16" />
+            </Button>
+            <Label Name="labelProgressInfo" Height="16" Padding="5,0,2,0" Foreground="Blue" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="11"></Label>
+        </StackPanel>
+        <Label Canvas.Left="420" Canvas.Top="25" Height="20" Name="labelWorld" Width="50" Padding="0" FontSize="11"></Label>
+        <Button Canvas.Left="80" Canvas.Top="0" Height="20" x:Name="buttonPrint" Width="20" Click="buttonPrint_Click" Content="{x:Static props:Resources.ctrlPrint}" />
+        <ScrollViewer Canvas.Left="5" Canvas.Top="75" Height="7" Name="m_SampleListScrollViewer" Width="60" HorizontalContentAlignment="Left" CanContentScroll="False" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Canvas Height="5" Name="m_SampleListCanvas" Width="45" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </ScrollViewer>
+        <Button Canvas.Left="130" Canvas.Top="0" Content="Det" Height="20" Name="buttonDetection" Width="20" Click="buttonDetection_Click" />
+        <Button Canvas.Left="155" Canvas.Top="0" Content="S" Height="20" Name="buttonSettings" Width="20" Click="buttonSettings_Click" />
+        <Button Canvas.Left="55" Canvas.Top="0" Height="20" Name="buttonDeleteAll" Width="20" Click="buttonDeleteAll_Click">X</Button>
+        <Label Background="Transparent" Canvas.Left="510" Canvas.Top="20" Height="43" Name="labelCordX" Width="73" FontSize="11"></Label>
+        <Label Background="Transparent" Canvas.Left="580" Canvas.Top="20" Height="43" Name="labelPosY" Width="65" FontSize="11"></Label>
+        <Label Background="Transparent" Canvas.Left="645" Canvas.Top="20" Height="43" Name="labelCordY" Width="70" FontSize="11"></Label>
+        <Button Canvas.Left="105" Canvas.Top="0" Height="20" Name="buttonGps" Width="20" Click="buttonGps_Click">GPS</Button>
+        <Ellipse Name="ellipseColor" Visibility="Collapsed" Fill="#FFF4F4F5" Height="8" Canvas.Left="180" Canvas.Top="5" Stroke="Black" Width="9" RenderTransformOrigin="-0.167,-0.25"/>
+    </Canvas>
+</UserControl>

@@ -1,0 +1,136 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.18362.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <Version>7.1.0</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DocumentationFile>bin\Debug\WpfSamplingPlotPage.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DocumentationFile>bin\Release\WpfSamplingPlotPage.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Update="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Update="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="ArcTemp.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Google.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="world.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Add.ico" />
+    <Resource Include="Save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OpenFolder.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Settings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="1g_32.cur" />
+    <EmbeddedResource Include="1r_32.cur" />
+    <EmbeddedResource Include="2g_32.cur" />
+    <EmbeddedResource Include="2r_32.cur" />
+    <EmbeddedResource Include="3g_32.cur" />
+    <EmbeddedResource Include="3r_32.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fin_32.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="3dsmove.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="screen.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="World.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Screen.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OSM.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Print.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assel.ico" />
+    <Resource Include="Bird.ico" />
+    <Resource Include="Bryophyt.ico" />
+    <Resource Include="Echinoderm.ico" />
+    <Resource Include="Evertebrate.ico" />
+    <Resource Include="Fish.ico" />
+    <Resource Include="Fungus.ico" />
+    <Resource Include="Gps.ico" />
+    <Resource Include="GpsGreen.ico" />
+    <Resource Include="GpsRed.ico" />
+    <Resource Include="GpsYellow.ico" />
+    <Resource Include="Insect.ico" />
+    <Resource Include="Lichen.ico" />
+    <Resource Include="Mammal.ico" />
+    <Resource Include="Mollusc.ico" />
+    <Resource Include="Myxomycete.ico" />
+    <Resource Include="Plant.ico" />
+    <Resource Include="Reptile.ico" />
+    <Resource Include="Vertebrate.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DivWor_EndnurLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Stop2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="RedNeedle.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Detection.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2">
+      <Version>1.0.3351.48</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.OleDb" Version="9.0.7" />
+    <PackageReference Include="System.IO.Ports" Version="9.0.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoConversion\GeoConversion.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

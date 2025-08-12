@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ctrlIdentifier" xml:space="preserve">
+    <value>ID:</value>
+  </data>
+  <data name="StrDrawLineModeInstruction" xml:space="preserve">
+    <value>Links-Klick zum Setzen, Rechts-Klick zum Löschen eines Eckpunktes. Next&gt; für neue Linie.</value>
+  </data>
+  <data name="StrDrawPolygonModeInstruction" xml:space="preserve">
+    <value>Links-Klick zum Setzen, Rechts-Klick zum Löschen eines Eckpunktes. Next&gt; für neues Gebiet.</value>
+  </data>
+  <data name="StrDrawSamplePointsModeInstruction" xml:space="preserve">
+    <value>Links-Klick zum Setzen, Rechts-Klick zum Löschen eines Markers.</value>
+  </data>
+  <data name="StrEditSamplesModeInstruction" xml:space="preserve">
+    <value>Editieren aller sichtbaren Samples oder Karten durch Verschieben der Eckpunkte.</value>
+  </data>
+  <data name="StrMapAdaptModeEndInstruction" xml:space="preserve">
+    <value>Alle Referenzpunkte sind gesetzt. Karte anpassen bei nächstem abwechselnden Maus-Klick.</value>
+  </data>
+  <data name="StrMapAdaptModeSetInstruction" xml:space="preserve">
+    <value>Einpassen einer Karte in die Hintergrundkarte mittels Setzen von Referenzpunkten.</value>
+  </data>
+  <data name="StrMapServerModeInstruction" xml:space="preserve">
+    <value>Karte anpassen und 'Hinzufügen' oder 'Speichern' drücken, oder Karte mit 'Einlesen' aus Datei laden.</value>
+  </data>
+  <data name="StrOpenFileDialog" xml:space="preserve">
+    <value>Bitte Bild oder Shape-Datei auswählen</value>
+  </data>
+  <data name="StrSaveImageDialog" xml:space="preserve">
+    <value>Bitte Dateinamen für das zu speichernde Bild eingeben</value>
+  </data>
+  <data name="StrSaveShapeDialog" xml:space="preserve">
+    <value>Bitte Dateinamen für die zu speichernden Geo-Objekte eingeben</value>
+  </data>
+  <data name="StrShiftCanvasModeInstruction" xml:space="preserve">
+    <value>Verschieben oder Zoomen der Arbeitfläche mit Maus oder Schieberegler.</value>
+  </data>
+  <data name="StrTransparency" xml:space="preserve">
+    <value>Sichtbarkeit</value>
+  </data>
+  <data name="StrZoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="ttButtonAdd" xml:space="preserve">
+    <value>Fügt die aktuelle Karte oder das Geo-Objekt der Sample-Liste hinzu.</value>
+  </data>
+  <data name="ttButtonLoad" xml:space="preserve">
+    <value>Laden von Bildern oder Geo-Objekten aus einer Datei.</value>
+  </data>
+  <data name="ttButtonMultiShape" xml:space="preserve">
+    <value>Schließt das aktuelle Geo-Objekt (Area, Line) und fügt ein weiteres hinzu.</value>
+  </data>
+  <data name="ttButtonSave" xml:space="preserve">
+    <value>Speichert die aktuelle Google-Karte in einer Datei und fügt sie der Sample-Liste hinzu.\r\nSpeichert alle sichtbaren Geo-Objekte der Sample-Liste in einer Datei.</value>
+  </data>
+  <data name="ttCheckBoxFill" xml:space="preserve">
+    <value>Markieren zu Ändern der Füll-Farbe oder Transparenz des aktuellen Samples.</value>
+  </data>
+  <data name="ttCheckBoxStroke" xml:space="preserve">
+    <value>Markieren zu Ändern der Strich-Farbe oder Transparenz des aktuellen Samples.</value>
+  </data>
+  <data name="ttComboBoxBrushes" xml:space="preserve">
+    <value>Auswählen einer Farbe für das aktuelle Sample aus der Liste.</value>
+  </data>
+  <data name="ttRadioButtonAdapt" xml:space="preserve">
+    <value>Anpassen der Koordinaten der aktuell geladenen Karte mit Hilfe der Hintergrund-Karte \r\ndurch abwechselndes Setzen von je 3 diametralen Referenzpunkten per Maus-Klick \r\nauf der aktuellen Karte und der Hintergrund-Karte.  \r\nEin abschließender Klick paßt die aktuelle Karte in die Referenz-Karte ein.</value>
+  </data>
+  <data name="ttRadioButtonArea" xml:space="preserve">
+    <value>Zeichnen von Gebieten (Polygonen) durch Markieren der Eckpunkte mit der linken Maus-Taste.</value>
+  </data>
+  <data name="ttRadioButtonEdit" xml:space="preserve">
+    <value>Lokalisieren und Verschieben der Eckpunkte aller sichtbaren Samples mit Hilfe der linken Maus-Taste.</value>
+  </data>
+  <data name="ttRadioButtonLine" xml:space="preserve">
+    <value>Zeichnen von Linienverläufen durch Markieren der Eckpunkte mit der linken Maus-Taste.</value>
+  </data>
+  <data name="ttRadioButtonMap" xml:space="preserve">
+    <value>Startet den Google-Kartenservice um eine Hintergrund-Karte anzuzeigen.</value>
+  </data>
+  <data name="ttRadioButtonObjects" xml:space="preserve">
+    <value>Setzen von Sample-Markern in der Hintergrund-Karte mit der linken Maus-Taste.</value>
+  </data>
+  <data name="ttRadioButtonShift" xml:space="preserve">
+    <value>Verschieben der Arbeitsfläche mit Hilfe der linken Maus-Taste.\r\nVergrößern oder Verkleinern der Arbeitsfläche mit Hilfe des Schiebereglers.</value>
+  </data>
+  <data name="ttSliderZoom" xml:space="preserve">
+    <value>Zoom-Funktion im Shift-Mode, Transparenz-Einstellung in den anderen Modes.\r\nZurücksetzen des Schiebereglers durch Doppel-Klick.</value>
+  </data>
+  <data name="ctrlAdd" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="ctrlColor" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="ctrlFill" xml:space="preserve">
+    <value>Füllung</value>
+  </data>
+  <data name="ctrlLoad" xml:space="preserve">
+    <value>Einlesen</value>
+  </data>
+  <data name="ctrlNext" xml:space="preserve">
+    <value>next &gt;</value>
+  </data>
+  <data name="ctrlPrint" xml:space="preserve">
+    <value>Drucken</value>
+  </data>
+  <data name="ctrlSave" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="ctrlStroke" xml:space="preserve">
+    <value>Strich</value>
+  </data>
+  <data name="ttButtonPrint" xml:space="preserve">
+    <value>Druckt den gegenwärtigen Inhalt der Arbeitsfläche.</value>
+  </data>
+  <data name="ErrCaption" xml:space="preserve">
+    <value>Diversity GIS Editor</value>
+  </data>
+  <data name="ErrCoordsNotVisible" xml:space="preserve">
+    <value>ACHTUNG:\r\nDie Koordinaten des geladenen Bildes liegen außerhalb der Referenzkarte.\r\nDas Bild ist möglicherweise nicht sichtbar.</value>
+  </data>
+  <data name="ErrLongitude" xml:space="preserve">
+    <value>ACHTUNG:\r\nDie Längengrade des Bildes sind inkonsistent (180°-Grenze)!\r\nGeo-Objekte können nicht an der richtigen Stelle platziert werden!</value>
+  </data>
+  <data name="ErrNoWorldCoords" xml:space="preserve">
+    <value>FEHLER:\r\nDie Welt-Koordinaten konnten nicht korrekt ermittelt werden.\r\nBitte verschieben Sie die Karte ein wenig und versuchen Sie es erneut.</value>
+  </data>
+  <data name="ErrLatitude" xml:space="preserve">
+    <value>ACHTUNG:\r\nDer Breitengrad der Kartengrenze liegt jenseits von {0}° (Nord oder Süd)!\r\nGeo-Objekte in diesem Bereich werden möglicherweise ungenau angezeigt.</value>
+  </data>
+  <data name="ErrAltitude" xml:space="preserve">
+    <value>ACHTUNG!\r\nKeine Verbindung zum geonames server, die Höhenkoordinaten können nicht ermittelt werden!</value>
+  </data>
+  <data name="ErrInvalidFilename" xml:space="preserve">
+    <value>FEHLER:\r\nUngültiger Dateityp:\r\n{0}</value>
+  </data>
+  <data name="ErrMissingReferenceMap" xml:space="preserve">
+    <value>FEHLER:\r\nKeine Referenzkarte mit Welt-Koordinaten geladen!</value>
+  </data>
+  <data name="ErrNoReferenceMap" xml:space="preserve">
+    <value>FEHLER:\r\nKeine Referenzkarte geladen, die Arbeitsfläche kann nicht gespeichert werden.</value>
+  </data>
+  <data name="ErrNotSuitableAsReferenceMap" xml:space="preserve">
+    <value>ACHTUNG:\r\nDie Karte kann nicht als Referenzkarte genutzt werden,\r\nda sie nicht exakt nach Norden ausgerichtet ist.\r\nBitte erzeugen Sie zunächst eine Google-Karte der Gegend und laden Sie die Karte erneut.</value>
+  </data>
+  <data name="ErrTooManyPoints" xml:space="preserve">
+    <value>ACHTUNG!\r\nDie Elemente bestehen aus {0} Punkten! Das Speichern würde lange dauern. Möchten Sie trotzdem speichern?</value>
+  </data>
+  <data name="ErrSaveSample" xml:space="preserve">
+    <value>ACHTUNG:\r\nIhre aktuelle Zeichnung wird gelöscht, wenn Sie den Zeichen-Modus ändern!\r\nMöchten Sie sie vorher der Sample-Liste hinzufügen?</value>
+  </data>
+  <data name="ErrDeleteAllSamples" xml:space="preserve">
+    <value>ACHTUNG:\r\nAlle Objekte in der Sample-Liste werden gelöscht, mit Ausnahme der Referenz-Karte!\r\nMöchten Sie fortfahren?</value>
+  </data>
+  <data name="ttButtonDeleteAll" xml:space="preserve">
+    <value>Löscht alle Objekte aus der Sample-Liste, außer der Referenz-Hintergrundkarte.</value>
+  </data>
+  <data name="ttButtonSettings" xml:space="preserve">
+    <value>Öffnet ein Fenster zum Setzen spezieller Eigenschaften des Editors.</value>
+  </data>
+  <data name="ctrlAreaMode" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="ctrlButtonCancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="ctrlButtonOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ctrlLineMode" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="ctrlPointMode" xml:space="preserve">
+    <value>Point</value>
+  </data>
+  <data name="SettingsCheckBoxGetAltitude" xml:space="preserve">
+    <value>Koordinaten vom Geonames-Server abfragen</value>
+  </data>
+  <data name="SettingsCheckBoxImageFileFormatGlopus" xml:space="preserve">
+    <value>Glopus Kalibrierungs-Datei (.kal)</value>
+  </data>
+  <data name="SettingsCheckBoxImageFileFormatXml" xml:space="preserve">
+    <value>XML-Datei (.xml)</value>
+  </data>
+  <data name="SettingsCheckBoxSaveWorkingArea" xml:space="preserve">
+    <value>Arbeitsfläche mit Inhalt als Bilddatei speichern (.png)</value>
+  </data>
+  <data name="SettingsCheckBoxShapeFileFormatArcView" xml:space="preserve">
+    <value>ArcView Shape-Dateien (.shp, .shx, .dbf)</value>
+  </data>
+  <data name="SettingsCheckBoxShapeFileFormatSQL" xml:space="preserve">
+    <value>MS SQL Geo-Objekte Text-Datei (.shp1)</value>
+  </data>
+  <data name="SettingsLabelAltitude" xml:space="preserve">
+    <value>Höhenkoordinaten für Geo-Objekte:</value>
+  </data>
+  <data name="SettingsLabelImageCoordFileFormats" xml:space="preserve">
+    <value>Bildkoordinaten in folgenden Dateiformaten speichern:</value>
+  </data>
+  <data name="SettingsLabelPoints" xml:space="preserve">
+    <value>Point:</value>
+  </data>
+  <data name="SettingsLabelPointSymbol" xml:space="preserve">
+    <value>Symbol</value>
+  </data>
+  <data name="SettingsLabelShapeFileFormats" xml:space="preserve">
+    <value>Objekte in folgenden Dateiformaten speichern:</value>
+  </data>
+  <data name="SettingsLabelStrokeThickness" xml:space="preserve">
+    <value>Strich-Dicke:</value>
+  </data>
+  <data name="SettingsLabelWorkingArea" xml:space="preserve">
+    <value>Arbeitsfläche:</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>GIS-Editor Eigenschaften</value>
+  </data>
+  <data name="ttSettingsSliderStrokeThicknessArea" xml:space="preserve">
+    <value>Einstellen der Strich-Dicke bei Area-Objekten.\r\nZurücksetzen des Schiebereglers durch Doppel-Klick.</value>
+  </data>
+  <data name="ttSettingsSliderStrokeThicknessLine" xml:space="preserve">
+    <value>Einstellen der Strich-Dicke bei Line-Objekten.\r\nZurücksetzen des Schiebereglers durch Doppel-Klick.</value>
+  </data>
+  <data name="ttSettingsSliderStrokeThicknessPoint" xml:space="preserve">
+    <value>Einstellen der Strich-Dicke bei Point-Objekten.\r\nZurücksetzen des Schiebereglers durch Doppel-Klick.</value>
+  </data>
+  <data name="ttCanvasPointSymbols" xml:space="preserve">
+    <value>Zeigt eine Ansicht des eingestellten Point-Symbols.</value>
+  </data>
+  <data name="ttCheckBoxGetAltitude" xml:space="preserve">
+    <value>Wenn angeklickt wird beim Speichern für alle Objekt-Koordinaten die Höhe durch Abfragen des Geonames.org-Servers ermittelt.\r\nACHTUNG: Diese Abfrage erfolgt für jeden Koordinatenpunkt, was bei umfangreichen Objekten sehr zeitaufwändig sein kann!</value>
+  </data>
+  <data name="ttCheckBoxImageFileFormatGlopus" xml:space="preserve">
+    <value>Wenn angeklickt werden die Bildkoordinaten beim Speichern in einer Glopus Kalibrierungs-Datei abgelegt.</value>
+  </data>
+  <data name="ttCheckBoxImageFileFormatXml" xml:space="preserve">
+    <value>Wenn angeklickt werden die Bildkoordinaten beim Speichern in einer DiversityMobile XML-Datei abgelegt.</value>
+  </data>
+  <data name="ttCheckBoxSaveWorkingArea" xml:space="preserve">
+    <value>Wenn angeklickt wird beim Speichern die Arbeitsfläche mit allen sichtbaren Objekten als Bild-datei abgelegt.</value>
+  </data>
+  <data name="ttCheckBoxShapeFileFormatArcView" xml:space="preserve">
+    <value>Wenn angeklickt werden beim Speichern alle sichtbaren Geo-Objekte in einer ArcView kompatiblen Shape-Datei abgelegt.\r\nAußerdem werden die notwendigen Index- und dBase-Dateien erzeugt.</value>
+  </data>
+  <data name="ttCheckBoxShapeFileFormatSQL" xml:space="preserve">
+    <value>Wenn angeklickt werden beim Speichern alle sichtbaren Geo-Objekte im MS SQL Format in einer ASCII-Datei abgelegt.</value>
+  </data>
+  <data name="ttComboBoxPointSymbols" xml:space="preserve">
+    <value>Listet alle vorhandenen Point-Symbole auf, die hier selektiert werden können.</value>
+  </data>
+  <data name="ttLabelPointSymbolSizeValue" xml:space="preserve">
+    <value>Zeigt den aktuellen Wert der Point-Symbolgröße an.</value>
+  </data>
+  <data name="ttLabelStrokeThicknessAreaValue" xml:space="preserve">
+    <value>Zeigt den aktuellen Wert der Strich-Dicke von Area-Objekten an.</value>
+  </data>
+  <data name="ttLabelStrokeThicknessLineValue" xml:space="preserve">
+    <value>Zeigt den aktuellen Wert der Strich-Dicke von Line-Objekten an.</value>
+  </data>
+  <data name="ttLabelStrokeThicknessPointValue" xml:space="preserve">
+    <value>Zeigt den aktuellen Wert der Strich-Dicke von Point-Objekten an.</value>
+  </data>
+  <data name="ttSettingsSliderPointSymbolSize" xml:space="preserve">
+    <value>Einstellen der Symbolgröße bei Point-Objekten.\r\nZurücksetzen des Schiebereglers durch Doppel-Klick.</value>
+  </data>
+  <data name="ErrNoCheckBoxSelectedTrans" xml:space="preserve">
+    <value>FEHLER:\r\nStrich oder Füllung muß selektiert sein, um die Transparenz von Objekten zu ändern!</value>
+  </data>
+  <data name="ErrNoFillCheckBoxSelected" xml:space="preserve">
+    <value>ACHTUNG:\r\nUm die Transparenz eines Bildes zu ändern, muß Füllung selektiert sein.</value>
+  </data>
+  <data name="ErrNoAdaptImageLoaded" xml:space="preserve">
+    <value>FEHLER:\r\nEs ist noch keine Karte geladen, die eingepasst werden könnte!</value>
+  </data>
+  <data name="ErrNoCheckBoxSelectedCol" xml:space="preserve">
+    <value>ACHTUNG!\r\nStrich oder Füllung muß selektiert sein, um die Farbe von Objekten zu ändern!</value>
+  </data>
+  <data name="SettingsLabelPointSymbolSize" xml:space="preserve">
+    <value>Größe</value>
+  </data>
+  <data name="ErrCreatingReferenceMap" xml:space="preserve">
+    <value>ACHTUNG:\r\nDie gewählte Karte ist nicht exakt nach Norden ausgerichtet ist.\r\nEine nach Norden ausgerichtete Hintergrundebene wird angelegt,\r\num die geladene Karte einzubetten.</value>
+  </data>
+  <data name="SettingsCheckBoxAreaFrame" xml:space="preserve">
+    <value>Rahmen</value>
+  </data>
+  <data name="SettingsLabelHeight" xml:space="preserve">
+    <value>Höhe</value>
+  </data>
+  <data name="SettingsLabelWidth" xml:space="preserve">
+    <value>Breite</value>
+  </data>
+  <data name="SettingsLabelViewer" xml:space="preserve">
+    <value>MapMode-Webdienst:</value>
+  </data>
+  <data name="InfoLabelTitle" xml:space="preserve">
+    <value>Diversity GIS-Editor</value>
+  </data>
+  <data name="SettingsLabelBaudrate" xml:space="preserve">
+    <value>Baudrate</value>
+  </data>
+  <data name="SettingsLabelGps" xml:space="preserve">
+    <value>GPS:</value>
+  </data>
+  <data name="ttButtonGps" xml:space="preserve">
+    <value>Detektiert und startet einen GPS-Empfänger, falls vorhanden.\r\nIm Settings-Menü muss eine geeignete Baudrate ausgewählt sein.</value>
+  </data>
+  <data name="ttCheckBoxAreaFrame" xml:space="preserve">
+    <value>Wenn angeklickt, wird nur ein Teilbereich der Arbeitsfläche abgespeichert.</value>
+  </data>
+  <data name="ttComboBoxGpsBaudrates" xml:space="preserve">
+    <value>Auswahl der einstellbaren Baudraten. Bitte eine geeignete Einstellung für den GPS-Empfänger auswählen.</value>
+  </data>
+  <data name="ttTextBoxHeight" xml:space="preserve">
+    <value>Höhe des Auswahlrahmens für die Arbeitsfläche.</value>
+  </data>
+  <data name="ttTextBoxWidth" xml:space="preserve">
+    <value>Breite des Auswahlrahmens für die Arbeitsfläche.</value>
+  </data>
+  <data name="ttSettingsRadioButtonGoogle" xml:space="preserve">
+    <value>Wählt Google Maps als Online-Kartenservice aus.</value>
+  </data>
+  <data name="ttSettingsRadioButtonOsm" xml:space="preserve">
+    <value>Wählt Open Street Maps als Online-Kartenservice aus.</value>
+  </data>
+  <data name="SettingsLabelFrame" xml:space="preserve">
+    <value>Rahmen:</value>
+  </data>
+  <data name="SettingsCheckBoxGpsTrack" xml:space="preserve">
+    <value>Positionsverlauf zeichnen wenn GPS aktiv</value>
+  </data>
+  <data name="SettingsLabelGpsTrack" xml:space="preserve">
+    <value>GPS-Pfad:</value>
+  </data>
+  <data name="StrDistance" xml:space="preserve">
+    <value>Distanz: {0} </value>
+  </data>
+  <data name="StrUnitKm" xml:space="preserve">
+    <value>km</value>
+  </data>
+  <data name="StrUnitM" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="StrProgressSavingShape" xml:space="preserve">
+    <value>Geo-Objekte werden gespeichert ...</value>
+  </data>
+  <data name="ttButtonProgressCancel" xml:space="preserve">
+    <value>Stoppt die laufende Aktion (z.B. Speicheroperation).</value>
+  </data>
+  <data name="ttProgressBarSaveSamples" xml:space="preserve">
+    <value>Zeigt den Fortschritt einer zeitaufwändigen Aktion in % an.</value>
+  </data>
+  <data name="StrProgressCaptureMap" xml:space="preserve">
+    <value>Karte wird eingelesen ...</value>
+  </data>
+  <data name="SettingsCheckBoxSplitShapes" xml:space="preserve">
+    <value>Shape in einzelne Samples zerlegen</value>
+  </data>
+  <data name="StrWaitForMap" xml:space="preserve">
+    <value>Bitte warten, bis die Karte komplett aufgebaut wurde, dann JA drücken.
+Die Ergebnisse sollten innerhalb von 10 Sekunden angezeigt werden.
+Kann keine online Karte geladen werden, bitte NEIN drücken und eine lokale
+Karte von Ihrem Rechner laden, falls vorhanden.</value>
+  </data>
+  <data name="StrGpsInfo" xml:space="preserve">
+    <value>GPS: Sats: {0}  Lon = {1}  Lat = {2}  Alt = {3}</value>
+  </data>
+  <data name="StrLoadingShapesInstruction" xml:space="preserve">
+    <value>Geo-Objekte werden geladen, bitte warten...</value>
+  </data>
+  <data name="StrProgressRemovingSamples" xml:space="preserve">
+    <value>Geo-Objekte werden entfernt ...</value>
+  </data>
+  <data name="ErrInvalidWorld" xml:space="preserve">
+    <value>ACHTUNG:\r\nDie Karte ist inkonsistent, breiter als die gesamte Erdkugel!\r\nGeo-Objekte können nicht an der richtigen Stelle platziert werden!</value>
+  </data>
+  <data name="SettingsLabelShapeFileReadFormat" xml:space="preserve">
+    <value>Format für ArcView Shape-Dateien zum einlesen:</value>
+  </data>
+  <data name="StrDeletingShapesInstruction" xml:space="preserve">
+    <value>Geo-Objekte werden gelöscht, bitte warten...</value>
+  </data>
+  <data name="ErrNoOleDBAdapterInstalled" xml:space="preserve">
+    <value>ACHTUNG:\r\nDie für ArcGIS benötigte dBase-Datei wird angelegt, aber nicht gefüllt.\r\n</value>
+  </data>
+  <data name="SettingsLabelUtmHemi" xml:space="preserve">
+    <value>Hemisphäre (N/S):</value>
+  </data>
+  <data name="SettingsLabelUtmZone" xml:space="preserve">
+    <value>UTM-Zone (1-60):</value>
+  </data>
+  <data name="SettingsRadioButtonShapeGeo" xml:space="preserve">
+    <value>Geographisch / GK</value>
+  </data>
+  <data name="SettingsRadioButtonUTM" xml:space="preserve">
+    <value>UTM</value>
+  </data>
+  <data name="ttButtonDetection" xml:space="preserve">
+    <value>Sammlungsobjekte auf einem georeferenzierten Lageplan detektieren.</value>
+  </data>
+  <data name="SettingsCheckBoxShapeFileFormatImport" xml:space="preserve">
+    <value>TAB-separierte Text-Datei (.shp2)</value>
+  </data>
+  <data name="ttCheckBoxShapeFileFormatImport" xml:space="preserve">
+    <value>Wenn angeklickt werden beim Speichern alle sichtbaren Geo-Objekte in einer TAB-separierten Text-Datei abgelegt,\r\ndie sich zu einem späteren Zeitpunkt von geeigneten Applikationen importieren läßt.</value>
+  </data>
+  <data name="DetectionCheckBoxSeparateSamples" xml:space="preserve">
+    <value>Einzelne Objekte generieren</value>
+  </data>
+  <data name="DetectionLabelAdjust" xml:space="preserve">
+    <value>Bereich für die Farbwerte der Punkte einstellen:</value>
+  </data>
+  <data name="DetectionLabelBlue" xml:space="preserve">
+    <value>Blau</value>
+  </data>
+  <data name="DetectionLabelGreen" xml:space="preserve">
+    <value>Grün</value>
+  </data>
+  <data name="DetectionLabelGrey" xml:space="preserve">
+    <value>Grau</value>
+  </data>
+  <data name="DetectionLabelMinDistance" xml:space="preserve">
+    <value>Minimaler Punkt-Abstand:</value>
+  </data>
+  <data name="DetectionLabelRed" xml:space="preserve">
+    <value>Rot</value>
+  </data>
+  <data name="DetectionLabelId" xml:space="preserve">
+    <value>Identifier-Text:</value>
+  </data>
+  <data name="DetectionLabelNumber" xml:space="preserve">
+    <value>Nummerierung:</value>
+  </data>
+  <data name="LabelSelectAttribute" xml:space="preserve">
+    <value>Attribute für ID oder Text auswählen, z.B.:</value>
+  </data>
+  <data name="LabelSeparatorString" xml:space="preserve">
+    <value>Trennzeichenfolge:</value>
+  </data>
+  <data name="AssignButtonAssignAll" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="AssignButtonAssignLast" xml:space="preserve">
+    <value>Letzte</value>
+  </data>
+  <data name="AssignButtonRemoveAll" xml:space="preserve">
+    <value>Keine</value>
+  </data>
+  <data name="AssignCheckBoxSingleObject" xml:space="preserve">
+    <value>Als ein Objekt</value>
+  </data>
+  <data name="AssignLabelAssignParameter" xml:space="preserve">
+    <value>Zuordnung zu Sample:</value>
+  </data>
+  <data name="AssignLabelCurrentlyAssigned" xml:space="preserve">
+    <value>Zugeordnete Werte:</value>
+  </data>
+  <data name="AssignLabelSelectInput" xml:space="preserve">
+    <value>Eingabeparameter für Zuordnung auswählen:</value>
+  </data>
+  <data name="AssignWindowTitle" xml:space="preserve">
+    <value>Eingabeparameter zuweisen</value>
+  </data>
+  <data name="SelectAttributeTitle" xml:space="preserve">
+    <value>Attribute auswählen</value>
+  </data>
+  <data name="ErrHeaderLine" xml:space="preserve">
+    <value>1 (Kopfzeile)</value>
+  </data>
+  <data name="ErrInvalidLines" xml:space="preserve">
+    <value>Ungültige Einträge in folgenden Zeilen gefunden:</value>
+  </data>
+  <data name="StrReadingSamplesFromFile" xml:space="preserve">
+    <value>Daten werden eingelesen</value>
+  </data>
+  <data name="StrShowSamples" xml:space="preserve">
+    <value>Korrekt eingelesene Daten anzeigen?</value>
+  </data>
+  <data name="AssignCheckBoxCenterPoint" xml:space="preserve">
+    <value>nur MTB/Q Mittelpunkt</value>
+  </data>
+  <data name="ErrNoHelpFile" xml:space="preserve">
+    <value>Fehler beim Öffnen der Hilfe-Datei DiversityGisEditor.chm:\r\n</value>
+  </data>
+  <data name="ErrNoOleDBAdapterForRead" xml:space="preserve">
+    <value>ACHTUNG:\r\nDie ArcGIS Attribute können nicht aus der dBase-Datei gelesen werden. Shapes dennoch laden?\r\n</value>
+  </data>
+  <data name="AttributesLabelTextID" xml:space="preserve">
+    <value>Ausgewählte Attribute ID oder Text zuweisen:</value>
+  </data>
+  <data name="SettingsLabelSampleOffTransparency" xml:space="preserve">
+    <value>Sichtbarkeit abgeschalteter Objekte:</value>
+  </data>
+  <data name="ttLabelSampleOffTransparencySampleValue" xml:space="preserve">
+    <value>Zeigt den aktuellen Wert der Sichtbarkeit von abgeschalteten Objekten an.</value>
+  </data>
+  <data name="ttSettingsSliderSampleOffTransparencySample" xml:space="preserve">
+    <value>Einstellen der Sichtbarkeit von abgeschalteten Objekten.\r\nZurücksetzen des Schiebereglers durch Doppel-Klick.</value>
+  </data>
+  <data name="StrProgressSelectingSamples" xml:space="preserve">
+    <value>Geo-Objekte werden selektiert ...</value>
+  </data>
+</root>

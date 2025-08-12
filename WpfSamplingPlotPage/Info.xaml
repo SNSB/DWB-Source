@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfSamplingPlotPage.Info"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="GIS-Editor Info" Height="400" Width="385" ResizeMode="NoResize" Background="Cornsilk">
+    <Grid Background="Cornsilk" Width="380" HorizontalAlignment="Center" Height="370" VerticalAlignment="Top">
+        <Label Height="44" Margin="75,36,0,0" Name="labelInfoDescription" VerticalAlignment="Top">labelInfoDescription</Label>
+        <Label Height="32" Margin="75,6,0,0" Name="labelInfoTitle" VerticalAlignment="Top" HorizontalContentAlignment="Left" FontSize="16" FontFamily="Tahoma" VerticalContentAlignment="Center" FontWeight="Normal">labelInfoTitle</Label>
+        <Label Height="28" Margin="75,73,0,0" Name="labelInfoVersionData" VerticalAlignment="Top">labelInfoVersionData</Label>
+        <Label Height="44" Margin="75,94,0,0" Name="labelInfoInstitutionData" VerticalAlignment="Top">labelInfoInstitutionData</Label>
+        <Label Height="28" Margin="75,144,0,0" Name="labelInfoAuthorsData" VerticalAlignment="Top">labelInfoAuthorsData</Label>
+        <Label Margin="75,165,0,0" Name="labelInfoCopyrightData" Height="28" VerticalAlignment="Top">labelInfoCopyrightData</Label>
+        <Label Height="77" Margin="75,186,0,0" Name="labelInfoLicenseData" VerticalAlignment="Top">labelInfoLicenseData</Label>
+        <Label Height="74" Margin="75,256,0,0" Name="labelInfoDisclaimerData" VerticalAlignment="Top">labelInfoDisclaimerData</Label>
+        <Label Height="28" Width="66" HorizontalAlignment="Left" Margin="8,73,0,0" Name="labelInfoVersion" VerticalAlignment="Top" HorizontalContentAlignment="Right">Version</Label>
+        <Label Height="28" Width="66" HorizontalAlignment="Left" Margin="8,94,0,0" Name="labelInfoInstitution" VerticalAlignment="Top" HorizontalContentAlignment="Right">Institution</Label>
+        <Label Width="66" HorizontalAlignment="Left" Margin="8,144,0,0" Name="labelInfoAuthors" HorizontalContentAlignment="Right" Height="28" VerticalAlignment="Top">Authors</Label>
+        <Label Width="66" HorizontalAlignment="Left" Margin="8,165,0,0" Name="labelInfoCopyright" HorizontalContentAlignment="Right" Height="28" VerticalAlignment="Top">Copyright</Label>
+        <Label Height="32" Width="66" HorizontalAlignment="Left" Margin="8,186,0,0" Name="labelInfoLicense" VerticalAlignment="Top" HorizontalContentAlignment="Right">License</Label>
+        <Label Height="28" Width="66" HorizontalAlignment="Left" Margin="8,256,0,0" Name="labelInfoDisclaimer" VerticalAlignment="Top" HorizontalContentAlignment="Right">Disclaimer</Label>
+        <Label Height="40" Width="44" HorizontalAlignment="Left" Margin="25,11,0,0" Name="labelInfoLogo" VerticalAlignment="Top" HorizontalContentAlignment="Right">Logo</Label>
+        <TextBlock Margin="75,125,0,0" Name="textBlockSnsbInfo" VerticalAlignment="Top" Padding="5" Height="28">
+            <Hyperlink NavigateUri="http://www.snsb.info/" RequestNavigate="Hyperlink_RequestNavigate">http://www.snsb.info/</Hyperlink>
+        </TextBlock>
+        <TextBlock Margin="75,318,0,0" Name="textBlockGnuGpl" VerticalAlignment="Top" Padding="5" Height="28">
+            <Hyperlink NavigateUri="http://www.gnu.org/licenses/gpl.html" RequestNavigate="Hyperlink_RequestNavigate">http://www.gnu.org/license/gpl.html</Hyperlink>
+        </TextBlock>
+        <Button Height="22" HorizontalAlignment="Right" Margin="0,0,12,12" Name="buttonInfoOK" VerticalAlignment="Bottom" Width="65" IsDefault="True" Click="buttonInfoOK_Click">OK</Button>
+    </Grid>
+</Window>
