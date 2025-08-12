@@ -1,0 +1,675 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Globals">
+    <WebView2LoaderPreference>Dynamic</WebView2LoaderPreference>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.18362.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
+    <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
+    <Version>7.1.0</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>
+    </DocumentationFile>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Service References\MediaServiceProxy\**" />
+    <Compile Remove="Service References\mycobank\**" />
+    <Compile Remove="Service References\WoRMS\**" />
+    <Compile Remove="Web References\**" />
+    <Compile Remove="WorkbenchMessages\**" />
+    <EmbeddedResource Remove="Service References\MediaServiceProxy\**" />
+    <EmbeddedResource Remove="Service References\mycobank\**" />
+    <EmbeddedResource Remove="Service References\WoRMS\**" />
+    <EmbeddedResource Remove="Web References\**" />
+    <EmbeddedResource Remove="WorkbenchMessages\**" />
+    <None Remove="Service References\MediaServiceProxy\**" />
+    <None Remove="Service References\mycobank\**" />
+    <None Remove="Service References\WoRMS\**" />
+    <None Remove="Web References\**" />
+    <None Remove="WorkbenchMessages\**" />
+    <Page Remove="Service References\MediaServiceProxy\**" />
+    <Page Remove="Service References\mycobank\**" />
+    <Page Remove="Service References\WoRMS\**" />
+    <Page Remove="Web References\**" />
+    <Page Remove="WorkbenchMessages\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Update="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Update="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Update="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Update="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Archive\UserControlTable.cs" />
+    <Compile Update="CacheDB\ReplaceDB\Replacement.cs" />
+    <Compile Update="CacheDB\ReplaceDB\UserControlCount.cs" />
+    <Compile Update="CacheDB\ReplaceDB\UserControlReplacement.cs" />
+    <Compile Update="CollectionSpecimenText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CollectionSpecimenText.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetApplication.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetApplication.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetApplicationEntity.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetApplicationEntity.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetEntity.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetEntity.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetFeedback.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetFeedback.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetProjects.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetProjects.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\DataSetStableIdentifier.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetStableIdentifier.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Entity.cs" />
+    <Compile Update="Export\Exporter.cs" />
+    <Compile Update="Export\UserControlFileColumn.cs" />
+    <Compile Update="Export\UserControlTable.cs" />
+    <Compile Update="Export\UserControlTableBackup.cs" />
+    <Compile Update="Export\UserControlTableColumn.cs" />
+    <Compile Update="Export\UserControlTableColumnUnitValue.cs" />
+    <Compile Update="Export\UserControlTransformation.cs" />
+    <Compile Update="Export\UserControlTransformationFilter.cs" />
+    <Compile Update="Forms\FormApplicationEntityMessages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormApplicationEntityMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormApplicationEntitySettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormApplicationEntitySettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormDatabaseConnectionText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormDatabaseConnectionText.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormDocumentationSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormDocumentationSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormGoogleMapsCoordinatesSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormGoogleMapsCoordinatesSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormQuerySaveText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormQuerySaveText.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormRemoteQuerySettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormRemoteQuerySettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormTemplateEditorSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormTemplateEditorSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Import\SettingsImport.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SettingsImport.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Language.cs" />
+    <Compile Update="Maintenance\Synchronize\UserControlSynchronizeTerm.cs" />
+    <Compile Update="PostgreSQL\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="PostgresSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PostgresSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Prometheus\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings-example.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings-example.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Regulation\DataSetRegulation.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetRegulation.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Regulation\UserControlRegulation.cs" />
+    <Compile Update="ResourceWorkbench.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourceWorkbench.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Spreadsheet\FormSpreadsheetText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormSpreadsheetText.resx</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\UserControlDiagram.cs" />
+    <Compile Update="UserControls\UserControlDuration.cs" />
+    <Compile Update="UserControls\UserControlModuleBackLinks.cs" />
+    <Compile Update="UserControls\UserControlModuleLinks.cs" />
+    <Compile Update="UserControls\UserControlModuleLinksSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UserControlModuleLinksSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\UserControlQueryOrderColumn.cs" />
+    <Compile Update="UserControls\UserControlRichEdit.cs" />
+    <Compile Update="UserControls\UserControlToolTipTime.cs" />
+    <Compile Update="UserControls\UserControlUserSettings.cs" />
+    <Compile Update="UserControls\UserControlWebView.cs" />
+    <Compile Update="Import\UserControlDataColumnMulti.cs" />
+    <Compile Update="Import\UserControlDataTable.cs" />
+    <Compile Update="Import\UserControlFile.cs" />
+    <Compile Update="Import\UserControlImport.cs" />
+    <Compile Update="Import\UserControlImportHistory.cs" />
+    <Compile Update="Import\UserControlStep.cs" />
+    <Compile Update="Import\UserControlStepSelector.cs" />
+    <Compile Update="Import\UserControlTableMessage.cs" />
+    <Compile Update="Import\UserControlTesting.cs" />
+    <Compile Update="Import\UserControlDataColumn.cs" />
+    <Compile Update="Import\UserControlTransformation.cs" />
+    <Compile Update="Import\UserControlTransformationFilter.cs" />
+    <Compile Update="PostgreSQL\UserControlConnect.cs" />
+    <Compile Update="Spreadsheet\MapSymbols.cs" />
+    <Compile Update="Spreadsheet\UserControlColumnSettings.cs" />
+    <Compile Update="Spreadsheet\UserControlMapFilter.cs" />
+    <Compile Update="Spreadsheet\UserControlMapLegend.cs" />
+    <Compile Update="Spreadsheet\UserControlSetMapColor.cs" />
+    <Compile Update="Spreadsheet\UserControlSetMapSymbol.cs" />
+    <Compile Update="Spreadsheet\UserControlTableSetting.cs" />
+    <Compile Update="UserControls\UserControlColorSettings.cs" />
+    <Compile Update="UserControls\UserControlColumnFilter.cs" />
+    <Compile Update="UserControls\UserControlDateTimePanel.cs" />
+    <Compile Update="UserControls\UserControlGeometry.cs" />
+    <Compile Update="UserControls\UserControlGoogleMaps.cs" />
+    <Compile Update="UserControls\UserControlHierarchySelector.cs" />
+    <Compile Update="UserControls\UserControlHtmlColors.cs" />
+    <Compile Update="UserControls\UserControlMediaPlayer.cs" />
+    <Compile Update="UserControls\UserControlPrintImage.cs" />
+    <Compile Update="UserControls\UserControlProjects.cs" />
+    <Compile Update="UserControls\UserControlQueryConditionAnnotation.cs" />
+    <Compile Update="UserControls\UserControlQueryConditionGIS.cs" />
+    <Compile Update="UserControls\UserControlQueryConditionHierarchy.cs" />
+    <Compile Update="UserControls\UserControlQueryConditionModule.cs" />
+    <Compile Update="UserControls\UserControlQueryConditionReferencingTable.cs" />
+    <Compile Update="UserControls\UserControlQueryConditionSet.cs" />
+    <Compile Update="UserControls\UserControlQueryConditionSqlFunction.cs" />
+    <Compile Update="UserControls\UserControlQueryConditionXML.cs" />
+    <Compile Update="UserControls\UserControlReplicateTable.cs" />
+    <Compile Update="UserControls\UserControlReplicationPreparation.cs" />
+    <Compile Update="UserControls\UserControlResource.cs" />
+    <Compile Update="UserControls\UserControlWebservice.cs" />
+    <Compile Update="UserControls\UserControlXMLTree.cs" />
+    <Compile Update="UserControls\UserControlUpdateResult.cs" />
+    <Compile Update="UserControls\UserControlDatePanel.cs" />
+    <Compile Update="UserControls\UserControlDialogPanel.cs" />
+    <Compile Update="UserControls\UserControlImage.cs" />
+    <Compile Update="UserControls\UserControlLocalList.cs" />
+    <Compile Update="UserControls\UserControlModuleRelatedEntry.cs" />
+    <Compile Update="UserControls\UserControlQueryCondition.cs" />
+    <Compile Update="UserControls\UserControlQueryList.cs" />
+    <Compile Update="UserControls\UserControlURI.cs" />
+    <Compile Update="WorkbenchSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>WorkbenchSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="XslEditor\UserControlXslAttribute.cs" />
+    <Compile Update="XslEditor\UserControlXslAttributeCondition.cs" />
+    <Compile Update="XslEditor\UserControlXslDocument.cs" />
+    <Compile Update="XslEditor\UserControlXslTableColumn.cs" />
+    <Compile Update="XslEditor\UserControlXslTableField.cs" />
+    <Compile Update="XslEditor\UserControlXslTableRow.cs" />
+    <Compile Update="XsltEditor\UserControlDiv.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Datasets\DataSetStableIdentifier.xsc">
+      <DependentUpon>DataSetStableIdentifier.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetStableIdentifier.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetStableIdentifier.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetStableIdentifier.xss">
+      <DependentUpon>DataSetStableIdentifier.xsd</DependentUpon>
+    </None>
+    <None Update="Forms\FormApplicationEntitySettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>FormApplicationEntitySettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Forms\FormDocumentationSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>FormDocumentationSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Forms\FormGoogleMapsCoordinatesSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>FormGoogleMapsCoordinatesSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Forms\FormRemoteQuerySettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>FormRemoteQuerySettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Forms\FormTemplateEditorSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>FormTemplateEditorSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Import\SettingsImport.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>SettingsImport.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="PostgreSQL\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="PostgresSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>PostgresSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Prometheus\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Properties\Settings-example.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings-example.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Regulation\DataSetRegulation.xsc">
+      <DependentUpon>DataSetRegulation.xsd</DependentUpon>
+    </None>
+    <None Update="Regulation\DataSetRegulation.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetRegulation.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Regulation\DataSetRegulation.xss">
+      <DependentUpon>DataSetRegulation.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\DscrSequWr.ico" />
+    <Content Include="Resources\ExternerBrowser.ico" />
+    <Content Include="Resources\ExternerBrowserSmall.ico" />
+    <Content Include="Resources\JS.ico" />
+    <Content Include="Resources\JSno.ico" />
+    <Content Include="Resources\Label.ICO" />
+    <Content Include="Resources\PerspRect.ico" />
+    <Content Include="Resources\PerspUpper.ico" />
+    <Content Include="Resources\SaveRows.ico" />
+    <Content Include="Resources\Style3D.ico" />
+    <Content Include="Resources\WidthDec.ico" />
+    <Content Include="Resources\WidthInc.ico" />
+    <Content Include="Resources\Browser.ico" />
+    <Content Include="Resources\ChartRotateLeft.ico" />
+    <Content Include="Resources\ChartRotateRight.ico" />
+    <Content Include="Resources\FilterOptimized.ico" />
+    <Content Include="Resources\HeightDec.ico" />
+    <Content Include="Resources\HeightInc.ico" />
+    <Content Include="Resources\ImportWizardBIG.gif" />
+    <Content Include="Resources\LoadDataSource.ico" />
+    <Content Include="Resources\NoFlag.ico" />
+    <Content Include="Resources\NotFound.ico" />
+    <Content Include="Resources\OKcheck.ico" />
+    <Content Include="Resources\PerspectiveDec.ico" />
+    <Content Include="Resources\PerspectiveInc.ico" />
+    <Content Include="Resources\TiltDown.ico" />
+    <Content Include="Resources\TiltUp.ico" />
+    <Content Include="Resources\TooBig.ICO" />
+    <None Update="Datasets\DataSetApplication.xsc">
+      <DependentUpon>DataSetApplication.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetApplication.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetApplication.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetApplication.xss">
+      <DependentUpon>DataSetApplication.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetApplicationEntity.xsc">
+      <DependentUpon>DataSetApplicationEntity.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetApplicationEntity.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetApplicationEntity.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetApplicationEntity.xss">
+      <DependentUpon>DataSetApplicationEntity.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetEntity.xsc">
+      <DependentUpon>DataSetEntity.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetEntity.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetEntity.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetEntity.xss">
+      <DependentUpon>DataSetEntity.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetFeedback.xsc">
+      <DependentUpon>DataSetFeedback.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetFeedback.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetFeedback.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetFeedback.xss">
+      <DependentUpon>DataSetFeedback.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetProjects.xsc">
+      <DependentUpon>DataSetProjects.xsd</DependentUpon>
+    </None>
+    <None Update="Datasets\DataSetProjects.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetProjects.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Datasets\DataSetProjects.xss">
+      <DependentUpon>DataSetProjects.xsd</DependentUpon>
+    </None>
+    <Content Include="GoogleMaps.htm" />
+    <Content Include="Resources\ArrowGetDown.gif" />
+    <Content Include="Resources\Color.ico" />
+    <Content Include="Resources\Copy.gif" />
+    <Content Include="Resources\DatabaseExport\DatabaseExportSummary.xsl">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\Datenbank.gif" />
+    <Content Include="Resources\Delete.gif" />
+    <Content Include="Resources\Edit.gif" />
+    <None Include="Resources\Import\ImportSchemaDescription.xslt" />
+    <Content Include="Resources\Open.gif" />
+    <Content Include="Resources\OpenFolder.gif" />
+    <Content Include="Resources\Provider.gif" />
+    <None Update="UserControls\UserControlModuleLinksSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>UserControlModuleLinksSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="WorkbenchSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>WorkbenchSettings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://www.eu-nomen.eu/portal/soap.php%3fp=soap&amp;wsdl=1">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\eu.eu-nomen.www\</RelPath>
+      <UpdateFromURL>http://www.eu-nomen.eu/portal/soap.php%3fp=soap&amp;wsdl=1</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DiversityWorkbench_eu_eu_nomen_www_PESINameService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://www.indexfungorum.org/ixfwebservice/Fungus.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\org.indexfungorum.www\</RelPath>
+      <UpdateFromURL>http://www.indexfungorum.org/ixfwebservice/Fungus.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DiversityWorkbench_org_indexfungorum_www_Fungus</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://www.snsb.info/axis2/services/IndExsService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\IndExs.info.snsb.www\</RelPath>
+      <UpdateFromURL>http://www.snsb.info/axis2/services/IndExsService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DiversityWorkbench_IndExs_info_snsb_www_IndExsService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+	<ItemGroup>
+		<COMReference Include="AxWMPLib">
+			<Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+			<VersionMajor>1</VersionMajor>
+			<VersionMinor>0</VersionMinor>
+			<Lcid>0</Lcid>
+			<WrapperTool>aximp</WrapperTool>
+			<Isolated>False</Isolated>
+		</COMReference>
+		<COMReference Include="WMPLib">
+			<Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+			<VersionMajor>1</VersionMajor>
+			<VersionMinor>0</VersionMinor>
+			<Lcid>0</Lcid>
+			<WrapperTool>tlbimp</WrapperTool>
+			<Isolated>False</Isolated>
+		</COMReference>
+	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.14.2" />
+    <PackageReference Include="EntityFramework">
+      <Version>6.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="HtmlTextWriter" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.0" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.74.1" />
+    <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="172.76.0" />
+    <PackageReference Include="Microsoft.SqlServer.Types" Version="160.1000.6" />
+    <PackageReference Include="Microsoft.Web.WebView2">
+      <Version>1.0.3351.48</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.4654" />
+    <PackageReference Include="Npgsql">
+      <Version>9.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Data.OleDb" Version="9.0.7" />
+    <PackageReference Include="System.Data.SQLite">
+      <Version>1.0.119</Version>
+    </PackageReference>
+    <PackageReference Include="System.Formats.Asn1" Version="9.0.7" />
+    <PackageReference Include="System.IO.FileSystem.AccessControl" Version="5.0.0" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.7" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="8.1.2" />
+    <PackageReference Include="System.Windows.Forms.DataVisualization" Version="1.0.0-prerelease.20110.1" />
+	<PackageReference Include="System.Text.Json">
+		  <Version>9.0.7</Version>
+	 </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Api\Taxon.cs" />
+    <Compile Remove="CatalogueOfLife.cs" />
+    <Compile Remove="CatalogueOfLife.Designer.cs" />
+    <Compile Remove="CatalogueOfLifeWebservice.cs" />
+    <Compile Remove="CatalogueOfLifeWebservice2008.cs" />
+    <Compile Remove="CatalogueOfLife_2.cs" />
+    <Compile Remove="CollectionProject.cs" />
+    <Compile Remove="Datasets\DataSetCatalogueOfLife.Designer.cs" />
+    <Compile Remove="Export\ColumnData.cs" />
+    <Compile Remove="Export\UserControlColumnData.cs" />
+    <Compile Remove="Export\UserControlColumnData.Designer.cs" />
+    <Compile Remove="Export\UserControlTableColumnLink.cs" />
+    <Compile Remove="Export\UserControlTableColumnLink.Designer.cs" />
+    <Compile Remove="FormApplicationSearchSelectionStrings.cs" />
+    <Compile Remove="FormApplicationSearchSelectionStrings.Designer.cs" />
+    <Compile Remove="Forms\FormDatabaseConnection.cs" />
+    <Compile Remove="Forms\FormDatabaseConnection.Designer.cs" />
+    <Compile Remove="PalaeoDB.cs" />
+    <Compile Remove="Postgres.cs" />
+    <Compile Remove="RemoteModule.cs" />
+    <Compile Remove="Spreadsheet\MapFilterObject.cs" />
+    <Compile Remove="UserControlQueryConditionText.de.Designer.cs" />
+    <Compile Remove="UserControlQueryConditionText.Designer.cs" />
+    <Compile Remove="UserControls\UserControlCatalogueOfLife.cs" />
+    <Compile Remove="UserControls\UserControlCatalogueOfLife.Designer.cs" />
+    <Compile Remove="UserControls\UserControlMediaWindow.xaml.cs" />
+    <Compile Remove="UserControls\UserControlWebserviceOption.cs" />
+    <Compile Remove="UserControls\UserControlWebserviceOption.Designer.cs" />
+    <Compile Remove="Webservice.cs" />
+    <Compile Remove="WebserviceCatalogueOfLife.cs" />
+    <Compile Remove="WebserviceEUnomen.cs" />
+    <Compile Remove="WebserviceGbifSpecies.cs" />
+    <Compile Remove="WebserviceGfbio.cs" />
+    <Compile Remove="WebserviceGfbioCatalogueOfLife.cs" />
+    <Compile Remove="WebserviceGfbioEnvironmentOntology.cs" />
+    <Compile Remove="WebserviceGfbioGeonames.cs" />
+    <Compile Remove="WebserviceGfbioIsoCountries.cs" />
+    <Compile Remove="WebserviceGfbioKingdom.cs" />
+    <Compile Remove="WebserviceGfbioProkaryoticNomenclature.cs" />
+    <Compile Remove="WebserviceGfbioRecordBasis.cs" />
+    <Compile Remove="WebserviceGfbioTerminology.cs" />
+    <Compile Remove="WebserviceGfbioWorldSeas.cs" />
+    <Compile Remove="WebserviceIndexFungorum.cs" />
+    <Compile Remove="WebserviceIndExs.cs" />
+    <Compile Remove="WebserviceLitholex.cs" />
+    <Compile Remove="WebserviceMycobank.cs" />
+    <Compile Remove="WebservicePESI.cs" />
+    <Compile Remove="WebserviceQueryOption.cs" />
+    <Compile Remove="WebserviceRLL.cs" />
+    <Compile Remove="WebserviceTNT.cs" />
+    <Compile Remove="WebserviceTropicos.cs" />
+    <Compile Remove="WebserviceWoRMS.cs" />
+    <Compile Remove="Webservice_WFO_Plant_List.cs" />
+    <Compile Remove="WorkbenchResources\FormResources.cs" />
+    <Compile Remove="WorkbenchResources\FormResources.Designer.cs" />
+    <EmbeddedResource Remove="CatalogueOfLife.resx" />
+    <EmbeddedResource Remove="Export\UserControlColumnData.resx" />
+    <EmbeddedResource Remove="Export\UserControlTableColumnLink.resx" />
+    <EmbeddedResource Remove="FormApplicationSearchSelectionStrings.resx" />
+    <EmbeddedResource Remove="Forms\FormDatabaseConnection.de.resx" />
+    <EmbeddedResource Remove="Forms\FormDatabaseConnection.resx" />
+    <EmbeddedResource Remove="Properties\Resources.de.resx" />
+    <EmbeddedResource Remove="UserControlQueryConditionText.de.resx" />
+    <EmbeddedResource Remove="UserControlQueryConditionText.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlCatalogueOfLife.resx" />
+    <EmbeddedResource Remove="UserControls\UserControlWebserviceOption.resx" />
+    <EmbeddedResource Remove="WorkbenchResources\FormResources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Datasets\DataSetCatalogueOfLife.xsc" />
+    <None Remove="Datasets\DataSetCatalogueOfLife.xsd" />
+    <None Remove="Datasets\DataSetCatalogueOfLife.xss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Remove="UserControls\UserControlMediaWindow.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DWBServices\DWBServices.csproj" />
+    <ProjectReference Include="..\GeoConversion\GeoConversion.csproj" />
+    <ProjectReference Include="..\WpfControls\WpfControls.csproj" />
+    <ProjectReference Include="..\WpfSamplingPlotPage\WpfSamplingPlotPage.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="CollectionSpecimenText.de.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="CollectionSpecimenText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CollectionSpecimenText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\FormApplicationEntityMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormApplicationEntityMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\FormDatabaseConnectionText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormDatabaseConnectionText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\FormQuerySaveText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormQuerySaveText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ResourceWorkbench.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceWorkbench.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Spreadsheet\FormSpreadsheetText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormSpreadsheetText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="WorkbenchMessages.de.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

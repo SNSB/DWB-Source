@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ctrlIdentifier" xml:space="preserve">
+    <value>ID:</value>
+  </data>
+  <data name="StrDrawLineModeInstruction" xml:space="preserve">
+    <value>Links-Klick zum Setzen, Rechts-Klick zum Löschen eines Eckpunktes. Next&gt; für neue Linie.</value>
+  </data>
+  <data name="StrDrawPolygonModeInstruction" xml:space="preserve">
+    <value>Links-Klick zum Setzen, Rechts-Klick zum Löschen eines Eckpunktes. Next&gt; für neues Gebiet.</value>
+  </data>
+  <data name="StrDrawSamplePointsModeInstruction" xml:space="preserve">
+    <value>Links-Klick zum Setzen, Rechts-Klick zum Löschen eines Markers.</value>
+  </data>
+  <data name="StrEditSamplesModeInstruction" xml:space="preserve">
+    <value>Editieren aller sichtbaren Samples oder Karten durch Verschieben der Eckpunkte.</value>
+  </data>
+  <data name="StrMapAdaptModeEndInstruction" xml:space="preserve">
+    <value>Alle Referenzpunkte sind gesetzt. Karte anpassen bei nächstem abwechselnden Maus-Klick.</value>
+  </data>
+  <data name="StrMapAdaptModeSetInstruction" xml:space="preserve">
+    <value>Einpassen einer Karte in die Hintergrundkarte mittels Setzen von Referenzpunkten.</value>
+  </data>
+  <data name="StrMapServerModeInstruction" xml:space="preserve">
+    <value>Karte anpassen und Add oder Save drücken, oder Karte mit Load aus Datei laden.</value>
+  </data>
+  <data name="StrOpenFileDialog" xml:space="preserve">
+    <value>Bitte Bild oder Shape-Datei auswählen</value>
+  </data>
+  <data name="StrSaveImageDialog" xml:space="preserve">
+    <value>Bitte Dateinamen für das zu speichernde Bild eingeben</value>
+  </data>
+  <data name="StrSaveShapeDialog" xml:space="preserve">
+    <value>Bitte Dateinamen für die zu speichernden Geo-Objekte eingeben</value>
+  </data>
+  <data name="StrShiftCanvasModeInstruction" xml:space="preserve">
+    <value>Verschieben oder Zoomen der Arbeitfläche mit Maus oder Schieberegler.</value>
+  </data>
+  <data name="StrTransparency" xml:space="preserve">
+    <value>Transparenz</value>
+  </data>
+  <data name="StrZoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="ttButtonAdd" xml:space="preserve">
+    <value>Fügt die aktuelle Karte oder das Geo-Objekt der Sample-Liste hinzu.</value>
+  </data>
+  <data name="ttButtonLoad" xml:space="preserve">
+    <value>Laden von Bildern oder Geo-Objekten aus einer Datei.</value>
+  </data>
+  <data name="ttButtonMultiShape" xml:space="preserve">
+    <value>Schließt das aktuelle Geo-Objekt (Area, Line) und fügt ein weiteres hinzu.</value>
+  </data>
+  <data name="ttButtonSave" xml:space="preserve">
+    <value>Speichert die aktuelle Google-Karte in einer Datei und fügt sie der Sample-Liste hinzu.\r\nSpeichert alle sichtbaren Geo-Objekte der Sample-Liste in einer Datei.</value>
+  </data>
+  <data name="ttCheckBoxFill" xml:space="preserve">
+    <value>Markieren zu Ändern der Füll-Farbe oder Transparenz des aktuellen Samples.</value>
+  </data>
+  <data name="ttCheckBoxStroke" xml:space="preserve">
+    <value>Markieren zu Ändern der Strich-Farbe oder Transparenz des aktuellen Samples.</value>
+  </data>
+  <data name="ttComboBoxBrushes" xml:space="preserve">
+    <value>Auswählen einer Farbe für das aktuelle Sample aus der Liste.</value>
+  </data>
+  <data name="ttRadioButtonAdapt" xml:space="preserve">
+    <value>Anpassen der Koordinaten der aktuell geladenen Karte mit Hilfe der Hintergrund-Karte \r\ndurch abwechselndes Setzen von Referenzpunkten (Rechts-Oben, Links-Unten) per Maus-Klick \r\nauf der aktuellen Karte und der Hintergrund-Karte.  \r\nEin abschließender Klick paßt die aktuelle Karte in die Referenz-Karte ein.</value>
+  </data>
+  <data name="ttRadioButtonArea" xml:space="preserve">
+    <value>Zeichnen von Gebieten (Polygonen) durch Markieren der Eckpunkte mit der linken Maus-Taste.</value>
+  </data>
+  <data name="ttRadioButtonEdit" xml:space="preserve">
+    <value>Lokalisieren und Verschieben der Eckpunkte aller sichtbaren Samples mit Hilfe der linken Maus-Taste.</value>
+  </data>
+  <data name="ttRadioButtonLine" xml:space="preserve">
+    <value>Zeichnen von Linienverläufen durch Markieren der Eckpunkte mit der linken Maus-Taste.</value>
+  </data>
+  <data name="ttRadioButtonMap" xml:space="preserve">
+    <value>Startet den Google-Kartenservice um eine Hintergrund-Karte anzuzeigen.</value>
+  </data>
+  <data name="ttRadioButtonObjects" xml:space="preserve">
+    <value>Setzen von Sample-Markern in der Hintergrund-Karte mit der linken Maus-Taste.</value>
+  </data>
+  <data name="ttRadioButtonShift" xml:space="preserve">
+    <value>Verschieben der Arbeitsfläche mit Hilfe der linken Maus-Taste.\r\nVergrößern oder Verkleinern der Arbeitsfläche mit Hilfe des Schiebereglers.</value>
+  </data>
+  <data name="ttSliderZoom" xml:space="preserve">
+    <value>Zoom-Funktion im Shift-Mode, Transparenz-Einstellung in den anderen Modes.\r\nReset des Schiebereglers durch Doppel-Klick.</value>
+  </data>
+  <data name="ctrlAdd" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="ctrlColor" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="ctrlFill" xml:space="preserve">
+    <value>Füllung</value>
+  </data>
+  <data name="ctrlLoad" xml:space="preserve">
+    <value>Einlesen</value>
+  </data>
+  <data name="ctrlNext" xml:space="preserve">
+    <value>next &gt;</value>
+  </data>
+  <data name="ctrlPrint" xml:space="preserve">
+    <value>Drucken</value>
+  </data>
+  <data name="ctrlSave" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="ctrlStroke" xml:space="preserve">
+    <value>Strich</value>
+  </data>
+  <data name="ttButtonPrint" xml:space="preserve">
+    <value>Druckt den gegenwärtigen Inhalt der Arbeitsfläche.</value>
+  </data>
+</root>

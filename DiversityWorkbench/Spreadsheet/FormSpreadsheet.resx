@@ -1,0 +1,2544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanelMain.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelConnection.ColumnCount" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonPrevious.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonPrevious.Location" type="System.Drawing.Point, System.Drawing">
+    <value>229, 41</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonPrevious.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 3</value>
+  </data>
+  <metadata name="helpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>929, 17</value>
+  </metadata>
+  <data name="buttonPrevious.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonPrevious.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 25</value>
+  </data>
+  <data name="buttonPrevious.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="buttonPrevious.ToolTip" xml:space="preserve">
+    <value>get previous data</value>
+  </data>
+  <data name="&gt;&gt;buttonPrevious.Name" xml:space="preserve">
+    <value>buttonPrevious</value>
+  </data>
+  <data name="&gt;&gt;buttonPrevious.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPrevious.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonPrevious.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonConnect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonConnect.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonConnect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 41</value>
+  </data>
+  <data name="buttonConnect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 3</value>
+  </data>
+  <data name="buttonConnect.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonConnect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 25</value>
+  </data>
+  <data name="buttonConnect.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonConnect.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="buttonConnect.ToolTip" xml:space="preserve">
+    <value>Connect to database</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.Name" xml:space="preserve">
+    <value>buttonConnect</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonNext.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>206, 41</value>
+  </data>
+  <data name="buttonNext.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 3</value>
+  </data>
+  <data name="buttonNext.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonNext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 25</value>
+  </data>
+  <data name="buttonNext.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="buttonNext.ToolTip" xml:space="preserve">
+    <value>get next data</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.Name" xml:space="preserve">
+    <value>buttonNext</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboBoxReplaceWith.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="comboBoxReplaceWith.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 41</value>
+  </data>
+  <data name="comboBoxReplaceWith.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 4, 3</value>
+  </data>
+  <data name="comboBoxReplaceWith.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxReplaceWith.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 23</value>
+  </data>
+  <data name="comboBoxReplaceWith.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;comboBoxReplaceWith.Name" xml:space="preserve">
+    <value>comboBoxReplaceWith</value>
+  </data>
+  <data name="&gt;&gt;comboBoxReplaceWith.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxReplaceWith.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;comboBoxReplaceWith.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelReplaceWith.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelReplaceWith.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelReplaceWith.Location" type="System.Drawing.Point, System.Drawing">
+    <value>399, 41</value>
+  </data>
+  <data name="labelReplaceWith.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 0, 3</value>
+  </data>
+  <data name="labelReplaceWith.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelReplaceWith.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 25</value>
+  </data>
+  <data name="labelReplaceWith.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="labelReplaceWith.Text" xml:space="preserve">
+    <value>With</value>
+  </data>
+  <data name="labelReplaceWith.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="labelReplaceWith.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;labelReplaceWith.Name" xml:space="preserve">
+    <value>labelReplaceWith</value>
+  </data>
+  <data name="&gt;&gt;labelReplaceWith.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelReplaceWith.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;labelReplaceWith.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="comboBoxReplace.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="comboBoxReplace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 17</value>
+  </data>
+  <data name="comboBoxReplace.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 4, 1</value>
+  </data>
+  <data name="comboBoxReplace.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxReplace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 23</value>
+  </data>
+  <data name="comboBoxReplace.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;comboBoxReplace.Name" xml:space="preserve">
+    <value>comboBoxReplace</value>
+  </data>
+  <data name="&gt;&gt;comboBoxReplace.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxReplace.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;comboBoxReplace.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonEdit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonEdit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="buttonEdit.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="buttonEdit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>369, 0</value>
+  </data>
+  <data name="buttonEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonEdit.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 41</value>
+  </data>
+  <data name="buttonEdit.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonEdit.Text" xml:space="preserve">
+    <value>Overwrite</value>
+  </data>
+  <data name="buttonEdit.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;buttonEdit.Name" xml:space="preserve">
+    <value>buttonEdit</value>
+  </data>
+  <data name="&gt;&gt;buttonEdit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonEdit.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonEdit.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="numericUpDownMaxResults.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="numericUpDownMaxResults.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 41</value>
+  </data>
+  <data name="numericUpDownMaxResults.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 4, 3</value>
+  </data>
+  <data name="numericUpDownMaxResults.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numericUpDownMaxResults.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 23</value>
+  </data>
+  <data name="numericUpDownMaxResults.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="numericUpDownMaxResults.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="numericUpDownMaxResults.ToolTip" xml:space="preserve">
+    <value>Number of results returned by the query</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownMaxResults.Name" xml:space="preserve">
+    <value>numericUpDownMaxResults</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownMaxResults.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownMaxResults.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownMaxResults.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="labelMaxResults.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelMaxResults.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelMaxResults.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 41</value>
+  </data>
+  <data name="labelMaxResults.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 0, 3</value>
+  </data>
+  <data name="labelMaxResults.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelMaxResults.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 25</value>
+  </data>
+  <data name="labelMaxResults.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelMaxResults.Text" xml:space="preserve">
+    <value>Max. res.:</value>
+  </data>
+  <data name="labelMaxResults.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;labelMaxResults.Name" xml:space="preserve">
+    <value>labelMaxResults</value>
+  </data>
+  <data name="&gt;&gt;labelMaxResults.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMaxResults.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;labelMaxResults.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="buttonStart.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonStart.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="buttonStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonStart.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 38</value>
+  </data>
+  <data name="buttonStart.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="buttonStart.ToolTip" xml:space="preserve">
+    <value>Use this window as as starting window</value>
+  </data>
+  <data name="&gt;&gt;buttonStart.Name" xml:space="preserve">
+    <value>buttonStart</value>
+  </data>
+  <data name="&gt;&gt;buttonStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonStart.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonStart.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="pictureBoxImage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pictureBoxImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>919, 1</value>
+  </data>
+  <data name="pictureBoxImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 1, 1</value>
+  </data>
+  <data name="pictureBoxImage.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureBoxImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 67</value>
+  </data>
+  <data name="pictureBoxImage.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pictureBoxImage.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="pictureBoxImage.ToolTip" xml:space="preserve">
+    <value>Image of the object (if present)</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxImage.Name" xml:space="preserve">
+    <value>pictureBoxImage</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxImage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxImage.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxImage.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="tableLayoutPanelSettings.ColumnCount" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonSettingsSave.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonSettingsSave.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonSettingsSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSettingsSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 2</value>
+  </data>
+  <data name="buttonSettingsSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 1, 1</value>
+  </data>
+  <data name="buttonSettingsSave.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonSettingsSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 21</value>
+  </data>
+  <data name="buttonSettingsSave.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="buttonSettingsSave.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="buttonSettingsSave.ToolTip" xml:space="preserve">
+    <value>Save settings</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsSave.Name" xml:space="preserve">
+    <value>buttonSettingsSave</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsSave.Parent" xml:space="preserve">
+    <value>tableLayoutPanelSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsSave.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonSettingsLoad.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonSettingsLoad.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonSettingsLoad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSettingsLoad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 2</value>
+  </data>
+  <data name="buttonSettingsLoad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 2, 1, 1</value>
+  </data>
+  <data name="buttonSettingsLoad.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonSettingsLoad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 21</value>
+  </data>
+  <data name="buttonSettingsLoad.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="buttonSettingsLoad.ToolTip" xml:space="preserve">
+    <value>Load settings</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsLoad.Name" xml:space="preserve">
+    <value>buttonSettingsLoad</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsLoad.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsLoad.Parent" xml:space="preserve">
+    <value>tableLayoutPanelSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsLoad.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelSetting.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelSetting.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelSetting.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelSetting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="labelSetting.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 1, 1</value>
+  </data>
+  <data name="labelSetting.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 22</value>
+  </data>
+  <data name="labelSetting.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="labelSetting.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelSetting.Name" xml:space="preserve">
+    <value>labelSetting</value>
+  </data>
+  <data name="&gt;&gt;labelSetting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSetting.Parent" xml:space="preserve">
+    <value>tableLayoutPanelSettings</value>
+  </data>
+  <data name="&gt;&gt;labelSetting.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonSettingsReset.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonSettingsReset.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonSettingsReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSettingsReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 3</value>
+  </data>
+  <data name="buttonSettingsReset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 3, 1, 3</value>
+  </data>
+  <data name="buttonSettingsReset.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonSettingsReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 18</value>
+  </data>
+  <data name="buttonSettingsReset.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="buttonSettingsReset.ToolTip" xml:space="preserve">
+    <value>Reset settings to factory setting</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsReset.Name" xml:space="preserve">
+    <value>buttonSettingsReset</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsReset.Parent" xml:space="preserve">
+    <value>tableLayoutPanelSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsReset.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonSettingsAddTable.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="buttonSettingsAddTable.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonSettingsAddTable.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSettingsAddTable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonSettingsAddTable.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonSettingsAddTable.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonSettingsAddTable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 24</value>
+  </data>
+  <data name="buttonSettingsAddTable.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="buttonSettingsAddTable.ToolTip" xml:space="preserve">
+    <value>Add a missing table</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsAddTable.Name" xml:space="preserve">
+    <value>buttonSettingsAddTable</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsAddTable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsAddTable.Parent" xml:space="preserve">
+    <value>tableLayoutPanelSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonSettingsAddTable.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="buttonAdaptColumnWidth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonAdaptColumnWidth.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonAdaptColumnWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 0</value>
+  </data>
+  <data name="buttonAdaptColumnWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonAdaptColumnWidth.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonAdaptColumnWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 24</value>
+  </data>
+  <data name="buttonAdaptColumnWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="buttonAdaptColumnWidth.ToolTip" xml:space="preserve">
+    <value>Set the column width according to the content</value>
+  </data>
+  <data name="&gt;&gt;buttonAdaptColumnWidth.Name" xml:space="preserve">
+    <value>buttonAdaptColumnWidth</value>
+  </data>
+  <data name="&gt;&gt;buttonAdaptColumnWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAdaptColumnWidth.Parent" xml:space="preserve">
+    <value>tableLayoutPanelSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonAdaptColumnWidth.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tableLayoutPanelSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 16</value>
+  </data>
+  <data name="tableLayoutPanelSettings.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 1</value>
+  </data>
+  <data name="tableLayoutPanelSettings.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanelSettings.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 47</value>
+  </data>
+  <data name="tableLayoutPanelSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelSettings.Name" xml:space="preserve">
+    <value>tableLayoutPanelSettings</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelSettings.Parent" xml:space="preserve">
+    <value>groupBoxSettings</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelSettings.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelSettings.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonSettingsSave" Row="0" RowSpan="2" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="buttonSettingsLoad" Row="0" RowSpan="2" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="labelSetting" Row="2" RowSpan="1" Column="0" ColumnSpan="5" /&gt;&lt;Control Name="buttonSettingsReset" Row="0" RowSpan="2" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="buttonSettingsAddTable" Row="0" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonAdaptColumnWidth" Row="0" RowSpan="2" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,50,Percent,50,Absolute,23" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="groupBoxSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>640, 3</value>
+  </data>
+  <data name="groupBoxSettings.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 1</value>
+  </data>
+  <data name="groupBoxSettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 1, 2</value>
+  </data>
+  <data name="groupBoxSettings.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBoxSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 65</value>
+  </data>
+  <data name="groupBoxSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="groupBoxSettings.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSettings.Name" xml:space="preserve">
+    <value>groupBoxSettings</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSettings.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSettings.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="comboBoxProject.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="comboBoxProject.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 17</value>
+  </data>
+  <data name="comboBoxProject.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 4, 1</value>
+  </data>
+  <data name="comboBoxProject.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxProject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 23</value>
+  </data>
+  <data name="comboBoxProject.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;comboBoxProject.Name" xml:space="preserve">
+    <value>comboBoxProject</value>
+  </data>
+  <data name="&gt;&gt;comboBoxProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxProject.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;comboBoxProject.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="labelResultRange.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelResultRange.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelResultRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 41</value>
+  </data>
+  <data name="labelResultRange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="labelResultRange.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelResultRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 14</value>
+  </data>
+  <data name="labelResultRange.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="labelResultRange.Text" xml:space="preserve">
+    <value>0 - ...</value>
+  </data>
+  <data name="labelResultRange.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;labelResultRange.Name" xml:space="preserve">
+    <value>labelResultRange</value>
+  </data>
+  <data name="&gt;&gt;labelResultRange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelResultRange.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;labelResultRange.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="buttonExport.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonExport.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonExport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>809, 41</value>
+  </data>
+  <data name="buttonExport.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 2</value>
+  </data>
+  <data name="buttonExport.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 26</value>
+  </data>
+  <data name="buttonExport.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="buttonExport.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="buttonExport.ToolTip" xml:space="preserve">
+    <value>Export as text file</value>
+  </data>
+  <data name="&gt;&gt;buttonExport.Name" xml:space="preserve">
+    <value>buttonExport</value>
+  </data>
+  <data name="&gt;&gt;buttonExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonExport.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonExport.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="buttonEditMode.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonEditMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>374, 41</value>
+  </data>
+  <data name="buttonEditMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 3</value>
+  </data>
+  <data name="buttonEditMode.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonEditMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 24</value>
+  </data>
+  <data name="buttonEditMode.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="buttonEditMode.ToolTip" xml:space="preserve">
+    <value>Current edit mode. Click to change edit mode</value>
+  </data>
+  <data name="&gt;&gt;buttonEditMode.Name" xml:space="preserve">
+    <value>buttonEditMode</value>
+  </data>
+  <data name="&gt;&gt;buttonEditMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonEditMode.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonEditMode.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="buttonFeedback.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonFeedback.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonFeedback.Location" type="System.Drawing.Point, System.Drawing">
+    <value>786, 44</value>
+  </data>
+  <data name="buttonFeedback.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="buttonFeedback.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonFeedback.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="buttonFeedback.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="buttonFeedback.ToolTip" xml:space="preserve">
+    <value>Send feedback to the software developer</value>
+  </data>
+  <data name="&gt;&gt;buttonFeedback.Name" xml:space="preserve">
+    <value>buttonFeedback</value>
+  </data>
+  <data name="&gt;&gt;buttonFeedback.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFeedback.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonFeedback.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="buttonMarkWholeColumn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="buttonMarkWholeColumn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonMarkWholeColumn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>602, 14</value>
+  </data>
+  <data name="buttonMarkWholeColumn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonMarkWholeColumn.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonMarkWholeColumn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 27</value>
+  </data>
+  <data name="buttonMarkWholeColumn.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="buttonMarkWholeColumn.ToolTip" xml:space="preserve">
+    <value>Mark the whole column</value>
+  </data>
+  <data name="&gt;&gt;buttonMarkWholeColumn.Name" xml:space="preserve">
+    <value>buttonMarkWholeColumn</value>
+  </data>
+  <data name="&gt;&gt;buttonMarkWholeColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMarkWholeColumn.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonMarkWholeColumn.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="labelResultMax.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelResultMax.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelResultMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 55</value>
+  </data>
+  <data name="labelResultMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="labelResultMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>117, 0</value>
+  </data>
+  <data name="labelResultMax.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelResultMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 14</value>
+  </data>
+  <data name="labelResultMax.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="labelResultMax.Text" xml:space="preserve">
+    <value>of </value>
+  </data>
+  <data name="labelResultMax.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;labelResultMax.Name" xml:space="preserve">
+    <value>labelResultMax</value>
+  </data>
+  <data name="&gt;&gt;labelResultMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelResultMax.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;labelResultMax.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="buttonMainForm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonMainForm.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="buttonMainForm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>813, 6</value>
+  </data>
+  <data name="buttonMainForm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="buttonMainForm.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonMainForm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 32</value>
+  </data>
+  <data name="buttonMainForm.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="buttonMainForm.ToolTip" xml:space="preserve">
+    <value>Show selected dataset in main form</value>
+  </data>
+  <data name="&gt;&gt;buttonMainForm.Name" xml:space="preserve">
+    <value>buttonMainForm</value>
+  </data>
+  <data name="&gt;&gt;buttonMainForm.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMainForm.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonMainForm.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="buttonSaveData.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="buttonSaveData.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonSaveData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>786, 14</value>
+  </data>
+  <data name="buttonSaveData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonSaveData.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonSaveData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 27</value>
+  </data>
+  <data name="buttonSaveData.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="buttonSaveData.ToolTip" xml:space="preserve">
+    <value>Save changes and requery data</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveData.Name" xml:space="preserve">
+    <value>buttonSaveData</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveData.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveData.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="buttonGetSQL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="buttonGetSQL.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonGetSQL.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 5pt, style=Bold</value>
+  </data>
+  <data name="buttonGetSQL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 34</value>
+  </data>
+  <data name="buttonGetSQL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonGetSQL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 35</value>
+  </data>
+  <data name="buttonGetSQL.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="buttonGetSQL.Text" xml:space="preserve">
+    <value>SQL</value>
+  </data>
+  <data name="buttonGetSQL.ToolTip" xml:space="preserve">
+    <value>Show SQL for the current selection</value>
+  </data>
+  <data name="&gt;&gt;buttonGetSQL.Name" xml:space="preserve">
+    <value>buttonGetSQL</value>
+  </data>
+  <data name="&gt;&gt;buttonGetSQL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonGetSQL.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonGetSQL.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="buttonShowMap.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonShowMap.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonShowMap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>843, 3</value>
+  </data>
+  <data name="buttonShowMap.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonShowMap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 38</value>
+  </data>
+  <data name="buttonShowMap.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="buttonShowMap.ToolTip" xml:space="preserve">
+    <value>Show a map containing the selected data</value>
+  </data>
+  <data name="buttonShowMap.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonShowMap.Name" xml:space="preserve">
+    <value>buttonShowMap</value>
+  </data>
+  <data name="&gt;&gt;buttonShowMap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonShowMap.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonShowMap.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <metadata name="contextMenuStripMap.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>234, 56</value>
+  </metadata>
+  <data name="showLegendToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 22</value>
+  </data>
+  <data name="showLegendToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show legend</value>
+  </data>
+  <data name="contextMenuStripMap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripMap.Name" xml:space="preserve">
+    <value>contextMenuStripMap</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripMap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonSetMapIcons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonSetMapIcons.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonSetMapIcons.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
+  <data name="buttonSetMapIcons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>843, 41</value>
+  </data>
+  <data name="buttonSetMapIcons.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonSetMapIcons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 28</value>
+  </data>
+  <data name="buttonSetMapIcons.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="buttonSetMapIcons.ToolTip" xml:space="preserve">
+    <value>Set colors and icons shown in the map</value>
+  </data>
+  <data name="buttonSetMapIcons.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonSetMapIcons.Name" xml:space="preserve">
+    <value>buttonSetMapIcons</value>
+  </data>
+  <data name="&gt;&gt;buttonSetMapIcons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSetMapIcons.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonSetMapIcons.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <metadata name="contextMenuStripLinkSettings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>530, 56</value>
+  </metadata>
+  <data name="showAllSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="showAllSettingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show all settings</value>
+  </data>
+  <data name="contextMenuStripLinkSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripLinkSettings.Name" xml:space="preserve">
+    <value>contextMenuStripLinkSettings</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripLinkSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonFixSource.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonFixSource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>431, 41</value>
+  </data>
+  <data name="buttonFixSource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonFixSource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 27</value>
+  </data>
+  <data name="buttonFixSource.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;buttonFixSource.Name" xml:space="preserve">
+    <value>buttonFixSource</value>
+  </data>
+  <data name="&gt;&gt;buttonFixSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFixSource.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonFixSource.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <metadata name="toolStripMap.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>407, 56</value>
+  </metadata>
+  <data name="toolStripMap.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tK25ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
+  </data>
+  <data name="tK25ToolStripMenuItem.Text" xml:space="preserve">
+    <value>TK25 (Sym.)</value>
+  </data>
+  <data name="tK25ToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Open a map with the symbols of the selected data assigned to TK25</value>
+  </data>
+  <data name="wGS84ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
+  </data>
+  <data name="wGS84ToolStripMenuItem.Text" xml:space="preserve">
+    <value>WGS84 (Sym.)</value>
+  </data>
+  <data name="wGS84ToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Open a map with symbols according to the WGS84 coordinates of the selected data</value>
+  </data>
+  <data name="mapToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
+  </data>
+  <data name="mapToolStripMenuItem.Text" xml:space="preserve">
+    <value>Map (Geo.)</value>
+  </data>
+  <data name="mapToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Open a adaptive map with the  map with geography of the selected data</value>
+  </data>
+  <data name="toolStripDropDownButtonMap.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripDropDownButtonMap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 20</value>
+  </data>
+  <data name="toolStripDropDownButtonMap.Text" xml:space="preserve">
+    <value>Choose the type of map shown</value>
+  </data>
+  <data name="toolStripButtonMapSymbols.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonMapSymbols.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonMapSymbols.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 20</value>
+  </data>
+  <data name="toolStripButtonMapSymbols.Text" xml:space="preserve">
+    <value>Set colors, symbols etc. in the map</value>
+  </data>
+  <data name="toolStripButtonLegend.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripButtonLegend.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonLegend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 20</value>
+  </data>
+  <data name="toolStripButtonLegend.Text" xml:space="preserve">
+    <value>Show legend for the map according to the settings</value>
+  </data>
+  <data name="toolStripMap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>866, 3</value>
+  </data>
+  <data name="toolStripMap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 66</value>
+  </data>
+  <data name="toolStripMap.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="toolStripMap.Text" xml:space="preserve">
+    <value>Show a map containing the selected data</value>
+  </data>
+  <data name="&gt;&gt;toolStripMap.Name" xml:space="preserve">
+    <value>toolStripMap</value>
+  </data>
+  <data name="&gt;&gt;toolStripMap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMap.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;toolStripMap.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="checkBoxProject.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="checkBoxProject.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxProject.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxProject.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="checkBoxProject.Location" type="System.Drawing.Point, System.Drawing">
+    <value>43, 16</value>
+  </data>
+  <data name="checkBoxProject.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 3</value>
+  </data>
+  <data name="checkBoxProject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 22</value>
+  </data>
+  <data name="checkBoxProject.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="checkBoxProject.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
+  <data name="&gt;&gt;checkBoxProject.Name" xml:space="preserve">
+    <value>checkBoxProject</value>
+  </data>
+  <data name="&gt;&gt;checkBoxProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxProject.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;checkBoxProject.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="labelProject.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelProject.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelProject.Location" type="System.Drawing.Point, System.Drawing">
+    <value>62, 16</value>
+  </data>
+  <data name="labelProject.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 13, 0, 1</value>
+  </data>
+  <data name="labelProject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="labelProject.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="labelProject.Text" xml:space="preserve">
+    <value>Project:</value>
+  </data>
+  <data name="labelProject.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;labelProject.Name" xml:space="preserve">
+    <value>labelProject</value>
+  </data>
+  <data name="&gt;&gt;labelProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelProject.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;labelProject.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="checkBoxMarkColumnRange.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="checkBoxMarkColumnRange.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxMarkColumnRange.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="checkBoxMarkColumnRange.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="checkBoxMarkColumnRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>602, 41</value>
+  </data>
+  <data name="checkBoxMarkColumnRange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxMarkColumnRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 28</value>
+  </data>
+  <data name="checkBoxMarkColumnRange.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="checkBoxMarkColumnRange.ToolTip" xml:space="preserve">
+    <value>Mark ranges within a column</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMarkColumnRange.Name" xml:space="preserve">
+    <value>checkBoxMarkColumnRange</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMarkColumnRange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMarkColumnRange.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMarkColumnRange.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="buttonShowGeometry.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonShowGeometry.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonShowGeometry.Location" type="System.Drawing.Point, System.Drawing">
+    <value>896, 3</value>
+  </data>
+  <data name="buttonShowGeometry.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonShowGeometry.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 38</value>
+  </data>
+  <data name="buttonShowGeometry.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="buttonShowGeometry.ToolTip" xml:space="preserve">
+    <value>Show geometry containing selected data</value>
+  </data>
+  <data name="buttonShowGeometry.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonShowGeometry.Name" xml:space="preserve">
+    <value>buttonShowGeometry</value>
+  </data>
+  <data name="&gt;&gt;buttonShowGeometry.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonShowGeometry.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonShowGeometry.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="buttonSetGeometryIcons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonSetGeometryIcons.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonSetGeometryIcons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>896, 41</value>
+  </data>
+  <data name="buttonSetGeometryIcons.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonSetGeometryIcons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 28</value>
+  </data>
+  <data name="buttonSetGeometryIcons.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="buttonSetGeometryIcons.ToolTip" xml:space="preserve">
+    <value>Set colors and icons shown in the geometry</value>
+  </data>
+  <data name="buttonSetGeometryIcons.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonSetGeometryIcons.Name" xml:space="preserve">
+    <value>buttonSetGeometryIcons</value>
+  </data>
+  <data name="&gt;&gt;buttonSetGeometryIcons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSetGeometryIcons.Parent" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonSetGeometryIcons.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="tableLayoutPanelConnection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelConnection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 0</value>
+  </data>
+  <data name="tableLayoutPanelConnection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 0, 0</value>
+  </data>
+  <data name="tableLayoutPanelConnection.RowCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tableLayoutPanelConnection.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelConnection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1102, 69</value>
+  </data>
+  <data name="tableLayoutPanelConnection.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelConnection.Name" xml:space="preserve">
+    <value>tableLayoutPanelConnection</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelConnection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelConnection.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelConnection.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelConnection.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonPrevious" Row="2" RowSpan="2" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="buttonConnect" Row="2" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonNext" Row="2" RowSpan="2" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="comboBoxReplaceWith" Row="2" RowSpan="2" Column="11" ColumnSpan="1" /&gt;&lt;Control Name="labelReplaceWith" Row="2" RowSpan="2" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="comboBoxReplace" Row="1" RowSpan="1" Column="11" ColumnSpan="1" /&gt;&lt;Control Name="buttonEdit" Row="0" RowSpan="2" Column="8" ColumnSpan="3" /&gt;&lt;Control Name="numericUpDownMaxResults" Row="2" RowSpan="2" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="labelMaxResults" Row="2" RowSpan="2" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="buttonStart" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pictureBoxImage" Row="0" RowSpan="4" Column="21" ColumnSpan="1" /&gt;&lt;Control Name="groupBoxSettings" Row="1" RowSpan="3" Column="14" ColumnSpan="1" /&gt;&lt;Control Name="comboBoxProject" Row="1" RowSpan="1" Column="3" ColumnSpan="4" /&gt;&lt;Control Name="labelResultRange" Row="2" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="buttonExport" Row="2" RowSpan="2" Column="17" ColumnSpan="1" /&gt;&lt;Control Name="buttonEditMode" Row="2" RowSpan="2" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="buttonFeedback" Row="2" RowSpan="2" Column="16" ColumnSpan="1" /&gt;&lt;Control Name="buttonMarkWholeColumn" Row="1" RowSpan="1" Column="12" ColumnSpan="1" /&gt;&lt;Control Name="labelResultMax" Row="3" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="buttonMainForm" Row="1" RowSpan="1" Column="17" ColumnSpan="1" /&gt;&lt;Control Name="buttonSaveData" Row="1" RowSpan="1" Column="16" ColumnSpan="1" /&gt;&lt;Control Name="buttonGetSQL" Row="1" RowSpan="3" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="buttonShowMap" Row="1" RowSpan="1" Column="18" ColumnSpan="1" /&gt;&lt;Control Name="buttonSetMapIcons" Row="2" RowSpan="2" Column="18" ColumnSpan="1" /&gt;&lt;Control Name="buttonFixSource" Row="2" RowSpan="2" Column="10" ColumnSpan="1" /&gt;&lt;Control Name="toolStripMap" Row="1" RowSpan="3" Column="19" ColumnSpan="1" /&gt;&lt;Control Name="checkBoxProject" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelProject" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="checkBoxMarkColumnRange" Row="2" RowSpan="2" Column="12" ColumnSpan="1" /&gt;&lt;Control Name="buttonShowGeometry" Row="1" RowSpan="1" Column="20" ColumnSpan="1" /&gt;&lt;Control Name="buttonSetGeometryIcons" Row="2" RowSpan="2" Column="20" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,43,Absolute,19,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,15,Absolute,26,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,26,Absolute,12,AutoSize,0,Absolute,12,Absolute,23,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,23,AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="Absolute,3,Percent,100,Absolute,14,Absolute,14" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="buttonResetToFactorySettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonResetToFactorySettings.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="buttonResetToFactorySettings.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="buttonResetToFactorySettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 72</value>
+  </data>
+  <data name="buttonResetToFactorySettings.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="buttonResetToFactorySettings.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonResetToFactorySettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1098, 29</value>
+  </data>
+  <data name="buttonResetToFactorySettings.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonResetToFactorySettings.Text" xml:space="preserve">
+    <value>Settings may be corrupted. Please click here to close the form and reset to factory settings</value>
+  </data>
+  <data name="buttonResetToFactorySettings.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonResetToFactorySettings.Name" xml:space="preserve">
+    <value>buttonResetToFactorySettings</value>
+  </data>
+  <data name="&gt;&gt;buttonResetToFactorySettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonResetToFactorySettings.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;buttonResetToFactorySettings.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelGrids.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelAdding.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <metadata name="contextMenuStripAdding.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>740, 17</value>
+  </metadata>
+  <data name="removeToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 22</value>
+  </data>
+  <data name="removeToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="contextMenuStripAdding.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="contextMenuStripAdding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripAdding.Name" xml:space="preserve">
+    <value>contextMenuStripAdding</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripAdding.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dataGridViewAdding.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dataGridViewAdding.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 0</value>
+  </data>
+  <data name="dataGridViewAdding.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 3</value>
+  </data>
+  <data name="dataGridViewAdding.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="dataGridViewAdding.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dataGridViewAdding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1059, 25</value>
+  </data>
+  <data name="dataGridViewAdding.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewAdding.Name" xml:space="preserve">
+    <value>dataGridViewAdding</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewAdding.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewAdding.Parent" xml:space="preserve">
+    <value>tableLayoutPanelAdding</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewAdding.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonAddingClear.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonAddingClear.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonAddingClear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonAddingClear.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonAddingClear.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonAddingClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 28</value>
+  </data>
+  <data name="buttonAddingClear.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonAddingClear.ToolTip" xml:space="preserve">
+    <value>Einstellungen für das Einfügen von Daten löschen</value>
+  </data>
+  <data name="&gt;&gt;buttonAddingClear.Name" xml:space="preserve">
+    <value>buttonAddingClear</value>
+  </data>
+  <data name="&gt;&gt;buttonAddingClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAddingClear.Parent" xml:space="preserve">
+    <value>tableLayoutPanelAdding</value>
+  </data>
+  <data name="&gt;&gt;buttonAddingClear.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelAdding.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelAdding.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 625</value>
+  </data>
+  <data name="tableLayoutPanelAdding.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tableLayoutPanelAdding.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelAdding.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelAdding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1098, 28</value>
+  </data>
+  <data name="tableLayoutPanelAdding.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelAdding.Name" xml:space="preserve">
+    <value>tableLayoutPanelAdding</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelAdding.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelAdding.Parent" xml:space="preserve">
+    <value>tableLayoutPanelGrids</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelAdding.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelAdding.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="dataGridViewAdding" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonAddingClear" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="contextMenuStripGrid.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>392, 17</value>
+  </metadata>
+  <data name="toolStripMenuItemRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="toolStripMenuItemRemove.Text" xml:space="preserve">
+    <value>Remove the selected value</value>
+  </data>
+  <data name="useThisRowAsTemplateForNewRowsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="useThisRowAsTemplateForNewRowsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Use this row as template for new rows</value>
+  </data>
+  <data name="transferValuesToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="transferValuesToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>Transfer values to clipboard</value>
+  </data>
+  <data name="copyValuesToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="copyValuesToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copy values to clipboard</value>
+  </data>
+  <data name="insertValesFromClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="insertValesFromClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insert vales from clipboard</value>
+  </data>
+  <data name="contextMenuStripGrid.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="contextMenuStripGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 114</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripGrid.Name" xml:space="preserve">
+    <value>contextMenuStripGrid</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripGrid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dataGridView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 79</value>
+  </data>
+  <data name="dataGridView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="dataGridView.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="dataGridView.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1090, 543</value>
+  </data>
+  <data name="dataGridView.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dataGridView.Name" xml:space="preserve">
+    <value>dataGridView</value>
+  </data>
+  <data name="&gt;&gt;dataGridView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridView.Parent" xml:space="preserve">
+    <value>tableLayoutPanelGrids</value>
+  </data>
+  <data name="&gt;&gt;dataGridView.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelFilter.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <metadata name="contextMenuStripFilterButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1050, 17</value>
+  </metadata>
+  <data name="toolStripMenuItemClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 22</value>
+  </data>
+  <data name="toolStripMenuItemClear.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="toolStripMenuItemClear.ToolTipText" xml:space="preserve">
+    <value>Clear all filter values</value>
+  </data>
+  <data name="contextMenuStripFilterButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="contextMenuStripFilterButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripFilterButton.Name" xml:space="preserve">
+    <value>contextMenuStripFilterButton</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripFilterButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonFilter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonFilter.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 52</value>
+  </data>
+  <data name="buttonFilter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonFilter.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 24</value>
+  </data>
+  <data name="buttonFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonFilter.ToolTip" xml:space="preserve">
+    <value>Search for data according to the filter</value>
+  </data>
+  <data name="&gt;&gt;buttonFilter.Name" xml:space="preserve">
+    <value>buttonFilter</value>
+  </data>
+  <data name="&gt;&gt;buttonFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFilter.Parent" xml:space="preserve">
+    <value>tableLayoutPanelFilter</value>
+  </data>
+  <data name="&gt;&gt;buttonFilter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="contextMenuStripFilter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>564, 17</value>
+  </metadata>
+  <data name="removeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
+  </data>
+  <data name="removeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Remove value</value>
+  </data>
+  <data name="contextMenuStripFilter.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="contextMenuStripFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripFilter.Name" xml:space="preserve">
+    <value>contextMenuStripFilter</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dataGridViewFilter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dataGridViewFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 28</value>
+  </data>
+  <data name="dataGridViewFilter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="dataGridViewFilter.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="dataGridViewFilter.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dataGridViewFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1055, 48</value>
+  </data>
+  <data name="dataGridViewFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewFilter.Name" xml:space="preserve">
+    <value>dataGridViewFilter</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewFilter.Parent" xml:space="preserve">
+    <value>tableLayoutPanelFilter</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewFilter.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonTimeout.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonTimeout.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonTimeout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="buttonTimeout.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonTimeout.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonTimeout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 24</value>
+  </data>
+  <data name="buttonTimeout.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="buttonTimeout.ToolTip" xml:space="preserve">
+    <value>Set the timeout for the query</value>
+  </data>
+  <data name="&gt;&gt;buttonTimeout.Name" xml:space="preserve">
+    <value>buttonTimeout</value>
+  </data>
+  <data name="&gt;&gt;buttonTimeout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonTimeout.Parent" xml:space="preserve">
+    <value>tableLayoutPanelFilter</value>
+  </data>
+  <data name="&gt;&gt;buttonTimeout.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonReadOnly.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonReadOnly.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonReadOnly.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonReadOnly.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonReadOnly.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonReadOnly.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 28</value>
+  </data>
+  <data name="buttonReadOnly.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="buttonReadOnly.ToolTip" xml:space="preserve">
+    <value>Switch to read only without color indication etc. for higher performance</value>
+  </data>
+  <data name="&gt;&gt;buttonReadOnly.Name" xml:space="preserve">
+    <value>buttonReadOnly</value>
+  </data>
+  <data name="&gt;&gt;buttonReadOnly.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonReadOnly.Parent" xml:space="preserve">
+    <value>tableLayoutPanelFilter</value>
+  </data>
+  <data name="&gt;&gt;buttonReadOnly.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panelTableMarker.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelTableMarker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panelTableMarker.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panelTableMarker.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panelTableMarker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1052, 28</value>
+  </data>
+  <data name="panelTableMarker.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;panelTableMarker.Name" xml:space="preserve">
+    <value>panelTableMarker</value>
+  </data>
+  <data name="&gt;&gt;panelTableMarker.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelTableMarker.Parent" xml:space="preserve">
+    <value>panelTableMarkerScroll</value>
+  </data>
+  <data name="&gt;&gt;panelTableMarker.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelTableMarkerScroll.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelTableMarkerScroll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>42, 0</value>
+  </data>
+  <data name="panelTableMarkerScroll.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>7, 0, 4, 0</value>
+  </data>
+  <data name="panelTableMarkerScroll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1052, 28</value>
+  </data>
+  <data name="panelTableMarkerScroll.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;panelTableMarkerScroll.Name" xml:space="preserve">
+    <value>panelTableMarkerScroll</value>
+  </data>
+  <data name="&gt;&gt;panelTableMarkerScroll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelTableMarkerScroll.Parent" xml:space="preserve">
+    <value>tableLayoutPanelFilter</value>
+  </data>
+  <data name="&gt;&gt;panelTableMarkerScroll.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tableLayoutPanelFilter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanelFilter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tableLayoutPanelFilter.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanelFilter.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1098, 76</value>
+  </data>
+  <data name="tableLayoutPanelFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelFilter.Name" xml:space="preserve">
+    <value>tableLayoutPanelFilter</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelFilter.Parent" xml:space="preserve">
+    <value>tableLayoutPanelGrids</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelFilter.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanelFilter.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonFilter" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dataGridViewFilter" Row="1" RowSpan="2" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonTimeout" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonReadOnly" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panelTableMarkerScroll" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="Absolute,28,Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="tableLayoutPanelGrids.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelGrids.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 107</value>
+  </data>
+  <data name="tableLayoutPanelGrids.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="tableLayoutPanelGrids.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanelGrids.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1098, 653</value>
+  </data>
+  <data name="tableLayoutPanelGrids.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelGrids.Name" xml:space="preserve">
+    <value>tableLayoutPanelGrids</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelGrids.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelGrids.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelGrids.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanelGrids.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanelAdding" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dataGridView" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanelFilter" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="tableLayoutPanelMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanelMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="tableLayoutPanelMain.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanelMain.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1106, 763</value>
+  </data>
+  <data name="tableLayoutPanelMain.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.Name" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tableLayoutPanelMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanelConnection" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonResetToFactorySettings" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanelGrids" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Percent,100,Absolute,23" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>263, 17</value>
+  </metadata>
+  <metadata name="imageListEditMode.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>107, 17</value>
+  </metadata>
+  <data name="imageListEditMode.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
+        LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
+        SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAFg4AAAJNU0Z0AUkBTAIBAQUB
+        AAHYAQkB2AEJARABAAEQAQAE/wEZAQAI/wFCAU0BNgcAATYDAAEoAwABQAMAASADAAEBAQABGAYAARgT
+        AAEzAcwBAAEzAcwBAAEzAcwBAAEzAcwBAAEzAcwBAAEzAcwBAAEzAcwBAAEzAcwBAAEzAcwBAAEzAcwB
+        AAEzAcwBAAEzAcwBAAEzAcwBAAEzAcwBAAEzAcwBAAEzAcyRAAFmAZkBAAFmAZkBAAFmAZkBAAFmAZkB
+        AAFmAZkBAAFmAZkBAAFmAZkBAAFmAZkBAAFmAZkBAAFmAZkBAAFmAZkBAAFmAZkBAAFmAZkBAAFmAZkB
+        AAFmAZkBAAFmAZmRAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYB
+        AAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWaRAAHMATMBAAHMATMB
+        AAHMATMBAAHMATMBAAHMATMBAAHMATMBAAHMATMBAAHMATMBAAHMATMBAAHMATMBAAHMATMBAAHMATMB
+        AAHMATMBAAHMATMBAAHMATMBAAHMATORAAH/AgAB/wIAAf8CAAH/AgAB/wIAAf8CAAH/AgAB/wIAAf8C
+        AAH/AgAB/wIAAf8CAAH/AgAB/wIAAf8CAAH/owADXwEzAZkBZgEzAZkBZgNfsQADXwFmAZkBZgGZAcwC
+        mQHMAZkBMwGZAWYDX6sAA18BMwGZAWYBmQHMApkB/wKZAf8CmQHMAZkBMwGZAWYDX6UAA18BZgGZAWYB
+        mQHMApkB/wKZAf8BmQFmAf8BmQFmAf8CmQHMAZkBMwGZAWYDX58AA18BMwGZAWYBmQHMApkB/wKZAf8C
+        mQH/ApkB/wGZAWYB/wGZATMB/wKZAcwBmQEzAZkBZgNfnAADXwGZAcwCmQH/ApkB/wKZAf8CmQH/ApkB
+        /wKZAf8CmQH/ApkB/wKZAcwBmQNfnAADXwEzAZkBZgEzAZkBZgEzAZkBZgEzAZkCZgH/AZkBZgH/AZkB
+        MwGZAWYBMwGZAWYBMwGZAWYBMwGZAWYDX6UAA18BMwGZAWYBmQH/ApkB/wGZATMBmQFmA1+uAANfATMB
+        mQEzAZkB/wKZAf8BmQEzAZkBZgNfrgADXwEzAZkBMwGZAf8CmQH/AZkBMwGZAWYDX64AA18BMwGZATMB
+        mQH/ApkB/wGZATMBmQFmA1+rAAPdAZkBzAGZAWYBzAGZAWYBzAGZAWYBzAGZAWYBzAGZTgABmQHMApkB
+        zAGZAWYBzAGZAWYBmQFmA9cqAAGZAswBZgGZAcwBZgGZAcwBZgGZAcwBZgGZAcwBMwFmAcwCZgHMDAAD
+        wAFmAZkCZgGZAmYBzAGZATMB/wGZAWYB/wGZAWYBzAGZAWYCmUsAAZABqQGtAWYBzAFmAZkB/wHMAZkB
+        /wHMAWYBzAGZATMBZgEzAZkBzAGZA/EkAAKZAcwBmQHMAf8BmQHMAf8BZgHMAf8BZgGZAf8BMwFmAcwM
+        AAOyAWYBmQJmAf8CmQH/AcwBZgH/AZkBZgH/AZkBZgHMAWYBMwGZAWYD1x0AAf8gAAH/CQADsgFmAZkC
+        ZgH/AZkBZgH/AZkBZgH/ApkB/wHMAWYBzAFmATMBZgEzA4YB1gLnIQABmQHMAf8BmQHMAf8BZgHMAf8B
+        ZgHMAf8BMwFmAcwCZgHMDAABZgGZAmYBzAKZAf8BzAFmAf8CmQH/ApkB/wGZAWYBzAJmAZkBZgHAAdwB
+        wBoAAf8CAAH/AgAB/yQAA9cBMwGZAmYB/wGZAWYB/wGZAWYB/wKZAf8CmQH/ApkB/wHMAWYBzAGZATMB
+        mQFmA4AD4w8AAWYBmQJmAZkBZgkAAWYBmQH/AWYBzAH/AWYBzAH/AWYBmQH/AWYBmQH/ATMBZgHMAmYB
+        mQkAA4YBZgGZAWYBmQH/AcwBmQH/ApkB/wKZAf8BmQFmAf8BmQFmAcwBmQEzAZkCZgHMAZkXAAH/AgAB
+        /wIAAf8CAAH/FwAB/wYAA+oBZgGZAWYBMwHMAZkBZgH/AZkBZgH/ApkB/wKZAf8BmQFmAf8BmQFmAf8B
+        mQFmAf8CmQHMAZkCZgEzAaQCoAwAAWYBzAFmATMBmQEzDAABZgGZAf8BZgGZAf8BZgGZAf8BMwGZAf8B
+        MwFmAf8BMwFmAf8BAAEzAcwCZgGZBgABwAHcAcABMwGZAWYBmQHMApkB/wKZAf8BmQFmAf8BmQFmAf8B
+        mQEzAcwBmQEzAcwBZgEzAcwBZgEzAZkBZgGZAcwBmRQAAf8CAAH/AgAB/xQAAf8JAAGZAcwBmQEzAcwC
+        ZgH/AZkBZgHMAZkBZgHMApkB/wGZAWYB/wGZAWYBzAGZATMBmQIzAcwBMwFmAcwCZgGZAWYD1wwAATMB
+        mQIzAZkBMwwAAYABfAH/ATMBZgH/ATMBZgHMAWYBmQHMATMBZgHMAQABMwH/AQABMwH/AQABMwHMAZAB
+        qQGtBgABZgGZAmYBzAFmAZkB/wGZATMBzAFmATMBmQJmAcwBmQFmAcwBmQEzAcwBZgEzAcwBZgEzAcwB
+        ZgEzAZkBMwHAAdwBwBQAAf8CAAH/AgAB/w4AAf8CAAH/CQABkAGpAa0BMwGZAWYBMwGZAWYBMwGZATMB
+        ZgGZAmYB/wGZAWYB/wGZAWYBzAGZA18EwAHcAcAB1gLnDAABZgGZAWYBMwHMAjMBmQEzDAABZgGZAcwC
+        MwHMApkBzAMAApkBzAIzAcwBAAEzAf8BAAEzAcwCZgGZBgADlgEzAZkCZgH/AZkBMwHMBGYBMwFmAjMB
+        mQIzAcwBZgEzAcwBZgEzAcwBZgEzAcwCZgHMAZkXAAH/AgAB/wIAAf8IAAH/AgAB/wwAA+oBmQHMAZkD
+        sgHAAdwBwAFmAZkCZgHMAZkBMwH/AZkBZgHMAWYBMwFmATMD4xIAATMBmQFmATMBzAIzAZkBMwOWGAAB
+        gAF8Af8BAAEzAcwBAAEzAf8BMwFmAcwGAAPABGYBzAGZAWYBzAFmAwADwAFmAZkBZgEzAWYCMwHMAWYB
+        MwHMAWYBMwHMAmYBzAFmGgAB/wIAAf8CAAH/AgAB/wIAAf8bAAFmAZkBZgEzAcwBZgEzAcwBZgEzAcwB
+        ZgEzAWYBMwPMEgABZgGZAWYBMwHMAWYBMwHMAWYBMwGZAWYDsgYAAWYBmQFmA5YMAAEzAWYBzAIAAcwB
+        MwFmAcwJAAN3ATMBZgEzAZkBzAGZCQABpAKgATMBZgIzAcwCMwHMATMBZgHMAWYdAAH/AgAB/wIAAf8e
+        AAFmAZkBZgEzAcwBZgEzAcwBZgEzAcwBZgEzAWYBMwPAFQABMwHMAWYBMwHMAWYBMwHMAWYBMwGZAWYD
+        hgFmAZkCZgHMAmYBmQFmDAABgAF8Af8CAAHMAmYBzB4AAWYBmQFmATMBmQIzAcwCMwHMAWYaAAH/AgAB
+        /wIAAf8CAAH/AgAB/xsAAZkBzAGZATMBmQFmATMBzAFmATMBzAFmATMBmQEzA4YVAAFmAcwBZgEzAcwB
+        ZgEzAcwCZgHMAWYBMwGZAWYBMwHMAmYB/wGZAWYBmQFmDAACZgHMASEBAAGlJAABMwGZAjMBzAIzAZkB
+        ZhcAAf8CAAH/AgAB/wgAAf8CAAH/GwABMwGZAWYBMwHMAWYBMwHMAWYBMwGZAjMBZgEzA8sVAAEzAcwB
+        ZgEzAcwCZgH/AZkBZgH/AZkBZgH/ApkB/wGZAWYBzAFmCQACmQHMAgABgAKZAcwkAAEzAZkBMwEAAZkB
+        MwFmAcwBZhEAAf8CAAH/AgAB/wIAAf8OAAH/AgAB/xgAAZkBzAGZATMBmQFmATMBzAFmATMBzAIzAZkC
+        MwGZATMBwAHcAcAVAAFmAcwCZgHMAWYBmQH/ApkB/wKZAf8BzAFmAcwBmQkAAmYBzAKZAcwnAAEzAZkC
+        MwGZATMBmQHMAZkOAAH/AgAB/wIAAf8CAAH/FAAB/wIAAf8YAAFmAZkBZgEzAZkBZgEzAcwCMwHMAjMB
+        mQIzAZkBMwFmAZkCZgHMAZkBZgGZAWYDlgkAAWYBzAJmAcwCZgH/AZkBZgH/ApkB/wHMAWYBzAGZMwAB
+        mQHMAZkBMwFmATMBZgGZAWYB1gLnDgAB/wIAAf8CAAH/HQAB/xgAAWYBmQFmATMBmQIzAcwCMwHMATMB
+        AAGZAjMBmQIzAWYCMwFmATMDsgYAAZABqQGtATMBzAFmATMBzAGZAWYBzAGZAWYBzAGZAWYBzAGZAWYB
+        zAGZMwABZgGZAmYBmQFmAcwB/wHMUQABmQHMAZkBZgGZAmYBmQJmAcwCZgHMAWYBmQHMAZkBzAH/Acwz
+        AAFCAU0BPgcAAT4DAAEoAwABQAMAASADAAEBAQABAQYAAQEWAAP/KQAB/AE/BgAB+AEfBgAB8AEPBgAB
+        4AEHBgABwAEDBgABwAEDBgABwAEDBgAB+AEfBgAB+AEfBgAB+AEfBgAB+AEfBgAB8AE/Av8B8AF/Af4B
+        AwHAAT8C/wHgAR8B/gEHAYABPwHvAf0BwAEPAf4BBwGAAT8BxwH/AYABBwHOAQMBgAEfAcMB+wEAAQcB
+        ngEBAYABBwHjAfcBAAEHAZ4BAAHAAQMB8QHnAQABDwEeASABwAEDAfgBzwEAAT8BDwHwAcIBAwH8AR8B
+        8AE/AQYBeAHjAYMB/gE/AfABPwGAAXgB/wHDAfwBHwHwAT8BgAF5Af8B4wH4Ac8B+AEfAcABcQH/AeMB
+        4QHnAfgBDwHgAXMB/wHjAcMB8wH8AQAB4AF/Af8BwwHHAf0B/gEAAcABfwH/AccD/wEBAv8L
+</value>
+  </data>
+  <metadata name="contextMenuStripTableMarker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <data name="removeTableToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 22</value>
+  </data>
+  <data name="removeTableToolStripMenuItem.Text" xml:space="preserve">
+    <value>Remove table</value>
+  </data>
+  <data name="contextMenuStripTableMarker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripTableMarker.Name" xml:space="preserve">
+    <value>contextMenuStripTableMarker</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripTableMarker.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>105</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1106, 763</value>
+  </data>
+  <data name="$this.HelpKeyword" xml:space="preserve">
+    <value>Spreadsheet</value>
+  </data>
+  <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>KeywordIndex</value>
+  </data>
+  <data name="$this.HelpString" xml:space="preserve">
+    <value>Spreadsheet</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAB
+        AAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAwMDAAMDcwADwyqYABAQEAAgICAAMDAwAERERABYW
+        FgAcHBwAIiIiACkpKQBVVVUATU1NAEJCQgA5OTkAgHz/AFBQ/wCTANYA/+zMAMbW7wDW5+cAkKmtAAAA
+        MwAAAGYAAACZAAAAzAAAMwAAADMzAAAzZgAAM5kAADPMAAAz/wAAZgAAAGYzAABmZgAAZpkAAGbMAABm
+        /wAAmQAAAJkzAACZZgAAmZkAAJnMAACZ/wAAzAAAAMwzAADMZgAAzJkAAMzMAADM/wAA/2YAAP+ZAAD/
+        zAAzAAAAMwAzADMAZgAzAJkAMwDMADMA/wAzMwAAMzMzADMzZgAzM5kAMzPMADMz/wAzZgAAM2YzADNm
+        ZgAzZpkAM2bMADNm/wAzmQAAM5kzADOZZgAzmZkAM5nMADOZ/wAzzAAAM8wzADPMZgAzzJkAM8zMADPM
+        /wAz/zMAM/9mADP/mQAz/8wAM///AGYAAABmADMAZgBmAGYAmQBmAMwAZgD/AGYzAABmMzMAZjNmAGYz
+        mQBmM8wAZjP/AGZmAABmZjMAZmZmAGZmmQBmZswAZpkAAGaZMwBmmWYAZpmZAGaZzABmmf8AZswAAGbM
+        MwBmzJkAZszMAGbM/wBm/wAAZv8zAGb/mQBm/8wAzAD/AP8AzACZmQAAmTOZAJkAmQCZAMwAmQAAAJkz
+        MwCZAGYAmTPMAJkA/wCZZgAAmWYzAJkzZgCZZpkAmWbMAJkz/wCZmTMAmZlmAJmZmQCZmcwAmZn/AJnM
+        AACZzDMAZsxmAJnMmQCZzMwAmcz/AJn/AACZ/zMAmcxmAJn/mQCZ/8wAmf//AMwAAACZADMAzABmAMwA
+        mQDMAMwAmTMAAMwzMwDMM2YAzDOZAMwzzADMM/8AzGYAAMxmMwCZZmYAzGaZAMxmzACZZv8AzJkAAMyZ
+        MwDMmWYAzJmZAMyZzADMmf8AzMwAAMzMMwDMzGYAzMyZAMzMzADMzP8AzP8AAMz/MwCZ/2YAzP+ZAMz/
+        zADM//8AzAAzAP8AZgD/AJkAzDMAAP8zMwD/M2YA/zOZAP8zzAD/M/8A/2YAAP9mMwDMZmYA/2aZAP9m
+        zADMZv8A/5kAAP+ZMwD/mWYA/5mZAP+ZzAD/mf8A/8wAAP/MMwD/zGYA/8yZAP/MzAD/zP8A//8zAMz/
+        ZgD//5kA///MAGZm/wBm/2YAZv//AP9mZgD/Zv8A//9mACEApQBfX18Ad3d3AIaGhgCWlpYAy8vLALKy
+        sgDX19cA3d3dAOPj4wDq6uoA8fHxAPj4+ADw+/8ApKCgAICAgAAAAP8AAP8AAAD//wD/AAAA/wD/AP//
+        AAD///8AAAAAAAAAAAAAAAAAAAAAAOvAwOTk5ODo6Ojob+OZmQDrR5eXl8Bvb7q66G8XdJoA60eYnp6e
+        b47ouuFvTZqaAOvCwsLCwuLi4uLib+PvmQDrFwgICMKTk+EZ4m/jmZoA6/mYmJjCb2+7u+JvTXR6AOvA
+        5OTk5ODo6Ojob+PvmQDrTJ7k5MAc7+jo6G/jmpoA6/mXl5fkTG+6uuhvR3R0AOsTBwcH7uvsvO68bey8
+        BwDrEMLCwsLr+PTi9Ors9hsA6//18Qf///+88fP//7zuAOuXl5eYeJG6urq6c3STkwDr5OSX5H26urq6
+        6Bx6enoA6+vr6+vr6+vr6+vr6+vrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 39</value>
+  </data>
+  <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>FormSpreadsheet</value>
+  </data>
+  <data name="&gt;&gt;showLegendToolStripMenuItem.Name" xml:space="preserve">
+    <value>showLegendToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;showLegendToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showAllSettingsToolStripMenuItem.Name" xml:space="preserve">
+    <value>showAllSettingsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;showAllSettingsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripDropDownButtonMap.Name" xml:space="preserve">
+    <value>toolStripDropDownButtonMap</value>
+  </data>
+  <data name="&gt;&gt;toolStripDropDownButtonMap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tK25ToolStripMenuItem.Name" xml:space="preserve">
+    <value>tK25ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;tK25ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;wGS84ToolStripMenuItem.Name" xml:space="preserve">
+    <value>wGS84ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;wGS84ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mapToolStripMenuItem.Name" xml:space="preserve">
+    <value>mapToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;mapToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonMapSymbols.Name" xml:space="preserve">
+    <value>toolStripButtonMapSymbols</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonMapSymbols.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonLegend.Name" xml:space="preserve">
+    <value>toolStripButtonLegend</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonLegend.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;removeToolStripMenuItem1.Name" xml:space="preserve">
+    <value>removeToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;removeToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemRemove.Name" xml:space="preserve">
+    <value>toolStripMenuItemRemove</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;useThisRowAsTemplateForNewRowsToolStripMenuItem.Name" xml:space="preserve">
+    <value>useThisRowAsTemplateForNewRowsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;useThisRowAsTemplateForNewRowsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;transferValuesToClipboardToolStripMenuItem.Name" xml:space="preserve">
+    <value>transferValuesToClipboardToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;transferValuesToClipboardToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;copyValuesToClipboardToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyValuesToClipboardToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;copyValuesToClipboardToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;insertValesFromClipboardToolStripMenuItem.Name" xml:space="preserve">
+    <value>insertValesFromClipboardToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;insertValesFromClipboardToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemClear.Name" xml:space="preserve">
+    <value>toolStripMenuItemClear</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;removeToolStripMenuItem.Name" xml:space="preserve">
+    <value>removeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;removeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveFileDialog.Name" xml:space="preserve">
+    <value>saveFileDialog</value>
+  </data>
+  <data name="&gt;&gt;saveFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;imageListEditMode.Name" xml:space="preserve">
+    <value>imageListEditMode</value>
+  </data>
+  <data name="&gt;&gt;imageListEditMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;helpProvider.Name" xml:space="preserve">
+    <value>helpProvider</value>
+  </data>
+  <data name="&gt;&gt;helpProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;removeTableToolStripMenuItem.Name" xml:space="preserve">
+    <value>removeTableToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;removeTableToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormSpreadsheet</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

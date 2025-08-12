@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DiversityWorkbench.Forms" GeneratedClassName="FormGoogleMapsCoordinatesSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Latitude" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">48.16385096</Value>
+    </Setting>
+    <Setting Name="Longitude" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">11.50062829</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

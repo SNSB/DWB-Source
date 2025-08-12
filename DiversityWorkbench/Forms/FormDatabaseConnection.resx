@@ -1,0 +1,1344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainerMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="splitContainerMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 52</value>
+  </data>
+  <data name="splitContainerMain.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanelRemoteDB.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelDatabase.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelDatabase.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelDatabase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 290</value>
+  </data>
+  <metadata name="helpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>197, 17</value>
+  </metadata>
+  <data name="labelDatabase.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDatabase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 21</value>
+  </data>
+  <data name="labelDatabase.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelDatabase.Text" xml:space="preserve">
+    <value>Choose database:</value>
+  </data>
+  <data name="labelDatabase.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;labelDatabase.Name" xml:space="preserve">
+    <value>labelDatabase</value>
+  </data>
+  <data name="&gt;&gt;labelDatabase.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDatabase.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;labelDatabase.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comboBoxDatabase.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="comboBoxDatabase.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxDatabase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 311</value>
+  </data>
+  <data name="comboBoxDatabase.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
+  <data name="comboBoxDatabase.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxDatabase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 21</value>
+  </data>
+  <data name="comboBoxDatabase.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;comboBoxDatabase.Name" xml:space="preserve">
+    <value>comboBoxDatabase</value>
+  </data>
+  <data name="&gt;&gt;comboBoxDatabase.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxDatabase.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;comboBoxDatabase.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonConnectToServer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonConnectToServer.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="buttonConnectToServer.ImageKey" xml:space="preserve">
+    <value>NETHOOD.ICO</value>
+  </data>
+  <metadata name="imageListConnectionState.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="imageListConnectionState.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC+
+        CgAAAk1TRnQBSQFMAgEBAwEAAeQBAAHkAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/0IAAXMHSwgAAQUHSwQA
+        AQUEAAH7AQMCAAHsAQcB+gbsEQABcwFSAXkBoAGaAXoBMgIxAUsGAAL5AQUBoAGaAXoBMgIxAUsCAAEF
+        AvkBAALsAfsBAwEAAuwH/wHsEQABcwFZAXoCoAF6ATgBMgExAUsGAAFzAvkBBQGgAXoBOAEyATEBSwEA
+        AQUC+QQAAewDAAHsBwAB7BEAAXMBWQF6AqABegE4ATIBMQFLBgABcwFZAvkBBQF6ATgBMgExAUsBBQL5
+        BQAB7AMAAewHBxIAAXMBWQF6AqABegE4ATIBMQFLBgABcwFZAXoC+QEFATgBMgExAQUC+QoAAewB/wEA
+        BOwBBxIAAXMBWQF6AqAB9wNsBmYBAAFzAVkBegGgAvkBBQFsAQUC+QRmAQAB7AEHAfoE7AH/AQADBgHs
+        AQcSAAFzAnoCoAH3AbwCBwHvArUC9wFmAQABcwJ6AqAC+QEFAvkCtQL3AWYBAAHsBf8B7AH/AQAB/gIG
+        AewBBxIAAXMBWQF6AqAB9wP/Ae8B8gHwAbwBtQFmAQABcwFZAXoCoAH3A/kB7wHyAfABvAG1AWYBAAHs
+        BQAB7AH/BQABBxIAAXMBWQGaAqAB9wP/AbUC8gHwAbUBZgEAAXMBWQGaAqABBQP5AQUC8gHwAbUBZgEA
+        AewFBwHsB/8SAAFzAVkBegKgAbUB8QO8AgcB7wG1AWwBAAFzAVkBegGgAQUC+QG8AvkBBQEHAe8BtQFs
+        AQAB7AH/BQQI7BEAAXMBegOgAe8D/wG8Av8B9AHvAWwBAAFzAXoBoAEFAvkD/wL5AQUB9AHvAWwBAAHs
+        Af8BAAP8AQQBBxgAAXQBoAPDAbsD/wG8Av8B9AEHAWwBAAF0AaABBQL5AbsD/wG8AvkBBQEHAWwBAAHs
+        Af8BAAH+AvwBBAEHGAACmQGgAsME1gXOAa0BAAGZAQUC+QHDBNYCzgL5AQUBrQEAAewB/wQAAQQBBxkA
+        ApkCdAHWA9wF1QGtAQABBQL5AnQB1gPcA9UC+QEFAQAB7Af/HQAE1gLVAdQDzgIAAfkDAATWAtUB1AHO
+        AfkBzgIACOwXAAFCAU0BPgcAAT4DAAEoAwABQAMAARADAAEBAQABAQUAAYAXAAP/AQAE/wHOAQECAAGA
+        AX8BgAF7BQABPwEAATEFAAE/AQABIwHMBAABPwEAAQcBzAEBAwABPwEAAQ8BgAEBAwABAQEAAQEBAAEB
+        AwABAQEAAQEBAAEBAwABAQEAAQEBAAEBAwABAQEAAQEBAAEBAwABAQEAAQEBAAEBAwABAQEAAQEBAAF/
+        AwABAQEAAQEBAAF/AwABAQEAAQEBAAF/AgABgAEBAQABAQEAAX8CAAH4AQEBuAEBAYABfwIACw==
+</value>
+  </data>
+  <data name="buttonConnectToServer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonConnectToServer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 262</value>
+  </data>
+  <data name="buttonConnectToServer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>30, 0, 30, 0</value>
+  </data>
+  <data name="buttonConnectToServer.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonConnectToServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 28</value>
+  </data>
+  <data name="buttonConnectToServer.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonConnectToServer.Text" xml:space="preserve">
+    <value>Connect to server</value>
+  </data>
+  <data name="buttonConnectToServer.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;buttonConnectToServer.Name" xml:space="preserve">
+    <value>buttonConnectToServer</value>
+  </data>
+  <data name="&gt;&gt;buttonConnectToServer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonConnectToServer.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;buttonConnectToServer.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioButtonRestrictToVersion.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="radioButtonRestrictToVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonRestrictToVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 198</value>
+  </data>
+  <data name="radioButtonRestrictToVersion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="radioButtonRestrictToVersion.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonRestrictToVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 21</value>
+  </data>
+  <data name="radioButtonRestrictToVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonRestrictToVersion.Text" xml:space="preserve">
+    <value>restrict to DiversityCollection v. 2.5.</value>
+  </data>
+  <data name="radioButtonRestrictToVersion.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRestrictToVersion.Name" xml:space="preserve">
+    <value>radioButtonRestrictToVersion</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRestrictToVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRestrictToVersion.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRestrictToVersion.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="radioButtonRestrictToModule.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="radioButtonRestrictToModule.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonRestrictToModule.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 219</value>
+  </data>
+  <data name="radioButtonRestrictToModule.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="radioButtonRestrictToModule.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonRestrictToModule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 19</value>
+  </data>
+  <data name="radioButtonRestrictToModule.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="radioButtonRestrictToModule.Text" xml:space="preserve">
+    <value>restrict to DiversityCollection</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRestrictToModule.Name" xml:space="preserve">
+    <value>radioButtonRestrictToModule</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRestrictToModule.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRestrictToModule.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRestrictToModule.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="radioButtonShowAllDatabases.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="radioButtonShowAllDatabases.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonShowAllDatabases.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 238</value>
+  </data>
+  <data name="radioButtonShowAllDatabases.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="radioButtonShowAllDatabases.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonShowAllDatabases.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 24</value>
+  </data>
+  <data name="radioButtonShowAllDatabases.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonShowAllDatabases.Text" xml:space="preserve">
+    <value>Show all available databases</value>
+  </data>
+  <data name="&gt;&gt;radioButtonShowAllDatabases.Name" xml:space="preserve">
+    <value>radioButtonShowAllDatabases</value>
+  </data>
+  <data name="&gt;&gt;radioButtonShowAllDatabases.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonShowAllDatabases.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;radioButtonShowAllDatabases.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="textBoxPort.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="textBoxPort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>232, 42</value>
+  </data>
+  <data name="textBoxPort.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
+  </data>
+  <data name="textBoxPort.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="textBoxPort.Text" xml:space="preserve">
+    <value>1433</value>
+  </data>
+  <data name="textBoxPort.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;textBoxPort.Name" xml:space="preserve">
+    <value>textBoxPort</value>
+  </data>
+  <data name="&gt;&gt;textBoxPort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPort.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;textBoxPort.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="comboBoxServer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="comboBoxServer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 42</value>
+  </data>
+  <data name="comboBoxServer.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 21</value>
+  </data>
+  <data name="comboBoxServer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;comboBoxServer.Name" xml:space="preserve">
+    <value>comboBoxServer</value>
+  </data>
+  <data name="&gt;&gt;comboBoxServer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxServer.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;comboBoxServer.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tableLayoutPanelLogin.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButtonAuthentication.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="radioButtonAuthentication.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonAuthentication.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="radioButtonAuthentication.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonAuthentication.Size" type="System.Drawing.Size, System.Drawing">
+    <value>263, 16</value>
+  </data>
+  <data name="radioButtonAuthentication.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonAuthentication.Text" xml:space="preserve">
+    <value>Windows authentication</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAuthentication.Name" xml:space="preserve">
+    <value>radioButtonAuthentication</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAuthentication.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAuthentication.Parent" xml:space="preserve">
+    <value>tableLayoutPanelLogin</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAuthentication.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxPassword.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="textBoxPassword.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 72</value>
+  </data>
+  <data name="textBoxPassword.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 3</value>
+  </data>
+  <data name="textBoxPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="textBoxPassword.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 20</value>
+  </data>
+  <data name="textBoxPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;textBoxPassword.Name" xml:space="preserve">
+    <value>textBoxPassword</value>
+  </data>
+  <data name="&gt;&gt;textBoxPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPassword.Parent" xml:space="preserve">
+    <value>tableLayoutPanelLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxPassword.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBoxUser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="textBoxUser.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxUser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 49</value>
+  </data>
+  <data name="textBoxUser.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 3</value>
+  </data>
+  <data name="textBoxUser.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxUser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 20</value>
+  </data>
+  <data name="textBoxUser.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;textBoxUser.Name" xml:space="preserve">
+    <value>textBoxUser</value>
+  </data>
+  <data name="&gt;&gt;textBoxUser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxUser.Parent" xml:space="preserve">
+    <value>tableLayoutPanelLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxUser.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioButtonSQLAuthentication.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="radioButtonSQLAuthentication.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonSQLAuthentication.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 25</value>
+  </data>
+  <data name="radioButtonSQLAuthentication.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 0</value>
+  </data>
+  <data name="radioButtonSQLAuthentication.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonSQLAuthentication.Size" type="System.Drawing.Size, System.Drawing">
+    <value>263, 24</value>
+  </data>
+  <data name="radioButtonSQLAuthentication.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonSQLAuthentication.Text" xml:space="preserve">
+    <value>SQL-Server authentication</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSQLAuthentication.Name" xml:space="preserve">
+    <value>radioButtonSQLAuthentication</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSQLAuthentication.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSQLAuthentication.Parent" xml:space="preserve">
+    <value>tableLayoutPanelLogin</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSQLAuthentication.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelPassword.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelPassword.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 75</value>
+  </data>
+  <data name="labelPassword.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="labelPassword.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 23</value>
+  </data>
+  <data name="labelPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="labelPassword.Text" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="labelPassword.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelPassword.Name" xml:space="preserve">
+    <value>labelPassword</value>
+  </data>
+  <data name="&gt;&gt;labelPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPassword.Parent" xml:space="preserve">
+    <value>tableLayoutPanelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelPassword.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelUser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelUser.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelUser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 52</value>
+  </data>
+  <data name="labelUser.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="labelUser.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelUser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 20</value>
+  </data>
+  <data name="labelUser.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="labelUser.Text" xml:space="preserve">
+    <value>User:</value>
+  </data>
+  <data name="labelUser.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;labelUser.Name" xml:space="preserve">
+    <value>labelUser</value>
+  </data>
+  <data name="&gt;&gt;labelUser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelUser.Parent" xml:space="preserve">
+    <value>tableLayoutPanelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelUser.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tableLayoutPanelLogin.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="tableLayoutPanelLogin.RowCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tableLayoutPanelLogin.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 107</value>
+  </data>
+  <data name="tableLayoutPanelLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelLogin.Name" xml:space="preserve">
+    <value>tableLayoutPanelLogin</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelLogin.Parent" xml:space="preserve">
+    <value>groupBoxLogin</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelLogin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelLogin.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="radioButtonAuthentication" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="textBoxPassword" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="textBoxUser" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="radioButtonSQLAuthentication" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="labelPassword" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelUser" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="groupBoxLogin.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBoxLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 69</value>
+  </data>
+  <data name="groupBoxLogin.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBoxLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 126</value>
+  </data>
+  <data name="groupBoxLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="groupBoxLogin.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLogin.Name" xml:space="preserve">
+    <value>groupBoxLogin</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLogin.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLogin.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="labelPort.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelPort.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelPort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>232, 0</value>
+  </data>
+  <data name="labelPort.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 39</value>
+  </data>
+  <data name="labelPort.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="labelPort.Text" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="labelPort.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;labelPort.Name" xml:space="preserve">
+    <value>labelPort</value>
+  </data>
+  <data name="&gt;&gt;labelPort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPort.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;labelPort.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="labelMessage.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelMessage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelMessage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelMessage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="labelMessage.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 39</value>
+  </data>
+  <data name="labelMessage.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelMessage.Text" xml:space="preserve">
+    <value>Please select a server from the list or type the name or the IP-address of the server</value>
+  </data>
+  <data name="labelMessage.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
+  </data>
+  <data name="&gt;&gt;labelMessage.Name" xml:space="preserve">
+    <value>labelMessage</value>
+  </data>
+  <data name="&gt;&gt;labelMessage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMessage.Parent" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;labelMessage.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="tableLayoutPanelRemoteDB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelRemoteDB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanelRemoteDB.RowCount" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tableLayoutPanelRemoteDB.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelRemoteDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 335</value>
+  </data>
+  <data name="tableLayoutPanelRemoteDB.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelRemoteDB.Name" xml:space="preserve">
+    <value>tableLayoutPanelRemoteDB</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelRemoteDB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelRemoteDB.Parent" xml:space="preserve">
+    <value>splitContainerMain.Panel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelRemoteDB.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelRemoteDB.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="labelDatabase" Row="7" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="comboBoxDatabase" Row="8" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="buttonConnectToServer" Row="6" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="radioButtonRestrictToVersion" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="radioButtonRestrictToModule" Row="4" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="radioButtonShowAllDatabases" Row="5" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="textBoxPort" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBoxServer" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBoxLogin" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="labelPort" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelMessage" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Percent,100,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="splitContainerMain.Panel1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel1.Name" xml:space="preserve">
+    <value>splitContainerMain.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel1.Parent" xml:space="preserve">
+    <value>splitContainerMain</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelLocal.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelLocalFile.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLocalFile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelLocalFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelLocalFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="labelLocalFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 0, 0</value>
+  </data>
+  <data name="labelLocalFile.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLocalFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="labelLocalFile.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelLocalFile.Text" xml:space="preserve">
+    <value>File:</value>
+  </data>
+  <data name="&gt;&gt;labelLocalFile.Name" xml:space="preserve">
+    <value>labelLocalFile</value>
+  </data>
+  <data name="&gt;&gt;labelLocalFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLocalFile.Parent" xml:space="preserve">
+    <value>tableLayoutPanelLocal</value>
+  </data>
+  <data name="&gt;&gt;labelLocalFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxLocalFile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="textBoxLocalFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 16</value>
+  </data>
+  <data name="textBoxLocalFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="textBoxLocalFile.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxLocalFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 20</value>
+  </data>
+  <data name="textBoxLocalFile.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBoxLocalFile.Name" xml:space="preserve">
+    <value>textBoxLocalFile</value>
+  </data>
+  <data name="&gt;&gt;textBoxLocalFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLocalFile.Parent" xml:space="preserve">
+    <value>tableLayoutPanelLocal</value>
+  </data>
+  <data name="&gt;&gt;textBoxLocalFile.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonOpenLocalFile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="buttonOpenLocalFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonOpenLocalFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 16</value>
+  </data>
+  <data name="buttonOpenLocalFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 3, 3</value>
+  </data>
+  <data name="buttonOpenLocalFile.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonOpenLocalFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 23</value>
+  </data>
+  <data name="buttonOpenLocalFile.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenLocalFile.Name" xml:space="preserve">
+    <value>buttonOpenLocalFile</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenLocalFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenLocalFile.Parent" xml:space="preserve">
+    <value>tableLayoutPanelLocal</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenLocalFile.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelLocal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLocal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelLocal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelLocal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="labelLocal.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLocal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 13</value>
+  </data>
+  <data name="labelLocal.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelLocal.Text" xml:space="preserve">
+    <value>Select the local database file</value>
+  </data>
+  <data name="&gt;&gt;labelLocal.Name" xml:space="preserve">
+    <value>labelLocal</value>
+  </data>
+  <data name="&gt;&gt;labelLocal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLocal.Parent" xml:space="preserve">
+    <value>tableLayoutPanelLocal</value>
+  </data>
+  <data name="&gt;&gt;labelLocal.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanelLocal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelLocal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanelLocal.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanelLocal.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelLocal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 65</value>
+  </data>
+  <data name="tableLayoutPanelLocal.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelLocal.Name" xml:space="preserve">
+    <value>tableLayoutPanelLocal</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelLocal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelLocal.Parent" xml:space="preserve">
+    <value>splitContainerMain.Panel2</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelLocal.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelLocal.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="labelLocalFile" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textBoxLocalFile" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonOpenLocalFile" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelLocal" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="splitContainerMain.Panel2.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel2.Name" xml:space="preserve">
+    <value>splitContainerMain.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel2.Parent" xml:space="preserve">
+    <value>splitContainerMain</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainerMain.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="splitContainerMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 404</value>
+  </data>
+  <data name="splitContainerMain.SplitterDistance" type="System.Int32, mscorlib">
+    <value>335</value>
+  </data>
+  <data name="splitContainerMain.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Name" xml:space="preserve">
+    <value>splitContainerMain</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelMain.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButtonRemote.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonRemote.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonRemote.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 29</value>
+  </data>
+  <data name="radioButtonRemote.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonRemote.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 17</value>
+  </data>
+  <data name="radioButtonRemote.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonRemote.Text" xml:space="preserve">
+    <value>Remote database</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRemote.Name" xml:space="preserve">
+    <value>radioButtonRemote</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRemote.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRemote.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;radioButtonRemote.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonLocal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonLocal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonLocal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 29</value>
+  </data>
+  <data name="radioButtonLocal.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonLocal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="radioButtonLocal.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonLocal.Text" xml:space="preserve">
+    <value>Local database</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLocal.Name" xml:space="preserve">
+    <value>radioButtonLocal</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLocal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLocal.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLocal.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelSelectRemoteLocal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelSelectRemoteLocal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelSelectRemoteLocal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="labelSelectRemoteLocal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelSelectRemoteLocal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="labelSelectRemoteLocal.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelSelectRemoteLocal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 26</value>
+  </data>
+  <data name="labelSelectRemoteLocal.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelSelectRemoteLocal.Text" xml:space="preserve">
+    <value>Choose if the database is remote or local (SQL Server Express)</value>
+  </data>
+  <data name="labelSelectRemoteLocal.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelSelectRemoteLocal.Name" xml:space="preserve">
+    <value>labelSelectRemoteLocal</value>
+  </data>
+  <data name="&gt;&gt;labelSelectRemoteLocal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSelectRemoteLocal.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;labelSelectRemoteLocal.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanelMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tableLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanelMain.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanelMain.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 52</value>
+  </data>
+  <data name="tableLayoutPanelMain.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.Name" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanelMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="radioButtonRemote" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="radioButtonLocal" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelSelectRemoteLocal" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="userControlDialogPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="userControlDialogPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 456</value>
+  </data>
+  <data name="userControlDialogPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="userControlDialogPanel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="userControlDialogPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 27</value>
+  </data>
+  <data name="userControlDialogPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;userControlDialogPanel.Name" xml:space="preserve">
+    <value>userControlDialogPanel</value>
+  </data>
+  <data name="&gt;&gt;userControlDialogPanel.Type" xml:space="preserve">
+    <value>DiversityWorkbench.UserControlDialogPanel, DiversityWorkbench, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;userControlDialogPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;userControlDialogPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>310, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>281, 483</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAB
+        AAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAwMDAAMDcwADwyqYABAQEAAgICAAMDAwAERERABYW
+        FgAcHBwAIiIiACkpKQBVVVUATU1NAEJCQgA5OTkAgHz/AFBQ/wCTANYA/+zMAMbW7wDW5+cAkKmtAAAA
+        MwAAAGYAAACZAAAAzAAAMwAAADMzAAAzZgAAM5kAADPMAAAz/wAAZgAAAGYzAABmZgAAZpkAAGbMAABm
+        /wAAmQAAAJkzAACZZgAAmZkAAJnMAACZ/wAAzAAAAMwzAADMZgAAzJkAAMzMAADM/wAA/2YAAP+ZAAD/
+        zAAzAAAAMwAzADMAZgAzAJkAMwDMADMA/wAzMwAAMzMzADMzZgAzM5kAMzPMADMz/wAzZgAAM2YzADNm
+        ZgAzZpkAM2bMADNm/wAzmQAAM5kzADOZZgAzmZkAM5nMADOZ/wAzzAAAM8wzADPMZgAzzJkAM8zMADPM
+        /wAz/zMAM/9mADP/mQAz/8wAM///AGYAAABmADMAZgBmAGYAmQBmAMwAZgD/AGYzAABmMzMAZjNmAGYz
+        mQBmM8wAZjP/AGZmAABmZjMAZmZmAGZmmQBmZswAZpkAAGaZMwBmmWYAZpmZAGaZzABmmf8AZswAAGbM
+        MwBmzJkAZszMAGbM/wBm/wAAZv8zAGb/mQBm/8wAzAD/AP8AzACZmQAAmTOZAJkAmQCZAMwAmQAAAJkz
+        MwCZAGYAmTPMAJkA/wCZZgAAmWYzAJkzZgCZZpkAmWbMAJkz/wCZmTMAmZlmAJmZmQCZmcwAmZn/AJnM
+        AACZzDMAZsxmAJnMmQCZzMwAmcz/AJn/AACZ/zMAmcxmAJn/mQCZ/8wAmf//AMwAAACZADMAzABmAMwA
+        mQDMAMwAmTMAAMwzMwDMM2YAzDOZAMwzzADMM/8AzGYAAMxmMwCZZmYAzGaZAMxmzACZZv8AzJkAAMyZ
+        MwDMmWYAzJmZAMyZzADMmf8AzMwAAMzMMwDMzGYAzMyZAMzMzADMzP8AzP8AAMz/MwCZ/2YAzP+ZAMz/
+        zADM//8AzAAzAP8AZgD/AJkAzDMAAP8zMwD/M2YA/zOZAP8zzAD/M/8A/2YAAP9mMwDMZmYA/2aZAP9m
+        zADMZv8A/5kAAP+ZMwD/mWYA/5mZAP+ZzAD/mf8A/8wAAP/MMwD/zGYA/8yZAP/MzAD/zP8A//8zAMz/
+        ZgD//5kA///MAGZm/wBm/2YAZv//AP9mZgD/Zv8A//9mACEApQBfX18Ad3d3AIaGhgCWlpYAy8vLALKy
+        sgDX19cA3d3dAOPj4wDq6uoA8fHxAPj4+ADw+/8ApKCgAICAgAAAAP8AAP8AAAD//wD/AAAA/wD/AP//
+        AAD///8ACgoKCgoKCgoKCgoKCgoKCgpzS0tLS0tLSwoKCgoKCgpzUnmgmnoyMTFLCgoKCgoKc1l6oKB6
+        ODIxSwoKCgoKCnNZeqCgejgyMUsKCgoKCgpzWXqgoHo4MjFLCgoKCgoKc1l6oKD3bGxsZmZmZmZmCnN6
+        eqCg97wHB++1tff3ZgpzWXqgoPf////v8vC8tWYKc1maoKD3////tfLy8LVmCnNZeqCgtfG8vLwHB++1
+        bApzeqCgoO////+8///072wKdKDDw8O7////vP//9AdsCpmZoMPD1tbW1s7Ozs7OrQoKmZl0dNbc3NzV
+        1dXV1a0KCgoKCgrW1tbW1dXUzs7OCv//AACAfwAAAD8AAAA/AAAAPwAAAD8AAAABAAAAAQAAAAEAAAAB
+        AAAAAQAAAAEAAAABAAAAAQAAgAEAAPgBAAA=
+</value>
+  </data>
+  <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>  Connection to database</value>
+  </data>
+  <data name="&gt;&gt;imageListConnectionState.Name" xml:space="preserve">
+    <value>imageListConnectionState</value>
+  </data>
+  <data name="&gt;&gt;imageListConnectionState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;helpProvider.Name" xml:space="preserve">
+    <value>helpProvider</value>
+  </data>
+  <data name="&gt;&gt;helpProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openFileDialog.Name" xml:space="preserve">
+    <value>openFileDialog</value>
+  </data>
+  <data name="&gt;&gt;openFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormDatabaseConnection</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

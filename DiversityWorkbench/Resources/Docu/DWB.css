@@ -1,0 +1,154 @@
+﻿/* DWB */
+
+.menu{
+	color:black;
+	background-color:#F0F0F0;
+	border-color:#F0F0F0;
+	border-style:solid;
+	border-width:thin;
+}
+
+
+.columnheader{
+	color:black;
+	background-color:#F0F0F0;
+}
+
+@media (prefers-color-scheme: dark) {
+.columnheader{
+	color:white;
+	background-color:#555555;
+}
+}
+
+
+
+.info{
+	background-color:#FFFFBB;
+	color:#555555;
+}
+
+@media (prefers-color-scheme: dark) {
+.info{
+	color:#FFFFBB;
+	background-color:#555555;
+}
+}
+
+.infoheader{
+	color:#959500;
+}
+
+@media (prefers-color-scheme: dark) {
+.infoheader{
+	color:yellow;
+}
+}
+
+
+
+.infobox{
+	background-color:#FFFF99;
+	border-width:medium;
+	border-color:#FF9900;
+	color:#555555;
+}
+
+@media (prefers-color-scheme: dark) {
+.infobox{
+	background-color:#BBBBBB;
+	border-color:yellow;
+	border-style:solid;
+	border-width:medium;
+	color:yellow
+}
+}
+
+
+.button{
+	color:black;
+	background-color:#F0F0FF;
+	border-color:gray;
+	border-style:solid;
+	border-width:thin;
+	/*border-spacing:3 3;*/
+	padding-right:3;
+	padding-left:3
+}
+
+.optionYellow{
+	background-color:#FFFF00;
+	border-color:#FFFF00;
+	border-style:solid;
+	border-width:thick;
+}
+
+
+
+.inputbox_pink{
+	background-color:#FFC0CB;
+	border-color:gray;
+	border-style:solid;
+	border-width:thin;
+	color:black;
+}
+
+@media (prefers-color-scheme: dark) {
+.inputbox_pink{
+	background-color:#FFC0CB;
+	border-color:white;
+	border-style:solid;
+	border-width:thin;
+	color:black;
+}
+}
+
+
+
+
+/* DC */
+
+.locationNode{
+	background-color:#F4A460;
+	color:white;
+	font-weight:bold;
+}
+
+.location{
+	background-color:#F4A460;
+}
+
+.DC_Identification{
+	background-color:#FCC38C;
+}
+
+.DC_Event{
+	background-color:#90EE90;
+}
+
+.DC_Specimen{
+	background-color:#8BFCF0;
+}
+
+.DC_Collector{
+	background-color:#F7FB80;
+}
+
+.DC_Project{
+	background-color:#FC929A;
+}
+
+.DC_Transaction{
+	background-color:#DA92FC;
+}
+
+.DC_Task{
+	background-color:#BCE0C9;
+}
+
+.DC_Collection{
+	background-color:#A0A4FC;
+}
+
+
+

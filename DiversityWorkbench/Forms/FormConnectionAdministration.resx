@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanelMain.ColumnCount" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labelHeader.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelHeader.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="labelHeader.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="labelHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <metadata name="helpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>102, 17</value>
+  </metadata>
+  <data name="labelHeader.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 30</value>
+  </data>
+  <data name="labelHeader.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelHeader.Text" xml:space="preserve">
+    <value>Administration of the connections to the moduls resp. databases</value>
+  </data>
+  <data name="labelHeader.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;labelHeader.Name" xml:space="preserve">
+    <value>labelHeader</value>
+  </data>
+  <data name="&gt;&gt;labelHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelHeader.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;labelHeader.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonConnect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonConnect.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonConnect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>281, 3</value>
+  </data>
+  <data name="buttonConnect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 3</value>
+  </data>
+  <data name="buttonConnect.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonConnect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 24</value>
+  </data>
+  <data name="buttonConnect.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="buttonConnect.ToolTip" xml:space="preserve">
+    <value>Set the connection to the selected database</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.Name" xml:space="preserve">
+    <value>buttonConnect</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonRemove.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonRemove.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonRemove.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 3</value>
+  </data>
+  <data name="buttonRemove.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 3, 3</value>
+  </data>
+  <data name="buttonRemove.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 24</value>
+  </data>
+  <data name="buttonRemove.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="buttonRemove.ToolTip" xml:space="preserve">
+    <value>Remove the selected connection from the list</value>
+  </data>
+  <data name="&gt;&gt;buttonRemove.Name" xml:space="preserve">
+    <value>buttonRemove</value>
+  </data>
+  <data name="&gt;&gt;buttonRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRemove.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;buttonRemove.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonReset.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonReset.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>302, 3</value>
+  </data>
+  <data name="buttonReset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 3</value>
+  </data>
+  <data name="buttonReset.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 24</value>
+  </data>
+  <data name="buttonReset.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="buttonReset.ToolTip" xml:space="preserve">
+    <value>Reset all connections</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Name" xml:space="preserve">
+    <value>buttonReset</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="buttonAdd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonAdd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>388, 3</value>
+  </data>
+  <data name="buttonAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 3</value>
+  </data>
+  <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 24</value>
+  </data>
+  <data name="buttonAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>Add a database connection</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
+    <value>buttonAdd</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonLinkedServer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonLinkedServer.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonLinkedServer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>427, 3</value>
+  </data>
+  <data name="buttonLinkedServer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 3, 3</value>
+  </data>
+  <data name="buttonLinkedServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 24</value>
+  </data>
+  <data name="buttonLinkedServer.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="buttonLinkedServer.ToolTip" xml:space="preserve">
+    <value>Administrate linked servers</value>
+  </data>
+  <data name="&gt;&gt;buttonLinkedServer.Name" xml:space="preserve">
+    <value>buttonLinkedServer</value>
+  </data>
+  <data name="&gt;&gt;buttonLinkedServer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLinkedServer.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;buttonLinkedServer.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="buttonFeedback.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonFeedback.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonFeedback.Location" type="System.Drawing.Point, System.Drawing">
+    <value>448, 3</value>
+  </data>
+  <data name="buttonFeedback.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 3, 3</value>
+  </data>
+  <data name="buttonFeedback.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 24</value>
+  </data>
+  <data name="buttonFeedback.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonFeedback.ToolTip" xml:space="preserve">
+    <value>Send a feedback to the administrator</value>
+  </data>
+  <data name="&gt;&gt;buttonFeedback.Name" xml:space="preserve">
+    <value>buttonFeedback</value>
+  </data>
+  <data name="&gt;&gt;buttonFeedback.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFeedback.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;buttonFeedback.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="buttonLoadAdded.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonLoadAdded.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonLoadAdded.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 3</value>
+  </data>
+  <data name="buttonLoadAdded.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 3</value>
+  </data>
+  <data name="buttonLoadAdded.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonLoadAdded.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 24</value>
+  </data>
+  <data name="buttonLoadAdded.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="buttonLoadAdded.ToolTip" xml:space="preserve">
+    <value>Load previously added database connections</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadAdded.Name" xml:space="preserve">
+    <value>buttonLoadAdded</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadAdded.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadAdded.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadAdded.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="buttonRequery.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonRequery.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonRequery.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonRequery.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 3</value>
+  </data>
+  <data name="buttonRequery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 24</value>
+  </data>
+  <data name="buttonRequery.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="buttonRequery.ToolTip" xml:space="preserve">
+    <value>Requery databases for selected item</value>
+  </data>
+  <data name="&gt;&gt;buttonRequery.Name" xml:space="preserve">
+    <value>buttonRequery</value>
+  </data>
+  <data name="&gt;&gt;buttonRequery.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRequery.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;buttonRequery.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <metadata name="contextMenuStripBacklinkUpdates.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>326, 17</value>
+  </metadata>
+  <data name="showSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
+  </data>
+  <data name="showSettingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show settings</value>
+  </data>
+  <data name="resetSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
+  </data>
+  <data name="resetSettingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clear settings</value>
+  </data>
+  <data name="contextMenuStripBacklinkUpdates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 48</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripBacklinkUpdates.Name" xml:space="preserve">
+    <value>contextMenuStripBacklinkUpdates</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripBacklinkUpdates.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonUpdateBacklinkModule.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonUpdateBacklinkModule.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonUpdateBacklinkModule.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonUpdateBacklinkModule.Location" type="System.Drawing.Point, System.Drawing">
+    <value>343, 3</value>
+  </data>
+  <data name="buttonUpdateBacklinkModule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 24</value>
+  </data>
+  <data name="buttonUpdateBacklinkModule.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="buttonUpdateBacklinkModule.ToolTip" xml:space="preserve">
+    <value>Update datasets in depending module</value>
+  </data>
+  <data name="buttonUpdateBacklinkModule.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonUpdateBacklinkModule.Name" xml:space="preserve">
+    <value>buttonUpdateBacklinkModule</value>
+  </data>
+  <data name="&gt;&gt;buttonUpdateBacklinkModule.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonUpdateBacklinkModule.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;buttonUpdateBacklinkModule.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="tableLayoutPanelMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanelMain.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanelMain.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>471, 341</value>
+  </data>
+  <data name="tableLayoutPanelMain.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.Name" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelMain.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="treeViewConnections" Row="2" RowSpan="1" Column="0" ColumnSpan="10" /&gt;&lt;Control Name="labelHeader" Row="0" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonConnect" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonRemove" Row="1" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="buttonReset" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="buttonAdd" Row="1" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="buttonLinkedServer" Row="1" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="buttonFeedback" Row="1" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="buttonLoadAdded" Row="1" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="buttonRequery" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="buttonUpdateBacklinkModule" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="treeViewConnections.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="treeViewConnections.ImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <metadata name="imageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>223, 17</value>
+  </metadata>
+  <data name="imageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAa
+        GAAAAk1TRnQBSQFMAgEBCQEAATgBAAE4AQABEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABMAMAAQEBAAEYBgABJBUAAZkBMwFmAZkBMwFmAZkBMwFmAZkBMwFmAZkBMwFmAZkBMwFmAZkBMwFm
+        AZkBMwFmAZkBMwFmAZkBMwFmAZkBMwFmAZkBMwFmAZkBMwFmAZkBMwFmkwABZgEzAWYBmQEzAWYBzAFm
+        AZkBzAKZAcwBmQHMAf8CzAPqBv8D6gH/A8wBmQLMAZkCzAFmApkBMwJmATMBZpAAAWYBMwFmAcwBZgGZ
+        AcwBZgGZAcwCmQHMAZkEzAPqBv8D6gPXAcwBmQLMAZkCzAFmAZkBzAFmAZkBZgEzAWaQAAFmATMBZgHM
+        AWYCmQFmApkBZgGZAcwCmQGkAqADsgbAA7IBpAKgAaQCoAHMAWYBmQHMAWYBmQHMAWYBmQFmATMBZpAA
+        AzkBZgEzAmYBMwJmATMBZgN3A4YBpAKgBrIBpAKgA5YDdwFmATMCZgEzAmYBMwJmAjOQAAFmAjMBmQEz
+        AWYBzAFmAZkBzAGZAswBmQHMAf8CzAPqBv8D6gH/A8wBmQLMAZkCzAFmApkBMwGZAWYCM5AAAWYBMwFm
+        AcwBZgGZAcwBZgGZAcwCmQHMAZkEzAPqBv8D6gPXAcwBmQLMAZkCzAFmAZkBzAFmAZkBZgEzAWaQAAFm
+        ATMBZgHMATMCmQFmAZkBzAFmApkBZgKZAWYCmQFmApkBZgKZAWYCmQFmApkBZgKZAWYBmQHMAWYCmQFm
+        ApkBMwGZAWYBMwFmkAABZgIzAZkBZgKZAWYBmQHMAZkCzAGZAswBmQLMAZkCzAGZAswBmQLMAZkCzAGZ
+        AswBmQLMAZkBzAGZAWYCmQFmAZkBZgIzkAABmQFmApkBZgGZAcwBmQLMAZkCzAGZAswBmQLMAZkBzANV
+        A2YBzAGZAswBmQLMAZkCzAGZAswBmQHMAZkBZgKZAWYBmZMAAZkBZgKZAWYCmQFmApkBZgKZAWYBmQEz
+        AWYBMwEAAYACAAGAAQABMwFmATMBmQFmApkBZgKZAWYCmQFmApkBZgGZowABZgIAAYACAAGAAgABgAIA
+        AYACAAFmrAADZgEzAWYBMwEAAYACAAGAAgABgAIAAYABAAEzAWYBMwNmrwABgAIAAYACAAGAAgABZrYA
+        AYACAAGAAgABgAIAAYC2AAFmAgABZgIAAWYCAAFm3wABpAKgBmYGXwZVAWYCMwFmAjM/AAPMA4YDdwOW
+        A+MeAAOWFXchAAOyA/8G8QH/AewBzAH/AewBzAH/BMwBmQFmAjM8AAOGBlUDXwNVA00DwBgAA5YBpAKg
+        A8wD/wbXA7IBpAKgAaQCoAN3HgADsgb/BvED6gH/AewDzAGZAWYCMw8AAcwBZgEzAcwBZgEzAcwBZgEz
+        AcwBZgEzAcwBZgEzAcwBZgEzAcwBZgEzAcwBZgEzAcwBZgEzAcwBZgEzAcwBZgEzAcwBZgEzBgADwANV
+        A4YGAAPqA2YDTQOyFQADlgbXBv8G1wOyAaQCoAN3HgADshL/A90DVQwAAf8BmQFmAf8BzAGZAf8B7AHM
+        Af8BzAGZAf8BzAGZAf8BmQFmAf8BmQFmAf8BmQFmAf8BmQFmAf8BmQFmAf8BmQFmAf8BmQFmAcwBZgEz
+        BgADdwNVKgADlgbXBv8G1wOyAaQCoAN3HgADsg//AfABygGmAcwCmQNVDAAB/wGZAWYB/wHMAZkB/wHs
+        AcwB8AHKAaYB/wHMAZkB/wHMAZkB/wGZAWYD8QH/AZkBZgH/AZkBZgH/AZkBZgH/AZkBZgHMAWYBMwYA
+        BmYPAAH/AewDzAFmAcwBmQEzAswBZg8AA5YG1wb/BtcDsgGkAqADdx4AA7IQ/wHsAswCmQNfDAAB/wHM
+        AZkB/wGZATMB/wHsAcwB/wHsAcwB8AHKAaYB/wHMAZkH/wGZAWYB/wGZATMB/wGZAWYB/wGZAWYBzAFm
+        ATMGAAN3A18MAAHMAZkBMwGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYNAAOWBtcG/wGkAqAJXxI5
+        DwADshD/AewDzAGZA2YPAAHMAZkBMwH/AewBzAH/AewBzAH/AewBzAPAApkBzAJmAZkB/wGZAWYB/wGZ
+        AWYB/wGZAWYB/wFmATMJAAOyA1UDmQYAAswBZgGZAWYBAAHMAZkBMwYAAswCmQFmAQABmQFmCgADlgbX
+        Bv8BpAKgA8wGwAOyBpkBpAKgAaQCoAM5DwAMsgGkAqABpAKgA5YDhgNmDwABzAGZAWYB/wGZATMB/wHM
+        AZkB/wGZAWYDzAFmAZkBzAIzAWYB/wJmAf8BmQFmAf8BZgEzDwADhgNNA7IDAALMAWYBmQFmBwADsgYA
+        AZkBZgEAAZkBZgcAA5YG1wb/AaQCoAn/A7ID4wPXA8wDmQM5DwADsgP/BvEB/wHsAcwB/wHsAcwB/wTM
+        ApkCZhgAAxYEZgGZAcwBZgGZAcwBMwFmAZkBMwFmAZkVAANmA00DwAwAA00DhgMAAf8B7AHMAZkBZgEA
+        ApkEAAOWBtcG/wGkAqAJ/wOZBuMD1wOZAzkPAAPMBv8G8QPqAf8B7APMAZkDhhkAAzMBZgKZAswBmQLM
+        AWYBmQHMAWYBmQHMGAADZgNVA4YD3QPXA2YDTQPMBgACzAKZAWYBAALMAWYDlgbXBv8DmQPdCcwGwAOy
+        A5kDXw8AA9cS/wPdA4YYAAFmAZkBzAFmAZkBzAGZAswBZgLMAWYCzAFmAZkBzBsAA2YJVQNNA7IMAAKZ
+        AQACmQEAA5YD1wn/A7IJ/wPMBv8D8QOyA18PAAPXBswDsgGkAqABpAKgA5YGhhoAAjMBZgGZAWYBmQHM
+        AWYBmQHMATMBZgGZAmYBmTkAApkBAAKZAQABpAKgDP8DwAn/A8wG/wPxA8ADXw8AA9cG/wPxAf8B7AHM
+        Af8B7AHMAf8EzAGZA5YbAAMWAjMBZgEzAWYBmQIzAWYDTSQAApkBAAGZAWYBAAPqCQAD8QGZAWYBAAHM
+        AZkBMwbMCf8BpAKgAaQCoAGkAqABpAKgD3cDZg8AA8wG/wbxA+oB/wHsA8wBmQGkAqAYAAMpMwAB/wHs
+        AcwBmQFmAQABmQFmAQACzAGZAwAB/wHsAcwCmQEAAZkBZgEAA9cDAAbMAaQCoAGkAqABpAKgCcAMmQOW
+        A2YPAAPMEv8D3QOyUQAD4wGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAAGZAWYBAALMAWYSAAGkAqABpAKg
+        AaQCoAGkAqADmQaWCXcPAAnAD7IBpAKgVwACzAGZAswBZgLMAWYD8RIAAvMB9AHjAeUB6QP3A/2NAAGk
+        AqAGZgZfBlUBZgIzAWYCMwYAAeQB5gHuAYUBnAHXAZgBtQHrAVkBjAHnAacBwAHsAYABnQHTAewB7QHv
+        GAABZgKZATMBZgGZATMBZgGZATMBZgGZATMBZgGZATMBZgGZATMBZgGZATMBZgGZOwABzAEAAZkB/wIA
+        AcwYAAOyA/8G8QH/AewBzAH/AewBzAH/BMwBmQFmAjMDAAHjAeUB7QGgAbIB5QEwAXUB8wGbAasB1gFL
+        AYEB5QGZAbUB7AGVAaoB2QFrAZ0B7QHlAecB6xIAAWYCmQEzAZkBzAFmAswBmQL/AZkBzAH/AWYBzAH/
+        AQABmQH/AQABmQHMAQABmQHMATMBZgGZIQACgAEAAf8CAAKAAQAB/wIAAoAGAAHMAWYBzAH/AWYBAAH/
+        AgABzBgAA7IG/wbxA+oB/wHsA8wBmQFmAjMC9gH4AUsBhQHwAV0BhAHcAasBuAHhAW4BiQHWAXwBlAHS
+        AYYBnAHSAYkBpAHgAYwBpQHbAZcBqwHUA/0GAAP/A/YB6gHrAe0BZgKZATMBzAH/AWYBzAH/AZkC/wGZ
+        Av8BZgHMAf8BAAHMAf8BAAGZAf8BAAGZAcwBMwFmAZkZAAGZATMBAAFmATMBAAFmATMBAAGAAQACgA0A
+        AWYBzAH/AWYBAAH/AgABzBsAA7IS/wPdA1UB5QHnAe4BtAHEAecBkgGzAe8BaQGLAdsBfwGUAdMBVAF2
+        AdMBaAGEAc4BbQGDAb4BagGVAegBgwGjAeMC6wHtAdMB2gHoAbMBxgHlAZMBtwHmAZMBwAH1AaEBvgHj
+        AWYCmQEzAcwB/wFmAcwB/wGZAv8BmQL/AWYBzAH/AQABzAH/AQABmQH/AQABmQHMATMBZgGZFgABmQEz
+        AWYBzAEzAWYBzAEzAQABmQEzAQABmQEzA00DhgHMAZkBMwHMAZkBMwGZAWYBMwUAAcweAAOyD/8B8AHK
+        AaYBzAKZA1UBmAG7AfIBXgGTAewBdAGYAd0BpAG0AdgBTAF5AtcB2AHhAfIB8wH4AcEByAHjAWkBhwHZ
+        AUkBgAHnAaMBtwHhAVkBlgH3AWcBoAH5AXUBqwH6AYUBuAH7AbABxwHlAWYCmQEzAcwB/wFmAcwB/wGZ
+        Av8BmQL/AWYBzAH/AQABzAH/AQABmQH/AQABmQHMATMBZgGZFgABmQEzAWYB/wEzAWYB/wEzAWYBzAEz
+        A00DhgH/AcwBmQH/AcwBMwH/AcwBMwHMAZkBMwGZAWYBMyEAA7IQ/wHsAswCmQNfAa0ByQHyAbkBzgHw
+        AcEBzgHnAbkBxAHcAV4BgwHPAbQBuQHLAvEB8gG7Ab8B1gFkAX8B1AGFAZgB0gHoAekB7AHoAeoB8AHa
+        AeMB8gG4Ac4B8QGUAboB9AHGAdIB5wFmApkBMwHMAf8BZgHMAf8BmQL/AZkC/wGkAqACZgEzAmYBMwJm
+        ATMBZgIzAWYCMwFmAjMBZgIzAWYCMwFmAjMEAAGZATMBmQH/AcwBZgH/ATMBZgHMATMBAAGAAQADTQH/
+        AcwBmQL/AcwC/wGZAv8BmQH/AcwBMwHMAZkBMwMAAZkBAAEzCQADzAOGAmYBMwGZAmYDsgMAA8wCZgEz
+        AWYCMwGZAmYDsgNfAf8B7APMAZkDZgHQAdsB6gGOAbIB5gFxAaQB8gGlAboB4QGIAaYB4gFhAYcB1QFq
+        AYUByAFXAXwB1QFkAX4BygHFAc4B5wE5AXcB8gFDAXgB5AF8AZkB3gGzAcAB3wHdAeAB5wP9AWYCmQFm
+        AcwB/wFmAcwB/wGZAv8BmQL/AaQCoAPMBsADsgHMApkBzAKZAaQCoAGkAqABZgIzBAABmQEzAZkB/wHM
+        AWYB/wEzAQABmQEzAf8BmQEAA00B/wHMAZkB8AH7A/8BzAL/AZkB/wHMATMBzAGZATMDAAH/CAADzAKZ
+        AWYBzAKZAfABygGmApkCZgIzAaQCoAKZAWYB8AHKAaYCzAKZA2YCMwOyA5YDhgNmAdIB4QHyAY4BvwH6
+        AcYB0wHoAbkByQHlAZ0BsAHWAZsBsgHhAZABqQHeAaABsQHcAb4BxgHjAqsC0AHWAeoBRwGBAfIBNAF5
+        AfQBPAGBAfUBeAGdAeUD/gFmApkBMwHMAf8BZgHMAf8BmQL/AZkC/wGkAqAJ/wOyA+MD1wTMApkBZgIz
+        BAABmQEzAQABmQEzAQABmQEzAf8BzAEzAf8BzAEzA00DhgHwAfsB/wHwAfsD/wHMAf8BzAGZA4YDAAH/
+        AWYBMwYAAcwCmQPMA5YBmQJmAjMBAAIzAQACMwEAAjMBAAGZAmYBzAKZAcwEmQFmA18B/wTMApkCZgH1
+        AfcB+AHbAeEB6gGuAcoB6wGHAbkB+gHZAd4B6AF3AaUB7QHgAeQB6wFqAZAB2gGWAZcB1QEmASUB0wJB
+        AcYBjgGTAckBUAF6AeUBNwF3AfEB5gHoAe8DAAFmApkBMwHMAf8BmQHMAf8BmQL/AZkC/wGkAqAJ/wHM
+        ApkG4wPXAcwCmQFmAjMDAAH/AWYBMwL/AcwC/wEzAf8BzAEzAf8BzAEzAf8BmQEAA00DhgH/AcwBmQH/
+        AcwBmQOGAwAB/wFmATMB/wFmATMGAAKZAWYD/wMzA/8BmQJmA/ED6gH/AswBmQJmA/8BzAGZAWYB8AHK
+        AaYBZgIzAf8B7APMAZkDhgMAAd0B5gHyAZYBxgH8Aa0ByQHpAckB2AHtAX8BsgH3Ad8B4wHrAWcBoAH4
+        AbsBxQHbAWIBYwHZASUBOgHkASYBMwHcAToBPAHBAXsBhgHHAvoB+wMAAWYCmQEzAcwB/wFmAcwB/wGZ
+        Av8BmQL/AcwCmQPdCcwGwAOyAcwCmQJmATMDAAH/AWYBMwL/AcwB/wGZAgABgAIAAYABAAH/AcwBMwH/
+        AZkBAAxNAf8BmQEAAf8BZgEzAZkBAAEzBgABzAKZA9cBmQJmAzMCmQFmAcwCmQHMApkBzAKZAWYCMwJm
+        ATMBpAKgAcwDmQJmA/8D3QOGAwAD/gHRAeAB8gHdAeIB6QGcAccB+AGPAb4B9wHgAeQB7AF4Aa0B+gF6
+        AaEB4QHqAesB8QE4AT0B1wElAVcB8AEmAUIB5AEmASIBzgK6AdkDAAFmApkBZgHMAf8BmQL/AZkC/wGZ
+        Av8Dsgn/A8wG/wPxA7ICZgEzBgAB/wFmATMBAAGAAQABZgHMATMBAAGZATMB/wFmATMB/wGZAQAB/wGZ
+        AQAB/wGZAQAB/wFmATMB/wGZAQAB/wFmATMB/wsAA8ABpAKgA9cD/wOyAZkEZgEzAcwCmQP/A+oDsgKZ
+        AWYDwAOWBoYJAAH2AfcB+AG3AdQB9QGVAcIB9wHiAeYB7AGJAbwB/AF9AbEB+gHTAdgB4gHVAdYB7AEm
+        ATsB3wElAU4B7QKVAdcD/QMAAWYBmQHMAZkC/wHMAv8BzAL/AcwC/wLMAZkJ/wPMBv8D8QPAAmYBMwcA
+        AWYBMwGZAf8BzAFmAf8BMwFmAcwBMwEAAYABAAH/AWYBMwH/AZkBAAH/AZkBAAH/AZkBAAH/AWYBMwH/
+        AZkBAAH/AWYBMwwAA8ABzASZAWYDlgPXAwAD1wKZAWYCmQFmAcwCmQPMA5YB/wTMAZkDlg8AAfkC+gH7
+        AvwB7QHxAfUB8QHzAfYC/AH9AwABpAGmAeEBtwG4AeED/gYAAZkCzAGZAswBmQL/AcwC/wHMA/8CmQH/
+        ApkB/wKZAf8CmQH/AWYBMwH/AWYBMwH/AWYBMwH/AWYBMwH/AWYBMwHMAWYBMwoAAWYBMwGZAf8BzAFm
+        Af8BMwFmAcwBMwEAAZkBMwEAAYACAAGAAQAB/wFmATMCmQEAAf8BZgEzIQADzAb/BvED6gH/AewDzAGZ
+        AaQCoDMAAZkCzAGZAswBZgGZAcwBZgGZAcwB/wKZAf8BzAGZAf8BzAGZAf8BzAGZAf8BmQFmAf8BmQFm
+        Af8BmQFmAf8BmQFmAf8BmQFmAcwBZgEzDQABZgEzAQABZgEzAWYB/wEzAWYB/wEzAWYBzAEzAQABmQEz
+        AQABgAEAAf8BZgEzAf8BZgEzIQADzBL/A90Dsj8AAf8CmQH/ApkB/wKZAf8CmQH/AZkBZgH/AZkBZgH/
+        AZkBMwH/AWYBMwH/AWYBMwH/AWYBMxMAAWYBMwEAAWYBMwEAAWYBMwEAAWYBMwH/AWYBMycACcAPsgGk
+        AqABQgFNAT4HAAE+AwABKAMAAUADAAEwAwABAQEAAQEFAAGAAQEWAAP/AQABgAEBTgABgAEBBgAB+AEf
+        BgAB8AEPBgAB/AE/BgAB/AE/BgAB/AE/BgAC/wHwAQcC/wHBAf8BgAF/AfABBwL/AYAB/wEAAT8B8AEH
+        AcABAwEYAX8BAAE/AfABBwGAAQMBPwH/AQABPwHwAQcBgAEDAT4BHwEAAT8B8AEHAYABAwE8AQ8BAAEB
+        AfABBwHAAQcBGAHHAQABAQHwAQcBwAEPAYkBswEAAQEB8AEHAfgBHwHHAZEBAAEBAfABBwH4AR8B4AEY
+        AQABAQHwAQcB+AEfAfABPAEAAQEB8AEHAfgBHwH/AfwBAAEBAfABBwH4AR8B/gE4AQABAQHwAQcB+AE/
+        Af4BEAGAAQEB8AEHAfwBfwH/AQEB+AEBAfABBwP/AcMB8AT/AfkB/gEAAcABfwGAAX8B+AEwAf4BAAGA
+        AT8BAAE/AeABAAH+AgABGAEAAT8BwAEBAf4EAAE/AYABAwH+BAABPwGAAQMB/gQAAQEBAAEBAYIEAAEB
+        AQABAQUAAQEBAAEBAwABAQEAAQEBAAEBAgABgAEBAQABAQEAAQECAAGAAQEBAAEBAYABAwIAAeABAQEA
+        AQEBgAEDAYIBAAH4ASMBAAEBAcABBwH+AQAC/wGAAQEB4AEPAf4BAAL/AfgBAQH4AT8B/gEACw==
+</value>
+  </data>
+  <data name="treeViewConnections.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 33</value>
+  </data>
+  <data name="treeViewConnections.SelectedImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="treeViewConnections.Size" type="System.Drawing.Size, System.Drawing">
+    <value>465, 305</value>
+  </data>
+  <data name="treeViewConnections.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;treeViewConnections.Name" xml:space="preserve">
+    <value>treeViewConnections</value>
+  </data>
+  <data name="&gt;&gt;treeViewConnections.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;treeViewConnections.Parent" xml:space="preserve">
+    <value>tableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;treeViewConnections.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>471, 341</value>
+  </data>
+  <data name="$this.HelpKeyword" xml:space="preserve">
+    <value>Connections</value>
+  </data>
+  <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>KeywordIndex</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAB
+        AAAAAAAAmTMAAMtVGQDLZgAA3m42AOJ3QgDziVQAGW+cACRznQAfe6sAJHagACmEswA8i7QARZCvAHmp
+        ugAEk84AAJbVABGp4gAkue4AJr/2AEqfwgBMoMEAVKvMAE/R+wBh3P0AiaaxAICwvQCAvM8Ajr3MAJe8
+        yQCxz90AjuDwAJ7t/ACh6/YArvb9ALP8/wDP3OQAxeDoANjn7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAMBAAAAAAAAAAAAAAAAAAMFAgEAAAAAAAAAAAAAAAMEBgUCAQAAAAAAAAAAAAAA
+        AAQEAAAAAAAAAAAAAAAAAAwLCQcAAAAAAAAAAAEAAA0XIRIPCAAAAQAAAAECAAAUFyESEAgAAAIBAAEC
+        BQEBFRchEhAIAQEFAgEEBQYEAhUXIRIQCAIEBgUDAAQGAAAWGCETEQoAAAQDAAAABAAAGyAiIx8ZAAAD
+        AAAAAAAAAAAcGg4dAAAAAAAAAAAAAAAAAAQBAAAAAAAAAAAAAAAABAUGBQEBAAAAAAAAAAAAAAAEBQID
+        AAAAAAAAAAAAAAAAAAQDAAAAAAAAAP5/AAD8PwAA+B8AAP5/AAD8PwAA2BsAAJgZAAAAAAAAAAAAAJgZ
+        AADYGwAA/D8AAP5/AAD4HwAA/D8AAP5/AAA=
+</value>
+  </data>
+  <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Connection administration</value>
+  </data>
+  <data name="&gt;&gt;imageList.Name" xml:space="preserve">
+    <value>imageList</value>
+  </data>
+  <data name="&gt;&gt;imageList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showSettingsToolStripMenuItem.Name" xml:space="preserve">
+    <value>showSettingsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;showSettingsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resetSettingsToolStripMenuItem.Name" xml:space="preserve">
+    <value>resetSettingsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;resetSettingsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;helpProvider.Name" xml:space="preserve">
+    <value>helpProvider</value>
+  </data>
+  <data name="&gt;&gt;helpProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormConnectionAdministration</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

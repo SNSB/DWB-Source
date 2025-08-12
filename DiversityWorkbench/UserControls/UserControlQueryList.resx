@@ -1,0 +1,1859 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainerMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="splitContainerMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainerMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="splitContainerMain.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="listBoxQueryResult.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="listBoxQueryResult.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 8.25pt</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="listBoxQueryResult.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="listBoxQueryResult.ItemHeight" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="listBoxQueryResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 19</value>
+  </data>
+  <data name="listBoxQueryResult.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="listBoxQueryResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 289</value>
+  </data>
+  <data name="listBoxQueryResult.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;listBoxQueryResult.Name" xml:space="preserve">
+    <value>listBoxQueryResult</value>
+  </data>
+  <data name="&gt;&gt;listBoxQueryResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listBoxQueryResult.Parent" xml:space="preserve">
+    <value>groupBoxQueryResults</value>
+  </data>
+  <data name="&gt;&gt;listBoxQueryResult.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelQueryButtons.ColumnCount" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="buttonQueryKeep.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonQueryKeep.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQueryKeep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 43</value>
+  </data>
+  <data name="buttonQueryKeep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="buttonQueryKeep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 0, 0</value>
+  </data>
+  <data name="buttonQueryKeep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 15</value>
+  </data>
+  <data name="buttonQueryKeep.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <metadata name="toolTipQueryList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>157, 17</value>
+  </metadata>
+  <data name="buttonQueryKeep.ToolTip" xml:space="preserve">
+    <value>Keep selected datasets in the list and remove the not selected from the list</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryKeep.Name" xml:space="preserve">
+    <value>buttonQueryKeep</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryKeep.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryKeep.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryKeep.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonQueryPrevious.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="buttonQueryPrevious.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQueryPrevious.Location" type="System.Drawing.Point, System.Drawing">
+    <value>92, 43</value>
+  </data>
+  <data name="buttonQueryPrevious.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="buttonQueryPrevious.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 15</value>
+  </data>
+  <data name="buttonQueryPrevious.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="buttonQueryPrevious.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryPrevious.Name" xml:space="preserve">
+    <value>buttonQueryPrevious</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryPrevious.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryPrevious.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryPrevious.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonQueryRemove.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonQueryRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQueryRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 0</value>
+  </data>
+  <data name="buttonQueryRemove.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonQueryRemove.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 0, 0</value>
+  </data>
+  <data name="buttonQueryRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 28</value>
+  </data>
+  <data name="buttonQueryRemove.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="buttonQueryRemove.ToolTip" xml:space="preserve">
+    <value>Remove selected datasets from the list</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryRemove.Name" xml:space="preserve">
+    <value>buttonQueryRemove</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryRemove.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryRemove.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonQueryAdd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonQueryAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQueryAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 43</value>
+  </data>
+  <data name="buttonQueryAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="buttonQueryAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 15</value>
+  </data>
+  <data name="buttonQueryAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="buttonQueryAdd.ToolTip" xml:space="preserve">
+    <value>Query database and add results to list</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryAdd.Name" xml:space="preserve">
+    <value>buttonQueryAdd</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryAdd.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryAdd.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="contextMenuStripShowSQL.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>980, 17</value>
+  </metadata>
+  <data name="showSQLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 22</value>
+  </data>
+  <data name="showSQLToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show SQL</value>
+  </data>
+  <data name="contextMenuStripShowSQL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripShowSQL.Name" xml:space="preserve">
+    <value>contextMenuStripShowSQL</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripShowSQL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonQuery.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="buttonQuery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQuery.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 43</value>
+  </data>
+  <data name="buttonQuery.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 0, 0</value>
+  </data>
+  <data name="buttonQuery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 15</value>
+  </data>
+  <data name="buttonQuery.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonQuery.ToolTip" xml:space="preserve">
+    <value>Query database</value>
+  </data>
+  <data name="&gt;&gt;buttonQuery.Name" xml:space="preserve">
+    <value>buttonQuery</value>
+  </data>
+  <data name="&gt;&gt;buttonQuery.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQuery.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonQuery.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="buttonSetQueryConditionsUpDown.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="buttonSetQueryConditionsUpDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSetQueryConditionsUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 43</value>
+  </data>
+  <data name="buttonSetQueryConditionsUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="buttonSetQueryConditionsUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 15</value>
+  </data>
+  <data name="buttonSetQueryConditionsUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonSetQueryConditionsUpDown.ToolTip" xml:space="preserve">
+    <value>Hide query conditions</value>
+  </data>
+  <data name="&gt;&gt;buttonSetQueryConditionsUpDown.Name" xml:space="preserve">
+    <value>buttonSetQueryConditionsUpDown</value>
+  </data>
+  <data name="&gt;&gt;buttonSetQueryConditionsUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSetQueryConditionsUpDown.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonSetQueryConditionsUpDown.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelQueryColumn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelQueryColumn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="labelQueryColumn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelQueryColumn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelQueryColumn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="labelQueryColumn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 28</value>
+  </data>
+  <data name="labelQueryColumn.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelQueryColumn.Text" xml:space="preserve">
+    <value>order by:</value>
+  </data>
+  <data name="labelQueryColumn.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;labelQueryColumn.Name" xml:space="preserve">
+    <value>labelQueryColumn</value>
+  </data>
+  <data name="&gt;&gt;labelQueryColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelQueryColumn.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;labelQueryColumn.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="buttonShowQueryConditions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="buttonShowQueryConditions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonShowQueryConditions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 43</value>
+  </data>
+  <data name="buttonShowQueryConditions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="buttonShowQueryConditions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 2, 2</value>
+  </data>
+  <data name="buttonShowQueryConditions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 15</value>
+  </data>
+  <data name="buttonShowQueryConditions.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonShowQueryConditions.ToolTip" xml:space="preserve">
+    <value>Show Query conditions</value>
+  </data>
+  <data name="buttonShowQueryConditions.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonShowQueryConditions.Name" xml:space="preserve">
+    <value>buttonShowQueryConditions</value>
+  </data>
+  <data name="&gt;&gt;buttonShowQueryConditions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonShowQueryConditions.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonShowQueryConditions.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="buttonQueryNext.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="buttonQueryNext.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQueryNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>115, 43</value>
+  </data>
+  <data name="buttonQueryNext.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="buttonQueryNext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 15</value>
+  </data>
+  <data name="buttonQueryNext.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonQueryNext.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryNext.Name" xml:space="preserve">
+    <value>buttonQueryNext</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryNext.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryNext.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryNext.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="buttonQueryClear.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonQueryClear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQueryClear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 43</value>
+  </data>
+  <data name="buttonQueryClear.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 1, 0</value>
+  </data>
+  <data name="buttonQueryClear.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 0, 0</value>
+  </data>
+  <data name="buttonQueryClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 15</value>
+  </data>
+  <data name="buttonQueryClear.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="buttonQueryClear.ToolTip" xml:space="preserve">
+    <value>Clear all query fields</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryClear.Name" xml:space="preserve">
+    <value>buttonQueryClear</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryClear.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryClear.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="buttonQueryLoad.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonQueryLoad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQueryLoad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 43</value>
+  </data>
+  <data name="buttonQueryLoad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="buttonQueryLoad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 15</value>
+  </data>
+  <data name="buttonQueryLoad.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonQueryLoad.ToolTip" xml:space="preserve">
+    <value>Load a saved query</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryLoad.Name" xml:space="preserve">
+    <value>buttonQueryLoad</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryLoad.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryLoad.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryLoad.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="buttonQuerySave.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonQuerySave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQuerySave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>242, 43</value>
+  </data>
+  <data name="buttonQuerySave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 1, 0</value>
+  </data>
+  <data name="buttonQuerySave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 15</value>
+  </data>
+  <data name="buttonQuerySave.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="buttonQuerySave.ToolTip" xml:space="preserve">
+    <value>Save the current query</value>
+  </data>
+  <data name="&gt;&gt;buttonQuerySave.Name" xml:space="preserve">
+    <value>buttonQuerySave</value>
+  </data>
+  <data name="&gt;&gt;buttonQuerySave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQuerySave.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonQuerySave.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="buttonSelectAllItems.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="buttonSelectAllItems.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSelectAllItems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>265, 43</value>
+  </data>
+  <data name="buttonSelectAllItems.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="buttonSelectAllItems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 15</value>
+  </data>
+  <data name="buttonSelectAllItems.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="buttonSelectAllItems.ToolTip" xml:space="preserve">
+    <value>Select all items in the list</value>
+  </data>
+  <data name="&gt;&gt;buttonSelectAllItems.Name" xml:space="preserve">
+    <value>buttonSelectAllItems</value>
+  </data>
+  <data name="&gt;&gt;buttonSelectAllItems.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSelectAllItems.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonSelectAllItems.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="buttonFreeText.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="buttonFreeText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonFreeText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 42</value>
+  </data>
+  <data name="buttonFreeText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="buttonFreeText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 16</value>
+  </data>
+  <data name="buttonFreeText.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="buttonFreeText.ToolTip" xml:space="preserve">
+    <value>Search for an expression in any of the selected fields</value>
+  </data>
+  <data name="buttonFreeText.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonFreeText.Name" xml:space="preserve">
+    <value>buttonFreeText</value>
+  </data>
+  <data name="&gt;&gt;buttonFreeText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFreeText.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonFreeText.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="tableLayoutPanelOrderBy.ColumnCount" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <metadata name="contextMenuStripOptimizing.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <data name="toolStripMenuItemOptimizingAsDefault.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="toolStripMenuItemOptimizingAsDefault.Text" xml:space="preserve">
+    <value>Set as default</value>
+  </data>
+  <data name="toolStripMenuItemOptimizingAsDefault.ToolTipText" xml:space="preserve">
+    <value>Set optimizing as default</value>
+  </data>
+  <data name="contextMenuStripOptimizing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripOptimizing.Name" xml:space="preserve">
+    <value>contextMenuStripOptimizing</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripOptimizing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonOptimize.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonOptimize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonOptimize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>211, 0</value>
+  </data>
+  <data name="buttonOptimize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonOptimize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 28</value>
+  </data>
+  <data name="buttonOptimize.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="buttonOptimize.ToolTip" xml:space="preserve">
+    <value>Use optimizing of query (Beta version!)</value>
+  </data>
+  <data name="&gt;&gt;buttonOptimize.Name" xml:space="preserve">
+    <value>buttonOptimize</value>
+  </data>
+  <data name="&gt;&gt;buttonOptimize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOptimize.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOrderBy</value>
+  </data>
+  <data name="&gt;&gt;buttonOptimize.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonSwitchDescAsc.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonSwitchDescAsc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSwitchDescAsc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 0</value>
+  </data>
+  <data name="buttonSwitchDescAsc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonSwitchDescAsc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 28</value>
+  </data>
+  <data name="buttonSwitchDescAsc.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;buttonSwitchDescAsc.Name" xml:space="preserve">
+    <value>buttonSwitchDescAsc</value>
+  </data>
+  <data name="&gt;&gt;buttonSwitchDescAsc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSwitchDescAsc.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOrderBy</value>
+  </data>
+  <data name="&gt;&gt;buttonSwitchDescAsc.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="contextMenuStripRemeber.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>782, 17</value>
+  </metadata>
+  <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="saveToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Save current query settings</value>
+  </data>
+  <data name="toolStripMenuItemSetAsDefault.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="toolStripMenuItemSetAsDefault.Text" xml:space="preserve">
+    <value>Set as default</value>
+  </data>
+  <data name="toolStripMenuItemSetAsDefault.ToolTipText" xml:space="preserve">
+    <value>Set remembering as default</value>
+  </data>
+  <data name="contextMenuStripRemeber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 48</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripRemeber.Name" xml:space="preserve">
+    <value>contextMenuStripRemeber</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripRemeber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonQueryRemember.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonQueryRemember.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQueryRemember.Location" type="System.Drawing.Point, System.Drawing">
+    <value>164, 0</value>
+  </data>
+  <data name="buttonQueryRemember.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonQueryRemember.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 28</value>
+  </data>
+  <data name="buttonQueryRemember.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="buttonQueryRemember.ToolTip" xml:space="preserve">
+    <value>Remember the query conditions when restarting the application</value>
+  </data>
+  <data name="buttonQueryRemember.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryRemember.Name" xml:space="preserve">
+    <value>buttonQueryRemember</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryRemember.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryRemember.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOrderBy</value>
+  </data>
+  <data name="&gt;&gt;buttonQueryRemember.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboBoxQueryColumn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="comboBoxQueryColumn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 2</value>
+  </data>
+  <data name="comboBoxQueryColumn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxQueryColumn.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="comboBoxQueryColumn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 23</value>
+  </data>
+  <data name="comboBoxQueryColumn.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="comboBoxQueryColumn.ToolTip" xml:space="preserve">
+    <value>Order results</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQueryColumn.Name" xml:space="preserve">
+    <value>comboBoxQueryColumn</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQueryColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQueryColumn.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOrderBy</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQueryColumn.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonOrderByColumnAdd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonOrderByColumnAdd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonOrderByColumnAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 2</value>
+  </data>
+  <data name="buttonOrderByColumnAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonOrderByColumnAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 23</value>
+  </data>
+  <data name="buttonOrderByColumnAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="buttonOrderByColumnAdd.ToolTip" xml:space="preserve">
+    <value>Add another order column</value>
+  </data>
+  <data name="buttonOrderByColumnAdd.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonOrderByColumnAdd.Name" xml:space="preserve">
+    <value>buttonOrderByColumnAdd</value>
+  </data>
+  <data name="&gt;&gt;buttonOrderByColumnAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOrderByColumnAdd.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOrderBy</value>
+  </data>
+  <data name="&gt;&gt;buttonOrderByColumnAdd.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="maskedTextBoxOrderByColumnWidth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="maskedTextBoxOrderByColumnWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 7</value>
+  </data>
+  <data name="maskedTextBoxOrderByColumnWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="maskedTextBoxOrderByColumnWidth.Mask" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="maskedTextBoxOrderByColumnWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="maskedTextBoxOrderByColumnWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="maskedTextBoxOrderByColumnWidth.Text" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="maskedTextBoxOrderByColumnWidth.ToolTip" xml:space="preserve">
+    <value>Width of first column</value>
+  </data>
+  <data name="maskedTextBoxOrderByColumnWidth.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;maskedTextBoxOrderByColumnWidth.Name" xml:space="preserve">
+    <value>maskedTextBoxOrderByColumnWidth</value>
+  </data>
+  <data name="&gt;&gt;maskedTextBoxOrderByColumnWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;maskedTextBoxOrderByColumnWidth.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOrderBy</value>
+  </data>
+  <data name="&gt;&gt;maskedTextBoxOrderByColumnWidth.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pictureBoxOrderByColumnWidth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pictureBoxOrderByColumnWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 5</value>
+  </data>
+  <data name="pictureBoxOrderByColumnWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="pictureBoxOrderByColumnWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 20</value>
+  </data>
+  <data name="pictureBoxOrderByColumnWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="pictureBoxOrderByColumnWidth.ToolTip" xml:space="preserve">
+    <value>Set width of first column to max. of current content</value>
+  </data>
+  <data name="pictureBoxOrderByColumnWidth.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxOrderByColumnWidth.Name" xml:space="preserve">
+    <value>pictureBoxOrderByColumnWidth</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxOrderByColumnWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxOrderByColumnWidth.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOrderBy</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxOrderByColumnWidth.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tableLayoutPanelOrderBy.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelOrderBy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 0</value>
+  </data>
+  <data name="tableLayoutPanelOrderBy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tableLayoutPanelOrderBy.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanelOrderBy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 28</value>
+  </data>
+  <data name="tableLayoutPanelOrderBy.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelOrderBy.Name" xml:space="preserve">
+    <value>tableLayoutPanelOrderBy</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelOrderBy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelOrderBy.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelOrderBy.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="tableLayoutPanelOrderBy.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonOptimize" Row="0" RowSpan="3" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="buttonSwitchDescAsc" Row="0" RowSpan="3" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="buttonQueryRemember" Row="0" RowSpan="3" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="comboBoxQueryColumn" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonOrderByColumnAdd" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="maskedTextBoxOrderByColumnWidth" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="pictureBoxOrderByColumnWidth" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,50,Absolute,23,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="panelOrderByColumns.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelOrderByColumns.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="panelOrderByColumns.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panelOrderByColumns.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 12</value>
+  </data>
+  <data name="panelOrderByColumns.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="panelOrderByColumns.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;panelOrderByColumns.Name" xml:space="preserve">
+    <value>panelOrderByColumns</value>
+  </data>
+  <data name="&gt;&gt;panelOrderByColumns.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelOrderByColumns.Parent" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;panelOrderByColumns.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="tableLayoutPanelQueryButtons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="tableLayoutPanelQueryButtons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 308</value>
+  </data>
+  <data name="tableLayoutPanelQueryButtons.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="tableLayoutPanelQueryButtons.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanelQueryButtons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 58</value>
+  </data>
+  <data name="tableLayoutPanelQueryButtons.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelQueryButtons.Name" xml:space="preserve">
+    <value>tableLayoutPanelQueryButtons</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelQueryButtons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelQueryButtons.Parent" xml:space="preserve">
+    <value>groupBoxQueryResults</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelQueryButtons.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelQueryButtons.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonQueryKeep" Row="2" RowSpan="1" Column="12" ColumnSpan="1" /&gt;&lt;Control Name="buttonQueryPrevious" Row="2" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="buttonQueryRemove" Row="0" RowSpan="1" Column="12" ColumnSpan="1" /&gt;&lt;Control Name="buttonQueryAdd" Row="2" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="buttonQuery" Row="2" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="buttonSetQueryConditionsUpDown" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelQueryColumn" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="buttonShowQueryConditions" Row="2" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="buttonQueryNext" Row="2" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="buttonQueryClear" Row="2" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="buttonQueryLoad" Row="2" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="buttonQuerySave" Row="2" RowSpan="1" Column="10" ColumnSpan="1" /&gt;&lt;Control Name="buttonSelectAllItems" Row="2" RowSpan="1" Column="11" ColumnSpan="1" /&gt;&lt;Control Name="buttonFreeText" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanelOrderBy" Row="0" RowSpan="1" Column="3" ColumnSpan="9" /&gt;&lt;Control Name="panelOrderByColumns" Row="1" RowSpan="1" Column="0" ColumnSpan="12" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,100,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Absolute,28,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="groupBoxQueryResults.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBoxQueryResults.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBoxQueryResults.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="groupBoxQueryResults.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="groupBoxQueryResults.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="groupBoxQueryResults.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 369</value>
+  </data>
+  <data name="groupBoxQueryResults.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupBoxQueryResults.Text" xml:space="preserve">
+    <value>Query results</value>
+  </data>
+  <data name="&gt;&gt;groupBoxQueryResults.Name" xml:space="preserve">
+    <value>groupBoxQueryResults</value>
+  </data>
+  <data name="&gt;&gt;groupBoxQueryResults.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxQueryResults.Parent" xml:space="preserve">
+    <value>splitContainerMain.Panel1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxQueryResults.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitContainerMain.Panel1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel1.Name" xml:space="preserve">
+    <value>splitContainerMain.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel1.Parent" xml:space="preserve">
+    <value>splitContainerMain</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelQueryConditions.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panelQueryConditions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelQueryConditions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 100</value>
+  </data>
+  <data name="panelQueryConditions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panelQueryConditions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 239</value>
+  </data>
+  <data name="panelQueryConditions.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelQueryConditions.Name" xml:space="preserve">
+    <value>panelQueryConditions</value>
+  </data>
+  <data name="&gt;&gt;panelQueryConditions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelQueryConditions.Parent" xml:space="preserve">
+    <value>groupBoxQueryConditions</value>
+  </data>
+  <data name="&gt;&gt;panelQueryConditions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxFreeText.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="textBoxFreeText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 77</value>
+  </data>
+  <data name="textBoxFreeText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="textBoxFreeText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 23</value>
+  </data>
+  <data name="textBoxFreeText.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="textBoxFreeText.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxFreeText.Name" xml:space="preserve">
+    <value>textBoxFreeText</value>
+  </data>
+  <data name="&gt;&gt;textBoxFreeText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxFreeText.Parent" xml:space="preserve">
+    <value>groupBoxQueryConditions</value>
+  </data>
+  <data name="&gt;&gt;textBoxFreeText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBoxSQL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="textBoxSQL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 16</value>
+  </data>
+  <data name="textBoxSQL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="textBoxSQL.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxSQL.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="textBoxSQL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 61</value>
+  </data>
+  <data name="textBoxSQL.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="textBoxSQL.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxSQL.Name" xml:space="preserve">
+    <value>textBoxSQL</value>
+  </data>
+  <data name="&gt;&gt;textBoxSQL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSQL.Parent" xml:space="preserve">
+    <value>groupBoxQueryConditions</value>
+  </data>
+  <data name="&gt;&gt;textBoxSQL.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBoxQueryConditions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBoxQueryConditions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBoxQueryConditions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="groupBoxQueryConditions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 3</value>
+  </data>
+  <data name="groupBoxQueryConditions.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="groupBoxQueryConditions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 342</value>
+  </data>
+  <data name="groupBoxQueryConditions.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="groupBoxQueryConditions.Text" xml:space="preserve">
+    <value>Query conditions</value>
+  </data>
+  <data name="&gt;&gt;groupBoxQueryConditions.Name" xml:space="preserve">
+    <value>groupBoxQueryConditions</value>
+  </data>
+  <data name="&gt;&gt;groupBoxQueryConditions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxQueryConditions.Parent" xml:space="preserve">
+    <value>splitContainerMain.Panel2</value>
+  </data>
+  <data name="&gt;&gt;groupBoxQueryConditions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitContainerMain.Panel2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel2.Name" xml:space="preserve">
+    <value>splitContainerMain.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel2.Parent" xml:space="preserve">
+    <value>splitContainerMain</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainerMain.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
+  </data>
+  <data name="splitContainerMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 716</value>
+  </data>
+  <data name="splitContainerMain.SplitterDistance" type="System.Int32, mscorlib">
+    <value>369</value>
+  </data>
+  <data name="splitContainerMain.SplitterWidth" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="splitContainerMain.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Name" xml:space="preserve">
+    <value>splitContainerMain</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <metadata name="toolStripQueryList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <data name="toolStripButtonConnection.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonConnection.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonConnection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonConnection.ToolTipText" xml:space="preserve">
+    <value>Connect to database</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="toolStripButtonSave.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripButtonSave.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonSave.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonSave.ToolTipText" xml:space="preserve">
+    <value>Save dataset</value>
+  </data>
+  <data name="toolStripButtonBacklinkUpdate.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripButtonBacklinkUpdate.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonBacklinkUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonBacklinkUpdate.Text" xml:space="preserve">
+    <value>Update depending datasets in linked modules</value>
+  </data>
+  <data name="toolStripButtonBacklinkUpdate.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripButtonUndo.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripButtonUndo.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonUndo.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonUndo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonUndo.Text" xml:space="preserve">
+    <value>reload dataset without saving</value>
+  </data>
+  <data name="toolStripButtonNew.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripButtonNew.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonNew.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonNew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonNew.ToolTipText" xml:space="preserve">
+    <value>Create new dataset</value>
+  </data>
+  <data name="toolStripButtonCopy.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripButtonCopy.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonCopy.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonCopy.ToolTipText" xml:space="preserve">
+    <value>Copy dataset</value>
+  </data>
+  <data name="toolStripButtonDelete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripButtonDelete.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonDelete.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonDelete.ToolTipText" xml:space="preserve">
+    <value>Delete dataset</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="toolStripButtonOptions.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripButtonOptions.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonOptions.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonOptions.Text" xml:space="preserve">
+    <value>set query conditions</value>
+  </data>
+  <data name="toolStripButtonSwitchOrientation.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonSwitchOrientation.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonSwitchOrientation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonSwitchOrientation.Text" xml:space="preserve">
+    <value>Switch to vertical orientation</value>
+  </data>
+  <data name="toolStripButtonApplicationID.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonApplicationID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonApplicationID.Text" xml:space="preserve">
+    <value>Show process ID</value>
+  </data>
+  <data name="toolStripButtonApplicationID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripQueryList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStripQueryList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 25</value>
+  </data>
+  <data name="toolStripQueryList.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="toolStripQueryList.Text" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStripQueryList.Name" xml:space="preserve">
+    <value>toolStripQueryList</value>
+  </data>
+  <data name="&gt;&gt;toolStripQueryList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripQueryList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStripQueryList.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <metadata name="imageListConnectionState.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>289, 17</value>
+  </metadata>
+  <data name="imageListConnectionState.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
+        LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
+        SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAyAkAAAJNU0Z0AUkBTAIBAQIB
+        AAFEAQQBRAEEARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEQAwABAQEAAQgG
+        AAEEGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
+        AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
+        kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC
+        MwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJmAgABZgGZAgABZgHMAgABZgH/AgAB
+        mQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEzAgABzAFmAgABzAGZAgACzAIAAcwB
+        /wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEAAWYBAAEzAQABmQEAATMBAAHMAQAB
+        MwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/AQABMwFmAgABMwFmATMBAAEzAmYB
+        AAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEAATMBmQFmAQABMwKZAQABMwGZAcwB
+        AAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEAATMCzAEAATMBzAH/AQABMwH/ATMB
+        AAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEAATMBAAFmAQABZgEAAWYBAAGZAQAB
+        ZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEzAZkBAAFmATMBzAEAAWYBMwH/AQAC
+        ZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEAAWYBmQFmAQABZgKZAQABZgGZAcwB
+        AAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFmAcwB/wEAAWYB/wIAAWYB/wEzAQAB
+        ZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEzAZkBAAGZAQABmQEAAZkBAAHMAQAB
+        mQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIAAZkBZgEzAQABmQEzAWYBAAGZAWYB
+        mQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHMAQACmQH/AQABmQHMAgABmQHMATMB
+        AAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZAf8BMwEAAZkBzAFmAQABmQH/AZkB
+        AAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEAAZkBAAHMAQABzAEAAZkBMwIAAcwC
+        MwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFmAgABzAFmATMBAAGZAmYBAAHMAWYB
+        mQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFmAQABzAKZAQABzAGZAcwBAAHMAZkB
+        /wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/AgABzAH/ATMBAAGZAf8BZgEAAcwB
+        /wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEAAZkBAAHMATMCAAH/AjMBAAH/ATMB
+        ZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEzAQABzAJmAQAB/wFmAZkBAAH/AWYB
+        zAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEAAf8BmQHMAQAB/wGZAf8BAAH/AcwC
+        AAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEAAv8BMwEAAcwB/wFmAQAC/wGZAQAC
+        /wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEAAv8BZgEAASEBAAGlAQADXwEAA3cB
+        AAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4AQAB8AH7Af8BAAGkAqABAAOAAwAB
+        /wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA/9CAAFzB0sIAAEFB0sEAAEFIgABcwFSAXkBoAGaAXoB
+        MgIxAUsGAAL5AQUBoAGaAXoBMgIxAUsCAAEFAvkhAAFzAVkBegKgAXoBOAEyATEBSwYAAXMC+QEFAaAB
+        egE4ATIBMQFLAQABBQL5IgABcwFZAXoCoAF6ATgBMgExAUsGAAFzAVkC+QEFAXoBOAEyATEBSwEFAvkj
+        AAFzAVkBegKgAXoBOAEyATEBSwYAAXMBWQF6AvkBBQE4ATIBMQEFAvkkAAFzAVkBegKgAfcDbAZmAQAB
+        cwFZAXoBoAL5AQUBbAEFAvkEZiEAAXMCegKgAfcBvAIHAe8CtQL3AWYBAAFzAnoCoAL5AQUC+QK1AvcB
+        ZiEAAXMBWQF6AqAB9wP/Ae8B8gHwAbwBtQFmAQABcwFZAXoCoAH3A/kB7wHyAfABvAG1AWYhAAFzAVkB
+        mgKgAfcD/wG1AvIB8AG1AWYBAAFzAVkBmgKgAQUD+QEFAvIB8AG1AWYhAAFzAVkBegKgAbUB8QO8AgcB
+        7wG1AWwBAAFzAVkBegGgAQUC+QG8AvkBBQEHAe8BtQFsIQABcwF6A6AB7wP/AbwC/wH0Ae8BbAEAAXMB
+        egGgAQUC+QP/AvkBBQH0Ae8BbCEAAXQBoAPDAbsD/wG8Av8B9AEHAWwBAAF0AaABBQL5AbsD/wG8AvkB
+        BQEHAWwhAAKZAaACwwTWBc4BrQEAAZkBBQL5AcME1gLOAvkBBQGtIgACmQJ0AdYD3AXVAa0BAAEFAvkC
+        dAHWA9wD1QL5AQUmAATWAtUB1APOAgAB+QMABNYC1QHUAc4B+QHOIQABQgFNAT4HAAE+AwABKAMAAUAD
+        AAEQAwABAQEAAQEFAAGAFwAD/wEABP8EAAGAAX8BgAF7BQABPwEAATEFAAE/AQABIwUAAT8BAAEHBQAB
+        PwEAAQ8FAAEBAQABAQUAAQEBAAEBBQABAQEAAQEFAAEBAQABAQUAAQEBAAEBBQABAQEAAQEFAAEBAQAB
+        AQUAAQEBAAEBBAABgAEBAQABAQQAAfgBAQG4AQEEAAs=
+</value>
+  </data>
+  <metadata name="imageListOrientation.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>469, 17</value>
+  </metadata>
+  <data name="imageListOrientation.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
+        LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
+        SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAARgkAAAJNU0Z0AUkBTAIBAQIB
+        AAFEAQQBRAEEARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEQAwABAQEAAQgG
+        AAEEGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
+        AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
+        kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC
+        MwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJmAgABZgGZAgABZgHMAgABZgH/AgAB
+        mQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEzAgABzAFmAgABzAGZAgACzAIAAcwB
+        /wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEAAWYBAAEzAQABmQEAATMBAAHMAQAB
+        MwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/AQABMwFmAgABMwFmATMBAAEzAmYB
+        AAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEAATMBmQFmAQABMwKZAQABMwGZAcwB
+        AAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEAATMCzAEAATMBzAH/AQABMwH/ATMB
+        AAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEAATMBAAFmAQABZgEAAWYBAAGZAQAB
+        ZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEzAZkBAAFmATMBzAEAAWYBMwH/AQAC
+        ZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEAAWYBmQFmAQABZgKZAQABZgGZAcwB
+        AAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFmAcwB/wEAAWYB/wIAAWYB/wEzAQAB
+        ZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEzAZkBAAGZAQABmQEAAZkBAAHMAQAB
+        mQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIAAZkBZgEzAQABmQEzAWYBAAGZAWYB
+        mQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHMAQACmQH/AQABmQHMAgABmQHMATMB
+        AAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZAf8BMwEAAZkBzAFmAQABmQH/AZkB
+        AAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEAAZkBAAHMAQABzAEAAZkBMwIAAcwC
+        MwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFmAgABzAFmATMBAAGZAmYBAAHMAWYB
+        mQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFmAQABzAKZAQABzAGZAcwBAAHMAZkB
+        /wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/AgABzAH/ATMBAAGZAf8BZgEAAcwB
+        /wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEAAZkBAAHMATMCAAH/AjMBAAH/ATMB
+        ZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEzAQABzAJmAQAB/wFmAZkBAAH/AWYB
+        zAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEAAf8BmQHMAQAB/wGZAf8BAAH/AcwC
+        AAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEAAv8BMwEAAcwB/wFmAQAC/wGZAQAC
+        /wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEAAv8BZgEAASEBAAGlAQADXwEAA3cB
+        AAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4AQAB8AH7Af8BAAGkAqABAAOAAwAB
+        /wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA/8BAAEVAQ4BSgETAe0B9wntAewBEgERARQBEgHtAeoB
+        6wHqARQB7wLwAbwB7wHrAewgAAESARECEgHqAW0B6gdKAUMBFANtAeoB7AFtARUB6gFDAREBbQHrARQB
+        EAEOAUMgAAEUAQ4CEgHvCgcB7QFtAkMBEgIHAe8B6wGSAfEF8AEHIAABFAEOAhIB7AKSCO0B7AHqAUMB
+        FAFtA+wB6gH3Bv8B8CAAARQBDgISAfcC7wEcBpIB7QHsAesBbQPrARIBEQEUAfcB/wT0Af8B8CAAARIB
+        FQISCewB6wETAW0B6gFDAW0B6wEcArwBkgH3Af8E9AH/AfAgAAESAQ8BFAETCewB6wITAeoBDwHqAesB
+        9wK8AvcB/wT0Af8B8CAAARID7AdtAesB6gEVAQ4BQwHqAREBEgFtAesB7AHqARIB9wH/BPQB/wHwIAAB
+        DgESC+0BbQEPAUMB6wJtA+sCEwH3Af8E9AH/AfAgAAHsDO8B7QH3Ae0B6gEQARIB6wH3ArwC9wH/BPQB
+        /wHwIAAB7wH/C/QC/wHwARIBQwEUAW0BkgIHAe0B9wH/BPQB/wHwIAAB7wH/DPMB9AG8AeoBQwETAW0B
+        7QH3Ae0B6wH3Af8E9AH/AfAgAAHvAf8M8wH0AbwBbQETAusB7AH3AZIB7AH3Af8E9AH/AfAgAAHvAf8N
+        9AG8AesCbQHrAewBbQESAW0B7wH/BPQB/wHwIAAB9wH0C/MB9AH/AbwB6gEUARMBbQHsAe0B7AHrAfcB
+        9ATzAfQBvCAAAesB7ArrAewBEgFDAeoE7AETAw4BbQPrARICQwHqIAABQgFNAT4HAAE+AwABKAMAAUAD
+        AAEQAwABAQEAAQEFAAGAFwAD/4EACw==
+</value>
+  </data>
+  <metadata name="imageListAscDesc.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>634, 17</value>
+  </metadata>
+  <data name="imageListAscDesc.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
+        LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
+        SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAYAgAAAJNU0Z0AUkBTAIBAQQB
+        AAHIAQMByAEDARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEgAwABAQEAAQgG
+        AAEIGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
+        AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
+        kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC
+        MwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJmAgABZgGZAgABZgHMAgABZgH/AgAB
+        mQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEzAgABzAFmAgABzAGZAgACzAIAAcwB
+        /wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEAAWYBAAEzAQABmQEAATMBAAHMAQAB
+        MwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/AQABMwFmAgABMwFmATMBAAEzAmYB
+        AAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEAATMBmQFmAQABMwKZAQABMwGZAcwB
+        AAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEAATMCzAEAATMBzAH/AQABMwH/ATMB
+        AAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEAATMBAAFmAQABZgEAAWYBAAGZAQAB
+        ZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEzAZkBAAFmATMBzAEAAWYBMwH/AQAC
+        ZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEAAWYBmQFmAQABZgKZAQABZgGZAcwB
+        AAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFmAcwB/wEAAWYB/wIAAWYB/wEzAQAB
+        ZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEzAZkBAAGZAQABmQEAAZkBAAHMAQAB
+        mQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIAAZkBZgEzAQABmQEzAWYBAAGZAWYB
+        mQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHMAQACmQH/AQABmQHMAgABmQHMATMB
+        AAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZAf8BMwEAAZkBzAFmAQABmQH/AZkB
+        AAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEAAZkBAAHMAQABzAEAAZkBMwIAAcwC
+        MwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFmAgABzAFmATMBAAGZAmYBAAHMAWYB
+        mQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFmAQABzAKZAQABzAGZAcwBAAHMAZkB
+        /wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/AgABzAH/ATMBAAGZAf8BZgEAAcwB
+        /wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEAAZkBAAHMATMCAAH/AjMBAAH/ATMB
+        ZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEzAQABzAJmAQAB/wFmAZkBAAH/AWYB
+        zAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEAAf8BmQHMAQAB/wGZAf8BAAH/AcwC
+        AAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEAAv8BMwEAAcwB/wFmAQAC/wGZAQAC
+        /wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEAAv8BZgEAASEBAAGlAQADXwEAA3cB
+        AAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4AQAB8AH7Af8BAAGkAqABAAOAAwAB
+        /wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA///AP8A/wD/AGYAAwQBAAMECQAHASkAAewBBAMAAQQB
+        7AIAAewBAAHsBQACAQMAAQECAAHsAQAB7CUABQQMAAIBLQAB7AEEAQABBAHsAgAB7AMAAewGAAIBAwAB
+        7AMAAewlAAMECwABAQMAAgEsAAHsAQQB7AsABgEtAAEETAADBAEAAwQpAAcBCQAB7AEEAwABBAHsKgAC
+        AQMAAQEKAAUELAACAQ0AAewBBAEAAQQB7C0AAgENAAMEKwABAQMAAgEMAAHsAQQB7CsABgENAAEESwAB
+        QgFNAT4HAAE+AwABKAMAAUADAAEgAwABAQEAAQEGAAEBFgAD/4EADP8BiAHvAYAB7wT/AZwBxwHOAccE
+        /wHBAccB5wHHBP8ByQGDAfMBgwT/AeMBgwG5AYMB/wF/AfABBwHjAe8BgQHvAf4BPwH4AQ8B9wHvAf8B
+        7wH8AR8B/AEfAf8B7wGIAe8B+AEPAf4BPwGAAe8BnAHvAfABBwH/AX8BzgHvAcEB7wT/AecB7wHJAe8E
+        /wHzAe8B4wHvBP8BuQHvAeMB7wT/AYEB7wH3Ae8I/ws=
+</value>
+  </data>
+  <metadata name="contextMenuStripOrderBy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1373, 17</value>
+  </metadata>
+  <data name="addPrefixToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="addPrefixToolStripMenuItem.Text" xml:space="preserve">
+    <value>Add Prefix</value>
+  </data>
+  <data name="removePrefixToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="removePrefixToolStripMenuItem.Text" xml:space="preserve">
+    <value>Remove Prefix</value>
+  </data>
+  <data name="contextMenuStripOrderBy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 48</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripOrderBy.Name" xml:space="preserve">
+    <value>contextMenuStripOrderBy</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripOrderBy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="contextMenuStripBacklink.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1180, 17</value>
+  </metadata>
+  <data name="insertCurrentIDToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 22</value>
+  </data>
+  <data name="insertCurrentIDToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insert current ID in backlink list</value>
+  </data>
+  <data name="insertCurrentIDToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Add the ID of the current dataset to the list for update in linked datasets</value>
+  </data>
+  <data name="insertAllIDsInBacklinkListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 22</value>
+  </data>
+  <data name="insertAllIDsInBacklinkListToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insert all IDs in backlink list</value>
+  </data>
+  <data name="showCurrentListOfIDsForBacklinkToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 22</value>
+  </data>
+  <data name="showCurrentListOfIDsForBacklinkToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show current list of IDs for backlink</value>
+  </data>
+  <data name="resetBacklinkListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 22</value>
+  </data>
+  <data name="resetBacklinkListToolStripMenuItem.Text" xml:space="preserve">
+    <value>Reset backlink list</value>
+  </data>
+  <data name="resetBacklinkListToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Clear the list of the items for update in linked datasets</value>
+  </data>
+  <data name="contextMenuStripBacklink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 92</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripBacklink.Name" xml:space="preserve">
+    <value>contextMenuStripBacklink</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripBacklink.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 741</value>
+  </data>
+  <data name="&gt;&gt;showSQLToolStripMenuItem.Name" xml:space="preserve">
+    <value>showSQLToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;showSQLToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOptimizingAsDefault.Name" xml:space="preserve">
+    <value>toolStripMenuItemOptimizingAsDefault</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOptimizingAsDefault.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveToolStripMenuItem.Name" xml:space="preserve">
+    <value>saveToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;saveToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemSetAsDefault.Name" xml:space="preserve">
+    <value>toolStripMenuItemSetAsDefault</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemSetAsDefault.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonConnection.Name" xml:space="preserve">
+    <value>toolStripButtonConnection</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonConnection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonSave.Name" xml:space="preserve">
+    <value>toolStripButtonSave</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonBacklinkUpdate.Name" xml:space="preserve">
+    <value>toolStripButtonBacklinkUpdate</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonBacklinkUpdate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonUndo.Name" xml:space="preserve">
+    <value>toolStripButtonUndo</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonUndo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonNew.Name" xml:space="preserve">
+    <value>toolStripButtonNew</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonNew.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonCopy.Name" xml:space="preserve">
+    <value>toolStripButtonCopy</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonCopy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDelete.Name" xml:space="preserve">
+    <value>toolStripButtonDelete</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDelete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonOptions.Name" xml:space="preserve">
+    <value>toolStripButtonOptions</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonSwitchOrientation.Name" xml:space="preserve">
+    <value>toolStripButtonSwitchOrientation</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonSwitchOrientation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonApplicationID.Name" xml:space="preserve">
+    <value>toolStripButtonApplicationID</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonApplicationID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTipQueryList.Name" xml:space="preserve">
+    <value>toolTipQueryList</value>
+  </data>
+  <data name="&gt;&gt;toolTipQueryList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;imageListConnectionState.Name" xml:space="preserve">
+    <value>imageListConnectionState</value>
+  </data>
+  <data name="&gt;&gt;imageListConnectionState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;imageListOrientation.Name" xml:space="preserve">
+    <value>imageListOrientation</value>
+  </data>
+  <data name="&gt;&gt;imageListOrientation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;imageListAscDesc.Name" xml:space="preserve">
+    <value>imageListAscDesc</value>
+  </data>
+  <data name="&gt;&gt;imageListAscDesc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addPrefixToolStripMenuItem.Name" xml:space="preserve">
+    <value>addPrefixToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;addPrefixToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;removePrefixToolStripMenuItem.Name" xml:space="preserve">
+    <value>removePrefixToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;removePrefixToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;insertCurrentIDToolStripMenuItem.Name" xml:space="preserve">
+    <value>insertCurrentIDToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;insertCurrentIDToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;insertAllIDsInBacklinkListToolStripMenuItem.Name" xml:space="preserve">
+    <value>insertAllIDsInBacklinkListToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;insertAllIDsInBacklinkListToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showCurrentListOfIDsForBacklinkToolStripMenuItem.Name" xml:space="preserve">
+    <value>showCurrentListOfIDsForBacklinkToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;showCurrentListOfIDsForBacklinkToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resetBacklinkListToolStripMenuItem.Name" xml:space="preserve">
+    <value>resetBacklinkListToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;resetBacklinkListToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UserControlQueryList</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

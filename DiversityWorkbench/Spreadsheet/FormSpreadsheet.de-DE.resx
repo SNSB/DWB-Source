@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonPrevious.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 36</value>
+  </data>
+  <data name="buttonConnect.ToolTip" xml:space="preserve">
+    <value>Zur Datenbank verbinden</value>
+  </data>
+  <data name="buttonNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 36</value>
+  </data>
+  <data name="labelProject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 21</value>
+  </data>
+  <data name="labelProject.Text" xml:space="preserve">
+    <value>Projekt:</value>
+  </data>
+  <data name="comboBoxReplaceWith.Location" type="System.Drawing.Point, System.Drawing">
+    <value>375, 36</value>
+  </data>
+  <data name="labelReplaceWith.Location" type="System.Drawing.Point, System.Drawing">
+    <value>340, 36</value>
+  </data>
+  <data name="labelReplaceWith.Text" xml:space="preserve">
+    <value>Mit</value>
+  </data>
+  <data name="comboBoxReplace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>375, 14</value>
+  </data>
+  <data name="buttonEdit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>315, 13</value>
+  </data>
+  <data name="buttonEdit.Text" xml:space="preserve">
+    <value>Ersetzen</value>
+  </data>
+  <data name="numericUpDownMaxResults.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 36</value>
+  </data>
+  <data name="numericUpDownMaxResults.ToolTip" xml:space="preserve">
+    <value>NMaximal Anzahl an Ergebnissen einer Suche</value>
+  </data>
+  <data name="labelMaxResults.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 21</value>
+  </data>
+  <data name="labelMaxResults.Text" xml:space="preserve">
+    <value>Max. Erg.:</value>
+  </data>
+  <data name="buttonStart.ToolTip" xml:space="preserve">
+    <value>Dieses Fomular als Startfesten verwenden</value>
+  </data>
+  <data name="pictureBoxImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>740, 1</value>
+  </data>
+  <data name="buttonSettings.ToolTip" xml:space="preserve">
+    <value>Einstellungen anpassen</value>
+  </data>
+  <data name="buttonSettingsSave.ToolTip" xml:space="preserve">
+    <value>Einstellungen sichern</value>
+  </data>
+  <data name="buttonSettingsLoad.ToolTip" xml:space="preserve">
+    <value>Abgespeicherte Einstellugen laden</value>
+  </data>
+  <data name="buttonSettingsReset.ToolTip" xml:space="preserve">
+    <value>Einstellungen auf Auslieferungszustand zurücksetzen und Fenster schliessen</value>
+  </data>
+  <data name="groupBoxSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>541, 3</value>
+  </data>
+  <data name="groupBoxSettings.Text" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="comboBoxProject.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 14</value>
+  </data>
+  <data name="labelResultRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 36</value>
+  </data>
+  <data name="buttonExport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>712, 36</value>
+  </data>
+  <data name="buttonExport.ToolTip" xml:space="preserve">
+    <value>Daten als Textdatei exportieren</value>
+  </data>
+  <data name="buttonEditMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>319, 36</value>
+  </data>
+  <data name="buttonFeedback.Location" type="System.Drawing.Point, System.Drawing">
+    <value>692, 39</value>
+  </data>
+  <data name="buttonFeedback.ToolTip" xml:space="preserve">
+    <value>Rückmeldung an den Entwickler des Programms schicken</value>
+  </data>
+  <data name="buttonMarkWholeColumn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>506, 13</value>
+  </data>
+  <data name="buttonMarkWholeColumn.ToolTip" xml:space="preserve">
+    <value>Gesamte Spalte markieren</value>
+  </data>
+  <data name="labelResultMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 48</value>
+  </data>
+  <data name="labelResultMax.Text" xml:space="preserve">
+    <value>von</value>
+  </data>
+  <data name="buttonMainForm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>715, 6</value>
+  </data>
+  <data name="buttonMainForm.ToolTip" xml:space="preserve">
+    <value>Den ausgewählten Datensatz im Hauptformular anzeigen</value>
+  </data>
+  <data name="buttonSaveData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>692, 13</value>
+  </data>
+  <data name="buttonSaveData.ToolTip" xml:space="preserve">
+    <value>Daten sichern und neu abfragen</value>
+  </data>
+  <data name="buttonAdaptColumnWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>506, 36</value>
+  </data>
+  <data name="buttonFilter.ToolTip" xml:space="preserve">
+    <value>Daten entsprechend den eingestellten Kritierien suchen</value>
+  </data>
+  <data name="buttonTimeout.ToolTip" xml:space="preserve">
+    <value>Maximale Zeit für Abfragen setzen</value>
+  </data>
+  <data name="buttonReadOnly.ToolTip" xml:space="preserve">
+    <value>Für schnellere Anzeige auf Nur-Lesen ohne Farbindizierung umschalten</value>
+  </data>
+  <data name="buttonResetToFactorySettings.Text" xml:space="preserve">
+    <value>Die Einstellungen sind falsch. Bitte hier clicken um das Fester zu schliessen und auf Werkseinstellungen zurückzusetzen.</value>
+  </data>
+  <data name="imageListEditMode.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAW
+        DgAAAk1TRnQBSQFMAgEBBQEAAWgBAgFoAQIBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABIAMAAQEBAAEYBgABGBMAATMBzAEAATMBzAEAATMBzAEAATMBzAEAATMBzAEAATMBzAEAATMBzAEA
+        ATMBzAEAATMBzAEAATMBzAEAATMBzAEAATMBzAEAATMBzAEAATMBzAEAATMBzAEAATMBzJEAAWYBmQEA
+        AWYBmQEAAWYBmQEAAWYBmQEAAWYBmQEAAWYBmQEAAWYBmQEAAWYBmQEAAWYBmQEAAWYBmQEAAWYBmQEA
+        AWYBmQEAAWYBmQEAAWYBmQEAAWYBmQEAAWYBmZEAAZkBZgEAAZkBZgEAAZkBZgEAAZkBZgEAAZkBZgEA
+        AZkBZgEAAZkBZgEAAZkBZgEAAZkBZgEAAZkBZgEAAZkBZgEAAZkBZgEAAZkBZgEAAZkBZgEAAZkBZgEA
+        AZkBZpEAAcwBMwEAAcwBMwEAAcwBMwEAAcwBMwEAAcwBMwEAAcwBMwEAAcwBMwEAAcwBMwEAAcwBMwEA
+        AcwBMwEAAcwBMwEAAcwBMwEAAcwBMwEAAcwBMwEAAcwBMwEAAcwBM5EAAf8CAAH/AgAB/wIAAf8CAAH/
+        AgAB/wIAAf8CAAH/AgAB/wIAAf8CAAH/AgAB/wIAAf8CAAH/AgAB/wIAAf+jAANfATMBmQFmATMBmQFm
+        A1+xAANfAWYBmQFmAZkBzAKZAcwBmQEzAZkBZgNfqwADXwEzAZkBZgGZAcwCmQH/ApkB/wKZAcwBmQEz
+        AZkBZgNfpQADXwFmAZkBZgGZAcwCmQH/ApkB/wGZAWYB/wGZAWYB/wKZAcwBmQEzAZkBZgNfnwADXwEz
+        AZkBZgGZAcwCmQH/ApkB/wKZAf8CmQH/AZkBZgH/AZkBMwH/ApkBzAGZATMBmQFmA1+cAANfAZkBzAKZ
+        Af8CmQH/ApkB/wKZAf8CmQH/ApkB/wKZAf8CmQH/ApkBzAGZA1+cAANfATMBmQFmATMBmQFmATMBmQFm
+        ATMBmQJmAf8BmQFmAf8BmQEzAZkBZgEzAZkBZgEzAZkBZgEzAZkBZgNfpQADXwEzAZkBZgGZAf8CmQH/
+        AZkBMwGZAWYDX64AA18BMwGZATMBmQH/ApkB/wGZATMBmQFmA1+uAANfATMBmQEzAZkB/wKZAf8BmQEz
+        AZkBZgNfrgADXwEzAZkBMwGZAf8CmQH/AZkBMwGZAWYDX6sAA90BmQHMAZkBZgHMAZkBZgHMAZkBZgHM
+        AZkBZgHMAZlOAAGZAcwCmQHMAZkBZgHMAZkBZgGZAWYD1yoAAZkCzAFmAZkBzAFmAZkBzAFmAZkBzAFm
+        AZkBzAEzAWYBzAJmAcwMAAPAAWYBmQJmAZkCZgHMAZkBMwH/AZkBZgH/AZkBZgHMAZkBZgKZSwABkAGp
+        Aa0BZgHMAWYBmQH/AcwBmQH/AcwBZgHMAZkBMwFmATMBmQHMAZkD8SQAApkBzAGZAcwB/wGZAcwB/wFm
+        AcwB/wFmAZkB/wEzAWYBzAwAA7IBZgGZAmYB/wKZAf8BzAFmAf8BmQFmAf8BmQFmAcwBZgEzAZkBZgPX
+        HQAB/yAAAf8JAAOyAWYBmQJmAf8BmQFmAf8BmQFmAf8CmQH/AcwBZgHMAWYBMwFmATMDhgHWAuchAAGZ
+        AcwB/wGZAcwB/wFmAcwB/wFmAcwB/wEzAWYBzAJmAcwMAAFmAZkCZgHMApkB/wHMAWYB/wKZAf8CmQH/
+        AZkBZgHMAmYBmQFmAcAB3AHAGgAB/wIAAf8CAAH/JAAD1wEzAZkCZgH/AZkBZgH/AZkBZgH/ApkB/wKZ
+        Af8CmQH/AcwBZgHMAZkBMwGZAWYDgAPjDwABZgGZAmYBmQFmCQABZgGZAf8BZgHMAf8BZgHMAf8BZgGZ
+        Af8BZgGZAf8BMwFmAcwCZgGZCQADhgFmAZkBZgGZAf8BzAGZAf8CmQH/ApkB/wGZAWYB/wGZAWYBzAGZ
+        ATMBmQJmAcwBmRcAAf8CAAH/AgAB/wIAAf8XAAH/BgAD6gFmAZkBZgEzAcwBmQFmAf8BmQFmAf8CmQH/
+        ApkB/wGZAWYB/wGZAWYB/wGZAWYB/wKZAcwBmQJmATMBpAKgDAABZgHMAWYBMwGZATMMAAFmAZkB/wFm
+        AZkB/wFmAZkB/wEzAZkB/wEzAWYB/wEzAWYB/wEAATMBzAJmAZkGAAHAAdwBwAEzAZkBZgGZAcwCmQH/
+        ApkB/wGZAWYB/wGZAWYB/wGZATMBzAGZATMBzAFmATMBzAFmATMBmQFmAZkBzAGZFAAB/wIAAf8CAAH/
+        FAAB/wkAAZkBzAGZATMBzAJmAf8BmQFmAcwBmQFmAcwCmQH/AZkBZgH/AZkBZgHMAZkBMwGZAjMBzAEz
+        AWYBzAJmAZkBZgPXDAABMwGZAjMBmQEzDAABgAF8Af8BMwFmAf8BMwFmAcwBZgGZAcwBMwFmAcwBAAEz
+        Af8BAAEzAf8BAAEzAcwBkAGpAa0GAAFmAZkCZgHMAWYBmQH/AZkBMwHMAWYBMwGZAmYBzAGZAWYBzAGZ
+        ATMBzAFmATMBzAFmATMBzAFmATMBmQEzAcAB3AHAFAAB/wIAAf8CAAH/DgAB/wIAAf8JAAGQAakBrQEz
+        AZkBZgEzAZkBZgEzAZkBMwFmAZkCZgH/AZkBZgH/AZkBZgHMAZkDXwTAAdwBwAHWAucMAAFmAZkBZgEz
+        AcwCMwGZATMMAAFmAZkBzAIzAcwCmQHMAwACmQHMAjMBzAEAATMB/wEAATMBzAJmAZkGAAOWATMBmQJm
+        Af8BmQEzAcwEZgEzAWYCMwGZAjMBzAFmATMBzAFmATMBzAFmATMBzAJmAcwBmRcAAf8CAAH/AgAB/wgA
+        Af8CAAH/DAAD6gGZAcwBmQOyAcAB3AHAAWYBmQJmAcwBmQEzAf8BmQFmAcwBZgEzAWYBMwPjEgABMwGZ
+        AWYBMwHMAjMBmQEzA5YYAAGAAXwB/wEAATMBzAEAATMB/wEzAWYBzAYAA8AEZgHMAZkBZgHMAWYDAAPA
+        AWYBmQFmATMBZgIzAcwBZgEzAcwBZgEzAcwCZgHMAWYaAAH/AgAB/wIAAf8CAAH/AgAB/xsAAWYBmQFm
+        ATMBzAFmATMBzAFmATMBzAFmATMBZgEzA8wSAAFmAZkBZgEzAcwBZgEzAcwBZgEzAZkBZgOyBgABZgGZ
+        AWYDlgwAATMBZgHMAgABzAEzAWYBzAkAA3cBMwFmATMBmQHMAZkJAAGkAqABMwFmAjMBzAIzAcwBMwFm
+        AcwBZh0AAf8CAAH/AgAB/x4AAWYBmQFmATMBzAFmATMBzAFmATMBzAFmATMBZgEzA8AVAAEzAcwBZgEz
+        AcwBZgEzAcwBZgEzAZkBZgOGAWYBmQJmAcwCZgGZAWYMAAGAAXwB/wIAAcwCZgHMHgABZgGZAWYBMwGZ
+        AjMBzAIzAcwBZhoAAf8CAAH/AgAB/wIAAf8CAAH/GwABmQHMAZkBMwGZAWYBMwHMAWYBMwHMAWYBMwGZ
+        ATMDhhUAAWYBzAFmATMBzAFmATMBzAJmAcwBZgEzAZkBZgEzAcwCZgH/AZkBZgGZAWYMAAJmAcwBIQEA
+        AaUkAAEzAZkCMwHMAjMBmQFmFwAB/wIAAf8CAAH/CAAB/wIAAf8bAAEzAZkBZgEzAcwBZgEzAcwBZgEz
+        AZkCMwFmATMDyxUAATMBzAFmATMBzAJmAf8BmQFmAf8BmQFmAf8CmQH/AZkBZgHMAWYJAAKZAcwCAAGA
+        ApkBzCQAATMBmQEzAQABmQEzAWYBzAFmEQAB/wIAAf8CAAH/AgAB/w4AAf8CAAH/GAABmQHMAZkBMwGZ
+        AWYBMwHMAWYBMwHMAjMBmQIzAZkBMwHAAdwBwBUAAWYBzAJmAcwBZgGZAf8CmQH/ApkB/wHMAWYBzAGZ
+        CQACZgHMApkBzCcAATMBmQIzAZkBMwGZAcwBmQ4AAf8CAAH/AgAB/wIAAf8UAAH/AgAB/xgAAWYBmQFm
+        ATMBmQFmATMBzAIzAcwCMwGZAjMBmQEzAWYBmQJmAcwBmQFmAZkBZgOWCQABZgHMAmYBzAJmAf8BmQFm
+        Af8CmQH/AcwBZgHMAZkzAAGZAcwBmQEzAWYBMwFmAZkBZgHWAucOAAH/AgAB/wIAAf8dAAH/GAABZgGZ
+        AWYBMwGZAjMBzAIzAcwBMwEAAZkCMwGZAjMBZgIzAWYBMwOyBgABkAGpAa0BMwHMAWYBMwHMAZkBZgHM
+        AZkBZgHMAZkBZgHMAZkBZgHMAZkzAAFmAZkCZgGZAWYBzAH/AcxRAAGZAcwBmQFmAZkCZgGZAmYBzAJm
+        AcwBZgGZAcwBmQHMAf8BzDMAAUIBTQE+BwABPgMAASgDAAFAAwABIAMAAQEBAAEBBgABARYAA/8pAAH8
+        AT8GAAH4AR8GAAHwAQ8GAAHgAQcGAAHAAQMGAAHAAQMGAAHAAQMGAAH4AR8GAAH4AR8GAAH4AR8GAAH4
+        AR8GAAHwAT8C/wHwAX8B/gEDAcABPwL/AeABHwH+AQcBgAE/Ae8B/QHAAQ8B/gEHAYABPwHHAf8BgAEH
+        Ac4BAwGAAR8BwwH7AQABBwGeAQEBgAEHAeMB9wEAAQcBngEAAcABAwHxAecBAAEPAR4BIAHAAQMB+AHP
+        AQABPwEPAfABwgEDAfwBHwHwAT8BBgF4AeMBgwH+AT8B8AE/AYABeAH/AcMB/AEfAfABPwGAAXkB/wHj
+        AfgBzwH4AR8BwAFxAf8B4wHhAecB+AEPAeABcwH/AeMBwwHzAfwBAAHgAX8B/wHDAccB/QH+AQABwAF/
+        Af8BxwP/AQEC/ws=
+</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAB
+        AAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAwMDAAMDcwADwyqYABAQEAAgICAAMDAwAERERABYW
+        FgAcHBwAIiIiACkpKQBVVVUATU1NAEJCQgA5OTkAgHz/AFBQ/wCTANYA/+zMAMbW7wDW5+cAkKmtAAAA
+        MwAAAGYAAACZAAAAzAAAMwAAADMzAAAzZgAAM5kAADPMAAAz/wAAZgAAAGYzAABmZgAAZpkAAGbMAABm
+        /wAAmQAAAJkzAACZZgAAmZkAAJnMAACZ/wAAzAAAAMwzAADMZgAAzJkAAMzMAADM/wAA/2YAAP+ZAAD/
+        zAAzAAAAMwAzADMAZgAzAJkAMwDMADMA/wAzMwAAMzMzADMzZgAzM5kAMzPMADMz/wAzZgAAM2YzADNm
+        ZgAzZpkAM2bMADNm/wAzmQAAM5kzADOZZgAzmZkAM5nMADOZ/wAzzAAAM8wzADPMZgAzzJkAM8zMADPM
+        /wAz/zMAM/9mADP/mQAz/8wAM///AGYAAABmADMAZgBmAGYAmQBmAMwAZgD/AGYzAABmMzMAZjNmAGYz
+        mQBmM8wAZjP/AGZmAABmZjMAZmZmAGZmmQBmZswAZpkAAGaZMwBmmWYAZpmZAGaZzABmmf8AZswAAGbM
+        MwBmzJkAZszMAGbM/wBm/wAAZv8zAGb/mQBm/8wAzAD/AP8AzACZmQAAmTOZAJkAmQCZAMwAmQAAAJkz
+        MwCZAGYAmTPMAJkA/wCZZgAAmWYzAJkzZgCZZpkAmWbMAJkz/wCZmTMAmZlmAJmZmQCZmcwAmZn/AJnM
+        AACZzDMAZsxmAJnMmQCZzMwAmcz/AJn/AACZ/zMAmcxmAJn/mQCZ/8wAmf//AMwAAACZADMAzABmAMwA
+        mQDMAMwAmTMAAMwzMwDMM2YAzDOZAMwzzADMM/8AzGYAAMxmMwCZZmYAzGaZAMxmzACZZv8AzJkAAMyZ
+        MwDMmWYAzJmZAMyZzADMmf8AzMwAAMzMMwDMzGYAzMyZAMzMzADMzP8AzP8AAMz/MwCZ/2YAzP+ZAMz/
+        zADM//8AzAAzAP8AZgD/AJkAzDMAAP8zMwD/M2YA/zOZAP8zzAD/M/8A/2YAAP9mMwDMZmYA/2aZAP9m
+        zADMZv8A/5kAAP+ZMwD/mWYA/5mZAP+ZzAD/mf8A/8wAAP/MMwD/zGYA/8yZAP/MzAD/zP8A//8zAMz/
+        ZgD//5kA///MAGZm/wBm/2YAZv//AP9mZgD/Zv8A//9mACEApQBfX18Ad3d3AIaGhgCWlpYAy8vLALKy
+        sgDX19cA3d3dAOPj4wDq6uoA8fHxAPj4+ADw+/8ApKCgAICAgAAAAP8AAP8AAAD//wD/AAAA/wD/AP//
+        AAD///8AAAAAAAAAAAAAAAAAAAAAAOvAwOTk5ODo6Ojob+OZmQDrR5eXl8Bvb7q66G8XdJoA60eYnp6e
+        b47ouuFvTZqaAOvCwsLCwuLi4uLib+PvmQDrFwgICMKTk+EZ4m/jmZoA6/mYmJjCb2+7u+JvTXR6AOvA
+        5OTk5ODo6Ojob+PvmQDrTJ7k5MAc7+jo6G/jmpoA6/mXl5fkTG+6uuhvR3R0AOsTBwcH7uvsvO68bey8
+        BwDrEMLCwsLr+PTi9Ors9hsA6//18Qf///+88fP//7zuAOuXl5eYeJG6urq6c3STkwDr5OSX5H26urq6
+        6Bx6enoA6+vr6+vr6+vr6+vr6+vrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+</value>
+  </data>
+</root>

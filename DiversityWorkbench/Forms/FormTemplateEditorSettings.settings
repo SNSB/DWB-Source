@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DiversityWorkbench.Forms" GeneratedClassName="FormTemplateEditorSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Template" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FillingOption" Type="System.String" Scope="User">
+      <Value Profile="(Default)">OnlyEmpty</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
