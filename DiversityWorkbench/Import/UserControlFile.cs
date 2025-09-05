@@ -194,7 +194,7 @@ namespace DiversityWorkbench.Import
                 {
                     this.comboBoxEncoding.Items.Add(KV.Key);
                 }
-                this.comboBoxEncoding.SelectedIndex = 0;
+                this.comboBoxEncoding.SelectedIndex = 1;
             }
             catch (Exception ex)
             {
@@ -237,6 +237,8 @@ namespace DiversityWorkbench.Import
                 if (DiversityWorkbench.Import.Import.Encoding != this.Encoding)
                 {
                     DiversityWorkbench.Import.Import.Encoding = this.Encoding;
+                    // #253 Check encoding of file
+                    this.CheckFileEncoding(DiversityWorkbench.Import.Import.FileName);
                     this.ShowMessage();
                     this.SetFile(SetLineRange);
                 }
@@ -314,6 +316,19 @@ namespace DiversityWorkbench.Import
                 if (this.openFileDialog.FileName.Length > 0)
                 {
                     System.IO.FileInfo f = new System.IO.FileInfo(this.openFileDialog.FileName);
+                    // Check encoding #253
+                    this.CheckFileEncoding(f.FullName);
+                    //try
+                    //{
+                    //    System.Text.Encoding encoding = Forms.FormFunctions.DetectEncoding(f.FullName);
+                    //    if (encoding != null && encoding.BodyName != this.Encoding.BodyName)
+                    //    {
+                    //        System.Windows.Forms.MessageBox.Show("The encoding of the file (" + encoding.BodyName + ")\r\n" +
+                    //            "does not match the current encoding (" + this.Encoding.BodyName + ")", "Wrong encoding", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    }
+                    //}
+                    //catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+
                     if (f.DirectoryName != null && f.DirectoryName.Length > 0 && SettingsImport.Default.DefaultDirectory != f.DirectoryName)
                     {
                         SettingsImport.Default.DefaultDirectory = f.DirectoryName;
@@ -340,6 +355,33 @@ namespace DiversityWorkbench.Import
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
+        }
+
+        private bool CheckFileEncoding(string FileName)
+        {
+            // Check encoding #253
+            try
+            {
+                Tuple<Encoding, bool> tuple = DiversityWorkbench.Forms.FormFunctions.DetectEncoding(FileName);
+                System.Text.Encoding encoding = tuple.Item1;
+                if (encoding != null && encoding.BodyName != this.Encoding.BodyName && tuple.Item2)
+                {
+                    string SelectedEncoding = this.Encoding.BodyName;
+                    if (this.Encoding.CodePage == 1252) SelectedEncoding = this.Encoding.WebName;
+                    System.Windows.Forms.MessageBox.Show("The encoding of the file (" + encoding.BodyName + ")\r\n" +
+                    "does not match the current encoding (" + SelectedEncoding + ")", "Wrong encoding", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return true;
+                }
+                else if (!tuple.Item2) //encoding.BodyName == "utf-8")
+                {
+                    System.Windows.Forms.MessageBox.Show("The encoding of the file could not be detected due to missing BOM (= Byte order mark)\r\n" +
+                    "Please check the content for deviating special signs", "Encoding?", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                else { /* ToDo */ }
+                    return true;
+            }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); return false; }
         }
 
         private void SetFile(bool setLineRange, bool ReloadFile = false)
@@ -889,6 +931,8 @@ namespace DiversityWorkbench.Import
                     DiversityWorkbench.Import.Import.Separator = Import.separator.TAB;
                     break;
             }
+            // #253
+            this.SetFile(false);
         }
 
         #endregion

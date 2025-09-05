@@ -2143,12 +2143,16 @@ namespace DiversityCollection
                     this._UserControlQueryList.setConnection(DiversityWorkbench.Settings.ConnectionString, this._MainTable);
                 if (this._MainTableContainsHierarchy)
                     this.initTreeView();
-                this._UserControlQueryList.toolStripButtonConnection.Visible = false;
-                this._UserControlQueryList.toolStripButtonSwitchOrientation.Visible = false;
-                this._UserControlQueryList.toolStripSeparator1.Visible = false;
-                this.setQueryControlEvents();
-                this._UserControlQueryList.setQueryConditions(this.QueryConditions);
-                this._UserControlQueryList.QueryDisplayColumns = this.QueryDisplayColumns;
+                // #256
+                if (this._UserControlQueryList != null)
+                {
+                    this._UserControlQueryList.toolStripButtonConnection.Visible = false;
+                    this._UserControlQueryList.toolStripButtonSwitchOrientation.Visible = false;
+                    this._UserControlQueryList.toolStripSeparator1.Visible = false;
+                    this.setQueryControlEvents();
+                    this._UserControlQueryList.setQueryConditions(this.QueryConditions);
+                    this._UserControlQueryList.QueryDisplayColumns = this.QueryDisplayColumns;
+                }
                 if (this._ToolStripButtonSpecimenList != null)
                     this._ToolStripButtonSpecimenList.Click += new System.EventHandler(this.toolStripButtonSpecimenList_Click);
                 this._HelpProvider.HelpNamespace = DiversityWorkbench.WorkbenchResources.WorkbenchDirectory.HelpProviderNameSpace();
@@ -2156,16 +2160,18 @@ namespace DiversityCollection
                 this.FormFunctions.setDescriptions();
                 DiversityWorkbench.Entity.setEntity(this._Form, this._toolTip);
 #if DEBUG
-                this._UserControlQueryList.OptimizingAllow(true);
+                if (this._UserControlQueryList != null)
+                    this._UserControlQueryList.OptimizingAllow(true);
 #endif
-                if (this._UserControlQueryList.Optimizing_AllowedForQueryList)
+                if (this._UserControlQueryList != null && this._UserControlQueryList.Optimizing_AllowedForQueryList)
                 {
                     System.Windows.Forms.Control control = this._UserControlQueryList.Parent;
                     while (control.GetType().BaseType != typeof(System.Windows.Forms.Form))
                         control = control.Parent;
                     DiversityWorkbench.UserControls.UserControlQueryList.ModuleForm_QueryMainTableOptimizing(DiversityWorkbench.Settings.ModuleName, control.Name, this._MainTable);
 #if DEBUG
-                    this._UserControlQueryList.ManyOrderByColumns_Allow(true, DiversityWorkbench.Settings.ModuleName, control.Name);
+                    if (this._UserControlQueryList != null)
+                        this._UserControlQueryList.ManyOrderByColumns_Allow(true, DiversityWorkbench.Settings.ModuleName, control.Name);
 #endif
                 }
             }
@@ -2319,15 +2325,18 @@ namespace DiversityCollection
             try
             {
                 // QueryList
-                this._UserControlQueryList.toolStripButtonCopy.Click += new System.EventHandler(this.copyItem);
-                this._UserControlQueryList.toolStripButtonDelete.Click += new System.EventHandler(this.deleteItem_Click);
-                this._UserControlQueryList.toolStripButtonNew.Click += new System.EventHandler(this.createNewItem);
-                this._UserControlQueryList.toolStripButtonSave.Click += new System.EventHandler(this.saveItem);
-                this._UserControlQueryList.toolStripButtonUndo.Click += new System.EventHandler(this.undoChangesInItem_Click);
-                this._UserControlQueryList.listBoxQueryResult.SelectedIndexChanged += new System.EventHandler(this.listBoxQueryResult_SelectedIndexChanged);
-                // Subscribe to the event from the UserControl
-                this._UserControlQueryList.SuppressSelectedIndexChangedEvent +=
-                    UserControlQueryList_SuppressSelectedIndexChangedEvent;
+                if (this._UserControlQueryList != null)
+                {
+                    this._UserControlQueryList.toolStripButtonCopy.Click += new System.EventHandler(this.copyItem);
+                    this._UserControlQueryList.toolStripButtonDelete.Click += new System.EventHandler(this.deleteItem_Click);
+                    this._UserControlQueryList.toolStripButtonNew.Click += new System.EventHandler(this.createNewItem);
+                    this._UserControlQueryList.toolStripButtonSave.Click += new System.EventHandler(this.saveItem);
+                    this._UserControlQueryList.toolStripButtonUndo.Click += new System.EventHandler(this.undoChangesInItem_Click);
+                    this._UserControlQueryList.listBoxQueryResult.SelectedIndexChanged += new System.EventHandler(this.listBoxQueryResult_SelectedIndexChanged);
+                    // Subscribe to the event from the UserControl
+                    this._UserControlQueryList.SuppressSelectedIndexChangedEvent +=
+                        UserControlQueryList_SuppressSelectedIndexChangedEvent;
+                }
             }
             catch (Exception ex)
             {

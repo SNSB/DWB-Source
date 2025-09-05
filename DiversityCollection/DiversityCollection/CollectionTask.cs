@@ -129,9 +129,13 @@ namespace DiversityCollection
             //this.setFormControls();
             try
             {
-                this._ListBoxImages.SelectedIndex = -1;
-                if (this._DataSet.Tables["CollectionTaskImage"].Rows.Count > 0 && this._ListBoxImages.Items.Count > 0)
-                    this._ListBoxImages.SelectedIndex = 0;
+                // #256
+                if (this._ListBoxImages != null)
+                {
+                    this._ListBoxImages.SelectedIndex = -1;
+                    if (this._DataSet.Tables["CollectionTaskImage"].Rows.Count > 0 && this._ListBoxImages.Items.Count > 0)
+                        this._ListBoxImages.SelectedIndex = 0;
+                }
             }
             catch (System.Exception ex)
             {

@@ -44,6 +44,12 @@ namespace DiversityCollection
             set { _LocationNodes = null; _ID = value; }
         }
 
+        /// <summary>
+        /// Sets the parent of a collection location.
+        /// </summary>
+        /// <param name="ID">ID of the current collection</param>
+        /// <param name="parentId">ID of the parent collection</param>
+        /// <returns></returns>
         public bool SetParent(int ID, int? parentId)
         {
             bool OK = true;
@@ -68,15 +74,16 @@ namespace DiversityCollection
             return OK;
         }
 
+        /// <summary>
+        /// Sets the hierarchy display state for the collection locations, e.g. hide, parents etc. to adapt the tree in the interface.
+        /// </summary>
+        /// <param name="state">The state of the tree</param>
         public void setHierarchyDisplayState(HierarchicalEntity.HierarchyDisplayState state)
         {
             _HierarchyDisplayState = state;
             _HierarchyID = -1;
             _LocationNodes = null;
             this.BuildHierarchy(_ID);
-            //if (_HierarchyID >= 0)
-            //{
-            //}
         }
 
         private System.Collections.Generic.List<LocationNode> _LocationNodes;
@@ -91,6 +98,9 @@ namespace DiversityCollection
             }
         }
 
+        /// <summary>
+        /// Bilds the location nodes according to the display state.
+        /// </summary>
         private bool initLocationNodes(int? ID = null)
         {
             bool OK = true;
@@ -160,8 +170,7 @@ namespace DiversityCollection
             }
             if (this._TreeView.Nodes.Count > 0)
                 this._TreeView.Nodes.Clear();
-            //if (_LocationNodes == null)
-            //    this.initLocationNodes();
+
             if (LocationNodes.Count == 0)
                 return;
             var rootNodes = _LocationNodes.Where(n => n.ParentID == null).ToList();
@@ -176,6 +185,9 @@ namespace DiversityCollection
             this._TreeView.ExpandAll();
         }
 
+        /// <summary>
+        /// Adds child nodes to the specified parent node in the TreeView.
+        /// </summary>  
         private void AddChildNodes(System.Windows.Forms.TreeNode parentNode, int parentId)
         {
             var childNodes = _LocationNodes.Where(n => n.ParentID == parentId).ToList();
@@ -204,18 +216,6 @@ namespace DiversityCollection
                 _TreeView.ExpandAll();
             }
         }
-
-        //public bool setParent(int? parentId)
-        //{
-        //    bool OK = true;
-        //    if (parentId.HasValue && parentId.Value == this._ID)
-        //    {
-        //        throw new InvalidOperationException("Cannot set a collection as its own parent.");
-        //    }
-        //    SetParent(parentId);
-        //    BuildHierarchy(this._ID);
-        //    return OK;
-        //}
 
     }
 }

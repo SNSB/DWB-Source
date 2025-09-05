@@ -1646,7 +1646,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplaySpecimen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 20</value>
+    <value>21, 20</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplaySpecimen.Text" xml:space="preserve">
     <value>Switch to specimen view</value>
@@ -1658,7 +1658,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayCollection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 20</value>
+    <value>21, 20</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayCollection.Text" xml:space="preserve">
     <value>Switch to collection view</value>
@@ -1673,7 +1673,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayShowSubcollectionContent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 20</value>
+    <value>21, 20</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayShowSubcollectionContent.Text" xml:space="preserve">
     <value>Show whole content of subcollection</value>
@@ -1688,7 +1688,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayLocationHierarchy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 20</value>
+    <value>21, 20</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayLocationHierarchy.Text" xml:space="preserve">
     <value>Show hierarchy according to administration or location</value>
@@ -1700,7 +1700,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayShowTask.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 20</value>
+    <value>21, 20</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayShowTask.Text" xml:space="preserve">
     <value>Show or hide tasks</value>
@@ -1712,7 +1712,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayShowUnitsInPart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 20</value>
+    <value>21, 20</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayShowUnitsInPart.Text" xml:space="preserve">
     <value>Show the identification units</value>
@@ -1724,7 +1724,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayShowAnalysisOfPart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 20</value>
+    <value>21, 20</value>
   </data>
   <data name="toolStripButtonOverviewHierarchyDisplayShowAnalysisOfPart.Text" xml:space="preserve">
     <value>Show or hide analysis of parts</value>
@@ -1805,7 +1805,7 @@
     <value>True</value>
   </data>
   <data name="toolStripOverviewHierarchyDisplayStorage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 199</value>
+    <value>24, 199</value>
   </data>
   <data name="toolStripOverviewHierarchyDisplayStorage.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5738,6 +5738,18 @@
   <data name="toEventSeriesToolStripMenuItem.Text" xml:space="preserve">
     <value>To event series ...</value>
   </data>
+  <data name="toPlotToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toPlotToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="toPlotToolStripMenuItem.Text" xml:space="preserve">
+    <value>To plot ...</value>
+  </data>
+  <data name="toPlotToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Transfer all seleted dataset to a sampling plot</value>
+  </data>
   <data name="transferToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -5746,6 +5758,84 @@
   </data>
   <data name="transferToolStripMenuItem.Text" xml:space="preserve">
     <value>Transfer</value>
+  </data>
+  <data name="linkEventToReferenceToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="linkEventToReferenceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="linkEventToReferenceToolStripMenuItem.Text" xml:space="preserve">
+    <value>Event...</value>
+  </data>
+  <data name="linkEventToReferenceToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Link collection events to a reference</value>
+  </data>
+  <data name="linkSpecimenToReferenceToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="linkSpecimenToReferenceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="linkSpecimenToReferenceToolStripMenuItem.Text" xml:space="preserve">
+    <value>Specimen...</value>
+  </data>
+  <data name="linkSpecimenToReferenceToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Link specimen to a reference</value>
+  </data>
+  <data name="linkPartToReferenceToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="linkPartToReferenceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="linkPartToReferenceToolStripMenuItem.Text" xml:space="preserve">
+    <value>Part...</value>
+  </data>
+  <data name="linkPartToReferenceToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Link specimen parts to a reference</value>
+  </data>
+  <data name="linkUnitToReferenceToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="linkUnitToReferenceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="linkUnitToReferenceToolStripMenuItem.Text" xml:space="preserve">
+    <value>Unit...</value>
+  </data>
+  <data name="linkUnitToReferenceToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Link units to a reference</value>
+  </data>
+  <data name="linkIdentificationToReferenceToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="linkIdentificationToReferenceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="linkIdentificationToReferenceToolStripMenuItem.Text" xml:space="preserve">
+    <value>Identification...</value>
+  </data>
+  <data name="linkIdentificationToReferenceToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Link identifications to a reference</value>
+  </data>
+  <data name="linkToReferenceToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="linkToReferenceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="linkToReferenceToolStripMenuItem.Text" xml:space="preserve">
+    <value>Reference</value>
+  </data>
+  <data name="linkToToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="linkToToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="linkToToolStripMenuItem.Text" xml:space="preserve">
+    <value>Link to</value>
   </data>
   <data name="allIdentifierToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
@@ -7399,7 +7489,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAfgUAAAJNU0Z0AUkBTAIBAQIB
-        AAEEARYBBAEWARABAAEQAQAE/wEZAQAI/wFCAU0BNgcAATYDAAEoAwABQAMAARADAAEBAQABGAYAAQzX
+        AAEcARYBHAEWARABAAEQAQAE/wEZAQAI/wFCAU0BNgcAATYDAAEoAwABQAMAARADAAEBAQABGAYAAQzX
         AAFmAgABZgKZAcwVAAMMA18MAAEkARwB7QEkARwB7QEkARwB7QYAAbAB5AHvAbAB5AHvAbAB5AHvAbAB
         5AHvAbAB5AHvAbAB5AHvAbAB5AHvAbAB5AHvAbAB5AHvAbAB5AHvZQABmQIAAYACAAFmApkBzA8AATMF
         AAGZAmYJAAEkARwB7QHJAa4B/wHJAa4B/wHJAa4B/wEkARwB7QMAA8MJfwbDBn8Gw2MAAmYBzAIAAcwC
@@ -7451,7 +7541,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAzA0AAAJNU0Z0AUkBTAIBAQkB
-        AAHQASwB0AEsARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEwAwABAQEAAQgG
+        AAHoASwB6AEsARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEwAwABAQEAAQgG
         AAEMGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
         AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
         kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC
@@ -7520,7 +7610,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAWhgAAAJNU0Z0AUkBTAIBARMB
-        AAHQASwB0AEsARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAFQAwABAQEAAQgG
+        AAHoASwB6AEsARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAFQAwABAQEAAQgG
         AAEUGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
         AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
         kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC
@@ -7634,7 +7724,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAA+A4AAAJNU0Z0AUkBTAIBAQkB
-        AAHQASwB0AEsARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEwAwABAQEAAQgG
+        AAHoASwB6AEsARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEwAwABAQEAAQgG
         AAEMGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
         AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
         kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC
@@ -7708,7 +7798,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAFg8AAAJNU0Z0AUkBTAIBAQkB
-        AAHQASwB0AEsARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEwAwABAQEAAQgG
+        AAHoASwB6AEsARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEwAwABAQEAAQgG
         AAEMGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
         AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
         kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC
@@ -8025,7 +8115,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAABAkAAAJNU0Z0AUkBTAMBAQAB
-        0AEsAdABLAEwAQABMAEABP8BCQEACP8BQgFNATYBBAYAATYBBAIAASgDAAHAAwABMAMAAQEBAAEIBgAB
+        6AEsAegBLAEwAQABMAEABP8BCQEACP8BQgFNATYBBAYAATYBBAIAASgDAAHAAwABMAMAAQEBAAEIBgAB
         JBgAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPAAQABwAHcAcABAAHwAcoBpgEAATMFAAEzAQAB
         MwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANNAQADQgEAAzkBAAGAAXwB/wEAAlAB/wEAAZMB
         AAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGtAgAB/wEzAwABZgMAAZkDAAHMAgABMwMAAjMC
@@ -8137,7 +8227,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAhAgAAAJNU0Z0AUkBTAIBAQIB
-        AAGkASABpAEgARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEQAwABAQEAAQgG
+        AAG8ASABvAEgARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEQAwABAQEAAQgG
         AAEEGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
         AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
         kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC
@@ -11328,6 +11418,48 @@
   <data name="&gt;&gt;toEventSeriesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toPlotToolStripMenuItem.Name" xml:space="preserve">
+    <value>toPlotToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;toPlotToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkToToolStripMenuItem.Name" xml:space="preserve">
+    <value>linkToToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;linkToToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkToReferenceToolStripMenuItem.Name" xml:space="preserve">
+    <value>linkToReferenceToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;linkToReferenceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkSpecimenToReferenceToolStripMenuItem.Name" xml:space="preserve">
+    <value>linkSpecimenToReferenceToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;linkSpecimenToReferenceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkEventToReferenceToolStripMenuItem.Name" xml:space="preserve">
+    <value>linkEventToReferenceToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;linkEventToReferenceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkIdentificationToReferenceToolStripMenuItem.Name" xml:space="preserve">
+    <value>linkIdentificationToReferenceToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;linkIdentificationToReferenceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkPartToReferenceToolStripMenuItem.Name" xml:space="preserve">
+    <value>linkPartToReferenceToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;linkPartToReferenceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;allIdentifierToolStripMenuItem.Name" xml:space="preserve">
     <value>allIdentifierToolStripMenuItem</value>
   </data>
@@ -12743,6 +12875,12 @@
   </data>
   <data name="&gt;&gt;collectionEventSeriesDescriptorBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkUnitToReferenceToolStripMenuItem.Name" xml:space="preserve">
+    <value>linkUnitToReferenceToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;linkUnitToReferenceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormCollectionSpecimen</value>

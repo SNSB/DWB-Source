@@ -1,3 +1,4 @@
+using DiversityWorkbench.DwbManual;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,10 @@ namespace DiversityCollection.Forms
             this.initForm();
             this.panelHeader.Visible = true;
             this.userControlDialogPanel.Visible = true;
+            this.KeyPreview = true;
+            KeyDown += Form_KeyDown;
+            this.KeyDown += new KeyEventHandler(this.Form_KeyDown);
+            this.helpProvider.SetHelpKeyword(this, "eventseries_dc");
         }
 
         public FormCollectionEventSeries(int? ItemID)
@@ -1256,6 +1261,52 @@ namespace DiversityCollection.Forms
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
+        }
+
+        #endregion
+
+        #region Manual
+
+        /// <summary>
+        /// Adding event deletates to form and controls
+        /// </summary>
+        /// <returns></returns>
+        private async System.Threading.Tasks.Task InitManual()
+        {
+            try
+            {
+
+                DiversityWorkbench.DwbManual.Hugo manual = new Hugo(this.helpProvider, this);
+                if (manual != null)
+                {
+                    await manual.addKeyDownF1ToForm();
+                }
+            }
+            catch (Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+        }
+
+        /// <summary>
+        /// ensure that init is only done once
+        /// </summary>
+        private bool _InitManualDone = false;
+
+
+        /// <summary>
+        /// KeyDown of the form adding event deletates to form and controls within the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void Form_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (!_InitManualDone)
+                {
+                    await this.InitManual();
+                    _InitManualDone = true;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         #endregion

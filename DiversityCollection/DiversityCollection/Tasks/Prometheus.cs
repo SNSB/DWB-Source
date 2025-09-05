@@ -446,7 +446,7 @@ namespace DiversityCollection.Tasks
 
                 string Response = "";
                 System.IO.Stream receiveStream = response.GetResponseStream();
-                Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
+                Encoding encode = System.Text.Encoding.UTF8; //.GetEncoding("utf-8"); #253
                 System.IO.StreamReader readStream = new System.IO.StreamReader(receiveStream, encode);
                 Char[] read = new Char[256];
                 int count = readStream.Read(read, 0, 256);
@@ -513,7 +513,7 @@ namespace DiversityCollection.Tasks
 
                 string Response = "";
                 System.IO.Stream receiveStream = response.GetResponseStream();
-                Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
+                Encoding encode = System.Text.Encoding.UTF8; //.GetEncoding("utf-8"); // #253
                 System.IO.StreamReader readStream = new System.IO.StreamReader(receiveStream, encode);
                 Char[] read = new Char[256];
                 int count = readStream.Read(read, 0, 256);
@@ -590,7 +590,7 @@ namespace DiversityCollection.Tasks
 
                 string Response = "";
                 System.IO.Stream receiveStream = response.GetResponseStream();
-                Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
+                Encoding encode = System.Text.Encoding.UTF8; //.GetEncoding("utf-8"); #253
                 System.IO.StreamReader readStream = new System.IO.StreamReader(receiveStream, encode);
                 Char[] read = new Char[256];
                 int count = readStream.Read(read, 0, 256);

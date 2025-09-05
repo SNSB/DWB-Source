@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DiversityWorkbench.Forms;
+using DiversityWorkbench.PostgreSQL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -903,7 +905,13 @@ namespace DiversityWorkbench.UserControls
             {
                 return DiversityWorkbench.Properties.Resources.Filter;
             }
-            return this.ImageList.Images[this.TableImageIndex[queryCondition.Table]];
+            // #251
+            if (this.TableImageIndex.ContainsKey(queryCondition.Table))
+            {
+                return this.ImageList.Images[this.TableImageIndex[queryCondition.Table]];
+            }
+            else
+                return DiversityWorkbench.Properties.Resources.Filter; // Default image if no specific image is found
         }
         private void FinalizeQueryConditionsPanel(int totalHeight)
         {
@@ -3087,8 +3095,14 @@ namespace DiversityWorkbench.UserControls
                             if (this.toolStripButtonNew.Enabled == false)
                             {
                                 // Check INSERT
-                                string SqlInsertPermission = "IF PERMISSIONS(OBJECT_ID('" + this._QueryMainTableLocal + "'))&8=8 SELECT 'True' ELSE SELECT 'False'";
-                                OK = System.Boolean.Parse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlInsertPermission.ToString()));
+                                // #236
+                                if (FormFunctions.getObjectPermissionCache(this._QueryMainTableLocal, FormFunctions.DatabaseGrant.Select) != null)
+                                    OK = (bool)FormFunctions.getObjectPermissionCache(this._QueryMainTableLocal, FormFunctions.DatabaseGrant.Select);
+                                else
+                                {
+                                    string SqlInsertPermission = "IF PERMISSIONS(OBJECT_ID('" + this._QueryMainTableLocal + "'))&8=8 SELECT 'True' ELSE SELECT 'False'";
+                                    OK = System.Boolean.Parse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlInsertPermission.ToString()));
+                                }
                                 this.toolStripButtonNew.Enabled = OK;
                             }
                         }
@@ -6144,50 +6158,69 @@ namespace DiversityWorkbench.UserControls
             //}
             return connectionString;
         }
-        //private Microsoft.Data.SqlClient.SqlConnection _ConnectionTempIDs;
 
-        //public Microsoft.Data.SqlClient.SqlConnection ConnectionTempIDs()
-        //{
-        //    try
-        //    {
-        //        if (this._ConnectionTempIDs == null)
-        //        {
-        //            string connectionString = null;
-        //            if (this._ServerConnection != null)
-        //            {
-        //                connectionString = this._ServerConnection.ConnectionString;
-        //            }
-        //            else if (!string.IsNullOrWhiteSpace(DiversityWorkbench.Settings.ConnectionString))
-        //                connectionString = DiversityWorkbench.Settings.ConnectionString;
+        private Microsoft.Data.SqlClient.SqlConnection _ConnectionTempIDs;
 
-        //            if (string.IsNullOrWhiteSpace(connectionString))
-        //            {
-        //                throw new InvalidOperationException("No valid connection string is available.");
-        //            }
-        //            this._ConnectionTempIDs = new Microsoft.Data.SqlClient.SqlConnection(connectionString);
-        //        }
+        /// <summary>
+        /// access to the connection for temporary IDs in table #ID
+        /// must be permanent to ensure existence of the table #ID
+        /// #250
+        /// </summary>
+        /// <returns>the connection</returns>
+        public Microsoft.Data.SqlClient.SqlConnection ConnectionTempIDs()
+        {
+            try
+            {
+                if (this._ConnectionTempIDs == null)
+                {
+                    // #250
+                    string connectionString = this.GetTempIDConnectionString();
 
-        //        if (this._ConnectionTempIDs.State == ConnectionState.Closed)
-        //            this._ConnectionTempIDs.Open();
-        //        return _ConnectionTempIDs;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log the exception and rethrow it
-        //        ExceptionHandling.WriteToErrorLogFile($"Error in ConnectionTempIDs: {ex.Message}");
-        //        throw;
-        //    }
-        //}
+                    //string connectionString = null;
+                    //if (this._ServerConnection != null)
+                    //{
+                    //    connectionString = this._ServerConnection.ConnectionString;
+                    //}
+                    //else if (!string.IsNullOrWhiteSpace(DiversityWorkbench.Settings.ConnectionString))
+                    //    connectionString = DiversityWorkbench.Settings.ConnectionString;
 
-        //public void CloseConnectionTempIDs()
-        //{
-        //    if (this._ConnectionTempIDs != null)
-        //    {
-        //        if (this._ConnectionTempIDs.State == ConnectionState.Open)
-        //            this._ConnectionTempIDs.Close();
-        //        this._ConnectionTempIDs.Dispose();
-        //    }
-        //}
+                    if (string.IsNullOrWhiteSpace(connectionString))
+                    {
+                        throw new InvalidOperationException("No valid connection string is available.");
+                    }
+                    this._ConnectionTempIDs = new Microsoft.Data.SqlClient.SqlConnection(connectionString);
+                }
+
+                // #250
+                if (_ConnectionTempIDs.ConnectionString == null || _ConnectionTempIDs.ConnectionString.Length == 0)
+                {
+                    _ConnectionTempIDs.ConnectionString = this.GetTempIDConnectionString();
+                }
+
+                if (this._ConnectionTempIDs.State == ConnectionState.Closed)
+                    this._ConnectionTempIDs.Open();
+                return _ConnectionTempIDs;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and rethrow it
+                ExceptionHandling.WriteToErrorLogFile($"Error in ConnectionTempIDs: {ex.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Closes the connection for temporary IDs e.g. when the database is changed.
+        /// </summary>
+        public void CloseConnectionTempIDs()
+        {
+            if (this._ConnectionTempIDs != null)
+            {
+                if (this._ConnectionTempIDs.State == ConnectionState.Open)
+                    this._ConnectionTempIDs.Close();
+                this._ConnectionTempIDs.Dispose();
+            }
+        }
 
         #endregion
 
@@ -6226,14 +6259,16 @@ namespace DiversityWorkbench.UserControls
                 {
                     return null;
                 }
+                // #250: Ensure that the temporary table #ID exists and is ready for use
                 // Get the connection string
-                string connectionString = GetTempIDConnectionString();
-                if (string.IsNullOrWhiteSpace(connectionString))
-                    return null;
+                //string connectionString = GetTempIDConnectionString();
+                //if (string.IsNullOrWhiteSpace(connectionString))
+                //    return null;
 
-                // Create and return the data adapter
-                var connection = new Microsoft.Data.SqlClient.SqlConnection(connectionString);
-                return new Microsoft.Data.SqlClient.SqlDataAdapter(sql, connection);
+                //// Create and return the data adapter
+                //var connection = new Microsoft.Data.SqlClient.SqlConnection(connectionString);
+
+                return new Microsoft.Data.SqlClient.SqlDataAdapter(sql, this.ConnectionTempIDs());
             }
             catch (Exception ex)
             {
@@ -6308,19 +6343,26 @@ namespace DiversityWorkbench.UserControls
                 if (string.IsNullOrWhiteSpace(connectionString))
                     return false;
 
-                using (var connection = new Microsoft.Data.SqlClient.SqlConnection(connectionString))
+                // #250: Ensure that the temporary table #ID exists and is ready for use
+                using (var command = new Microsoft.Data.SqlClient.SqlCommand(checkTableSql, this.ConnectionTempIDs()))
                 {
-                    // Open the connection only if it is not already open
-                    if (connection.State == System.Data.ConnectionState.Closed)
-                    {
-                        connection.Open();
-                    }
-                    using (var command = new Microsoft.Data.SqlClient.SqlCommand(checkTableSql, connection))
-                    {
-                        var result = command.ExecuteScalar();
-                        return result != null && (int)result == 1;
-                    }
+                    var result = command.ExecuteScalar();
+                    return result != null && (int)result == 1;
                 }
+
+                //using (var connection = new Microsoft.Data.SqlClient.SqlConnection(connectionString))
+                //{
+                //    // Open the connection only if it is not already open
+                //    if (connection.State == System.Data.ConnectionState.Closed)
+                //    {
+                //        connection.Open();
+                //    }
+                //    using (var command = new Microsoft.Data.SqlClient.SqlCommand(checkTableSql, connection))
+                //    {
+                //        var result = command.ExecuteScalar();
+                //        return result != null && (int)result == 1;
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -6332,22 +6374,29 @@ namespace DiversityWorkbench.UserControls
         {
             try
             {
-                // Get the connection string
-                string connectionString = GetTempIDConnectionString();
-                if (string.IsNullOrWhiteSpace(connectionString))
-                    return false;
-                using (var connection = new Microsoft.Data.SqlClient.SqlConnection(connectionString))
+                //// Get the connection string
+                //string connectionString = GetTempIDConnectionString();
+                //if (string.IsNullOrWhiteSpace(connectionString))
+                //    return false;
+                //using (var connection = new Microsoft.Data.SqlClient.SqlConnection(connectionString))
+                //{
+                //    // Open the connection only if it is not already open
+                //    if (connection.State == System.Data.ConnectionState.Closed)
+                //    {
+                //        connection.Open();
+                //    }
+                //    using (var command = new Microsoft.Data.SqlClient.SqlCommand(sql, connection))
+                //    {
+                //        command.ExecuteNonQuery();
+                //        return true;
+                //    }
+                //}
+
+                // #250: Ensure that the temporary table #ID exists and is ready for use
+                using (var command = new Microsoft.Data.SqlClient.SqlCommand(sql, this.ConnectionTempIDs()))
                 {
-                    // Open the connection only if it is not already open
-                    if (connection.State == System.Data.ConnectionState.Closed)
-                    {
-                        connection.Open();
-                    }
-                    using (var command = new Microsoft.Data.SqlClient.SqlCommand(sql, connection))
-                    {
-                        command.ExecuteNonQuery();
-                        return true;
-                    }
+                    command.ExecuteNonQuery();
+                    return true;
                 }
             }
             catch (Exception ex)
@@ -6362,12 +6411,16 @@ namespace DiversityWorkbench.UserControls
             string Result = "";
             try
             {
-                // Get the connection string
-                string connectionString = GetTempIDConnectionString();
-                if (string.IsNullOrWhiteSpace(connectionString))
-                    return Result;
-                var connection = new Microsoft.Data.SqlClient.SqlConnection(connectionString);
-                Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SQL, connection);
+                //// Get the connection string
+                //string connectionString = GetTempIDConnectionString();
+                //if (string.IsNullOrWhiteSpace(connectionString))
+                //    return Result;
+                //var connection = new Microsoft.Data.SqlClient.SqlConnection(connectionString);
+                //Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SQL, connection);
+                //Result = C.ExecuteScalar()?.ToString() ?? string.Empty;
+
+                // #250: Using permanent connection to ensure that the temporary table #ID exists and is ready for use
+                Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SQL, this.ConnectionTempIDs());
                 Result = C.ExecuteScalar()?.ToString() ?? string.Empty;
             }
             catch (System.Exception ex)

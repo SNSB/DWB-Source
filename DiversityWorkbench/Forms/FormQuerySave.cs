@@ -397,7 +397,7 @@ namespace DiversityWorkbench.Forms
                 System.Xml.XmlDocument Doc = new System.Xml.XmlDocument();
                 System.Xml.XmlWriter W;
                 System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
-                settings.Encoding = System.Text.Encoding.Unicode;
+                settings.Encoding = System.Text.Encoding.UTF8; //.Unicode; #253
                 W = System.Xml.XmlWriter.Create(XmlFile.FullName, settings);
                 if (this.treeView.Nodes[0].Text == FormQuerySave.QueryBaseNode)
                 {

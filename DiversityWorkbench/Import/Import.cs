@@ -335,12 +335,14 @@ namespace DiversityWorkbench.Import
                     if (Import._Encodings == null || Import._Encodings.Count == 0)
                     {
                         Import._Encodings = new Dictionary<string, System.Text.Encoding>();
-                        Import._Encodings.Add("", null);
+                        // #253
+                        //Import._Encodings.Add("", null);
                         Import._Encodings.Add("ASCII", System.Text.Encoding.ASCII);
-                        Import._Encodings.Add("ANSI", System.Text.Encoding.Default);
+                        //Import._Encodings.Add("ANSI", System.Text.Encoding.Default);
                         Import._Encodings.Add("UTF8", System.Text.Encoding.UTF8);
                         Import._Encodings.Add("UTF32", System.Text.Encoding.UTF32);
                         Import._Encodings.Add("Unicode", System.Text.Encoding.Unicode);
+                        Import._Encodings.Add("windows-1252", System.Text.Encoding.GetEncoding(1252));
                     }
                 }
                 catch (Exception ex)
@@ -355,13 +357,14 @@ namespace DiversityWorkbench.Import
         private static System.Text.Encoding _Encoding;
         /// <summary>
         /// The encoding of the imported file
+        /// #253 Default is UTF8
         /// </summary>
         public static System.Text.Encoding Encoding
         {
             get
             {
                 if (_Encoding == null)
-                    _Encoding = System.Text.Encoding.Default;
+                    _Encoding = System.Text.Encoding.UTF8;
                 return _Encoding;
             }
             set { _Encoding = value; }

@@ -1,11 +1,12 @@
 ﻿//#define DEBUG
 
+using DiversityWorkbench.Forms;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Mail;
 using System.Reflection;
 using System.Text;
-using System.Net.Mail;
-using DiversityWorkbench.Forms;
 using System.Windows;
 
 namespace DiversityWorkbench
@@ -221,8 +222,14 @@ namespace DiversityWorkbench
         /// <param name="ID">The ID if available</param>
         public static void SendMail(string Version, string Query, string ID)
         {
-            // #34
+            // #252
+            if (!IsMailClientConfigured())
+            {
+                MessageBox.Show("No mail client configured. Please send an email with your feedback.", "No mail client", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
+            // #34
             System.Globalization.CultureInfo cultureInfo = System.Globalization.CultureInfo.InstalledUICulture;
             string subject = " ";
             string sDatabase = "";
@@ -281,9 +288,14 @@ namespace DiversityWorkbench
             }
             subject = Uri.EscapeDataString(subject);
             body = Uri.EscapeDataString(body);
-            System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo("mailto:" + _SupportMailAccount + "?subject=" + subject + "&body=" + body);
-            info.UseShellExecute = true;
-            System.Diagnostics.Process.Start(info);
+            // #252
+            try
+            {
+                System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo("mailto:" + _SupportMailAccount + "?subject=" + subject + "&body=" + body);
+                info.UseShellExecute = true;
+                System.Diagnostics.Process.Start(info);
+            }
+            catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
 
         /// <summary>
@@ -380,6 +392,26 @@ namespace DiversityWorkbench
             return Log;
         }
 
-
+        /// <summary>
+        /// Check if a mail client is configured #252
+        /// </summary>
+        /// <returns>If client is configured</returns>
+        public static bool IsMailClientConfigured()
+        {
+            try
+            {
+                var psi = new ProcessStartInfo("mailto:test@example.com")
+                {
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // You can log ex.Message for diagnostics
+                return false;
+            }
+        }
     }
 }

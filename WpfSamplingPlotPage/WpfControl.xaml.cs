@@ -10080,7 +10080,7 @@ namespace WpfSamplingPlotPage
                 System.Net.WebRequest myWebRequest = System.Net.WebRequest.Create(URI);
                 System.Net.WebResponse myWebResponse = myWebRequest.GetResponse();
                 Stream ReceiveStream = myWebResponse.GetResponseStream();
-                Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
+                Encoding encode = System.Text.Encoding.UTF8; //.GetEncoding("utf-8"); #253
                 StreamReader readStream = new StreamReader(ReceiveStream, encode);
                 Response = readStream.ReadToEnd(); ;
                 readStream.Close();
@@ -10123,7 +10123,7 @@ namespace WpfSamplingPlotPage
                 System.Net.WebRequest myWebRequest = System.Net.WebRequest.Create(URI);
                 System.Net.WebResponse myWebResponse = myWebRequest.GetResponse();
                 Stream ReceiveStream = myWebResponse.GetResponseStream();
-                Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
+                Encoding encode = System.Text.Encoding.UTF8; //.GetEncoding("utf-8"); #253
                 StreamReader readStream = new StreamReader(ReceiveStream, encode);
                 Response = readStream.ReadToEnd(); ;
                 readStream.Close();

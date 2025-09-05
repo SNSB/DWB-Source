@@ -201,7 +201,12 @@ namespace DiversityCollection.CacheDatabase.Packages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die --#####################################################################################################################
+        ///--#####################################################################################################################
+        ///--Skript for Update of Postgres package ABCD to version 12
+        ///--replace &quot;#project#&quot; with Name of the project
+        ///--the string at the begin of the line --## is used to mark end and begin of a command
+        ///--######################################################################### [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         internal static string ABCD_000011_to_000012 {
             get {

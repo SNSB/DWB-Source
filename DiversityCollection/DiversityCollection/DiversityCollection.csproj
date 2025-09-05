@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.18362.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <ApplicationIcon>DiversityCollection.ico</ApplicationIcon>
     <SccProjectName>
@@ -25,7 +25,7 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
 	<FileVersion>$(Version)</FileVersion>
-	<Version>4.6.0</Version>
+	<Version>4.6.1</Version>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
@@ -37,7 +37,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <StartupObject>DiversityCollection.Program</StartupObject>
     <AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
     <AssemblyVersion>$(Version)</AssemblyVersion>
@@ -725,7 +725,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3351.48" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.4654" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.4948" />
     <PackageReference Include="Npgsql">
       <Version>9.0.3</Version>
     </PackageReference>

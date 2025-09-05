@@ -148,8 +148,8 @@
   <data name="ABCD_000010_to_000011" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>ABCD\ABCD_000010_to_000011.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="ABCD_000011_to_000012" xml:space="preserve">
-    <value />
+  <data name="ABCD_000011_to_000012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>ABCD\ABCD_000011_to_000012.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="ABCD_BayernFlora_000001_to_000002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>ABCD\BayernFlora\ABCD_BayernFlora_000001_to_000002.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

@@ -6,21 +6,22 @@
 
 #define UseStartTimeout
 
+using Azure;
+using DiversityWorkbench;
+using DiversityWorkbench.DwbManual;
+using DWBServices;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
-using System.Globalization;
-using Microsoft.Extensions.Configuration;
 using WpfSamplingPlotPage;
-using Microsoft.Extensions.DependencyInjection;
-using DWBServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
-using DiversityWorkbench.DwbManual;
-using Azure;
 
 
 
@@ -2576,7 +2577,7 @@ namespace DiversityCollection.Forms
                 adCheck.Fill(dtCheck);
                 if (dtCheck.Rows.Count == 0)
                 {
-
+                    // ToDo
                 }
                 else if (dtCheck.Rows.Count == 1)
                 {
@@ -5363,7 +5364,7 @@ namespace DiversityCollection.Forms
 
         #endregion
 
-        #region Project and transaction transfer
+        #region Transfer
 
         private void toCollectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -5844,6 +5845,478 @@ namespace DiversityCollection.Forms
                 }
                 this.Cursor = System.Windows.Forms.Cursors.Default;
             }
+        }
+
+        private void toPlotToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.userControlQueryList.ListOfIDs.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Nothing selected");
+                return;
+            }
+
+            string DisplayText = "";
+            string URI = "";
+            float Latitude = 0;
+            float Longitude = 0;
+
+            string IDs = this.IncludedSpecimenIDs();
+            if (IDs.Length == 0)
+            {
+                // user cancelled the transfer
+                return;
+            }
+            System.Collections.Generic.List<int> EventIdList = new System.Collections.Generic.List<int>();
+            this.IncludedEventIDs(IDs, ref EventIdList);
+            if (EventIdList.Count == 0)
+                return;
+
+
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+
+            DiversityWorkbench.SamplingPlot samplingPlot = new DiversityWorkbench.SamplingPlot(DiversityWorkbench.Settings.ServerConnection);
+            DiversityWorkbench.Forms.FormRemoteQuery f = new DiversityWorkbench.Forms.FormRemoteQuery(samplingPlot, DiversityWorkbench.Settings.ServerConnection);
+            f.ShowInTaskbar = true;
+
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                // The sampling plot is now selected and the query is executed
+                DisplayText = f.DisplayText;
+                URI = f.URI;
+                if (samplingPlot.UnitValues().ContainsKey("Latitude"))
+                    float.TryParse(samplingPlot.UnitValues()["Latitude"], out Latitude);
+
+                if (samplingPlot.UnitValues().ContainsKey("Longitude"))
+                    float.TryParse(samplingPlot.UnitValues()["Longitude"], out Longitude);
+
+                f.Dispose();
+                if (DisplayText.Length == 0 || URI.Length == 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("No sampling plot selected");
+                    return;
+                }
+
+            }
+            else
+                return;
+            string Message = "";
+            //bool selectAll = false;
+            //if (this.userControlQueryList.ListOfSelectedIDs.Count < this.userControlQueryList.ListOfIDs.Count)
+            //{
+            //    string Ask = "Only " + this.userControlQueryList.ListOfSelectedIDs.Count.ToString() + " of " + this.userControlQueryList.ListOfIDs.Count.ToString() + " items is selected.\r\nDo you want to transfer all items in the list?";
+            //    switch (System.Windows.Forms.MessageBox.Show(Ask, "Transfer to sampling plot " + DisplayText, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+            //    {
+            //        case DialogResult.Yes:
+            //            selectAll = true;
+            //            break;
+            //        case DialogResult.No:
+            //            Message = "Transfer " + this.userControlQueryList.ListOfSelectedIDs.Count.ToString() + " selected specimen into the sampling plot " + DisplayText;
+            //            break;
+            //        case DialogResult.Cancel:
+            //            return;
+            //    }
+            //}
+
+            //string IDs = this.IncludedSpecimenIDs();
+            ////System.Collections.Generic.List<int> Items = new List<int>();
+            ////if (selectAll) Items = this.userControlQueryList.ListOfIDs;
+            ////else Items = this.userControlQueryList.ListOfSelectedIDs;
+            ////foreach (int i in Items)
+            ////{
+            ////    if (IDs.Length > 0)
+            ////        IDs += ", ";
+            ////    IDs += i.ToString();
+            ////}
+
+            //System.Collections.Generic.List<int> EventIdList = new System.Collections.Generic.List<int>();
+            //this.IncludedEventIDs(IDs, ref EventIdList);
+            string SQL = "";
+
+            //string SQL = "SELECT CollectionEventID FROM CollectionSpecimen S WHERE S.CollectionSpecimenID IN (" + IDs + ") AND NOT CollectionEventID IS NULL ";
+            //System.Data.DataTable dt = DiversityWorkbench.Forms.FormFunctions.DataTable(SQL);
+            //if (dt.Rows.Count == 0)
+            //{
+            //    System.Windows.Forms.MessageBox.Show("No collection events found for the selected specimens");
+            //    return;
+            //}
+            string NewIDs = "";
+            string OldIDs = "";
+            int NewCount = 0;
+            int OldCount = 0;
+            System.Collections.Generic.Dictionary<int, bool> CollectionEventIDs = new System.Collections.Generic.Dictionary<int, bool>();
+            foreach (int CollectionEventID in EventIdList)// System.Data.DataRow dataRow in dt.Rows)
+            {
+                //int CollectionEventID = (int)dataRow["CollectionEventID"];
+                SQL = "SELECT COUNT(*) FROM CollectionEventLocalisation L WHERE L.CollectionEventID = " + CollectionEventID.ToString() + " AND LocalisationSystemID = 13 ";
+                if (DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL) == "0")
+                {
+                    // No localisation in the sampling plot
+                    if (NewIDs.Length > 0)
+                        NewIDs += ", ";
+                    NewIDs += CollectionEventID.ToString();
+                    if (!CollectionEventIDs.ContainsKey(CollectionEventID))
+                        CollectionEventIDs.Add(CollectionEventID, false);
+                    NewCount++;
+                }
+                else
+                {
+                    // Already in the sampling plot
+                    if (OldIDs.Length > 0)
+                        OldIDs += ", ";
+                    OldIDs += CollectionEventID.ToString();
+                    if (!CollectionEventIDs.ContainsKey(CollectionEventID))
+                        CollectionEventIDs.Add(CollectionEventID, true);
+                    OldCount++;
+                }
+            }
+            bool TransferOld = false;
+            if (OldCount > 0)
+            {
+                Message = OldCount.ToString() + " collection events are already in the sampling plot:\r\nCollectionEventIDs: " + OldIDs + "\r\n\r\n" +
+                    "Do you want to change the sampling plot for these events?";
+                if (System.Windows.Forms.MessageBox.Show(Message, "Change sampling plot", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    TransferOld = true;
+                }
+
+            }
+            if (NewCount == 0 && !TransferOld)
+            {
+                System.Windows.Forms.MessageBox.Show("No collection events to transfer into the sampling plot");
+                return;
+            }
+            if (NewIDs.Length > 0)
+            {
+                SQL = "INSERT INTO CollectionEventLocalisation (CollectionEventID, LocalisationSystemID, Location1, Location2, AverageLatitudeCache, AverageLongitudeCache) " +
+                    "SELECT CollectionEventID, 13 AS LocalisationSystemID, '" + DisplayText + "', '" + URI + "' AS URI, " + Latitude.ToString() + " AS AverageLatitudeCache, " + Longitude.ToString() + " AS AverageLongitudeCache " +
+                    "FROM CollectionEvent WHERE CollectionEventID IN (" + NewIDs + ") AND NOT EXISTS (SELECT * FROM CollectionEventLocalisation WHERE CollectionEventID = CollectionEvent.CollectionEventID AND LocalisationSystemID = 13)";
+                string MessageAdd = "";
+                if (!DiversityWorkbench.Forms.FormFunctions.SqlExecuteNonQuery(SQL, ref MessageAdd))
+                {
+                    System.Windows.Forms.MessageBox.Show("Transfer failed: " + MessageAdd);
+                    return;
+                }
+            }
+            if (TransferOld && OldIDs.Length > 0)
+            {
+                SQL = "UPDATE CollectionEventLocalisation SET Location1 = '" + DisplayText + "', Location2 = '" + URI + "', AverageLatitudeCache = " + Latitude.ToString() + ", AverageLongitudeCache = " + Longitude.ToString() +
+                    " WHERE CollectionEventID IN (" + OldIDs + ") AND LocalisationSystemID = 13";
+                string MessageUpdate = "";
+                if (!DiversityWorkbench.Forms.FormFunctions.SqlExecuteNonQuery(SQL, ref MessageUpdate))
+                {
+                    System.Windows.Forms.MessageBox.Show("Transfer failed: " + MessageUpdate);
+                    return;
+                }
+            }
+            Message = "Transfer finished\r\nTransferred " + NewCount.ToString();
+            if (TransferOld)
+                Message += " and updated " + OldCount.ToString();
+            else
+                Message += " collection events";
+            Message += " into the sampling plot\r\n" + DisplayText;
+            System.Windows.Forms.MessageBox.Show(Message);
+
+
+        }
+
+
+
+
+        #endregion
+
+        #region Link & Transfer
+
+        private string IncludedSpecimenIDs()
+        {
+            bool selectAll = false;
+            if (this.userControlQueryList.ListOfSelectedIDs.Count < this.userControlQueryList.ListOfIDs.Count)
+            {
+                string Ask = "Only " + this.userControlQueryList.ListOfSelectedIDs.Count.ToString() + " of " + this.userControlQueryList.ListOfIDs.Count.ToString() + " items are selected.\r\nDo you want to include all items in the list?";
+                switch (System.Windows.Forms.MessageBox.Show(Ask, "Include all items?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                {
+                    case DialogResult.Yes:
+                        selectAll = true;
+                        break;
+                    case DialogResult.Cancel:
+                        return "";
+                }
+            }
+
+            string IDs = "";
+            System.Collections.Generic.List<int> Items = new List<int>();
+            if (selectAll) Items = this.userControlQueryList.ListOfIDs;
+            else Items = this.userControlQueryList.ListOfSelectedIDs;
+            foreach (int i in Items)
+            {
+                if (IDs.Length > 0)
+                    IDs += ", ";
+                IDs += i.ToString();
+            }
+            return IDs;
+        }
+
+        private string IncludedEventIDs(string SpecimenIDs, ref System.Collections.Generic.List<int> EventIdList)
+        {
+            string EventIDs = "";
+            string SQL = "SELECT CollectionEventID FROM CollectionSpecimen S WHERE S.CollectionSpecimenID IN (" + SpecimenIDs + ") AND NOT CollectionEventID IS NULL ";
+            System.Data.DataTable dt = DiversityWorkbench.Forms.FormFunctions.DataTable(SQL);
+            if (dt.Rows.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("No collection events found for the selected specimens", "No data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                foreach (System.Data.DataRow dataRow in dt.Rows)
+                {
+                    int CollectionEventID = (int)dataRow["CollectionEventID"];
+                    EventIdList.Add(CollectionEventID);
+                    if (EventIDs.Length > 0)
+                        EventIDs += ", ";
+                    EventIDs += CollectionEventID.ToString();
+                }
+            }
+            return EventIDs;
+        }
+
+        #endregion
+
+        #region Linking to reference
+        private void linkSpecimenToReferenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LinkToReference("CollectionSpecimen");
+        }
+
+        private void linkEventToReferenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LinkToReference("CollectionEvent");
+        }
+
+        private void linkIdentificationToReferenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LinkToReference("Identification");
+        }
+
+        private void linkPartToReferenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LinkToReference("CollectionSpecimenPart");
+        }
+
+        private void linkUnitToReferenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LinkToReference("IdentificationUnit");
+        }
+
+        private bool LinkToReference(string Table)
+        {
+            bool OK = true;
+            if (this.userControlQueryList.ListOfIDs.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Nothing selected");
+                return false;
+            }
+
+            // Check if any data to link are included
+            int iCount = 0;
+            string IDs = this.IncludedSpecimenIDs();
+            if (Table == "CollectionEvent")
+            {
+                System.Collections.Generic.List<int> EventIdList = new System.Collections.Generic.List<int>();
+                string EventIDs = this.IncludedEventIDs(IDs, ref EventIdList);
+                if (EventIDs.Length == 0)
+                    return false;
+                else iCount = EventIdList.Count;
+            }
+            else
+            {
+                string SqlCount = "SELECT COUNT(*) FROM " + Table + " AS T WHERE T.CollectionSpecimenID IN (" + IDs + ")";
+                if (int.TryParse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlCount), out iCount) && iCount == 0)
+                {
+                    string message = "No data in table " + Table + " found for the selected specimens";
+                    System.Windows.MessageBox.Show(message, "No data", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                    return false;
+                }
+            }
+
+            string DisplayText = "";
+            string URI = "";
+
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+
+            DiversityWorkbench.Reference reference = new DiversityWorkbench.Reference(DiversityWorkbench.Settings.ServerConnection);
+            DiversityWorkbench.Forms.FormRemoteQuery f = new DiversityWorkbench.Forms.FormRemoteQuery(reference, DiversityWorkbench.Settings.ServerConnection);
+            f.ShowInTaskbar = true;
+
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                // The reference is now selected and the query is executed
+                DisplayText = f.DisplayText;
+                //if (f.ID > -1)
+                URI = f.URI;
+            }
+            if (DisplayText.Length == 0 || URI.Length == 0)
+            {
+                return false;
+            }
+            string Details = "";
+            string Notes = "";
+            string ResponsibleName = "";
+            string ResponsibleAgentURI = "";
+            DiversityWorkbench.Forms.FormGetString fDetails = new DiversityWorkbench.Forms.FormGetString("Details?", "If you want to give details for the reference, please enter details", "");
+            fDetails.ShowDialog();
+            Details = fDetails.String;
+            if (Table != "CollectionEvent")
+            {
+                DiversityWorkbench.Forms.FormGetString fNotes = new DiversityWorkbench.Forms.FormGetString("Notes?", "If you want to give notes for the reference, please enter notes", "");
+                fNotes.ShowDialog();
+                Notes = fNotes.String;
+                if (System.Windows.Forms.MessageBox.Show("Do you want to give the responsible person for the reference?", "Responsible person", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    DiversityWorkbench.Agent agent = new DiversityWorkbench.Agent(DiversityWorkbench.Settings.ServerConnection);
+                    DiversityWorkbench.Forms.FormRemoteQuery fAgent = new DiversityWorkbench.Forms.FormRemoteQuery(agent, DiversityWorkbench.Settings.ServerConnection);
+                    fAgent.ShowInTaskbar = true;
+                    if (fAgent.ShowDialog() == DialogResult.OK)
+                    {
+                        ResponsibleName = fAgent.DisplayText;
+                        ResponsibleAgentURI = fAgent.URI;
+                    }
+                }
+            }
+
+            string Message = "";
+            if (Table == "CollectionEvent")
+            {
+                OK = this.LinkEventToReference(DisplayText, URI, IDs, Details);
+            }
+            else
+            {
+                // Check existing links
+                string SQL = "SELECT COUNT(*) " +
+                    "FROM CollectionSpecimenReference WHERE CollectionSpecimenID IN (" + IDs + ") AND (ReferenceTitle = '" + DisplayText + "' AND ReferenceURI = '" + URI + "') ";
+                int Count = 0;
+                bool avoidSecondLinks = true;
+                if (int.TryParse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL), out Count) && Count > 0)
+                {
+                    Message = Count.ToString() + " of the selected data already have a link to the reference " + DisplayText + ".\r\n" +
+                        "Do you want to add the reference to these data as well?";
+                    switch (System.Windows.Forms.MessageBox.Show(Message, "Add same reference", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                    {
+                        case DialogResult.Yes:
+                            avoidSecondLinks = false;
+                            break;
+                        case DialogResult.Cancel:
+                            return false;
+                    }
+                }
+                SQL = "INSERT INTO CollectionSpecimenReference (CollectionSpecimenID, ";
+                string SQLValues = "SELECT T.CollectionSpecimenID, ";
+                string SQLFrom = " FROM " + Table + " AS T ";
+                switch (Table)
+                {
+                    case "Identification":
+                        SQL += "IdentificationUnitID, IdentificationSequence, ";
+                        SQLValues += "T.IdentificationUnitID, T.IdentificationSequence, ";
+                        break;
+                    case "IdentificationUnit":
+                        SQL += "IdentificationUnitID, ";
+                        SQLValues += "T.IdentificationUnitID, ";
+                        break;
+                    case "CollectionSpecimenPart":
+                        SQL += "SpecimenPartID, ";
+                        SQLValues += "T.SpecimenPartID, ";
+                        break;
+                }
+                if (Details.Length > 0)
+                {
+                    SQL += "ReferenceDetails, ";
+                    SQLValues += "'" + Details + "' AS ReferenceDetails, ";
+                }
+                if (Notes.Length > 0)
+                {
+                    SQL += "Notes, ";
+                    SQLValues += "'" + Notes + "' AS Notes, ";
+                }
+                if (ResponsibleName.Length > 0)
+                {
+                    SQL += "ResponsibleName, ";
+                    SQLValues += "'" + ResponsibleName + "' AS ResponsibleName, ";
+                }
+                if (ResponsibleAgentURI.Length > 0)
+                {
+                    SQL += "ResponsibleAgentURI, ";
+                    SQLValues += "'" + ResponsibleAgentURI + "' AS ResponsibleAgentURI, ";
+                }
+                SQLFrom += " WHERE T.CollectionSpecimenID IN (" + IDs + ") ";
+                if (avoidSecondLinks)
+                {
+                    SQLFrom += "AND NOT EXISTS (SELECT * FROM CollectionSpecimenReference AS R WHERE R.CollectionSpecimenID = T.CollectionSpecimenID AND R.ReferenceTitle = '" + DisplayText + "' AND R.ReferenceURI = '" + URI + "') ";
+                }
+                SQL += "ReferenceTitle, ReferenceURI) ";
+                SQLValues += "'" + DisplayText + "', '" + URI + "' ";
+                SQL += SQLValues + SQLFrom + ";";
+                if (DiversityWorkbench.Forms.FormFunctions.SqlExecuteNonQuery(SQL, ref Message))
+                {
+                    string MessageOK = "Linking finished\r\nLinked " + iCount.ToString() + " " + Table + " to the reference\r\n" + DisplayText;
+                    System.Windows.Forms.MessageBox.Show(MessageOK);
+                    this.setSpecimen();
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Linking failed: " + Message);
+                    OK = false;
+                }
+            }
+
+            return OK;
+        }
+
+        private bool LinkEventToReference(string DisplayText, string URI, string IDs, string Details)
+        {
+            System.Collections.Generic.List<int> EventIdList = new System.Collections.Generic.List<int>();
+            IDs = this.IncludedEventIDs(IDs, ref EventIdList);
+            if (IDs.Length == 0)
+                return false;
+
+            bool OK = true;
+            // Check existing links
+            string SQL = "SELECT COUNT(*) " +
+                "FROM CollectionEvent WHERE CollectionEventID IN (" + IDs + ") AND (ReferenceTitle <> '' OR ReferenceURI <> '') ";
+            int Count = 0;
+            bool replaceLinks = false;
+            if (int.TryParse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL), out Count) && Count > 0)
+            {
+                switch (System.Windows.Forms.MessageBox.Show(Count.ToString() + " of the selected collection events already have a reference linked.\r\nDo you want to replace these links to a reference by the selected reference.", "Replace links", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                {
+                    case DialogResult.Yes:
+                        replaceLinks = true;
+                        break;
+                    case DialogResult.Cancel:
+                        return false;
+                }
+            }
+
+            SQL = "UPDATE CollectionEvent SET ReferenceTitle = '" + DisplayText + "', ReferenceURI = '" + URI + "' ";
+            if (Details.Length > 0)
+                SQL += ", ReferenceDetails = '" + Details + "' ";
+            SQL += "FROM CollectionEvent WHERE CollectionEventID IN (" + IDs + ")";
+            if (!replaceLinks)
+                SQL += "AND (ReferenceTitle IS NULL OR ReferenceTitle = '') AND (ReferenceURI IS NULL OR ReferenceURI = '') ";
+            string Message = "";
+            if (!DiversityWorkbench.Forms.FormFunctions.SqlExecuteNonQuery(SQL, ref Message))
+            {
+                System.Windows.Forms.MessageBox.Show("Linking failed: " + Message);
+                OK = false;
+            }
+            else
+            {
+                string MessageOK = "Linking finished\r\nLinked " + EventIdList.Count.ToString() + " collection events to the reference\r\n" + DisplayText;
+                System.Windows.Forms.MessageBox.Show(MessageOK);
+                this.setSpecimen();
+            }
+            return OK;
         }
 
         #endregion
@@ -6706,6 +7179,9 @@ namespace DiversityCollection.Forms
                     // CollectionTask
                     TableName = "CollectionTask";
                     OK = this.FormFunctions.getObjectPermissions(TableName, "INSERT");
+                    // #256
+                    //OK = false;
+
                     this.collectionTasksToolStripMenuItem.Visible = OK;
                     if (OK) Any = true;
 #if IPM_fertig || DEBUG
@@ -6718,6 +7194,9 @@ namespace DiversityCollection.Forms
                     // Task
                     TableName = "Task";
                     OK = this.FormFunctions.getObjectPermissions(TableName, "INSERT");
+                    // #256
+                    //OK = false;
+
                     this.tasksToolStripMenuItem.Visible = OK;
                     if (OK) Any = true;
 
@@ -7388,7 +7867,7 @@ namespace DiversityCollection.Forms
         }
 
 
-#endregion
+        #endregion
 
         #region Customize
         private void customizeDisplayToolStripMenuItem_Click(object sender, EventArgs e)
@@ -8672,7 +9151,7 @@ namespace DiversityCollection.Forms
 
         #endregion
 
-#endregion
+        #endregion
 
         #region Help
 
@@ -9306,7 +9785,7 @@ namespace DiversityCollection.Forms
 
         #endregion
 
-#endregion
+        #endregion
 
         #region Update
 
@@ -12050,6 +12529,9 @@ namespace DiversityCollection.Forms
                         if (fs != null) fs.ShowCurrentStep("init Remote Modules");
                         this.initRemoteModules(); // Aufruf 1
                                                   //this.userControlQueryList.setConnection(DiversityWorkbench.Settings.ConnectionString, "CollectionSpecimen");
+                        // #250
+                        this.userControlQueryList.CloseConnectionTempIDs();
+
                         this.userControlQueryList.setConnection(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase), "CollectionSpecimen");
                         if (fs != null) fs.ShowCurrentStep("build Search Menu");
                         this.buildSearchMenu();
@@ -12072,6 +12554,10 @@ namespace DiversityCollection.Forms
                         DiversityCollection.CacheDatabase.CacheDB.ResetCacheDB();
 
                         this.setUserControlModuleRelatedEntrySources();
+
+                        // #236
+                        DiversityWorkbench.Forms.FormFunctions.ResetPermissionsCache();
+                        DiversityWorkbench.EnumTable.ClearProjectLinkTableCache();
 
                         //this.initQuery(); // ruft setSearchOptions() nochmal auf
                     }
@@ -29597,7 +30083,7 @@ namespace DiversityCollection.Forms
                     //#62 - Verhinderung von Kurzschluss
                     string RelatedID = f.URI.Substring(f.URI.LastIndexOf("/") + 1);
                     int relatedID;
-                    if(int.TryParse(RelatedID, out relatedID))
+                    if (int.TryParse(RelatedID, out relatedID))
                     {
                         if (relatedID == this.ID)
                         {
@@ -34224,6 +34710,7 @@ namespace DiversityCollection.Forms
 
             // Checking a new ID
             bool ProjectChanged = false;
+            // #236
             System.Collections.Generic.List<string> ProjectEnumOld = this.EnumProjectCodes(lookup);
             this._EnumProjectCodes.Remove(LookupTable.LookupTable_Name(lookup));
             System.Collections.Generic.List<string> ProjectEnumNew = this.EnumProjectCodes(lookup);
@@ -40639,6 +41126,23 @@ namespace DiversityCollection.Forms
             catch (Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
 
+        private void InitManualControls()
+        {
+            try
+            {
+                helpProviderDiversityCollection.SetHelpKeyword(userControlQueryList, "query_dc");
+                //helpProviderDiversityCollection.SetHelpKeyword(this.splitContainerOverviewHierarchy.Panel1, "treespecimen_dc");
+                //helpProviderDiversityCollection.SetHelpKeyword(this.tableLayoutPanelOverviewHierarchy, "treespecimen_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this.treeViewOverviewHierarchy, "treespecimen_dc");
+                //helpProviderDiversityCollection.SetHelpKeyword(this.splitContainerOverviewHierarchy.Panel2, "storage_dc");
+                //helpProviderDiversityCollection.SetHelpKeyword(this.tableLayoutPanelOverviewHierarchyStorage, "storage_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this.treeViewOverviewHierarchyStorage, "storage_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this.tableLayoutPanelHeader, "storage_dc");
+
+            }
+            catch (Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+        }
+
         /// <summary>
         /// ensure that init is only done once
         /// </summary>
@@ -40657,6 +41161,7 @@ namespace DiversityCollection.Forms
                 if (!_InitManualDone)
                 {
                     await this.InitManual();
+                    this.InitManualControls();
                     _InitManualDone = true;
                 }
             }
@@ -40664,5 +41169,6 @@ namespace DiversityCollection.Forms
         }
 
         #endregion
+
     }
 }

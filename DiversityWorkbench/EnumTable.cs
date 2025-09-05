@@ -795,14 +795,27 @@ namespace DiversityWorkbench
 
         public static string ProjectLinkTable(string EnumTable)
         {
+            // #236
+            if (_ProjectLinkTables.ContainsKey(EnumTable))
+                return _ProjectLinkTables[EnumTable];
+
             string Table = "";
             try
             {
                 string SQL = "SELECT TOP 1 C.TABLE_NAME " + ProjectFromClause(EnumTable, "C.COLUMN_NAME = 'ProjectID'");
                 Table = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL, true);
+                if (Table == null) Table = "";
+                if (Table.Length > 0) _ProjectLinkTables.Add(EnumTable, Table);
             }
             catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
             return Table;
+        }
+
+        // #236
+        private static System.Collections.Generic.Dictionary<string, string> _ProjectLinkTables = new System.Collections.Generic.Dictionary<string, string>();
+        public static void ClearProjectLinkTableCache()
+        {
+            _ProjectLinkTables.Clear();
         }
 
         public static string ProjectLinkColumn(string EnumTable)

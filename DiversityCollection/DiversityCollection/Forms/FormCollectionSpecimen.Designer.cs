@@ -360,6 +360,13 @@
             transerToProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             transferTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toEventSeriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toPlotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            linkToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            linkToReferenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            linkSpecimenToReferenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            linkEventToReferenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            linkIdentificationToReferenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            linkPartToReferenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             allIdentifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             allAnnotationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             removeSpecimenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -598,6 +605,7 @@
             collectionEventSeriesTableAdapter = new DiversityCollection.Datasets.DataSetCollectionEventSeriesTableAdapters.CollectionEventSeriesTableAdapter();
             collectionEventSeriesImageTableAdapter = new DiversityCollection.Datasets.DataSetCollectionEventSeriesTableAdapters.CollectionEventSeriesImageTableAdapter();
             collectionEventSeriesDescriptorBindingSource = new System.Windows.Forms.BindingSource(components);
+            linkUnitToReferenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)splitContainerData).BeginInit();
             splitContainerData.Panel2.SuspendLayout();
             splitContainerData.SuspendLayout();
@@ -2916,7 +2924,7 @@
             // 
             // dataToolStripMenuItem
             // 
-            dataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { importToolStripMenuItem, exportToolStripMenuItem, replicationToolStripMenuItem, archiveToolStripMenuItem, cacheDatabaseToolStripMenuItem1, backupDatabasetoolStripMenuItem, transferToolStripMenuItem, allIdentifierToolStripMenuItem, allAnnotationsToolStripMenuItem, removeSpecimenToolStripMenuItem, removeFromProjectToolStripMenuItem, recoverFromLogToolStripMenuItem, saveToolStripMenuItem, scanModulesToolStripMenuItem, collectionEventsToolStripMenuItem });
+            dataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { importToolStripMenuItem, exportToolStripMenuItem, replicationToolStripMenuItem, archiveToolStripMenuItem, cacheDatabaseToolStripMenuItem1, backupDatabasetoolStripMenuItem, transferToolStripMenuItem, linkToToolStripMenuItem, allIdentifierToolStripMenuItem, allAnnotationsToolStripMenuItem, removeSpecimenToolStripMenuItem, removeFromProjectToolStripMenuItem, recoverFromLogToolStripMenuItem, saveToolStripMenuItem, scanModulesToolStripMenuItem, collectionEventsToolStripMenuItem });
             dataToolStripMenuItem.Name = "dataToolStripMenuItem";
             resources.ApplyResources(dataToolStripMenuItem, "dataToolStripMenuItem");
             // 
@@ -3313,7 +3321,7 @@
             // 
             // transferToolStripMenuItem
             // 
-            transferToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toCollectionToolStripMenuItem, transerToProjectToolStripMenuItem, transferTransactionToolStripMenuItem, toEventSeriesToolStripMenuItem });
+            transferToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toCollectionToolStripMenuItem, transerToProjectToolStripMenuItem, transferTransactionToolStripMenuItem, toEventSeriesToolStripMenuItem, toPlotToolStripMenuItem });
             transferToolStripMenuItem.Image = Resource.Arrow;
             resources.ApplyResources(transferToolStripMenuItem, "transferToolStripMenuItem");
             transferToolStripMenuItem.Name = "transferToolStripMenuItem";
@@ -3345,6 +3353,55 @@
             resources.ApplyResources(toEventSeriesToolStripMenuItem, "toEventSeriesToolStripMenuItem");
             toEventSeriesToolStripMenuItem.Name = "toEventSeriesToolStripMenuItem";
             toEventSeriesToolStripMenuItem.Click += toEventSeriesToolStripMenuItem_Click;
+            // 
+            // toPlotToolStripMenuItem
+            // 
+            toPlotToolStripMenuItem.Image = Resource.SamplingPlot;
+            resources.ApplyResources(toPlotToolStripMenuItem, "toPlotToolStripMenuItem");
+            toPlotToolStripMenuItem.Name = "toPlotToolStripMenuItem";
+            toPlotToolStripMenuItem.Click += toPlotToolStripMenuItem_Click;
+            // 
+            // linkToToolStripMenuItem
+            // 
+            linkToToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { linkToReferenceToolStripMenuItem });
+            linkToToolStripMenuItem.Image = Resource.Link;
+            resources.ApplyResources(linkToToolStripMenuItem, "linkToToolStripMenuItem");
+            linkToToolStripMenuItem.Name = "linkToToolStripMenuItem";
+            // 
+            // linkToReferenceToolStripMenuItem
+            // 
+            linkToReferenceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { linkEventToReferenceToolStripMenuItem, linkSpecimenToReferenceToolStripMenuItem, linkPartToReferenceToolStripMenuItem, linkUnitToReferenceToolStripMenuItem, linkIdentificationToReferenceToolStripMenuItem });
+            linkToReferenceToolStripMenuItem.Image = Resource.References;
+            resources.ApplyResources(linkToReferenceToolStripMenuItem, "linkToReferenceToolStripMenuItem");
+            linkToReferenceToolStripMenuItem.Name = "linkToReferenceToolStripMenuItem";
+            // 
+            // linkSpecimenToReferenceToolStripMenuItem
+            // 
+            linkSpecimenToReferenceToolStripMenuItem.Image = Resource.CollectionSpecimen;
+            resources.ApplyResources(linkSpecimenToReferenceToolStripMenuItem, "linkSpecimenToReferenceToolStripMenuItem");
+            linkSpecimenToReferenceToolStripMenuItem.Name = "linkSpecimenToReferenceToolStripMenuItem";
+            linkSpecimenToReferenceToolStripMenuItem.Click += linkSpecimenToReferenceToolStripMenuItem_Click;
+            // 
+            // linkEventToReferenceToolStripMenuItem
+            // 
+            linkEventToReferenceToolStripMenuItem.Image = Resource.Event;
+            resources.ApplyResources(linkEventToReferenceToolStripMenuItem, "linkEventToReferenceToolStripMenuItem");
+            linkEventToReferenceToolStripMenuItem.Name = "linkEventToReferenceToolStripMenuItem";
+            linkEventToReferenceToolStripMenuItem.Click += linkEventToReferenceToolStripMenuItem_Click;
+            // 
+            // linkIdentificationToReferenceToolStripMenuItem
+            // 
+            linkIdentificationToReferenceToolStripMenuItem.Image = Resource.Identification;
+            resources.ApplyResources(linkIdentificationToReferenceToolStripMenuItem, "linkIdentificationToReferenceToolStripMenuItem");
+            linkIdentificationToReferenceToolStripMenuItem.Name = "linkIdentificationToReferenceToolStripMenuItem";
+            linkIdentificationToReferenceToolStripMenuItem.Click += linkIdentificationToReferenceToolStripMenuItem_Click;
+            // 
+            // linkPartToReferenceToolStripMenuItem
+            // 
+            linkPartToReferenceToolStripMenuItem.Image = Resource.Specimen;
+            resources.ApplyResources(linkPartToReferenceToolStripMenuItem, "linkPartToReferenceToolStripMenuItem");
+            linkPartToReferenceToolStripMenuItem.Name = "linkPartToReferenceToolStripMenuItem";
+            linkPartToReferenceToolStripMenuItem.Click += linkPartToReferenceToolStripMenuItem_Click;
             // 
             // allIdentifierToolStripMenuItem
             // 
@@ -4858,6 +4915,13 @@
             // 
             collectionEventSeriesDescriptorBindingSource.DataMember = "CollectionEventSeriesDescriptor";
             // 
+            // linkUnitToReferenceToolStripMenuItem
+            // 
+            linkUnitToReferenceToolStripMenuItem.Image = Resource.Plant;
+            resources.ApplyResources(linkUnitToReferenceToolStripMenuItem, "linkUnitToReferenceToolStripMenuItem");
+            linkUnitToReferenceToolStripMenuItem.Name = "linkUnitToReferenceToolStripMenuItem";
+            linkUnitToReferenceToolStripMenuItem.Click += linkUnitToReferenceToolStripMenuItem_Click;
+            // 
             // FormCollectionSpecimen
             // 
             resources.ApplyResources(this, "$this");
@@ -5646,6 +5710,14 @@
         private System.Windows.Forms.ToolStripMenuItem jsonCacheToolStripMenuItem;
         private System.Windows.Forms.Button buttonJsonCache;
         private System.Windows.Forms.ToolStripMenuItem collectionUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toPlotToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linkToToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linkToReferenceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linkSpecimenToReferenceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linkEventToReferenceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linkIdentificationToReferenceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linkPartToReferenceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linkUnitToReferenceToolStripMenuItem;
     }
 }
 

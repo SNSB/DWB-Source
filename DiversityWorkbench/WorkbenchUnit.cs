@@ -676,115 +676,127 @@ namespace DiversityWorkbench
             if (this._DatabaseList == null && DiversityWorkbench.Settings.ConnectionString.Length > 0)
             {
                 this._DatabaseList = new List<string>();
-                try
+                // #236
+                // Try to fill database list from global list
+                DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList();
+                if (DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList.ContainsKey(this.ServiceName()) 
+                    && DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()].ServerConnectionList().Count > 0)
                 {
-                    Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
-                    Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand("", con);
-                    string SQL = "use master " +
-                            "select name from sys.databases where name like('" + this.ServiceName() + "%') AND state_desc = 'ONLINE'";
-                    Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, DiversityWorkbench.Settings.ConnectionString);
-                    System.Data.DataTable dt = new System.Data.DataTable();
-                    ad.Fill(dt);
-                    con.Open();
-                    foreach (System.Data.DataRow R in dt.Rows)
+                    foreach(System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.ServerConnection> server in DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()].ServerConnectionList())
                     {
-                        C.CommandText = "IF EXISTS (SELECT * FROM " + R[0].ToString() + ".sys.objects " +
-                            "WHERE object_id = OBJECT_ID(N'[" + R[0].ToString() + "].[dbo].[DiversityWorkbenchModule]') " +
-                            "AND type in (N'FN', N'IF', N'TF', N'FS', N'FT')) SELECT 1 ELSE SELECT 0";
-                        try
+                        this._DatabaseList.Add(server.Key);
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
+                        Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand("", con);
+                        string SQL = "use master " +
+                                "select name from sys.databases where name like('" + this.ServiceName() + "%') AND state_desc = 'ONLINE'";
+                        Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, DiversityWorkbench.Settings.ConnectionString);
+                        System.Data.DataTable dt = new System.Data.DataTable();
+                        ad.Fill(dt);
+                        con.Open();
+                        foreach (System.Data.DataRow R in dt.Rows)
                         {
-                            // Test Access for current login
-                            bool DBaccessible = true;
-                            try { C.ExecuteScalar(); }
-                            catch (System.Exception ex) { DBaccessible = false; }
-
-                            if (DBaccessible && C.ExecuteScalar()?.ToString() == "1")
+                            C.CommandText = "IF EXISTS (SELECT * FROM " + R[0].ToString() + ".sys.objects " +
+                                "WHERE object_id = OBJECT_ID(N'[" + R[0].ToString() + "].[dbo].[DiversityWorkbenchModule]') " +
+                                "AND type in (N'FN', N'IF', N'TF', N'FS', N'FT')) SELECT 1 ELSE SELECT 0";
+                            try
                             {
-                                C.CommandText = "SELECT [" + R[0].ToString() + "].[dbo].[DiversityWorkbenchModule]()";
-                                string Module = C.ExecuteScalar()?.ToString();
-                                if (!R[0].ToString().StartsWith(Module) && !(R[0].ToString().IndexOf("[") == 0 && R[0].ToString().IndexOf("].[") > -1 && R[0].ToString().IndexOf("].[" + Module) > 0))
-                                    continue;
-                                if (this.ServerConnection == null)
-                                    continue;
-                                if (this.ServerConnection.ModuleName != Module) // MW 23.3.2015 - otherwise cache DBs would list as well
-                                    continue;
-                                this._DatabaseList.Add(R[0].ToString());
-                                if (!DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList().ContainsKey(this.ServiceName()))
+                                // Test Access for current login
+                                bool DBaccessible = true;
+                                try { C.ExecuteScalar(); }
+                                catch (System.Exception ex) { DBaccessible = false; }
+
+                                if (DBaccessible && C.ExecuteScalar()?.ToString() == "1")
                                 {
-                                    DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList().Add(this.ServiceName(), this);
-                                }
-                                DiversityWorkbench.ServerConnection S = new ServerConnection();
-                                S.DatabaseName = R[0].ToString();
-                                S.DatabaseServer = DiversityWorkbench.Settings.DatabaseServer;
-                                S.LinkedServer = "";
-                                S.DatabasePassword = DiversityWorkbench.Settings.Password;
-                                S.DatabaseServerPort = DiversityWorkbench.Settings.DatabasePort;
-                                S.DatabaseUser = DiversityWorkbench.Settings.DatabaseUser;
-                                S.IsLocalExpressDatabase = DiversityWorkbench.Settings.IsLocalExpressDatabase;
-                                S.IsTrustedConnection = DiversityWorkbench.Settings.IsTrustedConnection;
-                                S.ModuleName = this.ServiceName();
-                                S.SqlExpressDbFileName = DiversityWorkbench.Settings.SqlExpressDbFileNameForDatabase(S.DatabaseName);
-
-                                // Testing the connection
-                                string s = S.ConnectionString;
-                                if (s.Length > 0)
-                                {
-                                    // Assure that list exists
-                                    DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList();
-                                    if (!DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList.ContainsKey(this.ServiceName()))
-                                        DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList.Add(this.ServiceName(), this);
-
-                                    if (DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()]._ServerConnectionList == null)
-                                        DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()]._ServerConnectionList = new Dictionary<string, ServerConnection>();
-
-                                    if (!DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()]._ServerConnectionList.ContainsKey(S.DisplayText)
-                                        && (S.ModuleName != DiversityWorkbench.Settings.ModuleName
-                                        || (S.ModuleName == DiversityWorkbench.Settings.ModuleName
-                                        && S.DatabaseName == DiversityWorkbench.Settings.DatabaseName)))
+                                    C.CommandText = "SELECT [" + R[0].ToString() + "].[dbo].[DiversityWorkbenchModule]()";
+                                    string Module = C.ExecuteScalar()?.ToString();
+                                    if (!R[0].ToString().StartsWith(Module) && !(R[0].ToString().IndexOf("[") == 0 && R[0].ToString().IndexOf("].[") > -1 && R[0].ToString().IndexOf("].[" + Module) > 0))
+                                        continue;
+                                    if (this.ServerConnection == null)
+                                        continue;
+                                    if (this.ServerConnection.ModuleName != Module) // MW 23.3.2015 - otherwise cache DBs would list as well
+                                        continue;
+                                    this._DatabaseList.Add(R[0].ToString());
+                                    if (!DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList().ContainsKey(this.ServiceName()))
                                     {
-                                        if (S.ConnectionIsValid)
-                                            DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()]._ServerConnectionList.Add(S.DisplayText, S);
-                                        else
+                                        DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList().Add(this.ServiceName(), this);
+                                    }
+                                    DiversityWorkbench.ServerConnection S = new ServerConnection();
+                                    S.DatabaseName = R[0].ToString();
+                                    S.DatabaseServer = DiversityWorkbench.Settings.DatabaseServer;
+                                    S.LinkedServer = "";
+                                    S.DatabasePassword = DiversityWorkbench.Settings.Password;
+                                    S.DatabaseServerPort = DiversityWorkbench.Settings.DatabasePort;
+                                    S.DatabaseUser = DiversityWorkbench.Settings.DatabaseUser;
+                                    S.IsLocalExpressDatabase = DiversityWorkbench.Settings.IsLocalExpressDatabase;
+                                    S.IsTrustedConnection = DiversityWorkbench.Settings.IsTrustedConnection;
+                                    S.ModuleName = this.ServiceName();
+                                    S.SqlExpressDbFileName = DiversityWorkbench.Settings.SqlExpressDbFileNameForDatabase(S.DatabaseName);
+
+                                    // Testing the connection
+                                    string s = S.ConnectionString;
+                                    if (s.Length > 0)
+                                    {
+                                        // Assure that list exists
+                                        DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList();
+                                        if (!DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList.ContainsKey(this.ServiceName()))
+                                            DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList.Add(this.ServiceName(), this);
+
+                                        if (DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()]._ServerConnectionList == null)
+                                            DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()]._ServerConnectionList = new Dictionary<string, ServerConnection>();
+
+                                        if (!DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()]._ServerConnectionList.ContainsKey(S.DisplayText)
+                                            && (S.ModuleName != DiversityWorkbench.Settings.ModuleName
+                                            || (S.ModuleName == DiversityWorkbench.Settings.ModuleName
+                                            && S.DatabaseName == DiversityWorkbench.Settings.DatabaseName)))
                                         {
-                                            DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()]._ServerConnectionList.Add(S.DatabaseName, S);
+                                            if (S.ConnectionIsValid)
+                                                DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()]._ServerConnectionList.Add(S.DisplayText, S);
+                                            else
+                                            {
+                                                DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()]._ServerConnectionList.Add(S.DatabaseName, S);
+                                            }
                                         }
                                     }
                                 }
                             }
+                            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
                         }
-                        catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
-                    }
+                        // Adding databases from linked server
+                        string Message = this.AddLinkedServerDatabasesSync();
+                        if (Message.Length > 0)
+                            System.Windows.Forms.MessageBox.Show(Message, "Failed connections", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 
-                    // Adding databases from linked server
-                    string Message = this.AddLinkedServerDatabasesSync();
-                    if (Message.Length > 0)
-                        System.Windows.Forms.MessageBox.Show(Message, "Failed connections", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-
-                    // Adding manually added databases
-                    try
-                    {
-                        if (DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList != null &&
-                            DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList.ContainsKey(this.ServiceName()) &&
-                            DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()].ServerConnectionList() != null)
+                        // Adding manually added databases
+                        try
                         {
-                            foreach (System.Collections.Generic.KeyValuePair<string, ServerConnection> SC in DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()].ServerConnectionList())
+                            if (DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList != null &&
+                                DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList.ContainsKey(this.ServiceName()) &&
+                                DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()].ServerConnectionList() != null)
                             {
-                                if (SC.Value.ConnectionIsValid && !this._DatabaseList.Contains(SC.Key))
-                                    this._DatabaseList.Add(SC.Key);
+                                foreach (System.Collections.Generic.KeyValuePair<string, ServerConnection> SC in DiversityWorkbench.WorkbenchUnit._GlobalWorkbenchUnitList[this.ServiceName()].ServerConnectionList())
+                                {
+                                    if (SC.Value.ConnectionIsValid && !this._DatabaseList.Contains(SC.Key))
+                                        this._DatabaseList.Add(SC.Key);
+                                }
                             }
                         }
+                        catch (System.Exception ex)
+                        {
+                            DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                        }
+                        con.Close();
                     }
                     catch (System.Exception ex)
                     {
                         DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
                     }
-                    con.Close();
                 }
-                catch (System.Exception ex)
-                {
-                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-                }
-
                 // Markus 3.12.2021 - List wurde mehrfach aufgerufen - Speichern in static Dictionary
 #if xxDEBUG
                 if (_Databases == null)

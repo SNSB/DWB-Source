@@ -3,7 +3,7 @@
     <WebView2LoaderPreference>Dynamic</WebView2LoaderPreference>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.18362.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <OutputType>Library</OutputType>
     <SccProjectName>
     </SccProjectName>
@@ -19,8 +19,8 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <AssemblyVersion>$(Version)</AssemblyVersion>
     <FileVersion>$(Version)</FileVersion>
-    <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
-    <Version>7.1.0</Version>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <Version>7.1.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -531,7 +531,7 @@
       <Version>1.0.3351.48</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.4654" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.4948" />
     <PackageReference Include="Npgsql">
       <Version>9.0.3</Version>
     </PackageReference>

@@ -2998,7 +2998,14 @@ namespace DiversityWorkbench.Forms
                     this.DialogResult = DialogResult.Cancel;
                     return -1;
                 }
-                else return int.Parse(this._URI);
+                else
+                {
+                    // #218
+                    int i;
+                    if (int.TryParse(this._URI, out i))
+                        return i;
+                    return -1;
+                }
             }
         }
 
@@ -3020,7 +3027,9 @@ namespace DiversityWorkbench.Forms
                     try
                     {
                         System.Data.DataRowView R = (System.Data.DataRowView)this.userControlQueryList.listBoxQueryResult.SelectedItem;
-                        this._DisplayText = R["Display"].ToString();
+                        // #218
+                        if (R != null)
+                            this._DisplayText = R["Display"].ToString();
                     }
                     catch (System.Exception ex) { }
                 }

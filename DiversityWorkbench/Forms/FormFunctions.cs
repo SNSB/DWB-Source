@@ -1,9 +1,12 @@
+using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Drawing;
+using System.IO;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
 
 namespace DiversityWorkbench.Forms
 {
@@ -38,7 +41,7 @@ namespace DiversityWorkbench.Forms
 
         #region Parameter
 
-        public enum DatabaseGrant { Delete, Insert, Select, Update }
+        public enum DatabaseGrant { Delete, Insert, Select, Update, Execute }
         public enum Medium { Unknown, Image, Audio, Video, Ignore, VectorGraphic } // new MediaTye Unknown Toni 3.10.12 Toni 20210429: New medium type Ignore // Markus 20220323: New media type VectorGraphic
 
         protected Microsoft.Data.SqlClient.SqlConnection SqlConnection;
@@ -1432,6 +1435,20 @@ namespace DiversityWorkbench.Forms
             8192 UPDATE ANY
             */
 
+            // #236
+            if (ObjectName == null || ObjectName.Length == 0 || Permission == null || Permission.Length == 0)
+                return false;
+            if (DiversityWorkbench.Settings.ConnectionString.Length == 0)
+                return false;
+            try
+            {
+                //string permission = Permission.Substring(0, 1).ToUpper() + Permission.Substring(1).ToLower();
+                DatabaseGrant? grant = databaseGrant(Permission);
+                if (grant != null && getObjectPermissionCache(ObjectName, (DatabaseGrant)grant) != null)
+                    return (bool)getObjectPermissionCache(ObjectName, (DatabaseGrant)grant);
+            }
+            catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+
             bool Permit = false;
             Microsoft.Data.SqlClient.SqlConnection con = null;
             try
@@ -1487,6 +1504,96 @@ namespace DiversityWorkbench.Forms
             }
             return Permit;
         }
+
+        #region Permissions Cache
+
+        public static void ResetPermissionsCache()
+        {
+            _PermissionsCache.Clear();
+        }
+
+        private static DatabaseGrant? databaseGrant(string Permission)
+        {
+            DatabaseGrant grant = DatabaseGrant.Select;
+            try
+            {
+                string permission = Permission.Substring(0, 1).ToUpper() + Permission.Substring(1).ToLower();
+                grant = (DatabaseGrant)System.Enum.Parse(typeof(DatabaseGrant), permission);
+            }
+            catch { return null; }
+            return grant;
+        }
+
+        private static System.Collections.Generic.Dictionary<Tuple<string, DatabaseGrant>, bool> _PermissionsCache = new Dictionary<Tuple<string, DatabaseGrant>, bool>();
+
+
+        public static bool? getObjectPermissionCache(string ObjectName, DatabaseGrant DatabaseGrant)
+        {
+            if (DiversityWorkbench.Settings.ConnectionString.Length == 0)
+                return null;
+            try
+            {
+                Tuple<string, DatabaseGrant> Key = new Tuple<string, DatabaseGrant>(ObjectName, DatabaseGrant);
+                if (_PermissionsCache.ContainsKey(Key))
+                    return _PermissionsCache[Key];
+                bool Permit = false;
+                string SQL = "";
+                if (ObjectName.Contains(".dbo."))
+                {
+                    SQL = "USE " + ObjectName.Split(new char[] { '.' })[0] + ";";
+                    ObjectName = ObjectName.Split(new char[] { '.' })[2];
+                }
+                SQL += "IF PERMISSIONS(OBJECT_ID('" + ObjectName + "'))&";
+                switch (DatabaseGrant)
+                {
+                    case DatabaseGrant.Select:
+                        SQL += "1=1";
+                        break;
+                    case DatabaseGrant.Insert:
+                        SQL += "8=8";
+                        break;
+                    case DatabaseGrant.Update:
+                        SQL += "2=2";
+                        break;
+                    case DatabaseGrant.Delete:
+                        SQL += "16=16";
+                        break;
+                    case DatabaseGrant.Execute:
+                        SQL += "32=32";
+                        break;
+                }
+                SQL += " SELECT 'True' ELSE SELECT 'False'";
+
+                Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
+                Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SQL, con);
+                C.CommandText = SQL;
+                try
+                {
+                    con.Open();
+                    string testF = C.ExecuteScalar()?.ToString() ?? string.Empty;
+                    if (testF == string.Empty)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                    Permit = System.Boolean.Parse(testF);
+                }
+                finally
+                {
+                    con.Close();
+                }
+
+                _PermissionsCache.Add(Key, Permit);
+                return Permit;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+        #endregion
 
         public bool getObjectPermissions(string ObjectName, string ColumnName, string Permission)
         {
@@ -3074,6 +3181,68 @@ namespace DiversityWorkbench.Forms
         }
 
         #endregion
+
+        #endregion
+
+        #region Encoding
+
+        /// <summary>
+        /// Check encoding of a file #253
+        /// this method can detect some encodings, depending on the BOM, 
+        /// so it will not detect those without a BOM
+        /// </summary>
+        /// <param name="filename">Name of the file</param>
+        /// <returns>The encoding of the file and if the file has a BOM which indicates if the detection of the encoding is possible with this function</returns>
+        public static Tuple<Encoding, bool> DetectEncoding(string filename)
+        {
+            System.Text.Encoding encoding = null;
+            bool hasBom = false;
+            try
+            {
+                using (var reader = new System.IO.StreamReader(filename, Encoding.Default, detectEncodingFromByteOrderMarks: true))
+                {
+                    if (reader.Peek() >= 0) reader.Read(); // Trigger encoding detection
+                    encoding = reader.CurrentEncoding;
+                    reader.Close();
+                    reader.Dispose();
+
+                    if (DetectBom(filename).Length > 0) hasBom = true;
+                    else if(encoding == System.Text.Encoding.UTF8) { /* ToDo */ }
+                }
+            }
+            catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+            Tuple<Encoding, bool> result = new Tuple<Encoding, bool>(encoding, hasBom);
+            return result;
+        }
+
+        /// <summary>
+        /// Try to detect the BOM of a file - #253
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns>Type of the BOM, Empty if no BOM found</returns>
+        public static string DetectBom(string filePath)
+        {
+            byte[] bom = new byte[4];
+
+            using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                fs.Read(bom, 0, 4);
+            }
+
+            // Match known BOMs
+            if (bom[0] == 0xEF && bom[1] == 0xBB && bom[2] == 0xBF)
+                return "UTF-8 BOM";
+            if (bom[0] == 0xFF && bom[1] == 0xFE && bom[2] == 0x00 && bom[3] == 0x00)
+                return "UTF-32 LE BOM";
+            if (bom[0] == 0x00 && bom[1] == 0x00 && bom[2] == 0xFE && bom[3] == 0xFF)
+                return "UTF-32 BE BOM";
+            if (bom[0] == 0xFF && bom[1] == 0xFE)
+                return "UTF-16 LE BOM";
+            if (bom[0] == 0xFE && bom[1] == 0xFF)
+                return "UTF-16 BE BOM";
+
+            return "";
+        }
 
         #endregion
 
@@ -6218,9 +6387,16 @@ namespace DiversityWorkbench.Forms
 
         public static int SqlServerVersion()
         {
-            Microsoft.Data.SqlClient.SqlConnection sqlConnection = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
-            Microsoft.SqlServer.Management.Smo.Server server = new Microsoft.SqlServer.Management.Smo.Server(new Microsoft.SqlServer.Management.Common.ServerConnection(sqlConnection));
-            return server.VersionMajor;
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+                return 0;
+            int VersionMajor = 0;
+            using (Microsoft.Data.SqlClient.SqlConnection sqlConnection = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString))
+            {
+                Microsoft.SqlServer.Management.Smo.Server server = new Microsoft.SqlServer.Management.Smo.Server(new Microsoft.SqlServer.Management.Common.ServerConnection(sqlConnection));
+                VersionMajor = server.VersionMajor;
+            }
+            return VersionMajor;
         }
 
         public static int? AgentID
@@ -6248,6 +6424,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlExecuteNonQuery(string SqlCommand, bool UseDefaultConnection = false)
         {
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+                return false;
+
             bool OK = true;
             try
             {
@@ -6283,7 +6463,11 @@ namespace DiversityWorkbench.Forms
 
 
         public static async Task<bool> SqlExecuteNonQueryAsync(string sqlCommand, bool useDefaultConnection = false) 
-        { 
+        {
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+                return false;
+
             bool ok = true; 
             try 
             { 
@@ -6303,6 +6487,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlExecuteNonQuery(string SqlCommand, bool? IgnoreException)
         {
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+                return false;
+
             bool OK = true;
             try
             {
@@ -6339,6 +6527,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlExecuteNonQuery(string SqlCommand, string ConnectionString)
         {
+            // #235
+            if (ConnectionString.IsNullOrEmpty())
+                return false;
+
             bool OK = true;
             Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(ConnectionString);
             try
@@ -6371,6 +6563,10 @@ namespace DiversityWorkbench.Forms
             bool OK = true;
             if (con == null)
                 return false;
+            // #235
+            if (con.ConnectionString.IsNullOrEmpty())
+                return false;
+
             try
             {
                 Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SqlCommand, con);
@@ -6399,6 +6595,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlExecuteNonQuery(string SqlCommand, string ConnectionString, ref string Message)
         {
+            // #235
+            if (ConnectionString.IsNullOrEmpty())
+                return false;
+
             bool OK = true;
             Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(ConnectionString);
             try
@@ -6427,6 +6627,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlExecuteNonQuery(string SqlCommand, ref string Message, ref int ErrorCode)
         {
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+                return false;
+
             bool OK = true;
             Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
             try
@@ -6458,6 +6662,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlExecuteNonQuery(string SqlCommand, ref string ExceptionMessage)
         {
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+                return false;
+
             bool OK = true;
             Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
             try
@@ -6486,6 +6694,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlExecuteNonQuery(string SqlCommand, ref string ExceptionMessage, int Timeout)
         {
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionStringWithTimeout(Timeout).IsNullOrEmpty())
+                return false;
+
             bool OK = true;
             Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionStringWithTimeout(Timeout));
             try
@@ -6511,6 +6723,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlExecuteNonQuery(string SqlCommand, Microsoft.Data.SqlClient.SqlConnection Connection, ref string Message, ref int ErrorCode)
         {
+            // #235
+            if (Connection.ConnectionString.IsNullOrEmpty())
+                return false;
+
             bool OK = true;
             try
             {
@@ -6531,6 +6747,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlExecuteNonQuery(string SqlCommand, Microsoft.Data.SqlClient.SqlConnection Connection, ref string Message)
         {
+            // #235
+            if (Connection.ConnectionString.IsNullOrEmpty())
+                return false;
+
             bool OK = true;
             try
             {
@@ -6551,6 +6771,10 @@ namespace DiversityWorkbench.Forms
 
         public static string SqlExecuteScalar(string SqlCommand, bool IgnoreException = false)
         {
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+                return "";
+
             string Result = "";
             if (DiversityWorkbench.Settings.ConnectionString.Length == 0)
                 return Result;
@@ -6603,6 +6827,10 @@ namespace DiversityWorkbench.Forms
 
         public static string SqlExecuteScalar(string SqlCommand, Microsoft.Data.SqlClient.SqlConnection Connection)
         {
+            // #235
+            if (Connection.ConnectionString.IsNullOrEmpty())
+                return "";
+
             string Result = "";
             try
             {
@@ -6646,6 +6874,10 @@ namespace DiversityWorkbench.Forms
 
         public static string SqlExecuteScalar(string SqlCommand, ref string ExceptionMessage, bool IncludeNullReferenceException = false, bool UseConnectionTimeout = false)
         {
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase).IsNullOrEmpty())
+                return "";
+
             string Result = "";
             Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase));
             Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SqlCommand, con);
@@ -6683,6 +6915,10 @@ namespace DiversityWorkbench.Forms
 
         public static string SqlExecuteScalar(string SqlCommand, ref string ExceptionMessage, System.Data.IsolationLevel Level)
         {
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase).IsNullOrEmpty())
+                return "";
+
             string Result = "";
             Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase));
             try
@@ -6725,6 +6961,12 @@ namespace DiversityWorkbench.Forms
         /// <returns></returns>
         public static bool SqlFillTable(string SqlCommand, ref System.Data.DataTable DT, ref string ExceptionMessage, int? Timeout = null)
         {
+            // #235
+            if (Timeout == null && DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase).IsNullOrEmpty())
+                return false;
+            if (Timeout != null && DiversityWorkbench.Settings.ConnectionStringWithTimeout((int)Timeout).IsNullOrEmpty())
+                return false;
+
             bool OK = false;
             if (DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase).Length > 0)
             {
@@ -6806,6 +7048,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlFillTable(string SqlCommand, ref System.Data.DataTable DT, Microsoft.Data.SqlClient.SqlConnection con, bool CloseConnection = false)
         {
+            // #235
+            if (con.ConnectionString.IsNullOrEmpty())
+                return false;
+
             bool OK = false;
             try
             {
@@ -6846,6 +7092,10 @@ namespace DiversityWorkbench.Forms
 
         public static bool SqlDatabaseReadOnly()
         {
+            // #235
+            if (DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase).IsNullOrEmpty())
+                return false;
+
             bool Result = true;
             Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase));
             try
