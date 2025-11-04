@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties coreWebView2CreationProperties1 = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,6 +40,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDocumentation));
+            Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties coreWebView2CreationProperties2 = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
+            Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties coreWebView2CreationProperties3 = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
+            Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties coreWebView2CreationProperties4 = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
             splitContainerDocu = new System.Windows.Forms.SplitContainer();
             tableLayoutPanelDocumentationTabelList = new System.Windows.Forms.TableLayoutPanel();
             labelDocuTables = new System.Windows.Forms.Label();
@@ -118,7 +122,7 @@
             checkBoxHtmlDarkmode = new System.Windows.Forms.CheckBox();
             comboBoxDocuOutput = new System.Windows.Forms.ComboBox();
             panelHtmlBrowser = new System.Windows.Forms.Panel();
-            userControlWebViewHtml = new UserControls.UserControlWebView();
+            userControlWebViewHtml = new DiversityWorkbench.UserControls.UserControlWebView();
             tabControlHtmlOptions = new System.Windows.Forms.TabControl();
             tabPageHtmlContext = new System.Windows.Forms.TabPage();
             tableLayoutPanelHtmlContext = new System.Windows.Forms.TableLayoutPanel();
@@ -131,7 +135,7 @@
             checkBoxHtmlIncludeDetermination = new System.Windows.Forms.CheckBox();
             checkBoxHtmlContext = new System.Windows.Forms.CheckBox();
             checkBoxHtmlIncludeTableColorCode = new System.Windows.Forms.CheckBox();
-            userControlColorSettings = new UserControls.UserControlColorSettings();
+            userControlColorSettings = new DiversityWorkbench.UserControls.UserControlColorSettings();
             tabPageHtmlCitation = new System.Windows.Forms.TabPage();
             tableLayoutPanelHtmlCitation = new System.Windows.Forms.TableLayoutPanel();
             labelHtmlCitationAuthors = new System.Windows.Forms.Label();
@@ -169,6 +173,13 @@
             tableLayoutPanelEnumContent = new System.Windows.Forms.TableLayoutPanel();
             checkBoxEnumContent = new System.Windows.Forms.CheckBox();
             checkedListBoxEnumContent = new System.Windows.Forms.CheckedListBox();
+            tabPageTableContent = new System.Windows.Forms.TabPage();
+            tableLayoutPanelTableContent = new System.Windows.Forms.TableLayoutPanel();
+            comboBoxTableContentTable = new System.Windows.Forms.ComboBox();
+            comboBoxTableContentColumn = new System.Windows.Forms.ComboBox();
+            buttonTableContentAddColumn = new System.Windows.Forms.Button();
+            buttonTableContentRemoveColumn = new System.Windows.Forms.Button();
+            listBoxTableContentColumns = new System.Windows.Forms.ListBox();
             tabPageHugoLinks = new System.Windows.Forms.TabPage();
             tableLayoutPanelHugoLinks = new System.Windows.Forms.TableLayoutPanel();
             buttonHugoLinksDirectory = new System.Windows.Forms.Button();
@@ -284,7 +295,7 @@
             comboBoxMediaWikiContext = new System.Windows.Forms.ComboBox();
             labelMediaWikiContextLanguage = new System.Windows.Forms.Label();
             checkBoxMediaWikiCreateColorCodeTable = new System.Windows.Forms.CheckBox();
-            userControlColorSettingsMediaWiki = new UserControls.UserControlColorSettings();
+            userControlColorSettingsMediaWiki = new DiversityWorkbench.UserControls.UserControlColorSettings();
             tabPageWiki = new System.Windows.Forms.TabPage();
             textBoxDocuWiki = new System.Windows.Forms.TextBox();
             panelDocuWiki = new System.Windows.Forms.Panel();
@@ -292,7 +303,7 @@
             textBoxDocuWikiCSSPrefix = new System.Windows.Forms.TextBox();
             buttonDocuWikiCreate = new System.Windows.Forms.Button();
             tabPageContent = new System.Windows.Forms.TabPage();
-            userControlWebViewDocuContent = new UserControls.UserControlWebView();
+            userControlWebViewDocuContent = new DiversityWorkbench.UserControls.UserControlWebView();
             panelDocuContent = new System.Windows.Forms.Panel();
             comboBoxDocuContentContextLanguage = new System.Windows.Forms.ComboBox();
             labelDocuContentContextLanguage = new System.Windows.Forms.Label();
@@ -360,8 +371,8 @@
             labelChmFolder = new System.Windows.Forms.Label();
             buttonChmIndexMarkdown = new System.Windows.Forms.Button();
             buttonChmKeywordMarkdown = new System.Windows.Forms.Button();
-            userControlWebViewChmIndexFile = new UserControls.UserControlWebView();
-            userControlWebViewChmKeywordFile = new UserControls.UserControlWebView();
+            userControlWebViewChmIndexFile = new DiversityWorkbench.UserControls.UserControlWebView();
+            userControlWebViewChmKeywordFile = new DiversityWorkbench.UserControls.UserControlWebView();
             buttonChmHugoKeywordFile = new System.Windows.Forms.Button();
             labelChmHugoKeywordFilePrefix = new System.Windows.Forms.Label();
             textBoxChmHugoKeywordFilePrefix = new System.Windows.Forms.TextBox();
@@ -418,6 +429,8 @@
             tableLayoutPanelHUGO.SuspendLayout();
             tabPageEnumContent.SuspendLayout();
             tableLayoutPanelEnumContent.SuspendLayout();
+            tabPageTableContent.SuspendLayout();
+            tableLayoutPanelTableContent.SuspendLayout();
             tabPageHugoLinks.SuspendLayout();
             tableLayoutPanelHugoLinks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewHugoLinks).BeginInit();
@@ -998,7 +1011,7 @@
             // 
             buttonFeedback.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             buttonFeedback.Image = Properties.Resources.Feedback;
-            buttonFeedback.Location = new System.Drawing.Point(870, 1);
+            buttonFeedback.Location = new System.Drawing.Point(862, 1);
             buttonFeedback.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             buttonFeedback.Name = "buttonFeedback";
             buttonFeedback.Size = new System.Drawing.Size(28, 27);
@@ -1610,6 +1623,13 @@
             // userControlWebViewHtml
             // 
             userControlWebViewHtml.AllowScripting = false;
+            coreWebView2CreationProperties1.AdditionalBrowserArguments = null;
+            coreWebView2CreationProperties1.BrowserExecutableFolder = null;
+            coreWebView2CreationProperties1.IsInPrivateModeEnabled = null;
+            coreWebView2CreationProperties1.Language = null;
+            coreWebView2CreationProperties1.ProfileName = null;
+            coreWebView2CreationProperties1.UserDataFolder = "C:\\Users\\mweiss\\AppData\\Local\\DiversityWorkbench\\NETwebView";
+            userControlWebViewHtml.CreationProperties = coreWebView2CreationProperties1;
             userControlWebViewHtml.Dock = System.Windows.Forms.DockStyle.Fill;
             userControlWebViewHtml.Location = new System.Drawing.Point(0, 0);
             userControlWebViewHtml.Margin = new System.Windows.Forms.Padding(0);
@@ -1627,6 +1647,7 @@
             tabControlHtmlOptions.Controls.Add(tabPageHtmlModel);
             tabControlHtmlOptions.Controls.Add(tabPageHUGO);
             tabControlHtmlOptions.Controls.Add(tabPageEnumContent);
+            tabControlHtmlOptions.Controls.Add(tabPageTableContent);
             tabControlHtmlOptions.Dock = System.Windows.Forms.DockStyle.Fill;
             tabControlHtmlOptions.Location = new System.Drawing.Point(4, 471);
             tabControlHtmlOptions.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -2227,7 +2248,7 @@
             tabPageEnumContent.Name = "tabPageEnumContent";
             tabPageEnumContent.Size = new System.Drawing.Size(791, 88);
             tabPageEnumContent.TabIndex = 5;
-            tabPageEnumContent.Text = "Content";
+            tabPageEnumContent.Text = "Enum content";
             tabPageEnumContent.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelEnumContent
@@ -2272,6 +2293,91 @@
             tableLayoutPanelEnumContent.SetRowSpan(checkedListBoxEnumContent, 2);
             checkedListBoxEnumContent.Size = new System.Drawing.Size(388, 82);
             checkedListBoxEnumContent.TabIndex = 1;
+            // 
+            // tabPageTableContent
+            // 
+            tabPageTableContent.Controls.Add(tableLayoutPanelTableContent);
+            tabPageTableContent.Location = new System.Drawing.Point(4, 24);
+            tabPageTableContent.Name = "tabPageTableContent";
+            tabPageTableContent.Size = new System.Drawing.Size(791, 88);
+            tabPageTableContent.TabIndex = 6;
+            tabPageTableContent.Text = "Table content";
+            tabPageTableContent.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanelTableContent
+            // 
+            tableLayoutPanelTableContent.ColumnCount = 4;
+            tableLayoutPanelTableContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelTableContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelTableContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelTableContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelTableContent.Controls.Add(comboBoxTableContentTable, 0, 0);
+            tableLayoutPanelTableContent.Controls.Add(comboBoxTableContentColumn, 0, 1);
+            tableLayoutPanelTableContent.Controls.Add(buttonTableContentAddColumn, 1, 1);
+            tableLayoutPanelTableContent.Controls.Add(buttonTableContentRemoveColumn, 3, 1);
+            tableLayoutPanelTableContent.Controls.Add(listBoxTableContentColumns, 2, 0);
+            tableLayoutPanelTableContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelTableContent.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelTableContent.Name = "tableLayoutPanelTableContent";
+            tableLayoutPanelTableContent.RowCount = 3;
+            tableLayoutPanelTableContent.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelTableContent.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelTableContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelTableContent.Size = new System.Drawing.Size(791, 88);
+            tableLayoutPanelTableContent.TabIndex = 0;
+            // 
+            // comboBoxTableContentTable
+            // 
+            comboBoxTableContentTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            comboBoxTableContentTable.FormattingEnabled = true;
+            comboBoxTableContentTable.Location = new System.Drawing.Point(3, 3);
+            comboBoxTableContentTable.Name = "comboBoxTableContentTable";
+            comboBoxTableContentTable.Size = new System.Drawing.Size(360, 23);
+            comboBoxTableContentTable.TabIndex = 0;
+            comboBoxTableContentTable.DropDown += comboBoxTableContentTable_DropDown;
+            comboBoxTableContentTable.SelectedIndexChanged += comboBoxTableContentTable_SelectedIndexChanged;
+            // 
+            // comboBoxTableContentColumn
+            // 
+            comboBoxTableContentColumn.Dock = System.Windows.Forms.DockStyle.Fill;
+            comboBoxTableContentColumn.FormattingEnabled = true;
+            comboBoxTableContentColumn.Location = new System.Drawing.Point(30, 32);
+            comboBoxTableContentColumn.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            comboBoxTableContentColumn.Name = "comboBoxTableContentColumn";
+            comboBoxTableContentColumn.Size = new System.Drawing.Size(333, 23);
+            comboBoxTableContentColumn.TabIndex = 1;
+            comboBoxTableContentColumn.SelectionChangeCommitted += comboBoxTableContentColumn_SelectionChangeCommitted;
+            // 
+            // buttonTableContentAddColumn
+            // 
+            buttonTableContentAddColumn.Image = Properties.Resources.Add;
+            buttonTableContentAddColumn.Location = new System.Drawing.Point(369, 32);
+            buttonTableContentAddColumn.Name = "buttonTableContentAddColumn";
+            buttonTableContentAddColumn.Size = new System.Drawing.Size(23, 23);
+            buttonTableContentAddColumn.TabIndex = 2;
+            buttonTableContentAddColumn.UseVisualStyleBackColor = true;
+            buttonTableContentAddColumn.Click += buttonTableContentAddColumn_Click;
+            // 
+            // buttonTableContentRemoveColumn
+            // 
+            buttonTableContentRemoveColumn.Image = Properties.Resources.Delete;
+            buttonTableContentRemoveColumn.Location = new System.Drawing.Point(764, 32);
+            buttonTableContentRemoveColumn.Name = "buttonTableContentRemoveColumn";
+            buttonTableContentRemoveColumn.Size = new System.Drawing.Size(23, 23);
+            buttonTableContentRemoveColumn.TabIndex = 3;
+            buttonTableContentRemoveColumn.UseVisualStyleBackColor = true;
+            buttonTableContentRemoveColumn.Click += buttonTableContentRemoveColumn_Click;
+            // 
+            // listBoxTableContentColumns
+            // 
+            listBoxTableContentColumns.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxTableContentColumns.FormattingEnabled = true;
+            listBoxTableContentColumns.ItemHeight = 15;
+            listBoxTableContentColumns.Location = new System.Drawing.Point(398, 3);
+            listBoxTableContentColumns.Name = "listBoxTableContentColumns";
+            tableLayoutPanelTableContent.SetRowSpan(listBoxTableContentColumns, 3);
+            listBoxTableContentColumns.Size = new System.Drawing.Size(360, 82);
+            listBoxTableContentColumns.TabIndex = 4;
             // 
             // tabPageHugoLinks
             // 
@@ -4017,6 +4123,13 @@
             // userControlWebViewDocuContent
             // 
             userControlWebViewDocuContent.AllowScripting = false;
+            coreWebView2CreationProperties2.AdditionalBrowserArguments = null;
+            coreWebView2CreationProperties2.BrowserExecutableFolder = null;
+            coreWebView2CreationProperties2.IsInPrivateModeEnabled = null;
+            coreWebView2CreationProperties2.Language = null;
+            coreWebView2CreationProperties2.ProfileName = null;
+            coreWebView2CreationProperties2.UserDataFolder = "C:\\Users\\mweiss\\AppData\\Local\\DiversityWorkbench\\NETwebView";
+            userControlWebViewDocuContent.CreationProperties = coreWebView2CreationProperties2;
             userControlWebViewDocuContent.Dock = System.Windows.Forms.DockStyle.Fill;
             userControlWebViewDocuContent.Location = new System.Drawing.Point(4, 3);
             userControlWebViewDocuContent.Margin = new System.Windows.Forms.Padding(0);
@@ -4923,6 +5036,13 @@
             // 
             userControlWebViewChmIndexFile.AllowScripting = false;
             tableLayoutPanelChm.SetColumnSpan(userControlWebViewChmIndexFile, 4);
+            coreWebView2CreationProperties3.AdditionalBrowserArguments = null;
+            coreWebView2CreationProperties3.BrowserExecutableFolder = null;
+            coreWebView2CreationProperties3.IsInPrivateModeEnabled = null;
+            coreWebView2CreationProperties3.Language = null;
+            coreWebView2CreationProperties3.ProfileName = null;
+            coreWebView2CreationProperties3.UserDataFolder = "C:\\Users\\mweiss\\AppData\\Local\\DiversityWorkbench\\NETwebView";
+            userControlWebViewChmIndexFile.CreationProperties = coreWebView2CreationProperties3;
             userControlWebViewChmIndexFile.Dock = System.Windows.Forms.DockStyle.Fill;
             userControlWebViewChmIndexFile.Location = new System.Drawing.Point(240, 87);
             userControlWebViewChmIndexFile.Margin = new System.Windows.Forms.Padding(0);
@@ -4937,6 +5057,13 @@
             // 
             userControlWebViewChmKeywordFile.AllowScripting = false;
             tableLayoutPanelChm.SetColumnSpan(userControlWebViewChmKeywordFile, 4);
+            coreWebView2CreationProperties4.AdditionalBrowserArguments = null;
+            coreWebView2CreationProperties4.BrowserExecutableFolder = null;
+            coreWebView2CreationProperties4.IsInPrivateModeEnabled = null;
+            coreWebView2CreationProperties4.Language = null;
+            coreWebView2CreationProperties4.ProfileName = null;
+            coreWebView2CreationProperties4.UserDataFolder = "C:\\Users\\mweiss\\AppData\\Local\\DiversityWorkbench\\NETwebView";
+            userControlWebViewChmKeywordFile.CreationProperties = coreWebView2CreationProperties4;
             userControlWebViewChmKeywordFile.Dock = System.Windows.Forms.DockStyle.Fill;
             userControlWebViewChmKeywordFile.Location = new System.Drawing.Point(240, 290);
             userControlWebViewChmKeywordFile.Margin = new System.Windows.Forms.Padding(0);
@@ -5187,6 +5314,8 @@
             tableLayoutPanelHUGO.PerformLayout();
             tabPageEnumContent.ResumeLayout(false);
             tableLayoutPanelEnumContent.ResumeLayout(false);
+            tabPageTableContent.ResumeLayout(false);
+            tableLayoutPanelTableContent.ResumeLayout(false);
             tabPageHugoLinks.ResumeLayout(false);
             tableLayoutPanelHugoLinks.ResumeLayout(false);
             tableLayoutPanelHugoLinks.PerformLayout();
@@ -5587,5 +5716,12 @@
         private System.Windows.Forms.RadioButton radioButtonChmHugoKeywordPrefix;
         private System.Windows.Forms.RadioButton radioButtonChmHugoKeywordPostfix;
         private System.Windows.Forms.Button buttonChmHugoKeywordLinksFile;
+        private System.Windows.Forms.TabPage tabPageTableContent;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelTableContent;
+        private System.Windows.Forms.ComboBox comboBoxTableContentTable;
+        private System.Windows.Forms.ComboBox comboBoxTableContentColumn;
+        private System.Windows.Forms.Button buttonTableContentAddColumn;
+        private System.Windows.Forms.Button buttonTableContentRemoveColumn;
+        private System.Windows.Forms.ListBox listBoxTableContentColumns;
     }
 }

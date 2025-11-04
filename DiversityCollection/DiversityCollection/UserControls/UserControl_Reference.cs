@@ -57,6 +57,11 @@ namespace DiversityCollection.UserControls
             this.setUserControlSourceFixing(ref this.userControlModuleRelatedEntryReferenceResponsible, "ResponsibleAgentURI");
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelReference
+        {
+            get { return this.tableLayoutPanelReference; }
+        }
+
         #endregion
     }
 }

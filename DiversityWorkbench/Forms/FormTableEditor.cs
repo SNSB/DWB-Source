@@ -1531,8 +1531,18 @@ namespace DiversityWorkbench.Forms
             bool mappedExport = false;
             if (this._UsedComboBoxColumns != null && this._UsedComboBoxColumns.Count > 0)
             {
-                string message = "Do you want to export the mapped (display) values?";
-                mappedExport = MessageBox.Show(message, "Mapping", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes;
+                string message = "Do you want to include the mapped (display) values in the export?"; // #257
+                switch(MessageBox.Show(message, "Mapping", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+                {
+                    case DialogResult.Cancel:
+                        return;
+                    case DialogResult.Yes:
+                        mappedExport = true;
+                        break;
+                    case DialogResult.No:
+                        mappedExport = false;
+                        break;
+                } 
             }
             System.IO.StreamWriter sw;
             DateTime expTim = DateTime.Now;

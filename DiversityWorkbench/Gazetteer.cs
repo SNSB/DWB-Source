@@ -1072,11 +1072,16 @@ namespace DiversityWorkbench
                             case "DiversityCollection":
                                 SQL = "SELECT NULL AS ValueColumn, NULL AS DisplayColumn " +
                                     " UNION " +
-                                    " SELECT DISTINCT CountryCache AS ValueColumn, CountryCache AS DisplayColumn FROM [dbo].[CollectionEvent] WHERE [CountryCache] <> '' ORDER BY [CountryCache]";
+                                    " SELECT DISTINCT CountryCache AS ValueColumn, CountryCache AS DisplayColumn FROM [dbo].[CollectionEvent] WHERE [CountryCache] <> '' ORDER BY [DisplayColumn]"; // #277
                                 break;
                         }
                         Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, DiversityWorkbench.Settings.ConnectionString);
                         ad.Fill(_Countries);
+                    }
+                    else if (DiversityWorkbench.Settings.CountryListSource == "IsoCountries") // #279
+                    {
+                        //DWBServices.WebServices.GeoServices.ISOCountries.
+
                     }
                     else
                     {

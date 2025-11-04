@@ -82,6 +82,7 @@ namespace DiversityCollection.UserControls
             //this.initDescriptors(R);
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelOverviewEventSeries { get { return this.tableLayoutPanelOverviewEventSeries; } }
 
         #endregion
 

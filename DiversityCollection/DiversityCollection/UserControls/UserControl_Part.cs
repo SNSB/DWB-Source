@@ -55,6 +55,11 @@ namespace DiversityCollection.UserControls
             this.buttonRestrictImagesToCurrrentPart.Enabled = Enable;
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelStorage
+        {
+            get { return this.tableLayoutPanelStorage; }
+        }
+
         #endregion
 
         #region Private control events
@@ -672,8 +677,7 @@ namespace DiversityCollection.UserControls
 
         #endregion
 
-        #endregion
-
+        #region Storage notes text box events - not used
         private void textBoxStorageNotes_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -688,5 +692,12 @@ namespace DiversityCollection.UserControls
         {
 
         }
+
+        #endregion
+
+        #endregion
+
+
+
     }
 }

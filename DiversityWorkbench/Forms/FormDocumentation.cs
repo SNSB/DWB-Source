@@ -2044,6 +2044,11 @@ namespace DiversityWorkbench.Forms
                     this.EnumContentAsMarkdown(W, Object);
                 }
 
+                if (this.listBoxTableContentColumns.Items.Count > 0)
+                {
+                    this.TableContentAsMarkdown(W, Object);
+                }
+
             }
             catch (Exception ex)
             {
@@ -2871,14 +2876,19 @@ namespace DiversityWorkbench.Forms
         private System.Data.DataTable EnumContent(string TableName)
         {
             string SQL = "";
-            foreach (System.Object o in this.checkedListBoxEnumContent.CheckedItems)
+            if (this.checkedListBoxEnumContent.CheckedItems.Count > 0) // #262
             {
-                if (SQL.Length > 0) SQL += ", ";
-                SQL += o.ToString();
+                foreach (System.Object o in this.checkedListBoxEnumContent.CheckedItems)
+                {
+                    if (SQL.Length > 0) SQL += ", ";
+                    SQL += o.ToString();
+                }
+                SQL = "SELECT " + SQL + " FROM " + TableName;
+                System.Data.DataTable dataTable = DiversityWorkbench.Forms.FormFunctions.DataTable(SQL);
+                return dataTable;
             }
-            SQL = "SELECT " + SQL + " FROM " + TableName;
-            System.Data.DataTable dataTable = DiversityWorkbench.Forms.FormFunctions.DataTable(SQL);
-            return dataTable;
+            System.Data.DataTable table = new DataTable();
+            return table;
         }
 
         System.Collections.Generic.List<string> _EnumColumnList;
@@ -5231,6 +5241,145 @@ namespace DiversityWorkbench.Forms
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
+
+        #endregion
+
+        #region TableContents
+
+        private string _TableContent = "";
+        private System.Collections.Generic.List<string> _TableContentTables = new List<string>();
+        private DiversityWorkbench.Data.Table _TableContentTable = null;
+
+        //private System.Collections.Generic.List<string> _TableContentColumns = new List<string>();
+        private void comboBoxTableContentTable_DropDown(object sender, EventArgs e)
+        {
+            _TableContentTables.Clear();
+            this.comboBoxTableContentTable.DataSource = null;
+            this.comboBoxTableContentTable.Items.Clear();
+            foreach (System.Data.DataRowView R in this.checkedListBoxDocuTables.CheckedItems)
+            {
+                //System.Data.DataTable dt = this.dtTableDocu(R[0].ToString(), false);
+                _TableContentTables.Add(R[0].ToString());
+                this.comboBoxTableContentTable.Items.Add(R[0].ToString());
+            }
+            //this.comboBoxTableContentTable.DataSource = _TableContentTables;
+        }
+        private void comboBoxTableContentTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.listBoxTableContentColumns.Items.Clear();
+            this.comboBoxTableContentColumn.Items.Clear();
+            _TableContentTable = new Data.Table(comboBoxTableContentTable.SelectedItem.ToString());
+            foreach(System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.Data.Column> C in _TableContentTable.Columns)
+            {
+                this.comboBoxTableContentColumn.Items.Add(C.Key);
+            }
+        }
+
+        private void comboBoxTableContentColumn_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+        }
+        private void buttonTableContentAddColumn_Click(object sender, EventArgs e)
+        {
+            if (!this.listBoxTableContentColumns.Items.Contains(this.comboBoxTableContentColumn.SelectedItem.ToString()))
+                this.listBoxTableContentColumns.Items.Add(this.comboBoxTableContentColumn.SelectedItem.ToString());
+        }
+
+        private void buttonTableContentRemoveColumn_Click(object sender, EventArgs e)
+        {
+            this.listBoxTableContentColumns.Items.Remove(this.listBoxTableContentColumns.SelectedItem);
+        }
+
+        private void TableContentAsMarkdown(System.IO.StreamWriter W, string TableName)
+        {
+            try
+            {
+                if (this.listBoxTableContentColumns.Items.Count > 0)
+                {
+                    System.Data.DataTable dt = this.TableContent(TableName);
+                    if (dt.Rows.Count > 0)
+                    {
+                        string Header = "";
+                        string Subline = "";
+                        this.TableContentMarkdownHeader(ref Header, ref Subline);
+                        if (Header.Length > 0)
+                        {
+                            W.WriteLine("#### Content");
+                            W.WriteLine(Header);
+                            W.WriteLine(Subline);
+                            foreach (System.Data.DataRow R in dt.Rows)
+                            {
+                                W.WriteLine(this.TableContentMarkdownRowContent(R));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
+        }
+
+        private void TableContentMarkdownHeader(ref string Header, ref string SubLine)
+        {
+            foreach (System.Object o in this.listBoxTableContentColumns.Items)
+            {
+                if (Header.Length > 0)
+                {
+                    Header += " | ";
+                    SubLine += " | ";
+                }
+                Header += o.ToString();
+                SubLine += " --- ";
+            }
+            Header = "| " + Header + " |";
+            SubLine = "| " + SubLine + " |";
+        }
+
+        private string TableContentMarkdownRowContent(System.Data.DataRow R)
+        {
+            string Content = "";
+            foreach (System.Object o in this.listBoxTableContentColumns.Items)
+            {
+                if (Content.Length > 0) Content += " | ";
+                string content = " ";
+                if (R.Table.Columns.Contains(o.ToString()) && !R[o.ToString()].Equals(System.DBNull.Value))
+                {
+                    content = R[o.ToString()].ToString();
+                }
+                Content += content;
+            }
+            Content = "| " + Content + " |";
+            return Content;
+        }
+
+
+        private System.Data.DataTable TableContent(string TableName)
+        {
+            string SQL = "";
+            foreach (System.Object o in this.listBoxTableContentColumns.Items)
+            {
+                if (SQL.Length > 0) SQL += ", ";
+                SQL += o.ToString();
+            }
+            SQL = "SELECT " + SQL + " FROM " + TableName;
+            System.Data.DataTable dataTable = DiversityWorkbench.Forms.FormFunctions.DataTable(SQL);
+            return dataTable;
+        }
+
+        //System.Collections.Generic.List<string> _TableContentColumnList;
+        //private System.Collections.Generic.List<string> TableContentColumnList()
+        //{
+        //    if (_TableContentColumnList == null)
+        //    {
+        //        _TableContentColumnList = new List<string>();
+        //        foreach (System.Object o in this.listBoxTableContentColumns.Items)
+        //            _TableContentColumnList.Add(o.ToString());
+        //    }
+        //    return _TableContentColumnList;
+        //}
+
 
         #endregion
 
@@ -7962,12 +8111,12 @@ namespace DiversityWorkbench.Forms
         private System.IO.FileInfo ChmHugoKeywordFile
         {
             get
-            { 
+            {
                 if (_ChmHugoKeywordFile == null && _ChmKeywordFile != null)
                 {
                     _ChmHugoKeywordFile = new FileInfo(_ChmKeywordFile.FullName.Replace(".html", ".txt"));
                 }
-                return _ChmHugoKeywordFile; 
+                return _ChmHugoKeywordFile;
             }
         }
 
@@ -8004,7 +8153,7 @@ namespace DiversityWorkbench.Forms
                     this.GenerateHugoKeywordFile();
                 else { System.Windows.Forms.MessageBox.Show("Please select a source file"); }
             }
-            catch(System.Exception ex) {DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); return; }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); return; }
         }
 
         private void GenerateHugoKeywordFile()
@@ -8054,7 +8203,7 @@ namespace DiversityWorkbench.Forms
                                     line = line.Substring(0, line.LastIndexOf("\t") + 1) + line.Substring(line.LastIndexOf("\t") + 1);
                                     line = line.Replace("\">", "");
                                     line = line.Substring(line.LastIndexOf("\t") + 1);
-                                    if(this.radioButtonChmHugoKeywordPrefix.Checked)
+                                    if (this.radioButtonChmHugoKeywordPrefix.Checked)
                                         Key = this.textBoxChmHugoKeywordPrefix.Text + line;// + this.textBoxChmHugoKeywordPostfix;
                                     else
                                         Key = line + this.textBoxChmHugoKeywordPostfix.Text;// + this.textBoxChmHugoKeywordPostfix;
@@ -8120,7 +8269,7 @@ namespace DiversityWorkbench.Forms
                         {
                             FileName = Path,
                             UseShellExecute = true,
-                        });                   
+                        });
                     }
 
                 }
@@ -8230,7 +8379,7 @@ namespace DiversityWorkbench.Forms
                                     line = line.Substring(0, line.LastIndexOf("\t") + 1) + line.Substring(line.LastIndexOf("\t") + 1);
                                     line = line.Replace("\">", "");
                                     line = line.Substring(line.LastIndexOf("\t") + 1);
-                                    Key = line + "_"+ HugoModuleAcronym();
+                                    Key = line + "_" + HugoModuleAcronym();
                                     //if (this.radioButtonChmHugoKeywordPrefix.Checked)
                                     //    Key = this.textBoxChmHugoKeywordPrefix.Text + line;// + this.textBoxChmHugoKeywordPostfix;
                                     //else

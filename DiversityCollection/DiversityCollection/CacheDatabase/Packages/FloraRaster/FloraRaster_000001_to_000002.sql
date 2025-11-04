@@ -395,12 +395,14 @@ GRANT SELECT ON TABLE "#project#"."FloraRaster_TaxRef" TO "CacheUser";
 GRANT SELECT ON TABLE "#project#"."FloraRaster_TaxRef" TO public;
 GRANT ALL ON TABLE "#project#"."FloraRaster_TaxRef" TO "CacheAdmin";
 
+
+
 --#####################################################################################################################
 --######   FloraRaster_Fotos   ########################################################################################
 --#####################################################################################################################
 
 CREATE OR REPLACE VIEW "#project#"."FloraRaster_Fotos" AS 
-SELECT si."URI" AS "Link",
+SELECT DISTINCT si."URI" AS "Link",
     t."AcceptedNameID" AS "SipNr",
     si."CreatorAgent"::character varying(255) AS "Beobachter",
     concat(e."CollectionDay",

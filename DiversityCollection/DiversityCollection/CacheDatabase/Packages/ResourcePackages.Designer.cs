@@ -217,6 +217,20 @@ namespace DiversityCollection.CacheDatabase.Packages {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die --#####################################################################################################################
         ///--#####################################################################################################################
+        ///--Skript for Update of Postgres package ABCD to version 13
+        ///--replace &quot;#project#&quot; with Name of the project
+        ///--the string at the begin of the line --## is used to mark end and begin of a command
+        ///--######################################################################### [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string ABCD_000012_to_000013 {
+            get {
+                return ResourceManager.GetString("ABCD_000012_to_000013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die --#####################################################################################################################
+        ///--#####################################################################################################################
         ///--Skript for Update of Postgres package BayernFloraABCD to version 2
         ///--replace &quot;#project#&quot; with Name of the project
         ///--the string at the begin of the line --## is used to mark end and begin of a command

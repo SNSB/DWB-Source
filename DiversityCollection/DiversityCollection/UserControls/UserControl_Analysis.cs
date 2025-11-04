@@ -391,6 +391,11 @@ namespace DiversityCollection.UserControls
             this.groupBoxAnalysis.Text = Title;
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelAnalysis
+        {
+            get { return this.tableLayoutPanelAnalysis; }
+        }
+
         #endregion
 
     }

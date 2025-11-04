@@ -36,11 +36,13 @@ namespace DiversityCollection.UserControls
         {
             this.groupBoxLabel.Text = Title;
         }
-        
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelLabel { get { return this.tableLayoutPanelLabelDetails; } }
+
         #endregion
 
         #region Control
-        
+
         private void initControl()
         {
             this.textBoxLabelTitle.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._Source, "LabelTitle", true));

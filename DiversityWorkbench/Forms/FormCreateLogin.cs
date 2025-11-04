@@ -91,6 +91,32 @@ namespace DiversityWorkbench.Forms
         public string LoginName
         { get { return this.textBoxLogin.Text; } }
 
+        public string LoginAgentName
+        {
+            get
+            {
+                    return this.userControlModuleRelatedEntryAgentFromDatabase.textBoxValue.Text;
+                //if (this.radioButtonNewAgent.Checked)
+                //    return this.textBoxGivenName.Text + " " + this.textBoxInheritedName.Text;
+                //else if (this.radioButtonAgentFromDatabase.Checked || this.userControlModuleRelatedEntryAgentFromDatabase.labelURI.Text.Length > 0)
+                //else
+                //    return "";
+            }
+        }
+
+        public string LoginAgentURI
+        {
+            get
+            {
+                    return this.userControlModuleRelatedEntryAgentFromDatabase.labelURI.Text;
+                //if (this.radioButtonNewAgent.Checked)
+                //    return "";
+                //else if (this.radioButtonAgentFromDatabase.Checked || this.userControlModuleRelatedEntryAgentFromDatabase.labelURI.Text.Length > 0)
+                //else
+                //    return "";
+            }
+        }
+
         #endregion
 
         #region Login

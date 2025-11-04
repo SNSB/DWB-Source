@@ -176,11 +176,39 @@ namespace DiversityCollection.UserControls
             this._RestrictTo_SpecimenPartID = null;
             this._RestrictTo_IdentificationUnitID = null;
         }
+        #region Access for Manual
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelSpecimenImage
+        {
+            get { return this.tableLayoutPanelSpecimenImage; }
+        }
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelImageLicense
+        {
+            get { return this.tableLayoutPanelImageLicense; }
+        }
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelImageProperty
+        {
+            get { return this.tableLayoutPanelImageProperty; }
+        }
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelSpecimenImageIPR
+        {
+            get { return this.tableLayoutPanelSpecimenImageIPR; }
+        }
+
+        public DiversityWorkbench.UserControls.UserControlImage UserControlImageSpecimenImage
+        {
+            get { return this.userControlImageSpecimenImage; }
+        }
+
+        #endregion
 
         #endregion
 
         #region Units and Parts
-        
+
         public void RestrictImagesToUnit(int IdentificationUnitID) 
         {
             if (this._RestrictTo_IdentificationUnitID == null || this._RestrictTo_IdentificationUnitID != IdentificationUnitID)

@@ -20,7 +20,7 @@
     <AssemblyVersion>$(Version)</AssemblyVersion>
     <FileVersion>$(Version)</FileVersion>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
-    <Version>7.1.1</Version>
+    <Version>7.1.2</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>

@@ -485,6 +485,8 @@ namespace DiversityCollection.UserControls
             this.webBrowserLabel.Url = new Uri("about:blank ");
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanel { get { return this.tableLayoutPanelLabel; } }
+
         #endregion
 
         #region QR code

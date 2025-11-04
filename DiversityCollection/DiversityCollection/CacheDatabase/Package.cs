@@ -785,7 +785,7 @@ namespace DiversityCollection.CacheDatabase
             switch (Pack)
             {
                 case Package.Pack.ABCD:
-                    return 12; // #188 // ToDo: Bei Umstellung auf Version 10 Einbau der Anpassungen in BioCASE beachten
+                    return 13; // #118 - fehlende Sicht fuer Pladias ergänzt // #18 - war auf 13 - vorerst das neue Skript nicht verwenden bis Unklarheiten geklärt #188 // ToDo: Bei Umstellung auf Version 10 Einbau der Anpassungen in BioCASE beachten
                 case Package.Pack.FloraRaster:
                     return 2;
                 case Package.Pack.Observation:

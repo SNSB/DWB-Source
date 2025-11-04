@@ -703,7 +703,31 @@ namespace DiversityWorkbench.UserControls
             try
             {
                 System.Data.DataRowView R;
-                if (this._BindingSource.Current != null)
+                //#267
+                //if (this._BindingSource == null)
+                //{
+                //    this._BindingSource = new System.Windows.Forms.BindingSource();
+                //    ((System.ComponentModel.ISupportInitialize)(this._BindingSource)).BeginInit();
+                //    System.Data.DataTable dt = new DataTable("BindingSource");
+                //    System.Data.DataColumn dcDisplayText = new DataColumn("DisplayText");
+                //    dt.Columns.Add(dcDisplayText);
+                //    System.Data.DataColumn dcUri = new DataColumn("URI");
+                //    dt.Columns.Add(dcUri);
+                //    System.Data.DataRow r = dt.NewRow();
+                //    r[0] = DisplayText;
+                //    r[1] = URI;
+                //    dt.Rows.Add(r);
+                //    //this._BindingSource.DataMember = "CollectionTask";
+                //    this._BindingSource.DataSource = dt;
+                //    ((System.ComponentModel.ISupportInitialize)(this._BindingSource)).EndInit();
+                //}
+                //if (this._ValueColumn == null || this._ValueColumn == "")
+                //    this._ValueColumn = "URI";
+                //if (this._DisplayColumn == null || this._DisplayColumn == "")
+                //    this._DisplayColumn = "DisplayText";
+
+
+                if (this._BindingSource != null && this._BindingSource.Current != null) // #267
                 {
                     R = (System.Data.DataRowView)this._BindingSource.Current;
                     R.BeginEdit();

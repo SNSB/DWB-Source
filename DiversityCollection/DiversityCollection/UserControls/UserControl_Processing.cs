@@ -350,6 +350,7 @@ namespace DiversityCollection.UserControls
 
         #endregion
 
+        #region Processing
         private System.Data.DataTable _dtProcessing;
 
         private System.Data.DataTable DtProcessing
@@ -389,8 +390,10 @@ namespace DiversityCollection.UserControls
             }
         }
 
+        #endregion
+
         #region Public functions
-        
+
         public void SetProcessingDisplayText(string Processing)
         {
             this.groupBoxProcessing.Text = Processing;
@@ -439,6 +442,15 @@ namespace DiversityCollection.UserControls
         //        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
         //    }
         //}
+
+        #endregion
+
+        #region public properties
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelProcessing
+        {
+            get { return this.tableLayoutPanelProcessing; }
+        }
 
         #endregion
 

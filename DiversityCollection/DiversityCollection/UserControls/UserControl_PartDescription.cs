@@ -363,5 +363,14 @@ namespace DiversityCollection.UserControls
 
         #endregion
 
+        #region Help
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelPartDescription
+        {
+            get { return this.tableLayoutPanelPartDescription; }
+        }
+
+        #endregion
+
     }
 }

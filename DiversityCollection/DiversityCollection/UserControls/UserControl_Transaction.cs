@@ -80,6 +80,11 @@ namespace DiversityCollection.UserControls
             this.setTransactionTitle();
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelTransaction
+        {
+            get { return this.tableLayoutPanelTransaction; }
+        }
+
         #endregion
 
         #region Control

@@ -192,5 +192,11 @@ namespace DiversityCollection.UserControls
         }
 
         #endregion
+
+        #region Properties
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelCollector { get { return this.tableLayoutPanelCollector; } }
+
+        #endregion
     }
 }

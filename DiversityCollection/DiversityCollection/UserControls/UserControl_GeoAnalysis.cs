@@ -315,5 +315,11 @@ namespace DiversityCollection.UserControls
         #endregion
 
         #endregion
+
+        #region Properties
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelGeoAnalysis { get { return this.tableLayoutPanelGeoAnalysis; } }
+
+        #endregion
     }
 }

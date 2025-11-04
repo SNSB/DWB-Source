@@ -338,5 +338,14 @@ namespace DiversityCollection.UserControls
 
         #endregion
 
+        #region Properties
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelEvent
+        {
+            get { return this.tableLayoutPanelEvent; }
+        }
+
+        #endregion
+
     }
 }

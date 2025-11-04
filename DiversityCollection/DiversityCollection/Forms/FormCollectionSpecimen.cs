@@ -41126,6 +41126,9 @@ namespace DiversityCollection.Forms
             catch (Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
 
+        /// <summary>
+        /// Set help keywords for controls where it does not work automatically
+        /// </summary>
         private void InitManualControls()
         {
             try
@@ -41137,8 +41140,78 @@ namespace DiversityCollection.Forms
                 //helpProviderDiversityCollection.SetHelpKeyword(this.splitContainerOverviewHierarchy.Panel2, "storage_dc");
                 //helpProviderDiversityCollection.SetHelpKeyword(this.tableLayoutPanelOverviewHierarchyStorage, "storage_dc");
                 helpProviderDiversityCollection.SetHelpKeyword(this.treeViewOverviewHierarchyStorage, "storage_dc");
-                helpProviderDiversityCollection.SetHelpKeyword(this.tableLayoutPanelHeader, "storage_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this.tableLayoutPanelHeader, "specimen_dc#toparea");
 
+                //helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Analysis, "analysis_dc");
+                //helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Analysis.groupBoxAnalysis, "analysis_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Analysis.TableLayoutPanelAnalysis, "analysis_dc");
+                //this._UserControl_Analysis.HelpProvider.SetHelpKeyword(this._UserControl_Analysis, "analysis_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Collection.TableLayoutPanelCollection, "collection_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_CollectionTask.FlowLayoutPanelTask, "collectiontask_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Collector.TableLayoutPanelCollector, "collector_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_DisplayOrder.TableLayoutPanelDisplayOrderPart, "displayorder_dc");
+                //helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_DisplayOrderUnit., "displayorder_dc");
+
+                // Event
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Event.TableLayoutPanelEvent, "event_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_EventImages.TableLayoutPanelEventImages, "eventimages_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_EventLocality.TableLayoutPanelGeography, "event_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_EventLocality.TableLayoutPanelGeographyLocation, "event_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_EventLocality.UserControlModuleRelatedEntryGazetteer, "event_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_EventLocality.UserControlModuleRelatedEntryLocalisationResponsible, "event_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_EventProperty.TableLayoutPanelEventProperty, "event_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_EventSeries.TableLayoutPanelOverviewEventSeries, "eventseries_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_EventSeriesDescriptor.TableLayoutPanelDescriptor, "eventseries_dc#descriptors");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_EventSeriesImages.TableLayoutPanelEventSeriesImages, "eventseries_dc#images");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_GeoAnalysis.TableLayoutPanelGeoAnalysis, "geoanalysis_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Identification.TableLayoutPanelIdentification, "identification_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Label.TableLayoutPanelLabel, "label_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_AnalysisMethod.TableLayoutPanelMethod, "analysis_dc#methods");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_ProcessingMethod.TableLayoutPanelMethod, "processing_dc#methods");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Part.TableLayoutPanelStorage, "part_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_PartDescription.TableLayoutPanelPartDescription, "partdescription_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Permit.TableLayoutPanelTransactionDocument, "transactionpermit_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Permit.TableLayoutPanelPayment, "transactionpayment_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Permit.TableLayoutPanelAgents, "transactionagent_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Permit.TableLayoutPanelIdentifier, "transactionidentifier_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this.UserControl_Print.TableLayoutPanel, "label_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Processing.TableLayoutPanelProcessing, "processing_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_ProjectsNotes.TableLayoutPanelNotes, "projects_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Reference.TableLayoutPanelReference, "reference_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_EventRegulation.TableLayoutPanelMain, "regulations_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Relation.TableLayoutPanelRelation, "relation_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_RelationInvers.TableLayoutPanelRelation, "relation_dc#internal-relation");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Specimen.TableLayoutPanelAccession, "accession_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Specimen.TableLayoutPanelExsiccataSeries, "exsiccatae_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_SpecimenExsiccata.TableLayoutPanelExsiccataSeries, "exsiccatae_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_SpecimenImages.TableLayoutPanelImageLicense, "specimenimage_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_SpecimenImages.TableLayoutPanelImageProperty, "specimenimage_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_SpecimenImages.TableLayoutPanelSpecimenImage, "specimenimage_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_SpecimenImages.TableLayoutPanelSpecimenImageIPR, "specimenimage_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_SpecimenImages.UserControlImageSpecimenImage, "specimenimage_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Transaction.TableLayoutPanelTransaction, "transaction_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Unit.TableLayoutPanelDisplayOrder, "displayorder_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Unit.TableLayoutPanelExsiccataUnit, "exsiccatae_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Unit.TableLayoutPanelIdentificationUnit, "identificationunit_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Unit.TableLayoutPanelUnitAndExsiccata, "identificationunit_dc");
+
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Unit_DisplayOrder.TableLayoutPanelDisplayOrder, "displayorder_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Unit_DisplayOrder.TableLayoutPanelExsiccataUnit, "displayorder_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Unit_DisplayOrder.TableLayoutPanelIdentificationUnit, "displayorder_dc");
+                helpProviderDiversityCollection.SetHelpKeyword(this._UserControl_Unit_DisplayOrder.TableLayoutPanelUnitAndExsiccata, "displayorder_dc");
             }
             catch (Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
@@ -41160,8 +41233,8 @@ namespace DiversityCollection.Forms
             {
                 if (!_InitManualDone)
                 {
-                    await this.InitManual();
                     this.InitManualControls();
+                    await this.InitManual();
                     _InitManualDone = true;
                 }
             }

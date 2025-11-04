@@ -113,6 +113,8 @@ namespace DiversityCollection.UserControls
 
         #endregion
 
+        #region private Control events
+
         private void initControl()
         {
             this.checkBoxOnlyObserved.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this._Source, "OnlyObserved", true));
@@ -177,8 +179,6 @@ namespace DiversityCollection.UserControls
 
             this.CheckIfClientIsUpToDate();
         }
-
-        public override void InitLookupSources() { this.InitEnums(); }
 
         System.Data.DataTable dtUnitDescription
         {
@@ -261,59 +261,6 @@ namespace DiversityCollection.UserControls
             I["ExsiccataIdentification"] = R[0];
             I.EndEdit();
             this._iMainForm.saveSpecimen();// this.FormFunctions.updateTable(this.dataSetCollectionSpecimen, "IdentificationUnit", this.sqlDataAdapterUnit, this.BindingContext);
-        }
-
-        public void setExsiccateIdentificationSource(int IdentificationUnitID)
-        {
-            System.Data.DataRow[] rrU = this._iMainForm.DataSetCollectionSpecimen().IdentificationUnit.Select("IdentificationUnitID = " + IdentificationUnitID.ToString());
-            this.comboBoxExsiccataIdentification.DataBindings.Clear();
-            this.comboBoxExsiccataIdentification.DataSource = null;
-            System.Data.DataTable dtIdent = new System.Data.DataTable("Identification");
-            System.Data.DataColumn C1 = new System.Data.DataColumn("IdentificationSequence", System.Type.GetType("System.Int16"));
-            System.Data.DataColumn C2 = new System.Data.DataColumn("TaxonomicName", System.Type.GetType("System.String"));
-            dtIdent.Columns.Add(C1);
-            dtIdent.Columns.Add(C2);
-            try
-            {
-                if (rrU.Length > 0)
-                {
-                    System.Data.DataRow rU = rrU[0];
-                    System.Object[] rowVals = new object[2];
-                    rowVals[0] = System.DBNull.Value;
-                    rowVals[1] = System.DBNull.Value;
-                    dtIdent.Rows.Add(rowVals);
-                    System.Data.DataRow[] rr2 = this._iMainForm.DataSetCollectionSpecimen().Identification.Select("IdentificationUnitID = " + IdentificationUnitID.ToString());
-                    foreach (System.Data.DataRow r2 in rr2)
-                    {
-                        System.Object[] rowVals2 = new object[2];
-                        rowVals2[0] = r2["IdentificationSequence"];
-                        rowVals2[1] = r2["TaxonomicName"];
-                        dtIdent.Rows.Add(rowVals2);
-                    }
-                    this.comboBoxExsiccataIdentification.DataSource = dtIdent;
-                    this.comboBoxExsiccataIdentification.DisplayMember = "TaxonomicName";
-                    this.comboBoxExsiccataIdentification.ValueMember = "IdentificationSequence";
-                    this.comboBoxExsiccataIdentification.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this._iMainForm.DataSetCollectionSpecimen(), "IdentificationUnit.ExsiccataIdentification"));
-                    if (rU["ExsiccataIdentification"].Equals(System.DBNull.Value)) this.comboBoxExsiccataIdentification.SelectedIndex = 0;
-                    else
-                    {
-                        int EI = int.Parse(rU["ExsiccataIdentification"].ToString());
-                        for (int i = 1; i < this.comboBoxExsiccataIdentification.Items.Count; i++)
-                        {
-                            System.Data.DataRowView RV = (System.Data.DataRowView)this.comboBoxExsiccataIdentification.Items[i];
-                            if (RV[0].ToString() == EI.ToString())
-                            {
-                                this.comboBoxExsiccataIdentification.SelectedIndex = i;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-            }
         }
 
         private void textBoxExsiccataNumber_TextChanged(object sender, EventArgs e)
@@ -858,6 +805,8 @@ namespace DiversityCollection.UserControls
             this._iIdentification.setIdentificationTermControls(IsTaxonomyRelatedTaxonomicGroup);
         }
 
+        #endregion
+
         #region Interface
 
         public void setIdentificationTermControls(bool IsTaxonomyRelatedTaxonomicGroup)
@@ -911,6 +860,86 @@ namespace DiversityCollection.UserControls
 
         }
         
+        public override void InitLookupSources() { this.InitEnums(); }
+
+        public void setExsiccateIdentificationSource(int IdentificationUnitID)
+        {
+            System.Data.DataRow[] rrU = this._iMainForm.DataSetCollectionSpecimen().IdentificationUnit.Select("IdentificationUnitID = " + IdentificationUnitID.ToString());
+            this.comboBoxExsiccataIdentification.DataBindings.Clear();
+            this.comboBoxExsiccataIdentification.DataSource = null;
+            System.Data.DataTable dtIdent = new System.Data.DataTable("Identification");
+            System.Data.DataColumn C1 = new System.Data.DataColumn("IdentificationSequence", System.Type.GetType("System.Int16"));
+            System.Data.DataColumn C2 = new System.Data.DataColumn("TaxonomicName", System.Type.GetType("System.String"));
+            dtIdent.Columns.Add(C1);
+            dtIdent.Columns.Add(C2);
+            try
+            {
+                if (rrU.Length > 0)
+                {
+                    System.Data.DataRow rU = rrU[0];
+                    System.Object[] rowVals = new object[2];
+                    rowVals[0] = System.DBNull.Value;
+                    rowVals[1] = System.DBNull.Value;
+                    dtIdent.Rows.Add(rowVals);
+                    System.Data.DataRow[] rr2 = this._iMainForm.DataSetCollectionSpecimen().Identification.Select("IdentificationUnitID = " + IdentificationUnitID.ToString());
+                    foreach (System.Data.DataRow r2 in rr2)
+                    {
+                        System.Object[] rowVals2 = new object[2];
+                        rowVals2[0] = r2["IdentificationSequence"];
+                        rowVals2[1] = r2["TaxonomicName"];
+                        dtIdent.Rows.Add(rowVals2);
+                    }
+                    this.comboBoxExsiccataIdentification.DataSource = dtIdent;
+                    this.comboBoxExsiccataIdentification.DisplayMember = "TaxonomicName";
+                    this.comboBoxExsiccataIdentification.ValueMember = "IdentificationSequence";
+                    this.comboBoxExsiccataIdentification.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this._iMainForm.DataSetCollectionSpecimen(), "IdentificationUnit.ExsiccataIdentification"));
+                    if (rU["ExsiccataIdentification"].Equals(System.DBNull.Value)) this.comboBoxExsiccataIdentification.SelectedIndex = 0;
+                    else
+                    {
+                        int EI = int.Parse(rU["ExsiccataIdentification"].ToString());
+                        for (int i = 1; i < this.comboBoxExsiccataIdentification.Items.Count; i++)
+                        {
+                            System.Data.DataRowView RV = (System.Data.DataRowView)this.comboBoxExsiccataIdentification.Items[i];
+                            if (RV[0].ToString() == EI.ToString())
+                            {
+                                this.comboBoxExsiccataIdentification.SelectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
+        }
+
+        #region Exposing parts of the control for HUGO manual
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelDisplayOrder
+        {
+            get { return this.tableLayoutPanelDisplayOrder; }
+        }
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelExsiccataUnit
+        {
+            get { return this.tableLayoutPanelExsiccataUnit; }
+        }
+
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelIdentificationUnit
+        {
+            get { return this.tableLayoutPanelIdentificationUnit; }
+        }
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelUnitAndExsiccata
+        {
+            get { return this.tableLayoutPanelUnitAndExsiccata; }
+        }
+
+        #endregion
+
         #endregion
 
         #region Showing parts of the control

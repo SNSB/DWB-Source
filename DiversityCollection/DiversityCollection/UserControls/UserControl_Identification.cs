@@ -342,6 +342,8 @@ namespace DiversityCollection.UserControls
         #endregion
 
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelIdentification { get { return this.tableLayoutPanelIdentification; } }
+
         #endregion
 
         #region Accepted and preferred name

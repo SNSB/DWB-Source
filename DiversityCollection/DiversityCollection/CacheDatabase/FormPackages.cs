@@ -75,20 +75,24 @@ namespace DiversityCollection.CacheDatabase
                     AvailablePackages.Add(KV.Key.ToString());
                 try
                 {
-                    DiversityCollection.CacheDatabase.Project.GetProject(Project).ResetDtPackages();
-                    System.Data.DataTable dtPackages = DiversityCollection.CacheDatabase.Project.GetProject(Project).dtPackage();
-                    foreach (System.Data.DataRow R in dtPackages.Rows)
+                    if (DiversityCollection.CacheDatabase.Project.GetProject(Project) != null)
                     {
-                        DiversityCollection.CacheDatabase.Packages.UserControlPackage U = new Packages.UserControlPackage(DiversityCollection.CacheDatabase.Project.GetProject(Project), R[0].ToString(), this, this._TargetID);
-                        this.panelPostgresProjectPackages.Controls.Add(U);
-                        U.Dock = DockStyle.Top;
-                        U.BringToFront();
-                        if (AvailablePackages.Contains(R[0].ToString()))
-                            AvailablePackages.Remove(R[0].ToString());
+                        DiversityCollection.CacheDatabase.Project.GetProject(Project).ResetDtPackages();
+                        System.Data.DataTable dtPackages = DiversityCollection.CacheDatabase.Project.GetProject(Project).dtPackage();
+                        foreach (System.Data.DataRow R in dtPackages.Rows)
+                        {
+                            DiversityCollection.CacheDatabase.Packages.UserControlPackage U = new Packages.UserControlPackage(DiversityCollection.CacheDatabase.Project.GetProject(Project), R[0].ToString(), this, this._TargetID);
+                            this.panelPostgresProjectPackages.Controls.Add(U);
+                            U.Dock = DockStyle.Top;
+                            U.BringToFront();
+                            if (AvailablePackages.Contains(R[0].ToString()))
+                                AvailablePackages.Remove(R[0].ToString());
+                        }
                     }
                 }
                 catch (System.Exception ex)
                 {
+                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
                 }
                 foreach (string s in AvailablePackages)
                     this.listBoxPostgresPackagesAvailable.Items.Add(s);

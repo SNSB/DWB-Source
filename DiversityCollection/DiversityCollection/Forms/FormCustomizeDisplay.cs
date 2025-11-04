@@ -1790,6 +1790,176 @@ namespace DiversityCollection.Forms
             DiversityWorkbench.Forms.FormFunctions.SetDefaultAutoCompleteMode(this._AutoCompleteModes[this.comboBoxAutocompletionMode.SelectedItem.ToString()]);
         }
 
+        #region Functions for autocompletion
+
+        private void initAutoComplete()
+        {
+            try
+            {
+                this.initAutoCompleteTables();
+                this.initAutoCompleteNotesControl();
+                this.initAutoCompleteRestrictions();
+                this.initAutoCompleteExclusions();
+            }
+            catch (System.Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
+        }
+
+        #region TableColumns
+
+        private void initAutoCompleteTables()
+        {
+            try
+            {
+                this.listBoxAutoCompleteTables.Items.Clear();
+                foreach (System.Collections.Generic.KeyValuePair<string, System.Windows.Forms.AutoCompleteStringCollection> KV in DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionsOnDemand())
+                {
+                    this.listBoxAutoCompleteTables.Items.Add(KV.Key);
+                }
+            }
+            catch(System.Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
+        }
+
+        private void buttonAutoCompleteResetAll_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Available in upcoming version");
+            //#275 - hier müssen auch die Felder in denen die Objekte verwendent werden zurückgesetzt werden
+            //DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionExclusionClear();
+            //this.initAutoCompleteTables();
+        }
+
+        private void buttonAutoCompleteResetTable_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Available in upcoming version");
+            // #275  - hier müssen auch die Felder in denen die Objekte verwendent werden zurückgesetzt werden
+            //if (this.listBoxAutoCompleteTables.SelectedItem != null) 
+            //{ 
+            //    string Key = this.listBoxAutoCompleteTables.SelectedItem.ToString();
+            //    DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionOnDemand_Remove(Key);
+            //    this.initAutoCompleteTables();
+            //}
+        }
+
+        private void buttonAutoCompleteTableContent_Click(object sender, EventArgs e)
+        {
+            if (this.listBoxAutoCompleteTables.SelectedItem != null)
+            {
+                string Key = this.listBoxAutoCompleteTables.SelectedItem.ToString();
+                string Table = Key.Substring(0, Key.IndexOf('.'));
+                string Column = Key.Substring(Key.IndexOf('.') + 1);
+                System.Windows.Forms.AutoCompleteStringCollection autoComplete = DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionOnDemand(Table, Column);
+                int Count = autoComplete.Count;
+                int Max = 50;
+                //System.Windows.Forms.MessageBox.Show(Count.ToString() + " entries");
+                System.Collections.IEnumerator enumerator = autoComplete.GetEnumerator();
+                string Message = "";
+                int i = 0;
+                while(enumerator.MoveNext())
+                {
+                    i++;
+                    Message += i.ToString() + ":\t";
+                    Message += enumerator.Current.ToString() + "\r\n";
+                    if (i >= 50)
+                    {
+                        Message += "...";
+                        break;
+                    }
+                }
+                if (Count > Max)
+                    Message = "Content of column " + Column + " in table " + Table + "\r\n\r\nFirst " + Max.ToString() + " of " + Count.ToString() + " entries:\r\n\r\n" + Message;
+                else
+                    Message = "Content of column " + Column + " in table " + Table + "\r\n\r\n" + Count.ToString() + " entries:\r\n\r\n" + Message;
+                System.Windows.Forms.MessageBox.Show(Message);
+            }
+        }
+
+        #endregion
+
+        #region Restrictions
+
+        private void initAutoCompleteRestrictions()
+        {
+            this.listBoxAutoCompleteRestrictions.Items.Clear();
+            foreach(System.Collections.Generic.KeyValuePair<string, string> KV in DiversityWorkbench.Forms.FormFunctions.getAutoCompleteRestrictions())
+            {
+                this.listBoxAutoCompleteRestrictions.Items.Add(KV.Key);
+            }
+        }
+
+        private void buttonAutoCompleteRestrictionView_Click(object sender, EventArgs e)
+        {
+            if (this.listBoxAutoCompleteRestrictions.SelectedItem != null)
+            {
+                string Rest = this.listBoxAutoCompleteRestrictions.SelectedItem.ToString();
+                string View = DiversityWorkbench.Forms.FormFunctions.getAutoCompleteRestrictions()[Rest];
+                System.Data.DataTable dataTable = new DataTable();
+                string SQL = "SELECT * FROM  " + View;
+                DiversityWorkbench.Forms.FormFunctions.SqlFillTable(SQL, ref dataTable);
+                DiversityWorkbench.Forms.FormTableContent formTableContent = new DiversityWorkbench.Forms.FormTableContent(View, "Restiction for column " + Rest, dataTable, true);
+                formTableContent.ShowDialog();
+            }
+            else
+                System.Windows.Forms.MessageBox.Show("Nothing selected");
+        }
+
+        #endregion
+
+        #region Exclusions
+
+        private void initAutoCompleteNotesControl()
+        {
+            this.checkBoxAutoCompleteExcludeNotes.Checked = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes != null && DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Contains("Notes");
+        }
+
+        private void checkBoxAutoCompleteExcludeNotes_Click(object sender, EventArgs e)
+        {
+            if (this.checkBoxAutoCompleteExcludeInternalNotes.Checked && !DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Contains("Notes"))
+                DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Add("Notes");
+            else if (!this.checkBoxAutoCompleteExcludeInternalNotes.Checked && DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Contains("Notes"))
+                DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Remove("Notes");
+            this.initAutoCompleteNotesControl();
+            if (DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Contains("Notes"))
+                DiversityCollection.LookupTable.AutoCompletionExcludeNotes();
+            else
+                DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionExclusionClear();
+            this.initAutoCompleteExclusions();
+        }
+
+        private void checkBoxAutoCompleteExcludeInternalNotes_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Available in upcoming version");
+        }
+
+        private void initAutoCompleteExclusions()
+        {
+            try
+            {
+                this.listBoxAutoCompleteExclusions.Items.Clear();
+                foreach (string E in DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionExclusions)
+                {
+                    this.listBoxAutoCompleteExclusions.Items.Add(E);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
+
+        }
+        private void buttonAutoCompleteRemoveExclusion_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Available in upcoming version");
+        }
+
+        #endregion
+
+        #endregion
+
         #endregion
 
         #region Charts
@@ -2330,166 +2500,6 @@ namespace DiversityCollection.Forms
                     break;
             }
         }
-
-        #endregion
-
-        #region AutoComplete
-
-        private void initAutoComplete()
-        {
-            try
-            {
-                this.initAutoCompleteTables();
-                this.initAutoCompleteNotesControl();
-                this.initAutoCompleteRestrictions();
-                this.initAutoCompleteExclusions();
-            }
-            catch (System.Exception ex)
-            {
-                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-            }
-        }
-
-        #region TableColumns
-
-        private void initAutoCompleteTables()
-        {
-            try
-            {
-                this.listBoxAutoCompleteTables.Items.Clear();
-                foreach (System.Collections.Generic.KeyValuePair<string, System.Windows.Forms.AutoCompleteStringCollection> KV in DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionsOnDemand())
-                {
-                    this.listBoxAutoCompleteTables.Items.Add(KV.Key);
-                }
-            }
-            catch(System.Exception ex)
-            {
-                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-            }
-        }
-
-        private void buttonAutoCompleteResetAll_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.MessageBox.Show("Available in upcoming version");
-        }
-
-        private void buttonAutoCompleteResetTable_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.MessageBox.Show("Available in upcoming version");
-        }
-
-        private void buttonAutoCompleteTableContent_Click(object sender, EventArgs e)
-        {
-            if (this.listBoxAutoCompleteTables.SelectedItem != null)
-            {
-                string Key = this.listBoxAutoCompleteTables.SelectedItem.ToString();
-                string Table = Key.Substring(0, Key.IndexOf('.'));
-                string Column = Key.Substring(Key.IndexOf('.') + 1);
-                System.Windows.Forms.AutoCompleteStringCollection autoComplete = DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionOnDemand(Table, Column);
-                int Count = autoComplete.Count;
-                int Max = 50;
-                //System.Windows.Forms.MessageBox.Show(Count.ToString() + " entries");
-                System.Collections.IEnumerator enumerator = autoComplete.GetEnumerator();
-                string Message = "";
-                int i = 0;
-                while(enumerator.MoveNext())
-                {
-                    i++;
-                    Message += i.ToString() + ":\t";
-                    Message += enumerator.Current.ToString() + "\r\n";
-                    if (i >= 50)
-                    {
-                        Message += "...";
-                        break;
-                    }
-                }
-                if (Count > Max)
-                    Message = "Content of column " + Column + " in table " + Table + "\r\n\r\nFirst " + Max.ToString() + " of " + Count.ToString() + " entries:\r\n\r\n" + Message;
-                else
-                    Message = "Content of column " + Column + " in table " + Table + "\r\n\r\n" + Count.ToString() + " entries:\r\n\r\n" + Message;
-                System.Windows.Forms.MessageBox.Show(Message);
-            }
-        }
-
-        #endregion
-
-        #region Restrictions
-
-        private void initAutoCompleteRestrictions()
-        {
-            this.listBoxAutoCompleteRestrictions.Items.Clear();
-            foreach(System.Collections.Generic.KeyValuePair<string, string> KV in DiversityWorkbench.Forms.FormFunctions.getAutoCompleteRestrictions())
-            {
-                this.listBoxAutoCompleteRestrictions.Items.Add(KV.Key);
-            }
-        }
-
-        private void buttonAutoCompleteRestrictionView_Click(object sender, EventArgs e)
-        {
-            if (this.listBoxAutoCompleteRestrictions.SelectedItem != null)
-            {
-                string Rest = this.listBoxAutoCompleteRestrictions.SelectedItem.ToString();
-                string View = DiversityWorkbench.Forms.FormFunctions.getAutoCompleteRestrictions()[Rest];
-                System.Data.DataTable dataTable = new DataTable();
-                string SQL = "SELECT * FROM  " + View;
-                DiversityWorkbench.Forms.FormFunctions.SqlFillTable(SQL, ref dataTable);
-                DiversityWorkbench.Forms.FormTableContent formTableContent = new DiversityWorkbench.Forms.FormTableContent(View, "Restiction for column " + Rest, dataTable, true);
-                formTableContent.ShowDialog();
-            }
-            else
-                System.Windows.Forms.MessageBox.Show("Nothing selected");
-        }
-
-        #endregion
-
-        #region Exclusions
-
-        private void initAutoCompleteNotesControl()
-        {
-            this.checkBoxAutoCompleteExcludeNotes.Checked = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes != null && DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Contains("Notes");
-        }
-
-        private void checkBoxAutoCompleteExcludeNotes_Click(object sender, EventArgs e)
-        {
-            if (this.checkBoxAutoCompleteExcludeInternalNotes.Checked && !DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Contains("Notes"))
-                DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Add("Notes");
-            else if (!this.checkBoxAutoCompleteExcludeInternalNotes.Checked && DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Contains("Notes"))
-                DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Remove("Notes");
-            this.initAutoCompleteNotesControl();
-            if (DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.AutoCompleteExcludes.Contains("Notes"))
-                DiversityCollection.LookupTable.AutoCompletionExcludeNotes();
-            else
-                DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionExclusionClear();
-            this.initAutoCompleteExclusions();
-        }
-
-        private void checkBoxAutoCompleteExcludeInternalNotes_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.MessageBox.Show("Available in upcoming version");
-        }
-
-        private void initAutoCompleteExclusions()
-        {
-            try
-            {
-                this.listBoxAutoCompleteExclusions.Items.Clear();
-                foreach (string E in DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionExclusions)
-                {
-                    this.listBoxAutoCompleteExclusions.Items.Add(E);
-                }
-            }
-            catch (System.Exception ex)
-            {
-                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-            }
-
-        }
-        private void buttonAutoCompleteRemoveExclusion_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.MessageBox.Show("Available in upcoming version");
-        }
-
-        #endregion
 
         #endregion
 

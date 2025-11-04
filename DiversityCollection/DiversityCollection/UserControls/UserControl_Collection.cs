@@ -134,11 +134,23 @@ namespace DiversityCollection.UserControls
 
         #endregion
 
-        #region Auosuggest
+        #region Autosuggest
 
         private void textBoxCollectionName_KeyUp(object sender, KeyEventArgs e)
         {
 
+        }
+
+        #endregion
+
+        #region Help
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelCollection
+        {
+            get
+            {
+                return this.tableLayoutPanelCollection;
+            }
         }
 
         #endregion

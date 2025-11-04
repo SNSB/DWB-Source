@@ -84,9 +84,10 @@ namespace DiversityCollection.UserControls
             this._MethodListSource = MethodListSource;
             this.initControl();
         }
-        
+
         #endregion
 
+        #region private
         private void initControl()
         {
             try
@@ -1121,6 +1122,8 @@ namespace DiversityCollection.UserControls
             }
         }
 
+        #endregion
+
         #region Public methods
 
         public void setMethodControls()
@@ -1200,7 +1203,16 @@ namespace DiversityCollection.UserControls
             this.listBoxMethodParameter.ValueMember = "ParameterID";
 
         }
-        
+
+        #endregion
+
+        #region Public Properties
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelMethod
+        {
+            get { return this.tableLayoutPanelMethod; }
+        }
+
         #endregion
 
         //private void setAnalysisMethodControls(int UnitID, int AnalysisID)

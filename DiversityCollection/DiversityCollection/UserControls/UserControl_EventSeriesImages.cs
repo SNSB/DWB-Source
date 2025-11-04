@@ -82,6 +82,8 @@ namespace DiversityCollection.UserControls
             this.setUserControlSourceFixing(ref this.userControlModuleRelatedEntryEventSeriesImageLicenseHolder, "LicenseHolderAgentURI");
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelEventSeriesImages { get { return this.tableLayoutPanelCollectionEventSeriesImages; } }
+
         #endregion
 
         #region Control

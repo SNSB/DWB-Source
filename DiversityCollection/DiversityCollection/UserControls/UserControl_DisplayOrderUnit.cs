@@ -303,10 +303,18 @@ namespace DiversityCollection.UserControls
         #endregion
 
         #region Interface
+
         public void setTitle(string Title)
         {
             this.groupBoxDisplayOrder.Text = Title;
         }
+
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelDisplayOrder
+        {
+            get { return this.tableLayoutPanelDisplayOrder; }
+        }
+
         #endregion
 
     }

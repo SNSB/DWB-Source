@@ -93,7 +93,7 @@ namespace DiversityCollection.CacheDatabase
             if (PackageAddOn._CompatibleVersions == null)
             {
                 PackageAddOn._CompatibleVersions = new Dictionary<AddOn, int>();
-                PackageAddOn._CompatibleVersions.Add(AddOn.ABCD_BayernFlora, 12); // TODO Ariane: can we outsource the version numbers somewhere so that we only have to change it at one place?
+                PackageAddOn._CompatibleVersions.Add(AddOn.ABCD_BayernFlora, 13); // TODO Ariane: can we outsource the version numbers somewhere so that we only have to change it at one place?
             }
             return PackageAddOn._CompatibleVersions;
         }

@@ -82,6 +82,14 @@ namespace DiversityCollection.UserControls
 
         public System.Windows.Forms.BindingSource BindingSource() { return this.transactionBindingSource; }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelAgents { get { return this.tableLayoutPanelAgents; } }
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelPayment { get { return this.tableLayoutPanelPayment; } }
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelIdentifier { get { return this.tableLayoutPanelIdentifier; } }
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelTransactionDocument { get { return this.tableLayoutPanelTransactionDocument; } }
+
         #endregion
 
         #region Private events

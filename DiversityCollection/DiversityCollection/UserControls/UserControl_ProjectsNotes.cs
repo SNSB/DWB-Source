@@ -68,11 +68,13 @@ namespace DiversityCollection.UserControls
             base.SetPosition(Position);
             this.fillProjectList();
         }
-        
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelNotes { get { return this.tableLayoutPanelNotes; } }
+
         #endregion
 
         #region private
-        
+
         private void initControl()
         {
             this.textBoxOriginalNotes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._Source, "OriginalNotes", true));

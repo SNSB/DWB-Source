@@ -599,7 +599,7 @@ namespace DiversityCollection
                         //for (int i = 0; i < m; i++) Title += " ";
                         break;
                     case "CollectionSpecimenPart":
-                        if (this._DataRow.Table.Columns.Contains("DisplayText") && !this._DataRow["DisplayText"].Equals(System.DBNull.Value))
+                        if (this._DataRow.Table.Columns.Contains("DisplayText") && !this._DataRow["DisplayText"].Equals(System.DBNull.Value) && this._DataRow["DisplayText"].ToString().Length > 0) // #294
                             Title = this._DataRow["DisplayText"].ToString();
                         else
                         { 

@@ -87,6 +87,11 @@ namespace DiversityCollection.UserControls
             }
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelMain
+        {
+            get { return this.tableLayoutPanelMain; }
+        }
+
         #endregion
 
 

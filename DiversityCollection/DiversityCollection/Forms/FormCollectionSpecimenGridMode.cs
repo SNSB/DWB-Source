@@ -2601,16 +2601,22 @@ namespace DiversityCollection.Forms
             try
             {
                 string ColumnName = this.dataGridView.Columns[this.dataGridView.SelectedCells[0].ColumnIndex].DataPropertyName.ToString();
-                this.labelGridViewReplaceColumnName.Text = ColumnName;
+                // #276 - if allready set to column by e.g. dataGridViewGridMode_CellClick no need to set it again
+                bool ColumnNameSet = this.labelGridViewReplaceColumnName.Text == ColumnName;
+                if (!ColumnNameSet)
+                    this.labelGridViewReplaceColumnName.Text = ColumnName;
                 if (this.buttonGridModeFind.Enabled == false)
                     this.buttonGridModeFind.Enabled = true;
-                if ((this.dataGridView.SelectedCells.Count > 0 && ColumnName != "CollectionSpecimenID")
-                    && (typeof(System.Windows.Forms.DataGridViewTextBoxCell) == this.dataGridView.Columns[this.dataGridView.SelectedCells[0].ColumnIndex].CellType
-                    && ColumnName != "CollectionSpecimenID")
-                    //|| typeof(System.Windows.Forms.DataGridViewComboBoxCell) == this.dataGridView.Columns[this.dataGridView.SelectedCells[0].ColumnIndex].CellType
-                    )
-                    this.enableReplaceButtons(this.dataGridView, true);
-                else this.enableReplaceButtons(this.dataGridView, false);
+                if (!ColumnNameSet) // #276
+                {
+                    if ((this.dataGridView.SelectedCells.Count > 0 && ColumnName != "CollectionSpecimenID")
+                        && (typeof(System.Windows.Forms.DataGridViewTextBoxCell) == this.dataGridView.Columns[this.dataGridView.SelectedCells[0].ColumnIndex].CellType
+                        && ColumnName != "CollectionSpecimenID")
+                        //|| typeof(System.Windows.Forms.DataGridViewComboBoxCell) == this.dataGridView.Columns[this.dataGridView.SelectedCells[0].ColumnIndex].CellType
+                        )
+                        this.enableReplaceButtons(this.dataGridView, true);
+                    else this.enableReplaceButtons(this.dataGridView, false);
+                }
                 if (this.dataGridView.SelectedCells.Count == 1)
                     this.labelGridCounter.Text = "line " + (this.dataGridView.SelectedCells[0].RowIndex + 1).ToString() + " of " + (this.dataGridView.Rows.Count - 1).ToString();
                 else if (this.dataGridView.SelectedCells.Count > 1)

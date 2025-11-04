@@ -86,10 +86,12 @@ namespace DiversityCollection.UserControls
 
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelEventImages { get { return this.tableLayoutPanelEventImages; } }
+
         #endregion
 
         #region private
-        
+
         private void initControl()
         {
             this.comboBoxEventImageType.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this._Source, "ImageType", true));

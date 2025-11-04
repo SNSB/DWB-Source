@@ -843,10 +843,19 @@ namespace DiversityCollection.UserControls
             System.Data.DataRow[] rr = this._iMainForm.DataSetCollectionSpecimen().CollectionSpecimenPart.Select(Restriction);
             this._iMainForm.SelectNode(rr[0], Forms.FormCollectionSpecimen.Tree.PartTree);
         }
-        
+
         #endregion
 
-        #endregion   
+        #endregion
+
+        #endregion
+
+        #region Help
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelDisplayOrderPart
+        {
+            get { return this.tableLayoutPanelDisplayOrderPart; }
+        }
 
         #endregion
 

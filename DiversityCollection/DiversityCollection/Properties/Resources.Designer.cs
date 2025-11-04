@@ -5628,6 +5628,15 @@ namespace DiversityCollection.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource.
+        /// </summary>
+        internal static string DiversityCollectionUpdate_020655_to_020656 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionUpdate_020655_to_020656", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
         internal static byte[] HierarchyUpdate {

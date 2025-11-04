@@ -2802,20 +2802,23 @@ namespace DiversityCollection.CacheDatabase
                 this.panelPostgresTargets.Controls.Clear();
                 this.panelPostgresTargets.Height = 0;
                 this.Height = DiversityWorkbench.Forms.FormFunctions.DiplayZoomCorrected(80);
-                string SQL = "SELECT Target FROM " + this.SourcesTable() + "Target p WHERE SourceView = '" + this._SourceView + "' AND p.Target <> '" + DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().Name + "'";
-                System.Data.DataTable dt = new DataTable();
-                DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlFillTableInCacheDB(SQL, ref dt, ref Message);
-                if (dt.Rows.Count > 0)
+                if (DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase() != null) // #99
                 {
-                    foreach (System.Data.DataRow R in dt.Rows)
+                    string SQL = "SELECT Target FROM " + this.SourcesTable() + "Target p WHERE SourceView = '" + this._SourceView + "' AND p.Target <> '" + DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().Name + "'";
+                    System.Data.DataTable dt = new DataTable();
+                    DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlFillTableInCacheDB(SQL, ref dt, ref Message);
+                    if (dt.Rows.Count > 0)
                     {
-                        DiversityCollection.CacheDatabase.UserControlLookupSourceTarget U = new UserControlLookupSourceTarget(R[0].ToString(), this.SourcesTable() + "Target", this._SourceView);
-                        this.panelPostgresTargets.Controls.Add(U);
-                        U.Dock = DockStyle.Top;
-                        U.BringToFront();
-                        this.panelPostgresTargets.Height += DiversityWorkbench.Forms.FormFunctions.DiplayZoomCorrected(U.Height);
+                        foreach (System.Data.DataRow R in dt.Rows)
+                        {
+                            DiversityCollection.CacheDatabase.UserControlLookupSourceTarget U = new UserControlLookupSourceTarget(R[0].ToString(), this.SourcesTable() + "Target", this._SourceView);
+                            this.panelPostgresTargets.Controls.Add(U);
+                            U.Dock = DockStyle.Top;
+                            U.BringToFront();
+                            this.panelPostgresTargets.Height += DiversityWorkbench.Forms.FormFunctions.DiplayZoomCorrected(U.Height);
+                        }
+                        this.Height += this.panelPostgresTargets.Height;
                     }
-                    this.Height += this.panelPostgresTargets.Height;
                 }
             }
             catch(System.Exception ex)

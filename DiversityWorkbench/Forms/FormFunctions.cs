@@ -5162,11 +5162,21 @@ namespace DiversityWorkbench.Forms
                     if (!AutoCompleteStringCollectionExclusions.Contains(Table + "." + Column))
                     {
                         System.Windows.Forms.AutoCompleteStringCollection autoCompleteStringCollection = DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionOnDemand(Table, Column);
-                        textBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-                        textBox.AutoCompleteMode = _autoCompleteMode;
-                        textBox.AutoCompleteCustomSource = autoCompleteStringCollection;
+                        if (autoCompleteStringCollection != null) // #275
+                        {
+                            textBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+                            textBox.AutoCompleteMode = _autoCompleteMode;
+                            textBox.AutoCompleteCustomSource = autoCompleteStringCollection;
+                            textBox.SelectionStart = textBox.Text.Length; // #275
+                            textBox.SelectionLength = 0;
+                        }
+                        //if (textBox.Text.Length > 1 || autoCompleteStringCollection.Count > 0) // #275 - if autoCompleteStringCollection is empty, do not change to autocomplete
+                        //{
+                        //}
                     }
                 }
+                // #275 - always set, otherwise the autocompletion cannot be updated
+                AutoComplete_Textbox_Add(Table + "." + Column, textBox);
             }
         }
 
@@ -5241,8 +5251,15 @@ namespace DiversityWorkbench.Forms
                 return null;
             else
             {
-                _AutoCompleteStringCollections.Add(Key, AutoCompleteStringCollectionOnDemand(Table, Column, DiversityWorkbench.Settings.ConnectionString));
-                return _AutoCompleteStringCollections[Key];
+                // #275 - only if there is anything in the list
+                System.Windows.Forms.AutoCompleteStringCollection auto = AutoCompleteStringCollectionOnDemand(Table, Column, DiversityWorkbench.Settings.ConnectionString);
+                if (auto.Count > 0) 
+                {
+                    _AutoCompleteStringCollections.Add(Key, auto);
+                    return _AutoCompleteStringCollections[Key];
+                }
+                else
+                    return null;
             }
         }
 
@@ -5304,6 +5321,8 @@ namespace DiversityWorkbench.Forms
                             //}
                         }
                     }
+                    // #275 - restrict to existing strings
+                    SQL += " WHERE T.[" + Column + "] <> '' ";
                     // Markus 17.7.23: Bugfix missing alias
                     SQL += " ORDER BY T.[" + Column + "]";
 
@@ -5329,6 +5348,90 @@ namespace DiversityWorkbench.Forms
             string SQL = "select count(*) from information_schema.Views v where v.TABLE_NAME = '" + View + "'";
             return (DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL) == "1");
         }
+
+        // #275 - Textboxes that are used for restricting autocompletion
+        private static System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<System.Windows.Forms.TextBox>> _AutoComplete_Textboxes;
+
+       
+        public static void AutoComplete_Textbox_Add(string TableColumnKey, System.Windows.Forms.TextBox Textbox)
+        {
+            if (_AutoComplete_Textboxes == null)
+                _AutoComplete_Textboxes = new Dictionary<string, List<System.Windows.Forms.TextBox>>();
+            if (!_AutoComplete_Textboxes.ContainsKey(TableColumnKey))
+                _AutoComplete_Textboxes.Add(TableColumnKey, new List<System.Windows.Forms.TextBox>());
+            if (!_AutoComplete_Textboxes[TableColumnKey].Contains(Textbox))
+                _AutoComplete_Textboxes[TableColumnKey].Add(Textbox);
+        }
+
+        public static void AutoComplete_Textbox_Remove(string TableColumnKey, System.Windows.Forms.TextBox Textbox)
+        {
+            if (_AutoComplete_Textboxes != null && _AutoComplete_Textboxes.ContainsKey(TableColumnKey))
+            {
+                if (_AutoComplete_Textboxes[TableColumnKey].Contains(Textbox))
+                    _AutoComplete_Textboxes[TableColumnKey].Remove(Textbox);
+                if (_AutoComplete_Textboxes[TableColumnKey].Count == 0)
+                    _AutoComplete_Textboxes.Remove(TableColumnKey);
+            }
+        }
+
+        public static void AutoComplete_Textbox_Clear()
+        {
+            if (_AutoComplete_Textboxes != null)
+                _AutoComplete_Textboxes.Clear();
+        }
+
+        public static void AutoComplete_Textbox_Update(string TableColumnKey)
+        {
+            if (_AutoComplete_Textboxes != null && _AutoComplete_Textboxes.ContainsKey(TableColumnKey))
+            {
+                foreach (System.Windows.Forms.TextBox TB in _AutoComplete_Textboxes[TableColumnKey])
+                {
+                    if (TB.ReadOnly || (TB.AutoCompleteCustomSource != null && TB.AutoCompleteCustomSource.Count > 0))
+                        continue;
+                    object[] ar = new Object[9] { "", "", "", "", "", "", "", "", "" };
+                    string Table = "";
+                    string Column = "";
+                    string Database = "";
+                    TB.DataBindings.CopyTo(ar, 0);
+                    if (ar[0].ToString() != "")
+                    {
+                        System.Windows.Forms.BindingMemberInfo bmi = TB.DataBindings[0].BindingMemberInfo;
+                        Column = bmi.BindingField;
+                        Table = bmi.BindingPath;
+                        if (Table.Length == 0)
+                        {
+                            System.Windows.Forms.Binding B = (System.Windows.Forms.Binding)ar[0];
+                            if (B.DataSource.GetType() == typeof(System.Windows.Forms.BindingSource))
+                            {
+                                System.Windows.Forms.BindingSource BS = (System.Windows.Forms.BindingSource)B.DataSource;
+                                Table = BS.DataMember.ToString();
+                                Column = B.BindingMemberInfo.BindingField;
+                                Database = DiversityWorkbench.Settings.DatabaseName;
+                            }
+                            else if (B.DataSource.GetType().BaseType == typeof(System.Data.DataTable))
+                            {
+                                Table = B.DataSource.ToString();
+                                Column = B.BindingMemberInfo.BindingField;
+                                Database = DiversityWorkbench.Settings.DatabaseName;
+                            }
+                        }
+                        if (!AutoCompleteStringCollectionExclusions.Contains(Table + "." + Column))
+                        {
+                            System.Windows.Forms.AutoCompleteStringCollection autoCompleteStringCollection = DiversityWorkbench.Forms.FormFunctions.AutoCompleteStringCollectionOnDemand(Table, Column);
+                            if (autoCompleteStringCollection != null) // #275
+                            {
+                                TB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+                                TB.AutoCompleteMode = _autoCompleteMode;
+                                TB.AutoCompleteCustomSource = autoCompleteStringCollection;
+                                TB.SelectionStart = TB.Text.Length; // #275
+                                TB.SelectionLength = 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         #region Restrictions
 

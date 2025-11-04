@@ -517,7 +517,10 @@ namespace DiversityCollection.Forms
             catch { }
             System.Collections.Generic.Dictionary<string, bool> P = new Dictionary<string, bool>();
             foreach (System.Data.DataRow R in dtProject.Rows)
-                P.Add(R["Project"].ToString(), false);
+            {
+                if (!P.ContainsKey(R["Project"].ToString())) // #264
+                    P.Add(R["Project"].ToString(), false);
+            }
             DiversityWorkbench.Forms.FormGetMultiFromList f = new DiversityWorkbench.Forms.FormGetMultiFromList("Projects", "Please select the projects from the list", P);
             f.ShowDialog();
             if (f.DialogResult == System.Windows.Forms.DialogResult.OK)

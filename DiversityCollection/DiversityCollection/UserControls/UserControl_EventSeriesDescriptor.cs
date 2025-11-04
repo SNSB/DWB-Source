@@ -117,7 +117,7 @@ namespace DiversityCollection.UserControls
             //this.initDescriptors(R);
         }
 
-
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelDescriptor { get { return this.tableLayoutPanelDescriptor; } }
 
         #endregion
 

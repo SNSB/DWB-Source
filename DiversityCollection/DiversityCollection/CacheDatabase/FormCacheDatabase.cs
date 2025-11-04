@@ -5654,7 +5654,7 @@ namespace DiversityCollection.CacheDatabase
             View += Project;
             View = this.ConvertToSqlName(View);
             // Check if there are sources in table ...Source with the same name and change name if needed
-            string SQL = "SELECT COUNT(*) FROM " + SourceTable.ToString() + " S WHERE S.SourceName LIKE '" + View + "%'";
+            string SQL = "SELECT COUNT(*) FROM " + SourceTable.ToString() + " S WHERE S.SourceView LIKE '" + View + "%'"; // #99
             string Result = DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlSkalarInCacheDB(SQL);
             if (Result != "0" && Result != "")
             {

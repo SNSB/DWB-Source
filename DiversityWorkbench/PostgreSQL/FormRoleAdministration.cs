@@ -176,7 +176,8 @@ namespace DiversityWorkbench.PostgreSQL
             string Group = "";
             try
             {
-                Group = this.listBoxGroups.SelectedItem.ToString();
+                if (this.listBoxGroups.SelectedItem != null)
+                    Group = this.listBoxGroups.SelectedItem.ToString();
             }
             catch (System.Exception ex)
             { }
@@ -358,14 +359,17 @@ namespace DiversityWorkbench.PostgreSQL
 
         private void listBoxMemberInRoles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string SeletedRole = this.listBoxMemberInRoles.SelectedItem.ToString();
-            string SQL = "select m.admin_option " +
-                "from pg_auth_members m, pg_roles r, pg_roles g  " +
-                "where m.member = r.oid and m.roleid = g.oid and r.rolname = '" + this._CurrentGroupOrLogin + "' " +
-                "and g.rolname = '" + SeletedRole + "'";
-            bool WithAdminOption = false;
-            bool.TryParse(DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL), out WithAdminOption);
-            this.checkBoxAdminOption.Checked = WithAdminOption;
+            if (this.listBoxMemberInRoles.SelectedItem != null)
+            {
+                string SeletedRole = this.listBoxMemberInRoles.SelectedItem.ToString();
+                string SQL = "select m.admin_option " +
+                    "from pg_auth_members m, pg_roles r, pg_roles g  " +
+                    "where m.member = r.oid and m.roleid = g.oid and r.rolname = '" + this._CurrentGroupOrLogin + "' " +
+                    "and g.rolname = '" + SeletedRole + "'";
+                bool WithAdminOption = false;
+                bool.TryParse(DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL), out WithAdminOption);
+                this.checkBoxAdminOption.Checked = WithAdminOption;
+            }
         }
 
         private void checkBoxAdminOption_Click(object sender, EventArgs e)

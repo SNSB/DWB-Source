@@ -2142,6 +2142,31 @@ namespace DiversityCollection.UserControls
 
         #endregion
 
+        #region Help
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelGeographyLocation
+        {
+            get { return this.tableLayoutPanelGeographyLocation; }
+        }
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelGeography
+        {
+            get { return this.tableLayoutPanelGeography; }
+        }
+
+        public DiversityWorkbench.UserControls.UserControlModuleRelatedEntry UserControlModuleRelatedEntryGazetteer
+        {
+            get { return this.userControlModuleRelatedEntryGazetteer; }
+        }
+
+
+        public DiversityWorkbench.UserControls.UserControlModuleRelatedEntry UserControlModuleRelatedEntryLocalisationResponsible
+        {
+            get { return this.userControlModuleRelatedEntryLocalisationResponsible; }
+        }
+
+        #endregion
+
     }
 
 }

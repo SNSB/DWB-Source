@@ -817,5 +817,14 @@ namespace DiversityCollection.UserControls
 
         #endregion
 
+        #region Properties
+
+        public System.Windows.Forms.FlowLayoutPanel FlowLayoutPanelTask
+        {
+            get { return this.flowLayoutPanelTask; }
+        }
+
+        #endregion
+
     }
 }

@@ -65,6 +65,16 @@ namespace DiversityCollection.UserControls
             this.splitContainerMain.Panel2Collapsed = !ShowExssicata;
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelAccession
+        {
+            get { return this.tableLayoutPanelAccession; }
+        }
+
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelExsiccataSeries
+        {
+            get { return this.tableLayoutPanelExsiccataSeries; }
+        }
+
         //public override int DisplayHeight()
         //{
         //    if (DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowExsiccata)
@@ -73,7 +83,7 @@ namespace DiversityCollection.UserControls
         //        this._DisplayHeight = 116;
         //    return base.DisplayHeight();
         //}
-        
+
         #endregion
 
         #region Private

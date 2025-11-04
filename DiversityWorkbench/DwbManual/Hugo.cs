@@ -125,6 +125,18 @@ namespace DiversityWorkbench.DwbManual
         }
 
         /// <summary>
+        /// the helpprovider is linked to a control
+        /// </summary>
+        /// <param name="helpProvider">The helpprovider of the form</param>
+        /// <param name="userControl">The userControl where the event handlers should be added</param>
+        public Hugo(HelpProvider helpProvider, System.Windows.Forms.UserControl userControl)
+        {
+            _helpProvider = helpProvider;
+            _userControl = userControl;
+            _isUserControl = true;
+        }
+
+        /// <summary>
         /// HelpProvider of the form
         /// </summary>
         private HelpProvider _helpProvider;
@@ -133,6 +145,12 @@ namespace DiversityWorkbench.DwbManual
         /// the form containing the HelpProvider
         /// </summary>
         private System.Windows.Forms.Form _form;
+
+        /// <summary>
+        /// if the helpprovider is related to a control
+        /// </summary>
+        private System.Windows.Forms.UserControl _userControl;
+        private bool _isUserControl = false;
 
         /// <summary>
         /// adding the event delegates to form and controls
@@ -149,6 +167,25 @@ namespace DiversityWorkbench.DwbManual
                         _form.KeyUp += new KeyEventHandler(form_KeyDown);
                     }
                     foreach (System.Windows.Forms.Control C in _form.Controls)
+                    {
+                        await addKeyDownF1ToControls(C);
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        public async Task addKeyDownF1ToUserControl()
+        {
+            try
+            {
+                if (_isUserControl && _userControl != null && _helpProvider != null)
+                {
+                    if (IsControlLinkedToHelpKeyword((Control)_userControl, _helpProvider))
+                    {
+                        _userControl.KeyUp += new KeyEventHandler(form_KeyDown);
+                    }
+                    foreach (System.Windows.Forms.Control C in _userControl.Controls)
                     {
                         await addKeyDownF1ToControls(C);
                     }

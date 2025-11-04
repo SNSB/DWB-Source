@@ -335,12 +335,12 @@ namespace DiversityCollection.UserControls
 
         #endregion
 
-        #region
+        #region Help
 
-        //public void SetScientificTermsRemoteParameter()
-        //{
-        //    _RvbHierarchie.RemoteParameter = DiversityWorkbench.Settings.ScientificTermsRemoteParameter; // "Hierarchy";
-        //}
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelEventProperty
+        {
+            get { return this.tableLayoutPanelEventProperty; }
+        }
 
         #endregion
 

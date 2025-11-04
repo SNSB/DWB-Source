@@ -81,9 +81,14 @@ namespace DiversityCollection.UserControls
             this.setUserControlSourceFixing(ref this.userControlModuleRelatedEntryRelatedSpecimen, "RelatedSpecimenURI");
         }
 
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanelRelation
+        {
+            get { return this.tableLayoutPanelRelation; }
+        }
+
         #endregion
 
-        #region Control
+        #region Control & Events
 
         private void initControl()
         {
@@ -260,8 +265,6 @@ namespace DiversityCollection.UserControls
             }
         }
 
-        #endregion
-
         private void buttonSaveUri_Click(object sender, EventArgs e)
         {
             if (this._Source.Current != null)
@@ -299,5 +302,7 @@ namespace DiversityCollection.UserControls
             this.buttonSaveUri.Visible = false;
             this.textBoxRelatedSpecimenURL.BackColor = System.Drawing.SystemColors.Window;
         }
+
+        #endregion
     }
 }

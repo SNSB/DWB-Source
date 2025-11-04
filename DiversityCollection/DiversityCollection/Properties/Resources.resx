@@ -928,4 +928,7 @@
   <data name="DiversityCollectionUpdate_020654_to_020655" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020654_to_020655.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="DiversityCollectionUpdate_020655_to_020656" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020655_to_020656.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
