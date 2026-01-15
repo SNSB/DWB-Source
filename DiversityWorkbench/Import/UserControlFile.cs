@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Unicode;
 using System.Windows.Forms;
-using System.Diagnostics.Eventing.Reader;
 
 namespace DiversityWorkbench.Import
 {
@@ -238,7 +239,8 @@ namespace DiversityWorkbench.Import
                 {
                     DiversityWorkbench.Import.Import.Encoding = this.Encoding;
                     // #253 Check encoding of file
-                    this.CheckFileEncoding(DiversityWorkbench.Import.Import.FileName);
+                    if (this.textBoxFile.Text.Length > 0)
+                        this.CheckFileEncoding(DiversityWorkbench.Import.Import.FileName);
                     this.ShowMessage();
                     this.SetFile(SetLineRange);
                 }
@@ -366,9 +368,11 @@ namespace DiversityWorkbench.Import
                 System.Text.Encoding encoding = tuple.Item1;
                 if (encoding != null && encoding.BodyName != this.Encoding.BodyName && tuple.Item2)
                 {
+                    string FileEncoding = encoding.BodyName;
+                    if (FileEncoding == "utf-16") FileEncoding += " (= Unicode)"; // #309
                     string SelectedEncoding = this.Encoding.BodyName;
                     if (this.Encoding.CodePage == 1252) SelectedEncoding = this.Encoding.WebName;
-                    System.Windows.Forms.MessageBox.Show("The encoding of the file (" + encoding.BodyName + ")\r\n" +
+                    System.Windows.Forms.MessageBox.Show("The encoding of the file (" + FileEncoding + ")\r\n" +
                     "does not match the current encoding (" + SelectedEncoding + ")", "Wrong encoding", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return true;
                 }

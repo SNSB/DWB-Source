@@ -1535,6 +1535,10 @@ namespace DiversityWorkbench.Import
                     DT.DataColumns[KV.Key].ValueIsPreset = KV.Value.ValueIsPreset;
                     DT.DataColumns[KV.Key].TypeOfSource = KV.Value.TypeOfSource;
                 }
+
+                // #302
+                if (KV.Value.DerivedFromInternalParentRelation)
+                    DT.DataColumns[KV.Key].DerivedFromInternalParentRelation = KV.Value.DerivedFromInternalParentRelation;
             }
 
             // the preset values
@@ -2312,6 +2316,16 @@ namespace DiversityWorkbench.Import
                             "INNER JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS PP ON PP.TABLE_NAME = P.TABLE_NAME AND PP.CONSTRAINT_NAME = P.CONSTRAINT_NAME AND PP.ORDINAL_POSITION = FK.ORDINAL_POSITION " +
                             "WHERE TF.CONSTRAINT_TYPE = 'FOREIGN KEY' " +
                             "ORDER BY FK.TABLE_NAME, RelationOrder";
+                        // Optimized query according to Copilot
+                        SQL = "SELECT DISTINCT t.name AS TABLE_NAME, c.name AS ColumnName, rt.name AS ForeignTable, rc.name AS ForeignColumn, " +
+                            "CASE WHEN t.name = rt.name THEN 2 WHEN rt.name LIKE '%_Enum' THEN 3 ELSE 1 END AS RelationOrder " +
+                            "FROM sys.foreign_keys fk " +
+                            "JOIN sys.foreign_key_columns fkc ON fk.object_id = fkc.constraint_object_id " +
+                            "JOIN sys.tables t ON fk.parent_object_id = t.object_id " +
+                            "JOIN sys.columns c ON fkc.parent_column_id = c.column_id AND c.object_id = t.object_id " +
+                            "JOIN sys.tables rt ON fk.referenced_object_id = rt.object_id " +
+                            "JOIN sys.columns rc ON fkc.referenced_column_id = rc.column_id AND rc.object_id = rt.object_id " +
+                            "ORDER BY t.name, RelationOrder;";
                         _Table_ForeignKeyColumns = new Dictionary<string, Dictionary<string, Tuple<string, string>>>();
                         try
                         {

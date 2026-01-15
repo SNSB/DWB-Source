@@ -483,6 +483,17 @@ namespace DiversityWorkbench.Import
             {
                 this.tableLayoutPanelTranslationSourceTable.Visible = true;
                 this.labelTranslationSourceTable.Text = "Table  [" + this._Transformation.TranslationSourceTable + "]:   translate  [" + this._Transformation.TranslationFromColumn + "]   into  [" + this._Transformation.TranslationIntoColumn + "]";
+#if DEBUG
+                //this.dataGridViewTranslationSourceTable.Rows.Add(this._Transformation.TranslationDictionarySourceTable.Count);
+                foreach(var kvp in this._Transformation.TranslationDictionarySourceTable)
+                {
+                    this.dataGridViewTranslationSourceTable.Rows.Add(kvp.Key, kvp.Value);
+                }
+                //this.dataGridViewTranslationSourceTable.DataSource = this._Transformation.TranslationDictionarySourceTable.ToList();
+                //this.dataGridViewTranslationSourceTable.DataSource = this._Transformation.TranslationDictionarySourceTable
+                //    .Select(kvp => new {Key = kvp.Key, Value = kvp.Value})
+                //    .ToList();
+#else
                 this.dataGridViewTranslationSourceTable.Rows.Add(this._Transformation.TranslationDictionarySourceTable.Count);
                 int i = 0;
                 foreach (System.Collections.Generic.KeyValuePair<string, string> KV in this._Transformation.TranslationDictionarySourceTable)
@@ -491,6 +502,7 @@ namespace DiversityWorkbench.Import
                     this.dataGridViewTranslationSourceTable.Rows[i].Cells[1].Value = KV.Value;
                     i++;
                 }
+#endif
             }
             else
                 this.tableLayoutPanelTranslationSourceTable.Visible = false;
@@ -528,9 +540,10 @@ namespace DiversityWorkbench.Import
                         this._Transformation.TranslationIntoColumn != f.TranslationIntoColumn ||
                         this._Transformation.TranslationFromColumn != f.TranslationFromColumn)
                     {
-                        if (this._Transformation.TranslationSourceTable.Length > 0 ||
-                        this._Transformation.TranslationIntoColumn.Length > 0 ||
-                        this._Transformation.TranslationFromColumn.Length > 0)
+                        // #302 Bugfix - missing null check
+                        if ((this._Transformation.TranslationSourceTable != null && this._Transformation.TranslationSourceTable.Length > 0 )||
+                        (this._Transformation.TranslationIntoColumn != null && this._Transformation.TranslationIntoColumn.Length > 0) ||
+                        (this._Transformation.TranslationFromColumn != null && this._Transformation.TranslationFromColumn.Length > 0))
                         {
                             this._Transformation.TranslationDictionarySourceTable.Clear();
                         }
@@ -563,7 +576,7 @@ namespace DiversityWorkbench.Import
             e.Cancel = true;
         }
 
-        #endregion
+#endregion
 
         #region Calculation
 

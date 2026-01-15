@@ -9,7 +9,7 @@
     <AssemblyVersion>$(Version)</AssemblyVersion>
     <FileVersion>$(Version)</FileVersion>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
-    <Version>7.1.1</Version>
+    <Version>7.1.2</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DocumentationFile>bin\Debug\WpfSamplingPlotPage.XML</DocumentationFile>
@@ -118,10 +118,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2">
-      <Version>1.0.3351.48</Version>
+      <Version>1.0.3595.46</Version>
     </PackageReference>
-    <PackageReference Include="System.Data.OleDb" Version="9.0.7" />
-    <PackageReference Include="System.IO.Ports" Version="9.0.7" />
+    <PackageReference Include="System.Data.OleDb" Version="10.0.0" />
+    <PackageReference Include="System.IO.Ports" Version="10.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeoConversion\GeoConversion.csproj" />

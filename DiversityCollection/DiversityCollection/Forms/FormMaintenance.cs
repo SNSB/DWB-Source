@@ -301,6 +301,8 @@ namespace DiversityCollection.Forms
                 this.initRetrievalType();
 
                 this.initReferences();
+
+                this.initCollectionHierarchy(); // #300
             }
             catch (Exception ex)
             {
@@ -398,7 +400,7 @@ namespace DiversityCollection.Forms
                     this._ConnectionForSamplingPlotSynchronisation.Close();
                 this._ConnectionForSamplingPlotSynchronisation.Dispose();
             }
-            if(_sqlConnectionSynColAgeText != null)
+            if (_sqlConnectionSynColAgeText != null)
             {
                 if (_sqlConnectionSynColAgeText.State == ConnectionState.Open)
                     _sqlConnectionSynColAgeText.Close();
@@ -1377,7 +1379,7 @@ namespace DiversityCollection.Forms
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
-        
+
         private void buttonSynColTaxUpdate_Click(object sender, EventArgs e)
         {
             if (this.comboBoxSynColTaxDatabase.Text.Length == 0 && !this.checkBoxSynColTaxViaCacheDB.Checked)
@@ -1822,7 +1824,8 @@ namespace DiversityCollection.Forms
             {
                 this.numericUpDownSynColTaxTextMax.Visible = true;
                 this.checkBoxSynColTaxTextMax.Visible = true;
-                if (isTaxWebService(this.comboBoxSynColTaxTextDatabase.Text)) {
+                if (isTaxWebService(this.comboBoxSynColTaxTextDatabase.Text))
+                {
                     this.numericUpDownSynColTaxTextMax.Value = 50;
                 }
                 else
@@ -3809,7 +3812,7 @@ namespace DiversityCollection.Forms
                     }
                 }
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
@@ -3912,7 +3915,7 @@ namespace DiversityCollection.Forms
                 }
                 this._DtTaxaBrokenLinks.AcceptChanges();
                 this.labelSynColTaxBrokenCurrentState.Text = this._DtTaxaBrokenLinks.Rows.Count.ToString() + " broken links found";
-                if(FailedUris.Count > 0)
+                if (FailedUris.Count > 0)
                 {
                     FailedUris.Sort();
                     string Message = "The retrieval of the ID for the following URIs failed. Please check connection to datasource";
@@ -4212,7 +4215,7 @@ namespace DiversityCollection.Forms
             }
         }
         #endregion
-        
+
         #region Family and order
 
         #region Synchronize with a taxon database
@@ -4387,7 +4390,7 @@ namespace DiversityCollection.Forms
                                 Result = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
                             }
                             else
-                            { 
+                            {
                                 if (dtHierarchy == null)
                                     dtHierarchy = new DataTable();
                                 else dtHierarchy.Rows.Clear();
@@ -4536,14 +4539,14 @@ namespace DiversityCollection.Forms
                     string Webservice = "";
                     if (serviceTypeNameDictionary.TryGetValue(_api.GetServiceName(), out var serviceTypeInfo))
                     {
-                        Webservice = serviceTypeInfo?.Name ?? string.Empty; 
+                        Webservice = serviceTypeInfo?.Name ?? string.Empty;
                     }
 
                     string FamilyColumn = "Family";
                     string OrderColum = "Order";
                     string HierarchyColumn = "Hierarchy";
                     string URI = "";
-                    
+
                     this._dtSynColTaxHierarchy = new DataTable();
                     int iDifference = 0;
                     this.progressBarSynColTaxFamOrdDatabase.Visible = true;
@@ -4772,7 +4775,7 @@ namespace DiversityCollection.Forms
                     "WHERE (U.TaxonomicGroup = N'" + TaxonomicGroup + "') " +
                     "AND I.NameURI LIKE '" + BaseURL + "%' "; // +
                 if (this.radioButtonHierarchy.Checked && this.textBoxTaxonHierarchyRestriction.Text.Length > 0)
-                    SQL += " AND U.HierarchyCache LIKE '" + this.textBoxTaxonHierarchyRestriction.Text + "%'" ;
+                    SQL += " AND U.HierarchyCache LIKE '" + this.textBoxTaxonHierarchyRestriction.Text + "%'";
                 if (this.checkBoxSynColTaxFamOrdEmpty.Checked)
                 {
                     SQL += " AND U.";
@@ -4802,40 +4805,42 @@ namespace DiversityCollection.Forms
             }
             else
             {
-                try { 
-                DwbServiceEnums.DwbService currentDwbService =
-                    getCurrentService(this.comboBoxSynColTaxFamOrdDatabase.SelectedItem.ToString());
-                IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
-                    DwbServiceProviderAccessor.GetDwbWebservice(currentDwbService);
-                BaseURL = _api?.GetBaseAddress() ?? string.Empty;
+                try
+                {
+                    DwbServiceEnums.DwbService currentDwbService =
+                        getCurrentService(this.comboBoxSynColTaxFamOrdDatabase.SelectedItem.ToString());
+                    IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
+                        DwbServiceProviderAccessor.GetDwbWebservice(currentDwbService);
+                    BaseURL = _api?.GetBaseAddress() ?? string.Empty;
 
-                if (_api != null) {
-                    SQL += " FROM IdentificationUnit AS U INNER JOIN " +
-                    "Identification AS I ON U.CollectionSpecimenID = I.CollectionSpecimenID AND  " +
-                    "U.IdentificationUnitID = I.IdentificationUnitID AND  " +
-                    "U.LastIdentificationCache = I.TaxonomicName INNER JOIN " +
-                    "CollectionProject AS P ON U.CollectionSpecimenID = P.CollectionSpecimenID INNER JOIN " +
-                    "ProjectList AS PL ON P.ProjectID = PL.ProjectID INNER JOIN " +
-                    "CollectionSpecimen AS S ON U.CollectionSpecimenID = S.CollectionSpecimenID AND  " +
-                    "P.CollectionSpecimenID = S.CollectionSpecimenID " +
-                    "WHERE (U.TaxonomicGroup = N'" + this.comboBoxSynColTaxFamOrdTaxonomicGroup.Text + "') " +
-                    "AND I.NameURI LIKE '" + BaseURL + "%' ";
-
-                    if (this.comboBoxSynColTaxFamOrdProject.SelectedIndex > -1)
+                    if (_api != null)
                     {
-                        int ProjectID = 0;
-                        if (this.comboBoxSynColTaxFamOrdProject.SelectedItem != null)
+                        SQL += " FROM IdentificationUnit AS U INNER JOIN " +
+                        "Identification AS I ON U.CollectionSpecimenID = I.CollectionSpecimenID AND  " +
+                        "U.IdentificationUnitID = I.IdentificationUnitID AND  " +
+                        "U.LastIdentificationCache = I.TaxonomicName INNER JOIN " +
+                        "CollectionProject AS P ON U.CollectionSpecimenID = P.CollectionSpecimenID INNER JOIN " +
+                        "ProjectList AS PL ON P.ProjectID = PL.ProjectID INNER JOIN " +
+                        "CollectionSpecimen AS S ON U.CollectionSpecimenID = S.CollectionSpecimenID AND  " +
+                        "P.CollectionSpecimenID = S.CollectionSpecimenID " +
+                        "WHERE (U.TaxonomicGroup = N'" + this.comboBoxSynColTaxFamOrdTaxonomicGroup.Text + "') " +
+                        "AND I.NameURI LIKE '" + BaseURL + "%' ";
+
+                        if (this.comboBoxSynColTaxFamOrdProject.SelectedIndex > -1)
                         {
-                            System.Data.DataRowView R = (System.Data.DataRowView)this.comboBoxSynColTaxFamOrdProject.SelectedItem;
-                            if (int.TryParse(R["ProjectID"].ToString(), out ProjectID))
-                                SQL += " AND P.ProjectID = " + ProjectID.ToString();
+                            int ProjectID = 0;
+                            if (this.comboBoxSynColTaxFamOrdProject.SelectedItem != null)
+                            {
+                                System.Data.DataRowView R = (System.Data.DataRowView)this.comboBoxSynColTaxFamOrdProject.SelectedItem;
+                                if (int.TryParse(R["ProjectID"].ToString(), out ProjectID))
+                                    SQL += " AND P.ProjectID = " + ProjectID.ToString();
+                            }
+                            //if (!int.TryParse(this.comboBoxSynColTaxFamOrdProject.SelectedValue.ToString(), out ProjectID))
+                            //    SQL += "";
+                            //else
+                            //    SQL += " AND P.ProjectID = " + ProjectID.ToString();
                         }
-                        //if (!int.TryParse(this.comboBoxSynColTaxFamOrdProject.SelectedValue.ToString(), out ProjectID))
-                        //    SQL += "";
-                        //else
-                        //    SQL += " AND P.ProjectID = " + ProjectID.ToString();
                     }
-				}
                 }
                 catch (System.Exception ex)
                 {
@@ -4854,7 +4859,7 @@ namespace DiversityCollection.Forms
                 {
                     MessageBox.Show("No Database or Service was selected.");
                     return;
-                } 
+                }
                 string SelectedDatabase = this.comboBoxSynColTaxFamOrdDatabase.SelectedItem.ToString();
                 string ConnectionString = DiversityWorkbench.Settings.ConnectionString;
                 string Database = this.comboBoxSynColTaxFamOrdDatabase.Text;
@@ -4929,7 +4934,7 @@ namespace DiversityCollection.Forms
             // #173
             if (this._dtSynColTaxHierarchy != null && this._dtSynColTaxHierarchy.Rows.Count > 0)
                 foreach (System.Data.DataRow R in this._dtSynColTaxHierarchy.Rows)
-                R[0] = false;
+                    R[0] = false;
             else System.Windows.Forms.MessageBox.Show("Nothing to uncheck");
         }
 
@@ -5364,7 +5369,8 @@ namespace DiversityCollection.Forms
                     System.Windows.Forms.MessageBox.Show("The selected database needs to be updated. Please turn to your administrator");
                     this._BaseURL_ExsDB = "";
                     return;
-                };
+                }
+                ;
             }
             else
                 this._PrefixDB_ExsDB = "";
@@ -7181,8 +7187,8 @@ namespace DiversityCollection.Forms
             if (this._DtGazetteer != null)
             {
                 if (this._DtGazetteer.Rows.Count > 0)
-                foreach (System.Data.DataRow R in this._DtGazetteer.Rows)
-                    R[0] = 1;
+                    foreach (System.Data.DataRow R in this._DtGazetteer.Rows)
+                        R[0] = 1;
                 else System.Windows.Forms.MessageBox.Show("No data to check");
             }
         }
@@ -7193,13 +7199,13 @@ namespace DiversityCollection.Forms
             {
                 // #173
                 if (this._DtGazetteer.Rows.Count > 0)
-                foreach (System.Data.DataRow R in this._DtGazetteer.Rows)
-                {
-                    if (R["Number of places"].ToString() == "1")
-                        R[0] = 1;
-                    else
-                        R[0] = 0;
-                }
+                    foreach (System.Data.DataRow R in this._DtGazetteer.Rows)
+                    {
+                        if (R["Number of places"].ToString() == "1")
+                            R[0] = 1;
+                        else
+                            R[0] = 0;
+                    }
                 else
                 {
                     System.Windows.Forms.MessageBox.Show("No data to check");
@@ -8790,8 +8796,8 @@ namespace DiversityCollection.Forms
             // erst bei Bedarf - normalerweise wird man alle aktualisieren wollen
             // #173
             if (this._dtSynColAge != null && this._dtSynColAge.Rows.Count > 0)
-            foreach (System.Data.DataRow R in this._dtSynColAge.Rows)
-                R[0] = true;
+                foreach (System.Data.DataRow R in this._dtSynColAge.Rows)
+                    R[0] = true;
             else System.Windows.MessageBox.Show("Please search for data first before selecting all data", "No dataset available", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
         }
 
@@ -8801,7 +8807,7 @@ namespace DiversityCollection.Forms
             // #173
             if (this._dtSynColAge != null && this._dtSynColAge.Rows.Count > 0)
                 foreach (System.Data.DataRow R in this._dtSynColAge.Rows)
-                R[0] = false;
+                    R[0] = false;
             else System.Windows.MessageBox.Show("Please search for data first before deselecting all data", "No dataset available", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
         }
 
@@ -8945,10 +8951,10 @@ namespace DiversityCollection.Forms
                         SQL = SqlUnique + SQL + " GROUP BY A.AgentName, " + this.SynColAgeText_TableColumn() + ", B.BaseURL ";
                         if (this.checkBoxSynColAgeTextIncludeAccNr.Visible && this.checkBoxSynColAgeTextIncludeAccNr.Checked)
                             SQL += ", CollectionSpecimen.AccessionNumber, CollectionSpecimen.CollectionSpecimenID ";
-                        SQL += " ORDER BY A.AgentName";                   
+                        SQL += " ORDER BY A.AgentName";
                     }
                     else
-                        SQL = SqlAgent + "; "+ SQL;
+                        SQL = SqlAgent + "; " + SQL;
 
                 }
                 this._dtSynColAgeText = new DataTable();
@@ -9012,7 +9018,7 @@ namespace DiversityCollection.Forms
                         if (bool.Parse(R[0].ToString()) && R["AgentURI"].ToString().Length > 0)
                         {
                             string AgentInDA = R[1].ToString();
-                            string AgentOld = R[2].ToString(); 
+                            string AgentOld = R[2].ToString();
                             string SqlUpdate = SQL + " = '" + R["AgentURI"].ToString() + "' ";
                             if (AgentOld != AgentInDA)
                                 SqlUpdate += ", " + this.SynColAgeText_TableColumn() + " = '" + AgentInDA + "' ";
@@ -9165,7 +9171,7 @@ namespace DiversityCollection.Forms
                         System.Windows.Forms.MessageBox.Show("Update failed: " + Error);
                 }
             }
-            catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
             this.Cursor = System.Windows.Forms.Cursors.Default;
         }
 
@@ -9258,7 +9264,7 @@ namespace DiversityCollection.Forms
                     {
                         SQL += " ON A.AgentName ";
                         if (Like)
-                            SQL += " LIKE '" + this.SqlValueLike( this.textBoxSynColAgeTextCheckSimilar.Text, SqlValueType.QueryRestriction) + "' ";
+                            SQL += " LIKE '" + this.SqlValueLike(this.textBoxSynColAgeTextCheckSimilar.Text, SqlValueType.QueryRestriction) + "' ";
                         else if (this.checkBoxSynColAgeTextCheckUnique.Checked)
                         {
                             SQL += " COLLATE Latin1_General_CI_AS  = [" + Table + "]." + this.SynColAgeTextColumn(Table) + " COLLATE Latin1_General_CI_AS ";
@@ -9272,7 +9278,7 @@ namespace DiversityCollection.Forms
                             if (this.textBoxSynColAgeTextCheckSimilar.Text.Length > 0)
                             {
                                 SQL += " AND [" + Table + "].[" + this.SynColAgeTextColumn(Table); ;
-                                SQL += "] LIKE '" + this.SqlValueLike( this.textBoxSynColAgeTextCheckSimilar.Text, SqlValueType.QueryRestriction) + "' ";
+                                SQL += "] LIKE '" + this.SqlValueLike(this.textBoxSynColAgeTextCheckSimilar.Text, SqlValueType.QueryRestriction) + "' ";
                             }
                         }
                     }
@@ -9458,7 +9464,7 @@ namespace DiversityCollection.Forms
                 this.labelSynColAgeTextCheck.Text = "";
                 this.labelSynColAgeTextCheckSimilarResult.Text = "";
             }
-            catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
 
         private void comboBoxSynColAgeTextDatabaseProject_SelectedIndexChanged(object sender, EventArgs e)
@@ -9599,7 +9605,7 @@ namespace DiversityCollection.Forms
                     }
                 }
             }
-            catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
             return Count;
         }
 
@@ -9660,7 +9666,7 @@ namespace DiversityCollection.Forms
                         if (this.checkBoxSynColAgeTextIncludeAccNr.Visible && this.checkBoxSynColAgeTextIncludeAccNr.Checked)
                             SQL += ", CollectionSpecimen.AccessionNumber, CollectionSpecimen.CollectionSpecimenID ";
                     }
-                    if (!this.checkBoxSynColAgeTextIncludeAccNr.Checked 
+                    if (!this.checkBoxSynColAgeTextIncludeAccNr.Checked
                         && this.comboBoxSynColAgeTextTable.Text.ToLower() != "collection"
                         && this.comboBoxSynColAgeTextTable.Text.ToLower() != "collectionagent" // Markus 21.4.23: Gruppierung nur wenn AccNr included
                         && this.comboBoxSynColAgeTextTable.Text.ToLower() != "transaction"
@@ -9788,7 +9794,7 @@ namespace DiversityCollection.Forms
                 this.tabPageSynColAgeTextUpdates.Text = "Names similar to \"" + this.textBoxSynColAgeTextCheckSimilar.Text + "\" in DiversityAgents";
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
 
-                string SQL = this.SynColAgeText_SelectClause(true); 
+                string SQL = this.SynColAgeText_SelectClause(true);
                 this._dtSynColAgeText = new DataTable();
                 Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityCollection.Forms.FormMaintenanceSettings.Default.Timeout));
                 ad.SelectCommand.CommandTimeout = DiversityCollection.Forms.FormMaintenanceSettings.Default.Timeout;
@@ -9867,7 +9873,7 @@ namespace DiversityCollection.Forms
                 if (!RowWithoutLinkSelected)
                     System.Windows.Forms.MessageBox.Show("Please select a row missing a valid link");
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
@@ -9877,7 +9883,7 @@ namespace DiversityCollection.Forms
 
         private string SqlValueLike(string Value, SqlValueType type)
         {
-            switch(type)
+            switch (type)
             {
                 case SqlValueType.ColumnContent:
                     return Value.Replace("[", "[ [ ]").Replace("'", "''");
@@ -10099,7 +10105,7 @@ namespace DiversityCollection.Forms
                     if (_SplitCollectorsUpdates > 0) Message = _SplitCollectorsUpdates + " collector splits successful\r\n" + Message;
                     System.Windows.Forms.MessageBoxIcon messageBoxIcon = MessageBoxIcon.Information;
                     if (_SplitCollectorsCollisions > 0) messageBoxIcon = MessageBoxIcon.Error;
-                    System.Windows.Forms.MessageBox.Show(Message, "finished",MessageBoxButtons.OK, messageBoxIcon);
+                    System.Windows.Forms.MessageBox.Show(Message, "finished", MessageBoxButtons.OK, messageBoxIcon);
                     if (_dtSynColAgeSplitCollisions.Rows.Count > 0)
                         this.SynColAgeSplit_CheckCollision();
                     this.SplitCollectorsSearch(false);
@@ -10168,7 +10174,7 @@ namespace DiversityCollection.Forms
                     "SELECT A.CollectionSpecimenID, '" + R[2].ToString() + "' AS CollectorsName, A.CollectorsNumber, " +
                     "A.Notes, A.DataWithholdingReason " + SQL;
                 string SqlUpdate = " UPDATE A SET CollectorsName = '" + R[3].ToString() + "' " + SQL;
-                string SqlFinal = "BEGIN TRY BEGIN TRANSACTION " + SqlInsert + ";" + SqlUpdate + "; UPDATE ##Result SET Split = Split + 1; "+
+                string SqlFinal = "BEGIN TRY BEGIN TRANSACTION " + SqlInsert + ";" + SqlUpdate + "; UPDATE ##Result SET Split = Split + 1; " +
                     "COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION; UPDATE ##Result SET Failed = Failed + 1; END CATCH; ";
                 C.CommandText = SqlFinal;
                 C.ExecuteNonQuery();
@@ -10820,7 +10826,7 @@ namespace DiversityCollection.Forms
                 InitSynchronizeTerm_PartDescription_Text();
                 InitSynchronizeTerm_PartDescription_Linked();
             }
-            catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
 
         #endregion
@@ -10904,7 +10910,7 @@ namespace DiversityCollection.Forms
                     Prefix += ".dbo." + sc.DatabaseName;
                 }
             }
-            catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
             return Prefix;
         }
 
@@ -11005,7 +11011,7 @@ namespace DiversityCollection.Forms
             return SQL;
         }
 
-        private string SynTerms_Linked_GroupClause(SynTermTargetTable Table, bool IncludeHierarchy = false, bool IncludeAccessionNumer = false) 
+        private string SynTerms_Linked_GroupClause(SynTermTargetTable Table, bool IncludeHierarchy = false, bool IncludeAccessionNumer = false)
         {
             // Tests
             string SQL = " ";
@@ -11947,7 +11953,7 @@ namespace DiversityCollection.Forms
             }
         }
 
-       
+
         private void checkBoxSynUnitTermsIncludeAccNr_Click(object sender, EventArgs e)
         {
             //    if (this.checkBoxSynColTaxIncludeAccNr.Checked) this.buttonSynColTaxCheckDataset.Visible = true;
@@ -12621,7 +12627,7 @@ namespace DiversityCollection.Forms
                 this.comboBoxSynUnitTermsTextTermProject.Visible = true;
                 this.comboBoxSynUnitTermsTextTermProject_DropDown(null, null);
             }
-            
+
             this.dataGridViewSynUnitTermsText.DataSource = null;
             this._dtSynUnitTermsText = new DataTable();
         }
@@ -12893,7 +12899,7 @@ namespace DiversityCollection.Forms
                     D.Columns[i].DefaultCellStyle = S;
                 }
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
@@ -13872,7 +13878,7 @@ namespace DiversityCollection.Forms
                     case SynTermTargetTable.CollectionSpecimenPartDescription:
                         SQL += "Description";
                         break;
-                    case  SynTermTargetTable.Identification:
+                    case SynTermTargetTable.Identification:
                         SQL += "VernacularTerm";
                         break;
                 }
@@ -13919,7 +13925,7 @@ namespace DiversityCollection.Forms
                 else
                 {
                     this.labelSynTermsTextResult.Text = "No match found";
-                    this.buttonSynColAgeTextUpdate.Enabled = false;                
+                    this.buttonSynColAgeTextUpdate.Enabled = false;
                 }
             }
             catch (System.Exception ex)
@@ -14017,7 +14023,7 @@ namespace DiversityCollection.Forms
         {
             System.Data.DataTable dtRestriction = new DataTable();
             string SQL = "";
-            switch(SynTermTextTargetSelectedTable)
+            switch (SynTermTextTargetSelectedTable)
             {
                 case SynTermTargetTable.NULL:
                     this.comboBoxSynTermsTextProperty.DataSource = null;
@@ -14064,11 +14070,11 @@ namespace DiversityCollection.Forms
             try
             {
                 SynTermTargetTable Table = SynTermTextTargetSelectedTable;
-                SQL += Table.ToString() + " AS T INNER JOIN CollectionSpecimen S ON T" ;
+                SQL += Table.ToString() + " AS T INNER JOIN CollectionSpecimen S ON T";
                 int ProjectID;
                 switch (Table)
                 {
-                    case  SynTermTargetTable.CollectionEventProperty:
+                    case SynTermTargetTable.CollectionEventProperty:
                         SQL += ".CollectionEventID = S.CollectionEventID AND (T.PropertyURI IS NULL OR T.PropertyURI = '') ";
                         break;
                     case SynTermTargetTable.CollectionSpecimenPartDescription:
@@ -14101,7 +14107,7 @@ namespace DiversityCollection.Forms
                         SQL += "VernacularTerm";
                         break;
                 }
-                SQL += " collate database_default = R.DisplayText collate database_default AND R.LanguageCode = '" + this.comboBoxSynTermsTextDatabaseLanguage.SelectedValue.ToString()  + "' ";
+                SQL += " collate database_default = R.DisplayText collate database_default AND R.LanguageCode = '" + this.comboBoxSynTermsTextDatabaseLanguage.SelectedValue.ToString() + "' ";
                 // Terminology
                 SQL += " AND R.TerminologyID = " + this.comboBoxSynTermsTextDatabaseProject.SelectedValue.ToString();
                 // No Rankging terms
@@ -14141,8 +14147,8 @@ namespace DiversityCollection.Forms
 
                 return SQL;
             }
-           
-            catch(System.Exception ex)
+
+            catch (System.Exception ex)
             {
                 SQL = "";
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
@@ -14213,7 +14219,7 @@ namespace DiversityCollection.Forms
             {
                 if (this.dataGridViewSynTermsText.SelectedCells.Count > 0)
                 {
-                    if(this.dataGridViewSynTermsText.SelectedCells[0].RowIndex == this.dataGridViewSynTermsText.SelectedRows[0].Index)
+                    if (this.dataGridViewSynTermsText.SelectedCells[0].RowIndex == this.dataGridViewSynTermsText.SelectedRows[0].Index)
                         this.buttonSynTermsTextCheckSingle.Visible = true;
                     else
                         this.buttonSynTermsTextCheckSingle.Visible = false;
@@ -14636,7 +14642,7 @@ namespace DiversityCollection.Forms
                 if (_SynchronizeTerm_PartDescription_Text == null)
                 {
                     _SynchronizeTerm_PartDescription_Text = new DiversityCollection.Maintenance.SynchronizeTerm(
-                        DiversityCollection.Maintenance.SynchronizeTerm.TargetTable.CollectionSpecimenPartDescription, 
+                        DiversityCollection.Maintenance.SynchronizeTerm.TargetTable.CollectionSpecimenPartDescription,
                         false,
                         dataGridViewSynPartDescriptionText,
                         this._dtSynUnitTermsText,
@@ -15013,9 +15019,9 @@ namespace DiversityCollection.Forms
             }
         }
 
-#endregion
+        #endregion
 
-#region Storage - missing unit in part
+        #region Storage - missing unit in part
 
         private void buttonPrintCheckMissing_Click(object sender, EventArgs e)
         {
@@ -15168,9 +15174,9 @@ namespace DiversityCollection.Forms
             //}
         }
 
-#endregion
+        #endregion
 
-#region Identifications - Bulk insert
+        #region Identifications - Bulk insert
 
         private void setModuleConnectionsForBulkControls()
         {
@@ -15417,9 +15423,9 @@ namespace DiversityCollection.Forms
             this.setIdentificationSource();
         }
 
-#endregion
+        #endregion
 
-#region Properties
+        #region Properties
 
         public int CollectionSpecimenID { get { return this._CollectionSpecimenID; } }
 
@@ -15460,11 +15466,11 @@ namespace DiversityCollection.Forms
             }
         }
 
-#endregion
+        #endregion
 
-#region GeoNames
+        #region GeoNames
 
-#region Cell styles
+        #region Cell styles
 
         private System.Windows.Forms.DataGridViewCellStyle StyleError
         {
@@ -15551,7 +15557,7 @@ namespace DiversityCollection.Forms
             }
         }
 
-#endregion
+        #endregion
 
         private void buttonQueryGeonames_Click(object sender, EventArgs e)
         {
@@ -15789,7 +15795,7 @@ namespace DiversityCollection.Forms
             W.ShowDialog();
         }
 
-#region Country
+        #region Country
 
         private void setCountry(System.Collections.Generic.Dictionary<DiversityWorkbench.GeoFunctions.GeoInfo,
             string> GeoInfos, int CollectionEventID)
@@ -15915,9 +15921,9 @@ namespace DiversityCollection.Forms
             this.dataGridViewSetCountry.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
-#endregion
+        #endregion
 
-#region Place
+        #region Place
 
         private void setPlace(
             System.Collections.Generic.Dictionary<DiversityWorkbench.GeoFunctions.GeoInfo, string> GeoInfos,
@@ -16098,9 +16104,9 @@ namespace DiversityCollection.Forms
             this.dataGridViewSetPlace.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
-#endregion
+        #endregion
 
-#region Altitude
+        #region Altitude
 
         private void setAltitude(
             System.Collections.Generic.Dictionary<DiversityWorkbench.GeoFunctions.GeoInfo, string> GeoInfos,
@@ -16350,9 +16356,9 @@ namespace DiversityCollection.Forms
             this.dataGridViewSetAltitude.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
-#endregion
+        #endregion
 
-#region Common
+        #region Common
 
         private void setGeoNamesColorCodeAndOK(
             System.Windows.Forms.DataGridView Grid,
@@ -16490,13 +16496,13 @@ namespace DiversityCollection.Forms
             }
         }
 
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
-#region Place & Country via Gazetteer
+        #region Place & Country via Gazetteer
 
-#region Common
+        #region Common
 
         private void setGazetteerColorCodeAndOK(
             System.Windows.Forms.DataGridView Grid,
@@ -16647,9 +16653,9 @@ namespace DiversityCollection.Forms
             }
         }
 
-#endregion
+        #endregion
 
-#region Place
+        #region Place
 
         private System.Data.DataTable _DtPlaceAndCountryGazetteerPlace;
         public System.Data.DataTable DtPlaceAndCountryGazetteerPlace
@@ -16897,9 +16903,9 @@ namespace DiversityCollection.Forms
             }
         }
 
-#endregion
+        #endregion
 
-#region Country
+        #region Country
 
         private System.Data.DataTable _DtPlaceAndCountryGazetteerCountry;
 
@@ -17069,13 +17075,13 @@ namespace DiversityCollection.Forms
             return Country;
         }
 
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
-#region Coordinates
+        #region Coordinates
 
-#region Adding
+        #region Adding
 
         private void buttonAddCoordinatesConvert_Click(object sender, EventArgs e)
         {
@@ -17185,7 +17191,7 @@ namespace DiversityCollection.Forms
         private void buttonAddCoordinatesAll_Click(object sender, EventArgs e)
         {
             // #173
-            if(this._dtCoordinates == null || this._dtCoordinates.Rows.Count == 0) return;
+            if (this._dtCoordinates == null || this._dtCoordinates.Rows.Count == 0) return;
 
             foreach (System.Data.DataRow R in this._dtCoordinates.Rows)
             {
@@ -17199,7 +17205,7 @@ namespace DiversityCollection.Forms
         private void buttonAddCoordinatesNone_Click(object sender, EventArgs e)
         {
             // #173
-            if(this._dtCoordinates == null || this._dtCoordinates.Rows.Count == 0) return;
+            if (this._dtCoordinates == null || this._dtCoordinates.Rows.Count == 0) return;
 
             foreach (System.Data.DataRow R in this._dtCoordinates.Rows)
             {
@@ -17324,7 +17330,7 @@ namespace DiversityCollection.Forms
                                         //TODO:
                                         Coordinate.AccuracyText = GC.AccuracyText;
                                     }
-                                    if(this.RoundAddedCoordinates() != null)
+                                    if (this.RoundAddedCoordinates() != null)
                                     {
                                         xResult = System.Math.Round(xResult, (int)this.RoundAddedCoordinates());
                                         yResult = System.Math.Round(yResult, (int)this.RoundAddedCoordinates());
@@ -17525,7 +17531,7 @@ namespace DiversityCollection.Forms
             LookupTable.CoordinateSystem SelectedSource = (LookupTable.CoordinateSystem)this.comboBoxAddCoordinatesSource.SelectedItem;
             if (SelectedSource == LookupTable.CoordinateSystem.UTM) this.comboBoxAddCoordinatesSourceZone.Width = 44;
             else this.comboBoxAddCoordinatesSourceZone.Width = 0;
-            if(!this.checkBoxAddCoordinatesRecordingMethod.Visible)
+            if (!this.checkBoxAddCoordinatesRecordingMethod.Visible)
             {
                 this.checkBoxAddCoordinatesRecordingMethod.Visible = true;
                 this.checkBoxAddCoordinatesRecordingMethod.Checked = true;
@@ -17562,9 +17568,9 @@ namespace DiversityCollection.Forms
             this.checkBoxAddCoordinatesRound.Checked = ResultSource == LookupTable.CoordinateSystem.WGS84;
         }
 
-#endregion
+        #endregion
 
-#region Calculation
+        #region Calculation
 
         private void buttonCalculateCoordinatesStart_Click(object sender, EventArgs e)
         {
@@ -17728,9 +17734,9 @@ namespace DiversityCollection.Forms
             System.Windows.Forms.MessageBox.Show(Message);
         }
 
-#endregion
+        #endregion
 
-#region Parsing
+        #region Parsing
 
         private System.Data.DataTable _dtCoordinateParser;
 
@@ -17891,9 +17897,9 @@ namespace DiversityCollection.Forms
             return true;
         }
 
-#endregion
+        #endregion
 
-#region Differences in Geography, values or cache values
+        #region Differences in Geography, values or cache values
 
         private void initCheckGeography()
         {
@@ -17958,11 +17964,11 @@ namespace DiversityCollection.Forms
         {
             get
             {
-                if(this.comboBoxCheckGeographyTypeOfComparisionBase.SelectedItem != null)
+                if (this.comboBoxCheckGeographyTypeOfComparisionBase.SelectedItem != null)
                 {
                     if (GeographyTypeOfComparisionBasis.ContainsValue(this.comboBoxCheckGeographyTypeOfComparisionBase.SelectedItem.ToString()))
                     {
-                        foreach(System.Collections.Generic.KeyValuePair<GeographyTypeOfComparisionBase, string> KV in GeographyTypeOfComparisionBasis)
+                        foreach (System.Collections.Generic.KeyValuePair<GeographyTypeOfComparisionBase, string> KV in GeographyTypeOfComparisionBasis)
                         {
                             if (KV.Value == this.comboBoxCheckGeographyTypeOfComparisionBase.SelectedItem.ToString())
                                 return KV.Key;
@@ -18157,7 +18163,7 @@ ORDER BY [Geography]
                     SQL += " AND E.CollectionEventID = S.CollectionEventID " +
                         " AND P.CollectionSpecimenID = S.CollectionSpecimenID " +
                         " AND P.ProjectID = " + this.comboBoxCheckGeographyProject.SelectedValue.ToString();
-                    switch(geographyTypeOfComparisionBase)
+                    switch (geographyTypeOfComparisionBase)
                     {
                         case GeographyTypeOfComparisionBase.Float:
                             SQL += " AND (cast(replace(E.Location2, ',', '.') as float) <> E.AverageLatitudeCache OR cast(replace(E.Location1, ',', '.') as float) <> E.AverageLongitudeCache ";
@@ -18315,9 +18321,9 @@ ORDER BY [Geography]
                 R["OK"] = false;
         }
 
-#endregion
+        #endregion
 
-#region Geography outside an area
+        #region Geography outside an area
 
         private System.Collections.Generic.List<string> _GeographyInAreaPlaceTypes;
         private System.Data.DataTable _dtGeographyInAreaCountry;
@@ -18551,7 +18557,7 @@ ORDER BY [Geography]
                 {
                     if (this.textBoxGeographyInAreaLocalityDescriptio.Text.IndexOf("%") > -1 ||
                         this.textBoxGeographyInAreaLocalityDescriptio.Text.IndexOf("_") > -1)
-                        SQL += " AND E.LocalityDescription LIKE '" + this.SqlValueLike( this.textBoxGeographyInAreaLocalityDescriptio.Text, SqlValueType.QueryRestriction) + "' ";
+                        SQL += " AND E.LocalityDescription LIKE '" + this.SqlValueLike(this.textBoxGeographyInAreaLocalityDescriptio.Text, SqlValueType.QueryRestriction) + "' ";
                     else
                         SQL += " AND E.LocalityDescription = '" + this.SqlValueLike(this.textBoxGeographyInAreaLocalityDescriptio.Text, SqlValueType.QueryRestriction) + "' ";
                 }
@@ -18622,11 +18628,11 @@ ORDER BY [Geography]
             this.Close();
         }
 
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
-#region Coordinates for TK25
+        #region Coordinates for TK25
 
         private int? _TK25Differences;
         private System.Data.DataTable _DtTK25;
@@ -18916,9 +18922,9 @@ ORDER BY [Geography]
             }
         }
 
-#endregion
+        #endregion
 
-#region TK25 for coordinates
+        #region TK25 for coordinates
 
         private System.Data.DataTable _DtTK25forCoordinates;
 
@@ -19200,7 +19206,7 @@ ORDER BY [Geography]
             }
         }
 
-#region TK25 source Database
+        #region TK25 source Database
 
         private string _TK25ConnectionString;
 
@@ -19280,11 +19286,11 @@ ORDER BY [Geography]
 
         }
 
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
-#region Coordinates outside TK25
+        #region Coordinates outside TK25
 
         private System.Data.DataTable _DtOutsideTK25;
 
@@ -19354,9 +19360,9 @@ ORDER BY [Geography]
 
         }
 
-#endregion
+        #endregion
 
-#region Sampling plot to locality
+        #region Sampling plot to locality
 
         private int? _SamplingPlotToLocalityDifferences;
 
@@ -19457,9 +19463,9 @@ ORDER BY [Geography]
             this.buttonSamplingPlotToLocalityStart.Enabled = false;
         }
 
-#endregion
+        #endregion
 
-#region Event method parameters
+        #region Event method parameters
 
         private void buttonEventMethodParametersFind_Click(object sender, EventArgs e)
         {
@@ -19552,9 +19558,9 @@ ORDER BY [Geography]
             return SQL;
         }
 
-#endregion
+        #endregion
 
-#region Collection date
+        #region Collection date
 
         private void buttonCollectionDateSearch_Click(object sender, EventArgs e)
         {
@@ -19675,11 +19681,11 @@ ORDER BY [Geography]
                 System.Windows.Forms.MessageBox.Show("No valid ID found");
         }
 
-#endregion
+        #endregion
 
-#region Images
+        #region Images
 
-#region Sequence
+        #region Sequence
 
         private void comboBoxImagesProject_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -19826,9 +19832,9 @@ ORDER BY [Geography]
             }
         }
 
-#endregion
+        #endregion
 
-#region Path
+        #region Path
 
         private System.Collections.Generic.Dictionary<string, System.Drawing.Image> _ImageSoureTables;
         private System.Collections.Generic.List<string> _ImageExtensions;
@@ -19875,13 +19881,13 @@ ORDER BY [Geography]
 
         }
 
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
-#region Unit
+        #region Unit
 
-#region Retrieval
+        #region Retrieval
 
         private void initRetrievalType()
         {
@@ -20039,11 +20045,11 @@ ORDER BY [Geography]
             }
         }
 
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
-#region LastIdentificationCache
+        #region LastIdentificationCache
 
         private void SynchronizeLastIdentification()
         {
@@ -20085,9 +20091,9 @@ ORDER BY [Geography]
             DiversityWorkbench.Forms.FormFunctions.SqlExecuteNonQuery(SQL);
         }
 
-#endregion
+        #endregion
 
-#region Storage location to last identification
+        #region Storage location to last identification
 
         private System.Data.DataTable _DtStorageLocation;
 
@@ -20207,9 +20213,9 @@ ORDER BY [Geography]
             //}
         }
 
-#endregion
+        #endregion
 
-#region Accepted names
+        #region Accepted names
 
         private void initAcceptedNames()
         {
@@ -20475,9 +20481,9 @@ ORDER BY [Geography]
             }
         }
 
-#endregion
+        #endregion
 
-#region Nagoya
+        #region Nagoya
 
         // Liste der laender:
         // https://api.cbd.int/api/v2013/countries
@@ -20957,11 +20963,11 @@ ORDER BY [Geography]
                 this.pictureBoxNagoyaWithhold.Image = DiversityCollection.Resource.Stop3Grey;
         }
 
-#endregion
+        #endregion
 
-#region Orphaned data
+        #region Orphaned data
 
-#region Unrelated event data - new version
+        #region Unrelated event data - new version
 
         private void initEvent()
         {
@@ -21125,9 +21131,9 @@ ORDER BY [Geography]
             return SQL;
         }
 
-#endregion
+        #endregion
 
-#region Unrelated events - old version
+        #region Unrelated events - old version
 
         private void buttonUnrelatedEvents_Click(object sender, EventArgs e)
         {
@@ -21213,7 +21219,7 @@ ORDER BY [Geography]
             }
         }
 
-#region SQL clause
+        #region SQL clause
 
         private string _SqlUnrelatedEventWhereClause;
 
@@ -21231,9 +21237,9 @@ ORDER BY [Geography]
             }
         }
 
-#endregion
+        #endregion
 
-#region Delete buttons
+        #region Delete buttons
 
         private void buttonUnrelatedEventsDelete_Click(object sender, EventArgs e)
         {
@@ -21377,7 +21383,7 @@ ORDER BY [Geography]
             }
         }
 
-#endregion
+        #endregion
 
         private void buttonUnrelatedEventsSelectNone_Click(object sender, EventArgs e)
         {
@@ -21434,9 +21440,9 @@ ORDER BY [Geography]
             this.Cursor = System.Windows.Forms.Cursors.Default;
         }
 
-#endregion
+        #endregion
 
-#region Unrelated event series
+        #region Unrelated event series
 
         private void initEventSeries()
         {
@@ -21651,7 +21657,7 @@ ORDER BY [Geography]
 
         #region ReferencedTables
 
-        
+
         #region Annotations
 
         private void buttonAnnotationsFind_Click(object sender, EventArgs e)
@@ -21775,7 +21781,7 @@ ORDER BY [Geography]
 
 
 
-#endregion
+        #endregion
 
         #region Identifier
 
@@ -22099,9 +22105,9 @@ ORDER BY [Geography]
 
         private void OrphanedRelationsReset()
         {
-            foreach(System.Windows.Forms.TabPage tabPage in this.tabControlOrphanedRelation.TabPages)
+            foreach (System.Windows.Forms.TabPage tabPage in this.tabControlOrphanedRelation.TabPages)
             {
-                foreach(System.Windows.Forms.Control control in tabPage.Controls)
+                foreach (System.Windows.Forms.Control control in tabPage.Controls)
                 {
                     control.Dispose();
                 }
@@ -22111,13 +22117,13 @@ ORDER BY [Geography]
             this.labelOrphanedRelationResult.Text = string.Empty;
         }
 
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
-#region Analysis
+        #region Analysis
 
-#region init and setting the controls
+        #region init and setting the controls
 
         private void initAnalysis()
         {
@@ -22194,9 +22200,9 @@ ORDER BY [Geography]
             this.comboBoxAnalysisRestrictToResult.Enabled = this.checkBoxAnalysisRestrictToResult.Checked;
         }
 
-#endregion
+        #endregion
 
-#region Analysis and results
+        #region Analysis and results
 
         private void comboBoxAnalysis_DropDown(object sender, EventArgs e)
         {
@@ -22252,9 +22258,9 @@ ORDER BY [Geography]
             }
         }
 
-#endregion
+        #endregion
 
-#region Check dataset
+        #region Check dataset
 
         private void dataGridViewAnalysis_Click(object sender, EventArgs e)
         {
@@ -22284,9 +22290,9 @@ ORDER BY [Geography]
             }
         }
 
-#endregion
+        #endregion
 
-#region testing and inserting the data
+        #region testing and inserting the data
 
         private bool AnalysisValuesSet()
         {
@@ -22452,11 +22458,11 @@ ORDER BY [Geography]
                 System.Windows.Forms.MessageBox.Show("Insert failed: " + Message);
         }
 
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
-#region Merge events
+        #region Merge events
 
         private System.Data.DataTable _DtMergeEventsMain;
         private string _MergeEventsProjectID;
@@ -22665,7 +22671,7 @@ ORDER BY [Geography]
             {
                 SQL += " WHERE 1 = 1";
                 if (ProjectID.Length > 0)
-                { 
+                {
                     SQL += " AND P.ProjectID = " + ProjectID;
                     RestrictToProjectList = false;
                 }
@@ -23123,7 +23129,7 @@ ORDER BY [Geography]
                 string SqlInsert = "";
                 string SqlValues = "";
                 string SQL = "";
-                foreach(System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.Data.Column> C in T.Columns)
+                foreach (System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.Data.Column> C in T.Columns)
                 {
                     if (C.Key.ToLower() == "rowguid" ||
                         C.Key.ToLower().StartsWith("logcreated") ||
@@ -23148,7 +23154,7 @@ ORDER BY [Geography]
                         continue;
                     SQL += " AND T." + P + " = S." + P;
                 }
-                    SQL += " )";
+                SQL += " )";
                 int ErrorCode = 0;
                 DiversityWorkbench.Forms.FormFunctions.SqlExecuteNonQuery(SQL, ref Message, ref ErrorCode);
                 if (Message.Length > 0)
@@ -23168,7 +23174,7 @@ ORDER BY [Geography]
                     f.Show();
                 }
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
@@ -23210,13 +23216,13 @@ ORDER BY [Geography]
             }
         }
 
-#endregion
+        #endregion
 
-#region Tools
+        #region Tools
 
-#region Remove C0 codes
+        #region Remove C0 codes
 
-#region Parameter
+        #region Parameter
 
         private int _PositionRemoveHexSigns = 1;
         private System.Collections.Generic.List<int> _RemoveHexSignsExcluded;
@@ -23226,9 +23232,9 @@ ORDER BY [Geography]
         private bool _RemoveHexSignSingleEnabled = true;
         private int _RemoveHexSignAllCount = 0;
 
-#endregion
+        #endregion
 
-#region Single table
+        #region Single table
 
         private void comboBoxRemoveHexSignsTable_DropDown(object sender, EventArgs e)
         {
@@ -23327,7 +23333,7 @@ ORDER BY [Geography]
             }
         }
 
-#endregion
+        #endregion
         private void InitRemoveHexSignsExcluded()
         {
             this._RemoveHexSignsExcluded = new List<int>();
@@ -23505,7 +23511,7 @@ ORDER BY [Geography]
             this.Cursor = System.Windows.Forms.Cursors.Default;
         }
 
-#region All tables
+        #region All tables
 
         private void buttonRemoveHexSignsAll_Click(object sender, EventArgs e)
         {
@@ -23682,7 +23688,7 @@ ORDER BY [Geography]
             if (int.TryParse(this.dataGridViewReferencesSpecimen.Rows[Row].Cells[0].Value.ToString(), out ID))
             {
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-                DiversityCollection.Forms.FormCollectionSpecimen f =_ReferencesTransferSpecimen.ShowDetails(ID);
+                DiversityCollection.Forms.FormCollectionSpecimen f = _ReferencesTransferSpecimen.ShowDetails(ID);
                 f.StartPosition = FormStartPosition.CenterParent;
                 f.Width = this.Width - 10;
                 f.Height = this.Height - 10;
@@ -23844,7 +23850,7 @@ ORDER BY [Geography]
         private string CollectorsSequenceTempTable()
         {
             return "BEGIN TRY\r\n" +
- //               "DROP TABLE  #CollectionAgent;\r\n" +
+                //               "DROP TABLE  #CollectionAgent;\r\n" +
                 "CREATE TABLE #CollectionAgent(\r\n" +
                 "[CollectionSpecimenID] [int] NOT NULL,\r\n" +
                 "[CollectorsName] [nvarchar](255) NOT NULL,\r\n" +
@@ -23938,6 +23944,88 @@ ORDER BY [Geography]
 
         #endregion
 
+
+        #region Collection Hierarchy
+
+        private void initCollectionHierarchy()
+        {
+            if (false) // #300 - disabling feature for now
+            {
+                string SQL = "SELECT CollectionID, DisplayText " +
+                       "FROM dbo.CollectionHierarchyAll() " +
+                       "ORDER BY DisplayText;";
+                System.Data.DataTable dtStart = DiversityWorkbench.Forms.FormFunctions.DataTable(SQL);
+                this.comboBoxCollectionHierarchyStartingID.DataSource = dtStart;
+                this.comboBoxCollectionHierarchyStartingID.DisplayMember = "DisplayText";
+                this.comboBoxCollectionHierarchyStartingID.ValueMember = "CollectionID";
+
+                SQL = "  select c.COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS c where c.TABLE_NAME = 'Collection' and c.DATA_TYPE = 'nvarchar' and (c.CHARACTER_MAXIMUM_LENGTH > 100 or c.CHARACTER_MAXIMUM_LENGTH = -1);";
+                System.Data.DataTable dtColumn = DiversityWorkbench.Forms.FormFunctions.DataTable(SQL);
+                this.comboBoxCollectionHierarchyTargetColumn.DataSource = dtColumn;
+                this.comboBoxCollectionHierarchyTargetColumn.DisplayMember = "COLUMN_NAME";
+                this.comboBoxCollectionHierarchyTargetColumn.ValueMember = "COLUMN_NAME";
+
+                this.treeViewCollectionHierarchy.Nodes.Clear();
+                this.treeViewCollectionHierarchy.CheckBoxes = true;
+            }
+            else
+            {
+                // removing tab if feature is disabled
+                if (this.tabControlStorage.TabPages.Contains(this.tabPageStorageCollectionHierarchy))
+                {
+                    this.tabControlStorage.TabPages.Remove(this.tabPageStorageCollectionHierarchy);
+                }
+            }
+        }
+
+        private bool CollectionHierarchyRequerimentsMet()
+        {
+            if (this.comboBoxCollectionHierarchyStartingID.SelectedItem == null)
+            {
+                System.Windows.Forms.MessageBox.Show("Please select a starting collection");
+                return false;
+            }
+            if (this.comboBoxCollectionHierarchyTargetColumn.SelectedItem == null)
+            {
+                System.Windows.Forms.MessageBox.Show("Please select a target column");
+                return false;
+            }
+            return true;
+        }
+
+        private void buttonCollectionHierarchyAddSeparator_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCollectionHierarchyRemoveSeparator_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCollectionHierarchyStartSearch_Click(object sender, EventArgs e)
+        {
+            if (CollectionHierarchyRequerimentsMet())
+            {
+                this.treeViewCollectionHierarchy.Nodes.Clear();
+                this.treeViewCollectionHierarchy.BeginUpdate();
+                System.Data.DataRowView r = (System.Data.DataRowView)this.comboBoxCollectionHierarchyStartingID.SelectedItem;
+                System.Windows.Forms.TreeNode root = new TreeNode(r[1].ToString());
+                root.Tag = r[0];
+                this.treeViewCollectionHierarchy.Nodes.Add(root);
+                //this.treeViewCollectionHierarchy.Nodes[0].Tag = this.comboBoxCollectionHierarchyStartingID.SelectedValue.ToString();
+                this.treeViewCollectionHierarchy.Nodes[0].Checked = false;
+                this.treeViewCollectionHierarchy.Nodes[0].Expand();
+                this.treeViewCollectionHierarchy.EndUpdate();
+            }
+        }
+
+        private void buttonCollectionHierarchyUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 
 }

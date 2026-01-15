@@ -319,6 +319,7 @@ namespace DiversityCollection.Forms
             DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ScanDiversityDescriptons = this.checkBoxScanDiversityDescriptons.Checked;
 
             DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.UseCollectionLocation = this.checkBoxUseLocationForCollection.Checked;
+            DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.LocationHierarchyLevel = (int)this.numericUpDownLocationHierarchyLevel.Value;
 
             DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowExsiccata = this.checkBoxShowExsiccata.Checked;
             DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowAcceptedNames = this.checkBoxShowAcceptedNames.Checked;
@@ -2364,6 +2365,7 @@ namespace DiversityCollection.Forms
         private void initCollectionLocation()
         {
             this.checkBoxUseLocationForCollection.Checked = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.UseCollectionLocation;
+            this.numericUpDownLocationHierarchyLevel.Value = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.LocationHierarchyLevel;
         }
 
 

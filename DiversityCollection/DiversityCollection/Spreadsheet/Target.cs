@@ -455,9 +455,10 @@ namespace DiversityCollection.Spreadsheet
                     Specimen = new DiversityWorkbench.Spreadsheet.DataTable(TableAlias(Table), Table, "Specimen", DiversityWorkbench.Spreadsheet.DataTable.TableType.Single, ref Sheet);
                     Specimen.SqlRestrictionClause = " exists " +
                         " (select * from [CollectionSpecimen] s " +
-                        "where " + Specimen.Alias() + ".CollectionEventID = s.CollectionEventID  " +
+                        "where " + Specimen.Alias() + ".CollectionEventID = s.CollectionEventID  " + 
                         "group by s.CollectionEventID " +
-                        "having " + Specimen.Alias() + ".CollectionSpecimenID = min(s.CollectionSpecimenID)) ";
+                        "having " + Specimen.Alias() + ".CollectionSpecimenID = min(s.CollectionSpecimenID) " +
+                        "or " + Specimen.Alias() + ".CollectionSpecimenID = max(s.CollectionSpecimenID)) "; // #318
                     Specimen.IsRequired = true;
                 }
                 else

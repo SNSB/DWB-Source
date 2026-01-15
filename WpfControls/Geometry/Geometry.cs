@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Controls;
+using System.Windows.Media.TextFormatting;
 using System.Windows.Shapes;
-using System.Windows;
 
 
 namespace WpfControls.Geometry
@@ -93,6 +94,7 @@ namespace WpfControls.Geometry
         internal Rectangle _Rectangle;
         internal Polygon _Polygon;
         internal Polygon _ParentPolygon;
+        internal System.Collections.Generic.List<Polygon> _ChildrenPolygons; // #305
 
         //internal System.Windows.Media.PointCollection _PointCollection;
         internal System.Collections.Generic.Dictionary<Point, System.Windows.Controls.TextBlock> _Points;
@@ -321,12 +323,52 @@ namespace WpfControls.Geometry
                 _Polygon.Points.Clear();
             //if (_Canvas.Children.Contains(_ScaleLine))
             //    _Canvas.Children.Remove(_ScaleLine);
+
+            this.ClearChildrenGeometry();
         }
 
         public void ClearParentGeometry()
         {
             if (_Canvas.Children.Contains(_ParentPolygon))
                 _Canvas.Children.Remove(_ParentPolygon);
+        }
+
+        public void ClearChildrenGeometry() // #305
+        {             
+            if (_ChildrenPolygons != null)
+            {
+                System.Collections.Generic.List<Polygon> polygonsToRemove = new List<Polygon>();
+                System.Collections.Generic.List<System.Windows.Controls.TextBlock> tagsToRemove = new List<System.Windows.Controls.TextBlock>();
+                foreach (System.Object o in _Canvas.Children)
+                {
+                    if (o.GetType() == typeof(System.Windows.Shapes.Polygon))
+                    {
+                        System.Windows.Shapes.Polygon p = (System.Windows.Shapes.Polygon)o;
+                        if (p.Name != null && p.Name.StartsWith("ID_"))
+                            polygonsToRemove.Add(p); // _Canvas.Children.Remove(p);
+                    }
+                    else if (o.GetType() == typeof(System.Windows.Controls.TextBlock))
+                    {
+                        System.Windows.Controls.TextBlock tb = (System.Windows.Controls.TextBlock)o;
+                        if (tb.Name != null && tb.Name.StartsWith("TAG_"))
+                            tagsToRemove.Add(tb); // _Canvas.Children.Remove(tb);
+                    }
+                }
+                foreach(Polygon polygon in polygonsToRemove)
+                {
+                    _Canvas.Children.Remove(polygon);
+                }
+                foreach (System.Windows.Controls.TextBlock tb in tagsToRemove)
+                {
+                    _Canvas.Children.Remove(tb);
+                }
+                //_Canvas.Children.Clear();
+                //foreach (Polygon polygon in _ChildrenPolygons)
+                //{
+                //    if (_Canvas.Children.Contains(polygon))
+                //        _Canvas.Children.Remove(polygon);
+                //}
+            }
         }
 
         public RectangleMode ChangeRectangleMode(Point pos, double Zoom)
@@ -498,6 +540,75 @@ namespace WpfControls.Geometry
                 _ParentPolygon.Points.Add(P);
             if (!_Canvas.Children.Contains(_ParentPolygon))
                 _Canvas.Children.Add(_ParentPolygon);
+        }
+
+        public void PolygonSetChildren(System.Collections.Generic.Dictionary<string, Polygon> polygons,
+            System.Collections.Generic.Dictionary<string, string> Tags = null) // #305
+        {
+            _ChildrenPolygons = new System.Collections.Generic.List<Polygon>();
+            foreach(System.Collections.Generic.KeyValuePair <string, Polygon> polygon in polygons)
+            {
+                Polygon childPolygon = new Polygon();
+                childPolygon.Stroke = new SolidColorBrush(Color.FromArgb(128, 0, 0, 255)); // Brushes.Blue;
+                childPolygon.StrokeThickness = 8.0;
+                System.Windows.Media.DoubleCollection vs = new DoubleCollection();
+                vs.Add(2);
+                vs.Add(2);
+                childPolygon.StrokeDashArray = vs;
+                childPolygon.Fill = new SolidColorBrush(Color.FromArgb(40, 0, 0, 200));
+                childPolygon.Name = polygon.Value.Name;
+                foreach (Point P in polygon.Value.Points)
+                    childPolygon.Points.Add(P);
+                _ChildrenPolygons.Add(childPolygon);
+                if (!_Canvas.Children.Contains(childPolygon))
+                {
+                    _Canvas.Children.Add(childPolygon);
+                    if (Tags != null && Tags.ContainsKey(polygon.Key))
+                    {
+                        var points = childPolygon.Points;
+
+                        double minX = points.Min(p => p.X);
+                        double maxX = points.Max(p => p.X);
+                        double minY = points.Min(p => p.Y);
+                        double maxY = points.Max(p => p.Y);
+
+                        double width = maxX - minX;
+                        double height = maxY - minY;
+
+                        System.Windows.Controls.TextBlock textBlock = new System.Windows.Controls.TextBlock();
+                        textBlock.Text = Tags[polygon.Key];
+
+                        textBlock.Name = "TAG_" + polygon.Key;
+
+                        textBlock.FontSize = Math.Min(width, height) / 3;
+                        textBlock.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                        Size textSize = textBlock.DesiredSize;
+                        while (textSize.Width > width/2 || textSize.Height > height/2)
+                        {
+                            textBlock.FontSize -= 1;
+                            textBlock.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                            textSize = textBlock.DesiredSize;
+                        }
+
+                        //textBlock.FontSize = 14;
+                        textBlock.FontWeight = FontWeights.Bold;
+                        textBlock.Foreground = Brushes.DarkBlue;
+                        textBlock.Opacity = 0.5;
+                        // Find centroid
+                        double X = 0, Y = 0;
+                        foreach(Point p in polygon.Value.Points)
+                        {
+                            X += p.X;
+                            Y += p.Y;
+                        }
+                        X /= polygon.Value.Points.Count;
+                        Y /= polygon.Value.Points.Count;
+                        Canvas.SetLeft(textBlock, X - textBlock.DesiredSize.Width / 2);
+                        Canvas.SetTop(textBlock, Y - textBlock.DesiredSize.Height / 2);
+                        _Canvas.Children.Add(textBlock);
+                    }
+                }
+            }
         }
 
         public void PolygonEditPoint(Point OldPosition, Point NewPosition, double Zoom)
@@ -793,6 +904,8 @@ namespace WpfControls.Geometry
 
 
         #endregion
+
+
 
     }
 }

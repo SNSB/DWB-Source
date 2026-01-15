@@ -7395,8 +7395,11 @@ namespace DiversityWorkbench.UserControls
             {
                 xSettings.Reset();
                 xSettings = null;
-                SettingsDocument.RemoveAll();
-                SettingsDocument = null;
+                if (SettingsDocument != null)
+                {
+                    SettingsDocument.RemoveAll();
+                    SettingsDocument = null;
+                }
                 _SettingsFile = null;
             }
         }

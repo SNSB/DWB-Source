@@ -37139,6 +37139,9 @@ namespace DiversityCollection.Forms
                     // Klappt leider nicht
                     //DT.AttachmentColumns.Add("LocationParentID");
 #endif
+
+                    DT.DataColumns["CollectionParentID"].DerivedFromInternalParentRelation = true;
+                    DT.DataColumns["LocationParentID"].DerivedFromInternalParentRelation = true;
                     DiversityWorkbench.Import.Import.DefaultDuplicateCheckColumn = DT.DataColumns["CollectionName"];
                     DiversityWorkbench.Import.Step S = DiversityWorkbench.Import.Step.GetStepTemplate(DT, DiversityCollection.Specimen.ImageForTable(DT.TableName, false), 0, true, null);
                     S.MustSelect = true;

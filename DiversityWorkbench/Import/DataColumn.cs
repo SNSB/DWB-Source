@@ -339,6 +339,16 @@ namespace DiversityWorkbench.Import
         /// </summary>
         public bool AllowInsert { get => _AllowInsert; set => _AllowInsert = value; }
 
+        private bool _DerivedFromInternalParentRelation = false;
+        /// <summary> 
+        /// #302 - if the value should be derived from an internal parent relation, e.g. the column CollectionParentID in table Collection
+        /// </summary>
+        public bool DerivedFromInternalParentRelation
+        {
+            get { return _DerivedFromInternalParentRelation; }
+            set { _DerivedFromInternalParentRelation = value; }
+        }
+
         #endregion
 
         #region Attachment
@@ -617,7 +627,7 @@ namespace DiversityWorkbench.Import
             set { _FileColumn = value; }
         }
 
-        public enum SourceType { NotDecided, File, Interface, Preset, Database, ParentTable }
+        public enum SourceType { NotDecided, File, Interface, Preset, Database, ParentTable } //, InternalRelation } // #302
         private SourceType _TypeOfSource;
         /// <summary>
         /// The type of source of this column
@@ -1443,7 +1453,8 @@ namespace DiversityWorkbench.Import
                     || this.DataType == "datetime"
                     || this.DataType == "smalldate"
                     || this.DataType == "datetime2"
-                    || this.DataType == "geography")
+                    || this.DataType == "geography"
+                    || this.DataType == "geometry") // #299
                 {
                     if (this.ForeignRelationColumn == null
                         || this.ForeignRelationColumn.Length == 0)
@@ -1841,6 +1852,7 @@ namespace DiversityWorkbench.Import
                     if (this.DataType == "nvarchar"
                         || this.DataType == "varchar"
                         || this.DataType == "geography"
+                        || this.DataType == "geometry" // #299
                         || this.DataType == "datetime"
                         || this.DataType == "smalldate"
                         || this.DataType == "datetime2"

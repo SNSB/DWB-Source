@@ -592,6 +592,7 @@ namespace WpfControls.Geometry
                 }
                 if (ClearGeometry)
                 {
+                    _Geometry.ClearChildrenGeometry(); // #305
                     _Geometry.ClearParentGeometry();
                     _Geometry.ClearRectangleGeometry();
                     _Geometry.ClearScaleLine();
@@ -670,6 +671,12 @@ namespace WpfControls.Geometry
         #endregion
 
         #region Zoom
+
+        public void setMinMaxZoom(double min = 0.1, double max = 4.0)
+        {
+            slider.Minimum = min;
+            slider.Maximum = max;
+        }
 
         private void Button100_Click(object sender, RoutedEventArgs e)
         {
@@ -886,6 +893,69 @@ namespace WpfControls.Geometry
             }
         }
 
+        private void ZoomDetail(Rect rect, double Border = 0.1)
+        {
+            if (_imageWidth != null && _imageHeight != null)
+            {
+                _CanvasThickness = new Thickness(0, 0, 0, 0);
+                canvas.Margin = _CanvasThickness;
+                double x = rect.X;
+                double X = rect.X + rect.Width;
+                double y = rect.Y;
+                double Y = rect.Y + rect.Height;
+                //foreach (Point point in this.rect.Points)
+                //{
+                //    if (point.X > X) X = point.X;
+                //    if (x == 0 || x > point.X) x = point.X;
+                //    if (point.Y > Y) Y = point.Y;
+                //    if (y == 0 || y > point.Y) y = point.Y;
+                //}
+                //if (ParentGeometry.Length > 0)
+                //{
+                //    Polygon parent = this.GetPolygon(ParentGeometry);
+                //    foreach (Point point in parent.Points)
+                //    {
+                //        if (point.X > X) X = point.X;
+                //        if (x == 0 || x > point.X) x = point.X;
+                //        if (point.Y > Y) Y = point.Y;
+                //        if (y == 0 || y > point.Y) y = point.Y;
+                //    }
+                //}
+                if (Border > 0 && Border < 1)
+                {
+                    double borderWidth = (((X - x) + (Y - y)) / 2) * Border;
+                    X += borderWidth;
+                    x -= borderWidth;
+                    Y += borderWidth;
+                    y -= borderWidth;
+                }
+                double DetailWidth = (X - x);
+                double DetailHeight = (Y - y);
+                //double diW = this.canvas.ActualWidth / (double)_imageWidth;
+                //double diH = this.canvas.ActualHeight / (double)_imageHeight;
+                //double ddW = DetailWidth / (double)_imageWidth;
+                //double ddH = DetailHeight / (double)_imageHeight;
+                double dcW = this.canvas.ActualWidth / DetailWidth;
+                double dcH = this.canvas.ActualHeight / DetailHeight;
+                //double dW = (X-x) / (double)_imageWidth;
+                //double dH = (Y-y) / (double)_imageHeight;
+
+                //double factor = diW / ddW;
+                //if (diW / ddW > diH / ddH) factor = diH / ddH;
+                //if (factor < 0.1) factor = 0.1;
+
+                double factor = dcW; if (dcW > dcH) factor = dcH;
+
+                double shiftX = factor * -x;
+                double shiftY = factor * -y;
+
+                _CanvasThickness = new Thickness(shiftX, shiftY, -shiftX, -shiftY); //-868.16484536593873  -141.2403765971431
+                canvas.Margin = _CanvasThickness;
+                this.Zoom(factor);
+            }
+        }
+
+
         private void ZoomDetail(double x, double X, double y, double Y)
         {
             double DetailWidth = (X - x);
@@ -912,12 +982,41 @@ namespace WpfControls.Geometry
 
         public RectangleGeometry GetRectangle() { return this._Geometry.GetRectangle(); }
 
-        public void SetRectangleAndPolygonGeometry(string Geometry, string ParentGeometry = "")
+        public void SetRectangleAndPolygonGeometry(string Geometry, 
+            string ParentGeometry = "", 
+            System.Collections.Generic.Dictionary<string, string> ChildrenGeometry = null,
+            System.Collections.Generic.Dictionary<string, string> ChildrenTags = null) // #305
         {
             try
             {
                 // Remove object from previous query
                 _Geometry.ClearRectangleGeometry();
+
+                // Draw children polygons - so they are behind of main polygon
+                if (ChildrenGeometry != null)
+                {
+                    System.Collections.Generic.Dictionary<string, Polygon> polygons = new Dictionary<string, Polygon>();
+                    foreach (System.Collections.Generic.KeyValuePair<string,  string> child in ChildrenGeometry)
+                    {
+                        if (child.Value.Length > 0)
+                        {
+                            Polygon childPolygon = this.GetPolygon(child.Value);
+                            childPolygon.Name = child.Key;
+                            childPolygon.Tag = child.Key;
+                            if (this.PolygonHasPoints(childPolygon))
+                                polygons.Add(child.Key, childPolygon);
+                                //_Geometry.PolygonAddChild(childPolygon);
+                        }
+                    }
+                    if (polygons.Count > 0)
+                        _Geometry.PolygonSetChildren(polygons, ChildrenTags);
+                    else
+                        _Geometry.ClearChildrenGeometry();
+                }
+                else
+                {
+                    _Geometry.ClearChildrenGeometry();
+                }
 
                 // Parent should be in background - so this has to be drawn first
                 if (ParentGeometry.Length > 0)
@@ -1023,6 +1122,10 @@ namespace WpfControls.Geometry
 
                     }
                 }
+                else if (ChildrenGeometry != null && ChildrenGeometry.Count > 0)
+                {
+                    this.ZoomDetail(GetBoundingBox(ChildrenGeometry.Values.ToList()));
+                }
                 else
                 {
                     EditPoints = false;
@@ -1031,7 +1134,9 @@ namespace WpfControls.Geometry
             }
             catch(System.Exception ex)
             {
-
+#if DEBUG
+                System.Windows.MessageBox.Show(ex.Message);
+#endif
             }
         }
 
@@ -1082,16 +1187,97 @@ namespace WpfControls.Geometry
                             }
                         }
                         polygon = new Polygon();
-                        foreach (Point P in points)
-                            polygon.Points.Add(P);
+                        polygon.Points = new PointCollection(points);
+                        //foreach (Point P in points)
+                        //    polygon.Points.Add(P);
                     }
                 }
             }
             catch (System.Exception ex)
             {
+#if DEBUG
+                System.Windows.MessageBox.Show(ex.Message);
+#endif
             }
             return polygon;
         }
+
+        private Rect GetBoundingBox(System.Collections.Generic.List<string> Geometries)
+        {
+            Rect boundingBox = Rect.Empty;
+            try
+            {
+                System.Collections.Generic.List<Polygon> polygons = new List<Polygon>();
+                foreach (string Geometry in Geometries)
+                {
+                    Polygon poly = this.GetPolygon(Geometry);
+                    if (poly != null)
+                    {
+                        foreach(Point p in poly.Points)
+                        {
+                            boundingBox.Union(p);
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+#if DEBUG
+                System.Windows.MessageBox.Show(ex.Message);
+#endif
+            }
+            return boundingBox;
+        }
+
+
+//        private Polygon GetPolygon(System.Collections.Generic.List<string> Geometries)
+//        {
+//            Rect boundingBox = Rect.Empty;
+//            try
+//            {
+//                System.Collections.Generic.List<Polygon> polygons = new List<Polygon>();
+//                foreach (string Geometry in Geometries)
+//                {
+//                    Polygon poly = this.GetPolygon(Geometry);
+//                    if (poly != null)
+//                        polygons.Add(poly);
+//                }
+
+//                foreach (Polygon childpolygon in polygons)
+//                {
+//                    Rect bounds = VisualTreeHelper.GetDescendantBounds(childpolygon);
+//                    boundingBox.Union(bounds);
+//                }
+
+//            }
+//            catch (System.Exception ex)
+//            {
+//#if DEBUG
+//                System.Windows.MessageBox.Show(ex.Message);
+//#endif
+//            }
+//            return GetPolygon(boundingBox);
+//        }
+
+//        private Polygon GetPolygon(Rect BoundingBox)
+//        {
+//            Polygon polygon = new Polygon();
+//            try
+//            {
+//                polygon.Points.Add(new Point(BoundingBox.Left, BoundingBox.Top));
+//                polygon.Points.Add(new Point(BoundingBox.Right, BoundingBox.Top));
+//                polygon.Points.Add(new Point(BoundingBox.Right, BoundingBox.Bottom));
+//                polygon.Points.Add(new Point(BoundingBox.Left, BoundingBox.Bottom));
+//            }
+//            catch (System.Exception ex)
+//            {
+//#if DEBUG
+//                System.Windows.MessageBox.Show(ex.Message);
+//#endif
+//            }
+//            return polygon;
+//        }
+
 
         private void SetRectangleCursor(RectangleMode captureFrameMode)
         {
@@ -1313,7 +1499,9 @@ namespace WpfControls.Geometry
             }
             catch (System.Exception ex)
             {
-
+#if DEBUG
+                System.Windows.MessageBox.Show(ex.Message);
+#endif
             }
         }
 
@@ -1467,7 +1655,9 @@ namespace WpfControls.Geometry
             }
             catch (System.Exception ex)
             {
-
+#if DEBUG
+                System.Windows.MessageBox.Show(ex.Message);
+#endif
             }
         }
 

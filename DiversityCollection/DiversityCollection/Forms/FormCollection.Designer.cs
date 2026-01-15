@@ -207,7 +207,7 @@
             toolStripButtonLocationHierarchyDelete = new System.Windows.Forms.ToolStripButton();
             toolStripButtonLocationHierarchySetParent = new System.Windows.Forms.ToolStripButton();
             toolStripButtonLocationHierarchyRemoveParent = new System.Windows.Forms.ToolStripButton();
-            toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonLocationSpecimenList = new System.Windows.Forms.ToolStripButton();
             toolStripButtonLocationHierarchyTasks = new System.Windows.Forms.ToolStripButton();
             toolStripButtonLocationHierarchySearch = new System.Windows.Forms.ToolStripButton();
             labelLocationHierarchy = new System.Windows.Forms.Label();
@@ -599,7 +599,7 @@
             buttonLocationHierarchyCollapse.FlatAppearance.BorderSize = 0;
             buttonLocationHierarchyCollapse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             buttonLocationHierarchyCollapse.Image = Resource.Collapse;
-            buttonLocationHierarchyCollapse.Location = new System.Drawing.Point(242, 218);
+            buttonLocationHierarchyCollapse.Location = new System.Drawing.Point(307, 218);
             buttonLocationHierarchyCollapse.Margin = new System.Windows.Forms.Padding(0, 0, 6, 2);
             buttonLocationHierarchyCollapse.Name = "buttonLocationHierarchyCollapse";
             buttonLocationHierarchyCollapse.Size = new System.Drawing.Size(23, 23);
@@ -906,7 +906,7 @@
             treeViewCollection.Location = new System.Drawing.Point(4, 3);
             treeViewCollection.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             treeViewCollection.Name = "treeViewCollection";
-            treeViewCollection.Size = new System.Drawing.Size(364, 214);
+            treeViewCollection.Size = new System.Drawing.Size(299, 214);
             treeViewCollection.TabIndex = 0;
             treeViewCollection.DragDrop += treeViewCollection_DragDrop;
             treeViewCollection.DragEnter += treeViewCollection_DragEnter;
@@ -1018,7 +1018,7 @@
             buttonHierarchyCollapse.FlatAppearance.BorderSize = 0;
             buttonHierarchyCollapse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             buttonHierarchyCollapse.Image = Resource.Collapse;
-            buttonHierarchyCollapse.Location = new System.Drawing.Point(349, 220);
+            buttonHierarchyCollapse.Location = new System.Drawing.Point(284, 220);
             buttonHierarchyCollapse.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             buttonHierarchyCollapse.Name = "buttonHierarchyCollapse";
             buttonHierarchyCollapse.Size = new System.Drawing.Size(23, 20);
@@ -1963,9 +1963,9 @@
             toolStripLocationPlan.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             toolStripLocationPlan.ImageScalingSize = new System.Drawing.Size(20, 20);
             toolStripLocationPlan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonLocationPlanOpen, toolStripButtonLocationPlanSave, toolStripButtonLocationPlanSaveAsImage, toolStripButtonLocationPlanRemove, toolStripSeparatorLocationPlanEdit, toolStripButtonLocationPlanEdit });
-            toolStripLocationPlan.Location = new System.Drawing.Point(351, 0);
+            toolStripLocationPlan.Location = new System.Drawing.Point(382, 0);
             toolStripLocationPlan.Name = "toolStripLocationPlan";
-            toolStripLocationPlan.Size = new System.Drawing.Size(155, 25);
+            toolStripLocationPlan.Size = new System.Drawing.Size(124, 25);
             toolStripLocationPlan.TabIndex = 0;
             toolStripLocationPlan.Text = "toolStrip1";
             // 
@@ -2050,7 +2050,7 @@
             textBoxLocationPlan.Margin = new System.Windows.Forms.Padding(0, 3, 4, 3);
             textBoxLocationPlan.Name = "textBoxLocationPlan";
             textBoxLocationPlan.ReadOnly = true;
-            textBoxLocationPlan.Size = new System.Drawing.Size(310, 23);
+            textBoxLocationPlan.Size = new System.Drawing.Size(341, 23);
             textBoxLocationPlan.TabIndex = 2;
             textBoxLocationPlan.TextChanged += textBoxLocationPlan_TextChanged;
             // 
@@ -2521,7 +2521,7 @@
             // 
             splitContainerCollectionHierarchy.Panel2.Controls.Add(tableLayoutPanelLocationHierarchy);
             splitContainerCollectionHierarchy.Size = new System.Drawing.Size(647, 243);
-            splitContainerCollectionHierarchy.SplitterDistance = 372;
+            splitContainerCollectionHierarchy.SplitterDistance = 307;
             splitContainerCollectionHierarchy.TabIndex = 1;
             // 
             // tableLayoutPanelHierarchy
@@ -2539,7 +2539,7 @@
             tableLayoutPanelHierarchy.RowCount = 2;
             tableLayoutPanelHierarchy.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelHierarchy.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tableLayoutPanelHierarchy.Size = new System.Drawing.Size(372, 243);
+            tableLayoutPanelHierarchy.Size = new System.Drawing.Size(307, 243);
             tableLayoutPanelHierarchy.TabIndex = 0;
             // 
             // tableLayoutPanelLocationHierarchy
@@ -2560,7 +2560,7 @@
             tableLayoutPanelLocationHierarchy.RowStyles.Add(new System.Windows.Forms.RowStyle());
             tableLayoutPanelLocationHierarchy.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelLocationHierarchy.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tableLayoutPanelLocationHierarchy.Size = new System.Drawing.Size(271, 243);
+            tableLayoutPanelLocationHierarchy.Size = new System.Drawing.Size(336, 243);
             tableLayoutPanelLocationHierarchy.TabIndex = 1;
             // 
             // treeViewLocationHierarchy
@@ -2572,51 +2572,54 @@
             treeViewLocationHierarchy.Location = new System.Drawing.Point(4, 21);
             treeViewLocationHierarchy.Margin = new System.Windows.Forms.Padding(4, 3, 4, 2);
             treeViewLocationHierarchy.Name = "treeViewLocationHierarchy";
-            treeViewLocationHierarchy.Size = new System.Drawing.Size(263, 195);
+            treeViewLocationHierarchy.Size = new System.Drawing.Size(328, 195);
             treeViewLocationHierarchy.TabIndex = 0;
             treeViewLocationHierarchy.AfterSelect += treeViewLocationHierarchy_AfterSelect;
             // 
             // toolStripLocation
             // 
             toolStripLocation.Dock = System.Windows.Forms.DockStyle.None;
-            toolStripLocation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonLocationHierarchyNew, toolStripButtonLocationHierarchyCopy, toolStripButtonLocationHierarchyDelete, toolStripButtonLocationHierarchySetParent, toolStripButtonLocationHierarchyRemoveParent, toolStripButton7, toolStripButtonLocationHierarchyTasks, toolStripButtonLocationHierarchySearch });
+            toolStripLocation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonLocationHierarchyNew, toolStripButtonLocationHierarchyCopy, toolStripButtonLocationHierarchyDelete, toolStripButtonLocationHierarchySetParent, toolStripButtonLocationHierarchyRemoveParent, toolStripButtonLocationSpecimenList, toolStripButtonLocationHierarchyTasks, toolStripButtonLocationHierarchySearch });
             toolStripLocation.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             toolStripLocation.Location = new System.Drawing.Point(6, 218);
             toolStripLocation.Margin = new System.Windows.Forms.Padding(6, 0, 0, 2);
             toolStripLocation.Name = "toolStripLocation";
-            toolStripLocation.Size = new System.Drawing.Size(47, 23);
+            toolStripLocation.Size = new System.Drawing.Size(216, 23);
             toolStripLocation.TabIndex = 1;
             toolStripLocation.Text = "toolStrip1";
             // 
             // toolStripButtonLocationHierarchyNew
             // 
+            toolStripButtonLocationHierarchyNew.BackColor = System.Drawing.Color.BlanchedAlmond;
             toolStripButtonLocationHierarchyNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             toolStripButtonLocationHierarchyNew.Image = Resource.New1;
             toolStripButtonLocationHierarchyNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonLocationHierarchyNew.Name = "toolStripButtonLocationHierarchyNew";
             toolStripButtonLocationHierarchyNew.Size = new System.Drawing.Size(23, 20);
             toolStripButtonLocationHierarchyNew.Text = "Insert a new collection dependent on the selected collection";
-            toolStripButtonLocationHierarchyNew.Visible = false;
+            toolStripButtonLocationHierarchyNew.Click += toolStripButtonLocationHierarchyNew_Click;
             // 
             // toolStripButtonLocationHierarchyCopy
             // 
+            toolStripButtonLocationHierarchyCopy.BackColor = System.Drawing.Color.BlanchedAlmond;
             toolStripButtonLocationHierarchyCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             toolStripButtonLocationHierarchyCopy.Image = Resource.CopyHierarchy;
             toolStripButtonLocationHierarchyCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonLocationHierarchyCopy.Name = "toolStripButtonLocationHierarchyCopy";
             toolStripButtonLocationHierarchyCopy.Size = new System.Drawing.Size(23, 20);
             toolStripButtonLocationHierarchyCopy.Text = "Copy the selected collection together with all subordinated collections";
-            toolStripButtonLocationHierarchyCopy.Visible = false;
+            toolStripButtonLocationHierarchyCopy.Click += toolStripButtonLocationHierarchyCopy_Click;
             // 
             // toolStripButtonLocationHierarchyDelete
             // 
+            toolStripButtonLocationHierarchyDelete.BackColor = System.Drawing.Color.BlanchedAlmond;
             toolStripButtonLocationHierarchyDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             toolStripButtonLocationHierarchyDelete.Image = Resource.Delete;
             toolStripButtonLocationHierarchyDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripButtonLocationHierarchyDelete.Name = "toolStripButtonLocationHierarchyDelete";
             toolStripButtonLocationHierarchyDelete.Size = new System.Drawing.Size(23, 20);
             toolStripButtonLocationHierarchyDelete.Text = "delete the selected collection";
-            toolStripButtonLocationHierarchyDelete.Visible = false;
+            toolStripButtonLocationHierarchyDelete.Click += toolStripButtonLocationHierarchyDelete_Click;
             // 
             // toolStripButtonLocationHierarchySetParent
             // 
@@ -2641,16 +2644,16 @@
             toolStripButtonLocationHierarchyRemoveParent.Text = "Remove the parent of the selected location";
             toolStripButtonLocationHierarchyRemoveParent.Click += toolStripButtonLocationHierarchyRemoveParent_Click;
             // 
-            // toolStripButton7
+            // toolStripButtonLocationSpecimenList
             // 
-            toolStripButton7.BackColor = System.Drawing.Color.Yellow;
-            toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButton7.Image = Resource.ListGrey;
-            toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButton7.Name = "toolStripButton7";
-            toolStripButton7.Size = new System.Drawing.Size(23, 20);
-            toolStripButton7.Text = "Show specimen list";
-            toolStripButton7.Visible = false;
+            toolStripButtonLocationSpecimenList.BackColor = System.Drawing.Color.Yellow;
+            toolStripButtonLocationSpecimenList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonLocationSpecimenList.Image = Resource.ListGrey;
+            toolStripButtonLocationSpecimenList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonLocationSpecimenList.Name = "toolStripButtonLocationSpecimenList";
+            toolStripButtonLocationSpecimenList.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonLocationSpecimenList.Text = "Show specimen list";
+            toolStripButtonLocationSpecimenList.Click += toolStripButtonLocationSpecimenList_Click;
             // 
             // toolStripButtonLocationHierarchyTasks
             // 
@@ -2662,7 +2665,7 @@
             toolStripButtonLocationHierarchyTasks.Size = new System.Drawing.Size(23, 20);
             toolStripButtonLocationHierarchyTasks.Text = "toolStripButtonTask";
             toolStripButtonLocationHierarchyTasks.ToolTipText = "Show or hide tasks";
-            toolStripButtonLocationHierarchyTasks.Visible = false;
+            toolStripButtonLocationHierarchyTasks.Click += toolStripButtonLocationHierarchyTasks_Click;
             // 
             // toolStripButtonLocationHierarchySearch
             // 
@@ -2685,7 +2688,7 @@
             labelLocationHierarchy.Location = new System.Drawing.Point(6, 2);
             labelLocationHierarchy.Margin = new System.Windows.Forms.Padding(6, 2, 3, 1);
             labelLocationHierarchy.Name = "labelLocationHierarchy";
-            labelLocationHierarchy.Size = new System.Drawing.Size(262, 15);
+            labelLocationHierarchy.Size = new System.Drawing.Size(327, 15);
             labelLocationHierarchy.TabIndex = 24;
             labelLocationHierarchy.Text = "      Hierarchy according to location";
             labelLocationHierarchy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3030,7 +3033,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonLocationHierarchyDelete;
         private System.Windows.Forms.ToolStripButton toolStripButtonLocationHierarchySetParent;
         private System.Windows.Forms.ToolStripButton toolStripButtonLocationHierarchyRemoveParent;
-        private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.ToolStripButton toolStripButtonLocationSpecimenList;
         private System.Windows.Forms.ToolStripButton toolStripButtonLocationHierarchyTasks;
         private System.Windows.Forms.ToolStripButton toolStripButtonLocationHierarchySearch;
         private System.Windows.Forms.Label labelLocationHierarchy;

@@ -131,6 +131,13 @@ namespace DiversityCollection.Forms
         {
             try
             {
+                // #304 - hide location buttons for now
+                this.toolStripButtonLocationHierarchyDelete.Visible = false;
+                this.toolStripButtonLocationHierarchyCopy.Visible = false;
+                this.toolStripButtonLocationHierarchyNew.Visible = false;
+                this.toolStripButtonLocationHierarchyTasks.Visible = false;
+                this.toolStripButtonLocationSpecimenList.Visible = false;
+
                 //#35
                 this.KeyPreview = true;
 
@@ -1227,8 +1234,11 @@ namespace DiversityCollection.Forms
                     // Plan
                     if (LocationPlan.Length == 0)
                     {
-                        string SQL = "SELECT LocationPlan FROM dbo.CollectionHierarchySuperior(" + CollectionID.ToString() + ") WHERE CollectionID = " + CollectionID.ToString();
-                        LocationPlan = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
+                        LocationPlan = this.GetLocationInfo(CollectionID, "LocationPlan");
+                        //string SQL = "SELECT TOP 1 LocationPlan FROM dbo.CollectionHierarchySuperior(" + CollectionID.ToString() + ") WHERE CollectionID = " + CollectionID.ToString() + " and LocationPlan <> '' " +
+                        //    " UNION " +
+                        //    "SELECT TOP 1 LocationPlan FROM dbo.CollectionLocationSuperior(" + CollectionID.ToString() + ") WHERE CollectionID = " + CollectionID.ToString() + " and LocationPlan <> ''";
+                        //LocationPlan = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
                     }
 
                     MediumType = DiversityWorkbench.Forms.FormFunctions.MediaType(LocationPlan);
@@ -1247,12 +1257,54 @@ namespace DiversityCollection.Forms
                     }
                     else
                     {
-                        Sql = "SELECT P.[LocationGeometry].ToString(), * FROM [dbo].[Collection] C " +
+                        Sql = "SELECT P.[LocationGeometry].ToString() FROM [dbo].[Collection] C " +
                             "INNER JOIN dbo.CollectionLocationSuperior(" + CollectionID.ToString() + ") P ON case when C.LocationParentID is null then C.CollectionParentID else C.LocationParentID end  = P.CollectionID AND C.CollectionID = " + CollectionID.ToString();
+                        if (LocationPlan.Length > 0)
+                            Sql += " AND P.LocationPlan = '" + LocationPlan + "'";
                         //Sql = "SELECT P.[LocationGeometry].ToString() FROM [dbo].[Collection] C INNER JOIN dbo.CollectionHierarchySuperior(" + CollectionID.ToString() + ") P ON C.CollectionParentID = P.CollectionID AND C.CollectionID = " + CollectionID.ToString();
                     }
                     ParentGeometry = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(Sql, true);
-                    this._UserControlGeometry.SetRectangleAndPolygonGeometry(Geometry, ParentGeometry);
+
+                    // Geometry of children if no geometry available for current collection
+                    System.Collections.Generic.Dictionary<string, string> ChildGeometries = new System.Collections.Generic.Dictionary<string, string>();
+                    System.Collections.Generic.Dictionary<string, string> ChildTags = new System.Collections.Generic.Dictionary<string, string>();
+                    if (Geometry.Length == 0 && LocationPlan.Length > 0)
+                    {
+                        Sql = "SELECT 'ID_' + CAST(C.CollectionID as varchar), C.[LocationGeometry].ToString(), C.CollectionName FROM [dbo].[Collection] C " +
+                            "INNER JOIN dbo.CollectionLocationChildNodes(" + CollectionID.ToString() + ") P ON P.CollectionID = C.CollectionID AND NOT C.LocationGeometry IS NULL "; // +
+                        if (LocationPlan.Length > 0)
+                            Sql += " AND P.LocationPlan = '" + LocationPlan + "'";
+                        Sql += " AND P.Level BETWEEN -" + DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.LocationHierarchyLevel.ToString() +
+                            " AND " + DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.LocationHierarchyLevel.ToString();
+                        //"UNION " +
+                        //"SELECT 'ID_' + CAST(C.CollectionID as varchar), C.[LocationGeometry].ToString(), C.CollectionName FROM [dbo].[Collection] C " +
+                        //"INNER JOIN dbo.CollectionChildNodes(" + CollectionID.ToString() + ") P ON P.CollectionID = C.CollectionID AND NOT C.LocationGeometry IS NULL ";
+                        System.Data.DataTable dt = DiversityWorkbench.Forms.FormFunctions.DataTable(Sql);
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (System.Data.DataRow dr in dt.Rows)
+                            {
+                                if (!dr[0].Equals(System.DBNull.Value))
+                                {
+                                    string Name = dr[0].ToString();
+                                    string ChildGeometry = dr[1].ToString();
+                                    if (ChildGeometry.Length > 0 && !ChildGeometries.ContainsKey(dr[0].ToString()))
+                                    {
+                                        ChildGeometries.Add(Name, ChildGeometry);
+                                        ChildTags.Add(Name, dr[2].ToString());
+                                    }
+                                }
+                            }
+                            this._UserControlGeometry.setMinMaxZoom(0.01);
+                        }
+                        else
+                        {
+                            ChildGeometries = null;
+                            this._UserControlGeometry.setMinMaxZoom();
+                        }
+                    }
+
+                    this._UserControlGeometry.SetRectangleAndPolygonGeometry(Geometry, ParentGeometry, ChildGeometries, ChildTags);
                     this.toolStripButtonLocationPlanEdit.Enabled = Geometry.Length > 0;
                 }
             }
@@ -1260,6 +1312,26 @@ namespace DiversityCollection.Forms
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
+        }
+
+        private string GetLocationInfo(int CollectionID, string Column)
+        {
+            string LocationInfo = "";
+            try
+            {
+                string Sql = "SELECT TOP 1 " + Column + " FROM dbo.CollectionLocationSuperior(" + CollectionID.ToString() + ") WHERE CollectionID = " + CollectionID.ToString() + " and " + Column + " <> ''";
+                LocationInfo = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(Sql);
+                //if (LocationInfo.Length == 0)
+                //{
+                //    Sql = "SELECT TOP 1 " + Column + " FROM dbo.CollectionHierarchySuperior(" + CollectionID.ToString() + ") WHERE CollectionID = " + CollectionID.ToString() + " and " + Column + " <> '' ";
+                //    LocationInfo = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(Sql);
+                //}
+            }
+            catch (System.Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
+            return LocationInfo;
         }
 
         public void SetLocationScale(int CollectionID)
@@ -1270,11 +1342,11 @@ namespace DiversityCollection.Forms
                     this.initWPFcontrol();
 
                 // Scale
-                string SQL = "SELECT LocationPlanWidth FROM dbo.CollectionHierarchySuperior(" + CollectionID.ToString() + ") WHERE CollectionID = " + CollectionID.ToString();
+                string SQL = "SELECT LocationPlanWidth FROM dbo.CollectionLocationSuperior(" + CollectionID.ToString() + ") WHERE CollectionID = " + CollectionID.ToString();
                 string Scale = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL, true);
                 if (Scale.Length == 0)
                 {
-                    SQL = "SELECT LocationPlanWidth FROM dbo.CollectionHierarchySuperior(" + CollectionID.ToString() + ") WHERE CollectionID = " + CollectionID.ToString();
+                    SQL = "SELECT LocationPlanWidth FROM dbo.CollectionLocationSuperior(" + CollectionID.ToString() + ") WHERE CollectionID = " + CollectionID.ToString();
                     Scale = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL, true);
                 }
                 else { }
@@ -2399,7 +2471,7 @@ namespace DiversityCollection.Forms
         {
             DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.UseCollectionLocation = !DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.UseCollectionLocation;
             // #222
-            this.buttonTransferToLocation.Visible = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.UseCollectionLocation; 
+            this.buttonTransferToLocation.Visible = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.UseCollectionLocation;
             this.setLocationcontrols();
         }
 
@@ -2508,6 +2580,420 @@ namespace DiversityCollection.Forms
             }
         }
 
+        private void toolStripButtonLocationHierarchyNew_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Not yet implemented");
+            return;
+
+            if (this.treeViewLocationHierarchy.SelectedNode != null
+               && this.treeViewLocationHierarchy.SelectedNode.Tag != null
+               && this.treeViewLocationHierarchy.SelectedNode.Tag.GetType() == typeof(LocationNode))
+            {
+                LocationNode locationNode = (LocationNode)this.treeViewLocationHierarchy.SelectedNode.Tag;
+                int ParentID = locationNode.ID;
+                string DisplayText = "";
+                int? ID = this._Collection.CreateNewItem(ref DisplayText, ParentID, null);
+                if (ID != null)
+                    this.buildHierarchies();
+            }
+            else { System.Windows.Forms.MessageBox.Show("Please select a node in the tree"); } // zu #205
+        }
+
+        //public int? CreateNewItem(ref string DisplayText, int? CollectionParentID, int? LocationParentID, System.Data.DataRow Rori)
+        //{
+        //    bool CreateCopy = false;
+        //    if (Rori != null) CreateCopy = true;
+        //    int? NewID = null;
+        //    DisplayText = "New item";
+        //    string Table = "Collection";
+        //    string ColumnParentID = "";
+        //    string ColumnID = "CollectionID";
+        //    string SQL = "";
+        //    string Header = "";
+        //    string Original = "";
+        //    string MainTable = "Collection";
+        //    if (!MainTable.StartsWith("["))
+        //        MainTable = "[" + MainTable + "]";
+        //    try
+        //    {
+        //        if (this._SetID)
+        //        {
+        //            SQL = "SELECT MAX(" + ColumnID + ") + 1 FROM [" + this._MainTable + "]";
+        //            int NextID;
+        //            if (!int.TryParse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL), out NextID))
+        //                NextID = 1;
+        //            string Message = "The next free " + ColumnID + " is " + NextID + ". You may change it if necessary";
+        //            while (NewID == null)
+        //            {
+        //                DiversityWorkbench.Forms.FormGetInteger fI = new DiversityWorkbench.Forms.FormGetInteger(NextID, "New " + ColumnID, Message);
+        //                fI.ShowDialog();
+        //                if (fI.DialogResult == DialogResult.OK && fI.Integer != null)
+        //                {
+        //                    SQL = "SELECT COUNT(*) FROM [" + this._MainTable + "] WHERE " + ColumnID + " = " + ((int)fI.Integer).ToString();
+        //                    int NumberOfData = int.Parse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL));
+        //                    if (NumberOfData > 0)
+        //                    {
+        //                        Message = "The value " + ((int)fI.Integer).ToString() + " for " + ColumnID + " is not free. Please change it. The next free " + ColumnID + " is " + NextID + ". You may change it if necessary";
+        //                    }
+        //                    else
+        //                        NewID = (int)fI.Integer;
+        //                }
+        //                else if (fI.DialogResult == DialogResult.Cancel)
+        //                    return null;
+        //            }
+        //        }
+        //        // getting the column names
+        //        ColumnParentID = this.ColumnParentID;
+        //        ColumnID = this.ColumnID;
+        //        string ColumnDisplayText = this.ColumnDisplayText;
+        //        // building the sql statement
+        //        string SqlInsert = "INSERT INTO [" + Table + "] (";
+        //        string SqlValues = "VALUES (";
+        //        System.Collections.Generic.Dictionary<string, string> Dict = this.AdditionalNotNullColumnsForNewItem(ParentID);
+        //        if (Dict.Count == 0 && this._MainTable == "CollectionTask")
+        //            return null;
+        //        if (Table == "CollectionTask")
+        //        {
+        //            DisplayText = "";
+        //        }
+        //        else if (Table == "Task" && !CreateCopy)
+        //        {
+        //            string Type = "";
+        //            //if (CreateCopy)
+        //            //{
+        //            //    Type = R["Type"].ToString();
+        //            //}
+        //            //else
+        //            //{
+        //            //}
+        //            Header = "Please select the type for the new " + this._MainTable;
+        //            DiversityWorkbench.Forms.FormGetStringFromList f = new DiversityWorkbench.Forms.FormGetStringFromList(DiversityCollection.LookupTable.DtTaskTypes, Header, true, true);
+        //            f.ShowDialog();
+        //            if (f.DialogResult == DialogResult.OK)
+        //            {
+        //                Type = f.String;
+        //                SqlInsert += "Type, ";
+        //                SqlValues += "'" + Type + "', ";
+        //                SQL = "SELECT DISTINCT DisplayText FROM Task WHERE(TaskParentID IS NULL) AND(Type = N'" + f.String + "')";
+        //                System.Data.DataTable dtTask = new System.Data.DataTable();
+        //                DiversityWorkbench.Forms.FormFunctions.SqlFillTable(SQL, ref dtTask);
+        //                if (dtTask.Rows.Count == 1)
+        //                    DisplayText = dtTask.Rows[0][0].ToString();
+        //                else if (dtTask.Rows.Count == 0)
+        //                {
+        //                    Header = "Please enter a name for the new " + this._MainTable;
+        //                    Original = "";
+        //                    if (CreateCopy)
+        //                    {
+        //                        Header = "Please enter a name for the copy of " + R[ColumnDisplayText].ToString();
+        //                        Original = "Copy of " + R[ColumnDisplayText].ToString();
+        //                    }
+        //                    DiversityWorkbench.Forms.FormGetString fDisplay = new DiversityWorkbench.Forms.FormGetString("New " + this._MainTable, Header, Type);
+        //                    fDisplay.ShowDialog();
+        //                    if (fDisplay.DialogResult == DialogResult.OK)
+        //                        DisplayText = fDisplay.String;
+        //                    else
+        //                        return null;
+        //                }
+        //                else
+        //                {
+        //                    Header = "Please enter a name for the new " + this._MainTable;
+        //                    f = new DiversityWorkbench.Forms.FormGetStringFromList(dtTask, Header, false);
+        //                    f.ShowDialog();
+        //                    if (f.DialogResult == DialogResult.OK && f.String.Length > 0)
+        //                    {
+        //                        DisplayText = f.String;
+        //                    }
+        //                    else
+        //                        return null;
+        //                }
+        //            }
+        //            else
+        //                return null;
+        //            if (DiversityCollection.Task.DefaultColumnsForNewTasks(Type).Count > 0)
+        //            {
+        //                foreach (System.Collections.Generic.KeyValuePair<string, string> KV in DiversityCollection.Task.DefaultColumnsForNewTasks(Type))
+        //                {
+        //                    if (SqlInsert.IndexOf(", " + KV.Key) == -1)
+        //                    {
+        //                        SqlInsert += KV.Key + ", ";
+        //                        if (KV.Key.ToLower() == "displaytext" && DisplayText.Length > 0)
+        //                            SqlValues += "'" + DisplayText + "', ";
+        //                        else
+        //                            SqlValues += "'" + KV.Value + "', ";
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        else if (Dict.ContainsKey(ColumnDisplayText))
+        //        {
+        //            DisplayText = Dict[ColumnDisplayText];
+        //        }
+        //        else
+        //        {
+        //            Header = "Please enter a name for the new " + this._MainTable;
+        //            Original = "";
+        //            if (CreateCopy)
+        //            {
+        //                Header = "Please enter a name for the copy of " + R[ColumnDisplayText].ToString();
+        //                Original = "Copy of " + R[ColumnDisplayText].ToString();
+        //            }
+        //            DiversityWorkbench.Forms.FormGetString f = new DiversityWorkbench.Forms.FormGetString("New " + this._MainTable, Header, Original);
+        //            f.ShowDialog();
+        //            if (f.DialogResult == DialogResult.OK)
+        //                DisplayText = f.String;
+        //            else
+        //                return null;
+        //        }
+        //        if (this._SetID)
+        //        {
+        //            SqlInsert += ColumnID + ", ";
+        //            SqlValues += ((int)NewID).ToString() + ", ";
+        //        }
+        //        if (Dict.Count > 0)
+        //        {
+        //            foreach (System.Collections.Generic.KeyValuePair<string, string> KV in Dict)
+        //            {
+        //                if (KV.Key == ColumnDisplayText) continue;
+        //                SqlInsert += KV.Key + ", ";
+        //                SqlValues += KV.Value + ", ";
+        //            }
+        //        }
+        //        if (ParentID != null)
+        //        {
+        //            SqlInsert += ColumnParentID + ", ";
+        //            SqlValues += ParentID.ToString() + ", ";
+        //            if (this.GetType() == typeof(Collection))
+        //            {
+        //                string Type = "";
+        //                string SqlType = "SELECT Type FROM Collection WHERE CollectionID = " + ParentID.ToString();
+        //                using (Microsoft.Data.SqlClient.SqlConnection con =
+        //                       new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString))
+        //                {
+        //                    con.Open();
+        //                    Type = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlType, con);
+        //                    con.Close();
+        //                }
+
+        //                Collection collection = (Collection)this;
+        //                Type = collection.ChildType(Type);
+        //                if (Type.Length > 0)
+        //                {
+        //                    SqlInsert += "[Type], ";
+        //                    SqlValues += "'" + Type + "', ";
+        //                }
+        //            }
+        //        }
+
+        //        if (R == null)
+        //        {
+        //            if (SqlInsert.ToLower().IndexOf(" " + ColumnDisplayText.ToLower() + ",") == -1)
+        //            {
+        //                SqlInsert += ColumnDisplayText;
+        //                SqlValues += "'" + DisplayText.Replace("'", "''") + "'";
+        //            }
+        //            else if (SqlInsert.Trim().EndsWith(","))
+        //            {
+        //                SqlInsert = SqlInsert.Trim();
+        //                SqlInsert = SqlInsert.TrimEnd(new char[] { ',' });
+        //                SqlValues = SqlValues.Trim();
+        //                SqlValues = SqlValues.TrimEnd(new char[] { ',' });
+        //            }
+
+        //            SqlInsert += ")";
+        //            SqlValues += ")";
+        //        }
+        //        else
+        //        {
+        //            foreach (System.Data.DataColumn C in R.Table.Columns)
+        //            {
+        //                if (C.ColumnName != ColumnID &&
+        //                    C.ColumnName != ColumnParentID &&
+        //                    !C.ColumnName.StartsWith("Log") &&
+        //                    !R[C.ColumnName].Equals(System.DBNull.Value) &&
+        //                    !Dict.ContainsKey(C.ColumnName))
+        //                {
+        //                    bool OK = true;
+        //                    SqlInsert += C.ColumnName + ", ";
+        //                    if (C.DataType == typeof(System.DateTime))
+        //                    {
+        //                        System.DateTime D;
+        //                        OK = System.DateTime.TryParse(R[C.ColumnName].ToString(), out D);
+        //                        if (OK)
+        //                            SqlValues += "CONVERT(DateTime, '" + D.Year.ToString() + "-" + D.Month.ToString() + "-" + D.Day.ToString() + " " +
+        //                                         D.Hour.ToString() + ":" + D.Minute.ToString() + ":" + D.Second.ToString() + "." + D.Millisecond.ToString() + "', 121)";
+        //                        else
+        //                            SqlValues += "NULL";
+        //                    }
+        //                    else if (C.DataType == typeof(System.Boolean))
+        //                    {
+        //                        System.Boolean B;
+        //                        OK = System.Boolean.TryParse(R[C.ColumnName].ToString(), out B);
+        //                        if (OK)
+        //                        {
+        //                            if (B)
+        //                                SqlValues += "1";
+        //                            else SqlValues += "0";
+        //                        }
+        //                        else SqlValues += "NULL";
+        //                    }
+        //                    else
+        //                    {
+        //                        if (C.DataType == typeof(System.String)
+        //                            || C.DataType == typeof(System.DateTime)) SqlValues += "'";
+        //                        if (C.ColumnName == ColumnDisplayText)
+        //                        {
+        //                            SqlValues += DisplayText.Replace("'", "''");
+        //                        }
+        //                        else
+        //                            SqlValues += R[C.ColumnName].ToString();
+        //                        if (C.DataType == typeof(System.String)
+        //                            || C.DataType == typeof(System.DateTime)) SqlValues += "'";
+        //                    }
+        //                    SqlValues += ", ";
+        //                }
+        //            }
+        //            SqlValues = SqlValues.Substring(0, SqlValues.Length - 2) + ") ";
+        //            SqlInsert = SqlInsert.Substring(0, SqlInsert.Length - 2) + ") ";
+        //        }
+        //        if (this._SetID)
+        //        {
+        //            this._ID = (int)NewID;
+        //            SQL = "SET IDENTITY_INSERT [" + this._MainTable + "] ON; " + SqlInsert + SqlValues + "; SET IDENTITY_INSERT [" + this._MainTable + "] OFF;";
+        //        }
+        //        else
+        //        {
+        //            SQL = SqlInsert + SqlValues + "; SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY];";
+        //        }
+
+        //        // writing the data
+        //        using (SqlConnection c = new SqlConnection(DiversityWorkbench.Settings.ConnectionString))
+        //        {
+        //            c.Open();
+        //            using (SqlTransaction transaction = c.BeginTransaction())
+        //            {
+        //                try
+        //                {
+        //                    using (SqlCommand cmd = new SqlCommand(SQL, c, transaction))
+        //                    {
+        //                        if (!this._SetID)
+        //                        {
+        //                            int i;
+        //                            object scalarResult = cmd.ExecuteScalar();
+        //                            if (scalarResult != null && int.TryParse(scalarResult.ToString(), out i))
+        //                            {
+        //                                this._ID = i;
+        //                            }
+        //                            else
+        //                            {
+        //                                string maxQuery = "SELECT MAX(" + this.ColumnID + ") FROM " +
+        //                                                  this._MainTable;
+        //                                string result =
+        //                                    DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(maxQuery);
+        //                                if (int.TryParse(result, out i))
+        //                                {
+        //                                    this._ID = i;
+        //                                }
+        //                            }
+
+        //                            this.insertDependentData(c, transaction, this._ID, ParentID);
+
+        //                            if (this._MainTable == "CollectionTask")
+        //                            {
+        //                                // if the task has depending tasks include these in the insert
+        //                                if (Dict.ContainsKey("TaskID"))
+        //                                {
+        //                                    // check for depending tasks
+        //                                    string SqlDepend = "SELECT TaskID FROM Task WHERE TaskParentID = " +
+        //                                                       Dict["TaskID"];
+        //                                    System.Data.DataTable dtDepend = new System.Data.DataTable();
+        //                                    DiversityWorkbench.Forms.FormFunctions.SqlFillTable(SqlDepend,
+        //                                        ref dtDepend);
+        //                                    foreach (System.Data.DataRow rDepend in dtDepend.Rows)
+        //                                    {
+        //                                        cmd.CommandText =
+        //                                            "INSERT INTO CollectionTask (TaskID, CollectionTaskParentID) VALUES(" +
+        //                                            rDepend[0].ToString() + ", " + this._ID.ToString() + ")";
+
+        //                                        cmd.ExecuteNonQuery();
+        //                                    }
+        //                                }
+        //                            }
+        //                        }
+        //                        else
+        //                        {
+        //                            bool OK = true;
+        //                            string ExMess = "";
+        //                            try
+        //                            {
+        //                                cmd.ExecuteNonQuery();
+        //                            }
+        //                            catch (System.Exception ex)
+        //                            {
+        //                                OK = false;
+        //                                ExMess = ex.Message;
+        //                            }
+
+        //                            if (!OK && this._SetID)
+        //                            {
+        //                                System.Collections.Generic.Dictionary<DiversityWorkbench.Forms.FormFunctions.Permission, bool> Permissions = DiversityWorkbench.Forms.FormFunctions.TablePermissions(this.MainTable);
+        //                                if (Permissions.ContainsKey(DiversityWorkbench.Forms.FormFunctions.Permission.INSERT) &&
+        //                                                    Permissions[DiversityWorkbench.Forms.FormFunctions.Permission.INSERT])
+        //                                {
+        //                                    System.Windows.Forms.MessageBox.Show(
+        //                                        "You do not have the permission to set the ID. Please try without setting the ID",
+        //                                        "Missing permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                                    transaction.Rollback();
+        //                                    return null;
+        //                                }
+        //                            }
+        //                        }
+        //                    }
+
+        //                    // Commit the transaction if all operations succeed
+        //                    transaction.Commit();
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    // Roll back the transaction if any exception occurs
+        //                    transaction.Rollback();
+        //                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+        //                    DiversityWorkbench.ExceptionHandling.ShowErrorMessage(
+        //                        "The dataset could not be created. An error occurred: \r\n" + ex.Message);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+        //        DiversityWorkbench.ExceptionHandling.ShowErrorMessage(
+        //            "The dataset could not be created. An error occurred: \r\n" + ex.Message);
+        //    }
+        //    return (int)this._ID;
+        //}
+
+
+        private void toolStripButtonLocationHierarchyCopy_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Not yet implemented");
+        }
+
+        private void toolStripButtonLocationHierarchyDelete_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Not yet implemented");
+        }
+
+        private void toolStripButtonLocationHierarchyTasks_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Not yet implemented");
+        }
+
+        private void toolStripButtonLocationSpecimenList_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Not yet implemented");
+        }
+
         // 205
         //private void setLocationParentSettingControls()
         //{
@@ -2533,8 +3019,8 @@ namespace DiversityCollection.Forms
         private void treeViewLocationHierarchy_AfterSelect(object sender, TreeViewEventArgs e)
         {
             LocationNode locationNode = (LocationNode)this.treeViewLocationHierarchy.SelectedNode.Tag;
-            this.toolStripButtonLocationHierarchySearch.Visible = 
-                this.treeViewLocationHierarchy.SelectedNode != null 
+            this.toolStripButtonLocationHierarchySearch.Visible =
+                this.treeViewLocationHierarchy.SelectedNode != null
                 && this.treeViewLocationHierarchy.SelectedNode.Tag != null
                 && locationNode.ID != this._Collection.ID
                 && locationNode.HasAccess;
@@ -2542,6 +3028,12 @@ namespace DiversityCollection.Forms
             // #221
             this.toolStripButtonLocationHierarchySetParent.Enabled = locationNode.HasAccess;
             this.toolStripButtonLocationHierarchyRemoveParent.Enabled = locationNode.HasAccess;
+
+            // #304
+            this.toolStripButtonLocationHierarchyNew.Enabled = locationNode.HasAccess;
+            this.toolStripButtonLocationHierarchyCopy.Enabled = locationNode.HasAccess;
+            this.toolStripButtonLocationHierarchyDelete.Enabled = locationNode.HasAccess;
+
             //this.setPlanAccessibility(ManagerHasAccessToCollection((int)this.treeViewLocationHierarchy.SelectedNode.Tag));
         }
 

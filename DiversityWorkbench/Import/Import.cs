@@ -354,6 +354,26 @@ namespace DiversityWorkbench.Import
             //set { Import._Encodings = value; }
         }
 
+        public static string EncondingTranslation(string Encoding)
+        {
+            switch (Encoding.ToLower())
+            {
+                case "us-ascii":
+                    return "ASCII";
+                case "utf-8":
+                    return "UTF8";
+                case "utf-32":
+                    return "UTF32";
+                case "utf-16":
+                    return "Unicode";
+                case "ANSI":
+                case "windows-1252":
+                    return "windows-1252";
+                default:
+                    return "UTF8";
+            }
+        }
+
         private static System.Text.Encoding _Encoding;
         /// <summary>
         /// The encoding of the imported file
@@ -2288,6 +2308,8 @@ namespace DiversityWorkbench.Import
                     W.WriteStartElement("Table");
                     foreach (DiversityWorkbench.Import.DataColumn DC in KV.Value)
                     {
+                        if (!DC.IsSelected) // #310
+                            continue;
                         W.WriteStartElement("Column");
                         W.WriteAttributeString("Table", DC.DataTable.TableName);
                         W.WriteAttributeString("TableAlias", DC.DataTable.TableAlias);
@@ -2575,7 +2597,10 @@ namespace DiversityWorkbench.Import
                         {
                             case "Encoding":
                                 R.Read();
-                                DiversityWorkbench.Import.Import.Encoding = DiversityWorkbench.Import.Import.Encodings[R.Value];
+                                if (DiversityWorkbench.Import.Import.Encodings.ContainsKey(R.Value))
+                                    DiversityWorkbench.Import.Import.Encoding = DiversityWorkbench.Import.Import.Encodings[R.Value];
+                                else if (DiversityWorkbench.Import.Import.Encodings.ContainsKey(DiversityWorkbench.Import.Import.EncondingTranslation(R.Value)))
+                                    DiversityWorkbench.Import.Import.Encoding = DiversityWorkbench.Import.Import.Encodings[DiversityWorkbench.Import.Import.EncondingTranslation(R.Value)];
                                 break;
                             case "StartLine":
                                 R.Read();

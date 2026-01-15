@@ -25,7 +25,7 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
 	<FileVersion>$(Version)</FileVersion>
-	<Version>4.6.2</Version>
+	<Version>4.6.3</Version>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
@@ -232,6 +232,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DataSetTransactionComment.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormCollectionSpecimenSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormCollectionSpecimenSettings.settings</DependentUpon>
     </Compile>
     <Compile Update="Forms\FormMaintenanceText.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -466,6 +471,10 @@
     <Compile Update="UserControls\UserControl_Transaction.cs" />
     <Compile Update="UserControls\UserControl_Unit.cs" />
     <Compile Update="UserControls\UserControl__Data.cs" />
+    <None Update="Forms\FormCollectionSpecimenSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>FormCollectionSpecimenSettings.Designer.cs</LastGenOutput>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -717,21 +726,21 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="HtmlTextWriter" Version="3.0.1" />
+    <PackageReference Include="HtmlTextWriter" Version="3.0.2" />
     <PackageReference Include="log4net">
-      <Version>3.1.0</Version>
+      <Version>3.2.0</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3351.48" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3595.46" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.4948" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.6901" />
     <PackageReference Include="Npgsql">
-      <Version>9.0.3</Version>
+      <Version>9.0.4</Version>
     </PackageReference>
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="2.0.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="2.1.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="CacheDatabase\FormCacheDB.cs" />

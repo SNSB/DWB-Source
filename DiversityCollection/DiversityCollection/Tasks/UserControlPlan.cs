@@ -133,23 +133,23 @@ namespace DiversityCollection.Tasks
         {
             try
             {
-                string SQL = "SELECT LocationPlan FROM dbo.CollectionHierarchySuperior(" + _CollectionID.ToString() + ") WHERE CollectionID = " + _CollectionID.ToString();
+                string SQL = "SELECT LocationPlan FROM dbo.CollectionLocationSuperior(" + _CollectionID.ToString() + ") WHERE CollectionID = " + _CollectionID.ToString();
                 string FloorPlan = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
                 if (FloorPlan.Length > 0)
                 {
                     this._UserControlGeometry.SetImage(FloorPlan);
-                    SQL = "SELECT LocationGeometry.ToString() FROM dbo.CollectionHierarchySuperior(" + _CollectionID.ToString() + ") WHERE CollectionID = " + _CollectionID.ToString();
+                    SQL = "SELECT LocationGeometry.ToString() FROM dbo.CollectionLocationSuperior(" + _CollectionID.ToString() + ") WHERE CollectionID = " + _CollectionID.ToString();
                     string Geometry = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
                     string ParentGeometry = "";
                     if (Geometry.Length == 0)
                     {
-                        SQL = "SELECT [LocationGeometry].ToString() FROM dbo.CollectionHierarchySuperior(" + _CollectionID.ToString() + ") WHERE CollectionID = " + _CollectionID.ToString();
+                        SQL = "SELECT [LocationGeometry].ToString() FROM dbo.CollectionLocationSuperior(" + _CollectionID.ToString() + ") WHERE CollectionID = " + _CollectionID.ToString();
                     }
                     else
-                        SQL = "SELECT P.[LocationGeometry].ToString() FROM [dbo].[Collection] C INNER JOIN dbo.CollectionHierarchySuperior(" + _CollectionID.ToString() + ") P ON C.CollectionParentID = P.CollectionID AND C.CollectionID = " + _CollectionID.ToString();
+                        SQL = "SELECT P.[LocationGeometry].ToString() FROM [dbo].[Collection] C INNER JOIN dbo.CollectionLocationSuperior(" + _CollectionID.ToString() + ") P ON C.CollectionParentID = P.CollectionID AND C.CollectionID = " + _CollectionID.ToString();
                     ParentGeometry = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL, true);
                     this._UserControlGeometry.SetRectangleAndPolygonGeometry(Geometry, ParentGeometry);
-                    SQL = "SELECT LocationPlanWidth FROM dbo.CollectionHierarchySuperior(" + _CollectionID.ToString() + ") WHERE CollectionID = " + _CollectionID.ToString();
+                    SQL = "SELECT LocationPlanWidth FROM dbo.CollectionLocationSuperior(" + _CollectionID.ToString() + ") WHERE CollectionID = " + _CollectionID.ToString();
                     string Scale = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
                     this._UserControlGeometry.SetScaleLine(Scale);
                 }

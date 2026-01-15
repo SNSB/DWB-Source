@@ -78,7 +78,8 @@ namespace DiversityWorkbench.Import
 
                 bool IsLocalChildParentColumn;
                 if (this._DataColumn.ForeignRelationTable == this._DataColumn.DataTable.TableName &&
-                    !IsAttachmentControl)
+                    !IsAttachmentControl &&
+                    !this._DataColumn.DerivedFromInternalParentRelation) // #302
                     IsLocalChildParentColumn = true;
                 else IsLocalChildParentColumn = false;
 
@@ -197,7 +198,7 @@ namespace DiversityWorkbench.Import
                 this.checkBoxColumn.Checked = this._DataColumn.IsSelected;
 
                 // comboBoxInternalRelation
-                if (IsLocalParentAttachmentColumn || IsLocalChildParentColumn || this._DataColumn.SelectParallelForeignRelationTableAlias)
+                if ((IsLocalParentAttachmentColumn || IsLocalChildParentColumn || this._DataColumn.SelectParallelForeignRelationTableAlias) && !this._DataColumn.DerivedFromInternalParentRelation) // #302
                 {
                     this.comboBoxInternalRelation.Visible = true;
                     this.comboBoxInternalRelation.Enabled = this._DataColumn.IsSelected;
@@ -239,7 +240,7 @@ namespace DiversityWorkbench.Import
                 else this.radioButtonFromFile.Checked = false;
 
                 // buttonTranslation
-                if (IsLocalChildParentColumn || this._DataColumn.SelectParallelForeignRelationTableAlias)
+                if ((IsLocalChildParentColumn || this._DataColumn.SelectParallelForeignRelationTableAlias) && !this._DataColumn.DerivedFromInternalParentRelation) // #302
                 {
                     this.buttonTranslation.Visible = false;
                 }
@@ -266,7 +267,7 @@ namespace DiversityWorkbench.Import
                 }
 
                 // pictureBoxCopyPrevious
-                if (IsLocalChildParentColumn || this._DataColumn.SelectParallelForeignRelationTableAlias)
+                if ((IsLocalChildParentColumn || this._DataColumn.SelectParallelForeignRelationTableAlias) && !this._DataColumn.DerivedFromInternalParentRelation) // #302
                 {
                     this.pictureBoxCopyPrevious.Visible = false;
                 }
@@ -299,7 +300,7 @@ namespace DiversityWorkbench.Import
 
                 // Prefix & Postfix
                 if (this._DataColumn.CanEditColumnContent
-                    && !(IsLocalParentAttachmentColumn || IsLocalChildParentColumn)
+                    && !(IsLocalParentAttachmentColumn || (IsLocalChildParentColumn && !this._DataColumn.DerivedFromInternalParentRelation)) // #302
                     && !this._DataColumn.SelectParallelForeignRelationTableAlias)
                 {
                     this.labelPrefix.Visible = true;
@@ -372,17 +373,17 @@ namespace DiversityWorkbench.Import
                     this.buttonAdd.Visible = true;
                 }
                 else if (IsAttachmentControl &&
-                    DiversityWorkbench.Import.Import.AttachmentColumn.IsMultiColumn &&
+                    (DiversityWorkbench.Import.Import.AttachmentColumn !=null && DiversityWorkbench.Import.Import.AttachmentColumn.IsMultiColumn) &&
                     !IsLocalChildParentColumn)
                     this.buttonAdd.Visible = true;
                 else
                     this.buttonAdd.Visible = false;
 
-                if (this._DataColumn.TypeOfSource == DataColumn.SourceType.File &&
+                if ((this._DataColumn.TypeOfSource == DataColumn.SourceType.File || this._DataColumn.DerivedFromInternalParentRelation) &&
                     this._DataColumn.IsSelected)
                     this.buttonAdd.Enabled = true;
                 else if (IsAttachmentControl &&
-                        DiversityWorkbench.Import.Import.AttachmentColumn.IsMultiColumn)
+                        (DiversityWorkbench.Import.Import.AttachmentColumn != null && DiversityWorkbench.Import.Import.AttachmentColumn.IsMultiColumn))
                     this.buttonAdd.Enabled = true;
                 else
                     this.buttonAdd.Enabled = false;

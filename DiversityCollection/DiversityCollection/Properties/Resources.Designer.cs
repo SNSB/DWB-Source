@@ -5628,11 +5628,46 @@ namespace DiversityCollection.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource.
+        ///   Sucht eine lokalisierte Zeichenfolge, die declare @CurrentVersion varchar(10)
+        ///declare @ScriptVersion varchar(10)
+        ///set @CurrentVersion = (SELECT [dbo].[Version]())
+        ///set @CurrentVersion = (SELECT REPLACE(@CurrentVersion, &apos;/&apos;, &apos;.&apos;))
+        ///set @ScriptVersion = &apos;02.06.55&apos;
+        ///IF (@CurrentVersion &lt;&gt; @ScriptVersion)
+        ///BEGIN
+        ///declare @Message nvarchar (199)
+        ///set @Message = &apos;WRONG VERION. Script is scheduled as update for version &apos; + @ScriptVersion + &apos;. Current version = &apos; + @CurrentVersion
+        ///RAISERROR (@Message, 18, 1) 
+        ///END
+        ///GO
+        ///
+        ///--############################### [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         internal static string DiversityCollectionUpdate_020655_to_020656 {
             get {
                 return ResourceManager.GetString("DiversityCollectionUpdate_020655_to_020656", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die declare @CurrentVersion varchar(10)
+        ///declare @ScriptVersion varchar(10)
+        ///set @CurrentVersion = (SELECT [dbo].[Version]())
+        ///set @CurrentVersion = (SELECT REPLACE(@CurrentVersion, &apos;/&apos;, &apos;.&apos;))
+        ///set @ScriptVersion = &apos;02.06.56&apos;
+        ///IF (@CurrentVersion &lt;&gt; @ScriptVersion)
+        ///BEGIN
+        ///declare @Message nvarchar (199)
+        ///set @Message = &apos;WRONG VERION. Script is scheduled as update for version &apos; + @ScriptVersion + &apos;. Current version = &apos; + @CurrentVersion
+        ///RAISERROR (@Message, 18, 1) 
+        ///END
+        ///GO
+        ///
+        ///--############################### [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionUpdate_020656_to_020657 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionUpdate_020656_to_020657", resourceCulture);
             }
         }
         

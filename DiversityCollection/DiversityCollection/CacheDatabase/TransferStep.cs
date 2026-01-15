@@ -1108,7 +1108,7 @@ namespace DiversityCollection.CacheDatabase
             //    "CREATE TABLE files(filename text); " +
             //    "COPY files FROM PROGRAM 'find " + DiversityCollection.CacheDatabase.CacheDB.DatabaseName + "/" + this.Schema + " -maxdepth 1 -type f -printf \"% f\\n\"'; " +
             //    "SELECT filename FROM files WHERE filename = '" + this.Target + ".csv' ; ";
-            bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false);
+            bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message + ": " + SQL;
@@ -1132,7 +1132,7 @@ namespace DiversityCollection.CacheDatabase
             SQL = "CREATE TABLE IF NOT EXISTS \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" " +
                 "(LIKE \"" + this.SchemaPostgres + "\".\"" + this.Target + "\");";// INCLUDING INDEXES);  ";
             string SqlForLog = SQL;
-            bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+            bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message;
@@ -1145,7 +1145,7 @@ namespace DiversityCollection.CacheDatabase
             //else
             //    SQL += "_" + this.SchemaPostgres + "\"; ";
             SqlForLog += "\r\n\r\n" + SQL;
-            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message;
@@ -1154,7 +1154,7 @@ namespace DiversityCollection.CacheDatabase
             // clear table
             SQL = "DELETE FROM \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\"";
             SqlForLog += "\r\n\r\n" + SQL;
-            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message + ": " + SQL;
@@ -1167,13 +1167,13 @@ namespace DiversityCollection.CacheDatabase
         private bool PostgresTransferViaFile_BashImport(ref string Error, ref string SQL)
         {
             string Message = "";
-            SQL = "COPY \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" FROM PROGRAM " +
+             SQL = "COPY \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" FROM PROGRAM " +
                 "'bash " + CacheDatabase.CacheDB.BulkTransferBashFile + " " +
                 CacheDatabase.CacheDB.BulkTransferMountPoint + " " +
                 "conv " +
                 DiversityCollection.CacheDatabase.CacheDB.DatabaseName + "/" + this.Schema + "/" + this.Target + ".csv' " +
                 "with delimiter E'\t' csv; ";
-            bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+            bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB); // #314
             if (!OK)
             {
                 Error += Message + ": " + SQL;
@@ -1227,11 +1227,11 @@ namespace DiversityCollection.CacheDatabase
         {
             string Message = "";
             SQL = "DROP TABLE IF EXISTS  \"" + this.SchemaPostgres + "\".\"" + this.Target + "_Backup\"; ";
-            DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+            DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
 
             SQL = "CREATE TABLE IF NOT EXISTS  \"" + this.SchemaPostgres + "\".\"" + this.Target + "_Backup\" " +
                 " AS SELECT * FROM \"" + this.SchemaPostgres + "\".\"" + this.Target + "\"";
-            bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+            bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message + ": " + SQL;
@@ -1253,7 +1253,7 @@ namespace DiversityCollection.CacheDatabase
                 SQL = "BEGIN; " +
                 "DELETE FROM \"" + this.SchemaPostgres + "\".\"" + this.Target + "\"; " +
                 "END; ";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, false, true);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, false, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             }
             else
                 OK = CanTruncate;
@@ -1295,7 +1295,7 @@ namespace DiversityCollection.CacheDatabase
             if (PK.Length > 0)
             {
                 SQL = "ALTER TABLE \"" + this.SchemaPostgres + "\".\"" + this.Target + "\" DROP CONSTRAINT IF EXISTS \"" + PK + "\"";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             }
             else
                 OK = true;
@@ -1371,7 +1371,7 @@ namespace DiversityCollection.CacheDatabase
                 SQL = "INSERT INTO \"" + this.SchemaPostgres + "\".\"" + this.Target + "\" " +
                         "SELECT * FROM \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\"; ";
             }
-            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message + ": " + SQL;
@@ -1443,7 +1443,7 @@ namespace DiversityCollection.CacheDatabase
             bool OK = false;
             SQL = "INSERT INTO \"" + this.SchemaPostgres + "\".\"" + this.Target + "\" " +
                     "SELECT * FROM \"" + this.SchemaPostgres + "\".\"" + this.Target + "_Backup\"; ";
-            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message + ": " + SQL;
@@ -1464,7 +1464,7 @@ namespace DiversityCollection.CacheDatabase
             }
             SQL = "ALTER TABLE \"" + this.SchemaPostgres + "\".\"" + this.Target + "\" " +
                 "ADD CONSTRAINT \"" + this.Target + "_pkey\" PRIMARY KEY(" + SQL + "); ";
-            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message + ": " + SQL;
@@ -1500,7 +1500,7 @@ namespace DiversityCollection.CacheDatabase
             string Message = "";
             bool OK = false;
             SQL = "DROP TABLE IF EXISTS \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\";  ";
-            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message + ": " + SQL;
@@ -1513,7 +1513,7 @@ namespace DiversityCollection.CacheDatabase
             string Message = "";
             bool OK = false;
             SQL = "DROP TABLE IF EXISTS \"" + this.SchemaPostgres + "\".\"" + this.Target + "_Backup\";  ";
-            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message + ": " + SQL;
@@ -1809,7 +1809,7 @@ namespace DiversityCollection.CacheDatabase
                 // Include test for existence in SQL statement
                 SQL = "CREATE TABLE IF NOT EXISTS \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" " +
                     "(LIKE \"" + this.SchemaPostgres + "\".\"" + this.Target + "\" INCLUDING DEFAULTS INCLUDING INDEXES);  ";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
 
                 if (OK)
                 {
@@ -1825,7 +1825,7 @@ namespace DiversityCollection.CacheDatabase
 
                 // clear the table
                 SQL = "DELETE FROM \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\"";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
 
                 // set the ownership
                 SQL = "ALTER TABLE \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" OWNER TO \"CacheAdmin\"";//_" + this.SchemaPostgres + "\"; ";
@@ -1833,7 +1833,7 @@ namespace DiversityCollection.CacheDatabase
                 //    SQL += "\"";
                 //else
                 //    SQL += "_" + this.SchemaPostgres + "\"; ";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
                 if (!OK)
                 {
                     SQL = "select tableowner from pg_tables where tablename = '" + this.TargetTemp + "' and schemaname = '" + this.SchemaPostgres + "'";
@@ -2354,10 +2354,10 @@ namespace DiversityCollection.CacheDatabase
             bool OK = false;
             string Message = "";
             string SQL = "INSERT INTO  \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" SELECT * FROM \"" + this.SchemaPostgres + "\".\"" + ChunkTable + "\"";
-            if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
+            if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB))
             {
                 SQL = "DROP TABLE \"" + this.SchemaPostgres + "\".\"" + ChunkTable + "\"";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             }
             else
                 CacheDB.LogEvent("PostgresTransferDataFromChunkToTemp", this.TargetTemp, "TransferStep failed: " + SQL);
@@ -2377,7 +2377,7 @@ namespace DiversityCollection.CacheDatabase
                 "end if;  " +
                 "END; " +
                 "$$;";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
                 CacheDB.LogEvent("PostgresTransferDataDropChunkTable", ChunkTable, "Droping " + ChunkTable + " failed: " + SQL);
             return OK;
@@ -2399,16 +2399,16 @@ namespace DiversityCollection.CacheDatabase
                 {
                     SQL = "CREATE TABLE \"" + this.SchemaPostgres + "\".\"" + ChunkTableName + "\" " +
                         "(LIKE \"" + this.SchemaPostgres + "\".\"" + this.Target + "\" INCLUDING INDEXES);  ";
-                    OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                    OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
                 }
 
                 // clear the table
                 SQL = "DELETE FROM \"" + this.SchemaPostgres + "\".\"" + ChunkTableName + "\"";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
 
                 // set the ownership
                 SQL = "ALTER TABLE \"" + this.SchemaPostgres + "\".\"" + ChunkTableName + "\" OWNER TO \"CacheAdmin\"; "; //_" + this.SchemaPostgres + "\"; ";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             }
             catch (System.Exception ex)
             {
@@ -2799,7 +2799,7 @@ namespace DiversityCollection.CacheDatabase
                         //"GRANT SELECT ON TABLE \"" + this.SchemaPostgres + "\".\"" + this._Target + "\" TO \"CacheUser_" + this.SchemaPostgres + "\";" +
                         "DROP TABLE \"" + this.SchemaPostgres + "\".\"" + this._Target + "_OLD\"; ";
                     SQL += "COMMIT;";
-                    OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                    OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
                     if (!OK && Error.IndexOf(" owner ") > -1)
                     {
                         SQL = "BEGIN; ";
@@ -2813,7 +2813,7 @@ namespace DiversityCollection.CacheDatabase
                             "DROP TABLE \"" + this.SchemaPostgres + "\".\"" + this._Target + "_OLD\"; ";
                         SQL += "COMMIT;";
                         Error = "";
-                        OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                        OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
                     }
                     if (OK)
                         LoggingMessage += "Tables exchanged";
@@ -2832,7 +2832,7 @@ namespace DiversityCollection.CacheDatabase
                         "UPDATE \"" + this.SchemaPostgres + "\".\"" + this.Target + "\" " +
                         "SET \"LogLastTransfer\" = now(); " +
                         "COMMIT;";
-                    OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                    OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
                     if (this.LoggingIsOn)
                     {
                         if (Error.Length == 0)
@@ -3022,11 +3022,11 @@ namespace DiversityCollection.CacheDatabase
                 // Test for existence included in SQL statement
                 string SQL = "CREATE TABLE IF NOT EXISTS \"" + this.SchemaPostgres + "\".\"" + ChunkTableName + "\" " +
                     "(LIKE \"" + this.SchemaPostgres + "\".\"" + this.Target + "\" INCLUDING DEFAULTS INCLUDING INDEXES);  ";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
 
                 // Adding grants
                 SQL = "GRANT ALL ON TABLE \"" + this.SchemaPostgres + "\".\"" + ChunkTableName + "\" TO \"CacheAdmin\"; "; //_" + this.SchemaPostgres + "\";";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
 
                 // Test if the table exists - otherwise create it
                 //string SQL = "select count(*) " +
@@ -3042,7 +3042,7 @@ namespace DiversityCollection.CacheDatabase
 
                 // clear the table
                 SQL = "DELETE FROM \"" + this.SchemaPostgres + "\".\"" + ChunkTableName + "\"";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             }
             catch (System.Exception ex)
             {
@@ -3070,7 +3070,7 @@ namespace DiversityCollection.CacheDatabase
                 if (Result == "1")
                 {
                     SQL = "DROP TABLE \"" + this.SchemaPostgres + "\".\"" + ChunkTableName + "\"";
-                    OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                    OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
                 }
             }
             catch (System.Exception ex)
@@ -3095,7 +3095,7 @@ namespace DiversityCollection.CacheDatabase
                 SQL = "DELETE T FROM \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" AS T, " +
                     "\"" + this.SchemaPostgres + "\".\"" + ChunkTable + "\" AS C " +
                     "WHERE T.\"" + this.CountColumn() + "\" = C.\"" + "\"" + this.CountColumn() + "\"";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
                 if (!OK)
                 {
                     CacheDB.LogEvent("PostgresTransferDataFromChunkToTemp", this.TargetTemp, "Remove existing data failed: " + SQL);
@@ -3103,10 +3103,10 @@ namespace DiversityCollection.CacheDatabase
                 }
             }
             SQL = "INSERT INTO  \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" SELECT * FROM \"" + this.SchemaPostgres + "\".\"" + ChunkTable + "\"";
-            if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
+            if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB))
             {
                 SQL = "DROP TABLE \"" + this.SchemaPostgres + "\".\"" + ChunkTable + "\"";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             }
             else
                 CacheDB.LogEvent("PostgresTransferDataFromChunkToTemp", this.TargetTemp, "TransferStep failed: " + SQL);
@@ -3142,7 +3142,7 @@ namespace DiversityCollection.CacheDatabase
                 SQL += pk + ")";
             }
             SQL += "; COMMIT;";
-            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
 
             return OK;
         }
@@ -3225,7 +3225,7 @@ namespace DiversityCollection.CacheDatabase
                 SQL += ")";
             }
             SQL += "; COMMIT;";
-            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+            OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
 
             return OK;
         }
@@ -3257,7 +3257,7 @@ namespace DiversityCollection.CacheDatabase
                 if (this.SourceView != null && this.SourceView.Length > 0)
                     SQL += " AND T.\"SourceView\" = '" + this.SourceView + "' AND TT.\"SourceView\" = '" + this.SourceView + "' ";
                 SQL += "); COMMIT;";
-                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error);
+                OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
                 if (!OK)
                 { }
             }
@@ -3283,7 +3283,7 @@ namespace DiversityCollection.CacheDatabase
                     SQL += "()";
                 if (this.I_Transfer != null)
                     this.I_Transfer.SetTransferState(TransferState.Transfer);
-                if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
+                if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB))
                 {
                     if (this.I_Transfer != null)
                         this.I_Transfer.SetTransferState(TransferState.Successfull);

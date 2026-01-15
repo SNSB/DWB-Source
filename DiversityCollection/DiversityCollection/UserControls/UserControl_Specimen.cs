@@ -390,7 +390,7 @@ namespace DiversityCollection.UserControls
                         "WHERE CollectionSpecimenID = " + ID.ToString();
                     string Result = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
                     if (Result.Length > 0)
-                        this._iMainForm.setSpecimen();
+                        this._iMainForm.setSpecimen(int.Parse(Result)); //#316
                     else
                     {
                         SQL = "SELECT TOP (1) P.Project " +

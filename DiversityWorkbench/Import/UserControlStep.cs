@@ -294,14 +294,16 @@ namespace DiversityWorkbench.Import
                                 && DiversityWorkbench.Import.Import.Tables.ContainsKey(DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].ForeignRelationTableAlias)
                                 && !DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].SelectParallelForeignRelationTableAlias
                                 && !DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].PrepareInsertDefined
-                                && DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].DataRetrievalType == DataColumn.RetrievalType.Default)
+                                && DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].DataRetrievalType == DataColumn.RetrievalType.Default
+                                && !DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].DerivedFromInternalParentRelation)
                                 continue;
 
                             // if it is the first parallel table and a Parent column is given and the content should not be retrieved via ID
                             if (DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].ParentColumn != null
                                 && DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].ParentColumn.Length > 0
                                 && DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].ParallelPosition == 1
-                                && DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].DataRetrievalType != DataColumn.RetrievalType.IDorIDviaTextFromFile)
+                                && DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].DataRetrievalType != DataColumn.RetrievalType.IDorIDviaTextFromFile
+                                && !DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias].DataColumns[Column].DerivedFromInternalParentRelation)
                                 continue;
 
                             DiversityWorkbench.Import.UserControlDataColumn U = new UserControlDataColumn(DiversityWorkbench.Import.Import.Tables[this._Step.DataTableTemplate.TableAlias], Column, this._iWizardInterface, this.helpProvider.HelpNamespace);
