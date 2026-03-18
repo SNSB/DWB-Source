@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Threading;
 
 namespace DiversityCollection.UserControls
 {
@@ -24,6 +25,7 @@ namespace DiversityCollection.UserControls
         private readonly string GeoOriValEnd = "]";
         private string _Geography;
         private System.Windows.Forms.BindingSource _SourceEvent;
+        private CancellationTokenSource _userCts;
         
         #endregion
 
@@ -496,7 +498,7 @@ namespace DiversityCollection.UserControls
             catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
 
-        private void buttonGetCoordinatesFromGoogleMaps_Click(object sender, EventArgs e)
+        private async void buttonGetCoordinatesFromGoogleMaps_Click(object sender, EventArgs e)
         {
             try
             {
@@ -639,16 +641,12 @@ namespace DiversityCollection.UserControls
                                     }
                                 }
 
-                                /// TODO:
-                                /// geonames is not available any more
-                                /// implement alternative via OpenStreetMaps
                                 if (1 == 1)// 2) 
                                 {
+                                    _userCts = new CancellationTokenSource();
+                                    System.Collections.Generic.Dictionary<DiversityWorkbench.GeoFunctions.GeoInfo, string> GeoInfos = await DiversityWorkbench.GeoFunctions.getGeoInfosAsync(f.Latitude, f.Longitude, _userCts.Token);
 
-                                    System.Collections.Generic.Dictionary<DiversityWorkbench.GeoFunctions.GeoInfo, string> GeoInfos = DiversityWorkbench.GeoFunctions.getGeoInfos(f.Latitude, f.Longitude);
-
-                                    string geoinfosource = "test";
-                                    // Ariane set GeoInfos Source (static geoinfosoruce variable from geofunction no longer availbale)
+                                    string geoinfosource = "";
                                     if (GeoInfos.ContainsKey(DiversityWorkbench.GeoFunctions.GeoInfo.Source))
                                     {
                                         geoinfosource = GeoInfos[DiversityWorkbench.GeoFunctions.GeoInfo.Source];
@@ -725,7 +723,8 @@ namespace DiversityCollection.UserControls
                                         RAltitude.LocalisationSystemID = 4;
                                         RAltitude.Location1 = GeoInfos[DiversityWorkbench.GeoFunctions.GeoInfo.Altitude];
                                         RAltitude.AverageAltitudeCache = float.Parse(GeoInfos[DiversityWorkbench.GeoFunctions.GeoInfo.Altitude]);
-                                        RAltitude.LocationNotes = "Source: " + GeoInfos[DiversityWorkbench.GeoFunctions.GeoInfo.AltitudeSource];
+                                        if (GeoInfos.ContainsKey(DiversityWorkbench.GeoFunctions.GeoInfo.AltitudeSource))
+                                            RAltitude.LocationNotes = "Source: " + GeoInfos[DiversityWorkbench.GeoFunctions.GeoInfo.AltitudeSource];
                                         this._iMainForm.DataSetCollectionSpecimen().CollectionEventLocalisation.Rows.Add(RAltitude);
                                     }
                                     else if (GeoInfos.Count > 0
@@ -735,7 +734,8 @@ namespace DiversityCollection.UserControls
                                     {
                                         rrAlt[0]["Location1"] = GeoInfos[DiversityWorkbench.GeoFunctions.GeoInfo.Altitude];
                                         rrAlt[0]["AverageAltitudeCache"] = float.Parse(GeoInfos[DiversityWorkbench.GeoFunctions.GeoInfo.Altitude]);
-                                        rrAlt[0]["LocationNotes"] = "Source: " + GeoInfos[DiversityWorkbench.GeoFunctions.GeoInfo.AltitudeSource];
+                                        if (GeoInfos.ContainsKey(DiversityWorkbench.GeoFunctions.GeoInfo.AltitudeSource))
+                                            rrAlt[0]["LocationNotes"] = "Source: " + GeoInfos[DiversityWorkbench.GeoFunctions.GeoInfo.AltitudeSource];
                                     }
                                     // setting the countryCache
                                     if (GeoInfos.ContainsKey(DiversityWorkbench.GeoFunctions.GeoInfo.Country))

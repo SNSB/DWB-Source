@@ -1032,6 +1032,7 @@ namespace DiversityWorkbench.UserControls
                     return new UserControls.UserControlQueryConditionModule(Q, DiversityWorkbench.Settings.ConnectionString);
                 default:
                     var defaultControl = new UserControlQueryCondition(Q, DiversityWorkbench.Settings.ConnectionString);
+                    defaultControl.textBoxQueryCondition.KeyUp += this.textBoxQueryCondition_KeyUp; // #254 Start of query after Enter key
                     if (Q.DependsOnCurrentProjectID)
                     {
                         Q.iUserControlQueryCondition = defaultControl;
@@ -1302,76 +1303,79 @@ namespace DiversityWorkbench.UserControls
                 string QueryTable = "";
                 string IdentityColumn = "";
                 string DisplayColumn = "";
-                foreach (DiversityWorkbench.UserControls.QueryDisplayColumn C in this.DisplayColumns)
+                if (this.DisplayColumns != null) // #338
                 {
-                    if (C.DisplayColumn == this.SelectedDisplayColumn)
+                    foreach (DiversityWorkbench.UserControls.QueryDisplayColumn C in this.DisplayColumns)
                     {
-                        QueryTable = C.TableName;
-                        QueryView = QueryTable;
-                        IdentityColumn = C.IdentityColumn;
-                        DisplayColumn = C.DisplayColumn;
-                        break;
-                    }
-                }
-                if (QueryTable.IndexOf("_") > -1)
-                    QueryTable = QueryTable.Substring(0, QueryTable.IndexOf("_"));
-                // Toni 20201021 Actualize only currently selected entry of result list
-                // If DisplayColumn contains a SELECT command, read value from database
-                if (Dataset.Tables.Contains(QueryTable))
-                {
-                    if (Dataset.Tables.Contains(QueryTable) /*[QueryTable].Columns.Contains(DisplayColumn)*/ && Dataset.Tables[QueryTable].Columns.Contains(IdentityColumn))
-                    {
-                        // Find query result for current list entry
-                        for (int j = 0; j < dtQuery.Rows.Count; j++)
+                        if (C.DisplayColumn == this.SelectedDisplayColumn)
                         {
-                            if (this.listBoxQueryResult.SelectedValue != null && dtQuery.Rows[j]["ID"].ToString() == this.listBoxQueryResult.SelectedValue.ToString())
+                            QueryTable = C.TableName;
+                            QueryView = QueryTable;
+                            IdentityColumn = C.IdentityColumn;
+                            DisplayColumn = C.DisplayColumn;
+                            break;
+                        }
+                    }
+                    if (QueryTable.IndexOf("_") > -1)
+                        QueryTable = QueryTable.Substring(0, QueryTable.IndexOf("_"));
+                    // Toni 20201021 Actualize only currently selected entry of result list
+                    // If DisplayColumn contains a SELECT command, read value from database
+                    if (Dataset.Tables.Contains(QueryTable))
+                    {
+                        if (Dataset.Tables.Contains(QueryTable) /*[QueryTable].Columns.Contains(DisplayColumn)*/ && Dataset.Tables[QueryTable].Columns.Contains(IdentityColumn))
+                        {
+                            // Find query result for current list entry
+                            for (int j = 0; j < dtQuery.Rows.Count; j++)
                             {
-                                for (int i = 0; i < Dataset.Tables[QueryTable].Rows.Count; i++)
+                                if (this.listBoxQueryResult.SelectedValue != null && dtQuery.Rows[j]["ID"].ToString() == this.listBoxQueryResult.SelectedValue.ToString())
                                 {
-                                    try
+                                    for (int i = 0; i < Dataset.Tables[QueryTable].Rows.Count; i++)
                                     {
-                                        if (Dataset.Tables[QueryTable].Rows[i][IdentityColumn].ToString() == dtQuery.Rows[j]["ID"].ToString())
+                                        try
                                         {
-                                            string Display = "";
-                                            if (Dataset.Tables[QueryTable].Columns.Contains(DisplayColumn))
-                                                Display = Dataset.Tables[QueryTable].Rows[i][DisplayColumn].ToString();
-                                            else if (DisplayColumn.ToLower().Contains("select"))
+                                            if (Dataset.Tables[QueryTable].Rows[i][IdentityColumn].ToString() == dtQuery.Rows[j]["ID"].ToString())
                                             {
-                                                // Read display column from database
-                                                string SQL = "SELECT " + DisplayColumn + " FROM " + QueryView + " WHERE " + IdentityColumn + "='" + dtQuery.Rows[j]["ID"].ToString() + "'";
-                                                Display = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
-
-                                                // Preserve old value if access was not sussessful
-                                                if (Display.Length == 0)
-                                                    Display = dtQuery.Rows[j]["Display"].ToString();
-                                            }
-                                            if (Display.Length == 0 && QueryTable != QueryView) // Markus 30.1.2023: Bei abweichender sicht sollte diese noch geprüft werden
-                                            {
-                                                string SQL = "SELECT " + DisplayColumn + " FROM " + QueryView + " WHERE " + IdentityColumn + "='" + dtQuery.Rows[j]["ID"].ToString() + "'";
-                                                Display = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
-                                            }
-                                            if (Display.Length == 0)
-                                                Display = "ID: " + Dataset.Tables[QueryTable].Rows[i][IdentityColumn].ToString();
-                                            if (dtQuery.Rows[j]["Display"].ToString() != Display)
-                                            {
-                                                if (this.ManyOrderByColumns())
+                                                string Display = "";
+                                                if (Dataset.Tables[QueryTable].Columns.Contains(DisplayColumn))
+                                                    Display = Dataset.Tables[QueryTable].Rows[i][DisplayColumn].ToString();
+                                                else if (DisplayColumn.ToLower().Contains("select"))
                                                 {
-                                                    ///ToDo: wenn nicht die Haupttabelle gewaehlt ist, e.g. Identification statt Specimen wird der Text fuer Specimen ermittelt, nicht fuer Identification
-                                                    ///dafuer braeuchte es den gesamten Schlüssel von e.g. Identification und nicht nur die Haupt ID der Tabelle
-                                                    /// Angabe existiert in QueryList nicht und kann daher nicht übergeben werden
-                                                    //Display = this.ManyOrderByColumns_DisplayTextForRow(Dataset, QueryTable, i);
+                                                    // Read display column from database
+                                                    string SQL = "SELECT " + DisplayColumn + " FROM " + QueryView + " WHERE " + IdentityColumn + "='" + dtQuery.Rows[j]["ID"].ToString() + "'";
+                                                    Display = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
 
-                                                    Display = this.ManyOrderByColumns_DisplayText(int.Parse(dtQuery.Rows[j]["ID"].ToString()));
+                                                    // Preserve old value if access was not sussessful
+                                                    if (Display.Length == 0)
+                                                        Display = dtQuery.Rows[j]["Display"].ToString();
                                                 }
-                                                dtQuery.Rows[j]["Display"] = Display;
+                                                if (Display.Length == 0 && QueryTable != QueryView) // Markus 30.1.2023: Bei abweichender sicht sollte diese noch geprüft werden
+                                                {
+                                                    string SQL = "SELECT " + DisplayColumn + " FROM " + QueryView + " WHERE " + IdentityColumn + "='" + dtQuery.Rows[j]["ID"].ToString() + "'";
+                                                    Display = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
+                                                }
+                                                if (Display.Length == 0)
+                                                    Display = "ID: " + Dataset.Tables[QueryTable].Rows[i][IdentityColumn].ToString();
+                                                if (dtQuery.Rows[j]["Display"].ToString() != Display)
+                                                {
+                                                    if (this.ManyOrderByColumns())
+                                                    {
+                                                        ///ToDo: wenn nicht die Haupttabelle gewaehlt ist, e.g. Identification statt Specimen wird der Text fuer Specimen ermittelt, nicht fuer Identification
+                                                        ///dafuer braeuchte es den gesamten Schlüssel von e.g. Identification und nicht nur die Haupt ID der Tabelle
+                                                        /// Angabe existiert in QueryList nicht und kann daher nicht übergeben werden
+                                                        //Display = this.ManyOrderByColumns_DisplayTextForRow(Dataset, QueryTable, i);
+
+                                                        Display = this.ManyOrderByColumns_DisplayText(int.Parse(dtQuery.Rows[j]["ID"].ToString()));
+                                                    }
+                                                    dtQuery.Rows[j]["Display"] = Display;
+                                                }
+                                                return; // Actualize only one value
                                             }
-                                            return; // Actualize only one value
                                         }
+                                        catch (Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
                                     }
-                                    catch (Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+                                    // Terminate after match
+                                    break;
                                 }
-                                // Terminate after match
-                                break;
                             }
                         }
                     }
@@ -3095,13 +3099,18 @@ namespace DiversityWorkbench.UserControls
                             if (this.toolStripButtonNew.Enabled == false)
                             {
                                 // Check INSERT
-                                // #236
-                                if (FormFunctions.getObjectPermissionCache(this._QueryMainTableLocal, FormFunctions.DatabaseGrant.Select) != null)
-                                    OK = (bool)FormFunctions.getObjectPermissionCache(this._QueryMainTableLocal, FormFunctions.DatabaseGrant.Select);
+                                // #345
+                                if (this.QueryMainTableLocal == null) OK = false;
                                 else
                                 {
-                                    string SqlInsertPermission = "IF PERMISSIONS(OBJECT_ID('" + this._QueryMainTableLocal + "'))&8=8 SELECT 'True' ELSE SELECT 'False'";
-                                    OK = System.Boolean.Parse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlInsertPermission.ToString()));
+                                    // #236
+                                    if (FormFunctions.getObjectPermissionCache(this._QueryMainTableLocal, FormFunctions.DatabaseGrant.Select) != null)
+                                        OK = (bool)FormFunctions.getObjectPermissionCache(this._QueryMainTableLocal, FormFunctions.DatabaseGrant.Select);
+                                    else
+                                    {
+                                        string SqlInsertPermission = "IF PERMISSIONS(OBJECT_ID('" + this._QueryMainTableLocal + "'))&8=8 SELECT 'True' ELSE SELECT 'False'";
+                                        OK = System.Boolean.Parse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlInsertPermission.ToString()));
+                                    }
                                 }
                                 this.toolStripButtonNew.Enabled = OK;
                             }
@@ -4987,17 +4996,21 @@ namespace DiversityWorkbench.UserControls
                                                         && UserControlQueryList.TableAliases.ContainsKey(QF.TableName)
                                                         && QF.TableName != this.QueryMainTableLocal)
                                                     {
-                                                        if (ManyOrderByColumns_TableAliases().ContainsKey(this.QueryMainTableLocal))
+                                                        if (ManyOrderByColumns_TableAliases().Count > 0 && this.QueryMainTableLocal != null && ManyOrderByColumns_TableAliases().ContainsKey(this.QueryMainTableLocal)) // #340
                                                         {
                                                             WhereClause += ManyOrderByColumns_TableAliases()[this.QueryMainTableLocal] + "." + _IdentityColumnOptimizing + " = " + UserControlQueryList.TableAliases[QF.TableName] + "." + _IdentityColumnOptimizing;
                                                         }
-                                                        else if (UserControlQueryList.TableAliases.ContainsKey(this.QueryMainTableLocal))
+                                                        else if (this.QueryMainTableLocal != null && UserControlQueryList.TableAliases.ContainsKey(this.QueryMainTableLocal))
                                                         {
                                                             WhereClause += UserControlQueryList.TableAliases[this.QueryMainTableLocal] + "." + _IdentityColumnOptimizing + " = " + UserControlQueryList.TableAliases[QF.TableName] + "." + _IdentityColumnOptimizing;
                                                         }
-                                                        else if (UserControlQueryList.TableAliases.ContainsKey(QF.TableName) && UserControlQueryList.QueryMainTable == this.QueryMainTableLocal)
+                                                        else if (UserControlQueryList.TableAliases.ContainsKey(QF.TableName) && this.QueryMainTableLocal != null && UserControlQueryList.QueryMainTable == this.QueryMainTableLocal)
                                                         {
                                                             WhereClause += "T." + _IdentityColumnOptimizing + " = " + UserControlQueryList.TableAliases[QF.TableName] + "." + _IdentityColumnOptimizing;
+                                                        }
+                                                        else
+                                                        {
+                                                            DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("In function OptimizedQueryStringWhereClause in UsercontrolQueryList the value for this.QueryMainTableLocal is not set");
                                                         }
                                                     }
                                                 }

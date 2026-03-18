@@ -68,7 +68,7 @@ namespace DWBServices.WebServices.TaxonomicServices.Mycobank
             public int ExpiresIn { get; set; }
         }
 
-        public override async Task<T> CallWebServiceAsync<T>(string url,
+        public override async Task<T> CallWebServiceAsync<T>(string url, CancellationToken cancellationToken,
             string content,
             DwbServiceEnums.HttpAction action = DwbServiceEnums.HttpAction.GET)
         {
@@ -78,10 +78,10 @@ namespace DWBServices.WebServices.TaxonomicServices.Mycobank
             }
             
             StringContent contentString = new(content, Encoding.UTF8, "application/json");
-            return await CallWebServiceAsync<T>(url, action, contentString);
+            return await CallWebServiceAsync<T>(url, cancellationToken, action, contentString);
         }
         public override async Task<T> CallWebServiceAsync<T>(
-            string queryContent,
+            string queryContent, CancellationToken cancellationToken,
             DwbServiceEnums.HttpAction action = DwbServiceEnums.HttpAction.GET,
             HttpContent? content = null)
         {
@@ -89,45 +89,96 @@ namespace DWBServices.WebServices.TaxonomicServices.Mycobank
             HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             HttpResponseMessage? response;
 
-            // For the mycobank get request, the url (containing the queryparams) have to be added as content to a post request.
-            // We need to you a POST request for getting the data from Mycobank via  an expression
-            string url = ""; // there are not aprameters in the url for this webservice
-            if (queryContent.StartsWith("{\"Query\""))
-            {
-                content = new StringContent(
-                    queryContent,
-                    System.Text.Encoding.UTF8,
-                    "application/json"
-                );
-                url = "search/Mycobank%20WS";
-                response = await HttpClient.PostAsync(url, content);
-            }
-            else
-            {
-                url = queryContent;
-                response = await HttpClient.GetAsync(url);
-            }
+            try { 
+
+                // For the mycobank get request, the url (containing the queryparams) have to be added as content to a post request.
+                // We need to you a POST request for getting the data from Mycobank via  an expression
+                string url = ""; // there are not aprameters in the url for this webservice
+                if (queryContent.StartsWith("{\"Query\""))
+                {
+                    content = new StringContent(
+                        queryContent,
+                        System.Text.Encoding.UTF8,
+                        "application/json"
+                    );
+                    url = "search/Mycobank%20WS";
+
+                    // Set a timeout of 1 minute
+                    using var timeoutCts = new CancellationTokenSource(TimeSpan.FromMinutes(1));
+                    using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeoutCts.Token);
+
+                    response = await HttpClient.PostAsync(url, content, linkedCts.Token);
+                }
+                else
+                {
+                    url = queryContent;
+                    response = await HttpClient.GetAsync(url);
+                }
             
 
-            if (response.IsSuccessStatusCode)
-            {
-                string json = await response.Content.ReadAsStringAsync();
-                if (string.IsNullOrWhiteSpace(json))
+                if (response.IsSuccessStatusCode)
                 {
-                    throw new InvalidOperationException("The json response was empty");
+                    string json = await response.Content.ReadAsStringAsync();
+                    if (string.IsNullOrWhiteSpace(json))
+                    {
+                        throw new InvalidOperationException("The json response was empty");
+                    }
+                    var result = JsonSerializer.Deserialize<T>(json);
+                    if (result == null)
+                    {
+                        throw new InvalidOperationException("Deserialization resulted in null.");
+                    }
+                    return result;
                 }
-                var result = JsonSerializer.Deserialize<T>(json);
-                if (result == null)
+                else
                 {
-                    throw new InvalidOperationException("Deserialization resulted in null.");
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
                 }
-                return result;
             }
-            else
+            catch (OperationCanceledException)
             {
-                string errorContent = await response.Content.ReadAsStringAsync();
-                throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+                throw;
             }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public override async Task<TaxonomicEntity> GetEntityHierarchyAsync<T>(string url, TaxonomicEntity dwbEntity, CancellationToken cancellationToken)
+        {
+            var hierarchy = new List<T>();
+            if (string.IsNullOrEmpty(url))
+            {
+                return dwbEntity;
+            }
+            url = url.TrimEnd('/');
+            int lastSlashIndex = url.LastIndexOf('/');
+            string baseUrl = url.Substring(0, lastSlashIndex); // Include the last '/'    
+            string currentId = url.Substring(lastSlashIndex + 1);    // Everything after the last '/'
+
+            if (!string.IsNullOrEmpty(currentId))
+            {
+                // Perform web request to fetch the entity by ID
+                var response = await CallWebServiceAsync<T>($"{baseUrl}/{currentId}", cancellationToken, DwbServiceEnums.HttpAction.GET);
+
+                var entity = GetDwbApiDetailModel<T>(response);
+                if (entity == null)
+                {
+                    return dwbEntity;
+                }
+                dynamic mappedClientModel = (entity as dynamic).GetMappedApiEntityModel();
+                // Add the current entity to the hierarchy
+                if (mappedClientModel != null)
+                {
+                    hierarchy.Add((T)(object)mappedClientModel);
+                    string newHierarchy = mappedClientModel.Hierarchy;
+                    dwbEntity.Hierarchy = newHierarchy.Trim(' ', '|');
+                }
+
+            }
+            return dwbEntity;
         }
 
         // For the Mycobank Webservice POST is used to get the search data. So this urlstring is not added to the url, but to the content. (see CallWebServiceAsync)

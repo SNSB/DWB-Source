@@ -25,6 +25,16 @@
 
         public string Genus { get; set; }
 
+        public string Kingdom { get; set; }
+
+        public string Subkingdom { get; set; }
+
+        public string Phylum { get; set; }
+
+        public string Class { get; set; }
+
+        public string Hierarchy { get; set; }
+
         public string Epithet { get; set; }
 
         public string Rank { get; set; }
@@ -39,15 +49,11 @@
 
         public string CombiningAuthors { get; set; }
 
-        public string Kingdom { get; set; }
-
-        public string Subkingdom { get; set; }
-
-        public string Hierarchy { get; set; }
-
         public string Unranked { get; set; }
 
         public string Year { get; set; }
+
+        public string ParentId { get; set; }
 
         public abstract override TaxonomicEntity? GetMappedApiEntityModel();
 

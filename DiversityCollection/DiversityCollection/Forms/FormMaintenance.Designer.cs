@@ -283,6 +283,8 @@
             comboBoxSynColTaxTextTaxonNameProject = new System.Windows.Forms.ComboBox();
             labelSynColTaxTextTaxonNameProjec = new System.Windows.Forms.Label();
             checkBoxSynColTaxTextMax = new System.Windows.Forms.CheckBox();
+            //numericUpDownSynColTaxLinkMax = new System.Windows.Forms.NumericUpDown();
+            //checkBoxSynColTaxLinkMax = new System.Windows.Forms.CheckBox();
             radioButtonSynColTaxTextCompareAll = new System.Windows.Forms.RadioButton();
             radioButtonSynColTaxTextCompareParts = new System.Windows.Forms.RadioButton();
             numericUpDownSynColTaxTextCompareParts = new System.Windows.Forms.NumericUpDown();
@@ -1559,6 +1561,7 @@
             splitContainerSynColTaxMain.Panel2.SuspendLayout();
             splitContainerSynColTaxMain.SuspendLayout();
             tableLayoutPanelSynColTax.SuspendLayout();
+            //((System.ComponentModel.ISupportInitialize)numericUpDownSynColTaxLinkMax).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSynColTax).BeginInit();
             tabPageText.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerSynColTaxText).BeginInit();
@@ -2210,9 +2213,11 @@
             tableLayoutPanelSynColTax.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelSynColTax.Controls.Add(labelSynColTaxDatabase, 0, 1);
             tableLayoutPanelSynColTax.Controls.Add(comboBoxSynColTaxDatabase, 0, 2);
-            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxCheck, 0, 12);
-            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxUpdate, 0, 17);
-            tableLayoutPanelSynColTax.Controls.Add(labelSynColTaxCheck, 0, 13);
+            //tableLayoutPanelSynColTax.Controls.Add(numericUpDownSynColTaxLinkMax, 0, 12);
+            //tableLayoutPanelSynColTax.Controls.Add(checkBoxSynColTaxLinkMax, 0, 11);
+            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxCheck, 0, 14);
+            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxUpdate, 0, 19);
+            tableLayoutPanelSynColTax.Controls.Add(labelSynColTaxCheck, 0, 15);
             tableLayoutPanelSynColTax.Controls.Add(labelSynColTaxProject, 0, 5);
             tableLayoutPanelSynColTax.Controls.Add(comboBoxSynColTaxProject, 0, 6);
             tableLayoutPanelSynColTax.Controls.Add(checkBoxSynColTaxIncludeAccNr, 0, 9);
@@ -2221,32 +2226,34 @@
             tableLayoutPanelSynColTax.Controls.Add(comboBoxSynColTaxTaxonomicGroup, 0, 8);
             tableLayoutPanelSynColTax.Controls.Add(comboBoxSynColTaxTaxonNameProject, 0, 4);
             tableLayoutPanelSynColTax.Controls.Add(labelSynColTaxTaxonNameProject, 0, 3);
-            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxSelectAll, 0, 14);
-            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxSelectNone, 0, 16);
-            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxSelectSameName, 0, 15);
+            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxSelectAll, 0, 16);
+            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxSelectNone, 0, 18);
+            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxSelectSameName, 0, 17);
             tableLayoutPanelSynColTax.Controls.Add(checkBoxSynColTaxViaCacheDB, 0, 0);
             tableLayoutPanelSynColTax.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanelSynColTax.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanelSynColTax.Margin = new System.Windows.Forms.Padding(4);
             tableLayoutPanelSynColTax.Name = "tableLayoutPanelSynColTax";
-            tableLayoutPanelSynColTax.RowCount = 19;
+            tableLayoutPanelSynColTax.RowCount = 21;
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle());
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle());
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.85713F));
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23F));
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23F));
+            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle());
             tableLayoutPanelSynColTax.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
             tableLayoutPanelSynColTax.Size = new System.Drawing.Size(316, 641);
@@ -2354,6 +2361,19 @@
             checkBoxSynColTaxIncludeAccNr.Text = "Include accession numbers";
             checkBoxSynColTaxIncludeAccNr.UseVisualStyleBackColor = true;
             checkBoxSynColTaxIncludeAccNr.Click += (this.checkBoxSynColTaxIncludeAccNr_Click);
+            //// 
+            //// numericUpDownSynColTaxLinkMax
+            //// 
+            //numericUpDownSynColTaxLinkMax.Dock = System.Windows.Forms.DockStyle.Left;
+            //numericUpDownSynColTaxLinkMax.Increment = new decimal(new int[] { 10, 0, 0, 0 });
+            //numericUpDownSynColTaxLinkMax.Location = new System.Drawing.Point(50, 326);
+            //numericUpDownSynColTaxLinkMax.Margin = new System.Windows.Forms.Padding(0, 4, 4, 4);
+            //numericUpDownSynColTaxLinkMax.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            //numericUpDownSynColTaxLinkMax.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            //numericUpDownSynColTaxLinkMax.Name = "numericUpDownSynColTaxLinkMax";
+            //numericUpDownSynColTaxLinkMax.Size = new System.Drawing.Size(77, 23);
+            //numericUpDownSynColTaxLinkMax.TabIndex = 13;
+            //numericUpDownSynColTaxLinkMax.Value = new decimal(new int[] { 100, 0, 0, 0 });
             // 
             // buttonSynColTaxCheckDataset
             // 
@@ -2796,6 +2816,7 @@
             numericUpDownSynColTaxTextMax.Size = new System.Drawing.Size(77, 23);
             numericUpDownSynColTaxTextMax.TabIndex = 13;
             numericUpDownSynColTaxTextMax.Value = new decimal(new int[] { 40, 0, 0, 0 });
+            
             // 
             // progressBarSynColTaxText
             // 
@@ -2851,6 +2872,23 @@
             checkBoxSynColTaxTextMax.Text = "Max. nr. of results:";
             checkBoxSynColTaxTextMax.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             checkBoxSynColTaxTextMax.UseVisualStyleBackColor = true;
+            //// 
+            //// checkBoxSynColTaxLinkMax
+            //// 
+            //checkBoxSynColTaxLinkMax.AutoSize = true;
+            //checkBoxSynColTaxLinkMax.Checked = true;
+            //checkBoxSynColTaxLinkMax.CheckState = System.Windows.Forms.CheckState.Checked;
+            //tableLayoutPanelSynColTax.SetColumnSpan(checkBoxSynColTaxLinkMax, 2);
+            //checkBoxSynColTaxLinkMax.Dock = System.Windows.Forms.DockStyle.Bottom;
+            //checkBoxSynColTaxLinkMax.Location = new System.Drawing.Point(4, 382);
+            //checkBoxSynColTaxLinkMax.Margin = new System.Windows.Forms.Padding(4);
+            //checkBoxSynColTaxLinkMax.Name = "checkBoxSynColTaxLinkMax";
+            //checkBoxSynColTaxLinkMax.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            //checkBoxSynColTaxLinkMax.Size = new System.Drawing.Size(169, 19);
+            //checkBoxSynColTaxLinkMax.TabIndex = 17;
+            //checkBoxSynColTaxLinkMax.Text = "Restrict the query to the first datasets:";     
+            //checkBoxSynColTaxLinkMax.UseVisualStyleBackColor = true;
+
             // 
             // radioButtonSynColTaxTextCompareAll
             // 
@@ -2873,7 +2911,7 @@
             radioButtonSynColTaxTextCompareParts.AutoSize = true;
             tableLayoutPanelSynColTaxText.SetColumnSpan(radioButtonSynColTaxTextCompareParts, 4);
             radioButtonSynColTaxTextCompareParts.Dock = System.Windows.Forms.DockStyle.Fill;
-            radioButtonSynColTaxTextCompareParts.Enabled = false;
+            radioButtonSynColTaxTextCompareParts.Enabled = true;
             radioButtonSynColTaxTextCompareParts.Location = new System.Drawing.Point(4, 202);
             radioButtonSynColTaxTextCompareParts.Margin = new System.Windows.Forms.Padding(4);
             radioButtonSynColTaxTextCompareParts.Name = "radioButtonSynColTaxTextCompareParts";
@@ -23425,6 +23463,7 @@
             splitContainerSynColTaxMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainerSynColTaxMain).EndInit();
             splitContainerSynColTaxMain.ResumeLayout(false);
+            //((System.ComponentModel.ISupportInitialize)numericUpDownSynColTaxLinkMax).EndInit();
             tableLayoutPanelSynColTax.ResumeLayout(false);
             tableLayoutPanelSynColTax.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSynColTax).EndInit();
@@ -24140,6 +24179,7 @@
         private System.Windows.Forms.Label labelSynColTaxTaxonomicGroup;
         private System.Windows.Forms.ComboBox comboBoxSynColTaxTaxonomicGroup;
         private System.Windows.Forms.NumericUpDown numericUpDownSynColTaxTextMax;
+        //private System.Windows.Forms.NumericUpDown numericUpDownSynColTaxLinkMax;
         private System.Windows.Forms.ProgressBar progressBarSynColTaxText;
         private System.Windows.Forms.TabPage tabPageCollAgents;
         private System.Windows.Forms.SplitContainer splitContainerSynColAge;
@@ -24211,6 +24251,7 @@
         private System.Windows.Forms.ComboBox comboBoxSynColTaxTextTaxonNameProject;
         private System.Windows.Forms.Label labelSynColTaxTextTaxonNameProjec;
         private System.Windows.Forms.CheckBox checkBoxSynColTaxTextMax;
+        //private System.Windows.Forms.CheckBox checkBoxSynColTaxLinkMax;
         private System.Windows.Forms.Label labelSynColAgeDisplaytype;
         private System.Windows.Forms.ComboBox comboBoxSynColAgeDisplaytype;
         private System.Windows.Forms.Label labelSynColAgeTextDisplaytype;

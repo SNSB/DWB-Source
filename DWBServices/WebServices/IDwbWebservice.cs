@@ -26,12 +26,12 @@ public interface IDwbWebservice<out TDwbSearchResult, out TDwbSearchResultItem, 
 
     DwbServiceEnums.DwbService GetServiceName();
     
-    Task<T> CallWebServiceAsync<T>(string url,
+    Task<T> CallWebServiceAsync<T>(string url, CancellationToken cancellationToken,
         string content,
         DwbServiceEnums.HttpAction action = DwbServiceEnums.HttpAction.GET);
 
     Task<T> CallWebServiceAsync<T>(
-        string url, 
+        string url, CancellationToken cancellationToken,
         DwbServiceEnums.HttpAction action = DwbServiceEnums.HttpAction.GET,
         HttpContent? content = null);
 

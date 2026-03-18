@@ -49,7 +49,13 @@ namespace DWBServices
             {
                 DwbServiceEnums.DwbService.CatalogueOfLife =>
                     Instance.GetRequiredService<CoLWebservice>(),
+                DwbServiceEnums.DwbService.CatalogueOfLifeExtended =>
+                    Instance.GetRequiredService<CoLWebservice>(),
                 DwbServiceEnums.DwbService.PoWo_WCVP =>
+                    Instance.GetRequiredService<CoLWebservice>(),
+                //DwbServiceEnums.DwbService.PaleoBioDB =>
+                //    Instance.GetRequiredService<CoLWebservice>(),
+                DwbServiceEnums.DwbService.SpeciesFungorumPlus =>
                     Instance.GetRequiredService<CoLWebservice>(),
                 DwbServiceEnums.DwbService.IndexFungorum =>
                 Instance.GetRequiredService<IndexFungorumWebservice>(),

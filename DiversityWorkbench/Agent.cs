@@ -138,15 +138,28 @@ namespace DiversityWorkbench
                 catch (System.Exception ex) { }
 
                 // getting the synonym of the Agent if available
-                sql = "SELECT case when A.SynonymisationType is null then '' else A.SynonymisationType + ': ' end + A.AgentName AS Synonym " +
-                    "FROM [Agent] A " +
-                    "inner join [Agent] S on S.AgentID = dbo.agentsynonymtopid(A.AgentID) " +
-                    "and dbo.agentsynonymtopid(A.AgentID) <> A.AgentID and A.AgentID = " + id.ToString();
-                try
+                if (this._ServerConnection.LinkedServer.Length == 0)
                 {
-                    this.getDataFromTable(sql, ref values);
+                    sql = "SELECT case when A.SynonymisationType is null then '' else A.SynonymisationType + ': ' end + A.AgentName AS Synonym " +
+                        "FROM [Agent] A " +
+                        "inner join [Agent] S on S.AgentID = dbo.agentsynonymtopid(A.AgentID) " +
+                        "and dbo.agentsynonymtopid(A.AgentID) <> A.AgentID and A.AgentID = " + id.ToString();
+                    try
+                    {
+                        this.getDataFromTable(sql, ref values);
+                    }
+                    catch (System.Exception ex) { }
                 }
-                catch (System.Exception ex) { }
+                else // #346
+                {
+                    sql = "SELECT S.SynonymisationType + ': ' + S.AgentName AS Synonym " +
+                        "FROM " + Prefix + "Agent AS A INNER JOIN " + Prefix + "Agent AS S ON A.SynonymToAgentID = S.AgentID AND A.AgentID = " + id.ToString();
+                    try
+                    {
+                        this.getDataFromTable(sql, ref values);
+                    }
+                    catch (System.Exception ex) { }
+                }
 
 
                 if (this._ServerConnection.LinkedServer.Length == 0)

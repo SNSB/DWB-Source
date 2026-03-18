@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Text.Json;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace DiversityWorkbench.UserControls
@@ -15,13 +16,14 @@ namespace DiversityWorkbench.UserControls
 
         private IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api;
         private DwbServiceEnums.DwbService currentDwbService;
+        private CancellationTokenSource _userCts;
         #region Parameter
 
         private System.Data.DataTable _dtQuery;
         private int? _QueryMaxHeight = 0;
         private System.Collections.Generic.List<DiversityWorkbench.QueryCondition> _QueryConditions;
         // private System.Collections.Generic.List<DiversityWorkbench.WebserviceQueryOption> _QueryOptions;
-        private Timer animationTimer;
+        private System.Windows.Forms.Timer animationTimer;
         private int dotCount = 0;
 
         #endregion  
@@ -33,7 +35,7 @@ namespace DiversityWorkbench.UserControls
             InitializeComponent();
             
             // Create a timer for animation
-            animationTimer = new Timer
+            animationTimer = new System.Windows.Forms.Timer
             {
                 Interval = 500
             };
@@ -168,11 +170,11 @@ namespace DiversityWorkbench.UserControls
                             MessageBox.Show("No webservice defined");
                         return;
                     }
-
+                    _userCts = new CancellationTokenSource();
                     lblSearching.Visible = true;
                     this.Enabled = false;
                     animationTimer.Start();
-                    var tt = await _api.CallWebServiceAsync<object>(searchUrl,
+                    var tt = await _api.CallWebServiceAsync<object>(searchUrl, _userCts.Token,
                         DwbServiceEnums.HttpAction.GET);
 
                     listBoxQueryResult.SelectedIndex = -1;
@@ -263,7 +265,7 @@ namespace DiversityWorkbench.UserControls
             const int offset = 0; // default TODO Ariane if we want to add paging, then we can get/set the offset here
             if (!int.TryParse(this.maskedTextBoxMaxResults.Text, out var MaxRecords))
             {
-                MaxRecords = 10;
+                MaxRecords = 50;
             }
             var queryRestriction = QueryRestriction();
             if (string.IsNullOrEmpty(queryRestriction) || queryRestriction.Length < 3)
@@ -359,6 +361,9 @@ namespace DiversityWorkbench.UserControls
                     new { Name = "_DisplayText", Type = "System.String" },
                     new { Name = "Taxon", Type = "System.String" },
                     new { Name = "URL", Type = "System.String" },
+                    new { Name = "Hierarchy", Type = "System.String" },
+                    new { Name = "Family", Type = "System.String" },
+                    new { Name = "Order", Type = "System.String" },
                     new { Name = "Kingdom", Type = "System.String" },
                     new { Name = "Rank", Type = "System.String" },
                     new { Name = "Status", Type = "System.String" },
@@ -381,6 +386,9 @@ namespace DiversityWorkbench.UserControls
                             row["_DisplayText"] = item._DisplayText;
                             row["Taxon"] = item.Taxon;
                             row["URL"] = item._URL;
+                            row["Hierarchy"] = item.Hierarchy;
+                            row["Family"] = item.Family;
+                            row["Order"] = item.Order;
                             row["Kingdom"] = item.Kingdom;
                             row["Rank"] = item.Rank;
                             row["Status"] = item.Status;

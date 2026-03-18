@@ -90,18 +90,21 @@ namespace DiversityCollection.UserControls
                 RvbFamily.BindingSource = this._ParentSource;
                 RvbFamily.Column = "FamilyCache";
                 RvbFamily.RemoteParameter = "Family";
+                RvbFamily.ModeOfUpdate = DiversityWorkbench.UserControls.RemoteValueBinding.UpdateMode.AskForUpdate; // #308
                 RvbIdentification.Add(RvbFamily);
 
                 DiversityWorkbench.UserControls.RemoteValueBinding RvbOrder = new DiversityWorkbench.UserControls.RemoteValueBinding();
                 RvbOrder.BindingSource = this._ParentSource;
                 RvbOrder.Column = "OrderCache";
                 RvbOrder.RemoteParameter = "Order";
+                RvbOrder.ModeOfUpdate = DiversityWorkbench.UserControls.RemoteValueBinding.UpdateMode.AskForUpdate; // #308
                 RvbIdentification.Add(RvbOrder);
 
                 DiversityWorkbench.UserControls.RemoteValueBinding RvbHierarchyCache = new DiversityWorkbench.UserControls.RemoteValueBinding();
                 RvbHierarchyCache.BindingSource = this._ParentSource;
                 RvbHierarchyCache.Column = "HierarchyCache";
                 RvbHierarchyCache.RemoteParameter = "Hierarchy";
+                RvbHierarchyCache.ModeOfUpdate = DiversityWorkbench.UserControls.RemoteValueBinding.UpdateMode.AskForUpdate; // #308
                 RvbIdentification.Add(RvbHierarchyCache);
 
                 this.userControlModuleRelatedEntryTaxonomicName.setRemoteValueBindings(RvbIdentification);

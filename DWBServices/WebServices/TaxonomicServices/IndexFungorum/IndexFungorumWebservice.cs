@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Xml.Linq;
 using static DWBServices.WebServices.TaxonomicServices.IndexFungorum.IndexFungorumEntity;
 
@@ -13,33 +14,87 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
             httpClient.BaseAddress = new Uri(baseAddress);
         }
 
+        public override async Task<TaxonomicEntity> GetEntityHierarchyAsync<T>(string url, TaxonomicEntity dwbEntity, CancellationToken cancellationToken)
+        {
+            var hierarchy = new List<T>();
+            if (string.IsNullOrEmpty(url))
+            {
+                return dwbEntity;
+            }
+            IndexFungorumEntity indexEntity = (dwbEntity as IndexFungorumEntity);
+            url = url.TrimEnd('/');
+            int lastIndex = url.LastIndexOf('=');
+            string baseUrl = "http://www.indexfungorum.org/IXFWebService/Fungus.asmx/NameByKey?NameKey="; // to get the hierarchy we need to call another endpoint for indexfungorum
+            string currentId = url.Substring(lastIndex + 1);    // Everything after the '='
+
+            if (!string.IsNullOrEmpty(currentId))
+            {
+                // Perform web request to fetch the entity by ID
+                var response = await CallWebServiceAsync<T>($"{baseUrl}{currentId}", cancellationToken, DwbServiceEnums.HttpAction.GET);
+                var hierarchyentity = GetDwbApiHierarchyModel<T>(response);
+                if (hierarchyentity == null)
+                {
+                    return dwbEntity;
+                }
+                dynamic mappedClientModel = (hierarchyentity as dynamic).GetMappedApiEntityModel();
+                // Add the current entity to the hierarchy
+                if (mappedClientModel != null)
+                {
+                    hierarchy.Add((T)(object)mappedClientModel);
+                    string newHierarchy = mappedClientModel.Hierarchy;
+                    indexEntity.taxonName.hierarchy = newHierarchy.Trim(' ', '|');
+                    indexEntity.taxonName.family = mappedClientModel.Family;
+                    indexEntity.taxonName.order = mappedClientModel.Order;
+                    indexEntity.taxonName.genus = mappedClientModel.Genus;
+                    indexEntity.Hierarchy = newHierarchy.Trim(' ', '|');
+                    indexEntity.Family = mappedClientModel.Family;
+                    indexEntity.Order = mappedClientModel.Order;
+                    indexEntity.Genus = mappedClientModel.Genus;
+                }
+            }
+            return dwbEntity;
+        }
+
         public override async Task<T> CallWebServiceAsync<T>(
-            string url,
+            string url, CancellationToken cancellationToken,
             DwbServiceEnums.HttpAction action = DwbServiceEnums.HttpAction.GET,
             HttpContent? content = null)
         {
             HttpResponseMessage? response;
+            try {
+                // Set a timeout of 1 minute
+                using var timeoutCts = new CancellationTokenSource(TimeSpan.FromMinutes(1));
+                using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeoutCts.Token);
 
-            response = await HttpClient.GetAsync(url);
+                response = await HttpClient.GetAsync(url, linkedCts.Token);
 
-            if (response.IsSuccessStatusCode)
-            {
-                // The IndexFungorum Webservice does not return a valid xml file (23.12.2024) so we have to parse it with XDocument,
-                // instead of using XMLSerializer to map automtically
-                // Parse the XML using XDocument
-                // Read the XML content as a string
-                string xml = await response.Content.ReadAsStringAsync();
-                // If T is string, return the raw XML
-                if (typeof(T) == typeof(object))
+                if (response.IsSuccessStatusCode)
                 {
-                    return (T)(object)xml;
+                    // The IndexFungorum Webservice does not return a valid xml file (23.12.2024) so we have to parse it with XDocument,
+                    // instead of using XMLSerializer to map automtically
+                    // Parse the XML using XDocument
+                    // Read the XML content as a string
+                    string xml = await response.Content.ReadAsStringAsync();
+                    // If T is string, return the raw XML
+                    if (typeof(T) == typeof(object))
+                    {
+                        return (T)(object)xml;
+                    }
+                    throw new InvalidOperationException($"Unsupported type {typeof(T).Name} for raw data.");
                 }
-                throw new InvalidOperationException($"Unsupported type {typeof(T).Name} for raw data.");
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+                }
             }
-            else
+            catch (OperationCanceledException)
             {
-                string errorContent = await response.Content.ReadAsStringAsync();
-                throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
@@ -279,6 +334,61 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
                 throw new DataMappingException("An error occurred while mapping data in GetDwbApiDetailModel.", ex);
             }
         }
+
+        public IndexFungorumEntity GetDwbApiHierarchyModel<T>(T tt)
+        {
+            try
+            {
+                if (tt == null)
+                {
+                    return null;
+                }
+
+                string xml = tt as string;
+                if (string.IsNullOrEmpty(xml))
+                {
+                    return null;
+                }
+
+                XDocument xDocument = XDocument.Parse(xml);
+                //// Define namespaces
+                XNamespace rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+                XNamespace taxonNameNs = "http://rs.tdwg.org/ontology/voc/TaxonName#";
+                XNamespace ns = "http://purl.org/dc/elements/1.1/";
+                XNamespace owl = "http://www.w3.org/2002/07/owl#";
+                XNamespace publicationCitationNs = "http://rs.tdwg.org/ontology/voc/PublicationCitation#";
+
+                XNamespace commonNs = "http://rs.tdwg.org/ontology/voc/Common#";
+                // Extract TaxonName classification data
+                var taxonNameElement = xDocument.Descendants("IndexFungorum").FirstOrDefault();
+                var taxonName = new TaxonName
+                {
+                    family = taxonNameElement?.Element("Family_x0020_name")?.Value ?? string.Empty,
+                    order = taxonNameElement?.Element("Order_x0020_name")?.Value ?? string.Empty,
+                    genus = taxonNameElement?.Element("Genus_x0020_name")?.Value ?? string.Empty,
+                    hierarchy = ((taxonNameElement?.Element("Kingdom_x0020_name")?.Value ?? string.Empty) + " | " +
+                    (taxonNameElement?.Element("Phylum_x0020_name")?.Value ?? string.Empty) + " | " +
+                    (taxonNameElement?.Element("Subphylum_x0020_name")?.Value ?? string.Empty) + " | " +
+                    (taxonNameElement?.Element("Class_x0020_name")?.Value ?? string.Empty) + " | " +
+                    (taxonNameElement?.Element("Subclass_x0020_name")?.Value ?? string.Empty) + " | " +
+                    (taxonNameElement?.Element("Order_x0020_name")?.Value ?? string.Empty) + " | " +
+                    (taxonNameElement?.Element("Family_x0020_name")?.Value ?? string.Empty) + " | " +
+                    (taxonNameElement?.Element("Genus_x0020_name")?.Value ?? string.Empty) + " | " +
+                    (taxonNameElement?.Element("NAME_x0020_OF_x0020_FUNGUS")?.Value ?? string.Empty))
+                };
+
+                IndexFungorumEntity result = new IndexFungorumEntity
+                {
+                    taxonName = taxonName
+                };
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new DataMappingException("An error occurred while mapping data in GetDwbApiHierarchyModel.", ex);
+            }
+        }
+
         public override IndexFungorumEntity GetEmptyDwbApiDetailModel()
         {
             var iofModel = new IndexFungorumEntity();

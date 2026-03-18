@@ -1,6 +1,8 @@
-﻿using System.Text.Json;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http.Json;
+using System.Text.Json;
+using System.Threading;
 
 namespace DWBServices.WebServices.TaxonomicServices.CatalogueOfLife
 {
@@ -10,6 +12,72 @@ namespace DWBServices.WebServices.TaxonomicServices.CatalogueOfLife
         {
             string BaseAddress = this.GetBaseAddress();
             httpClient.BaseAddress = new Uri(BaseAddress);
+        }
+
+        public override async Task<TaxonomicEntity> GetEntityHierarchyAsync<T>(string url, TaxonomicEntity dwbEntity, CancellationToken cancellationToken)
+        {
+
+            var hierarchy = new List<T>();
+            if (string.IsNullOrEmpty(url))
+            {
+                return dwbEntity; //hierarchy;
+            }
+            url = url.TrimEnd('/');
+            int lastSlashIndex = url.LastIndexOf('/');
+            string baseUrl = url.Substring(0, lastSlashIndex); // Include the last '/'    
+            string currentId = url.Substring(lastSlashIndex + 1);    // Everything after the last '/'
+
+            while (!string.IsNullOrEmpty(currentId))
+            {
+
+                // Perform web request to fetch the entity by ID
+                var response = await CallWebServiceAsync<T>($"{baseUrl}/{currentId}", cancellationToken, DwbServiceEnums.HttpAction.GET);
+
+                var entity = GetDwbApiDetailModel<T>(response);
+                if (entity == null)
+                {
+                    return dwbEntity;
+                }
+                dynamic mappedClientModel = (entity as dynamic).GetMappedApiEntityModel();
+                // Add the current entity to the hierarchy
+                if (mappedClientModel != null)
+                {
+                    hierarchy.Add((T)(object)mappedClientModel);
+                    string newHierarchy = mappedClientModel.TaxonNameSinAuthor + " | " + dwbEntity.Hierarchy;
+                    dwbEntity.Hierarchy = newHierarchy.Trim(' ', '|');
+                    if (mappedClientModel.Rank == "family")
+                    {
+                        dwbEntity.Family = mappedClientModel.TaxonNameSinAuthor;
+                    }
+                    if (mappedClientModel.Rank == "order")
+                    {
+                        dwbEntity.Order = mappedClientModel.TaxonNameSinAuthor;
+                    }
+                    if (mappedClientModel.Rank == "kingdom")
+                    {
+                        dwbEntity.Kingdom = mappedClientModel.TaxonNameSinAuthor;
+                    }
+                    if (mappedClientModel.Rank == "subkingdom")
+                    {
+                        dwbEntity.Subkingdom = mappedClientModel.TaxonNameSinAuthor;
+                    }
+                    if (mappedClientModel.Rank == "phylum")
+                    {
+                        break; // break Hierarchy if phlum is reached
+                    }
+                }
+
+                if (mappedClientModel == null || string.IsNullOrEmpty(mappedClientModel?.ParentId))
+                {
+                    currentId = string.Empty;
+                    break;
+                }
+
+                currentId = mappedClientModel.ParentId;
+
+            }
+
+            return dwbEntity;
         }
 
         public override string DwbApiQueryUrlString(DwbServiceEnums.DwbService currentService, string queryRestrictions, int offset, int maxPerPage)
@@ -57,10 +125,22 @@ namespace DWBServices.WebServices.TaxonomicServices.CatalogueOfLife
             // Access IConfiguration from the static DwbServiceProviderAccessor
             var configuration = DwbServiceProviderAccessor.Instance?.GetRequiredService<IConfiguration>()
                                 ?? throw new InvalidOperationException("DwbServiceProviderAccessor.Instance is not initialized.");
+            if (currentService == DwbServiceEnums.DwbService.CatalogueOfLifeExtended)
+            {
+                return configuration["CoL:CoLex_ServiceUri"];
+            }
             if (currentService == DwbServiceEnums.DwbService.PoWo_WCVP)
             {
                 return configuration["CoL:PoWo_ServiceUri"];
-            }      
+            }
+            //if (currentService == DwbServiceEnums.DwbService.PaleoBioDB)
+            //{
+            //    return configuration["CoL:PaleoBioDB_ServiceUri"];
+            //}
+            if (currentService == DwbServiceEnums.DwbService.SpeciesFungorumPlus)
+            {
+                return configuration["CoL:SpeciesFungorumPlus_ServiceUri"];
+            }
             string settingValue = configuration["CoL:CoL_ServiceUri"];
             return settingValue;
         }

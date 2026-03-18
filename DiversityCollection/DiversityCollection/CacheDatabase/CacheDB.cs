@@ -568,7 +568,7 @@ namespace DiversityCollection.CacheDatabase
                 DiversityWorkbench.WorkbenchUnit G = DiversityWorkbench.WorkbenchUnit.getWorkbenchUnit("DiversityGazetteer");
                 DiversityWorkbench.ServerConnection SC = new DiversityWorkbench.ServerConnection();
                 string ConnectionString = "";
-                if (G.ServerConnectionList().Count > 0)
+                if (G != null && G.ServerConnectionList().Count > 0) // #333
                 {
                     foreach (System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.ServerConnection> KV in G.ServerConnectionList())
                     {

@@ -94,8 +94,8 @@ namespace DWBServices.WebServices
         /// </param>
         /// <returns>A task that represents the asynchronous operation. The task result contains the response of type <typeparamref name="T"/>.</returns>
         /// <exception cref="ArgumentException">Thrown when the provided URL is not valid.</exception>
-        public virtual async Task<T> CallWebServiceAsync<T>(string url,
-            string content,
+        public virtual async Task<T> CallWebServiceAsync<T>(string url, CancellationToken cancellationToken,
+            string content, 
             DwbServiceEnums.HttpAction action = DwbServiceEnums.HttpAction.GET)
         {
             if (IsValidUrl(url) == false)
@@ -103,7 +103,7 @@ namespace DWBServices.WebServices
                 throw new ArgumentException("The provided URL is not valid.");
             }
             StringContent contentString = new(content, Encoding.UTF8, "application/json");
-            return await CallWebServiceAsync<T>(url, action, contentString);
+            return await CallWebServiceAsync<T>(url, cancellationToken, action, contentString);
         }
         /// <summary>
         /// Sends an HTTP request to the specified URL and processes the response asynchronously.
@@ -116,34 +116,47 @@ namespace DWBServices.WebServices
         /// <exception cref="InvalidOperationException">Thrown if the URL is invalid or other preconditions are not met.</exception>
         /// <exception cref="HttpRequestException">Thrown if the HTTP request fails or the response indicates an error.</exception>
         public virtual async Task<T> CallWebServiceAsync<T>(
-            string url,
+            string url, CancellationToken cancellationToken,
             DwbServiceEnums.HttpAction action = DwbServiceEnums.HttpAction.GET,
             HttpContent? content = null)
         {
             HttpResponseMessage? response;
 
-            //TODO if we want to implement POST etc. we have to distinguish here
-            // change this to above if we also want post, put, update etc.
-            response = await HttpClient.GetAsync(url);
+            try
+            {
+                // Set a timeout of 1 minute
+                using var timeoutCts = new CancellationTokenSource(TimeSpan.FromMinutes(0.5));
+                using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeoutCts.Token);
 
-            if (response.IsSuccessStatusCode)
-            {
-                string json = await response.Content.ReadAsStringAsync();
-                if (string.IsNullOrWhiteSpace(json))
+                response = await HttpClient.GetAsync(url, linkedCts.Token);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    throw new InvalidOperationException("No match - response from the web service was empty");
+                    string json = await response.Content.ReadAsStringAsync();
+                    if (string.IsNullOrWhiteSpace(json))
+                    {
+                        throw new InvalidOperationException("No match - response from the web service was empty");
+                    }
+                    var result = JsonSerializer.Deserialize<T>(json);
+                    if (result == null)
+                    {
+                        throw new InvalidOperationException("Deserialization resulted in null.");
+                    }
+                    return result;
                 }
-                var result = JsonSerializer.Deserialize<T>(json);
-                if (result == null)
+                else
                 {
-                    throw new InvalidOperationException("Deserialization resulted in null.");
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
                 }
-                return result;
             }
-            else
+            catch (OperationCanceledException)
             {
-                string errorContent = await response.Content.ReadAsStringAsync();
-                throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 

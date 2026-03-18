@@ -2,64 +2,43 @@
 
 namespace DWBServices.WebServices.GeoServices.Geonames
 {
-    public class GeonamesSearchResult : GeoSearchResult
+    // altitude endpoints
+    public class GeonamesAltitudeSrmt3SearchResult : GeoSearchResult
     {
-        public GeonamesSearchResultItem[] geonames { get; set; }
+        public GeonamesAltitudeSrmt3SearchResultItem geoname { get; set; }
 
-        public override GeonamesSearchResultItem[] DwbApiSearchResponse
+        public override GeonamesAltitudeSrmt3SearchResultItem[] DwbApiSearchResponse
         {
             get
             {
-                return geonames?
-                    .Select(item => item.GetMappedApiClientModel())
+                return new[] { geoname }
                     .ToArray()
-                    ?? Array.Empty<GeonamesSearchResultItem>();
+                    ?? Array.Empty<GeonamesAltitudeSrmt3SearchResultItem>();
             }
         }
     }
 
-    public class GeonamesSearchResultItem : GeoSearchResultItem
+    public class GeonamesAltitudeSrmt3SearchResultItem : GeoSearchResultItem
     {
-        public string adminCode1 { get; set; }
-        public string lng { get; set; }
-        public string distance { get; set; }
-        public int geonameId { get; set; }
-        public string toponymName { get; set; }
-        public string countryId { get; set; }
-        public string fcl { get; set; }
-        public int population { get; set; }
-        public string countryCode { get; set; }
-        public string name { get; set; }
-        public string fclName { get; set; }
-        public Admincodes1 adminCodes1 { get; set; }
-        public string countryName { get; set; }
-        public string fcodeName { get; set; }
-        public string adminName1 { get; set; }
-        public string lat { get; set; }
-        public string fcode { get; set; }
+        public double lng { get; set; }
+        public double lat { get; set; }
         public int srtm3 { get; set; }
 
-        public class Admincodes1
-        {
-            public string ISO3166_2 { get; set; }
-        }
 
-        public override GeonamesSearchResultItem? GetMappedApiClientModel()
+        public override GeonamesAltitudeSrmt3SearchResultItem? GetMappedApiClientModel()
         {
-            _DisplayText = toponymName ?? string.Empty;
-            Label = toponymName ?? string.Empty;
 
             return this;
         }
     }
 
-    public class GeonamesGeoSearchCriterias : GeoSearchCriteria
+    public class GeoNamesAltitudeSrtm3EndpointCriterias : GeoSearchCriteria
     {
         public override string QueryParamString => $"{queryfunction}lat={lat}&lng={lng}&username={username}&style=full";
 
         // findNearbyPlaceName?lat=" + Latitude.ToString().Replace(",", ".") + "&lng=" + Longitude.ToString().Replace(",", ".") + "&username=" + username + "&style=full";
 
-        public string queryfunction = "findNearbyPlaceNameJSON?"; // default
+        public string queryfunction = "srtm3JSON?"; // default
 
         private string _lat;
         public string lat

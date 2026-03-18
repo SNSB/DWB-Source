@@ -14,6 +14,7 @@ using Microsoft.Web.WebView2.Core.Raw;
 using static DiversityCollection.CacheDatabase.UserControlLookupSource;
 using Microsoft.SqlServer.Management.Smo.Wmi;
 using Windows.ApplicationModel.Contacts;
+using System.Threading;
 
 namespace DiversityCollection.CacheDatabase;
 
@@ -35,7 +36,7 @@ internal class CacheDBWebServiceHandler
     }
 
     public async Task<(bool, string, string)> ForWebservice_TransferToCacheAsync(string sourceView, string sourceTable,
-        TypeOfSource typeOfSource)
+        TypeOfSource typeOfSource, CancellationToken cancellationToken)
     {
         var ok = true;
         var report = "";
@@ -99,7 +100,7 @@ internal class CacheDBWebServiceHandler
                     var iPresent = 0;
                     var updateResult = await ProcessSelectedProjectsAsync(selectedProjects, targetTable, linkColumn,
                         baseUrl,
-                        typeOfSource, sourceView, iAdded, iPresent, message, progressDialog);
+                        typeOfSource, sourceView, iAdded, iPresent, message, progressDialog, cancellationToken);
                     iAdded = updateResult.Item2;
                     iPresent = updateResult.Item3;
                     message = updateResult.Item4;
@@ -159,7 +160,7 @@ internal class CacheDBWebServiceHandler
         int iAdded,
         int iPresent,
         string message,
-        WebServiceProgressDialog progressDialog)
+        WebServiceProgressDialog progressDialog, CancellationToken cancellationToken)
     {
         bool ok = false;
         foreach (var project in selectedProjects)
@@ -175,7 +176,7 @@ internal class CacheDBWebServiceHandler
                 switch (typeOfSource)
                 {
                     case TypeOfSource.Taxa:
-                        var result = await ForWebservice_MapAndTransferTaxa(row[0].ToString(), sourceView, iAdded, iPresent, progressDialog);
+                        var result = await ForWebservice_MapAndTransferTaxa(row[0].ToString(), cancellationToken, sourceView, iAdded, iPresent, progressDialog);
                         ok = result.Item1;
                         iAdded = result.Item2;
                         iPresent = result.Item3;
@@ -237,7 +238,7 @@ internal class CacheDBWebServiceHandler
         return DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlNonQueryInCacheDB(sql);
     }
 
-    private async Task<(bool, int, int)> ForWebservice_MapAndTransferTaxa(string URL, string sourceView, int iAdded, int iPresent, WebServiceProgressDialog webServiceProgressDialog)
+    private async Task<(bool, int, int)> ForWebservice_MapAndTransferTaxa(string URL, CancellationToken cancellationToken, string sourceView, int iAdded, int iPresent, WebServiceProgressDialog webServiceProgressDialog)
     {
         var OK = true;
         try
@@ -252,7 +253,7 @@ internal class CacheDBWebServiceHandler
             // Update the progress dialog message
             webServiceProgressDialog.UpdateMessage($"Retrieving data from the web service for URL: \r\n\r\n {URL}");
             
-            var tt = await _api.CallWebServiceAsync<object>(URL);
+            var tt = await _api.CallWebServiceAsync<object>(URL, cancellationToken);
             if (tt != null)
             {
                 var clientEntity = _api.GetDwbApiDetailModel(tt);

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Windows.Forms;
 using DWBServices;
@@ -47,6 +48,7 @@ namespace DiversityWorkbench.Spreadsheet
         private Sheet _Sheet;
         private System.Windows.Forms.DataGridViewCell _Cell;
         private DWBServices.WebServices.DwbServiceEnums.DwbService _FixSourceWebservice;
+        private CancellationTokenSource _userCts;
         private System.Collections.Generic.Dictionary<string, string> _FixedSourceValues;
         private System.Collections.Generic.List<string> _Settings;
 
@@ -244,7 +246,8 @@ namespace DiversityWorkbench.Spreadsheet
 
                     try
                     {
-                        var tt = await _api.CallWebServiceAsync<object>(searchUrl,
+                        _userCts = new CancellationTokenSource();
+                        var tt = await _api.CallWebServiceAsync<object>(searchUrl, _userCts.Token,
                             DwbServiceEnums.HttpAction.GET);
                         if (tt != null)
                         {

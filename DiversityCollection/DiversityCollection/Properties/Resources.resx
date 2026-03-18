@@ -934,4 +934,10 @@
   <data name="DiversityCollectionUpdate_020656_to_020657" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020656_to_020657.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000026_to_000027" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000026_to_000027.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000036_to_000037" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000036_to_000037.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

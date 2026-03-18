@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace DiversityWorkbench.Export
 {
@@ -2859,7 +2860,7 @@ namespace DiversityWorkbench.Export
             }
         }
 
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.List<System.Collections.Generic.List<string>>> TestExport(decimal MaxLines, DiversityWorkbench.Export.iExporter iExporter)
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.List<System.Collections.Generic.List<string>>> TestExport(decimal MaxLines, DiversityWorkbench.Export.iExporter iExporter, CancellationToken cancellationToken)
         {
             System.Collections.Generic.List<System.Collections.Generic.List<string>> LL = new List<List<string>>();
             try
@@ -2870,7 +2871,7 @@ namespace DiversityWorkbench.Export
                 {
                     ListOfFileColums.Add(KV.Value);
                 }
-                System.Collections.Generic.List<System.Collections.Generic.List<string>> exportList = await Exporter.ExportResults(MaxLines, iExporter);
+                System.Collections.Generic.List<System.Collections.Generic.List<string>> exportList = await Exporter.ExportResults(MaxLines, iExporter, cancellationToken);
                 foreach (System.Collections.Generic.List<string> LSource in exportList)
                 {
                     System.Collections.Generic.List<string> L = new List<string>();
@@ -2891,7 +2892,7 @@ namespace DiversityWorkbench.Export
         /// </summary>
         /// <param name="ExportFile">The name of the file</param>
         /// <returns>If an exception occurred, the message created by the exception</returns>
-        public static async System.Threading.Tasks.Task<string> ExportToFile(string ExportFile, System.Windows.Forms.TextBox TextBox, DiversityWorkbench.Export.iExporter iExporter)
+        public static async System.Threading.Tasks.Task<string> ExportToFile(string ExportFile, System.Windows.Forms.TextBox TextBox, DiversityWorkbench.Export.iExporter iExporter, CancellationToken cancellationToken)
         {
             string Message = "";
             try
@@ -2902,7 +2903,7 @@ namespace DiversityWorkbench.Export
                 try
                 {
                     int iLines = 0;
-                    System.Collections.Generic.List<System.Collections.Generic.List<string>> LL = await Exporter.ExportResults(null, iExporter);
+                    System.Collections.Generic.List<System.Collections.Generic.List<string>> LL = await Exporter.ExportResults(null, iExporter, cancellationToken);
                     int MaxI = LL.Count;
                     foreach (System.Collections.Generic.List<string> L in LL)
                     {
@@ -2946,10 +2947,10 @@ namespace DiversityWorkbench.Export
         /// </summary>
         /// <param name="ExportFile">The name of the file</param>
         /// <returns>If an exception occurred, the message created by the exception</returns>
-        public static async System.Threading.Tasks.Task<string> ExportToXML(string ExportFile, System.Windows.Forms.TextBox TextBox, DiversityWorkbench.Export.iExporter iExporter, int MaxLines)
+        public static async System.Threading.Tasks.Task<string> ExportToXML(string ExportFile, System.Windows.Forms.TextBox TextBox, DiversityWorkbench.Export.iExporter iExporter, int MaxLines, CancellationToken cancellationToken)
         {
             string Message = "";
-            System.Collections.Generic.List<string> WrongColumns = await ExportToXmlValidNames(iExporter);
+            System.Collections.Generic.List<string> WrongColumns = await ExportToXmlValidNames(iExporter, cancellationToken);
             if (WrongColumns.Count > 0)
             {
                 Message = "The following column heaeders are not valid for a xml tag:";
@@ -2977,7 +2978,7 @@ namespace DiversityWorkbench.Export
                     W.WriteAttributeString("Date", System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.Month.ToString() + "-" + System.DateTime.Now.Day.ToString());
                     TextBox.Text += "<Export>\r\n";
                     t++;
-                    System.Collections.Generic.List<System.Collections.Generic.List<string>> LL = await Exporter.ExportResults(null, iExporter);
+                    System.Collections.Generic.List<System.Collections.Generic.List<string>> LL = await Exporter.ExportResults(null, iExporter, cancellationToken);
                     int MaxI = LL.Count;
                     System.Collections.Generic.List<string> Columns = null;
                     for (int l = 0; l < LL.Count; l++)
@@ -3094,9 +3095,9 @@ namespace DiversityWorkbench.Export
             return Message;
         }
 
-        private async static System.Threading.Tasks.Task<System.Collections.Generic.List<string>> ExportToXmlValidNames(DiversityWorkbench.Export.iExporter iExporter)
+        private async static System.Threading.Tasks.Task<System.Collections.Generic.List<string>> ExportToXmlValidNames(DiversityWorkbench.Export.iExporter iExporter, CancellationToken cancellationToken)
         {
-            System.Collections.Generic.List<System.Collections.Generic.List<string>> LL = await Exporter.ExportResults(null, iExporter);
+            System.Collections.Generic.List<System.Collections.Generic.List<string>> LL = await Exporter.ExportResults(null, iExporter, cancellationToken);
             System.Collections.Generic.List<string> Columns = LL[0];
             System.Collections.Generic.List<string> WrongColumns = new List<string>();
             foreach (string C in Columns)
@@ -3117,7 +3118,7 @@ namespace DiversityWorkbench.Export
         }
 
         private static System.Collections.Generic.List<System.Collections.Generic.List<string>> _ExportResults;
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.List<System.Collections.Generic.List<string>>> ExportResults(decimal? MaxLines, DiversityWorkbench.Export.iExporter iExporter)
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.List<System.Collections.Generic.List<string>>> ExportResults(decimal? MaxLines, DiversityWorkbench.Export.iExporter iExporter, CancellationToken cancellationToken)
         {
             Export.Exporter._ExportTableList = null;
 
@@ -3179,7 +3180,7 @@ namespace DiversityWorkbench.Export
                     {
                         Export.Exporter.CurrentFileColumnsContent.Add(KV.Key, KV.Value.CurrentValue);
                         string TransVal = "";
-                        try { TransVal = await KV.Value.TransformedValue(KV.Value.CurrentValue); }
+                        try { TransVal = await KV.Value.TransformedValue(KV.Value.CurrentValue, cancellationToken); }
                         catch (System.Exception ex) { }
                         Export.Exporter.CurrentFileColumnsTransformedContent.Add(KV.Key, TransVal);
                     }
@@ -3191,7 +3192,7 @@ namespace DiversityWorkbench.Export
                     bool isFirstColumn = true;
                     foreach (System.Collections.Generic.KeyValuePair<int, Export.FileColumn> KV in ListOfFileColums)
                     {
-                        CurrentValue = await KV.Value.TransformedValue(KV.Value.CurrentValue);
+                        CurrentValue = await KV.Value.TransformedValue(KV.Value.CurrentValue, cancellationToken);
                         if (isFirstColumn)
                         {
                             L.Add(CurrentValue);

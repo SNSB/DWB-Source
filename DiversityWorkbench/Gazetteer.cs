@@ -182,11 +182,7 @@ namespace DiversityWorkbench
                 }
 
                 _ServiceList.Add("CacheDB", "Cache database");
-                //this._ServiceList = new Dictionary<string, string>();
-                //_ServiceList.Add("Geonames", "GeoNames");
-                //_ServiceList.Add("IsoCountries", "ISO Countries");
-                //_ServiceList.Add("WorldSeas", "IHO World Seas");
-                //_ServiceList.Add("CacheDB", "Cache database");
+                
             }
             return _ServiceList;
         }
@@ -202,13 +198,6 @@ namespace DiversityWorkbench
                     _Add.Add(entry.Key.ToString(), entry.Value.Url);
                 }
             }
-            // Ariane
-            //_Add.Add("Geonames", DiversityWorkbench.WebserviceGfbioGeonames.UriBaseWeb);
-
-            //_Add.Add("IsoCountries", DiversityWorkbench.WebserviceGfbioIsoCountries.UriBaseWeb);
-
-            //_Add.Add("WorldSeas", DiversityWorkbench.WebserviceGfbioWorldSeas.UriBaseWeb);
-
 
             return _Add;
         }

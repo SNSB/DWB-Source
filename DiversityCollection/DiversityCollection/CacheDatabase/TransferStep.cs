@@ -1905,6 +1905,15 @@ namespace DiversityCollection.CacheDatabase
                     foreach (string s in this._TransferDataToPostgresColumns)//._TransferColumns)
                     {
                         Rnew[s] = R[s];
+                        
+                        // string ValueString = R[s].ToString();
+                        string DataTypeName = R.Table.Columns[s].DataType.Name;
+                        //// #326 disbled for release 4_6_4 
+                        //if (ValueString.IndexOf("\\") > -1 && DataTypeName == "String")
+                        //{
+                        //    ValueString = ValueString.Replace("\\", "\\\\");
+                        //}
+
                         if (!R[s].Equals(System.DBNull.Value) && R[s].ToString().Length > 0)
                         {
                             if (SqlRow.Length > 0)
@@ -1918,7 +1927,7 @@ namespace DiversityCollection.CacheDatabase
                             }
                             if (SqlRowValues.Length > 0)
                                 SqlRowValues += ", ";
-                            if (R.Table.Columns[s].DataType.Name == "DateTime")
+                            if (DataTypeName == "DateTime")
                             {
                                 System.DateTime DT;
                                 if (System.DateTime.TryParse(R[s].ToString(), out DT))
@@ -1935,7 +1944,7 @@ namespace DiversityCollection.CacheDatabase
                                         CheckPK += "'" + R[s].ToString().Replace("'", "''") + "'";
                                 }
                             }
-                            else if (R.Table.Columns[s].DataType.Name == "Double")
+                            else if (DataTypeName == "Double")
                             {
                                 double D;
                                 if (double.TryParse(R[s].ToString(), out D))
@@ -1953,6 +1962,19 @@ namespace DiversityCollection.CacheDatabase
                             }
                             else
                             {
+                                // #326 disabled for release 4_6_4
+                                //if (DataTypeName == "String")
+                                //{
+                                //    SqlRowValues += "'" + ValueString.Replace("'", "''") + "'";
+                                //    if (PK.Contains(s))
+                                //        CheckPK += "'" + ValueString.Replace("'", "''") + "'";
+                                //}
+                                //else
+                                //{
+                                //    SqlRowValues += "'" + R[s].ToString().Replace("'", "''") + "'";
+                                //    if (PK.Contains(s))
+                                //        CheckPK += "'" + R[s].ToString().Replace("'", "''") + "'";
+                                //}
                                 SqlRowValues += "'" + R[s].ToString().Replace("'", "''") + "'";
                                 if (PK.Contains(s))
                                     CheckPK += "'" + R[s].ToString().Replace("'", "''") + "'";

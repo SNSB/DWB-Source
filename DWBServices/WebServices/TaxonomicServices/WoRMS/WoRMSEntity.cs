@@ -44,6 +44,10 @@ namespace DWBServices.WebServices.TaxonomicServices.WoRMS
             Family = family ?? string.Empty; // TODO ??
             Order = order ?? string.Empty; // TODO
             Genus = genus ?? string.Empty;
+            Kingdom = kingdom ?? string.Empty;
+            Phylum = phylum ?? string.Empty;
+            Class = _class ?? string.Empty;
+            //Hierarchy = string.Empty; extra set by call to getEntityHierarchyAsync
             Epithet = string.Empty;
             Rank = rank ?? string.Empty;
             CommonNames =string.Empty; // TODO
@@ -51,9 +55,6 @@ namespace DWBServices.WebServices.TaxonomicServices.WoRMS
             Authors = authority ?? string.Empty; // TODO ?
             BasionymAuthors = string.Empty; // TODO ?
             CombiningAuthors = string.Empty; // TODO ?
-            Kingdom = kingdom ?? string.Empty;
-            Subkingdom = phylum ?? string.Empty;
-            Hierarchy = string.Empty;
             Unranked = string.Empty;
             Year = modified.Year.ToString();
 

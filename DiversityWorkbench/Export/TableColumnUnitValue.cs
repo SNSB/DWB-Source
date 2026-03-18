@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.LinkLabel;
 using System.Windows.Forms.DataVisualization.Charting;
 using Cursor = System.Windows.Forms.Cursor;
+using System.Threading;
 
 namespace DiversityWorkbench.Export
 {
@@ -73,12 +74,11 @@ namespace DiversityWorkbench.Export
             set { _LinkedUnitValue = value; }
         }
 
-        public async System.Threading.Tasks.Task<string> GetSourceValue(string CurrentValue)
+        public async System.Threading.Tasks.Task<string> GetSourceValue(string CurrentValue, CancellationToken cancellationToken)
         {
-            // TODO Ariane Change this to only sistinguish between database and webservice
-            if (CurrentValue.Length == 0)
-                return "";
-            string Value = "";
+                if (CurrentValue.Length == 0)
+                    return "";
+                string Value = "";
             if (this._DiversityWorkbenchModuleBaseUri == null)
             {
                 string SQL = "SELECT " + this._UnitValue + " FROM [" + this._TableColumn.ForeignRelationTable + "] AS T WHERE T." + this._TableColumn.ForeignRelationColumn + " = '" + CurrentValue + "'";
@@ -106,43 +106,44 @@ namespace DiversityWorkbench.Export
                         {
                             if (ServiceType == WorkbenchUnit.ServiceType.WebService)
                             {
-                                    string ValueForLinkedUnitValue = "";
-                                    if (DwbServiceProviderAccessor.Instance == null)
-                                    {
-                                        MessageBox.Show("The webservice is not available -- FormRemoteQuery 379");
-                                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("The webservice is not available --FormRemoteQuery 379.. dwbServiceProvider is null ");
-                                    }
-                                    string ServiceName = DiversityWorkbench.WorkbenchUnit.getDatabaseNameFromURI(CurrentValue);
-                                    DwbServiceEnums.DwbService service = DwbServiceEnums.DwbService.None;
-                                    if (Enum.TryParse(ServiceName, true, out DwbServiceEnums.DwbService result))
-                                    {
-                                        service = result;
-                                    }
-                                    IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
-                                        DwbServiceProviderAccessor.GetDwbWebservice(service);
+                                string ValueForLinkedUnitValue = "";
+                                if (DwbServiceProviderAccessor.Instance == null)
+                                {
+                                    MessageBox.Show("The webservice is not available -- FormRemoteQuery 379");
+                                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("The webservice is not available --FormRemoteQuery 379.. dwbServiceProvider is null ");
+                                }
+                                string ServiceName = DiversityWorkbench.WorkbenchUnit.getDatabaseNameFromURI(CurrentValue);
+                                DwbServiceEnums.DwbService service = DwbServiceEnums.DwbService.None;
+                                if (Enum.TryParse(ServiceName, true, out DwbServiceEnums.DwbService result))
+                                {
+                                    service = result;
+                                }
+                                IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
+                                    DwbServiceProviderAccessor.GetDwbWebservice(service);
 
-                                    if (!_api.IsValidUrl(CurrentValue))
+                                if (!_api.IsValidUrl(CurrentValue))
+                                {
+                                    MessageBox.Show("The selected value is not a valid URI or unit ID. URI: " + CurrentValue, "Invalid Selection",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("TableColumnUnitValue, 250: The selected value is not a valid URI or unit ID. URI: " + CurrentValue);
+                                    return Value;
+                                }
+                                try
+                                {
+                                    DwbEntity clientEntity = await getApiDetailModel(_api, CurrentValue, cancellationToken);
+                                    if (clientEntity == null)
                                     {
-                                        MessageBox.Show("The selected value is not a valid URI or unit ID. URI: " + CurrentValue, "Invalid Selection",
-                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("TableColumnUnitValue, 250: The selected value is not a valid URI or unit ID. URI: " + CurrentValue);
-                                        return Value;
+                                        return "";
                                     }
-                                    try{
-                                        DwbEntity clientEntity = await getApiDetailModel(_api, CurrentValue);
-                                        if (clientEntity == null)
-                                        {
-                                            return "";
-                                        }
-                                        string NameOfTaxon = clientEntity.GetMappedApiEntityModel().GetDisplayText() ?? string.Empty;
-                                        Value = NameOfTaxon;// TaxonSourceValue(Link, IF);
-                                    }
-                                    catch (System.Exception ex)
-                                    {
-                                        MessageBox.Show("An error occurred when trying to synchronize with the webservice: " + ex.Message, "SynchronizeError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-                                        Value = "";
-                                    }
+                                    string NameOfTaxon = clientEntity.GetMappedApiEntityModel().GetDisplayText() ?? string.Empty;
+                                    Value = NameOfTaxon;// TaxonSourceValue(Link, IF);
+                                }
+                                catch (System.Exception ex)
+                                {
+                                    MessageBox.Show("An error occurred when trying to synchronize with the webservice: " + ex.Message, "SynchronizeError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                                    Value = "";
+                                }
                             }
                         }
                     }
@@ -246,36 +247,51 @@ namespace DiversityWorkbench.Export
                                 MessageBox.Show("The webservice is not available -- FormRemoteQuery 379");
                                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("The webservice is not available --FormRemoteQuery 379.. dwbServiceProvider is null ");
                             }
-                            string ServiceName = DiversityWorkbench.WorkbenchUnit.getDatabaseNameFromURI(CurrentLink);
-                            DwbServiceEnums.DwbService service = DwbServiceEnums.DwbService.None;
-                            if (Enum.TryParse(ServiceName, true, out DwbServiceEnums.DwbService result))
+                            try
                             {
-                                service = result;
-                            }
-                            IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
-                                DwbServiceProviderAccessor.GetDwbWebservice(service);
+                                string ServiceName = DiversityWorkbench.WorkbenchUnit.getDatabaseNameFromURI(CurrentLink);
+                                DwbServiceEnums.DwbService service = DwbServiceEnums.DwbService.None;
+                                if (Enum.TryParse(ServiceName, true, out DwbServiceEnums.DwbService result))
+                                {
+                                    service = result;
+                                }
+                                IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
+                                    DwbServiceProviderAccessor.GetDwbWebservice(service);
 
-                            if (!_api.IsValidUrl(CurrentLink))
-                            {
-                                MessageBox.Show("The selected value is not a valid URI or unit ID. URI: " + CurrentLink, "Invalid Selection",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("TableColumnUnitValue, 250: The selected value is not a valid URI or unit ID. URI: " + CurrentLink);
-                                continue;
-                            }
+                                if (!_api.IsValidUrl(CurrentLink))
+                                {
+                                    MessageBox.Show("The selected value is not a valid URI or unit ID. URI: " + CurrentLink, "Invalid Selection",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("TableColumnUnitValue, 250: The selected value is not a valid URI or unit ID. URI: " + CurrentLink);
+                                    continue;
+                                }
 
-                            DwbEntity clientEntity = await getApiDetailModel(_api, CurrentLink);
-                            if (clientEntity != null)
-                            {
-                                string NameOfTaxon = clientEntity.GetMappedApiEntityModel().GetDisplayText() ??
-                                                     string.Empty;
-                                ValueForLinkedUnitValue = NameOfTaxon; // TaxonSourceValue(Link, IF);
-                            }
+                                DwbEntity clientEntity = await getApiDetailModel(_api, CurrentLink, cancellationToken);
+                                if (clientEntity != null)
+                                {
+                                    string NameOfTaxon = clientEntity.GetMappedApiEntityModel().GetDisplayText() ??
+                                                         string.Empty;
+                                    ValueForLinkedUnitValue = NameOfTaxon; // TaxonSourceValue(Link, IF);
+                                }
 
-                            if (ValueForLinkedUnitValue.Length > 0)
+                                if (ValueForLinkedUnitValue.Length > 0)
+                                {
+                                    if (LinkedValue.Length > 0)
+                                        LinkedValue += " | ";
+                                    LinkedValue += ValueForLinkedUnitValue;
+                                }
+                            }
+                            catch (System.Exception ex)
                             {
-                                if (LinkedValue.Length > 0)
-                                    LinkedValue += " | ";
-                                LinkedValue += ValueForLinkedUnitValue;
+                                MessageBox.Show(
+                                    "The web service call is incorrect.\r\n\r\n  " +
+                                    "For more details on the error, see the error log file.\r\n\r\n",
+                                    "Web service Error", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                                ExceptionHandling.WriteToErrorLogFile(
+                                    "TableColumnUnitValues - GetSourceValue, Exception exception: " +
+                                    ex);
+                                return string.Empty;
                             }
                         }
                     }
@@ -285,12 +301,12 @@ namespace DiversityWorkbench.Export
             return Value;
         }
        
-        private async System.Threading.Tasks.Task<DwbEntity> getApiDetailModel(IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api, string nameUri)
+        private async System.Threading.Tasks.Task<DwbEntity> getApiDetailModel(IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api, string nameUri, CancellationToken cancellationToken)
         {
             try
             {
                 var tt = await _api.CallWebServiceAsync<object>(
-                    nameUri,
+                    nameUri, cancellationToken,
                     DwbServiceEnums.HttpAction.GET);
                 DwbEntity clientEntity = _api.GetDwbApiDetailModel(tt);
                 return clientEntity;

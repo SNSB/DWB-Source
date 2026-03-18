@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics.Eventing.Reader;
 
 namespace DiversityCollection.UserControls
 {
@@ -406,19 +407,24 @@ namespace DiversityCollection.UserControls
         #endregion
 
         #region Interface
-        
+
+        private bool _PartSelected { get { return this._iMainForm.SelectedPartHierarchyNode() != null; } }
+
         public void setMultiPrintRestrictionText()
         {
             try
             {
-                bool PartSelected = this._iMainForm.SelectedPartHierarchyNode() != null;
+                bool PartSelected = this._PartSelected; // this._iMainForm.SelectedPartHierarchyNode() != null;
+                //PartSelected = true;
                 this.checkBoxPrintRestrictToCollection.Enabled = PartSelected;
                 this.checkBoxPrintRestrictToMaterial.Enabled = PartSelected;
                 this.checkBoxUseStockForLabelDuplicates.Enabled = PartSelected;
-                this.buttonLabelQRcode.Enabled = PartSelected;
-                this.checkBoxLabelQRcode.Enabled = PartSelected;
-                this.comboBoxLabelQRcode.Enabled = PartSelected;
-                this.comboBoxLabelQRcodeType.Enabled = PartSelected;
+                // #362
+                this.buttonLabelQRcode.Enabled = true; // PartSelected;
+                this.checkBoxLabelQRcode.Enabled = true; // PartSelected;
+                this.comboBoxLabelQRcode.Enabled = true; // PartSelected;
+                this.comboBoxLabelQRcodeType.Enabled = true; // PartSelected;
+
                 //if (this._iMainForm.SelectedPartHierarchyNode() == null)
                 //{
                 //    this.checkBoxPrintRestrictToCollection.Enabled = false;
@@ -473,6 +479,13 @@ namespace DiversityCollection.UserControls
                         }
                     }
                 }
+                else
+                {
+                    //#362
+
+                }
+                this.setQRcodeSources();
+                this.setQRcodeStableIdentifierSource();
             }
             catch (Exception ex)
             {
@@ -596,7 +609,78 @@ namespace DiversityCollection.UserControls
                 this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.StorageLocation);
                 this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.GUID);
             }
+            if (this._PartSelected)
+            {
+                if(!this.comboBoxLabelQRcode.Items.Contains(DiversityCollection.XmlExport.QRcodeSource.PartAccessionNumber))
+                    this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.PartAccessionNumber);
+                if (!this.comboBoxLabelQRcode.Items.Contains(DiversityCollection.XmlExport.QRcodeSource.StorageLocation))
+                    this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.StorageLocation);
+            }
+            else
+            {
+                if (this.comboBoxLabelQRcode.Items.Contains(DiversityCollection.XmlExport.QRcodeSource.PartAccessionNumber))
+                    this.comboBoxLabelQRcode.Items.Remove(DiversityCollection.XmlExport.QRcodeSource.PartAccessionNumber);
+                if (this.comboBoxLabelQRcode.Items.Contains(DiversityCollection.XmlExport.QRcodeSource.StorageLocation))
+                    this.comboBoxLabelQRcode.Items.Remove(DiversityCollection.XmlExport.QRcodeSource.StorageLocation);
+            }
         }
+
+        private void setQRcodeSources()
+        {
+            try
+            {
+                this.comboBoxLabelQRcode.Items.Clear();
+                this.comboBoxLabelQRcode.Items.Add("");
+                this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.AccessionNumber);
+                this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.CollectorsEventNumber);
+                this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.DepositorsAccessionNumber);
+                this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.ExternalIdentifier);
+                if (this._PartSelected) this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.PartAccessionNumber);
+                this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.StableIdentifier);
+                if (this._PartSelected) this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.StorageLocation);
+                this.comboBoxLabelQRcode.Items.Add(DiversityCollection.XmlExport.QRcodeSource.GUID);
+            }
+            catch (Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
+        }
+
+        public void setQRcodeStableIdentifierSource()
+        {
+            try
+            {
+                if (this.comboBoxLabelQRcode.SelectedItem == null)
+                    this.comboBoxLabelQRcodeType.Items.Clear();
+                else if (this.comboBoxLabelQRcode.SelectedItem.ToString() == DiversityCollection.XmlExport.QRcodeSource.StableIdentifier.ToString())
+                {
+                    this.pictureBoxLabelQRcodeSource.Image = DiversityCollection.Resource.QRcode;
+                    if (this.StableIdentifierSettingsComplete())
+                    {
+                        this.comboBoxLabelQRcodeType.Items.Add("");
+                        this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.AccessionNumber.ToString());
+                        if (this._PartSelected)
+                        {
+                            this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.SpecimenID.ToString());
+                            this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.Units.ToString());
+                            this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.UnitsInPart.ToString());
+                        }
+                        this.comboBoxLabelQRcodeType.Enabled = true;
+                    }
+                    else
+                    {
+                        //this.checkBoxLabelQRcode_Click(null, null);
+                        this.checkBoxLabelQRcode.Checked = false;
+                        this.SetQrCodeControls();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
+        }
+
 
         private void comboBoxLabelQRcode_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -636,22 +720,26 @@ namespace DiversityCollection.UserControls
             }
             else if (this.comboBoxLabelQRcode.SelectedItem.ToString() == DiversityCollection.XmlExport.QRcodeSource.StableIdentifier.ToString())
             {
-                this.pictureBoxLabelQRcodeSource.Image = DiversityCollection.Resource.QRcode;
-                if (this.StableIdentifierSettingsComplete())
-                {
-                    this.comboBoxLabelQRcodeType.Items.Add("");
-                    this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.AccessionNumber.ToString());
-                    this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.SpecimenID.ToString());
-                    this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.Units.ToString());
-                    this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.UnitsInPart.ToString());
-                    this.comboBoxLabelQRcodeType.Enabled = true;
-                }
-                else
-                {
-                    //this.checkBoxLabelQRcode_Click(null, null);
-                    this.checkBoxLabelQRcode.Checked = false;
-                    this.SetQrCodeControls();
-                }
+                this.setQRcodeStableIdentifierSource();
+                //this.pictureBoxLabelQRcodeSource.Image = DiversityCollection.Resource.QRcode;
+                //if (this.StableIdentifierSettingsComplete())
+                //{
+                //    this.comboBoxLabelQRcodeType.Items.Add("");
+                //    this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.AccessionNumber.ToString());
+                //    if (this._PartSelected)
+                //    {
+                //        this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.SpecimenID.ToString());
+                //        this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.Units.ToString());
+                //        this.comboBoxLabelQRcodeType.Items.Add(DiversityCollection.XmlExport.QRcodeStableIdentifierType.UnitsInPart.ToString());
+                //    }
+                //    this.comboBoxLabelQRcodeType.Enabled = true;
+                //}
+                //else
+                //{
+                //    //this.checkBoxLabelQRcode_Click(null, null);
+                //    this.checkBoxLabelQRcode.Checked = false;
+                //    this.SetQrCodeControls();
+                //}
             }
             else if (this.comboBoxLabelQRcode.SelectedItem.ToString() == DiversityCollection.XmlExport.QRcodeSource.StorageLocation.ToString())
             {

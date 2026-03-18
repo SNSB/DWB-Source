@@ -93,8 +93,6 @@ namespace DiversityCollection.Forms
             {
             }
 
-            DiversityWorkbench.Agent A = new DiversityWorkbench.Agent(DiversityWorkbench.Settings.ServerConnection);
-            this.userControlModuleRelatedEntryTransactionInstitution.IWorkbenchUnit = (DiversityWorkbench.IWorkbenchUnit)A;
 
             System.DateTime From = System.DateTime.Parse(System.DateTime.Now.Year.ToString() + "-01-01");
             System.DateTime Until = System.DateTime.Parse(System.DateTime.Now.Year.ToString() + "-12-31");
@@ -2512,6 +2510,13 @@ ORDER BY U.OrderCache
         {
             // wird in FormTransaction umgesetzt
             this.tabControlTransaction.TabPages.Remove(this.tabPageTransactionHistory);
+            // #334
+            DiversityWorkbench.Agent A = new DiversityWorkbench.Agent(DiversityWorkbench.Settings.ServerConnection);
+            this.userControlModuleRelatedEntryTransactionInstitution.IWorkbenchUnit = (DiversityWorkbench.IWorkbenchUnit)A;
+            this.userControlModuleRelatedEntryTransactionInstitution.comboBoxLocalValues.Visible = false;
+
+            //this.userControlModuleRelatedEntryTransactionInstitution.bindToData("Collection", "AdministrativeContactName", "AdministrativeContactAgentURI", this.bi);
+
         }
 
         private void buttonTransactionHistoryStart_Click(object sender, EventArgs e)

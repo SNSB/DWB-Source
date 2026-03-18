@@ -11,7 +11,11 @@ namespace DWBServices.WebServices.TaxonomicServices.WoRMS
 
         public override TaxonomicSearchResultItem[] DwbApiSearchResponse
         {
-            get { return Items?[0]?.Select(item => item.GetMappedApiClientModel()).ToArray(); }
+            get
+            {
+                return Items?[0]?.Select(item => item.GetMappedApiClientModel()).ToArray()
+                    ?? Array.Empty<TaxonomicSearchResultItem>();
+            }
         }
     }
 

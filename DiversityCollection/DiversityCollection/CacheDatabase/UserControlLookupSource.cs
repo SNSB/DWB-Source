@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -165,6 +166,8 @@ namespace DiversityCollection.CacheDatabase
             }
             return this._BaseURL;
         }
+
+        private CancellationTokenSource _userCts;
 
 #endregion
 
@@ -451,8 +454,9 @@ namespace DiversityCollection.CacheDatabase
                 /// Reset TransferError
                 this.ResetTransferErrors();
                 this._TransferHistory = new Dictionary<string, object>();
+                _userCts = new CancellationTokenSource();
                 var result = await _webServiceHandler.ForWebservice_TransferToCacheAsync(this._SourceView,
-                    this.SourcesTable(), _TypeOfSource);
+                    this.SourcesTable(), _TypeOfSource, _userCts.Token);
                 message = result.Item2 ?? string.Empty;
                 report = result.Item3 ?? string.Empty;
                 this.WriteTransferProtocol(report, true);

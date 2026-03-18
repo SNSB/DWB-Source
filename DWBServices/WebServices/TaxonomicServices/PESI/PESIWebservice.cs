@@ -13,6 +13,11 @@ namespace DWBServices.WebServices.TaxonomicServices.PESI
             httpClient.BaseAddress = new Uri(BaseAddress);
         }
 
+        public override async Task<TaxonomicEntity> GetEntityHierarchyAsync<T>(string url, TaxonomicEntity dwbEntity, CancellationToken cancellationToken)
+        {
+            // PESI does not provide hierarchy information in the current API
+            return dwbEntity;
+        }
         public override string DwbApiQueryUrlString(DwbServiceEnums.DwbService currentService, string queryRestrictions, int offset, int maxPerPage)
         {
             PESITaxonomicSearchCriterias criterias = new PESITaxonomicSearchCriterias();

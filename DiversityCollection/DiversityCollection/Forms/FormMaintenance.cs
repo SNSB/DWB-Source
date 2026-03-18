@@ -8,8 +8,13 @@ using DWBServices.WebServices.TaxonomicServices;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace DiversityCollection.Forms
@@ -23,6 +28,9 @@ namespace DiversityCollection.Forms
         private bool _ShowList;
         private string _ShowListQueryHeader;
         private string _ShowListQueryDescription;
+        private CancellationTokenSource _userCts;
+        private System.Windows.Forms.Button buttonSynColTaxTextCancel;
+        private System.Windows.Forms.Button buttonSynColTaxCancel;
 
         private DiversityWorkbench.Forms.FormFunctions _FormFunctions;
         private System.Data.DataTable _dtSynColTax;
@@ -94,6 +102,7 @@ namespace DiversityCollection.Forms
         public FormMaintenance()
         {
             InitializeComponent();
+            InitializeCustomComponent();
             this.initForm();
             this.setDatabases();
             try
@@ -135,7 +144,7 @@ namespace DiversityCollection.Forms
             }
             this.InitUnrelatedEvents();
             // online manual
-            this.helpProvider.HelpNamespace = DiversityWorkbench.WorkbenchResources.WorkbenchDirectory.HelpProviderNameSpace();
+            this.helpProvider.HelpNamespace = DiversityWorkbench.WorkbenchResources.WorkbenchDirectory.HelpProviderNameSpace();        
         }
 
         public FormMaintenance(Maintenance MaintenanceTarget, int? ProjectID = null) : this()
@@ -170,6 +179,50 @@ namespace DiversityCollection.Forms
             }
         }
 
+        private void InitializeCustomComponent()
+        {
+            buttonSynColTaxTextCancel = new System.Windows.Forms.Button();
+            buttonSynColTaxCancel = new System.Windows.Forms.Button();
+            tableLayoutPanelSynColTaxText.Controls.Add(buttonSynColTaxTextCancel, 0, 20);
+            tableLayoutPanelSynColTax.Controls.Add(buttonSynColTaxCancel, 0, 14);
+            // 
+            // buttonSynColTaxTextCancel
+            // 
+            tableLayoutPanelSynColTaxText.SetColumnSpan(buttonSynColTaxTextCancel, 5);
+            buttonSynColTaxTextCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonSynColTaxTextCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)0);
+            buttonSynColTaxTextCancel.Image = Resource.Search;
+            buttonSynColTaxTextCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            buttonSynColTaxTextCancel.Location = new System.Drawing.Point(4, 465);
+            buttonSynColTaxTextCancel.Margin = new System.Windows.Forms.Padding(4);
+            buttonSynColTaxTextCancel.Name = "buttonSynColTaxTextCancel";
+            buttonSynColTaxTextCancel.Size = new System.Drawing.Size(390, 26);
+            buttonSynColTaxTextCancel.TabIndex = 2;
+            buttonSynColTaxTextCancel.Text = "Cancel";
+            buttonSynColTaxTextCancel.UseVisualStyleBackColor = true;
+            buttonSynColTaxTextCancel.Enabled = false;
+            buttonSynColTaxTextCancel.Visible = false;
+            buttonSynColTaxTextCancel.Click += (this.buttonSynColTaxTextCancel_Click);
+            // 
+            // buttonSynColTaxCancel
+            // 
+            buttonSynColTaxCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonSynColTaxCancel.Image = Resource.Search;
+            buttonSynColTaxCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            buttonSynColTaxCancel.Location = new System.Drawing.Point(4, 439);
+            buttonSynColTaxCancel.Margin = new System.Windows.Forms.Padding(4);
+            buttonSynColTaxCancel.Name = "buttonSynColTaxCancel";
+            buttonSynColTaxCancel.Size = new System.Drawing.Size(308, 26);
+            buttonSynColTaxCancel.TabIndex = 2;
+            buttonSynColTaxCancel.Text = "      Cancel";
+            buttonSynColTaxCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            buttonSynColTaxCancel.UseVisualStyleBackColor = true;
+            buttonSynColTaxCancel.Enabled = false;
+            buttonSynColTaxCancel.Visible = false;
+            buttonSynColTaxCancel.Click += (this.buttonSynColTaxCancel_Click);
+           
+        }
+        
         #endregion
 
         #region Form
@@ -959,7 +1012,8 @@ namespace DiversityCollection.Forms
             string BaseURL = "";
             string SQL = "";
             string SqlOrder = "";
-            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;           
+            this.buttonSynColTaxCheck.Enabled = false;
             try
             {
                 if (this.checkBoxSynColTaxViaCacheDB.Checked)
@@ -988,6 +1042,8 @@ namespace DiversityCollection.Forms
                         string CollectionServer = ModulBaseURL.ToLower().Substring(0, ModulBaseURL.ToLower().IndexOf("/collection"));
                         if (TaxonNameServer != CollectionServer)
                             SourceForSynchronisation = SynchronisationSource.ModuleOnDifferentServer;
+                        else
+                            SourceForSynchronisation = SynchronisationSource.ModuleOnSameServer;
                     }
                 }
                 else if (DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].DatabaseAndServiceURIs().TryGetValue(this.comboBoxSynColTaxDatabase.Text, out BaseURL))
@@ -1016,7 +1072,11 @@ namespace DiversityCollection.Forms
                         this.SynchroniseTaxonNameOnDifferentServer(BaseURL);
                         break;
                     case SynchronisationSource.Webservice:
-                        await this.SynchroniseTaxonNamesViaWebservice(BaseURL);
+                        _userCts = new CancellationTokenSource();
+                        this.buttonSynColTaxCheck.Visible = false;
+                        this.buttonSynColTaxCancel.Enabled = true;
+                        this.buttonSynColTaxCancel.Visible = true;
+                        await this.SynchroniseTaxonNamesViaWebservice(BaseURL, _userCts.Token);
                         break;
                 }
             }
@@ -1054,7 +1114,22 @@ namespace DiversityCollection.Forms
             finally
             {
                 this.Cursor = System.Windows.Forms.Cursors.Default;
+                this.buttonSynColTaxCancel.Enabled = false;
+                this.buttonSynColTaxCancel.Visible = false;
+                this.buttonSynColTaxCheck.Enabled = true;
+                this.buttonSynColTaxCheck.Visible = true;
+                
             }
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.buttonSynColTaxCancel.Enabled = false;
+            this.buttonSynColTaxCancel.Visible = false;
+            this.buttonSynColTaxCheck.Enabled = true;
+            this.buttonSynColTaxCheck.Visible = true;
+        }
+
+        private async void buttonSynColTaxCancel_Click(object sender, EventArgs e)
+        {
+            _userCts?.Cancel();
         }
 
         private void SynChroniseTaxonNamesOnSameServer(string BaseURL)
@@ -1275,7 +1350,7 @@ namespace DiversityCollection.Forms
             }
         }
 
-        private async System.Threading.Tasks.Task SynchroniseTaxonNamesViaWebservice(string BaseURL)
+        private async System.Threading.Tasks.Task SynchroniseTaxonNamesViaWebservice(string BaseURL, CancellationToken cancellationToken)
         {
             try
             {
@@ -1326,6 +1401,8 @@ namespace DiversityCollection.Forms
 
                 // Removing the rows where no difference is found
                 System.Collections.Generic.List<System.Data.DataRow> RowsToDelete = new List<DataRow>();
+                // Save the rows whith error links
+                System.Collections.Generic.List<System.Data.DataRow> RowsWithErrors = new List<DataRow>();
 
                 DwbServiceEnums.DwbService currentDwbService =
                     getCurrentService(this.comboBoxSynColTaxDatabase.Text);
@@ -1338,16 +1415,21 @@ namespace DiversityCollection.Forms
                         string nameUri = R["NameURI"]?.ToString();
                         if (!_api.IsValidUrl(nameUri))
                         {
-                            MessageBox.Show("The selected value is not a valid URI or unit ID.", "Invalid Selection",
+                            System.Windows.Forms.MessageBox.Show("The selected value is not a valid URI or unit ID.", "Invalid Selection",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-
-                        DwbEntity clientEntity = await getApiDetailModel(_api, nameUri);
+                        string NameOfTaxon = "";
+                        DwbEntity clientEntity = await getApiDetailModel(_api, nameUri, cancellationToken);
                         if (clientEntity == null)
-                            return;
-
-                        string NameOfTaxon = clientEntity.GetMappedApiEntityModel().GetDisplayText() ?? string.Empty;
+                        {
+                            NameOfTaxon = "Error: Invalid URI or empty Response";
+                            RowsWithErrors.Add(R);
+                            R[0] = false;
+                            //RowsToDelete.Add(R);
+                        }
+                        else
+                            NameOfTaxon = clientEntity.GetMappedApiEntityModel().GetDisplayText() ?? string.Empty;
                         string CurrentName = R[1].ToString();
                         if (NameOfTaxon.Trim() == CurrentName.Trim())
                             RowsToDelete.Add(R);
@@ -1359,23 +1441,46 @@ namespace DiversityCollection.Forms
                         }
                     }
                 }
+                if (RowsWithErrors.Count > 0)
+                {
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    sb.AppendLine("There were some invalid URI or empty response errors.");
+                    //sb.AppendLine("The following rows could not be checked due to errors: \n\r");
+                    //foreach (System.Data.DataRow R in RowsWithErrors)
+                    //{
+                    //    sb.AppendLine("Name: " + R[1] +
+                    //        ", NameURI: " + R["NameURI"].ToString() + " \n\r ");
+                    //}
+                    System.Windows.Forms.MessageBox.Show(sb.ToString(), "Errors during synchronization check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.labelSynColTaxCheck.Text = "Errors found";
+                    this.buttonSynColTaxUpdate.Enabled = false;
+                }
+
                 foreach (System.Data.DataRow R in RowsToDelete)
                     R.Delete();
                 this._dtSynColTax.AcceptChanges();
                 if (this._dtSynColTax.Rows.Count > 0)
                 {
                     this.labelSynColTaxCheck.Text = this._dtSynColTax.Rows.Count.ToString() + " differences to " + this.comboBoxSynColTaxDatabase.Text + " found";
+                   
                     this.buttonSynColTaxUpdate.Enabled = true;
                 }
                 else
                 {
-                    this.labelSynColTaxCheck.Text = "No differences found";
-                    this.buttonSynColTaxUpdate.Enabled = false;
+                    if (RowsWithErrors.Count == 0) {
+                        this.labelSynColTaxCheck.Text = "No differences found";
+                        this.buttonSynColTaxUpdate.Enabled = false;
+                    }
                 }
+            }
+            catch (System.OperationCanceledException ex)
+            {
+                System.Windows.Forms.MessageBox.Show("The webservice call was cancelled.", "SynchronizeError", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show("An error occurred when trying to synchronize with the webservice: " + ex.Message, "SynchronizeError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("An error occurred when trying to synchronize with the webservice: " + ex.Message, "SynchronizeError", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
@@ -1941,6 +2046,8 @@ namespace DiversityCollection.Forms
         {
             try
             {
+                buttonSynColTaxTextCheck.Enabled = false; // Disable the button
+                this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
                 this.dataGridViewSynColTaxText.DataSource = null;
                 this._dtSynColTaxText = new DataTable();
                 int ProjectID = 0;
@@ -1976,7 +2083,12 @@ namespace DiversityCollection.Forms
                     else if (DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].DatabaseAndServiceURIs().TryGetValue(this.comboBoxSynColTaxTextDatabase.Text, out this._SynchronizeColTaxTextBaseURL))
                     {
                         this.radioButtonSynColTaxTextCompareParts.Enabled = true;
-                        await this.SynchronizeColTaxTextWithWebService(this._SynchronizeColTaxTextBaseURL);
+                        this.buttonSynColTaxTextCheck.Visible = false;
+                        this.buttonSynColTaxTextCancel.Enabled = true;
+                        this.buttonSynColTaxTextCancel.Visible = true;
+
+                        _userCts = new CancellationTokenSource();
+                        await this.SynchronizeColTaxTextWithWebService(this._SynchronizeColTaxTextBaseURL, _userCts.Token);
                     }
                 }
 
@@ -2003,6 +2115,14 @@ namespace DiversityCollection.Forms
                 this.progressBarSynColTaxText.Visible = false;
             }
             catch (System.Exception ex) { }
+            finally
+            {
+                this.buttonSynColTaxTextCheck.Visible = true;
+                this.buttonSynColTaxTextCancel.Enabled = false;
+                this.buttonSynColTaxTextCancel.Visible = false;
+                this.buttonSynColTaxTextCheck.Enabled = true; // Re-enable the button
+                this.Cursor = System.Windows.Forms.Cursors.Default;
+            }
         }
 
         #endregion
@@ -2706,7 +2826,7 @@ namespace DiversityCollection.Forms
                                     {
                                         SearchFor += SearchString[iS];
                                     }
-                                    else if (iS > 1 && ((SearchString[iS][0].ToString() == SearchString[iS][0].ToString().ToUpper() && char.IsLetter(SearchString[iS][0])) || SearchString[iS][0].ToString() == "("))
+                                    else if (iS > 1 && !string.IsNullOrEmpty(SearchString[iS]) && ((SearchString[iS][0].ToString() == SearchString[iS][0].ToString().ToUpper() && char.IsLetter(SearchString[iS][0])) || SearchString[iS][0].ToString() == "("))
                                     {
                                         // Stop after a upper letter or a ( is detected indicating the start of the authors
                                         SearchFor += "%";
@@ -2864,60 +2984,61 @@ namespace DiversityCollection.Forms
                 this.buttonSynColTaxTextUpdate.Enabled = true;
                 try
                 {
-                    foreach (System.Windows.Forms.DataGridViewRow R in this.dataGridViewSynColTaxText.Rows)
-                    {
-                        System.Drawing.Color C = System.Drawing.Color.White;
-                        if (R.Cells[0].Value.ToString().ToLower() == "false")
-                        {
-                            C = System.Drawing.Color.LightYellow;
-                            int Sim;
-                            string Value = R.Cells[4].Value.ToString();
-                            if (this.checkBoxSynColTaxTextIncludeAccNr.Checked)
-                            {
-                                Value = R.Cells[6].Value.ToString();
-                            }
-                            if (int.TryParse(Value, out Sim) && Sim > 1)
-                            {
-                                C = System.Drawing.Color.LightBlue;
-                            }
-                            else
-                            {
-                                string[] TaxonCollection = R.Cells[1].Value.ToString().Split(new char[] { ' ' });
-                                string[] TaxonFromDTN = R.Cells[2].Value.ToString().Split(new char[] { ' ' });
-                                int iTT = TaxonCollection.Length;
-                                if (iTT > TaxonFromDTN.Length)
-                                    iTT = TaxonFromDTN.Length;
-                                for (int itt = 0; itt < iTT; itt++)
-                                {
-                                    if (TaxonCollection[itt] == TaxonCollection[itt].ToLower()
-                                        && TaxonCollection[itt] != TaxonFromDTN[itt])
-                                    {
-                                        string TC = TaxonCollection[itt].Replace(")", "").Replace("(", "");
-                                        string TN = TaxonFromDTN[itt].Replace(")", "").Replace("(", "");
-                                        int iTC;
-                                        int iTN;
-                                        if (!int.TryParse(TC, out iTC) && !int.TryParse(TN, out iTN))
-                                        {
-                                            C = System.Drawing.Color.Pink;
-                                            break;
-                                        }
-                                    }
-                                    if (itt == 0
-                                        && TaxonCollection[itt] != TaxonFromDTN[itt])
-                                    {
-                                        C = System.Drawing.Color.Pink;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        else if (R.Cells[1].Value.ToString() != R.Cells[2].Value.ToString())
-                            C = System.Drawing.Color.LightYellow;
-                        for (int iDGV = 0; iDGV < this.dataGridViewSynColTaxText.Columns.Count; iDGV++)
-                        {
-                            R.Cells[iDGV].Style.BackColor = C;
-                        }
-                    }
+                    this.SynchronizeColTaxTextSetGridColors();
+                    //foreach (System.Windows.Forms.DataGridViewRow R in this.dataGridViewSynColTaxText.Rows)
+                    //{
+                    //    System.Drawing.Color C = System.Drawing.Color.White;
+                    //    if (R.Cells[0].Value.ToString().ToLower() == "false")
+                    //    {
+                    //        C = System.Drawing.Color.LightYellow;
+                    //        int Sim;
+                    //        string Value = R.Cells[4].Value.ToString();
+                    //        if (this.checkBoxSynColTaxTextIncludeAccNr.Checked)
+                    //        {
+                    //            Value = R.Cells[6].Value.ToString();
+                    //        }
+                    //        if (int.TryParse(Value, out Sim) && Sim > 1)
+                    //        {
+                    //            C = System.Drawing.Color.LightBlue;
+                    //        }
+                    //        else
+                    //        {
+                    //            string[] TaxonCollection = R.Cells[1].Value.ToString().Split(new char[] { ' ' });
+                    //            string[] TaxonFromDTN = R.Cells[2].Value.ToString().Split(new char[] { ' ' });
+                    //            int iTT = TaxonCollection.Length;
+                    //            if (iTT > TaxonFromDTN.Length)
+                    //                iTT = TaxonFromDTN.Length;
+                    //            for (int itt = 0; itt < iTT; itt++)
+                    //            {
+                    //                if (TaxonCollection[itt] == TaxonCollection[itt].ToLower()
+                    //                    && TaxonCollection[itt] != TaxonFromDTN[itt])
+                    //                {
+                    //                    string TC = TaxonCollection[itt].Replace(")", "").Replace("(", "");
+                    //                    string TN = TaxonFromDTN[itt].Replace(")", "").Replace("(", "");
+                    //                    int iTC;
+                    //                    int iTN;
+                    //                    if (!int.TryParse(TC, out iTC) && !int.TryParse(TN, out iTN))
+                    //                    {
+                    //                        C = System.Drawing.Color.Pink;
+                    //                        break;
+                    //                    }
+                    //                }
+                    //                if (itt == 0
+                    //                    && TaxonCollection[itt] != TaxonFromDTN[itt])
+                    //                {
+                    //                    C = System.Drawing.Color.Pink;
+                    //                    break;
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //    else if (R.Cells[1].Value.ToString() != R.Cells[2].Value.ToString())
+                    //        C = System.Drawing.Color.LightYellow;
+                    //    for (int iDGV = 0; iDGV < this.dataGridViewSynColTaxText.Columns.Count; iDGV++)
+                    //    {
+                    //        R.Cells[iDGV].Style.BackColor = C;
+                    //    }
+                    //}
                 }
                 catch (System.Exception ex) { }
 
@@ -3067,6 +3188,7 @@ namespace DiversityCollection.Forms
 
         private System.Collections.Generic.List<string> _TaxonomicRanks;
         private System.Collections.Generic.List<string> TaxonomicRanks(string ConnectionString, string Prefix)
+        
         {
             if (this._TaxonomicRanks == null)
             {
@@ -3089,7 +3211,7 @@ namespace DiversityCollection.Forms
             return this._TaxonomicRanks;
         }
 
-        private async System.Threading.Tasks.Task SynchronizeColTaxTextWithWebService(string BaseURL)
+        private async System.Threading.Tasks.Task SynchronizeColTaxTextWithWebService(string BaseURL, CancellationToken cancellationToken)
         {
             this.SynchronizeColTaxTextFillList();
 
@@ -3111,193 +3233,50 @@ namespace DiversityCollection.Forms
             {
                 int indexOfNameLists = 0;
                 this._SynColTaxTextNameLists = new Dictionary<string, DataTable>();
+                bool webserviceErrors = false;
+
                 foreach (System.Data.DataRow R in this._dtSynColTaxText.Rows)
                 {
                     dtQueryResults.Clear();
                     string TaxonInCollection = R[1].ToString();
-                    string TaxonForSearch = TaxonInCollection;
-                    if (this.radioButtonSynColTaxTextCompareParts.Checked)
-                    {
-                        // restricting the name of the taxon to the number of parts that were selected for the search
-                        string[] TT = TaxonForSearch.Split(new char[] { ' ' });
-                        TaxonForSearch = "";
-                        try
-                        {
-                            for (int iTT = 0; iTT < this.numericUpDownSynColTaxTextCompareParts.Value; iTT++)
-                            {
-                                if (iTT >= TT.Length) break;
-                                if (TaxonForSearch.Length > 0) TaxonForSearch += " ";
-                                TaxonForSearch += TT[iTT];
-                            }
-                        }
-                        catch (System.Exception ex) { }
+                    string TaxonForSearchInWebservice = PrepareTaxonForSearch(R);
+                    try {
+                        (dtQueryResults, webserviceErrors) = await QueryWebServiceAsync(TaxonForSearchInWebservice, TaxonInCollection, cancellationToken);
+                        if (dtQueryResults == null)
+                            webserviceErrors = true;
                     }
-
-                    // Getting the results from Index Fungorum - go down to Genus and species because search with authors may not be suported
-                    string TaxonForSearchInWebservice = TaxonForSearch;
-                    try
+                    catch (OperationCanceledException ocE)
                     {
-                        while (dtQueryResults.Rows.Count == 0 && TaxonForSearchInWebservice.IndexOf(" ") > -1)
-                        {
-
-                            DwbServiceEnums.DwbService currentDwbService =
-                                getCurrentService(this.comboBoxSynColTaxDatabase.Text);
-                            IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
-                                DwbServiceProviderAccessor.GetDwbWebservice(currentDwbService);
-                            if (_api == null)
-                                break;
-                            if (!Uri.TryCreate(TaxonForSearchInWebservice, UriKind.RelativeOrAbsolute, out Uri URI))
-                            {
-                                MessageBox.Show("An error occurred when trying to connect with the webservice. ");
-                                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("Invalid URI Error inFormMaintenances.SynchronizeColTaxTextWithWebService method. URI: " + TaxonForSearchInWebservice);
-                                return;
-                            }
-
-                            string Restriction = TaxonForSearchInWebservice;
-                            string urlString = _api.DwbApiQueryUrlString(currentDwbService, Restriction, 0, 5) ?? string.Empty;
-                            DwbSearchResult clientdwbSearch = await getApiSearchModel(_api, urlString);
-                            ReadDwbSearchModelInQueryTable(clientdwbSearch, ref dtQueryResults);
-                            TaxonForSearchInWebservice = TaxonForSearchInWebservice.Substring(0, TaxonForSearchInWebservice.LastIndexOf(" ")).Trim();
-                        }
+                        // synchronizing canceled return;
+                        return;
                     }
                     catch (System.Exception ex)
                     {
-                        MessageBox.Show("An error occurred when trying to connect with the webservice: " + ex.Message);
-                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("Invalid URI Error inFormMaintenances.SynchronizeColTaxTextWithWebService method. Taxonsearch: " + TaxonForSearchInWebservice + " ; " +ex);
                     }
 
                     // Checking the results and removing those names that do not match
                     if (this.radioButtonSynColTaxTextCompareParts.Checked && dtQueryResults.Rows.Count > 0)
                     {
-                        System.Collections.Generic.List<System.Data.DataRow> RowsInWebserviceNotMatching = new List<DataRow>();
-                        try
-                        {
-                            foreach (System.Data.DataRow rIF in dtQueryResults.Rows)
-                            {
-                                string[] TT = TaxonForSearch.Split(new char[] { ' ' });
-                                string[] IF = rIF[1].ToString().Split(new char[] { ' ' });
-                                for (int ii = 0; ii < this.numericUpDownSynColTaxTextCompareParts.Value; ii++)
-                                {
-                                    if (TT.Length <= ii || IF.Length <= ii)
-                                    {
-                                        break;
-                                    }
-                                    if (TT[ii] != IF[ii])
-                                    {
-                                        RowsInWebserviceNotMatching.Add(rIF);
-                                        break;
-                                    }
-                                }
-                            }
-                            if (RowsInWebserviceNotMatching.Count > 0)
-                            {
-                                foreach (System.Data.DataRow Rnm in RowsInWebserviceNotMatching)
-                                    Rnm.Delete();
-                                dtQueryResults.AcceptChanges();
-                            }
-                        }
-                        catch (System.Exception ex) { }
+                        ProcessQueryResultParts(R, ref dtQueryResults, TaxonForSearchInWebservice);
                     }
 
-                    string NameInWebservice = "";
-                    if (dtQueryResults.Rows.Count == 1)
-                    {
-                        NameInWebservice = dtQueryResults.Rows[0][1].ToString().Trim();
-                        if (NameInWebservice != TaxonInCollection && !this.radioButtonSynColTaxTextCompareParts.Checked)
-                            RowsToDelete.Add(R);
-                        else
-                        {
-                            indexOfNameLists++;
-                            R[2] = NameInWebservice.Trim();
-                            R[3] = BaseURL + dtQueryResults.Rows[0][0].ToString().Trim();
-                            if (R.Table.Columns.Contains("Similarities"))
-                                R["Similarities"] = dtQueryResults.Rows.Count;
-                        }
-                    }
-                    else
-                    {
-                        if (dtQueryResults.Rows.Count > 1)
-                        {
-                            if (this.radioButtonSynColTaxTextCompareParts.Checked)
-                            {
-                                if (!this._SynColTaxTextNameLists.ContainsKey(TaxonInCollection))
-                                    this._SynColTaxTextNameLists.Add(TaxonInCollection, dtQueryResults.Copy());
-                                indexOfNameLists++;
-                                R[0] = false;
-                                R[2] = dtQueryResults.Rows[0][1].ToString().Trim();
-                                R[3] = BaseURL + dtQueryResults.Rows[0][0].ToString().Trim();
-                                if (R.Table.Columns.Contains("Similarities"))
-                                    R["Similarities"] = dtQueryResults.Rows.Count;
-                            }
-                            else
-                            {
-                                bool NameMatchFound = false;
-                                foreach (System.Data.DataRow r in dtQueryResults.Rows)
-                                {
-                                    if (r[1].ToString() == R[1].ToString())
-                                    {
-                                        R[2] = r[1].ToString().Trim();
-                                        R[3] = BaseURL + r[0].ToString().Trim();
-                                        NameMatchFound = true;
-                                        indexOfNameLists++;
-                                        break;
-                                    }
-                                }
-                                if (!NameMatchFound)
-                                    RowsToDelete.Add(R);
-                            }
-                        }
-                        else
-                            RowsToDelete.Add(R);
-                    }
-                    // Todo Ariane when does this happen? do we needto mplement webservicestuff here?
-                    if (!RowsToDelete.Contains(R) && !R[3].Equals(System.DBNull.Value) & R[3].ToString().Length > 0 && this.checkBoxSynColTaxTextIncludeHierarchy.Checked)
-                    {
-                        try
-                        {
-                            string URI = R[3].ToString();
-                            System.Data.DataTable dtItem = new DataTable();
-                            System.Data.DataColumn Curi = new DataColumn("_URI");
-                            dtItem.Columns.Add(Curi);
-                            System.Data.DataRow Ruri = dtItem.NewRow();
-                            Ruri[0] = R[3];
-                            dtItem.Rows.Add(Ruri);
-                            switch (this.comboBoxSynColTaxTextDatabase.Text)
-                            {
-                                //case "IndexFungorum":
-                                //    F.getItemResults(URI, ref dtItem);
-                                //    break;
-                                //case "CatalogueOfLife":
-                                //    //case "CatalogueOfLife_2":
-                                //    C.getItemResults(URI, ref dtItem);
-                                //    break;
-                                //case "PalaeoDB":
-                                //    P.getItemResults(URI, ref dtItem);
-                                //    break;
-                                //case "MycoBank":
-                                //    MB.getItemResults(URI, ref dtItem);
-                                //    break;
-                            }
-                            if (dtItem.Columns.Contains("Family"))
-                            {
-                                R["Family"] = dtItem.Rows[0]["Family"];
-                            }
-                            if (dtItem.Columns.Contains("Order"))
-                            {
-                                R["Order"] = dtItem.Rows[0]["Order"];
-                            }
-                            if (dtItem.Columns.Contains("Hierarchy"))
-                            {
-                                R["Hierarchy"] = dtItem.Rows[0]["Hierarchy"];
-                            }
-                        }
-                        catch (System.Exception ex) { }
-                    }
+                    ProcessQueryResults(R, ref dtQueryResults, TaxonInCollection, ref RowsToDelete);
+
                     i++;
                     this.progressBarSynColTaxText.Value = i;
                 }
+                if (webserviceErrors)
+                {
+                    System.Windows.Forms.MessageBox.Show("Not all entries could be verified. During synchronization, the web service was unable to return anything or returned errors for some entries. \r\n" +
+                        "For more detailed information, see the error log file.", "Web service information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            catch (System.Exception ex) { }
+            catch (System.Exception ex) {
+                System.Windows.Forms.MessageBox.Show("An error occurred when trying to connect with the webservice. ");
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("Invalid URI Error inFormMaintenances.SynchronizeColTaxTextWithWebService method: " + ex);
+            }
+
             foreach (System.Data.DataRow R in RowsToDelete)
                 R.Delete();
             this._dtSynColTaxText.AcceptChanges();
@@ -3312,30 +3291,259 @@ namespace DiversityCollection.Forms
                 this.labelSynColTaxCheckText.Text = "No matches found";
                 this.buttonSynColTaxTextUpdate.Enabled = false;
             }
-            this.SynchronizeColTaxTextSetGridColors();
+            if (this.radioButtonSynColTaxTextCompareParts.Checked && dtQueryResults.Rows.Count > 0)
+                this.SynchronizeColTaxTextSetGridColors();
             return;
+        }
+
+
+        private async void buttonSynColTaxTextCancel_Click(object sender, EventArgs e)
+        {
+            _userCts?.Cancel();
+        }
+
+        private string PrepareTaxonForSearch(DataRow row)
+        {
+            string taxon = row[1].ToString();
+            if (radioButtonSynColTaxTextCompareParts.Checked)
+            {
+                taxon = RestrictTaxonParts(taxon);
+            }
+            return taxon;
+        }
+
+        private string RestrictTaxonParts(string TaxonForSearch)
+        {
+            var words = TaxonForSearch.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            int wordCount = (int)(int?)this.numericUpDownSynColTaxTextCompareParts.Value;
+            // Take the specified number of words
+            var searchString = string.Join(" ", words.Take(wordCount));
+            return searchString;
+        }
+
+        private async Task<(DataTable, bool)> QueryWebServiceAsync(string TaxonForSearchInWebservice, string TaxonInCollection, CancellationToken cancellationToken)
+        {
+            try
+            {
+                System.Data.DataTable dtQueryResults = new DataTable();
+                bool webserviceErrors = false;
+                while (dtQueryResults.Rows.Count == 0 && TaxonForSearchInWebservice.IndexOf(" ") > -1)
+                {
+
+                    DwbServiceEnums.DwbService currentDwbService =
+                        getCurrentService(this.comboBoxSynColTaxTextDatabase.Text);
+                    IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
+                        DwbServiceProviderAccessor.GetDwbWebservice(currentDwbService);
+                    if (_api == null)
+                        break;
+                    if (!Uri.TryCreate(TaxonForSearchInWebservice, UriKind.RelativeOrAbsolute, out Uri URI))
+                    {
+                        System.Windows.Forms.MessageBox.Show("An error occurred when trying to connect with the webservice. ");
+                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("Invalid URI Error inFormMaintenances.SynchronizeColTaxTextWithWebService method. URI: " + TaxonForSearchInWebservice);
+                        return (null, true);
+                    }
+
+                    string Restriction = TaxonForSearchInWebservice;
+                    string urlString = _api.DwbApiQueryUrlString(currentDwbService, Restriction, 0, 100) ?? string.Empty;
+
+                    DwbSearchResult clientdwbSearch = await getApiSearchModel(_api, urlString, cancellationToken);
+                    if (clientdwbSearch != null)
+                        ReadDwbSearchModelInQueryTable(clientdwbSearch, ref dtQueryResults);
+                    else
+                        webserviceErrors = true;
+
+                    bool testIfTaxonInResult = false;
+
+                    TaxonForSearchInWebservice = TaxonForSearchInWebservice.Substring(0, TaxonForSearchInWebservice.LastIndexOf(" ")).Trim();
+
+                    if (dtQueryResults != null && dtQueryResults.Rows.Count > 0)
+                    {
+                        foreach (System.Data.DataRow ro in dtQueryResults.Rows)
+                        {
+                            if (ro["_DisplayText"].Equals(TaxonInCollection))
+                            {
+                                testIfTaxonInResult = true;
+                            }
+                        }
+                        if (!testIfTaxonInResult && TaxonForSearchInWebservice.IndexOf(" ") > -1)
+                        {
+                            dtQueryResults.Clear();
+                        }
+                    }
+                }
+                return (dtQueryResults, webserviceErrors);
+            }
+            catch (OperationCanceledException ocE)
+            {
+                // synchronizing canceled return;
+                throw;
+            }
+            catch (System.Exception ex)
+            {
+                // MessageBox.Show("An error occurred when trying to connect with the webservice. ");
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("Invalid URI Error inFormMaintenances.SynchronizeColTaxTextWithWebService method. Taxonsearch: " + TaxonForSearchInWebservice + " ; " + ex);
+                return (null, true);
+            }
+        }
+
+        private void ProcessQueryResultParts(DataRow row, ref DataTable dtQueryResults, string TaxonForSearchInWebservice)
+        {
+            // Checking the results and removing those names that do not match
+            System.Collections.Generic.List<System.Data.DataRow> RowsInWebserviceNotMatching = new List<DataRow>();
+
+            foreach (System.Data.DataRow rIF in dtQueryResults.Rows)
+            {
+                string[] TT = TaxonForSearchInWebservice.Split(new char[] { ' ' });
+                string[] IF = rIF[1].ToString().Split(new char[] { ' ' });
+                for (int ii = 0; ii < this.numericUpDownSynColTaxTextCompareParts.Value; ii++)
+                {
+                    if (TT.Length <= ii || IF.Length <= ii)
+                    {
+                        break;
+                    }
+                    if (TT[ii] != IF[ii])
+                    {
+                        RowsInWebserviceNotMatching.Add(rIF);
+                        break;
+                    }
+                }
+            }
+            if (RowsInWebserviceNotMatching.Count > 0)
+            {
+                foreach (System.Data.DataRow Rnm in RowsInWebserviceNotMatching)
+                    Rnm.Delete();
+                dtQueryResults.AcceptChanges();
+            }
+        }
+        private void ProcessQueryResults(DataRow R, ref DataTable dtQueryResults, string TaxonInCollection, ref List<System.Data.DataRow> RowsToDelete)
+        {
+            string NameInWebservice = "";
+            int indexOfNameLists = 0;
+            if (dtQueryResults.Rows.Count == 1)
+            {
+                NameInWebservice = dtQueryResults.Rows[0][1].ToString().Trim();
+                if (NameInWebservice != TaxonInCollection && !this.radioButtonSynColTaxTextCompareParts.Checked)
+                    RowsToDelete.Add(R);
+                else
+                {
+                    indexOfNameLists++;
+                    R[2] = NameInWebservice.Trim();
+                    R[3] = dtQueryResults.Rows[0][0].ToString().Trim();// BaseURL + dtQueryResults.Rows[0][0].ToString().Trim();
+                    if (R.Table.Columns.Contains("Similarities"))
+                        R["Similarities"] = dtQueryResults.Rows.Count;
+                }
+            }
+            else
+            {
+                if (dtQueryResults.Rows.Count > 1)
+                {
+                    if (this.radioButtonSynColTaxTextCompareParts.Checked)
+                    {
+                        if (!this._SynColTaxTextNameLists.ContainsKey(TaxonInCollection))
+                            this._SynColTaxTextNameLists.Add(TaxonInCollection, dtQueryResults.Copy());
+                        indexOfNameLists++;
+                        R[0] = false;
+                        R[2] = dtQueryResults.Rows[0][1].ToString().Trim();
+                        R[3] = dtQueryResults.Rows[0][0].ToString().Trim();//BaseURL + dtQueryResults.Rows[0][0].ToString().Trim();
+                        if (R.Table.Columns.Contains("Similarities"))
+                            R["Similarities"] = dtQueryResults.Rows.Count;
+                    }
+                    else
+                    {
+                        bool NameMatchFound = false;
+                        foreach (System.Data.DataRow r in dtQueryResults.Rows)
+                        {
+                            if (r[1].ToString()?.Trim() == R[1].ToString()?.Trim())
+                            {
+                                R[2] = r[1].ToString().Trim();
+                                R[3] = r[0].ToString().Trim();// BaseURL + r[0].ToString().Trim();
+                                NameMatchFound = true;
+                                indexOfNameLists++;
+                                break;
+                            }
+                        }
+                        if (!NameMatchFound)
+                            RowsToDelete.Add(R);
+                    }
+                }
+                else
+                    RowsToDelete.Add(R);
+            }
+            // Todo Ariane when does this happen? do we needto mplement webservicestuff here?
+            if (!RowsToDelete.Contains(R) && !R[3].Equals(System.DBNull.Value) & R[3].ToString().Length > 0 && this.checkBoxSynColTaxTextIncludeHierarchy.Checked)
+            {
+                try
+                {
+                    string URI = R[3].ToString();
+                    System.Data.DataTable dtItem = new DataTable();
+                    System.Data.DataColumn Curi = new DataColumn("_URI");
+                    dtItem.Columns.Add(Curi);
+                    System.Data.DataRow Ruri = dtItem.NewRow();
+                    Ruri[0] = R[3];
+                    dtItem.Rows.Add(Ruri);
+                    switch (this.comboBoxSynColTaxTextDatabase.Text)
+                    {
+                        //case "IndexFungorum":
+                        //    F.getItemResults(URI, ref dtItem);
+                        //    break;
+                        //case "CatalogueOfLife":
+                        //    //case "CatalogueOfLife_2":
+                        //    C.getItemResults(URI, ref dtItem);
+                        //    break;
+                        //case "PalaeoDB":
+                        //    P.getItemResults(URI, ref dtItem);
+                        //    break;
+                        //case "MycoBank":
+                        //    MB.getItemResults(URI, ref dtItem);
+                        //    break;
+                    }
+                    if (dtItem.Columns.Contains("Family"))
+                    {
+                        R["Family"] = dtItem.Rows[0]["Family"];
+                    }
+                    if (dtItem.Columns.Contains("Order"))
+                    {
+                        R["Order"] = dtItem.Rows[0]["Order"];
+                    }
+                    if (dtItem.Columns.Contains("Hierarchy"))
+                    {
+                        R["Hierarchy"] = dtItem.Rows[0]["Hierarchy"];
+                    }
+                }
+                catch (System.Exception ex) { }
+            }
         }
 
         private void SynchronizeColTaxTextSetGridColors()
         {
             foreach (System.Windows.Forms.DataGridViewRow R in this.dataGridViewSynColTaxText.Rows)
             {
-                if (R.Cells[1].Value.ToString() != R.Cells[2].Value.ToString())
+                var backgroundColor = System.Drawing.Color.White;
+                var foregroundColor = System.Drawing.Color.Black;
+                if (R.DataBoundItem is DataRowView rowView)
                 {
-                    int Sim;
-                    System.Drawing.Color Col = System.Drawing.Color.LightYellow;
-                    System.Drawing.Color FCol = System.Drawing.Color.Black;
-                    if (int.TryParse(R.Cells[4].Value.ToString(), out Sim) && Sim > 1)
+                    DataRow dataRow = rowView.Row;
+                    var similaritiesValue = 0;
+                    if (dataRow.Table.Columns.Contains("Similarities"))
                     {
-                        FCol = System.Drawing.Color.DarkBlue;
-                        Col = System.Drawing.Color.LightBlue;
+                        int.TryParse(dataRow["Similarities"]?.ToString(), out similaritiesValue);
                     }
-                    for (int iDGV = 0; iDGV < this.dataGridViewSynColTaxText.Columns.Count; iDGV++)
+                    var namesEqual = R.Cells[1].Value.ToString().Equals(R.Cells[2].Value.ToString());
+                    if (namesEqual && similaritiesValue <= 1)
                     {
-                        R.Cells[iDGV].Style.BackColor = Col;
-                        R.Cells[iDGV].Style.ForeColor = FCol;
+                        backgroundColor = System.Drawing.Color.White;
+                    }
+                    else if (!namesEqual && similaritiesValue == 1)
+                    {
+                        backgroundColor = System.Drawing.Color.LightYellow;
+                    }
+                    else if (similaritiesValue > 1)
+                    {
+                        backgroundColor = System.Drawing.Color.LightBlue;
                     }
                 }
+                R.DefaultCellStyle.BackColor = backgroundColor;
+                R.DefaultCellStyle.ForeColor = foregroundColor;
             }
         }
         private void SynchronizeColTaxTextFillList()
@@ -3368,7 +3576,7 @@ namespace DiversityCollection.Forms
 
             //if (this.comboBoxSynColTaxTextDatabase.Text == "IndexFungorum" && this.radioButtonSynColTaxTextCompareParts.Checked)
             //    SQL += ", CAST(0 AS int) AS Similarities ";
-            if (/*IsWebservice && */this.radioButtonSynColTaxTextCompareParts.Checked ||
+            if (this.radioButtonSynColTaxTextCompareParts.Checked ||
                 (this.radioButtonSynColTaxTextCompareAll.Checked && this.checkBoxSynColTaxTextCompareAllExcludeAuthors.Checked))
                 SQL += ", CAST(1 AS int) AS Similarities ";
 
@@ -3426,7 +3634,7 @@ namespace DiversityCollection.Forms
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
-            this.Cursor = System.Windows.Forms.Cursors.Default;
+            // this.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridViewSynColTaxText.DataSource = this._dtSynColTaxText;
         }
 
@@ -3843,7 +4051,7 @@ namespace DiversityCollection.Forms
                 Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, DiversityWorkbench.Settings.ConnectionString);
                 ad.Fill(this._DtTaxaBrokenLinks);
                 this.labelSynColTaxBrokenCurrentState.Text = "Testing " + this._DtTaxaBrokenLinks.Rows.Count.ToString() + " datasets";
-                Application.DoEvents();
+                System.Windows.Forms.Application.DoEvents();
                 this.progressBarSynColTaxBrokenLinks.Maximum = this._DtTaxaBrokenLinks.Rows.Count;
                 this.progressBarSynColTaxBrokenLinks.Value = 0;
                 this.dataGridViewSynColTaxBroken.Columns.Clear();
@@ -3999,6 +4207,7 @@ namespace DiversityCollection.Forms
             DwbServiceEnums.DwbService service = DwbServiceEnums.DwbService.None;
             if (Enum.TryParse(comboText, true, out DwbServiceEnums.DwbService result))
             {
+                service = result;
                 var serviceInfo = DwbServiceEnums.TaxonomicServiceInfoDictionary();
                 if (serviceInfo.TryGetValue(service, out DwbServiceEnums.DwbServiceInfo serviceInfoValue))
                 {
@@ -4009,35 +4218,32 @@ namespace DiversityCollection.Forms
 
             return false;
         }
-        private async System.Threading.Tasks.Task<DwbEntity> getApiDetailModel(IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api, string nameUri)
+        private async System.Threading.Tasks.Task<DwbEntity> getApiDetailModel(IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api, string nameUri, CancellationToken cancellationToken)
         {
             try
             {
                 var tt = await _api.CallWebServiceAsync<object>(
-                    nameUri,
+                    nameUri, cancellationToken,
                     DwbServiceEnums.HttpAction.GET);
                 DwbEntity clientEntity = _api.GetDwbApiDetailModel(tt);
                 return clientEntity;
             }
             catch (ArgumentException aEx)
             {
-                MessageBox.Show(
-                    "The web service call is incorrect.\r\n\r\n  " +
-                    "For more details on the error, see the error log file.\r\n\r\n",
-                    "Web service Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
                 ExceptionHandling.WriteToErrorLogFile(
                     "FormMaintenance - getApiSearchModel, ArgumentException exception: " +
                     aEx);
                 return null;
             }
+            catch (OperationCanceledException ocEx)
+            {
+                ExceptionHandling.WriteToErrorLogFile(
+                    "FormMaintenance - getApiSearchModel, OperationCanceledException exception: " +
+                    ocEx);
+                throw;
+            }
             catch (InvalidOperationException ioEx)
             {
-                MessageBox.Show(
-                    "The web service call is incorrect.\r\n\r\n  " +
-                    "For more details on the error, see the error log file.\r\n\r\n",
-                    "Web service Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
                 ExceptionHandling.WriteToErrorLogFile(
                     "FormMaintenance - getApiSearchModel, Exception exception: " +
                     ioEx);
@@ -4045,11 +4251,6 @@ namespace DiversityCollection.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "The web service call is incorrect.\r\n\r\n  " +
-                    "For more details on the error, see the error log file.\r\n\r\n",
-                    "Web service Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
                 ExceptionHandling.WriteToErrorLogFile(
                     "FormMaintenance - getApiSearchModel, Exception exception: " +
                     ex);
@@ -4058,12 +4259,12 @@ namespace DiversityCollection.Forms
 
         }
 
-        private async System.Threading.Tasks.Task<DwbSearchResult> getApiSearchModel(IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api, string searchUri)
+        private async System.Threading.Tasks.Task<DwbSearchResult> getApiSearchModel(IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api, string searchUri, CancellationToken cancellationToken)
         {
             try
             {
                 var tt = await _api.CallWebServiceAsync<object>(
-                    searchUri,
+                    searchUri, cancellationToken,
                     DwbServiceEnums.HttpAction.GET);
                 DwbSearchResult clientSearch = null;
                 if (tt != null)
@@ -4075,38 +4276,31 @@ namespace DiversityCollection.Forms
             }
             catch (ArgumentException aEx)
             {
-                MessageBox.Show(
-                    "The web service call is incorrect.\r\n\r\n  " +
-                    "For more details on the error, see the error log file.\r\n\r\n",
-                    "Web service Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
                 ExceptionHandling.WriteToErrorLogFile(
                     "FormMaintenance - getApiSearchModel, ArgumentException exception: " +
                     aEx);
                 return null;
             }
-            catch (InvalidOperationException ioEx)
+            catch(OperationCanceledException cancelEx)
             {
-                MessageBox.Show(
-                    "The web service call is incorrect.\r\n\r\n  " +
-                    "For more details on the error, see the error log file.\r\n\r\n",
+                System.Windows.Forms.MessageBox.Show(
+                    "The web service call was canceled.\r\n\r\n  ",
                     "Web service Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBoxIcon.Information);
+                ExceptionHandling.WriteToErrorLogFile(
+                    "FormMaintenance - getApiSearchModel, OperationCanceledException exception: " +
+                    cancelEx);
+                throw;
+            }
+            catch (InvalidOperationException ioEx)
+            {          
                 ExceptionHandling.WriteToErrorLogFile(
                     "FormMaintenance - getApiSearchModel, Exception exception: " +
                     ioEx);
                 return null;
             }
             catch (Exception ex)
-            {
-                MessageBox.Show(
-                    "The web service call is incorrect.\r\n\r\n  " +
-                    "For more details on the error, see the error log file.\r\n\r\n",
-                    "Web service Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                ExceptionHandling.WriteToErrorLogFile(
-                    "FormMaintenance - getApiSearchModel, Exception exception: " +
-                    ex);
+            {             
                 return null;
             }
         }
@@ -4277,296 +4471,230 @@ namespace DiversityCollection.Forms
 
         private async void buttonSynColTaxFamOrdCheck_Click(object sender, EventArgs e)
         {
-            // #175
-            if (this.checkBoxSynColTaxFamOrdMaxRecords.Checked && this.numericUpDownSynColTaxFamOrdMaxRecords.Value == 0)
+            try
             {
-                if (System.Windows.Forms.MessageBox.Show("You restricted the number of results to 0. Change to 100?", "0 results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    this.numericUpDownSynColTaxFamOrdMaxRecords.Value = 100;
-                else return;
-            }
-            // get all relevant datasets
-            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            bool setColumnWidth = true;
-            if (this.dataGridViewSynColTaxFamOrd.ColumnCount > 1) setColumnWidth = false;
-            if (this.comboBoxSynColTaxFamOrdDatabase.Text.Length == 0)
-            {
-                System.Windows.Forms.MessageBox.Show("Please choose a database");
-                return;
-            }
-            // #175
-            if (this.comboBoxSynColTaxFamOrdTaxonProject.Visible && this.comboBoxSynColTaxFamOrdTaxonProject.Text.Length == 0)
-            {
-                System.Windows.Forms.MessageBox.Show("Please choose a project within the taxon database");
-                return;
-            }
-            string BaseURL = "";
-            string SQL = "";
-            string SqlCount = "";
-            if (DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].DataBaseURIs().TryGetValue(this.comboBoxSynColTaxFamOrdDatabase.Text, out BaseURL))
-            {
-                SQL = "SELECT ";
-                SqlCount = "SELECT COUNT(*) ";
-                if (!this.checkBoxSynColTaxFamOrdIncludeAccNr.Checked) SQL += " DISTINCT ";
-                if (this.checkBoxSynColTaxFamOrdMaxRecords.Visible && this.checkBoxSynColTaxFamOrdMaxRecords.Checked)
-                    SQL += " TOP " + this.numericUpDownSynColTaxFamOrdMaxRecords.Value.ToString() + " ";
-                SQL += " CAST(1 as bit) AS OK, U.LastIdentificationCache AS [Last identification in DiversityCollection], ";
-                if (this.radioButtonFamily.Checked)
-                    SQL += "U.FamilyCache AS [Family in DiversityCollection], '' AS [Family in DiversityTaxonNames] ";//HL.Family AS [Family in DiversityTaxonNames] ";
-                else if (this.radioButtonOrder.Checked)
-                    SQL += "U.OrderCache AS [Order in DiversityCollection], '' AS [Order in DiversityTaxonNames] ";//HL.[Order] AS [Order in DiversityTaxonNames] ";
-                else
-                    SQL += "U.HierarchyCache AS [Hierarchy in DiversityCollection], '' AS [Hierarchy in DiversityTaxonNames] ";//HL.Hierarchy AS [Hierarchy in DiversityTaxonNames] ";
-
-                SQL += ", I.NameURI ";
-                if (this.checkBoxSynColTaxFamOrdIncludeAccNr.Checked) SQL += ", S.AccessionNumber, S.CollectionSpecimenID ";
-                SQL += this.SqlFromClauseSynColTaxFamOrd() + " ORDER BY U.LastIdentificationCache ";
-                SqlCount += this.SqlFromClauseSynColTaxFamOrd();
-                this._dtSynColTaxHierarchy = new DataTable();
-                Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityCollection.Forms.FormMaintenanceSettings.Default.Timeout));
-                Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, con);
-                ad.SelectCommand.CommandTimeout = DiversityCollection.Forms.FormMaintenanceSettings.Default.Timeout;
-                try
+                this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+                this.buttonSynColTaxFamOrdCheck.Enabled = false;
+                // #175
+                if (this.checkBoxSynColTaxFamOrdMaxRecords.Checked && this.numericUpDownSynColTaxFamOrdMaxRecords.Value == 0)
                 {
-                    ad.Fill(this._dtSynColTaxHierarchy);
-                    string TaxonProjectID = "";
-                    if (this.comboBoxSynColTaxFamOrdTaxonProject.SelectedValue != null)
-                        TaxonProjectID = this.comboBoxSynColTaxFamOrdTaxonProject.SelectedValue.ToString();
-                    string TaxonConnectionString = DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].ServerConnectionList()[this.comboBoxSynColTaxFamOrdDatabase.Text].ConnectionString;
-                    Microsoft.Data.SqlClient.SqlConnection conDTN = new Microsoft.Data.SqlClient.SqlConnection(TaxonConnectionString);
-                    Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand("", conDTN);
-                    conDTN.Open();
-                    this.progressBarSynColTaxFamOrdDatabase.Value = 0;
-                    this.progressBarSynColTaxFamOrdDatabase.Minimum = 0;
-                    this.progressBarSynColTaxFamOrdDatabase.Maximum = this._dtSynColTaxHierarchy.Rows.Count;
-                    this.progressBarSynColTaxFamOrdDatabase.Visible = true;
-                    string Prefix = DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].ServerConnectionList()[this.comboBoxSynColTaxFamOrdDatabase.Text].DatabaseName + ".dbo.";
-                    string LinkedServer = DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].ServerConnectionList()[this.comboBoxSynColTaxFamOrdDatabase.Text].LinkedServer;
-                    System.Data.DataTable dtHierarchy = new DataTable();
-                    Microsoft.Data.SqlClient.SqlDataAdapter adHierarchy = new Microsoft.Data.SqlClient.SqlDataAdapter("", DiversityWorkbench.Settings.ConnectionString);
-                    if (LinkedServer.Length > 0)
-                        Prefix = "[" + LinkedServer + "]." + Prefix;
-                    System.Collections.Generic.List<System.Data.DataRow> RowsToRemove = new List<DataRow>();
-                    foreach (System.Data.DataRow R in this._dtSynColTaxHierarchy.Rows)
-                    {
-                        string NameID = DiversityWorkbench.WorkbenchUnit.getIDFromURI(R[4].ToString());
-                        if (NameID.Length == 0)
-                        {
-                            RowsToRemove.Add(R);
-                            continue;
-                        }
-                        string Result = "";
-                        // get only single values for higher performance
-                        if (this.radioButtonFamily.Checked || this.radioButtonOrder.Checked)
-                        {
-                            if (Prefix.Length == 0)
-                            {
-                                SQL = "SELECT H.Taxon FROM [dbo].[HierarchySuperiorList] (" + NameID + ", " + TaxonProjectID + ") H WHERE H.TaxonomicRank = '";
-                                if (this.radioButtonFamily.Checked)
-                                    SQL += "fam";
-                                else if (this.radioButtonOrder.Checked)
-                                    SQL += "ord";
-                                SQL += ".'";
-                            }
-                            else
-                            {
-                                if (this.radioButtonFamily.Checked)
-                                    SQL = "SELECT Family FROM " + Prefix + "TaxonFamily F WHERE F.NameID = " + NameID;
-                                else if (this.radioButtonOrder.Checked)
-                                    SQL = "SELECT [Order] FROM " + Prefix + "TaxonOrder O WHERE O.NameID = " + NameID;
-                            }
-                            C.CommandText = SQL;
-                            try
-                            {
-                                Result = C.ExecuteScalar()?.ToString();
-                                R[3] = Result;
-                            }
-                            catch (System.Exception ex) { }
-                        }
-                        else
-                        {
-                            if (this.radioButtonTaxonHierarchyCache.Checked)
-                            {
-                                SQL = "SELECT H.[HierarchyListCache] FROM " + Prefix + "[TaxonHierarchy] H WHERE H.NameID = " + NameID + " AND ProjectID = " + TaxonProjectID;
-                                Result = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
-                            }
-                            else
-                            {
-                                if (dtHierarchy == null)
-                                    dtHierarchy = new DataTable();
-                                else dtHierarchy.Rows.Clear();
-                                if (Prefix.Length == 0)
-                                {
-                                    SQL = "SELECT H.Taxon FROM " + Prefix + "[HierarchySuperiorList] (" + NameID + ", " + TaxonProjectID + ") H WHERE H.NameID <> " + NameID + " ORDER BY Seq DESC";
-                                    adHierarchy.SelectCommand.CommandText = SQL;
-                                    adHierarchy.Fill(dtHierarchy);
-                                    foreach (System.Data.DataRow RH in dtHierarchy.Rows)
-                                    {
-                                        if (Result.Length > 0) Result += " | ";
-                                        Result += RH[0].ToString();
-                                    }
-                                }
-                                else
-                                {
-                                    int i = 1;
-                                    SQL = "SELECT N.NameID,  H.NameParentID, " + i.ToString() + " AS Seq, N.TaxonNameCache, " +
-                                        "CASE WHEN E.DisplayOrder BETWEEN 180 AND 260 AND N.InfragenericEpithet <> '' THEN N.InfragenericEpithet ELSE RTRIM(N.GenusOrSupragenericName) " +
-                                        "+ CASE WHEN N.SpeciesEpithet <> '' THEN ' ' + N.SpeciesEpithet ELSE '' END + CASE WHEN N.InfraspecificEpithet <> '' THEN ' ' + N.TaxonomicRank + ' ' + N.InfraspecificEpithet " +
-                                        "ELSE '' END END AS Taxon , N.TaxonomicRank, rtrim(upper(substring(ltrim(E.DisplayText), 1, 1)) + substring(E.DisplayText, 2, 50)) " +
-                                        "FROM " + Prefix + "TaxonHierarchy H, " + Prefix + "TaxonNameTaxonomicRank_Enum E, " + Prefix + "TaxonName N " +
-                                        "WHERE N.TaxonomicRank = E.Code AND H.NameID = N.NameID " +
-                                        " and H.ProjectID = " + TaxonProjectID +
-                                        " and H.IgnoreButKeepForReference = 0 and N.NameID = " + NameID;
-                                    adHierarchy.SelectCommand.CommandText = SQL;
-                                    adHierarchy.Fill(dtHierarchy);
-                                    while (dtHierarchy.Select("NameParentID IS NULL").Length < 1)
-                                    {
-                                        i++;
-                                        System.Data.DataRow[] rr = dtHierarchy.Select("", "Seq DESC");
-                                        if (rr.Length > 0)
-                                        {
-                                            string ParentNameID = rr[0]["NameParentID"].ToString();
-                                            SQL = "SELECT N.NameID,  H.NameParentID, " + i.ToString() + " AS Seq, N.TaxonNameCache, " +
-                                                "CASE WHEN E.DisplayOrder BETWEEN 180 AND 260 AND N.InfragenericEpithet <> '' THEN N.InfragenericEpithet ELSE RTRIM(N.GenusOrSupragenericName) " +
-                                                "+ CASE WHEN N.SpeciesEpithet <> '' THEN ' ' + N.SpeciesEpithet ELSE '' END + CASE WHEN N.InfraspecificEpithet <> '' THEN ' ' + N.TaxonomicRank + ' ' + N.InfraspecificEpithet " +
-                                                "ELSE '' END END AS Taxon , N.TaxonomicRank, rtrim(upper(substring(ltrim(E.DisplayText), 1, 1)) + substring(E.DisplayText, 2, 50)) " +
-                                                "FROM " + Prefix + "TaxonHierarchy H, " + Prefix + "TaxonNameTaxonomicRank_Enum E, " + Prefix + "TaxonName N " +
-                                                "WHERE N.TaxonomicRank = E.Code AND H.NameID = N.NameID " +
-                                                " and H.NameID <> H.NameParentID " +
-                                                " and H.ProjectID = " + TaxonProjectID +
-                                                " and H.IgnoreButKeepForReference = 0 and N.NameID = " + ParentNameID;
-                                            adHierarchy.SelectCommand.CommandText = SQL;
-                                            int iBefore = dtHierarchy.Rows.Count;
-                                            adHierarchy.Fill(dtHierarchy);
-                                            // Markus 16.09.2016 - endlos ...
-                                            if (dtHierarchy.Rows.Count == iBefore)
-                                                break;
-                                        }
-                                        else
-                                            break;
-                                    }
-                                    foreach (System.Data.DataRow RH in dtHierarchy.Rows)
-                                    {
-                                        if (this.radioButtonTaxonHierarchyBottomUp.Checked)
-                                        {
-                                            if (Result.Length > 0)
-                                            {
-                                                Result += " | ";
-                                            }
-                                            Result += RH["Taxon"].ToString();
-                                        }
-                                        else
-                                        {
-                                            if (Result.Length > 0)
-                                            {
-                                                Result = " | " + Result;
-                                            }
-                                            Result = RH["Taxon"].ToString() + Result;
-                                        }
-                                    }
-                                }
-                            }
-                            R[3] = Result;
-                        }
-
-                        if (R[3].ToString().Length == 0 || R[2].ToString() == R[3].ToString())
-                            R.Delete();
-                        else if (R[2].ToString().Trim() == R[3].ToString().Trim() && R[2].ToString().Length < R[3].ToString().Length)
-                        {
-                            R.Delete();
-                        }
-                        if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
-                            this.progressBarSynColTaxFamOrdDatabase.Value++;
-                    }
-                    if (RowsToRemove.Count > 0)
-                    {
-                        foreach (System.Data.DataRow R in RowsToRemove)
-                            R.Delete();
-                        this._dtSynColTaxHierarchy.AcceptChanges();
-                    }
-                    //C.CommandText = SqlCount;
-                    string TotalCount = "";
-                    try
-                    {
-                        int i;
-                        if (int.TryParse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlCount).ToString(), out i))
-                            TotalCount = i.ToString();
-                    }
-                    catch (System.Exception ex)
-                    {
-                    }
-                    conDTN.Close();
-                    conDTN.Dispose();
-                    this._dtSynColTaxHierarchy.AcceptChanges();
-
-                    this.dataGridViewSynColTaxFamOrd.DataSource = this._dtSynColTaxHierarchy;
-                    if (this._dtSynColTaxHierarchy.Rows.Count > 0)
-                    {
-                        this.labelSynColTaxFamOrdCheck.Text = this._dtSynColTaxHierarchy.Rows.Count.ToString() + " differences found";
-                        this.buttonSynColTaxFamOrdUpdate.Enabled = true;
-                    }
-                    else
-                    {
-                        this.labelSynColTaxFamOrdCheck.Text = "No differences found";
-                        if (this.checkBoxSynColTaxFamOrdMaxRecords.Visible && this.checkBoxSynColTaxFamOrdMaxRecords.Checked)
-                            this.labelSynColTaxFamOrdCheck.Text += "; Tested number: " + this.numericUpDownSynColTaxFamOrdMaxRecords.Value.ToString();
-                        this.buttonSynColTaxFamOrdUpdate.Enabled = false;
-                    }
-                    if (this.dataGridViewSynColTaxFamOrd.ColumnCount > 0 && setColumnWidth)
-                    {
-                        this.dataGridViewSynColTaxFamOrd.Columns[0].Width = (int)this.dataGridViewSynColTaxFamOrd.Width * 3 / 8;
-                    }
-                    if (TotalCount.Length > 0)
-                        this.labelSynColTaxFamOrdCheck.Text += "; Total count: " + TotalCount;
+                    if (System.Windows.Forms.MessageBox.Show("You restricted the number of results to 0. Change to 100?", "0 results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        this.numericUpDownSynColTaxFamOrdMaxRecords.Value = 100;
+                    else return;
                 }
-                catch (System.Exception ex)
+                // get all relevant datasets
+                bool setColumnWidth = true;
+                if (this.dataGridViewSynColTaxFamOrd.ColumnCount > 1) setColumnWidth = false;
+                if (this.comboBoxSynColTaxFamOrdDatabase.Text.Length == 0)
                 {
-                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                    System.Windows.Forms.MessageBox.Show("Please choose a database");
+                    return;
                 }
-            }
-            else
-            {
-                if (isTaxWebService(this.comboBoxSynColTaxFamOrdDatabase.Text))
+                // #175
+                if (this.comboBoxSynColTaxFamOrdTaxonProject.Visible && this.comboBoxSynColTaxFamOrdTaxonProject.Text.Length == 0)
                 {
-                    this.dataGridViewSynColTaxFamOrd.DataSource = null;
-
-                    DwbServiceEnums.DwbService currentDwbService =
-                        getCurrentService(this.comboBoxSynColTaxDatabase.Text);
-                    IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
-                        DwbServiceProviderAccessor.GetDwbWebservice(currentDwbService);
-                    if (_api == null)
-                        return;
-                    var serviceTypeNameDictionary = DwbServiceEnums.TaxonomicServiceInfoDictionary();
-                    string Webservice = "";
-                    if (serviceTypeNameDictionary.TryGetValue(_api.GetServiceName(), out var serviceTypeInfo))
-                    {
-                        Webservice = serviceTypeInfo?.Name ?? string.Empty;
-                    }
-
-                    string FamilyColumn = "Family";
-                    string OrderColum = "Order";
-                    string HierarchyColumn = "Hierarchy";
-                    string URI = "";
-
-                    this._dtSynColTaxHierarchy = new DataTable();
-                    int iDifference = 0;
-                    this.progressBarSynColTaxFamOrdDatabase.Visible = true;
-                    this.progressBarSynColTaxFamOrdDatabase.Value = 0;
+                    System.Windows.Forms.MessageBox.Show("Please choose a project within the taxon database");
+                    return;
+                }
+                string BaseURL = "";
+                string SQL = "";
+                string SqlCount = "";
+                if (DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].DataBaseURIs().TryGetValue(this.comboBoxSynColTaxFamOrdDatabase.Text, out BaseURL))
+                {
                     SQL = "SELECT ";
+                    SqlCount = "SELECT COUNT(*) ";
                     if (!this.checkBoxSynColTaxFamOrdIncludeAccNr.Checked) SQL += " DISTINCT ";
-                    SQL += " CAST(0 as bit) AS OK, U.LastIdentificationCache, ";
-                    if (this.radioButtonFamily.Checked) SQL += "U.FamilyCache, '' AS [Family from " + Webservice + "] ";
-                    else if (this.radioButtonOrder.Checked) SQL += "U.OrderCache, '' AS [Order from " + Webservice + "] ";
-                    else if (this.radioButtonHierarchy.Checked) SQL += "U.HierarchyCache, '' AS [Hierarchy from " + Webservice + "] ";
+                    if (this.checkBoxSynColTaxFamOrdMaxRecords.Visible && this.checkBoxSynColTaxFamOrdMaxRecords.Checked)
+                        SQL += " TOP " + this.numericUpDownSynColTaxFamOrdMaxRecords.Value.ToString() + " ";
+                    SQL += " CAST(1 as bit) AS OK, U.LastIdentificationCache AS [Last identification in DiversityCollection], ";
+                    if (this.radioButtonFamily.Checked)
+                        SQL += "U.FamilyCache AS [Family in DiversityCollection], '' AS [Family in DiversityTaxonNames] ";//HL.Family AS [Family in DiversityTaxonNames] ";
+                    else if (this.radioButtonOrder.Checked)
+                        SQL += "U.OrderCache AS [Order in DiversityCollection], '' AS [Order in DiversityTaxonNames] ";//HL.[Order] AS [Order in DiversityTaxonNames] ";
+                    else
+                        SQL += "U.HierarchyCache AS [Hierarchy in DiversityCollection], '' AS [Hierarchy in DiversityTaxonNames] ";//HL.Hierarchy AS [Hierarchy in DiversityTaxonNames] ";
+
                     SQL += ", I.NameURI ";
                     if (this.checkBoxSynColTaxFamOrdIncludeAccNr.Checked) SQL += ", S.AccessionNumber, S.CollectionSpecimenID ";
                     SQL += this.SqlFromClauseSynColTaxFamOrd() + " ORDER BY U.LastIdentificationCache ";
+                    SqlCount += this.SqlFromClauseSynColTaxFamOrd();
+                    this._dtSynColTaxHierarchy = new DataTable();
                     Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityCollection.Forms.FormMaintenanceSettings.Default.Timeout));
                     Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, con);
                     ad.SelectCommand.CommandTimeout = DiversityCollection.Forms.FormMaintenanceSettings.Default.Timeout;
                     try
                     {
                         ad.Fill(this._dtSynColTaxHierarchy);
+                        string TaxonProjectID = "";
+                        if (this.comboBoxSynColTaxFamOrdTaxonProject.SelectedValue != null)
+                            TaxonProjectID = this.comboBoxSynColTaxFamOrdTaxonProject.SelectedValue.ToString();
+                        string TaxonConnectionString = DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].ServerConnectionList()[this.comboBoxSynColTaxFamOrdDatabase.Text].ConnectionString;
+                        Microsoft.Data.SqlClient.SqlConnection conDTN = new Microsoft.Data.SqlClient.SqlConnection(TaxonConnectionString);
+                        Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand("", conDTN);
+                        conDTN.Open();
+                        this.progressBarSynColTaxFamOrdDatabase.Value = 0;
+                        this.progressBarSynColTaxFamOrdDatabase.Minimum = 0;
                         this.progressBarSynColTaxFamOrdDatabase.Maximum = this._dtSynColTaxHierarchy.Rows.Count;
+                        this.progressBarSynColTaxFamOrdDatabase.Visible = true;
+                        string Prefix = DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].ServerConnectionList()[this.comboBoxSynColTaxFamOrdDatabase.Text].DatabaseName + ".dbo.";
+                        string LinkedServer = DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].ServerConnectionList()[this.comboBoxSynColTaxFamOrdDatabase.Text].LinkedServer;
+                        System.Data.DataTable dtHierarchy = new DataTable();
+                        Microsoft.Data.SqlClient.SqlDataAdapter adHierarchy = new Microsoft.Data.SqlClient.SqlDataAdapter("", DiversityWorkbench.Settings.ConnectionString);
+                        if (LinkedServer.Length > 0)
+                            Prefix = "[" + LinkedServer + "]." + Prefix;
+                        System.Collections.Generic.List<System.Data.DataRow> RowsToRemove = new List<DataRow>();
+                        foreach (System.Data.DataRow R in this._dtSynColTaxHierarchy.Rows)
+                        {
+                            string NameID = DiversityWorkbench.WorkbenchUnit.getIDFromURI(R[4].ToString());
+                            if (NameID.Length == 0)
+                            {
+                                RowsToRemove.Add(R);
+                                continue;
+                            }
+                            string Result = "";
+                            // get only single values for higher performance
+                            if (this.radioButtonFamily.Checked || this.radioButtonOrder.Checked)
+                            {
+                                if (Prefix.Length == 0)
+                                {
+                                    SQL = "SELECT H.Taxon FROM [dbo].[HierarchySuperiorList] (" + NameID + ", " + TaxonProjectID + ") H WHERE H.TaxonomicRank = '";
+                                    if (this.radioButtonFamily.Checked)
+                                        SQL += "fam";
+                                    else if (this.radioButtonOrder.Checked)
+                                        SQL += "ord";
+                                    SQL += ".'";
+                                }
+                                else
+                                {
+                                    if (this.radioButtonFamily.Checked)
+                                        SQL = "SELECT Family FROM " + Prefix + "TaxonFamily F WHERE F.NameID = " + NameID;
+                                    else if (this.radioButtonOrder.Checked)
+                                        SQL = "SELECT [Order] FROM " + Prefix + "TaxonOrder O WHERE O.NameID = " + NameID;
+                                }
+                                C.CommandText = SQL;
+                                try
+                                {
+                                    Result = C.ExecuteScalar()?.ToString();
+                                    R[3] = Result;
+                                }
+                                catch (System.Exception ex) { }
+                            }
+                            else
+                            {
+                                if (this.radioButtonTaxonHierarchyCache.Checked)
+                                {
+                                    SQL = "SELECT H.[HierarchyListCache] FROM " + Prefix + "[TaxonHierarchy] H WHERE H.NameID = " + NameID + " AND ProjectID = " + TaxonProjectID;
+                                    Result = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
+                                }
+                                else
+                                {
+                                    if (dtHierarchy == null)
+                                        dtHierarchy = new DataTable();
+                                    else dtHierarchy.Rows.Clear();
+                                    if (Prefix.Length == 0)
+                                    {
+                                        SQL = "SELECT H.Taxon FROM " + Prefix + "[HierarchySuperiorList] (" + NameID + ", " + TaxonProjectID + ") H WHERE H.NameID <> " + NameID + " ORDER BY Seq DESC";
+                                        adHierarchy.SelectCommand.CommandText = SQL;
+                                        adHierarchy.Fill(dtHierarchy);
+                                        foreach (System.Data.DataRow RH in dtHierarchy.Rows)
+                                        {
+                                            if (Result.Length > 0) Result += " | ";
+                                            Result += RH[0].ToString();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        int i = 1;
+                                        SQL = "SELECT N.NameID,  H.NameParentID, " + i.ToString() + " AS Seq, N.TaxonNameCache, " +
+                                            "CASE WHEN E.DisplayOrder BETWEEN 180 AND 260 AND N.InfragenericEpithet <> '' THEN N.InfragenericEpithet ELSE RTRIM(N.GenusOrSupragenericName) " +
+                                            "+ CASE WHEN N.SpeciesEpithet <> '' THEN ' ' + N.SpeciesEpithet ELSE '' END + CASE WHEN N.InfraspecificEpithet <> '' THEN ' ' + N.TaxonomicRank + ' ' + N.InfraspecificEpithet " +
+                                            "ELSE '' END END AS Taxon , N.TaxonomicRank, rtrim(upper(substring(ltrim(E.DisplayText), 1, 1)) + substring(E.DisplayText, 2, 50)) " +
+                                            "FROM " + Prefix + "TaxonHierarchy H, " + Prefix + "TaxonNameTaxonomicRank_Enum E, " + Prefix + "TaxonName N " +
+                                            "WHERE N.TaxonomicRank = E.Code AND H.NameID = N.NameID " +
+                                            " and H.ProjectID = " + TaxonProjectID +
+                                            " and H.IgnoreButKeepForReference = 0 and N.NameID = " + NameID;
+                                        adHierarchy.SelectCommand.CommandText = SQL;
+                                        adHierarchy.Fill(dtHierarchy);
+                                        while (dtHierarchy.Select("NameParentID IS NULL").Length < 1)
+                                        {
+                                            i++;
+                                            System.Data.DataRow[] rr = dtHierarchy.Select("", "Seq DESC");
+                                            if (rr.Length > 0)
+                                            {
+                                                string ParentNameID = rr[0]["NameParentID"].ToString();
+                                                SQL = "SELECT N.NameID,  H.NameParentID, " + i.ToString() + " AS Seq, N.TaxonNameCache, " +
+                                                    "CASE WHEN E.DisplayOrder BETWEEN 180 AND 260 AND N.InfragenericEpithet <> '' THEN N.InfragenericEpithet ELSE RTRIM(N.GenusOrSupragenericName) " +
+                                                    "+ CASE WHEN N.SpeciesEpithet <> '' THEN ' ' + N.SpeciesEpithet ELSE '' END + CASE WHEN N.InfraspecificEpithet <> '' THEN ' ' + N.TaxonomicRank + ' ' + N.InfraspecificEpithet " +
+                                                    "ELSE '' END END AS Taxon , N.TaxonomicRank, rtrim(upper(substring(ltrim(E.DisplayText), 1, 1)) + substring(E.DisplayText, 2, 50)) " +
+                                                    "FROM " + Prefix + "TaxonHierarchy H, " + Prefix + "TaxonNameTaxonomicRank_Enum E, " + Prefix + "TaxonName N " +
+                                                    "WHERE N.TaxonomicRank = E.Code AND H.NameID = N.NameID " +
+                                                    " and H.NameID <> H.NameParentID " +
+                                                    " and H.ProjectID = " + TaxonProjectID +
+                                                    " and H.IgnoreButKeepForReference = 0 and N.NameID = " + ParentNameID;
+                                                adHierarchy.SelectCommand.CommandText = SQL;
+                                                int iBefore = dtHierarchy.Rows.Count;
+                                                adHierarchy.Fill(dtHierarchy);
+                                                // Markus 16.09.2016 - endlos ...
+                                                if (dtHierarchy.Rows.Count == iBefore)
+                                                    break;
+                                            }
+                                            else
+                                                break;
+                                        }
+                                        foreach (System.Data.DataRow RH in dtHierarchy.Rows)
+                                        {
+                                            if (this.radioButtonTaxonHierarchyBottomUp.Checked)
+                                            {
+                                                if (Result.Length > 0)
+                                                {
+                                                    Result += " | ";
+                                                }
+                                                Result += RH["Taxon"].ToString();
+                                            }
+                                            else
+                                            {
+                                                if (Result.Length > 0)
+                                                {
+                                                    Result = " | " + Result;
+                                                }
+                                                Result = RH["Taxon"].ToString() + Result;
+                                            }
+                                        }
+                                    }
+                                }
+                                R[3] = Result;
+                            }
+
+                            if (R[3].ToString().Length == 0 || R[2].ToString() == R[3].ToString())
+                                R.Delete();
+                            else if (R[2].ToString().Trim() == R[3].ToString().Trim() && R[2].ToString().Length < R[3].ToString().Length)
+                            {
+                                R.Delete();
+                            }
+                            if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
+                                this.progressBarSynColTaxFamOrdDatabase.Value++;
+                        }
+                        if (RowsToRemove.Count > 0)
+                        {
+                            foreach (System.Data.DataRow R in RowsToRemove)
+                                R.Delete();
+                            this._dtSynColTaxHierarchy.AcceptChanges();
+                        }
+                        //C.CommandText = SqlCount;
+                        string TotalCount = "";
+                        try
+                        {
+                            int i;
+                            if (int.TryParse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlCount).ToString(), out i))
+                                TotalCount = i.ToString();
+                        }
+                        catch (System.Exception ex)
+                        {
+                        }
+                        conDTN.Close();
+                        conDTN.Dispose();
+                        this._dtSynColTaxHierarchy.AcceptChanges();
+
                         this.dataGridViewSynColTaxFamOrd.DataSource = this._dtSynColTaxHierarchy;
                         if (this._dtSynColTaxHierarchy.Rows.Count > 0)
                         {
@@ -4576,8 +4704,68 @@ namespace DiversityCollection.Forms
                         else
                         {
                             this.labelSynColTaxFamOrdCheck.Text = "No differences found";
+                            if (this.checkBoxSynColTaxFamOrdMaxRecords.Visible && this.checkBoxSynColTaxFamOrdMaxRecords.Checked)
+                                this.labelSynColTaxFamOrdCheck.Text += "; Tested number: " + this.numericUpDownSynColTaxFamOrdMaxRecords.Value.ToString();
                             this.buttonSynColTaxFamOrdUpdate.Enabled = false;
                         }
+                        if (this.dataGridViewSynColTaxFamOrd.ColumnCount > 0 && setColumnWidth)
+                        {
+                            this.dataGridViewSynColTaxFamOrd.Columns[0].Width = (int)this.dataGridViewSynColTaxFamOrd.Width * 3 / 8;
+                        }
+                        if (TotalCount.Length > 0)
+                            this.labelSynColTaxFamOrdCheck.Text += "; Total count: " + TotalCount;
+                    }
+                    catch (System.Exception ex)
+                    {
+                        System.Windows.Forms.MessageBox.Show(ex.Message);
+                    }
+                }
+                else
+                {
+                    if (isTaxWebService(this.comboBoxSynColTaxFamOrdDatabase.Text))
+                    {
+                        this.dataGridViewSynColTaxFamOrd.DataSource = null;
+
+                        DwbServiceEnums.DwbService currentDwbService =
+                            getCurrentService(this.comboBoxSynColTaxFamOrdDatabase.Text);
+                        IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
+                            DwbServiceProviderAccessor.GetDwbWebservice(currentDwbService);
+                        if (_api == null)
+                            return;
+                        _userCts = new CancellationTokenSource();
+                        var serviceTypeNameDictionary = DwbServiceEnums.TaxonomicServiceInfoDictionary();
+                        string Webservice = "";
+                        if (serviceTypeNameDictionary.TryGetValue(_api.GetServiceName(), out var serviceTypeInfo))
+                        {
+                            Webservice = serviceTypeInfo?.Name ?? string.Empty;
+                        }
+
+                        string FamilyColumn = "Family";
+                        string OrderColum = "Order";
+                        string HierarchyColumn = "Hierarchy";
+                        string URI = "";
+
+                        this._dtSynColTaxHierarchy = new DataTable();
+                        int iDifference = 0;
+                        this.progressBarSynColTaxFamOrdDatabase.Visible = true;
+                        this.progressBarSynColTaxFamOrdDatabase.Value = 0;
+                        this.progressBarSynColTaxFamOrdDatabase.Minimum = 0;
+                        SQL = "SELECT ";
+                        if (!this.checkBoxSynColTaxFamOrdIncludeAccNr.Checked) SQL += " DISTINCT ";
+                        SQL += " CAST(0 as bit) AS OK, U.LastIdentificationCache, ";
+                        if (this.radioButtonFamily.Checked) SQL += "U.FamilyCache, '' AS [Family from " + Webservice + "] ";
+                        else if (this.radioButtonOrder.Checked) SQL += "U.OrderCache, '' AS [Order from " + Webservice + "] ";
+                        else if (this.radioButtonHierarchy.Checked) SQL += "U.HierarchyCache, '' AS [Hierarchy from " + Webservice + "] ";
+                        SQL += ", I.NameURI ";
+                        if (this.checkBoxSynColTaxFamOrdIncludeAccNr.Checked) SQL += ", S.AccessionNumber, S.CollectionSpecimenID ";
+                        SQL += this.SqlFromClauseSynColTaxFamOrd() + " ORDER BY U.LastIdentificationCache ";
+                        Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityCollection.Forms.FormMaintenanceSettings.Default.Timeout));
+                        Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, con);
+                        ad.SelectCommand.CommandTimeout = DiversityCollection.Forms.FormMaintenanceSettings.Default.Timeout;
+
+                        ad.Fill(this._dtSynColTaxHierarchy);
+                        this.progressBarSynColTaxFamOrdDatabase.Maximum = this._dtSynColTaxHierarchy.Rows.Count;
+
                         if (this.dataGridViewSynColTaxFamOrd.ColumnCount > 0 && setColumnWidth)
                         {
                             this.dataGridViewSynColTaxFamOrd.Columns[0].Width = (int)this.dataGridViewSynColTaxFamOrd.Width * 3 / 8;
@@ -4592,21 +4780,64 @@ namespace DiversityCollection.Forms
                                 string nameUri = R["NameURI"]?.ToString();
                                 if (!_api.IsValidUrl(nameUri))
                                 {
-                                    MessageBox.Show("The selected value is not a valid URI or unit ID.",
+                                    System.Windows.Forms.MessageBox.Show("The selected value is not a valid URI or unit ID.",
                                         "Invalid Selection",
                                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
+                                    if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
+                                        this.progressBarSynColTaxFamOrdDatabase.Value++;
+                                    continue;
                                 }
-
-                                DwbEntity clientEntity = await getApiDetailModel(_api, nameUri);
-                                if (clientEntity == null)
-                                    return;
-                                ReadDwbDetailModelInQueryTable(clientEntity.GetMappedApiEntityModel(), ref dtResult);
-
-                                if (!dtResult.Columns.Contains("_URI"))
+                                try
                                 {
-                                    System.Data.DataColumn C = new DataColumn("_URI", typeof(string));
-                                    dtResult.Columns.Add(C);
+                                    DwbEntity clientEntity = await getApiDetailModel(_api, nameUri, _userCts.Token);
+                                    if (clientEntity == null)
+                                    {
+                                        // Log the issue and continue with the next iteration
+                                        ExceptionHandling.WriteToErrorLogFile($"getApiDetailModel returned null for URI: {nameUri}");
+                                        if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
+                                            this.progressBarSynColTaxFamOrdDatabase.Value++;
+                                        continue;
+                                    }
+                                    clientEntity = clientEntity.GetMappedApiEntityModel();
+                                    if (clientEntity != null && clientEntity is TaxonomicEntity)
+                                    {
+                                        TaxonomicWebservice taxonomicWebservice = _api as TaxonomicWebservice;
+                                        TaxonomicEntity taxEntity = clientEntity as TaxonomicEntity;
+                                        clientEntity = await taxonomicWebservice.GetEntityHierarchyAsync<object>(nameUri, taxEntity, _userCts.Token);
+                                    }
+                                    ReadDwbDetailModelInQueryTable(clientEntity, ref dtResult);
+
+                                    if (!dtResult.Columns.Contains("_URI"))
+                                    {
+                                        System.Data.DataColumn C = new DataColumn("_URI", typeof(string));
+                                        dtResult.Columns.Add(C);
+                                    }
+                                }
+                                catch (OperationCanceledException ex)
+                                {
+                                    System.Windows.Forms.MessageBox.Show(
+                                        "The web service call was cancelled.\r\n\r\n  " +
+                                        "For more details, see the error log file.\r\n\r\n",
+                                        "Cancellation", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                                    ExceptionHandling.WriteToErrorLogFile(
+                                        "FormMaintenance - buttonSynColTaxFamOrdCheck_Click, OperationCanceledException exception: " + ex);
+                                    if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
+                                        this.progressBarSynColTaxFamOrdDatabase.Value++;
+                                    throw;
+                                }
+                                catch (Exception ex)
+                                {
+                                    System.Windows.Forms.MessageBox.Show(
+                                        "The record details cannot be displayed because the web service response is invalid.\r\n\r\n  " +
+                                        "For more details on the error, see the error log file.\r\n\r\n",
+                                        "Data Mapping Error", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                                    ExceptionHandling.WriteToErrorLogFile(
+                                        "FormMaintenance - buttonSynColTaxFamOrdCheck_Click, Exception exception: " + ex);
+                                    if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
+                                        this.progressBarSynColTaxFamOrdDatabase.Value++;
+                                    continue;
                                 }
 
                                 Rname[0] = URI;
@@ -4618,17 +4849,20 @@ namespace DiversityCollection.Forms
                                         {
                                             if (DC.ColumnName == FamilyColumn) // "Family name")
                                             {
-                                                if (!dtResult.Rows[0][FamilyColumn].Equals(System.DBNull.Value)
-                                                    && dtResult.Rows[0][FamilyColumn].ToString().Length > 0)
+                                                foreach (System.Data.DataRow row in dtResult.Rows)
                                                 {
-                                                    R["Family from " + Webservice + ""] =
-                                                        dtResult.Rows[0][FamilyColumn];
-                                                    if ((R["Family from " + Webservice + ""].ToString() !=
-                                                         R["FamilyCache"].ToString()
-                                                         || R["FamilyCache"].Equals(System.DBNull.Value)))
+                                                    if (!row[FamilyColumn].Equals(System.DBNull.Value)
+                                                        && row[FamilyColumn].ToString().Length > 0)
                                                     {
-                                                        R["OK"] = 1;
-                                                        iDifference++;
+                                                        R["Family from " + Webservice + ""] =
+                                                            row[FamilyColumn];
+                                                        if ((R["Family from " + Webservice + ""].ToString() !=
+                                                                R["FamilyCache"].ToString()
+                                                                || R["FamilyCache"].Equals(System.DBNull.Value)))
+                                                        {
+                                                            R["OK"] = 1;
+                                                            iDifference++;
+                                                        }
                                                     }
                                                 }
                                             }
@@ -4637,16 +4871,19 @@ namespace DiversityCollection.Forms
                                         {
                                             if (DC.ColumnName == OrderColum)
                                             {
-                                                if (!dtResult.Rows[0][OrderColum].Equals(System.DBNull.Value)
-                                                    && dtResult.Rows[0][OrderColum].ToString().Length > 0)
+                                                foreach (System.Data.DataRow row in dtResult.Rows)
                                                 {
-                                                    R["Order from " + Webservice] = dtResult.Rows[0][OrderColum];
-                                                    if ((R["Order from " + Webservice + ""].ToString() !=
-                                                         R["OrderCache"].ToString()
-                                                         || R["OrderCache"].Equals(System.DBNull.Value)))
+                                                    if (!row[OrderColum].Equals(System.DBNull.Value)
+                                                    && row[OrderColum].ToString().Length > 0)
                                                     {
-                                                        R["OK"] = 1;
-                                                        iDifference++;
+                                                        R["Order from " + Webservice] = row[OrderColum];
+                                                        if ((R["Order from " + Webservice + ""].ToString() !=
+                                                                R["OrderCache"].ToString()
+                                                                || R["OrderCache"].Equals(System.DBNull.Value)))
+                                                        {
+                                                            R["OK"] = 1;
+                                                            iDifference++;
+                                                        }
                                                     }
                                                 }
                                             }
@@ -4655,54 +4892,69 @@ namespace DiversityCollection.Forms
                                         {
                                             if (DC.ColumnName == HierarchyColumn)
                                             {
-                                                if (!dtResult.Rows[0][HierarchyColumn].Equals(System.DBNull.Value)
-                                                    && dtResult.Rows[0][HierarchyColumn].ToString().Length > 0)
+                                                foreach (System.Data.DataRow row in dtResult.Rows)
                                                 {
-                                                    R["Hierarchy from " + Webservice + ""] =
-                                                        dtResult.Rows[0][HierarchyColumn];
-                                                    if ((R["Hierarchy from " + Webservice + ""].ToString() !=
-                                                         R["HierarchyCache"].ToString()
-                                                         || R["HierarchyCache"].Equals(System.DBNull.Value)))
+                                                    if (!row[HierarchyColumn].Equals(System.DBNull.Value)
+                                                    && row[HierarchyColumn].ToString().Length > 0)
                                                     {
-                                                        R["OK"] = 1;
-                                                        iDifference++;
+                                                        R["Hierarchy from " + Webservice + ""] =
+                                                            row[HierarchyColumn];
+                                                        if ((R["Hierarchy from " + Webservice + ""].ToString() !=
+                                                                R["HierarchyCache"].ToString()
+                                                                || R["HierarchyCache"].Equals(System.DBNull.Value)))
+                                                        {
+                                                            R["OK"] = 1;
+                                                            iDifference++;
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
                                     }
                                 }
+                                if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
+                                    this.progressBarSynColTaxFamOrdDatabase.Value++;
                             }
                         }
-                        if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
-                            this.progressBarSynColTaxFamOrdDatabase.Value++;
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show("An error occurred when trying to synchronize with the webservice: " + ex.Message, "SynchronizeError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-                    }
-                    this.dataGridViewSynColTaxFamOrd.DataSource = this._dtSynColTaxHierarchy;
-                    this.dataGridViewSynColTaxFamOrd.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    this.labelSynColTaxFamOrdCheck.Text = iDifference.ToString() + " differences found";
+                        this.dataGridViewSynColTaxFamOrd.DataSource = this._dtSynColTaxHierarchy;
+                        this.dataGridViewSynColTaxFamOrd.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
+                        if (this._dtSynColTaxHierarchy.Rows.Count > 0)
+                        {
+                            this.labelSynColTaxFamOrdCheck.Text = iDifference + " differences found";
+                            this.buttonSynColTaxFamOrdUpdate.Enabled = true;
+                        }
+                        else
+                        {
+                            this.labelSynColTaxFamOrdCheck.Text = "No differences found";
+                            this.buttonSynColTaxFamOrdUpdate.Enabled = false;
+                        }
+
+                        //this.labelSynColTaxFamOrdCheck.Text = iDifference.ToString() + " differences found";
+
+                    }
+                    else
+                        System.Windows.Forms.MessageBox.Show("For\r\n" + this.comboBoxSynColTaxFamOrdDatabase.Text + "\r\navailable in future version");
                 }
-                else
-                    System.Windows.Forms.MessageBox.Show("For\r\n" + this.comboBoxSynColTaxFamOrdDatabase.Text + "\r\navailable in future version");
-            }
-            try
-            {
+                
                 this.dataGridViewSynColTaxFamOrd.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.ColumnHeader);
                 this.dataGridViewSynColTaxFamOrd.Columns[0].ReadOnly = false;
                 this.dataGridViewSynColTaxFamOrd.Columns[1].ReadOnly = true;
                 this.dataGridViewSynColTaxFamOrd.Columns[2].ReadOnly = true;
                 this.dataGridViewSynColTaxFamOrd.Columns[3].ReadOnly = true;
                 this.dataGridViewSynColTaxFamOrd.ReadOnly = false;
+                
             }
-            catch (System.Exception ex)
+            catch (System.Exception exx)
             {
+                ExceptionHandling.WriteToErrorLogFile(
+                                        "FormMaintenance - buttonSynColTaxFamOrdCheck_Click, Exception exception: " + exx);
             }
-            this.Cursor = System.Windows.Forms.Cursors.Default;
+            finally
+            {
+                this.Cursor = System.Windows.Forms.Cursors.Default;
+                this.buttonSynColTaxFamOrdCheck.Enabled = true;
+            }
         }
 
         private void checkBoxSynColTaxFamOrdIncludeAccNr_Click(object sender, EventArgs e)
@@ -4826,6 +5078,24 @@ namespace DiversityCollection.Forms
                         "WHERE (U.TaxonomicGroup = N'" + this.comboBoxSynColTaxFamOrdTaxonomicGroup.Text + "') " +
                         "AND I.NameURI LIKE '" + BaseURL + "%' ";
 
+                        if (this.radioButtonHierarchy.Checked && this.textBoxTaxonHierarchyRestriction.Text.Length > 0)
+                            SQL += " AND U.HierarchyCache LIKE '" + this.textBoxTaxonHierarchyRestriction.Text + "%'";
+                        if (this.checkBoxSynColTaxFamOrdEmpty.Checked)
+                        {
+                            SQL += " AND U.";
+                            if (this.radioButtonFamily.Checked)
+                                SQL += "FamilyCache";
+                            else if (this.radioButtonOrder.Checked)
+                                SQL += "OrderCache";
+                            else
+                                SQL += "HierarchyCache";
+                            SQL += " IS NULL ";
+                        }
+                        if (this.textBoxSynColTaxTaxonRestriction.Text.Length > 0)
+                        {
+                            SQL += " AND U.LastIdentificationCache LIKE '" + this.textBoxSynColTaxTaxonRestriction.Text + "%' ";
+                        }
+
                         if (this.comboBoxSynColTaxFamOrdProject.SelectedIndex > -1)
                         {
                             int ProjectID = 0;
@@ -4844,7 +5114,7 @@ namespace DiversityCollection.Forms
                 }
                 catch (System.Exception ex)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message);
+                    System.Windows.Forms.MessageBox.Show("An error occurred: " + ex.Message);
                     DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
                 }
             }
@@ -4857,7 +5127,7 @@ namespace DiversityCollection.Forms
             {
                 if (this.comboBoxSynColTaxFamOrdDatabase.SelectedItem == null)
                 {
-                    MessageBox.Show("No Database or Service was selected.");
+                    System.Windows.Forms.MessageBox.Show("No Database or Service was selected.");
                     return;
                 }
                 string SelectedDatabase = this.comboBoxSynColTaxFamOrdDatabase.SelectedItem.ToString();
@@ -4941,29 +5211,91 @@ namespace DiversityCollection.Forms
         private void buttonSynColTaxFamOrdUpdate_Click(object sender, EventArgs e)
         {
             string Message = "";
-            if (isTaxWebService(this.comboBoxSynColTaxFamOrdDatabase.Text))
+            try
             {
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-                this.progressBarSynColTaxFamOrdDatabase.Visible = true;
-                this.progressBarSynColTaxFamOrdDatabase.Value = 0;
-                this.progressBarSynColTaxFamOrdDatabase.Maximum = this._dtSynColTaxHierarchy.Rows.Count;
-                Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
-                Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand("", con);
-                try
+                this.buttonSynColTaxFamOrdUpdate.Enabled = false;
+
+                if (isTaxWebService(this.comboBoxSynColTaxFamOrdDatabase.Text))
                 {
+                    this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+                    this.progressBarSynColTaxFamOrdDatabase.Visible = true;
+                    this.progressBarSynColTaxFamOrdDatabase.Value = 0;
+                    this.progressBarSynColTaxFamOrdDatabase.Maximum = this._dtSynColTaxHierarchy.Rows.Count;
+                    Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
+                    Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand("", con);
+                    try
+                    {
+                        con.Open();
+                        foreach (System.Data.DataRow R in this._dtSynColTaxHierarchy.Rows)
+                        {
+                            bool OK = false;
+                            if (bool.TryParse(R["OK"].ToString(), out OK) && OK)
+                            {
+                                string SQL = "UPDATE U SET ";
+                                string NewValue = R[3].ToString();
+                                if (this.radioButtonFamily.Checked) SQL += "U.FamilyCache = N'" + NewValue + "'";
+                                else if (this.radioButtonOrder.Checked) SQL += "U.OrderCache = N'" + NewValue + "'";
+                                else if (this.radioButtonHierarchy.Checked) SQL += "U.HierarchyCache = N'" + NewValue + "'";
+                                SQL += this.SqlFromClauseSynColTaxFamOrd();
+                                SQL += " AND I.NameURI = '" + R["NameURI"] + "'";
+                                try
+                                {
+                                    C.CommandText = SQL;
+                                    C.ExecuteNonQuery();
+                                }
+                                catch (Exception ex)
+                                {
+                                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                                    Message += ex.Message + "\r\n";
+                                }
+                                finally
+                                {
+                                }
+                            }
+                            if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
+                                this.progressBarSynColTaxFamOrdDatabase.Value++;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                        Message += ex.Message + "\r\n";
+                    }
+                    finally
+                    {
+                        con.Close();
+                        this.Cursor = System.Windows.Forms.Cursors.Default;
+                    }
+                    this.dataGridViewSynColTaxFamOrd.DataSource = null;
+                    System.Windows.Forms.MessageBox.Show("Update finished");
+                    this.Cursor = System.Windows.Forms.Cursors.Default;
+                }
+                else
+                {
+                    this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+                    Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
+                    Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand("", con);
                     con.Open();
+                    this.progressBarSynColTaxFamOrdDatabase.Value = 0;
+                    this.progressBarSynColTaxFamOrdDatabase.Maximum = this._dtSynColTaxHierarchy.Rows.Count;
                     foreach (System.Data.DataRow R in this._dtSynColTaxHierarchy.Rows)
                     {
                         bool OK = false;
                         if (bool.TryParse(R["OK"].ToString(), out OK) && OK)
                         {
                             string SQL = "UPDATE U SET ";
-                            string NewValue = R[3].ToString();
-                            if (this.radioButtonFamily.Checked) SQL += "U.FamilyCache = N'" + NewValue + "'";
-                            else if (this.radioButtonOrder.Checked) SQL += "U.OrderCache = N'" + NewValue + "'";
-                            else if (this.radioButtonHierarchy.Checked) SQL += "U.HierarchyCache = N'" + NewValue + "'";
+                            if (this.radioButtonFamily.Checked)
+                                SQL += "U.FamilyCache = N'" + R["Family in DiversityTaxonNames"].ToString().Replace("'", "''") + "'";
+                            else if (this.radioButtonOrder.Checked)
+                                SQL += "U.OrderCache = N'" + R["Order in DiversityTaxonNames"].ToString().Replace("'", "''") + "'";
+                            else
+                                SQL += "U.HierarchyCache = N'" + R["Hierarchy in DiversityTaxonNames"].ToString().Replace("'", "''") + "'";
                             SQL += this.SqlFromClauseSynColTaxFamOrd();
-                            SQL += " AND I.NameURI = '" + R["NameURI"] + "'";
+                            SQL += " AND U.LastIdentificationCache = N'" + R["Last identification in DiversityCollection"].ToString().Replace("'", "''") + "'";
+                            //SQL += " AND U.FamilyCache = '" + R["Family in DiversityCollection"] + "'";
+                            SQL += " AND I.NameURI = '" + R[4].ToString() + "'";
+                            //SQL += " AND I.NameURI = '" + R["NameURI"] + "'";
                             try
                             {
                                 C.CommandText = SQL;
@@ -4981,73 +5313,28 @@ namespace DiversityCollection.Forms
                         if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
                             this.progressBarSynColTaxFamOrdDatabase.Value++;
                     }
-                }
-                catch (Exception ex)
-                {
-                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-                    Message += ex.Message + "\r\n";
-                }
-                finally
-                {
                     con.Close();
+                    con.Dispose();
+                    this.Cursor = System.Windows.Forms.Cursors.Default;
                 }
-                this.dataGridViewSynColTaxFamOrd.DataSource = null;
-                System.Windows.Forms.MessageBox.Show("Update finished");
-                this.Cursor = System.Windows.Forms.Cursors.Default;
-            }
-            else
-            {
-                this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-                Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
-                Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand("", con);
-                con.Open();
-                this.progressBarSynColTaxFamOrdDatabase.Value = 0;
-                this.progressBarSynColTaxFamOrdDatabase.Maximum = this._dtSynColTaxHierarchy.Rows.Count;
-                foreach (System.Data.DataRow R in this._dtSynColTaxHierarchy.Rows)
+                if (Message.Length > 0)
                 {
-                    bool OK = false;
-                    if (bool.TryParse(R["OK"].ToString(), out OK) && OK)
-                    {
-                        string SQL = "UPDATE U SET ";
-                        if (this.radioButtonFamily.Checked)
-                            SQL += "U.FamilyCache = N'" + R["Family in DiversityTaxonNames"].ToString().Replace("'", "''") + "'";
-                        else if (this.radioButtonOrder.Checked)
-                            SQL += "U.OrderCache = N'" + R["Order in DiversityTaxonNames"].ToString().Replace("'", "''") + "'";
-                        else
-                            SQL += "U.HierarchyCache = N'" + R["Hierarchy in DiversityTaxonNames"].ToString().Replace("'", "''") + "'";
-                        SQL += this.SqlFromClauseSynColTaxFamOrd();
-                        SQL += " AND U.LastIdentificationCache = N'" + R["Last identification in DiversityCollection"].ToString().Replace("'", "''") + "'";
-                        //SQL += " AND U.FamilyCache = '" + R["Family in DiversityCollection"] + "'";
-                        SQL += " AND I.NameURI = '" + R[4].ToString() + "'";
-                        //SQL += " AND I.NameURI = '" + R["NameURI"] + "'";
-                        try
-                        {
-                            C.CommandText = SQL;
-                            C.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-                            Message += ex.Message + "\r\n";
-                        }
-                        finally
-                        {
-                        }
-                    }
-                    if (this.progressBarSynColTaxFamOrdDatabase.Value < this.progressBarSynColTaxFamOrdDatabase.Maximum)
-                        this.progressBarSynColTaxFamOrdDatabase.Value++;
+                    System.Windows.Forms.MessageBox.Show("Update failed:\r\n\r\n" + Message);
                 }
-                con.Close();
-                con.Dispose();
+                else
+                    System.Windows.Forms.MessageBox.Show("Update finished");
+                this.dataGridViewSynColTaxFamOrd.DataSource = null;
+            }
+            catch (Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                Message += ex.Message + "\r\n";
+            }
+            finally
+            {
+                this.buttonSynColTaxFamOrdUpdate.Enabled = true;
                 this.Cursor = System.Windows.Forms.Cursors.Default;
             }
-            if (Message.Length > 0)
-            {
-                System.Windows.Forms.MessageBox.Show("Update failed:\r\n\r\n" + Message);
-            }
-            else
-                System.Windows.Forms.MessageBox.Show("Update finished");
-            this.dataGridViewSynColTaxFamOrd.DataSource = null;
         }
 
         private void radioButtonHierarchy_CheckedChanged(object sender, EventArgs e)
@@ -11645,7 +11932,8 @@ namespace DiversityCollection.Forms
                         this.SynchroniseTaxonNameOnDifferentServer(BaseURL);
                         break;
                     case SynchronisationSource.Webservice:
-                        await this.SynchroniseTaxonNamesViaWebservice(BaseURL);
+                        _userCts = new CancellationTokenSource();
+                        await this.SynchroniseTaxonNamesViaWebservice(BaseURL, _userCts.Token);
                         break;
                 }
             }
@@ -15559,7 +15847,7 @@ namespace DiversityCollection.Forms
 
         #endregion
 
-        private void buttonQueryGeonames_Click(object sender, EventArgs e)
+        private async void buttonQueryGeonames_Click(object sender, EventArgs e)
         {
             if (!this.GeoNamesAvailable)
             {
@@ -15635,9 +15923,10 @@ namespace DiversityCollection.Forms
 
                     this.progressBarSetCountry.Minimum = 0;
                     this.progressBarSetCountry.Value = 0;
+                    _userCts = new CancellationTokenSource();
                     foreach (System.Data.DataRow R in this._dtEvents.Rows)
                     {
-                        if (!setLocality(R))
+                        if (!await setLocality(R, _userCts.Token))
                             NumberOfServiceNotAvaliableEvents++;
                         NumberOfServiceRequests++;
                         if (this.progressBarSetCountry.Value < this.progressBarSetCountry.Maximum)
@@ -15753,7 +16042,7 @@ namespace DiversityCollection.Forms
         /// </summary>
         /// <param name="R">The data row for which the locality should be set</param>
         /// <returns>If the webserice for retrieval of the data is available</returns>
-        private bool setLocality(System.Data.DataRow R)
+        private async System.Threading.Tasks.Task<bool> setLocality(System.Data.DataRow R, CancellationToken cancellationToken)
         {
             bool ServiceAvailable = true;
             try
@@ -15764,7 +16053,7 @@ namespace DiversityCollection.Forms
                 double.TryParse(R["Longitude"].ToString(), out Longitude);
                 int EventID;
                 int.TryParse(R["CollectionEventID"].ToString(), out EventID);
-                System.Collections.Generic.Dictionary<DiversityWorkbench.GeoFunctions.GeoInfo, string> GeoInfos = DiversityWorkbench.GeoFunctions.getGeoInfos(Latitude, Longitude, ref ServiceAvailable);
+                System.Collections.Generic.Dictionary<DiversityWorkbench.GeoFunctions.GeoInfo, string> GeoInfos = await DiversityWorkbench.GeoFunctions.getGeoInfosAsync(Latitude, Longitude, cancellationToken);
                 this.setCountry(GeoInfos, EventID);
                 this.setPlace(GeoInfos, EventID, Latitude, Longitude);
                 this.setAltitude(GeoInfos, EventID);
@@ -23939,7 +24228,7 @@ ORDER BY [Geography]
                     _InitManualDone = true;
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) { System.Windows.Forms.MessageBox.Show(ex.Message); }
         }
 
         #endregion

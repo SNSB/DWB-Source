@@ -13,6 +13,11 @@ public class GfbioTerminologyWebservice : TaxonomicWebservice,
         httpClient.BaseAddress = new Uri(BaseAddress);
     }
 
+    public override async Task<TaxonomicEntity> GetEntityHierarchyAsync<T>(string url, TaxonomicEntity dwbEntity, CancellationToken cancellationToken)
+    {
+        // no hierarchical information included in this webservice
+        return dwbEntity;
+    }
     public override string DwbApiQueryUrlString(DwbServiceEnums.DwbService currentService, string queryRestrictions,
         int offset, int maxPerPage)
     {

@@ -12,6 +12,25 @@ namespace DWBServices.WebServices.TaxonomicServices.WoRMS
             httpClient.BaseAddress = new Uri(BaseAddress);
         }
 
+        public override async Task<TaxonomicEntity> GetEntityHierarchyAsync<T>(string url, TaxonomicEntity dwbEntity, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrEmpty(url))
+            {
+                return dwbEntity;
+            }
+            dynamic mappedClientModel = (dwbEntity as dynamic).GetMappedApiEntityModel();
+            // Add the current entity to the hierarchy
+            if (mappedClientModel != null)
+            {
+                dwbEntity.Kingdom = mappedClientModel.Kingdom;
+                dwbEntity.Phylum = mappedClientModel.Phylum;
+                dwbEntity.Class = mappedClientModel.Class;
+                dwbEntity.Order = mappedClientModel.Order;
+                dwbEntity.Family = mappedClientModel.Family;
+                dwbEntity.Hierarchy = string.Join(" | ", new[] { dwbEntity.Phylum, dwbEntity.Class, dwbEntity.Order, dwbEntity.Family, dwbEntity.Genus }.Where(x => !string.IsNullOrEmpty(x)));
+            }
+            return dwbEntity;
+        }
         public override string DwbApiQueryUrlString(DwbServiceEnums.DwbService currentService, string queryRestrictions, int offset, int maxPerPage)
         {
             WoRMSTaxonomicSearchCriterias criterias = new WoRMSTaxonomicSearchCriterias();

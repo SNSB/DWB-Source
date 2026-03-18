@@ -14,11 +14,12 @@ namespace DWBServices.WebServices.TaxonomicServices.PESI
         {
             get
             {
-                // return Result.Select(item => item.GetMappedApiClientModel()).ToArray();
-                return Result
-                    .Where(item => !string.IsNullOrEmpty(item.uri))
-                    .Select(item => item.GetMappedApiClientModel())
-                    .ToArray();
+                return Result?
+               .Where(item => item != null && !string.IsNullOrEmpty(item.uri))
+               .Select(item => item.GetMappedApiClientModel())
+               .Where(mappedItem => mappedItem != null)
+               .ToArray()
+               ?? Array.Empty<TaxonomicSearchResultItem>();
             }
         }
     }

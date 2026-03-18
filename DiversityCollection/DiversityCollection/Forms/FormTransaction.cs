@@ -47,6 +47,17 @@ namespace DiversityCollection.Forms
             try
             {
                 InitializeComponent();
+                // #342 Suppress script errors in web browser controls
+                this.webBrowserBalance.ScriptErrorsSuppressed = true;
+                this.webBrowserConfirmation.ScriptErrorsSuppressed = true;
+                this.webBrowserForwarding.ScriptErrorsSuppressed = true;
+                this.webBrowserPrint.ScriptErrorsSuppressed = true;
+                this.webBrowserReminder.ScriptErrorsSuppressed = true;
+                this.webBrowserRequest.ScriptErrorsSuppressed = true;
+                this.webBrowserSending.ScriptErrorsSuppressed = true;
+                this.webBrowserTransactionReturn.ScriptErrorsSuppressed = true;
+                this.webBrowserTransactionDocuments.ScriptErrorsSuppressed = true;
+
                 this.splitContainerData.Panel2Collapsed = true;
                 this.splitContainerMain.Panel2.Visible = false;
                 this.initForm();

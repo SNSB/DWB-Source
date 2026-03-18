@@ -13,7 +13,10 @@ namespace DWBServices.WebServices.GeoServices.IHOWorldSeas
         {
             get
             {
-                return Result.Select(item => item.GetMappedApiClientModel()).ToArray();
+                return Result?
+                    .Select(item => item.GetMappedApiClientModel())
+                    .ToArray()
+                    ?? Array.Empty<IHOWorldSeasSearchResultItem>();
             }
         }
     }

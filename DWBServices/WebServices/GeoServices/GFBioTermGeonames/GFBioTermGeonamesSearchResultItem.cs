@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using DWBServices.WebServices.TaxonomicServices;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
@@ -13,7 +14,13 @@ namespace DWBServices.WebServices.GeoServices.GFBioTermGeonames
         {
             get
             {
-                return Result.Select(item => item.GetMappedApiClientModel()).ToArray();
+                //return Result.Select(item => item.GetMappedApiClientModel()).ToArray();
+                return Result?
+                    .Where(item => item != null)
+                    .Select(item => item.GetMappedApiClientModel())
+                    .Where(mappedItem => mappedItem != null)
+                    .ToArray()
+                    ?? Array.Empty<GFBioTermGeonamesSearchResultItem>();
             }
         }
     }

@@ -37,6 +37,8 @@ namespace DiversityWorkbench.Forms
             this.splitContainerResource.Panel2Collapsed = true;
             this.userControlXMLTreeEXIF.setToDisplayOnly();
             this.userControlXMLTreeEXIF.Visible = false;
+            // #342
+            this.webBrowser.ScriptErrorsSuppressed = true;
         }
 
         //public FormGetImage(int ProjectID, int AgentID, string AccessionNumber, string RowGUID) : this()

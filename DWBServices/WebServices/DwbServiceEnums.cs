@@ -24,7 +24,9 @@ namespace DWBServices.WebServices
         {
             None,
             CatalogueOfLife,
+            CatalogueOfLifeExtended,
             PoWo_WCVP,
+            SpeciesFungorumPlus,
             IndexFungorum,
             PESI,
             Mycobank,
@@ -54,7 +56,10 @@ namespace DWBServices.WebServices
             {
                 { DwbService.None, new DwbServiceInfo{ Type = DwbServiceType.None, Name = "None", Url = "None", DatasetKey = ""}}, 
                 { DwbService.CatalogueOfLife, new DwbServiceInfo{ Type = DwbServiceType.TaxonomicService, Name = "Catalogue of Life", Url = configuration["CoL:CoL_BaseAddress"], DatasetKey = "3LR"} },
+                { DwbService.CatalogueOfLifeExtended, new DwbServiceInfo{ Type = DwbServiceType.TaxonomicService, Name = "Catalogue of Life - eXtended Release", Url = configuration["CoL:CoL_BaseAddress"], DatasetKey = "3LXR"} },
                 { DwbService.PoWo_WCVP, new DwbServiceInfo{ Type = DwbServiceType.TaxonomicService, Name = "WCVP/PoWo - Catalogue of Life)", Url = configuration["CoL:CoL_BaseAddress"], DatasetKey = "2232"} },
+                //{ DwbService.PaleoBioDB, new DwbServiceInfo{ Type = DwbServiceType.TaxonomicService, Name = "PaleoBioDB - Catalogue of Life)", Url = configuration["CoL:CoL_BaseAddress"], DatasetKey = "268676"} },
+                { DwbService.SpeciesFungorumPlus, new DwbServiceInfo{ Type = DwbServiceType.TaxonomicService, Name = "SpeciesFungorumPlus - Catalogue of Life)", Url = configuration["CoL:CoL_BaseAddress"], DatasetKey = "2073"} },
                 { DwbService.IndexFungorum, new DwbServiceInfo{ Type = DwbServiceType.TaxonomicService, Name = "Index Fungorum", Url = configuration["IndexFungorum:IndexFungorum_BaseAddress"], DatasetKey = ""}},
                 { DwbService.PESI, new DwbServiceInfo{ Type = DwbServiceType.TaxonomicService, Name = "Pan-European Species directories Infrastructure", Url = configuration["PESI:PESI_BaseAddress"], DatasetKey = ""} },
                 { DwbService.Mycobank, new DwbServiceInfo{ Type = DwbServiceType.TaxonomicService, Name = "Mycobank", Url = configuration["Mycobank:Mycobank_BaseAddress"], DatasetKey = ""} },

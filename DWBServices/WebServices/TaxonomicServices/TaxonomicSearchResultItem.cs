@@ -40,6 +40,10 @@
 
         public string Subkingdom { get; set; }
 
+        public string Family { get; set; }
+
+        public string Order { get; set; }
+
         public string Hierarchy { get; set; }
 
         public string Unranked { get; set; }

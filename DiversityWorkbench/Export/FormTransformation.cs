@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace DiversityWorkbench.Export
@@ -20,6 +21,7 @@ namespace DiversityWorkbench.Export
         private string _Prefix;
         private string _Postfix;
         private DiversityWorkbench.Export.iExporter _iExporter;
+        private CancellationTokenSource _userCts;
 
         #endregion
 
@@ -249,7 +251,8 @@ namespace DiversityWorkbench.Export
                     //System.Collections.Generic.Dictionary<int, string> dd = new Dictionary<int, string>();
                     //if (DD.ContainsKey(S))
                     //    dd = DD[S];
-                    Transformation.Add(S, await this._FileColumn.TransformedValue(S));// DiversityWorkbench.Export.FileColumn.TransformedValue(S));//, this._Transformations, dd));
+                    _userCts = new CancellationTokenSource();
+                    Transformation.Add(S, await this._FileColumn.TransformedValue(S, _userCts.Token));// DiversityWorkbench.Export.FileColumn.TransformedValue(S));//, this._Transformations, dd));
                 }
                 if (Transformation.Count > 0)
                 {

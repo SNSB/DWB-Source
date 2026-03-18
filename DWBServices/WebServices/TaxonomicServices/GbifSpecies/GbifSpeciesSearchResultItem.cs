@@ -16,7 +16,16 @@ namespace DWBServices.WebServices.TaxonomicServices.GbifSpecies
 
         public override TaxonomicSearchResultItem[] DwbApiSearchResponse
         {
-            get { return Result.Select(item => item.GetMappedApiClientModel()).ToArray(); }
+            get
+            {
+                // return Result.Select(item => item.GetMappedApiClientModel()).ToArray();
+                return Result?
+                    .Where(item => item != null)
+                    .Select(item => item.GetMappedApiClientModel())
+                    .Where(mappedItem => mappedItem != null)
+                    .ToArray()
+                    ?? Array.Empty<TaxonomicSearchResultItem>();
+            }
         }
     }
 

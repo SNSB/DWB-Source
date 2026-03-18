@@ -12,7 +12,13 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
         {
             get
             {
-                return IndexFungorum.Select(item => item.GetMappedApiClientModel()).ToArray();
+                // return Result.Select(item => item.GetMappedApiClientModel()).ToArray();
+                return IndexFungorum?
+                .Where(item => item != null)
+                .Select(item => item.GetMappedApiClientModel())
+                .Where(mappedItem => mappedItem != null)
+                .ToArray()
+                ?? Array.Empty<TaxonomicSearchResultItem>();
             }
         }
     }

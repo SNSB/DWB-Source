@@ -1618,6 +1618,20 @@ namespace DiversityCollection.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die --#####################################################################################################################
+        ///--#####################################################################################################################
+        ///--Skript for Update of Postgres project to version 27
+        ///--replace &quot;#project#&quot; with Name of the project
+        ///--the string at the begin of the line --## is used to mark end and begin of a command
+        ///--############################################################################## [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionCacheUpdatePGSchema_000026_to_000027 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionCacheUpdatePGSchema_000026_to_000027", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die 
         ///--#####################################################################################################################
         ///--######   Roles   #########################################################################################################
@@ -2247,6 +2261,21 @@ namespace DiversityCollection.Properties {
         internal static string DiversityCollectionCacheUpdateSchema_000035_to_000036 {
             get {
                 return ResourceManager.GetString("DiversityCollectionCacheUpdateSchema_000035_to_000036", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 
+        ///--#####################################################################################################################
+        ///--######   Issue #321  ################################################################################################
+        ///--#####################################################################################################################
+        ///
+        ///--#####################################################################################################################
+        ///--######   New table Par [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionCacheUpdateSchema_000036_to_000037 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionCacheUpdateSchema_000036_to_000037", resourceCulture);
             }
         }
         

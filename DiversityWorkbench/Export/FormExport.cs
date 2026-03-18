@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace DiversityWorkbench.Export
@@ -28,6 +29,7 @@ namespace DiversityWorkbench.Export
 
     public partial class FormExport : Form, iExporter
     {
+        private CancellationTokenSource _userCts;
 
         #region Construction and form
 
@@ -282,7 +284,8 @@ namespace DiversityWorkbench.Export
             try
             {
                 Exporter.ResetExportResults();
-                System.Collections.Generic.List<System.Collections.Generic.List<string>> ExportResult = await Exporter.TestExport(this.numericUpDownTestExport.Value, this);
+                _userCts = new CancellationTokenSource();
+                System.Collections.Generic.List<System.Collections.Generic.List<string>> ExportResult = await Exporter.TestExport(this.numericUpDownTestExport.Value, this, _userCts.Token);
                 this.dataGridViewTestExport.Rows.Clear();
                 this.dataGridViewTestExport.Columns.Clear();
                 if (ExportResult.Count > 0)
@@ -408,10 +411,11 @@ namespace DiversityWorkbench.Export
                 DiversityWorkbench.Export.Exporter.SaveSchemaFile(true, this.labelDirectoryForExortFile.Text + this.textBoxExportFileName.Text + ".xml");
 
             string Message = "";
+            _userCts = new CancellationTokenSource();
             if (this.comboBoxExportFileNameExtension.SelectedItem.ToString() == ".txt")
-                Message = await DiversityWorkbench.Export.Exporter.ExportToFile(this.labelDirectoryForExortFile.Text + this.textBoxExportFileName.Text + ".txt", this.textBoxExport, this);
+                Message = await DiversityWorkbench.Export.Exporter.ExportToFile(this.labelDirectoryForExortFile.Text + this.textBoxExportFileName.Text + ".txt", this.textBoxExport, this, _userCts.Token);
             else
-                Message = await DiversityWorkbench.Export.Exporter.ExportToXML(this.labelDirectoryForExortFile.Text + this.textBoxExportFileName.Text + ".xml", this.textBoxExport, this, (int)this.numericUpDownTestExport.Maximum);
+                Message = await DiversityWorkbench.Export.Exporter.ExportToXML(this.labelDirectoryForExortFile.Text + this.textBoxExportFileName.Text + ".xml", this.textBoxExport, this, (int)this.numericUpDownTestExport.Maximum, _userCts.Token);
             if (Message.Length == 0)
                 Message = "Export finished";
             System.Windows.Forms.MessageBox.Show(Message);
@@ -544,7 +548,8 @@ namespace DiversityWorkbench.Export
                 }
                 if (!this.SQLiteDB.AddTable(_SQLiteExportTableName, TableColumns))
                     return;
-                System.Collections.Generic.List<System.Collections.Generic.List<string>> LL = await Exporter.ExportResults(null, this);
+                _userCts = new CancellationTokenSource();
+                System.Collections.Generic.List<System.Collections.Generic.List<string>> LL = await Exporter.ExportResults(null, this, _userCts.Token);
                 this.progressBarSQLite.Value = 0;
                 this.progressBarSQLite.Maximum = LL.Count;
                 for (int l = 1; l < LL.Count; l++)

@@ -4480,9 +4480,14 @@ namespace DiversityCollection
                     {
                         //#127
                         System.Xml.Xsl.XslCompiledTransform XSLT = new System.Xml.Xsl.XslCompiledTransform();
-                        System.Xml.Xsl.XsltSettings XsltSettings = new System.Xml.Xsl.XsltSettings(true, true);
+
+                        //#334
+                        // System.Xml.Xsl.XsltSettings XsltSettings = new System.Xml.Xsl.XsltSettings(true, true);
+                        System.Xml.Xsl.XsltSettings XsltSettings = new XsltSettings(enableDocumentFunction: true, enableScript: false);
+
                         System.Xml.XmlResolver resolver = new System.Xml.XmlUrlResolver();
-                        XSLT.Load(SchemaFile.FullName);
+                        // XSLT.Load(SchemaFile.FullName);
+                        XSLT.Load(SchemaFile.FullName, XsltSettings, resolver);
 
                         // Load the file to transform.
                         System.Xml.XPath.XPathDocument doc = new System.Xml.XPath.XPathDocument(XmlFile.FullName);
@@ -4577,7 +4582,7 @@ namespace DiversityCollection
                             System.Xml.Xsl.XslCompiledTransform XSLT = new System.Xml.Xsl.XslCompiledTransform();
                             System.Xml.Xsl.XsltSettings XsltSettings = new System.Xml.Xsl.XsltSettings(true, true);
                             System.Xml.XmlResolver resolver = new System.Xml.XmlUrlResolver();
-                            XSLT.Load(SchemaFile.FullName);
+                            XSLT.Load(SchemaFile.FullName, XsltSettings, resolver); // #334
 
                             // Load the file to transform.
                             System.Xml.XPath.XPathDocument doc = new System.Xml.XPath.XPathDocument(XmlFile.FullName);
@@ -4597,6 +4602,7 @@ namespace DiversityCollection
                         }
                         catch (System.Exception ex)
                         {
+                            DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
                         }
                     }
                 }

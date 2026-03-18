@@ -175,11 +175,11 @@ namespace DiversityWorkbench.Export
         //    return Value;
         //}
 
-        public async System.Threading.Tasks.Task<string> TransformedValue(string Value)
+        public async System.Threading.Tasks.Task<string> TransformedValue(string Value, System.Threading.CancellationToken cancellationToken)
         {
             if (this._TableColumnUnitValue != null)
             {
-                Value = await this._TableColumnUnitValue.GetSourceValue(Value);
+                Value = await this._TableColumnUnitValue.GetSourceValue(Value, cancellationToken);
             }
             if (this.Transformations.Count > 0)
             {

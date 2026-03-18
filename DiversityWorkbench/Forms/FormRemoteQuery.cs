@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Windows.Forms;
 using DiversityWorkbench.UserControls;
@@ -74,6 +75,8 @@ namespace DiversityWorkbench.Forms
         private int? _ID = null;
 
         private DwbServiceEnums.DwbService currentDwbService = DwbServiceEnums.DwbService.None;
+
+        private CancellationTokenSource _userCts;
 
         #endregion
 
@@ -485,13 +488,21 @@ namespace DiversityWorkbench.Forms
                 if (this._DatabaseService == null)
                     this._DatabaseService = new DatabaseService();
                 this._DatabaseService.WebService = currentDwbService;
-                var tt = await _api.CallWebServiceAsync<object>(URI,
+                _userCts = new CancellationTokenSource();
+                var tt = await _api.CallWebServiceAsync<object>(URI, _userCts.Token,
                     DwbServiceEnums.HttpAction.GET);
                 if (tt != null)
                 {
-                    var entityModel = _api.GetDwbApiDetailModel(tt);
-
                     DwbEntity clientEntity = _api.GetDwbApiDetailModel(tt);
+
+                    // get Hierarchy for taxonomic webservices if selected and available
+                    if (clientEntity != null && clientEntity is TaxonomicEntity)
+                    {
+                        TaxonomicWebservice taxonomicWebservice = _api as TaxonomicWebservice;
+                        TaxonomicEntity taxEntity = clientEntity as TaxonomicEntity;
+                        clientEntity = await taxonomicWebservice.GetEntityHierarchyAsync<object>(URI, taxEntity, _userCts.Token);
+                    }
+
                     BuildWebServiceUnitTree(URI, clientEntity);
                     this.setSourceURI(clientEntity._URL);
                 }
@@ -2444,9 +2455,28 @@ namespace DiversityWorkbench.Forms
                         // Markus 31.1.2024: Anzeige um MaxResults einzustellen
                         this.userControlWebservice.setVisibilityOfMaxResultsForQuery(true);
                         break;
+                    case DwbServiceEnums.DwbService.CatalogueOfLifeExtended:
+                        this.userControlWebservice.SetDwbWebservice(DwbServiceProviderAccessor.Instance
+                            .GetRequiredService<CoLWebservice>(), DwbServiceEnums.DwbService.CatalogueOfLifeExtended);
+                        this._BaseURI = this.userControlWebservice.GetDwbWebservice().GetBaseAddress();
+                        // Markus 31.1.2024: Anzeige um MaxResults einzustellen
+                        this.userControlWebservice.setVisibilityOfMaxResultsForQuery(true);
+                        break;
                     case DwbServiceEnums.DwbService.PoWo_WCVP:
                         this.userControlWebservice.SetDwbWebservice(DwbServiceProviderAccessor.Instance
                             .GetRequiredService<CoLWebservice>(), DwbServiceEnums.DwbService.PoWo_WCVP);
+                        this._BaseURI = this.userControlWebservice.GetDwbWebservice().GetBaseAddress();
+                        this.userControlWebservice.setVisibilityOfMaxResultsForQuery(true);
+                        break;
+                    //case DwbServiceEnums.DwbService.PaleoBioDB:
+                    //    this.userControlWebservice.SetDwbWebservice(DwbServiceProviderAccessor.Instance
+                    //        .GetRequiredService<CoLWebservice>(), DwbServiceEnums.DwbService.PaleoBioDB);
+                    //    this._BaseURI = this.userControlWebservice.GetDwbWebservice().GetBaseAddress();
+                    //    this.userControlWebservice.setVisibilityOfMaxResultsForQuery(true);
+                    //    break;
+                    case DwbServiceEnums.DwbService.SpeciesFungorumPlus:
+                        this.userControlWebservice.SetDwbWebservice(DwbServiceProviderAccessor.Instance
+                            .GetRequiredService<CoLWebservice>(), DwbServiceEnums.DwbService.SpeciesFungorumPlus);
                         this._BaseURI = this.userControlWebservice.GetDwbWebservice().GetBaseAddress();
                         this.userControlWebservice.setVisibilityOfMaxResultsForQuery(true);
                         break;
@@ -3165,11 +3195,19 @@ namespace DiversityWorkbench.Forms
                                 MessageBoxIcon.Information);
                             return;
                         }
-
+                        _userCts = new CancellationTokenSource();
                         var tt = await _api.CallWebServiceAsync<object>(
-                            SelectedValue,
+                            SelectedValue, _userCts.Token,
                             DwbServiceEnums.HttpAction.GET);
                         DwbEntity clientEntity = _api.GetDwbApiDetailModel(tt);
+                        // get Hierarchy for taxonomic webservices if selected and available
+                        // TODO checkbox if ()
+                        if (clientEntity != null && clientEntity is TaxonomicEntity)
+                        {   
+                            TaxonomicWebservice taxonomicWebservice = _api as TaxonomicWebservice;
+                            TaxonomicEntity taxEntity = clientEntity as TaxonomicEntity;
+                            clientEntity = await taxonomicWebservice.GetEntityHierarchyAsync<object>(SelectedValue, taxEntity, _userCts.Token);
+                        }
 
                         int UnitID;
                         if (int.TryParse(SelectedValue, out UnitID))
@@ -3251,7 +3289,7 @@ namespace DiversityWorkbench.Forms
                 if (this._DatabaseService.IsWebservice)
                 {
                     Values = new Dictionary<string, string>();
-                    this.getWebserviceValues(ref Values);
+                    this.getWebserviceValues(ref Values, null);
                     this.setUnitPanel((System.Data.DataRowView)this.userControlWebservice.listBoxQueryResult.SelectedItem);
                     this._IWorkbenchUnit.SetUnitValues(Values);
                 }
@@ -3399,7 +3437,7 @@ namespace DiversityWorkbench.Forms
                 if (this._DatabaseService.IsWebservice)
                 {
                     Values = new Dictionary<string, string>();
-                    this.getWebserviceValues(ref Values);
+                    this.getWebserviceValues(ref Values, clientEntity);
                     this.setUnitPanel(ID, clientEntity);
                     this._IWorkbenchUnit.SetUnitValues(Values);
                     this.splitContainerUriResources.Panel2Collapsed = true;
@@ -3456,13 +3494,35 @@ namespace DiversityWorkbench.Forms
             //this.setTextHeights();
         }
 
-        private void getWebserviceValues(ref System.Collections.Generic.Dictionary<string, string> Values)
+        private void getWebserviceValues(ref System.Collections.Generic.Dictionary<string, string> Values, DwbEntity clientEntity)
         {
             if (this.userControlWebservice.listBoxQueryResult.SelectedItem != null)
             {
                 System.Data.DataRowView R = (System.Data.DataRowView)this.userControlWebservice.listBoxQueryResult.SelectedItem;
                 foreach (System.Data.DataColumn C in R.DataView.Table.Columns)
                 {
+                    if (R[C.ColumnName].Equals(System.DBNull.Value) || R[C.ColumnName].Equals(System.String.Empty))
+                    {
+                        //check if the clientEntity has the value
+                       if (clientEntity != null)
+                        {
+                            var property = clientEntity.GetType().GetProperty(C.ColumnName);
+                            if (property != null)
+                            {
+                                var value = property.GetValue(clientEntity);
+                                if (value != null)
+                                {
+                                    if (!Values.ContainsKey(C.ColumnName))
+                                        Values.Add(C.ColumnName, value.ToString());
+                                } else
+                                {
+                                    if (!Values.ContainsKey(C.ColumnName))
+                                        Values.Add(C.ColumnName, string.Empty);
+                                }
+                            }
+                        }
+                        continue;
+                    }
                     if (!R[C.ColumnName].Equals(System.DBNull.Value))
                     {
                         if (!Values.ContainsKey(C.ColumnName))

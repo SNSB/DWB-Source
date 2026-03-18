@@ -437,7 +437,16 @@ namespace DWBServices.WebServices.TaxonomicServices.Mycobank
                 CombiningAuthors = string.Empty; // TODO ?
                 Kingdom = string.Empty;
                 Subkingdom = string.Empty;
-                Hierarchy = string.Empty;
+                var classification = RecordDetails?.Classification;
+                // Concatenate the 'Value' properties from the 'Name1' objects
+                if (classification != null)
+                {
+                    string result = string.Join(" | ", classification.Value.Where(v => v?.Name?.Value != null).Select(v => v.Name.Value));
+                    Hierarchy = result;
+                } else
+                {
+                    Hierarchy = string.Empty;
+                }
                 Unranked = string.Empty;
                 Year = RecordDetails?.Yearofeffectivepublication?.Value ?? string.Empty;
 

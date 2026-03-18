@@ -144,8 +144,27 @@ namespace DiversityCollection
                 switch (Table)
                 {
                     case "CollectionSpecimen":
-                        if (!DataRow["CollectionID"].Equals(System.DBNull.Value))
-                            this._CollectionID = int.Parse(DataRow["CollectionID"].ToString());
+                        // #362 - deprecated: This column is not used any more in table CollectionSpecimen
+                        //if (!DataRow["CollectionID"].Equals(System.DBNull.Value))
+                        //    this._CollectionID = int.Parse(DataRow["CollectionID"].ToString());
+                        int? iColl = null;
+                        foreach (System.Data.DataRow R in this.dataSetCollectionSpecimen.CollectionSpecimenPart.Rows)
+                        {
+                            if (!R["CollectionID"].Equals(System.DBNull.Value))
+                            {
+                                if (iColl == null) iColl = (int)R["CollectionID"];
+                                else
+                                {
+                                    if ((int)iColl != (int)R["CollectionID"])
+                                    {
+                                        iColl = null;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        if (iColl != null)
+                            this._CollectionID = iColl;
                         break;
                     case "CollectionSpecimenPart":
                         if (!DataRow["CollectionID"].Equals(System.DBNull.Value))
@@ -330,6 +349,11 @@ namespace DiversityCollection
                         this.writeXmlPartsForSpecimen(ref W, SpecimenID);
                         this.writeXmlRelations(ref W, SpecimenID);
                         this.writeXmlRelationsInvers(ref W, SpecimenID);
+                        // #362
+                        this.writeXmlExternalIdentifier(ref W, "CollectionSpecimen", SpecimenID);
+
+                        if (this._QRsource != QRcodeSource.None)
+                            this.writeXmlQRcode(ref W, SpecimenID, -1);
 
                         this.writeXmlLogUserAndDate(ref W, SpecimenID);
                         Counter++;

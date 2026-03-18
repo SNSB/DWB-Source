@@ -20,7 +20,12 @@ namespace DWBServices.WebServices.TaxonomicServices.CatalogueOfLife
         {
             get
             {
-                return Result.Select(item => item.GetMappedApiClientModel()).ToArray();
+                return Result?
+                    .Where(item => item != null)
+                    .Select(item => item.GetMappedApiClientModel())
+                    .Where(mappedItem => mappedItem != null)
+                    .ToArray()
+                    ?? Array.Empty<TaxonomicSearchResultItem>();
             }
         }
 
@@ -101,6 +106,8 @@ namespace DWBServices.WebServices.TaxonomicServices.CatalogueOfLife
             CombiningAuthors = string.Empty; // TODO ?
             Kingdom = string.Empty;
             Subkingdom = string.Empty;
+            Family = string.Empty;
+            Order = string.Empty;
             Hierarchy = string.Empty;
             Unranked = string.Empty;
             Year = usage.created.Year.ToString();

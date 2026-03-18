@@ -15,6 +15,7 @@ using System.Web;
 using DWBServices;
 using DWBServices.WebServices.TaxonomicServices;
 using DWBServices.WebServices.TaxonomicServices.CatalogueOfLife;
+using System.Threading;
 
 namespace DiversityWorkbench.UserControls
 {
@@ -784,8 +785,8 @@ namespace DiversityWorkbench.UserControls
                                         if (RVB.ModeOfUpdate == RemoteValueBinding.UpdateMode.AskForUpdate)
                                         {
                                             if (!RV[RVB.Column].Equals(System.DBNull.Value) &&
-                                                RV[RVB.Column].ToString().Length > 0 &&
-                                                P.Value.Length > 0)
+                                            RV[RVB.Column].ToString().Length > 0 &&
+                                            P.Value.Length > 0)
                                             {
                                                 if (P.Value.Trim() != RV[RVB.Column].ToString().Trim()) ///MW 22.10.2019 - ask only if different
                                                 {
@@ -795,6 +796,20 @@ namespace DiversityWorkbench.UserControls
                                                     if (System.Windows.Forms.MessageBox.Show(Message, "Replace entry", MessageBoxButtons.YesNo) == DialogResult.No)
                                                         continue;
                                                 }
+                                            }
+                                            else if (!RV[RVB.Column].Equals(System.DBNull.Value) &&
+                                            RV[RVB.Column].ToString().Length > 0 &&
+                                            P.Value.Length == 0)
+                                            {
+                                                string Message =
+                                                   "Should the current value\r\n\r\n" +
+                                                   RV[RVB.Column].ToString() +
+                                                   "\r\n\r\nfor the field " + RVB.Column +
+                                                   "\r\nbe deleted";
+                                                if (System.Windows.Forms.MessageBox.Show(Message,
+                                                        "Replace entry", MessageBoxButtons.YesNo) ==
+                                                    DialogResult.No)
+                                                    continue;
                                             }
                                             else if ((RV[RVB.Column].Equals(System.DBNull.Value) ||
                                                 RV[RVB.Column].ToString().Length == 0) &&
@@ -814,7 +829,8 @@ namespace DiversityWorkbench.UserControls
                                         RV.BeginEdit();
                                         try
                                         {
-                                            if (this._SupressEmptyRemoteValues && P.Value.Length == 0)
+
+                                            if (RVB.ModeOfUpdate != RemoteValueBinding.UpdateMode.AskForUpdate && this._SupressEmptyRemoteValues && P.Value.Length == 0)
                                             { }
                                             else
                                             {
@@ -2074,7 +2090,7 @@ namespace DiversityWorkbench.UserControls
             this._TableName = TableName;
         }
 
-        private void comboBoxLocalValues_SelectionChangeCommitted(object sender, EventArgs e)
+        private async void comboBoxLocalValues_SelectionChangeCommitted(object sender, EventArgs e)
         {
             try
             {
@@ -2109,12 +2125,6 @@ namespace DiversityWorkbench.UserControls
                                 URI = r[1].ToString();
                             else
                                 URI = r[0].ToString();
-                            // Ariane exclude Webservice.. for .NET8
-                            //if (!URI.StartsWith("http:"))
-                            //{
-                            //    URI = this.sourceWebservice.BaseURI() + URI;
-                            //    URI += this.sourceWebservice.UriXmlNameSuffix();
-                            //}
                             R[this._ValueColumn] = URI;
                             this.labelURI.Text = URI;
 
@@ -2201,176 +2211,142 @@ namespace DiversityWorkbench.UserControls
                                     }
                                 }
                             }
-                            //// Ariane exclude Webservice.. for .NET8
-                            ///  Ariane Todo Do we need this?
-                            //else if (SourceWebservice != DwbService.None && this._RemoteValueBindings != null &&
-                            //         this._RemoteValueBindings.Count > 0)
-                            //{
-                            //    //System.Collections.Generic.Dictionary<string, string> UnitValues =
-                            //    //    this.sourceWebservice.UriValues(URI);
-                            //    //if (UnitValues.Count > 0)
-                            //    //{
-                            //        System.Collections.Generic.List<string> RemoteBindings = new List<string>();
-                            //        //foreach (DiversityWorkbench.UserControls.RemoteValueBinding RVB in this
-                            //        //             ._RemoteValueBindings)
-                            //        //    RemoteBindings.Add(RVB.RemoteParameter);
-                            //        //System.Collections.Generic.Dictionary<string, string> Values =
-                            //        //    this.sourceWebservice.UriValues(URI, RemoteBindings);
-                            //        //if (Values.Count > 0)
-                            //        //{
-                            //        //    foreach (DiversityWorkbench.UserControls.RemoteValueBinding RVB in this
-                            //        //                 ._RemoteValueBindings)
-                            //        //    {
-                            //        //        foreach (System.Collections.Generic.KeyValuePair<string, string> P in
-                            //        //                 Values)
-                            //        //        {
-                            //        //            if (RVB.RemoteParameter.ToLower() == P.Key.ToLower())
-                            //        //            {
-                            //        //                if (RVB.BindingSource != null)
-                            //        //                {
-                            //        //                    if (RVB.BindingSource.Current != null)
-                            //        //                    {
-                            //        //                        System.Data.DataRowView RV =
-                            //        //                            (System.Data.DataRowView)RVB.BindingSource.Current;
+                            // this is webservice calls for adding RemoteValues, e.g. CacheValues like FamilyCache etc, to the associated unit
+                            else if (SourceWebservice != DwbService.None && this._RemoteValueBindings != null &&
+                                 this._RemoteValueBindings.Count > 0)
+                            {
+                                try
+                                {
+                                    // get detail data for selected item from Webservice
+                                    IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api = DwbServiceProviderAccessor.GetDwbWebservice(SourceWebservice);
 
-                            //        //                        ///MW 4.5.2105: enable decision if an allready filled field should be changed
-                            //        //                        if (RVB.ModeOfUpdate == RemoteValueBinding.UpdateMode
-                            //        //                                .AskForUpdate)
-                            //        //                        {
-                            //        //                            if (!RV[RVB.Column].Equals(System.DBNull.Value) &&
-                            //        //                                RV[RVB.Column].ToString().Length > 0 &&
-                            //        //                                P.Value.Length > 0)
-                            //        //                            {
-                            //        //                                string Message =
-                            //        //                                    "Should the current value\r\n\r\n" +
-                            //        //                                    RV[RVB.Column].ToString() +
-                            //        //                                    "\r\n\r\nfor the field " + RVB.Column +
-                            //        //                                    "\r\nshould be replaced by\r\n\r\n" + P.Value;
-                            //        //                                if (System.Windows.Forms.MessageBox.Show(Message,
-                            //        //                                        "Replace entry", MessageBoxButtons.YesNo) ==
-                            //        //                                    DialogResult.No)
-                            //        //                                    continue;
-                            //        //                            }
-                            //        //                            else if ((RV[RVB.Column].Equals(System.DBNull.Value) ||
-                            //        //                                      RV[RVB.Column].ToString().Length == 0) &&
-                            //        //                                     P.Value.Length > 0)
-                            //        //                            {
-                            //        //                            }
-                            //        //                            else
-                            //        //                                continue;
-                            //        //                        }
-                            //        //                        else if (RVB.ModeOfUpdate ==
-                            //        //                                 RemoteValueBinding.UpdateMode.OnlyEmpty)
-                            //        //                        {
-                            //        //                            if (!RV[RVB.Column].Equals(System.DBNull.Value) &&
-                            //        //                                RV[RVB.Column].ToString().Length > 0)
-                            //        //                                continue;
-                            //        //                        }
+                                    if (_api == null || string.IsNullOrEmpty(URI))
+                                    {
+                                        MessageBox.Show("No webservice defined");
+                                        return;
+                                    }
+                                    _userCts = new CancellationTokenSource();
+                                    var tt = await _api.CallWebServiceAsync<object>(URI,_userCts.Token,
+                                        DwbServiceEnums.HttpAction.GET);
+                                    if (tt != null)
+                                    {
+                                        DwbEntity clientEntity = _api.GetDwbApiDetailModel(tt);
 
-                            //        //                        RV.BeginEdit();
-                            //        //                        try
-                            //        //                        {
-                            //        //                            if (this._SupressEmptyRemoteValues &&
-                            //        //                                P.Value.Length == 0)
-                            //        //                            {
-                            //        //                            }
-                            //        //                            else
-                            //        //                                RV[RVB.Column] = P.Value;
-                            //        //                        }
-                            //        //                        catch (System.Exception ex)
-                            //        //                        {
-                            //        //                        }
+                                        // get Hierarchy for taxonomic webservices if selected and available
+                                        if (clientEntity != null && clientEntity is TaxonomicEntity)
+                                        {
+                                            TaxonomicWebservice taxonomicWebservice = _api as TaxonomicWebservice;
+                                            TaxonomicEntity taxEntity = clientEntity as TaxonomicEntity;
+                                            clientEntity = await taxonomicWebservice.GetEntityHierarchyAsync<object>(URI, taxEntity, _userCts.Token);
+                                        }
+                                        Dictionary<string, string> UnitValues = new Dictionary<string, string>();
+                                        getWebserviceValues(ref UnitValues, clientEntity);
 
-                            //        //                        RV.EndEdit();
-                            //        //                    }
-                            //        //                }
-                            //        //                else
-                            //        //                {
-                            //        //                }
-                            //        //            }
-                            //        //        }
-                            //        //    }
-                            //        //}
-                            //        //else
-                            //        //{
-                            //            foreach (DiversityWorkbench.UserControls.RemoteValueBinding RVB in this
-                            //                         ._RemoteValueBindings)
-                            //            {
-                            //                Dictionary<string, string> UnitValues = new Dictionary<string, string>();
-                            //                UnitValues.Add("URI", URI);
-                            //                foreach (System.Collections.Generic.KeyValuePair<string, string> P in
-                            //                         UnitValues)
-                            //                {
-                            //                    if (RVB.RemoteParameter.ToLower() == P.Key.ToLower())
-                            //                    {
-                            //                        if (RVB.BindingSource != null)
-                            //                        {
-                            //                            if (RVB.BindingSource.Current != null)
-                            //                            {
-                            //                                System.Data.DataRowView RV =
-                            //                                    (System.Data.DataRowView)RVB.BindingSource.Current;
+                                        if (UnitValues.Count > 0)
+                                        {
+                                            System.Collections.Generic.List<string> RemoteBindings = new List<string>();
+                                            foreach (DiversityWorkbench.UserControls.RemoteValueBinding RVB in this
+                                                         ._RemoteValueBindings)
+                                            {
+                                                foreach (System.Collections.Generic.KeyValuePair<string, string> P in
+                                                         UnitValues)
+                                                {
+                                                    if (RVB.RemoteParameter.ToLower() == P.Key.ToLower())
+                                                    {
+                                                        if (RVB.BindingSource != null)
+                                                        {
+                                                            if (RVB.BindingSource.Current != null)
+                                                            {
+                                                                System.Data.DataRowView RV =
+                                                                    (System.Data.DataRowView)RVB.BindingSource.Current;
 
-                            //                                ///MW 4.5.2105: enable decision if an allready filled field should be changed
-                            //                                if (RVB.ModeOfUpdate == RemoteValueBinding.UpdateMode
-                            //                                        .AskForUpdate)
-                            //                                {
-                            //                                    if (!RV[RVB.Column].Equals(System.DBNull.Value) &&
-                            //                                        RV[RVB.Column].ToString().Length > 0 &&
-                            //                                        P.Value.Length > 0)
-                            //                                    {
-                            //                                        string Message =
-                            //                                            "Should the current value\r\n\r\n" +
-                            //                                            RV[RVB.Column].ToString() +
-                            //                                            "\r\n\r\nfor the field " + RVB.Column +
-                            //                                            "\r\nshould be replaced by\r\n\r\n" + P.Value;
-                            //                                        if (System.Windows.Forms.MessageBox.Show(Message,
-                            //                                                "Replace entry", MessageBoxButtons.YesNo) ==
-                            //                                            DialogResult.No)
-                            //                                            continue;
-                            //                                    }
-                            //                                    else if ((RV[RVB.Column].Equals(System.DBNull.Value) ||
-                            //                                              RV[RVB.Column].ToString().Length == 0) &&
-                            //                                             P.Value.Length > 0)
-                            //                                    {
-                            //                                    }
-                            //                                    else
-                            //                                        continue;
-                            //                                }
-                            //                                else if (RVB.ModeOfUpdate ==
-                            //                                         RemoteValueBinding.UpdateMode.OnlyEmpty)
-                            //                                {
-                            //                                    if (!RV[RVB.Column].Equals(System.DBNull.Value) &&
-                            //                                        RV[RVB.Column].ToString().Length > 0)
-                            //                                        continue;
-                            //                                }
+                                                                ///MW 4.5.2105: enable decision if an allready filled field should be changed
+                                                                if (RVB.ModeOfUpdate == RemoteValueBinding.UpdateMode
+                                                                        .AskForUpdate)
+                                                                {
+                                                                    if (!RV[RVB.Column].Equals(System.DBNull.Value) &&
+                                                                        RV[RVB.Column].ToString().Length > 0 &&
+                                                                         P.Value.Length > 0 && !RV[RVB.Column].Equals(P.Value))
+                                                                    {
+                                                                        string Message =
+                                                                            "Should the current value\r\n\r\n" +
+                                                                            RV[RVB.Column].ToString() +
+                                                                            "\r\n\r\nfor the field " + RVB.Column +
+                                                                            "\r\nshould be replaced by\r\n\r\n" + P.Value;
+                                                                        if (System.Windows.Forms.MessageBox.Show(Message,
+                                                                                "Replace entry", MessageBoxButtons.YesNo) ==
+                                                                            DialogResult.No)
+                                                                            continue;
+                                                                    }
+                                                                    else if (!RV[RVB.Column].Equals(System.DBNull.Value) &&
+                                                                        RV[RVB.Column].ToString().Length > 0 &&
+                                                                         P.Value.Length == 0 && !RV[RVB.Column].Equals(P.Value))
+                                                                    {
+                                                                        string Message =
+                                                                           "Should the current value\r\n\r\n" +
+                                                                           RV[RVB.Column].ToString() +
+                                                                           "\r\n\r\nfor the field " + RVB.Column +
+                                                                           "\r\nbe deleted";
+                                                                        if (System.Windows.Forms.MessageBox.Show(Message,
+                                                                                "Replace entry", MessageBoxButtons.YesNo) ==
+                                                                            DialogResult.No)
+                                                                            continue;
+                                                                    }
+                                                                    else if ((RV[RVB.Column].Equals(System.DBNull.Value) ||
+                                                                              RV[RVB.Column].ToString().Length == 0) &&
+                                                                             P.Value.Length > 0)
+                                                                    {
+                                                                    }
+                                                                    else
+                                                                        continue;
+                                                                }
+                                                                else if (RVB.ModeOfUpdate ==
+                                                                         RemoteValueBinding.UpdateMode.OnlyEmpty)
+                                                                {
+                                                                    if (!RV[RVB.Column].Equals(System.DBNull.Value) &&
+                                                                        RV[RVB.Column].ToString().Length > 0)
+                                                                        continue;
+                                                                }
 
-                            //                                RV.BeginEdit();
-                            //                                try
-                            //                                {
-                            //                                    if (this._SupressEmptyRemoteValues &&
-                            //                                        P.Value.Length == 0)
-                            //                                    {
-                            //                                    }
-                            //                                    else
-                            //                                        RV[RVB.Column] = P.Value;
-                            //                                }
-                            //                                catch (System.Exception ex)
-                            //                                {
-                            //                                }
+                                                                RV.BeginEdit();
+                                                                try
+                                                                {
+                                                                    if (RVB.ModeOfUpdate != RemoteValueBinding.UpdateMode.AskForUpdate && this._SupressEmptyRemoteValues && P.Value.Length == 0)
+                                                                    {
+                                                                    }
+                                                                    else
+                                                                        RV[RVB.Column] = P.Value;
+                                                                }
+                                                                catch (System.Exception ex)
+                                                                {
+                                                                }
 
-                            //                                RV.EndEdit();
-                            //                            }
-                            //                        }
-                            //                        else
-                            //                        {
-                            //                        }
-                            //                    }
-                            //                }
-                            //           // }
-                            //        }
-                            //    }
+                                                                RV.EndEdit();
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                } catch (Exception ex)
+                                {
+                                    MessageBox.Show(
+                                        "The web service call is incorrect.\r\n\r\n  " +
+                                        "For more details on the error, see the error log file.\r\n\r\n",
+                                        "Web service Error", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                                    ExceptionHandling.WriteToErrorLogFile(
+                                        "UserControlModuleRelatedEntry -comboBoxLocalValues_SelectionChangeCommitted, Exception exception: " +
+                                        ex);
+                                }
                             }
 
+                        }
                         R.EndEdit();
                     }
                     else
@@ -2384,6 +2360,47 @@ namespace DiversityWorkbench.UserControls
             catch (Exception ex)
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
+        }
+
+        private void getWebserviceValues(ref System.Collections.Generic.Dictionary<string, string> Values, DwbEntity clientEntity)
+        {
+            if (this.comboBoxLocalValues.SelectedItem != null)
+            {
+                System.Data.DataRowView R = (System.Data.DataRowView)this.comboBoxLocalValues.SelectedItem;
+                foreach (System.Data.DataColumn C in R.DataView.Table.Columns)
+                {
+                    if (R[C.ColumnName].Equals(System.DBNull.Value) || R[C.ColumnName].Equals(System.String.Empty))
+                    {
+                        //check if the clientEntity has the value
+                        if (clientEntity != null)
+                        {
+                            var property = clientEntity.GetType().GetProperty(C.ColumnName);
+                            if (property != null)
+                            {
+                                var value = property.GetValue(clientEntity);
+                                if (value != null)
+                                {
+                                    if (!Values.ContainsKey(C.ColumnName))
+                                        Values.Add(C.ColumnName, value.ToString());
+                                } else
+                                {
+                                    // add Empty string to also override wrong old values for familycache, etc.
+                                    if (!Values.ContainsKey(C.ColumnName))
+                                        Values.Add(C.ColumnName, string.Empty);
+                                }
+                            }
+                        }
+                        continue;
+                    }
+                    if (!R[C.ColumnName].Equals(System.DBNull.Value))
+                    {
+                        if (!Values.ContainsKey(C.ColumnName))
+                            Values.Add(C.ColumnName, R[C.ColumnName].ToString());
+                        else
+                        { }
+                    }
+                }
             }
         }
 
@@ -2612,11 +2629,11 @@ namespace DiversityWorkbench.UserControls
                             MessageBox.Show("No webservice defined");
                             return;
                         }
-
+                        _userCts = new CancellationTokenSource();
                         try
                         {
                             Cursor.Current = Cursors.WaitCursor;
-                            var tt = await _api.CallWebServiceAsync<object>(searchUrl,
+                            var tt = await _api.CallWebServiceAsync<object>(searchUrl, _userCts.Token,
                                 DwbServiceEnums.HttpAction.GET);
                             if (tt != null)
                             {
@@ -2733,23 +2750,56 @@ namespace DiversityWorkbench.UserControls
                 if (result is null)
                     return;
 
-                dtQuery.Columns.Clear();
-                var columns = new[]
+                if (result is TaxonomicSearchResult)
                 {
+                    TaxonomicSearchResult taxonomicSearch = (TaxonomicSearchResult)result;
+                    dtQuery.Columns.Clear();
+                    var columns = new[]
+                    {
+                    new { Name = "URI", Type = "System.String" },
+                    new { Name = "DisplayText", Type = "System.String" },
+                    new { Name = "Hierarchy", Type = "System.String" },
+                    new { Name = "Family", Type = "System.String" },
+                    new { Name = "Order", Type = "System.String" }
+                };
+                    foreach (var column in columns)
+                    {
+                        dtQuery.Columns.Add(new DataColumn(column.Name, Type.GetType(column.Type)));
+                    }
+
+                    if (taxonomicSearch.DwbApiSearchResponse != null)
+                        foreach (var item in taxonomicSearch.DwbApiSearchResponse)
+                        {
+                            var row = dtQuery.NewRow();
+                            row["URI"] = item._URL;
+                            row["DisplayText"] = item._DisplayText;
+                            row["Hierarchy"] = item.Hierarchy;
+                            row["Family"] = item.Family;
+                            row["Order"] = item.Order;
+                            dtQuery.Rows.Add(row);
+                        }
+                }
+                else
+                {
+                    dtQuery.Columns.Clear();
+                    var columns = new[]
+                    {
                     new { Name = "URI", Type = "System.String" },
                     new { Name = "DisplayText", Type = "System.String" }
-                };
-                foreach (var column in columns)
-                {
-                    dtQuery.Columns.Add(new DataColumn(column.Name, Type.GetType(column.Type)));
-                }
+                    };
 
-                foreach (var item in result.DwbApiSearchResponse)
-                {
-                    var row = dtQuery.NewRow();
-                    row["URI"] = item._URL;
-                    row["DisplayText"] = item._DisplayText;
-                    dtQuery.Rows.Add(row);
+                    foreach (var column in columns)
+                    {
+                        dtQuery.Columns.Add(new DataColumn(column.Name, Type.GetType(column.Type)));
+                    }
+
+                    foreach (var item in result.DwbApiSearchResponse)
+                    {
+                        var row = dtQuery.NewRow();
+                        row["URI"] = item._URL;
+                        row["DisplayText"] = item._DisplayText;
+                        dtQuery.Rows.Add(row);
+                    }
                 }
 
             }
@@ -2817,6 +2867,7 @@ namespace DiversityWorkbench.UserControls
             // this.FixedSourceModeReset();
         }
 
+        private CancellationTokenSource _userCts;
 
         public void FixSource(string ServerConnection)
         {

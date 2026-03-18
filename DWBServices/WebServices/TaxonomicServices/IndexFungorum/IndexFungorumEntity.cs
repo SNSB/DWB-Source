@@ -15,13 +15,13 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
                                 ?? throw new InvalidOperationException("DwbServiceProviderAccessor.Instance is not initialized.");
             string settingValue = configuration["IndexFungorum:IndexFungorum_DetailListPrefix"];
             _URL = settingValue + taxonName?.rdf_about;
-            _DisplayText = taxonName?.ns_Title ?? string.Empty;
+            _DisplayText = taxonName?.nameComplete + " " + taxonName?.authorship ?? string.Empty;
             Taxon = taxonName?.ns_Title ?? string.Empty;
             TaxonNameSinAuthor = taxonName?.nameComplete ?? string.Empty;
             AcceptedName = string.Empty;
-            Family = string.Empty; // TODO ??
-            Order = string.Empty; // TODO
-            Genus = string.Empty;
+            Family = taxonName?.family ?? string.Empty;
+            Order = taxonName?.order ?? string.Empty;
+            Genus = taxonName?.genus ?? string.Empty;
             Epithet = taxonName?.specificEpithet ?? string.Empty;
             Rank = taxonName?.rankString ?? string.Empty;
             CommonNames = string.Empty; // TODO
@@ -31,7 +31,7 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
             CombiningAuthors = string.Empty; // TODO ?
             Kingdom = string.Empty;
             Subkingdom = string.Empty;
-            Hierarchy = string.Empty;
+            Hierarchy = taxonName?.hierarchy ?? string.Empty;
             Unranked = string.Empty;
             Year = taxonName?.year?.ToString() ?? string.Empty;
 
@@ -63,6 +63,12 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
             public string rankString { get; set; } 
 
             public string nomenclaturalCode { get; set; } 
+            public string family { get; set; }
+
+            public string genus { get; set; }
+
+            public string order { get; set; }
+            public string hierarchy { get; set; }
         }
 
         public class PublicationCitation

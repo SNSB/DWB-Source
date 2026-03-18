@@ -1531,6 +1531,8 @@ namespace DiversityWorkbench.Forms
         {
             if (DiversityWorkbench.Settings.ConnectionString.Length == 0)
                 return null;
+            if (ObjectName == null) // #345
+                return null;
             try
             {
                 Tuple<string, DatabaseGrant> Key = new Tuple<string, DatabaseGrant>(ObjectName, DatabaseGrant);
@@ -5938,7 +5940,7 @@ namespace DiversityWorkbench.Forms
                     else if (typeof(System.Windows.Forms.BindingSource) == ComboBox.DataSource.GetType())
                     {
                         System.Windows.Forms.BindingSource BS = (System.Windows.Forms.BindingSource)ComboBox.DataSource;
-                        if (typeof(System.Data.DataSet) == BS.DataSource.GetType().BaseType)
+                        if (BS.DataSource != null && typeof(System.Data.DataSet) == BS.DataSource.GetType().BaseType) // #331
                         {
                             System.Data.DataSet DS = (System.Data.DataSet)BS.DataSource;
                             System.Data.DataTable DT = DS.Tables[BS.DataMember];

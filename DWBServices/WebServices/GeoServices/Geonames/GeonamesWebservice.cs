@@ -59,6 +59,42 @@ namespace DWBServices.WebServices.GeoServices.Geonames
             return criterias.QueryParamString;
         }
 
+        // special call to altitude endpoint
+        public string DwbApiGeoNamesAltitudeSrtm3EndpointUrl(DwbServiceEnums.DwbService currentService, string queryRestrictions, int offset, int maxPerPage)
+        {
+            var configuration = DwbServiceProviderAccessor.Instance?.GetRequiredService<IConfiguration>()
+                                ?? throw new InvalidOperationException("DwbServiceProviderAccessor.Instance is not initialized.");
+            GeoNamesAltitudeSrtm3EndpointCriterias criterias = new GeoNamesAltitudeSrtm3EndpointCriterias();
+            if (criterias.ValidateQueryRestrictions(queryRestrictions, offset, maxPerPage))
+            {
+                criterias.username = HelpMethod(configuration["Geonames:id"], configuration["Geonames:version"]);
+            }
+            else
+            {
+                throw new ArgumentException($"{queryRestrictions} is not a valid query restriction",
+                    nameof(queryRestrictions));
+            }
+
+            return criterias.QueryParamString;
+        }
+
+        public string DwbApiGeoNamesAltitudeGTopo30EndpointUrl(DwbServiceEnums.DwbService currentService, string queryRestrictions, int offset, int maxPerPage)
+        {
+            var configuration = DwbServiceProviderAccessor.Instance?.GetRequiredService<IConfiguration>()
+                                ?? throw new InvalidOperationException("DwbServiceProviderAccessor.Instance is not initialized.");
+            GeoNamesAltitudeGTopo30EndpointCriterias criterias = new GeoNamesAltitudeGTopo30EndpointCriterias();
+            if (criterias.ValidateQueryRestrictions(queryRestrictions, offset, maxPerPage))
+            {
+                criterias.username = HelpMethod(configuration["Geonames:id"], configuration["Geonames:version"]);
+            }
+            else
+            {
+                throw new ArgumentException($"{queryRestrictions} is not a valid query restriction",
+                    nameof(queryRestrictions));
+            }
+
+            return criterias.QueryParamString;
+        }
         public override string GetBaseAddress()
         {
             // Access IConfiguration from the static DwbServiceProviderAccessor
@@ -70,7 +106,7 @@ namespace DWBServices.WebServices.GeoServices.Geonames
 
         public override DwbServiceEnums.DwbService GetServiceName()
         {
-            return DwbServiceEnums.DwbService.CatalogueOfLife;
+            return DwbServiceEnums.DwbService.Geonames;
         }
 
         public override string GetServiceUri(DwbServiceEnums.DwbService currentService)
@@ -99,6 +135,24 @@ namespace DWBServices.WebServices.GeoServices.Geonames
             }
 
             return GeonamesModelResponse;
+        }
+
+        //special method for altitude endpoint srmt3
+        public GeonamesAltitudeSrmt3SearchResultItem GetAltitudeSrmt3SearchResultModel<T>(T tt)
+        {
+            var jsonString = JsonSerializer.Serialize(tt);
+            Console.WriteLine($"Serialized JSON: {jsonString}");
+            var GeonamesSrmt3ModelResponse = JsonSerializer.Deserialize<GeonamesAltitudeSrmt3SearchResultItem>(jsonString);
+            return GeonamesSrmt3ModelResponse;
+        }
+
+        //special method for altitude endpoint gtopo30
+        public GeonamesAltitudeGTopo30SearchResultItem GetAltitudeGTopo30SearchResultModel<T>(T tt)
+        {
+            var jsonString = JsonSerializer.Serialize(tt);
+            Console.WriteLine($"Serialized JSON: {jsonString}");
+            var GeonamesGTopo30ModelResponse = JsonSerializer.Deserialize<GeonamesAltitudeGTopo30SearchResultItem>(jsonString);
+            return GeonamesGTopo30ModelResponse;
         }
 
         public override GeonamesEntity GetDwbApiDetailModel<T>(T tt)

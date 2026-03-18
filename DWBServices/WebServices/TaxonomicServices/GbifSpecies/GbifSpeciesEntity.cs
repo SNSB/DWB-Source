@@ -50,19 +50,21 @@ namespace DWBServices.WebServices.TaxonomicServices.GbifSpecies
             Taxon = scientificName ?? string.Empty;
             TaxonNameSinAuthor = string.Empty;
             AcceptedName = taxonomicStatus == "accepted" ? Taxon : string.Empty;
-            Family = family ?? string.Empty; // TODO ??
-            Order = order ?? string.Empty; // TODO
+            Family = family ?? string.Empty;
+            Order = order ?? string.Empty;
             Genus = genus ?? string.Empty;
-            Epithet = string.Empty;
-            Rank = rank ?? string.Empty;
-            CommonNames = canonicalName ?? string.Empty; // TODO
-            Status = taxonomicStatus ?? string.Empty;
-            Authors = authorship ?? string.Empty; // TODO ?
-            BasionymAuthors = string.Empty; // TODO ?
-            CombiningAuthors = string.Empty; // TODO ?
             Kingdom = kingdom ?? string.Empty;
             Subkingdom = string.Empty;
-            Hierarchy = string.Empty;
+            Phylum = phylum ?? string.Empty;
+            Class = _class ?? string.Empty;
+            //Hierarchy = string.Empty; // is set by extra call to GetEntityHiearychy
+            Epithet = string.Empty;
+            Rank = rank ?? string.Empty;
+            CommonNames = canonicalName ?? string.Empty;
+            Status = taxonomicStatus ?? string.Empty;
+            Authors = authorship ?? string.Empty;
+            BasionymAuthors = string.Empty;
+            CombiningAuthors = string.Empty;
             Unranked = string.Empty;
             Year = string.Empty;
 

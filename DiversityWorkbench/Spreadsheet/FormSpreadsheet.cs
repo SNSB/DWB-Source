@@ -11,6 +11,7 @@ using DWBServices.WebServices.TaxonomicServices.CatalogueOfLife;
 using DWBServices;
 using Microsoft.Extensions.DependencyInjection;
 using DiversityWorkbench.DwbManual;
+using System.Threading;
 
 namespace DiversityWorkbench.Spreadsheet
 {
@@ -3722,8 +3723,9 @@ namespace DiversityWorkbench.Spreadsheet
                                                 MessageBox.Show("No webservice defined");
                                                 return;
                                             }
+                                            _userCts = new CancellationTokenSource();
 
-                                            var tt = await _api.CallWebServiceAsync<object>(searchUrl,
+                                            var tt = await _api.CallWebServiceAsync<object>(searchUrl, _userCts.Token,
                                                 DwbServiceEnums.HttpAction.GET);
                                             if (tt != null)
                                             {
@@ -4180,6 +4182,7 @@ namespace DiversityWorkbench.Spreadsheet
         private bool _FixedSourceIsListInDatabase = false;
 
         private DWBServices.WebServices.DwbServiceEnums.DwbService _FixedSourceWebservice;
+        private CancellationTokenSource _userCts;
 
         // Settings for the current column
         private System.Collections.Generic.List<string> _FixedSourceSetting;

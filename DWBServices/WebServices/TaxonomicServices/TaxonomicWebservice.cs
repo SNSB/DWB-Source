@@ -23,7 +23,6 @@
 
         public abstract override TaxonomicEntity GetEmptyDwbApiDetailModel();
 
+        public abstract Task<TaxonomicEntity> GetEntityHierarchyAsync<T>(string url, TaxonomicEntity dwbEntity, CancellationToken cancellationToken);
     }
-
-
 }

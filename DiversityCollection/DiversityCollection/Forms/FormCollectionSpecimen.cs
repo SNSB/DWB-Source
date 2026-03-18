@@ -18,6 +18,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using WpfSamplingPlotPage;
@@ -29850,6 +29851,8 @@ namespace DiversityCollection.Forms
 
         private void comboBoxHeaderDataWithholdingReason_DropDown(object sender, EventArgs e)
         {
+            // Ensure the selected value doesn't change when the dropdown is clicked
+            var currentValue = comboBoxHeaderDataWithholdingReason.Text;
             string SQL = "SELECT DISTINCT DataWithholdingReason FROM CollectionSpecimen ORDER BY DataWithholdingReason";
             System.Data.DataTable dt = new DataTable();
             try
@@ -29859,6 +29862,14 @@ namespace DiversityCollection.Forms
                 this.comboBoxHeaderDataWithholdingReason.DataSource = dt;
                 this.comboBoxHeaderDataWithholdingReason.DisplayMember = "DataWithholdingReason";
                 this.comboBoxHeaderDataWithholdingReason.ValueMember = "DataWithholdingReason";
+                if (currentValue != null && dt.AsEnumerable().Any(row => row["DataWithholdingReason"].Equals(currentValue)))
+                {
+                    comboBoxHeaderDataWithholdingReason.Text = currentValue;
+                }
+                else
+                {
+                    comboBoxHeaderDataWithholdingReason.Text = "Withhold by default";
+                }
             }
             catch (Exception ex)
             {

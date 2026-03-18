@@ -20,18 +20,30 @@ namespace DWBServices.WebServices.TaxonomicServices.CatalogueOfLife
         public string label { get; set; }
         public string labelHtml { get; set; }
 
+        public string link { get; set; }
+
         public override TaxonomicEntity? GetMappedApiEntityModel()
         {
             var configuration = DwbServiceProviderAccessor.Instance?.GetRequiredService<IConfiguration>()
                                 ?? throw new InvalidOperationException("DwbServiceProviderAccessor.Instance is not initialized.");
             string DetailListPrefix = configuration["CoL:CoL_DetailUri"];
-            _URL = name?.link ?? DetailListPrefix + id;
+            _URL = name?.link ?? link ?? DetailListPrefix + id;
             _DisplayText = label ?? string.Empty;
             Taxon = label ?? string.Empty;
             TaxonNameSinAuthor = name?.scientificName ?? string.Empty;
             AcceptedName = status == "accepted" ? Taxon : string.Empty;
-            Family = string.Empty; // TODO ??
-            Order = string.Empty; // TODO
+            // family, order, hiearchy, kingdom, subkingdom will be set with extra call in getEntityHierarychyAsync
+            if (name?.rank == "family")
+                Family = TaxonNameSinAuthor;
+            else
+                Family = string.Empty;
+            if (name?.rank == "order")
+                Order = TaxonNameSinAuthor;
+            else
+                Order = string.Empty;
+            Kingdom = string.Empty;
+            Subkingdom = string.Empty;
+            // Hierarchy = string.Empty;
             Genus = name?.genus ?? string.Empty;
             Epithet = name?.specificEpithet ?? string.Empty;
             Rank = name?.rank ?? string.Empty;
@@ -40,11 +52,9 @@ namespace DWBServices.WebServices.TaxonomicServices.CatalogueOfLife
             Authors = name?.authorship ?? string.Empty; // TODO ?string.Join(", ", commonNames) : string.Empty;
             BasionymAuthors = string.Join(", ", name?.basionymOrCombinationAuthorship?.authors ?? Enumerable.Empty<string>());
             CombiningAuthors = string.Join(", ", name?.combinationAuthorship?.authors ?? Enumerable.Empty<string>());
-            Kingdom = string.Empty;
-            Subkingdom = string.Empty;
-            Hierarchy = string.Empty;
             Unranked = string.Empty;
             Year = created.Year.ToString();
+            ParentId = parentId ?? string.Empty;
 
             return this;
         }

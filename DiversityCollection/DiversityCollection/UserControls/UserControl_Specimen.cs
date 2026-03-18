@@ -184,7 +184,7 @@ namespace DiversityCollection.UserControls
         {
             try
             {
-                string SQL = "SELECT PP.Project " +
+                string SQL = "SELECT PP.Project, PP.ProjectID " +
                     "FROM ProjectProxy AS PP INNER JOIN " +
                     "CollectionProject AS CP ON PP.ProjectID = CP.ProjectID INNER JOIN " +
                     "CollectionSpecimen AS S ON CP.CollectionSpecimenID = S.CollectionSpecimenID " +
@@ -197,11 +197,17 @@ namespace DiversityCollection.UserControls
                     {
                         return false;
                     }
-                    SQL = "SELECT count(*) FROM Project_" + R[0].ToString() + ".CacheCollectionSpecimen WHERE (AccessionNumber = N'" + AccessionNumber.Replace("'", "''") + "')";
-                    string Result = DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlSkalarInCacheDB(SQL);
-                    int i = 0;
-                    if (int.TryParse(Result, out i) && i > 0)
-                        return true;
+                    // #327
+                    SQL = "SELECT COUNT(*) FROM ProjectPublished WHERE ProjectID = " + R[1].ToString();
+                    int iCount;
+                    if (int.TryParse(DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlSkalarInCacheDB(SQL), out iCount) && iCount > 0)
+                    {
+                        SQL = "SELECT count(*) FROM Project_" + R[0].ToString() + ".CacheCollectionSpecimen WHERE (AccessionNumber = N'" + AccessionNumber.Replace("'", "''") + "')";
+                        string Result = DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlSkalarInCacheDB(SQL);
+                        int i = 0;
+                        if (int.TryParse(Result, out i) && i > 0)
+                            return true;
+                    }
                 }
             }
             catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
@@ -219,6 +225,8 @@ namespace DiversityCollection.UserControls
 
         private void comboBoxCollectionSpecimenDataWithholdingReason_DropDown(object sender, EventArgs e)
         {
+            // Ensure the selected value doesn't change when the dropdown is clicked
+            var currentValue = comboBoxCollectionSpecimenDataWithholdingReason.Text;
             string SQL = "SELECT DISTINCT DataWithholdingReason FROM CollectionSpecimen ORDER BY DataWithholdingReason";
             System.Data.DataTable dt = new DataTable();
             try
@@ -228,6 +236,14 @@ namespace DiversityCollection.UserControls
                 this.comboBoxCollectionSpecimenDataWithholdingReason.DataSource = dt;
                 this.comboBoxCollectionSpecimenDataWithholdingReason.DisplayMember = "DataWithholdingReason";
                 this.comboBoxCollectionSpecimenDataWithholdingReason.ValueMember = "DataWithholdingReason";
+                if (currentValue != null && dt.AsEnumerable().Any(row => row["DataWithholdingReason"].Equals(currentValue)))
+                {
+                    comboBoxCollectionSpecimenDataWithholdingReason.Text = currentValue;
+                }
+                else
+                {
+                    comboBoxCollectionSpecimenDataWithholdingReason.Text = "Withhold by default";
+                }
             }
             catch (Exception ex)
             {

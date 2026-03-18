@@ -48,9 +48,12 @@ namespace DiversityCollection
             {
                 var serviceCollection = new ServiceCollection();
                 ConfigureServices(serviceCollection);
-                DwbServiceProvider = serviceCollection.BuildServiceProvider();
-                DwbServiceProviderAccessor.Instance = DwbServiceProvider;
-                Application.Run(DwbServiceProvider.GetRequiredService<FormCollectionSpecimen>());
+                using (var serviceProvider = serviceCollection.BuildServiceProvider())
+                {
+                    DwbServiceProvider = serviceProvider;
+                    DwbServiceProviderAccessor.Instance = DwbServiceProvider;
+                    Application.Run(DwbServiceProvider.GetRequiredService<FormCollectionSpecimen>());
+                }
             }
             else if (args.Length == 1)
             {

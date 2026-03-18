@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net;
-using System.IO;
-using DWBServices;
+﻿using DWBServices;
 using DWBServices.WebServices;
 using DWBServices.WebServices.GeoServices.Geonames;
-using DWBServices.WebServices.TaxonomicServices.CatalogueOfLife;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualBasic.Logging;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace DiversityWorkbench
 {
@@ -73,38 +72,8 @@ namespace DiversityWorkbench
             }
         }
 
-        public static System.Collections.Generic.Dictionary<GeoInfo, string> getGeoInfos(double Latitude, double Longitude)
+        public async static System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<GeoInfo, string>> getGeoInfosAsync(double Latitude, double Longitude, CancellationToken cancellationToken)
         {
-            bool ServiceAvailable = true;
-            System.Collections.Generic.Dictionary<GeoInfo, string> GeoInfos = DiversityWorkbench.GeoFunctions.getGeoInfos(Latitude, Longitude, ref ServiceAvailable);
-            if (!ServiceAvailable)
-            {
-                string Message = "The service is not available.";
-                System.Windows.Forms.MessageBox.Show(Message);
-                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("GeoFunctions.getGeoInfos() Service is not available.");
-            }
-
-            return GeoInfos;
-        }
-
-        //private string CreateSearchUrl(double Latitude, double Longitude)
-        //{
-        //    var queryRestriction = QueryRestriction(double Latitude, double Longitude);
-        //    try
-        //    {
-        //        return _api?.DwbApiQueryUrlString(currentDwbService, queryRestriction, offset, MaxRecords) ?? string.Empty;
-        //    }
-        //    catch (ArgumentException ex)
-        //    {
-        //        MessageBox.Show("You must enter a valid name as an option. This must be at least three characters long. :" + ex.Message, "Argument Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        ExceptionHandling.WriteToErrorLogFile("You must enter a valid name as an option. This must be at least three characters long. :" + ex);
-        //        return "";
-        //    }
-        //}
-
-        public static System.Collections.Generic.Dictionary<GeoInfo, string> getGeoInfos(double Latitude, double Longitude, ref bool ServiceAvailable)
-        {
-            ServiceAvailable = true;
             System.Globalization.CultureInfo InvC = new System.Globalization.CultureInfo("");
             double DiffLatitude = 0.0;
             double DiffLongitude = 0.0;
@@ -115,188 +84,100 @@ namespace DiversityWorkbench
                 DwbServiceProviderAccessor.GetDwbWebservice(DWBServices.WebServices.DwbServiceEnums.DwbService.Geonames);
                 if (_api == null)
                 {
-                    ServiceAvailable = false;
+                    string Message = "The service is not available.";
+                    System.Windows.Forms.MessageBox.Show(Message);
+                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile("GeoFunctions.getGeoInfos() Service is not available.");
                     return GeoInfos;
                 }
 
                 string _BaseURI = _api.GetBaseAddress();
-                string URI = _BaseURI + string.Format("{0}?lat={1}&lng={2}", "findNearbyPlaceName", Latitude, Longitude);
+                string URI = _BaseURI + string.Format("{0}?lat={1}&lng={2}", "findNearbyPlaceNameJSON", Latitude, Longitude);
                 URI = _api.DwbApiQueryUrlString(DwbServiceEnums.DwbService.Geonames, URI, 0, 50);
-                GeoInfos.Add(GeoInfo.Source, _BaseURI);
-                System.Uri u = new Uri(URI);
-                System.Xml.XmlDocument dom = new System.Xml.XmlDocument();
-                dom.Load(URI);
-                if (dom.DocumentElement.ChildNodes.Count > 0)
+
+                try
                 {
-                    foreach (System.Xml.XmlNode inXmlNode in dom.DocumentElement)
+                    var tt = await _api.CallWebServiceAsync<object>(URI, cancellationToken,
+                        DwbServiceEnums.HttpAction.GET);
+                    if (tt != null)
                     {
-                        if (inXmlNode.Name.ToLower() == "geoname")
+                        var clientSearchModel = _api.GetDwbApiSearchResultModel(tt);
+                        GeoInfos = ReadGeonamesDwbSearchModelInQueryTable(clientSearchModel);
+                        GeoInfos.Add(GeoInfo.Source, _BaseURI);
+                    }
+                    if (GeoInfos.ContainsKey(GeoInfo.Latitude))
+                    {
+                        if (double.TryParse(GeoInfos[GeoInfo.Latitude], System.Globalization.NumberStyles.Float, InvC, out DiffLatitude))
+                            DiffLatitude = DiffLatitude - Latitude;
+                    }
+                    if (GeoInfos.ContainsKey(GeoInfo.Distance))
+                    {
+                        string Distance = GeoInfos[GeoInfo.Distance].ToString(InvC);
+                        double distance = 0.0;
+                        if (double.TryParse(Distance, System.Globalization.NumberStyles.Float, InvC, out distance))
                         {
-                            foreach (System.Xml.XmlNode c1 in inXmlNode.ChildNodes)
-                            {
-                                if (c1.Name.ToLower() == "name")
-                                {
-                                    GeoInfos.Add(GeoInfo.PlaceName, c1.InnerText);
-                                    continue;
-                                }
-                                if (c1.Name.ToLower() == "lat")
-                                {
-                                    GeoInfos.Add(GeoInfo.Latitude, c1.InnerText);
-                                    if (double.TryParse(c1.InnerText, System.Globalization.NumberStyles.Float, InvC, out DiffLatitude))
-                                        DiffLatitude = DiffLatitude - Latitude;
-                                    continue;
-                                }
-                                if (c1.Name.ToLower() == "lng")
-                                {
-                                    GeoInfos.Add(GeoInfo.Longitude, c1.InnerText);
-                                    if (double.TryParse(c1.InnerText, System.Globalization.NumberStyles.Float, InvC, out DiffLongitude))
-                                        DiffLongitude = DiffLongitude - Longitude;
-                                    continue;
-                                }
-                                if (c1.Name.ToLower() == "countryname")
-                                {
-                                    GeoInfos.Add(GeoInfo.Country, c1.InnerText);
-                                    continue;
-                                }
-                                if (c1.Name.ToLower() == "distance")
-                                {
-                                    string Distance = c1.InnerText.ToString(InvC);
-                                    double distance = 0.0;
-                                    if (double.TryParse(Distance, System.Globalization.NumberStyles.Float, InvC, out distance))
-                                    {
-                                        distance = distance * 1000;
-                                        GeoInfos.Add(GeoInfo.Distance, distance.ToString(InvC) + " m");
-                                    }
-                                    continue;
-                                }
-                            }
+                            distance = distance * 1000;
+                            GeoInfos.Remove(GeoInfo.Distance);
+                            GeoInfos.Add(GeoInfo.Distance, distance.ToString("F2", InvC) + " m");
                         }
                     }
+
+                    if (_api is GeonamesWebservice geoService)
+                    {
+                        GeoInfos = await addGeoInfoAltitude(_BaseURI, cancellationToken, GeoInfos, geoService, Latitude, Longitude);
+                    }
+
+                    // Direction
+                    if (DiffLongitude != 0.0 && DiffLatitude != 0.0)
+                    {
+                        string Direction = "";
+                        double RelDirection = DiffLatitude / DiffLongitude;
+                        double Angle = System.Math.Atan2(DiffLatitude, DiffLongitude) * (180 / Math.PI);
+                        if ((Angle > 332.5 && Angle <= 360) || (Angle > 0 && Angle <= 22.5))
+                            Direction = "W";
+                        else if (Angle > 22.5 && Angle <= 67.5)
+                            Direction = "SW";
+                        else if (Angle > 67.5 && Angle <= 112.5)
+                            Direction = "S";
+                        else if (Angle > 112.5 && Angle <= 157.5)
+                            Direction = "SE";
+                        else if (Angle > 157.5 && Angle <= 202.5)
+                            Direction = "E";
+                        else if (Angle > 202.5 && Angle <= 247.5)
+                            Direction = "NE";
+                        else if (Angle > 247.5 && Angle <= 292.5)
+                            Direction = "N";
+                        else if (Angle > 292.5 && Angle <= 332.5)
+                            Direction = "NW";
+
+                        else if ((Angle > -22.5 && Angle <= 0) || (Angle > 0 && Angle <= 22.5))
+                            Direction = "W";
+                        else if (Angle < -22.5 && Angle >= -67.5)
+                            Direction = "NW";
+                        else if (Angle < -67.5 && Angle >= -112.5)
+                            Direction = "N";
+                        else if (Angle < -112.5 && Angle >= -157.5)
+                            Direction = "NE";
+                        else if (Angle < -157.5 && Angle >= -180)
+                            Direction = "E";
+
+                        if (Direction.Length > 0)
+                            GeoInfos.Add(GeoInfo.Direction, Direction);
+                    }
                 }
-                //// Subdivision
-                //URI = geoUri + "countrySubdivision?lat=" + Latitude.ToString().Replace(",", ".") + "&lng=" + Longitude.ToString().Replace(",", ".") + "&username=" + username + "&style=full";
-                //System.Xml.XmlDocument domSub = new System.Xml.XmlDocument();
-                //domSub.Load(URI);
-                //if (domSub.DocumentElement.ChildNodes.Count > 0)
-                //{
-                //    foreach (System.Xml.XmlNode inXmlNode in domSub.DocumentElement)
-                //    {
-                //        if (inXmlNode.Name.ToLower() == "countrysubdivision")
-                //        {
-                //            foreach (System.Xml.XmlNode c1 in inXmlNode.ChildNodes)
-                //            {
-                //                if (c1.Name.ToLower() == "adminname1")
-                //                {
-                //                    GeoInfos.Add(GeoInfo.CountrySubdivision, c1.InnerText);
-                //                    continue;
-                //                }
-                //            }
-                //        }
-                //    }
-                //}
+                catch (Exception ioe)
+                {
+                    MessageBox.Show(
+                        "The record details cannot be displayed because the web service response is invalid.\r\n\r\n  " +
+                        "For more details on the error, see the error log file.\r\n\r\n",
+                        "Data Mapping Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    ExceptionHandling.WriteToErrorLogFile(
+                        "GeoFunctions - getGeoInfosAsync, Exception exception: " +
+                        ioe);
+                    return GeoInfos;
+                }
 
-                //// City
-                //URI = geoUri + "neighbourhood?lat=" + Latitude.ToString().Replace(",", ".") + "&lng=" + Longitude.ToString().Replace(",", ".") + "&username=" + username + "&style=full";
-                //System.Xml.XmlDocument domNei = new System.Xml.XmlDocument();
-                //domNei.Load(URI);
-                //if (domSub.DocumentElement.ChildNodes.Count > 0)
-                //{
-                //    foreach (System.Xml.XmlNode inXmlNode in domNei.DocumentElement)
-                //    {
-                //        if (inXmlNode.Name.ToLower() == "neighbourhood")
-                //        {
-                //            foreach (System.Xml.XmlNode c1 in inXmlNode.ChildNodes)
-                //            {
-                //                if (c1.Name.ToLower() == "city")
-                //                {
-                //                    GeoInfos.Add(GeoInfo.City, c1.InnerText);
-                //                    continue;
-                //                }
-                //            }
-                //        }
-                //    }
-                //}
-
-                //// Direction
-                //if (DiffLongitude != 0.0 && DiffLatitude != 0.0)
-                //{
-                //    string Direction = "";
-                //    double RelDirection = DiffLatitude / DiffLongitude;
-                //    double Angle = System.Math.Atan2(DiffLatitude, DiffLongitude) * (180 / Math.PI);
-                //    if ((Angle > 332.5 && Angle <= 360) || (Angle > 0 && Angle <= 22.5))
-                //        Direction = "W";
-                //    else if (Angle > 22.5 && Angle <= 67.5)
-                //        Direction = "SW";
-                //    else if (Angle > 67.5 && Angle <= 112.5)
-                //        Direction = "S";
-                //    else if (Angle > 112.5 && Angle <= 157.5)
-                //        Direction = "SE";
-                //    else if (Angle > 157.5 && Angle <= 202.5)
-                //        Direction = "E";
-                //    else if (Angle > 202.5 && Angle <= 247.5)
-                //        Direction = "NE";
-                //    else if (Angle > 247.5 && Angle <= 292.5)
-                //        Direction = "N";
-                //    else if (Angle > 292.5 && Angle <= 332.5)
-                //        Direction = "NW";
-
-                //    else if ((Angle > -22.5 && Angle <= 0) || (Angle > 0 && Angle <= 22.5))
-                //        Direction = "W";
-                //    else if (Angle < -22.5 && Angle >= -67.5)
-                //        Direction = "NW";
-                //    else if (Angle < -67.5 && Angle >= -112.5)
-                //        Direction = "N";
-                //    else if (Angle < -112.5 && Angle >= -157.5)
-                //        Direction = "NE";
-                //    else if (Angle < -157.5 && Angle >= -180)
-                //        Direction = "E";
-
-                //    if (Direction.Length > 0)
-                //        GeoInfos.Add(GeoInfo.Direction, Direction);
-                //}
-
-                //// Altitude
-                //string Altitude = "";
-                //if (Latitude < 60 && Latitude > -54)
-                //{
-                //    Altitude = DiversityWorkbench.GeoFunctions.WebResponse(GeoNamesOrgServices.srtm3, Latitude, Longitude);
-                //    float fAlt;
-                //    if (float.TryParse(Altitude, out fAlt))
-                //    {
-                //        if (fAlt < -400)
-                //        {
-                //            Altitude = DiversityWorkbench.GeoFunctions.WebResponse(GeoNamesOrgServices.gtopo30, Latitude, Longitude);
-                //            GeoInfos.Add(GeoInfo.AltitudeSource, DiversityWorkbench.GeoFunctions.GeoInfoSource + " (global digital elevation model)");
-                //        }
-                //        else
-                //        {
-                //            GeoInfos.Add(GeoInfo.AltitudeSource, DiversityWorkbench.GeoFunctions.GeoInfoSource + " (Shuttle Radar Topography Mission)");
-                //        }
-                //    }
-                //}
-                //else
-                //{
-                //    Altitude = DiversityWorkbench.GeoFunctions.WebResponse(GeoNamesOrgServices.gtopo30, Latitude, Longitude);
-                //    GeoInfos.Add(GeoInfo.AltitudeSource, DiversityWorkbench.GeoFunctions.GeoInfoSource + " (global digital elevation model)");
-                //}
-                //if (Altitude.Length > 0)
-                //{
-                //    if (Altitude == "-9999")
-                //        GeoInfos.Remove(GeoInfo.AltitudeSource);
-                //    else
-                //    {
-                //        if (Altitude.Length > 0)
-                //        {
-                //            GeoInfos.Add(GeoInfo.Altitude, Altitude);
-                //        }
-                //    }
-                //}
-
-                //GeoInfos.Add(GeoInfo.Source, DiversityWorkbench.GeoFunctions.GeoInfoSource);
-            }
-            catch (WebException wex)
-            {
-                ServiceAvailable = false;
+ 
             }
             catch (Exception ex)
             {
@@ -305,33 +186,113 @@ namespace DiversityWorkbench
             return GeoInfos;
         }
 
-        public static string WebResponse(GeoFunctions.GeoNamesOrgServices Service, double Latitude, double Longitude)
+        private async static System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<GeoInfo, string>> addGeoInfoAltitude(string _BaseURI, CancellationToken cancellationToken
+            , System.Collections.Generic.Dictionary<GeoInfo, string> GeoInfos, GeonamesWebservice geoWebservice, double Latitude, double Longitude)
         {
-            if (Service != GeoNamesOrgServices.gtopo30
-                && Service != GeoNamesOrgServices.srtm3)
-                return "";
-            string Response = "";
+            string Altitude = "";
+            bool calcgTopo = false;
+            if (Latitude < 60 && Latitude > -54)
+            {
+                string URI = _BaseURI + string.Format("{0}?lat={1}&lng={2}", "srtm3JSON", Latitude, Longitude);
+                URI = geoWebservice.DwbApiGeoNamesAltitudeSrtm3EndpointUrl(DwbServiceEnums.DwbService.Geonames, URI, 0, 50);
+                var response = await geoWebservice.CallWebServiceAsync<object>(URI, cancellationToken,
+                    DwbServiceEnums.HttpAction.GET);
+                if (response == null)
+                    return GeoInfos;
+
+                var result = geoWebservice.GetAltitudeSrmt3SearchResultModel(response);
+                if (result is null)
+                    return GeoInfos;
+
+                if (result is GeonamesAltitudeSrmt3SearchResultItem geoResponse)
+                {
+                    var altitude = geoResponse.srtm3;
+
+                    if (altitude >= -400 && altitude != -9999) { 
+                        GeoInfos.Add(GeoInfo.AltitudeSource, _BaseURI + " (Shuttle Radar Topography Mission)");
+                        GeoInfos.Remove(GeoInfo.Altitude);
+                        GeoInfos.Add(GeoInfo.Altitude, altitude.ToString());
+                    }
+                    else
+                    {
+                        GeoInfos = await getAltituteGTopo30(_BaseURI, cancellationToken, GeoInfos, geoWebservice, Latitude, Longitude);
+                    }
+                }
+            }
+            else
+            {
+                GeoInfos = await getAltituteGTopo30(_BaseURI, cancellationToken, GeoInfos, geoWebservice, Latitude, Longitude);
+            }
+            return GeoInfos;
+        }
+
+        private async static System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<GeoInfo, string>> getAltituteGTopo30(string _BaseURI, CancellationToken cancellationToken, System.Collections.Generic.Dictionary<GeoInfo, string> GeoInfos, GeonamesWebservice geoWebservice, double Latitude, double Longitude)
+        {
+            string URI = _BaseURI + string.Format("{0}?lat={1}&lng={2}", "gtopo30JSON", Latitude, Longitude);
+            URI = geoWebservice.DwbApiGeoNamesAltitudeGTopo30EndpointUrl(DwbServiceEnums.DwbService.Geonames, URI, 0, 50);
+            var response = await geoWebservice.CallWebServiceAsync<object>(URI, cancellationToken,
+                DwbServiceEnums.HttpAction.GET);
+            if (response == null)
+                return GeoInfos;
+
+            var result = geoWebservice.GetAltitudeGTopo30SearchResultModel(response);
+            if (result is null)
+                return GeoInfos;
+
+            if (result is GeonamesAltitudeGTopo30SearchResultItem geoResponse)
+            {
+                var altitude = geoResponse.gtopo30;
+                if (altitude != -9999)
+                {
+                    GeoInfos.Add(GeoInfo.AltitudeSource, _BaseURI + " (global digital elevation model)");
+                    GeoInfos.Remove(GeoInfo.Altitude);
+                    GeoInfos.Add(GeoInfo.Altitude, altitude.ToString());
+                }    
+            }
+            return GeoInfos;
+        }
+        private static Dictionary<GeoInfo, string> ReadGeonamesDwbSearchModelInQueryTable(DwbSearchResult result)
+        {
+            System.Collections.Generic.Dictionary<GeoInfo, string> GeoInfos = new Dictionary<GeoInfo, string>();
             try
             {
-                string geoUri = global::DiversityWorkbench.Properties.Settings.Default.APIGeonamesURL;
-                string username = global::DiversityWorkbench.Properties.Settings.Default.GeonamesUsername;
-                string URI = geoUri + Service.ToString() + "?lat=" + Latitude.ToString().Replace(",", ".") + "&lng=" + Longitude.ToString().Replace(",", ".") + "&username=" + username + "&style=full";
+                if (result is null)
+                    return GeoInfos;
 
-                System.Net.WebRequest webrq = System.Net.WebRequest.Create(URI);
-                WebRequest myWebRequest = WebRequest.Create(URI);
-                WebResponse myWebResponse = myWebRequest.GetResponse();
-                Stream ReceiveStream = myWebResponse.GetResponseStream();
-                Encoding encode = System.Text.Encoding.UTF8;//.GetEncoding("utf-8"); #253
-                StreamReader readStream = new StreamReader(ReceiveStream, encode);
-                Response = readStream.ReadToEnd(); ;
-                readStream.Close();
-                myWebResponse.Close();
-                if (Response.Length > 0)
-                    Response = Response.Substring(0, Response.Length - 2);
+                if (result.DwbApiSearchResponse is not GeonamesSearchResultItem[] geoSearchResponse)
+                    return GeoInfos;
+
+                foreach (var item in geoSearchResponse)
+                {
+                    var url = item._URL;
+                    if (item.name != string.Empty)
+                        GeoInfos.Add(GeoInfo.PlaceName, item.name);
+                    if (item.lat != string.Empty)
+                        GeoInfos.Add(GeoInfo.Latitude, item.lat);
+                    if (item.lng != string.Empty)
+                        GeoInfos.Add(GeoInfo.Longitude, item.lng);
+                    if (item.countryName != string.Empty)
+                        GeoInfos.Add(GeoInfo.Country, item.countryName);
+                    if (item.distance != string.Empty)
+                        GeoInfos.Add(GeoInfo.Distance, item.distance);
+                    if (item.adminName1 != string.Empty)
+                        GeoInfos.Add(GeoInfo.CountrySubdivision, item.adminName1);
+                    
+                    GeoInfos.Add(GeoInfo.Altitude, item.srtm3.ToString());
+
+                }
+         
+                return GeoInfos;
             }
-            catch { }
+            catch (Exception ex)
+            {
+#if DEBUG
 
-            return Response;
+                Console.WriteLine(ex.StackTrace);
+#endif 
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                return GeoInfos;
+            }
         }
 
         public static System.Collections.Generic.List<GeoPoint> GeoPointsFromGeography(Microsoft.SqlServer.Types.SqlGeography Geography)

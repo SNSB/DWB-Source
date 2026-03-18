@@ -2903,6 +2903,9 @@ namespace DiversityCollection.CacheDatabase
             DiversityCollection.CacheDatabase.TransferStep TMethod = new TransferStep("Method", this.imageListTransferSteps.Images[19], "Method", this.Schema(), ForPostgres);
             TransferSteps.Add(TMethod);
 
+            DiversityCollection.CacheDatabase.TransferStep TParameter = new TransferStep("Parameter", this.imageListTransferSteps.Images[20], "Parameter", this.Schema(), ForPostgres);
+            TransferSteps.Add(TParameter);
+
             DiversityCollection.CacheDatabase.TransferStep TCollectionEventMethod = new TransferStep("CollectionEventMethod", this.imageListTransferSteps.Images[19], "CollectionEventMethod", this.Schema(), ForPostgres);
             TransferSteps.Add(TCollectionEventMethod);
 
