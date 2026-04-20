@@ -5120,8 +5120,23 @@ namespace DiversityWorkbench.UserControls
                                                                         AliasCheckAdd(QC.Condition().IntermediateTable + " AS T" + UserControlQueryList.TableAliases.Count.ToString());
                                                                     }
                                                                     string TableAliasIntermediate = UserControlQueryList.TableAliases[QC.Condition().IntermediateTable];
-                                                                    Where = " T." + QC.Condition().IdentityColumn + " = " + UserControlQueryList.TableAliases[QC.Condition().IntermediateTable] + "." + QC.Condition().IdentityColumn +
-                                                                        " AND " + UserControlQueryList.TableAliases[QC.Condition().Table] + "." + QC.Condition().ForeignKey + " = " + UserControlQueryList.TableAliases[QC.Condition().IntermediateTable] + "." + QC.Condition().ForeignKey;
+                                                                    // #384 - bei Suche nach Dependent term in DST kommt es hier zu einer falschen Zuordnung
+                                                                    // Zunaechst erfassung der einzelnen Parameter
+                                                                    string IdCol = QC.Condition().IdentityColumn;
+                                                                    string AliasInterTab = UserControlQueryList.TableAliases[QC.Condition().IntermediateTable];
+                                                                    string AliasCondTab = UserControlQueryList.TableAliases[QC.Condition().Table];
+                                                                    string ForKey = QC.Condition().ForeignKey;
+                                                                    // Check existence of IdentityColumn in intermediate table
+                                                                    string CheckIdCol = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS C WHERE C.TABLE_NAME = '" + QC.Condition().IntermediateTable + "' AND C.COLUMN_NAME = '" + IdCol + "'";
+                                                                    bool InterTabContainsIdCol = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(CheckIdCol, this.Connection) == "1";
+                                                                    
+                                                                    if (AliasInterTab == AliasCondTab && !InterTabContainsIdCol)
+                                                                    {
+                                                                        Where = " T." + QC.Condition().ForeignKey + " = " + UserControlQueryList.TableAliases[QC.Condition().IntermediateTable] + "." + QC.Condition().ForeignKey;
+                                                                    }
+                                                                    else
+                                                                        Where = " T." + QC.Condition().IdentityColumn + " = " + UserControlQueryList.TableAliases[QC.Condition().IntermediateTable] + "." + QC.Condition().IdentityColumn +
+                                                                            " AND " + UserControlQueryList.TableAliases[QC.Condition().Table] + "." + QC.Condition().ForeignKey + " = " + UserControlQueryList.TableAliases[QC.Condition().IntermediateTable] + "." + QC.Condition().ForeignKey;
                                                                 }
 
                                                             }
@@ -5153,7 +5168,27 @@ namespace DiversityWorkbench.UserControls
                                                                 }
                                                                 else
                                                                 {
-                                                                    Where = " T.[" + QC.Condition().ForeignKey + "] = " + UserControlQueryList.TableAliases[QC.Condition().Table] + ".[" + QC.Condition().ForeignKey + "]";
+                                                                    // #392 - check if column does exist in table with alias T, otherwise find table containing this column
+                                                                    // Check for Column
+                                                                    string SqlCheckColumn = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS C WHERE C.TABLE_NAME = '" + UserControlQueryList.QueryMainTable + "' AND C.COLUMN_NAME = '" + QC.Condition().ForeignKey + "';";
+                                                                    bool TableTdoesContainColumn = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlCheckColumn) == "1";
+                                                                    if (!TableTdoesContainColumn)
+                                                                    {
+                                                                        // Find Table containg the column
+                                                                        string LinkColumn = QC.Condition().ForeignKey;
+                                                                        foreach(var t in CurrentTables)
+                                                                        {
+                                                                            SqlCheckColumn = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS C WHERE C.TABLE_NAME = '" + t.Key + "' AND C.COLUMN_NAME = '" + LinkColumn + "';";
+                                                                            TableTdoesContainColumn = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlCheckColumn) == "1";
+                                                                            if (TableTdoesContainColumn && t.Value != UserControlQueryList.TableAliases[QC.Condition().Table])
+                                                                            {
+                                                                                Where = " " + t.Value + ".[" + LinkColumn + "] = " + UserControlQueryList.TableAliases[QC.Condition().Table] + ".[" + LinkColumn + "]";
+                                                                                break;
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                        Where = " T.[" + QC.Condition().ForeignKey + "] = " + UserControlQueryList.TableAliases[QC.Condition().Table] + ".[" + QC.Condition().ForeignKey + "]";
                                                                     // Markus 27.3.23: Try to link to main table if possible
                                                                     System.Collections.Generic.List<string> PKs = this.IncludedPK(QC, Where);
                                                                     if (PKs.Count > 0)

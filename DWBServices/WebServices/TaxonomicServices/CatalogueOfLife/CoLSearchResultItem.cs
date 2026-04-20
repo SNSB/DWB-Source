@@ -118,17 +118,12 @@ namespace DWBServices.WebServices.TaxonomicServices.CatalogueOfLife
 
     public class CoLTaxonomicSearchCriterias : TaxonomicSearchCriteria
     {
-        public override string QueryParamString => $"{datasetKey}/nameusage/search?content={content}&q={query}&fuzzy={fuzzy}&type={type}&offset={offset}&limit={maxPerPage}";
-
+        public override string QueryParamString => $"{datasetKey}/{endpoint}&q={query}&offset={offset}&limit={maxPerPage}";
+       
+        public string endpoint = "nameusage/search?content=SCIENTIFIC_NAME&type=PREFIX"; // default
         public string datasetKey { get; set; } = "3LR"; // default latest release 3LR
 
         public string query = ""; // QueryRestrictions
-
-        public string content = "SCIENTIFIC_NAME";
-
-        public string fuzzy = "false";
-
-        public string type = "PREFIX";
 
         public string offset = "0";
 

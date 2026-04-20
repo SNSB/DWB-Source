@@ -1,9 +1,12 @@
-﻿using System;
+﻿using DiversityWorkbench.Data;
+using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
-using Npgsql;
-using System.Data;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace DiversityWorkbench.PostgreSQL
 {
@@ -166,11 +169,22 @@ namespace DiversityWorkbench.PostgreSQL
             if (this._MemberShipList == null)
             {
                 this._MemberShipList = new List<string>();
-                string SQL = "select g.rolname " +
-                    "from pg_auth_members m, pg_roles r, pg_roles g " +
-                    "where m.member = r.oid " +
-                    "and m.roleid = g.oid " +
-                    "and r.rolname = '" + this.Name + "'";
+                string SQL = "select role_name from information_schema.applicable_roles where grantee = '" + this.Name + "';";
+                //string SQL = "select g.rolname " +
+                //    "from pg_auth_members m, pg_roles r, pg_roles g " +
+                //    "where m.member = r.oid " +
+                //    "and m.roleid = g.oid " +
+                //    "and r.rolname = '" + this.Name + "'";
+                ////#374: Anpassung an PostgreSQL 17
+                //if (DiversityWorkbench.PostgreSQL.Connection.ServerVersion >= 17)
+                //{
+                //    SQL = "SELECT parent.rolname " +
+                //    "FROM pg_auth_members am " +
+                //    "JOIN pg_roles member ON member.oid = am.member " +
+                //    "JOIN pg_roles parent ON parent.oid = am.roleid " +
+                //    "WHERE member.rolname = '" + this.Name + "' " +
+                //    "ORDER BY parent.rolname; ";
+                //}
                 System.Data.DataTable dtMember = new DataTable();
                 string Message = "";
                 DiversityWorkbench.PostgreSQL.Connection.SqlFillTable(SQL, ref dtMember, ref Message);
@@ -226,7 +240,14 @@ namespace DiversityWorkbench.PostgreSQL
         public bool CanCreateRoles;
         public bool IsSuperuser;
         public bool Inherit;
-        
+
+        public bool CanCreate(string Schema) { 
+            string SQL = "SELECT has_schema_privilege('" + this.Name + "', '" + Schema + "', 'Create')";
+            bool Result = false;
+            bool.TryParse(DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL), out Result);
+            return Result;
+        }
+
         #endregion
     }
 }

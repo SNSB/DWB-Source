@@ -141,6 +141,12 @@ namespace DiversityCollection.Forms
             }
         }
 
+        private int _RowCount = 0;
+        public int RowCount
+        {
+            get { return this._RowCount; }
+        }
+
         #endregion
 
         #region Construction
@@ -2044,6 +2050,7 @@ namespace DiversityCollection.Forms
                 Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, DiversityWorkbench.Settings.ConnectionStringWithTimeout(900000));
                 ad.Fill(this.dataSetPartGrid.FirstLinesPart);
                 this.dataGridView_RowEnter(null, null);
+                _RowCount = this.dataSetPartGrid.FirstLinesPart.Rows.Count;
             }
             catch (Microsoft.Data.SqlClient.SqlException ex)
             {

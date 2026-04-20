@@ -28,1109 +28,1182 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRoleAdministration));
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonFeedback = new System.Windows.Forms.Button();
-            this.buttonShowActivity = new System.Windows.Forms.Button();
-            this.buttonActivityStop = new System.Windows.Forms.Button();
-            this.imageListDatabaseObjects = new System.Windows.Forms.ImageList(this.components);
-            this.treeViewPermissions = new System.Windows.Forms.TreeView();
-            this.labelPermissions = new System.Windows.Forms.Label();
-            this.tableLayoutPanelGrants = new System.Windows.Forms.TableLayoutPanel();
-            this.labelGrants = new System.Windows.Forms.Label();
-            this.checkBoxGrantSelect = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrantInsert = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrantUpdate = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrantDelete = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrantExecute = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrantConnect = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrantUsage = new System.Windows.Forms.CheckBox();
-            this.pictureBoxGrants = new System.Windows.Forms.PictureBox();
-            this.tabPagePermissions = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelPermissions = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBoxPermissions = new System.Windows.Forms.PictureBox();
-            this.labelEffectivePermissions = new System.Windows.Forms.Label();
-            this.buttonRemoveFromRole = new System.Windows.Forms.Button();
-            this.labelRolesAvailable = new System.Windows.Forms.Label();
-            this.labelRolesMemberOf = new System.Windows.Forms.Label();
-            this.checkBoxLogin = new System.Windows.Forms.CheckBox();
-            this.checkBoxSuperuser = new System.Windows.Forms.CheckBox();
-            this.checkBoxCreateRoles = new System.Windows.Forms.CheckBox();
-            this.checkBoxCreateDB = new System.Windows.Forms.CheckBox();
-            this.labelRoleDescription = new System.Windows.Forms.Label();
-            this.listBoxAvailableRoles = new System.Windows.Forms.ListBox();
-            this.listBoxMemberInRoles = new System.Windows.Forms.ListBox();
-            this.buttonAddToRole = new System.Windows.Forms.Button();
-            this.textBoxRoleDescription = new System.Windows.Forms.TextBox();
-            this.tabPageMembership = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelMembership = new System.Windows.Forms.TableLayoutPanel();
-            this.labelMembership = new System.Windows.Forms.Label();
-            this.pictureBoxMembership = new System.Windows.Forms.PictureBox();
-            this.imageListTab = new System.Windows.Forms.ImageList(this.components);
-            this.tableLayoutPanelRole = new System.Windows.Forms.TableLayoutPanel();
-            this.labelRoleProperties = new System.Windows.Forms.Label();
-            this.pictureBoxLoginProperties = new System.Windows.Forms.PictureBox();
-            this.checkBoxInherit = new System.Windows.Forms.CheckBox();
-            this.tabPageProperties = new System.Windows.Forms.TabPage();
-            this.tabControlRole = new System.Windows.Forms.TabControl();
-            this.tabPageActivity = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelActivity = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridViewActivity = new System.Windows.Forms.DataGridView();
-            this.toolStripButtonRoleDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonRoleAdd = new System.Windows.Forms.ToolStripButton();
-            this.listBoxRoles = new System.Windows.Forms.ListBox();
-            this.toolStripRoles = new System.Windows.Forms.ToolStrip();
-            this.splitContainerMain = new System.Windows.Forms.SplitContainer();
-            this.splitContainerRoles = new System.Windows.Forms.SplitContainer();
-            this.tableLayoutPanelLogins = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBoxLogins = new System.Windows.Forms.PictureBox();
-            this.labelLogins = new System.Windows.Forms.Label();
-            this.tableLayoutPanelGroups = new System.Windows.Forms.TableLayoutPanel();
-            this.toolStripGroups = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonAddGroup = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonDeleteGroup = new System.Windows.Forms.ToolStripButton();
-            this.labelGroups = new System.Windows.Forms.Label();
-            this.pictureBoxGroups = new System.Windows.Forms.PictureBox();
-            this.listBoxGroups = new System.Windows.Forms.ListBox();
-            this.tableLayoutPanelDetails = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBoxDetailsHeader = new System.Windows.Forms.PictureBox();
-            this.labelDetailsHeader = new System.Windows.Forms.Label();
-            this.helpProvider = new System.Windows.Forms.HelpProvider();
-            this.checkBoxGrantAll = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrantAllTables = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrantWithGrantOption = new System.Windows.Forms.CheckBox();
-            this.checkBoxAdminOption = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrantWithAdminOption = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanelGrants.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrants)).BeginInit();
-            this.tabPagePermissions.SuspendLayout();
-            this.tableLayoutPanelPermissions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPermissions)).BeginInit();
-            this.tabPageMembership.SuspendLayout();
-            this.tableLayoutPanelMembership.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMembership)).BeginInit();
-            this.tableLayoutPanelRole.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoginProperties)).BeginInit();
-            this.tabPageProperties.SuspendLayout();
-            this.tabControlRole.SuspendLayout();
-            this.tabPageActivity.SuspendLayout();
-            this.tableLayoutPanelActivity.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActivity)).BeginInit();
-            this.toolStripRoles.SuspendLayout();
-            this.splitContainerMain.Panel1.SuspendLayout();
-            this.splitContainerMain.Panel2.SuspendLayout();
-            this.splitContainerMain.SuspendLayout();
-            this.splitContainerRoles.Panel1.SuspendLayout();
-            this.splitContainerRoles.Panel2.SuspendLayout();
-            this.splitContainerRoles.SuspendLayout();
-            this.tableLayoutPanelLogins.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogins)).BeginInit();
-            this.tableLayoutPanelGroups.SuspendLayout();
-            this.toolStripGroups.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroups)).BeginInit();
-            this.tableLayoutPanelDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDetailsHeader)).BeginInit();
-            this.SuspendLayout();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            buttonFeedback = new System.Windows.Forms.Button();
+            buttonShowActivity = new System.Windows.Forms.Button();
+            buttonActivityStop = new System.Windows.Forms.Button();
+            checkBoxGrantAllTables = new System.Windows.Forms.CheckBox();
+            imageListDatabaseObjects = new System.Windows.Forms.ImageList(components);
+            treeViewPermissions = new System.Windows.Forms.TreeView();
+            labelPermissions = new System.Windows.Forms.Label();
+            tableLayoutPanelGrants = new System.Windows.Forms.TableLayoutPanel();
+            labelGrants = new System.Windows.Forms.Label();
+            checkBoxGrantSelect = new System.Windows.Forms.CheckBox();
+            checkBoxGrantInsert = new System.Windows.Forms.CheckBox();
+            checkBoxGrantUpdate = new System.Windows.Forms.CheckBox();
+            checkBoxGrantDelete = new System.Windows.Forms.CheckBox();
+            checkBoxGrantExecute = new System.Windows.Forms.CheckBox();
+            checkBoxGrantConnect = new System.Windows.Forms.CheckBox();
+            checkBoxGrantUsage = new System.Windows.Forms.CheckBox();
+            pictureBoxGrants = new System.Windows.Forms.PictureBox();
+            checkBoxGrantAll = new System.Windows.Forms.CheckBox();
+            checkBoxGrantWithGrantOption = new System.Windows.Forms.CheckBox();
+            checkBoxGrantCreate = new System.Windows.Forms.CheckBox();
+            tabPagePermissions = new System.Windows.Forms.TabPage();
+            tableLayoutPanelPermissions = new System.Windows.Forms.TableLayoutPanel();
+            pictureBoxPermissions = new System.Windows.Forms.PictureBox();
+            labelEffectivePermissions = new System.Windows.Forms.Label();
+            buttonRemoveFromRole = new System.Windows.Forms.Button();
+            labelRolesAvailable = new System.Windows.Forms.Label();
+            labelRolesMemberOf = new System.Windows.Forms.Label();
+            checkBoxLogin = new System.Windows.Forms.CheckBox();
+            checkBoxSuperuser = new System.Windows.Forms.CheckBox();
+            checkBoxCreateRoles = new System.Windows.Forms.CheckBox();
+            checkBoxCreateDB = new System.Windows.Forms.CheckBox();
+            labelRoleDescription = new System.Windows.Forms.Label();
+            listBoxAvailableRoles = new System.Windows.Forms.ListBox();
+            listBoxMemberInRoles = new System.Windows.Forms.ListBox();
+            buttonAddToRole = new System.Windows.Forms.Button();
+            textBoxRoleDescription = new System.Windows.Forms.TextBox();
+            tabPageMembership = new System.Windows.Forms.TabPage();
+            tableLayoutPanelMembership = new System.Windows.Forms.TableLayoutPanel();
+            labelMembership = new System.Windows.Forms.Label();
+            pictureBoxMembership = new System.Windows.Forms.PictureBox();
+            checkBoxAdminOption = new System.Windows.Forms.CheckBox();
+            checkBoxGrantWithAdminOption = new System.Windows.Forms.CheckBox();
+            imageListTab = new System.Windows.Forms.ImageList(components);
+            tableLayoutPanelRole = new System.Windows.Forms.TableLayoutPanel();
+            labelRoleProperties = new System.Windows.Forms.Label();
+            pictureBoxLoginProperties = new System.Windows.Forms.PictureBox();
+            checkBoxInherit = new System.Windows.Forms.CheckBox();
+            tabPageProperties = new System.Windows.Forms.TabPage();
+            tabControlRole = new System.Windows.Forms.TabControl();
+            tabPageActivity = new System.Windows.Forms.TabPage();
+            tableLayoutPanelActivity = new System.Windows.Forms.TableLayoutPanel();
+            dataGridViewActivity = new System.Windows.Forms.DataGridView();
+            toolStripButtonRoleDelete = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonRoleAdd = new System.Windows.Forms.ToolStripButton();
+            listBoxRoles = new System.Windows.Forms.ListBox();
+            toolStripRoles = new System.Windows.Forms.ToolStrip();
+            splitContainerMain = new System.Windows.Forms.SplitContainer();
+            splitContainerRoles = new System.Windows.Forms.SplitContainer();
+            tableLayoutPanelLogins = new System.Windows.Forms.TableLayoutPanel();
+            pictureBoxLogins = new System.Windows.Forms.PictureBox();
+            labelLogins = new System.Windows.Forms.Label();
+            tableLayoutPanelGroups = new System.Windows.Forms.TableLayoutPanel();
+            toolStripGroups = new System.Windows.Forms.ToolStrip();
+            toolStripButtonAddGroup = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonDeleteGroup = new System.Windows.Forms.ToolStripButton();
+            labelGroups = new System.Windows.Forms.Label();
+            pictureBoxGroups = new System.Windows.Forms.PictureBox();
+            listBoxGroups = new System.Windows.Forms.ListBox();
+            tableLayoutPanelDetails = new System.Windows.Forms.TableLayoutPanel();
+            pictureBoxDetailsHeader = new System.Windows.Forms.PictureBox();
+            labelDetailsHeader = new System.Windows.Forms.Label();
+            helpProvider = new System.Windows.Forms.HelpProvider();
+            tableLayoutPanelGrants.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxGrants).BeginInit();
+            tabPagePermissions.SuspendLayout();
+            tableLayoutPanelPermissions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxPermissions).BeginInit();
+            tabPageMembership.SuspendLayout();
+            tableLayoutPanelMembership.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxMembership).BeginInit();
+            tableLayoutPanelRole.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLoginProperties).BeginInit();
+            tabPageProperties.SuspendLayout();
+            tabControlRole.SuspendLayout();
+            tabPageActivity.SuspendLayout();
+            tableLayoutPanelActivity.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewActivity).BeginInit();
+            toolStripRoles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerMain).BeginInit();
+            splitContainerMain.Panel1.SuspendLayout();
+            splitContainerMain.Panel2.SuspendLayout();
+            splitContainerMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerRoles).BeginInit();
+            splitContainerRoles.Panel1.SuspendLayout();
+            splitContainerRoles.Panel2.SuspendLayout();
+            splitContainerRoles.SuspendLayout();
+            tableLayoutPanelLogins.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogins).BeginInit();
+            tableLayoutPanelGroups.SuspendLayout();
+            toolStripGroups.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxGroups).BeginInit();
+            tableLayoutPanelDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxDetailsHeader).BeginInit();
+            SuspendLayout();
             // 
             // buttonFeedback
             // 
-            this.buttonFeedback.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFeedback.Image = global::DiversityWorkbench.Properties.Resources.Feedback;
-            this.buttonFeedback.Location = new System.Drawing.Point(645, 0);
-            this.buttonFeedback.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonFeedback.Name = "buttonFeedback";
-            this.buttonFeedback.Size = new System.Drawing.Size(24, 23);
-            this.buttonFeedback.TabIndex = 2;
-            this.toolTip.SetToolTip(this.buttonFeedback, "Send feedback");
-            this.buttonFeedback.UseVisualStyleBackColor = true;
-            this.buttonFeedback.Click += new System.EventHandler(this.buttonFeedback_Click);
+            buttonFeedback.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            buttonFeedback.Image = Properties.Resources.Feedback;
+            buttonFeedback.Location = new System.Drawing.Point(752, 0);
+            buttonFeedback.Margin = new System.Windows.Forms.Padding(0);
+            buttonFeedback.Name = "buttonFeedback";
+            buttonFeedback.Size = new System.Drawing.Size(28, 27);
+            buttonFeedback.TabIndex = 2;
+            toolTip.SetToolTip(buttonFeedback, "Send feedback");
+            buttonFeedback.UseVisualStyleBackColor = true;
+            buttonFeedback.Click += buttonFeedback_Click;
             // 
             // buttonShowActivity
             // 
-            this.buttonShowActivity.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonShowActivity.Image = global::DiversityWorkbench.Properties.Resources.Graph;
-            this.buttonShowActivity.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonShowActivity.Location = new System.Drawing.Point(3, 3);
-            this.buttonShowActivity.Name = "buttonShowActivity";
-            this.buttonShowActivity.Size = new System.Drawing.Size(94, 23);
-            this.buttonShowActivity.TabIndex = 0;
-            this.buttonShowActivity.Text = "Show activity";
-            this.buttonShowActivity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolTip.SetToolTip(this.buttonShowActivity, "Show the processes in the database");
-            this.buttonShowActivity.UseVisualStyleBackColor = true;
-            this.buttonShowActivity.Click += new System.EventHandler(this.buttonShowActivity_Click);
+            buttonShowActivity.Dock = System.Windows.Forms.DockStyle.Left;
+            buttonShowActivity.Image = Properties.Resources.Graph;
+            buttonShowActivity.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            buttonShowActivity.Location = new System.Drawing.Point(4, 3);
+            buttonShowActivity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonShowActivity.Name = "buttonShowActivity";
+            buttonShowActivity.Size = new System.Drawing.Size(110, 27);
+            buttonShowActivity.TabIndex = 0;
+            buttonShowActivity.Text = "Show activity";
+            buttonShowActivity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            toolTip.SetToolTip(buttonShowActivity, "Show the processes in the database");
+            buttonShowActivity.UseVisualStyleBackColor = true;
+            buttonShowActivity.Click += buttonShowActivity_Click;
             // 
             // buttonActivityStop
             // 
-            this.buttonActivityStop.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonActivityStop.Image = global::DiversityWorkbench.Properties.Resources.Delete;
-            this.buttonActivityStop.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonActivityStop.Location = new System.Drawing.Point(592, 3);
-            this.buttonActivityStop.Name = "buttonActivityStop";
-            this.buttonActivityStop.Size = new System.Drawing.Size(66, 23);
-            this.buttonActivityStop.TabIndex = 2;
-            this.buttonActivityStop.Text = "Stop all";
-            this.buttonActivityStop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolTip.SetToolTip(this.buttonActivityStop, "Stop all processes in the database");
-            this.buttonActivityStop.UseVisualStyleBackColor = true;
-            this.buttonActivityStop.Click += new System.EventHandler(this.buttonActivityStop_Click);
-            // 
-            // imageListDatabaseObjects
-            // 
-            this.imageListDatabaseObjects.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListDatabaseObjects.ImageStream")));
-            this.imageListDatabaseObjects.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListDatabaseObjects.Images.SetKeyName(0, "Database.ico");
-            this.imageListDatabaseObjects.Images.SetKeyName(1, "Schema.ico");
-            this.imageListDatabaseObjects.Images.SetKeyName(2, "Speadsheet.ico");
-            this.imageListDatabaseObjects.Images.SetKeyName(3, "Lupe.ico");
-            this.imageListDatabaseObjects.Images.SetKeyName(4, "Function.ico");
-            // 
-            // treeViewPermissions
-            // 
-            this.tableLayoutPanelPermissions.SetColumnSpan(this.treeViewPermissions, 3);
-            this.treeViewPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewPermissions.ImageIndex = 0;
-            this.treeViewPermissions.ImageList = this.imageListDatabaseObjects;
-            this.treeViewPermissions.Location = new System.Drawing.Point(3, 23);
-            this.treeViewPermissions.Name = "treeViewPermissions";
-            this.treeViewPermissions.SelectedImageIndex = 0;
-            this.treeViewPermissions.Size = new System.Drawing.Size(655, 380);
-            this.treeViewPermissions.TabIndex = 0;
-            this.treeViewPermissions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewPermissions_AfterSelect);
-            // 
-            // labelPermissions
-            // 
-            this.labelPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPermissions.Location = new System.Drawing.Point(23, 0);
-            this.labelPermissions.Name = "labelPermissions";
-            this.labelPermissions.Size = new System.Drawing.Size(315, 20);
-            this.labelPermissions.TabIndex = 1;
-            this.labelPermissions.Text = "Permissions for ";
-            this.labelPermissions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLayoutPanelGrants
-            // 
-            this.tableLayoutPanelGrants.ColumnCount = 12;
-            this.tableLayoutPanelPermissions.SetColumnSpan(this.tableLayoutPanelGrants, 3);
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelGrants.Controls.Add(this.labelGrants, 1, 0);
-            this.tableLayoutPanelGrants.Controls.Add(this.checkBoxGrantSelect, 1, 1);
-            this.tableLayoutPanelGrants.Controls.Add(this.checkBoxGrantInsert, 2, 1);
-            this.tableLayoutPanelGrants.Controls.Add(this.checkBoxGrantUpdate, 3, 1);
-            this.tableLayoutPanelGrants.Controls.Add(this.checkBoxGrantDelete, 4, 1);
-            this.tableLayoutPanelGrants.Controls.Add(this.checkBoxGrantExecute, 5, 1);
-            this.tableLayoutPanelGrants.Controls.Add(this.checkBoxGrantConnect, 6, 1);
-            this.tableLayoutPanelGrants.Controls.Add(this.checkBoxGrantUsage, 7, 1);
-            this.tableLayoutPanelGrants.Controls.Add(this.pictureBoxGrants, 0, 0);
-            this.tableLayoutPanelGrants.Controls.Add(this.checkBoxGrantAll, 8, 1);
-            this.tableLayoutPanelGrants.Controls.Add(this.checkBoxGrantAllTables, 9, 1);
-            this.tableLayoutPanelGrants.Controls.Add(this.checkBoxGrantWithGrantOption, 10, 1);
-            this.tableLayoutPanelGrants.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelGrants.Location = new System.Drawing.Point(3, 409);
-            this.tableLayoutPanelGrants.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.tableLayoutPanelGrants.MinimumSize = new System.Drawing.Size(0, 35);
-            this.tableLayoutPanelGrants.Name = "tableLayoutPanelGrants";
-            this.tableLayoutPanelGrants.RowCount = 2;
-            this.tableLayoutPanelGrants.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelGrants.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelGrants.Size = new System.Drawing.Size(655, 39);
-            this.tableLayoutPanelGrants.TabIndex = 0;
-            this.tableLayoutPanelGrants.Visible = false;
-            // 
-            // labelGrants
-            // 
-            this.labelGrants.AutoSize = true;
-            this.tableLayoutPanelGrants.SetColumnSpan(this.labelGrants, 10);
-            this.labelGrants.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelGrants.Location = new System.Drawing.Point(23, 0);
-            this.labelGrants.Name = "labelGrants";
-            this.labelGrants.Size = new System.Drawing.Size(680, 13);
-            this.labelGrants.TabIndex = 0;
-            this.labelGrants.Text = "Grants";
-            // 
-            // checkBoxGrantSelect
-            // 
-            this.checkBoxGrantSelect.AutoSize = true;
-            this.checkBoxGrantSelect.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBoxGrantSelect.Location = new System.Drawing.Point(23, 16);
-            this.checkBoxGrantSelect.Name = "checkBoxGrantSelect";
-            this.checkBoxGrantSelect.Size = new System.Drawing.Size(56, 20);
-            this.checkBoxGrantSelect.TabIndex = 1;
-            this.checkBoxGrantSelect.Text = "Select";
-            this.checkBoxGrantSelect.UseVisualStyleBackColor = true;
-            this.checkBoxGrantSelect.Click += new System.EventHandler(this.checkBoxGrantSelect_Click);
-            // 
-            // checkBoxGrantInsert
-            // 
-            this.checkBoxGrantInsert.AutoSize = true;
-            this.checkBoxGrantInsert.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBoxGrantInsert.Location = new System.Drawing.Point(85, 16);
-            this.checkBoxGrantInsert.Name = "checkBoxGrantInsert";
-            this.checkBoxGrantInsert.Size = new System.Drawing.Size(52, 20);
-            this.checkBoxGrantInsert.TabIndex = 2;
-            this.checkBoxGrantInsert.Text = "Insert";
-            this.checkBoxGrantInsert.UseVisualStyleBackColor = true;
-            this.checkBoxGrantInsert.Click += new System.EventHandler(this.checkBoxGrantInsert_Click);
-            // 
-            // checkBoxGrantUpdate
-            // 
-            this.checkBoxGrantUpdate.AutoSize = true;
-            this.checkBoxGrantUpdate.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBoxGrantUpdate.Location = new System.Drawing.Point(143, 16);
-            this.checkBoxGrantUpdate.Name = "checkBoxGrantUpdate";
-            this.checkBoxGrantUpdate.Size = new System.Drawing.Size(61, 20);
-            this.checkBoxGrantUpdate.TabIndex = 3;
-            this.checkBoxGrantUpdate.Text = "Update";
-            this.checkBoxGrantUpdate.UseVisualStyleBackColor = true;
-            this.checkBoxGrantUpdate.Click += new System.EventHandler(this.checkBoxGrantUpdate_Click);
-            // 
-            // checkBoxGrantDelete
-            // 
-            this.checkBoxGrantDelete.AutoSize = true;
-            this.checkBoxGrantDelete.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBoxGrantDelete.Location = new System.Drawing.Point(210, 16);
-            this.checkBoxGrantDelete.Name = "checkBoxGrantDelete";
-            this.checkBoxGrantDelete.Size = new System.Drawing.Size(57, 20);
-            this.checkBoxGrantDelete.TabIndex = 4;
-            this.checkBoxGrantDelete.Text = "Delete";
-            this.checkBoxGrantDelete.UseVisualStyleBackColor = true;
-            this.checkBoxGrantDelete.Click += new System.EventHandler(this.checkBoxGrantDelete_Click);
-            // 
-            // checkBoxGrantExecute
-            // 
-            this.checkBoxGrantExecute.AutoSize = true;
-            this.checkBoxGrantExecute.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBoxGrantExecute.Location = new System.Drawing.Point(273, 16);
-            this.checkBoxGrantExecute.Name = "checkBoxGrantExecute";
-            this.checkBoxGrantExecute.Size = new System.Drawing.Size(65, 20);
-            this.checkBoxGrantExecute.TabIndex = 5;
-            this.checkBoxGrantExecute.Text = "Execute";
-            this.checkBoxGrantExecute.UseVisualStyleBackColor = true;
-            this.checkBoxGrantExecute.Click += new System.EventHandler(this.checkBoxGrantExecute_Click);
-            // 
-            // checkBoxGrantConnect
-            // 
-            this.checkBoxGrantConnect.AutoSize = true;
-            this.checkBoxGrantConnect.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBoxGrantConnect.Location = new System.Drawing.Point(344, 16);
-            this.checkBoxGrantConnect.Name = "checkBoxGrantConnect";
-            this.checkBoxGrantConnect.Size = new System.Drawing.Size(66, 20);
-            this.checkBoxGrantConnect.TabIndex = 6;
-            this.checkBoxGrantConnect.Text = "Connect";
-            this.checkBoxGrantConnect.UseVisualStyleBackColor = true;
-            this.checkBoxGrantConnect.Click += new System.EventHandler(this.checkBoxGrantConnect_Click);
-            // 
-            // checkBoxGrantUsage
-            // 
-            this.checkBoxGrantUsage.AutoSize = true;
-            this.checkBoxGrantUsage.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBoxGrantUsage.Location = new System.Drawing.Point(416, 16);
-            this.checkBoxGrantUsage.Name = "checkBoxGrantUsage";
-            this.checkBoxGrantUsage.Size = new System.Drawing.Size(57, 20);
-            this.checkBoxGrantUsage.TabIndex = 7;
-            this.checkBoxGrantUsage.Text = "Usage";
-            this.checkBoxGrantUsage.UseVisualStyleBackColor = true;
-            this.checkBoxGrantUsage.Click += new System.EventHandler(this.checkBoxGrantUsage_Click);
-            // 
-            // pictureBoxGrants
-            // 
-            this.pictureBoxGrants.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxGrants.Location = new System.Drawing.Point(2, 2);
-            this.pictureBoxGrants.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxGrants.Name = "pictureBoxGrants";
-            this.tableLayoutPanelGrants.SetRowSpan(this.pictureBoxGrants, 2);
-            this.pictureBoxGrants.Size = new System.Drawing.Size(16, 35);
-            this.pictureBoxGrants.TabIndex = 8;
-            this.pictureBoxGrants.TabStop = false;
-            // 
-            // tabPagePermissions
-            // 
-            this.tabPagePermissions.Controls.Add(this.tableLayoutPanelPermissions);
-            this.tabPagePermissions.ImageIndex = 1;
-            this.tabPagePermissions.Location = new System.Drawing.Point(4, 23);
-            this.tabPagePermissions.Name = "tabPagePermissions";
-            this.tabPagePermissions.Size = new System.Drawing.Size(661, 448);
-            this.tabPagePermissions.TabIndex = 2;
-            this.tabPagePermissions.Text = "Permissions";
-            this.tabPagePermissions.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanelPermissions
-            // 
-            this.tableLayoutPanelPermissions.ColumnCount = 3;
-            this.tableLayoutPanelPermissions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelPermissions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPermissions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelPermissions.Controls.Add(this.labelPermissions, 1, 0);
-            this.tableLayoutPanelPermissions.Controls.Add(this.tableLayoutPanelGrants, 0, 2);
-            this.tableLayoutPanelPermissions.Controls.Add(this.treeViewPermissions, 0, 1);
-            this.tableLayoutPanelPermissions.Controls.Add(this.pictureBoxPermissions, 0, 0);
-            this.tableLayoutPanelPermissions.Controls.Add(this.labelEffectivePermissions, 2, 0);
-            this.tableLayoutPanelPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelPermissions.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelPermissions.Name = "tableLayoutPanelPermissions";
-            this.tableLayoutPanelPermissions.RowCount = 3;
-            this.tableLayoutPanelPermissions.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelPermissions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPermissions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanelPermissions.Size = new System.Drawing.Size(661, 448);
-            this.tableLayoutPanelPermissions.TabIndex = 2;
-            // 
-            // pictureBoxPermissions
-            // 
-            this.pictureBoxPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxPermissions.Image = global::DiversityWorkbench.Properties.Resources.Group;
-            this.pictureBoxPermissions.Location = new System.Drawing.Point(2, 2);
-            this.pictureBoxPermissions.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxPermissions.Name = "pictureBoxPermissions";
-            this.pictureBoxPermissions.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxPermissions.TabIndex = 2;
-            this.pictureBoxPermissions.TabStop = false;
-            // 
-            // labelEffectivePermissions
-            // 
-            this.labelEffectivePermissions.AutoSize = true;
-            this.labelEffectivePermissions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelEffectivePermissions.Location = new System.Drawing.Point(344, 0);
-            this.labelEffectivePermissions.Name = "labelEffectivePermissions";
-            this.labelEffectivePermissions.Size = new System.Drawing.Size(314, 20);
-            this.labelEffectivePermissions.TabIndex = 3;
-            this.labelEffectivePermissions.Text = "(Effective permissions including those inherited from other groups)";
-            this.labelEffectivePermissions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // buttonRemoveFromRole
-            // 
-            this.buttonRemoveFromRole.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonRemoveFromRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRemoveFromRole.ForeColor = System.Drawing.Color.Red;
-            this.buttonRemoveFromRole.Location = new System.Drawing.Point(326, 240);
-            this.buttonRemoveFromRole.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonRemoveFromRole.Name = "buttonRemoveFromRole";
-            this.buttonRemoveFromRole.Size = new System.Drawing.Size(20, 23);
-            this.buttonRemoveFromRole.TabIndex = 3;
-            this.buttonRemoveFromRole.Text = "<";
-            this.buttonRemoveFromRole.UseVisualStyleBackColor = true;
-            this.buttonRemoveFromRole.Click += new System.EventHandler(this.buttonRemoveFromRole_Click);
-            // 
-            // labelRolesAvailable
-            // 
-            this.labelRolesAvailable.AutoSize = true;
-            this.tableLayoutPanelMembership.SetColumnSpan(this.labelRolesAvailable, 2);
-            this.labelRolesAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRolesAvailable.Location = new System.Drawing.Point(3, 20);
-            this.labelRolesAvailable.Name = "labelRolesAvailable";
-            this.labelRolesAvailable.Size = new System.Drawing.Size(167, 20);
-            this.labelRolesAvailable.TabIndex = 4;
-            this.labelRolesAvailable.Text = "Available groups";
-            this.labelRolesAvailable.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // labelRolesMemberOf
-            // 
-            this.labelRolesMemberOf.AutoSize = true;
-            this.labelRolesMemberOf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRolesMemberOf.Location = new System.Drawing.Point(349, 20);
-            this.labelRolesMemberOf.Name = "labelRolesMemberOf";
-            this.labelRolesMemberOf.Size = new System.Drawing.Size(147, 20);
-            this.labelRolesMemberOf.TabIndex = 5;
-            this.labelRolesMemberOf.Text = "Member in groups";
-            this.labelRolesMemberOf.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // checkBoxLogin
-            // 
-            this.checkBoxLogin.AutoSize = true;
-            this.tableLayoutPanelRole.SetColumnSpan(this.checkBoxLogin, 2);
-            this.checkBoxLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxLogin.Enabled = false;
-            this.checkBoxLogin.Location = new System.Drawing.Point(3, 23);
-            this.checkBoxLogin.Name = "checkBoxLogin";
-            this.checkBoxLogin.Size = new System.Drawing.Size(331, 17);
-            this.checkBoxLogin.TabIndex = 0;
-            this.checkBoxLogin.Text = "Can log in";
-            this.checkBoxLogin.UseVisualStyleBackColor = true;
-            this.checkBoxLogin.Click += new System.EventHandler(this.checkBoxLogin_Click);
-            // 
-            // checkBoxSuperuser
-            // 
-            this.checkBoxSuperuser.AutoSize = true;
-            this.checkBoxSuperuser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxSuperuser.Enabled = false;
-            this.checkBoxSuperuser.Location = new System.Drawing.Point(340, 23);
-            this.checkBoxSuperuser.Name = "checkBoxSuperuser";
-            this.checkBoxSuperuser.Size = new System.Drawing.Size(312, 17);
-            this.checkBoxSuperuser.TabIndex = 1;
-            this.checkBoxSuperuser.Text = "Is superuser";
-            this.checkBoxSuperuser.UseVisualStyleBackColor = true;
-            this.checkBoxSuperuser.Click += new System.EventHandler(this.checkBoxSuperuser_Click);
-            // 
-            // checkBoxCreateRoles
-            // 
-            this.checkBoxCreateRoles.AutoSize = true;
-            this.tableLayoutPanelRole.SetColumnSpan(this.checkBoxCreateRoles, 2);
-            this.checkBoxCreateRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxCreateRoles.Location = new System.Drawing.Point(3, 46);
-            this.checkBoxCreateRoles.Name = "checkBoxCreateRoles";
-            this.checkBoxCreateRoles.Size = new System.Drawing.Size(331, 17);
-            this.checkBoxCreateRoles.TabIndex = 2;
-            this.checkBoxCreateRoles.Text = "Can create roles";
-            this.checkBoxCreateRoles.UseVisualStyleBackColor = true;
-            this.checkBoxCreateRoles.Click += new System.EventHandler(this.checkBoxCreateRoles_Click);
-            // 
-            // checkBoxCreateDB
-            // 
-            this.checkBoxCreateDB.AutoSize = true;
-            this.checkBoxCreateDB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxCreateDB.Location = new System.Drawing.Point(340, 46);
-            this.checkBoxCreateDB.Name = "checkBoxCreateDB";
-            this.checkBoxCreateDB.Size = new System.Drawing.Size(312, 17);
-            this.checkBoxCreateDB.TabIndex = 3;
-            this.checkBoxCreateDB.Text = "Can create database";
-            this.checkBoxCreateDB.UseVisualStyleBackColor = true;
-            this.checkBoxCreateDB.Click += new System.EventHandler(this.checkBoxCreateDB_Click);
-            // 
-            // labelRoleDescription
-            // 
-            this.labelRoleDescription.AutoSize = true;
-            this.tableLayoutPanelRole.SetColumnSpan(this.labelRoleDescription, 2);
-            this.labelRoleDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRoleDescription.Location = new System.Drawing.Point(3, 66);
-            this.labelRoleDescription.Name = "labelRoleDescription";
-            this.labelRoleDescription.Size = new System.Drawing.Size(331, 20);
-            this.labelRoleDescription.TabIndex = 4;
-            this.labelRoleDescription.Text = "Description";
-            this.labelRoleDescription.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // listBoxAvailableRoles
-            // 
-            this.listBoxAvailableRoles.BackColor = System.Drawing.Color.Pink;
-            this.tableLayoutPanelMembership.SetColumnSpan(this.listBoxAvailableRoles, 3);
-            this.listBoxAvailableRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxAvailableRoles.FormattingEnabled = true;
-            this.listBoxAvailableRoles.IntegralHeight = false;
-            this.listBoxAvailableRoles.Location = new System.Drawing.Point(3, 43);
-            this.listBoxAvailableRoles.Name = "listBoxAvailableRoles";
-            this.tableLayoutPanelMembership.SetRowSpan(this.listBoxAvailableRoles, 2);
-            this.listBoxAvailableRoles.Size = new System.Drawing.Size(320, 394);
-            this.listBoxAvailableRoles.TabIndex = 0;
-            // 
-            // listBoxMemberInRoles
-            // 
-            this.listBoxMemberInRoles.BackColor = System.Drawing.Color.LightGreen;
-            this.tableLayoutPanelMembership.SetColumnSpan(this.listBoxMemberInRoles, 2);
-            this.listBoxMemberInRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxMemberInRoles.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.listBoxMemberInRoles.FormattingEnabled = true;
-            this.listBoxMemberInRoles.IntegralHeight = false;
-            this.listBoxMemberInRoles.Location = new System.Drawing.Point(349, 43);
-            this.listBoxMemberInRoles.Name = "listBoxMemberInRoles";
-            this.tableLayoutPanelMembership.SetRowSpan(this.listBoxMemberInRoles, 3);
-            this.listBoxMemberInRoles.Size = new System.Drawing.Size(303, 396);
-            this.listBoxMemberInRoles.TabIndex = 1;
-            this.listBoxMemberInRoles.SelectedIndexChanged += new System.EventHandler(this.listBoxMemberInRoles_SelectedIndexChanged);
-            // 
-            // buttonAddToRole
-            // 
-            this.buttonAddToRole.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonAddToRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddToRole.ForeColor = System.Drawing.Color.Green;
-            this.buttonAddToRole.Location = new System.Drawing.Point(326, 217);
-            this.buttonAddToRole.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonAddToRole.Name = "buttonAddToRole";
-            this.buttonAddToRole.Size = new System.Drawing.Size(20, 23);
-            this.buttonAddToRole.TabIndex = 2;
-            this.buttonAddToRole.Text = ">";
-            this.buttonAddToRole.UseVisualStyleBackColor = true;
-            this.buttonAddToRole.Click += new System.EventHandler(this.buttonAddToRole_Click);
-            // 
-            // textBoxRoleDescription
-            // 
-            this.tableLayoutPanelRole.SetColumnSpan(this.textBoxRoleDescription, 3);
-            this.textBoxRoleDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxRoleDescription.Enabled = false;
-            this.textBoxRoleDescription.Location = new System.Drawing.Point(3, 89);
-            this.textBoxRoleDescription.Multiline = true;
-            this.textBoxRoleDescription.Name = "textBoxRoleDescription";
-            this.textBoxRoleDescription.Size = new System.Drawing.Size(649, 350);
-            this.textBoxRoleDescription.TabIndex = 5;
-            this.textBoxRoleDescription.Leave += new System.EventHandler(this.textBoxRoleDescription_Leave);
-            // 
-            // tabPageMembership
-            // 
-            this.tabPageMembership.Controls.Add(this.tableLayoutPanelMembership);
-            this.tabPageMembership.ImageIndex = 0;
-            this.tabPageMembership.Location = new System.Drawing.Point(4, 23);
-            this.tabPageMembership.Name = "tabPageMembership";
-            this.tabPageMembership.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMembership.Size = new System.Drawing.Size(661, 448);
-            this.tabPageMembership.TabIndex = 1;
-            this.tabPageMembership.Text = "Membership in groups";
-            this.tabPageMembership.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanelMembership
-            // 
-            this.tableLayoutPanelMembership.ColumnCount = 6;
-            this.tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelMembership.Controls.Add(this.listBoxAvailableRoles, 0, 2);
-            this.tableLayoutPanelMembership.Controls.Add(this.listBoxMemberInRoles, 4, 2);
-            this.tableLayoutPanelMembership.Controls.Add(this.buttonAddToRole, 3, 2);
-            this.tableLayoutPanelMembership.Controls.Add(this.buttonRemoveFromRole, 3, 3);
-            this.tableLayoutPanelMembership.Controls.Add(this.labelRolesAvailable, 0, 1);
-            this.tableLayoutPanelMembership.Controls.Add(this.labelRolesMemberOf, 4, 1);
-            this.tableLayoutPanelMembership.Controls.Add(this.labelMembership, 1, 0);
-            this.tableLayoutPanelMembership.Controls.Add(this.pictureBoxMembership, 0, 0);
-            this.tableLayoutPanelMembership.Controls.Add(this.checkBoxAdminOption, 5, 1);
-            this.tableLayoutPanelMembership.Controls.Add(this.checkBoxGrantWithAdminOption, 2, 1);
-            this.tableLayoutPanelMembership.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelMembership.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanelMembership.Name = "tableLayoutPanelMembership";
-            this.tableLayoutPanelMembership.RowCount = 5;
-            this.tableLayoutPanelMembership.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelMembership.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelMembership.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelMembership.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelMembership.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelMembership.Size = new System.Drawing.Size(655, 442);
-            this.tableLayoutPanelMembership.TabIndex = 0;
-            // 
-            // labelMembership
-            // 
-            this.labelMembership.AutoSize = true;
-            this.labelMembership.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelMembership.Location = new System.Drawing.Point(23, 0);
-            this.labelMembership.Name = "labelMembership";
-            this.labelMembership.Size = new System.Drawing.Size(147, 20);
-            this.labelMembership.TabIndex = 6;
-            this.labelMembership.Text = "Membership";
-            this.labelMembership.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pictureBoxMembership
-            // 
-            this.pictureBoxMembership.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxMembership.Location = new System.Drawing.Point(2, 2);
-            this.pictureBoxMembership.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxMembership.Name = "pictureBoxMembership";
-            this.pictureBoxMembership.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxMembership.TabIndex = 7;
-            this.pictureBoxMembership.TabStop = false;
-            // 
-            // imageListTab
-            // 
-            this.imageListTab.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListTab.ImageStream")));
-            this.imageListTab.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListTab.Images.SetKeyName(0, "Group.ico");
-            this.imageListTab.Images.SetKeyName(1, "Project.ico");
-            this.imageListTab.Images.SetKeyName(2, "Settings.ico");
-            this.imageListTab.Images.SetKeyName(3, "Graph.ico");
-            // 
-            // tableLayoutPanelRole
-            // 
-            this.tableLayoutPanelRole.ColumnCount = 3;
-            this.tableLayoutPanelRole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelRole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelRole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelRole.Controls.Add(this.checkBoxLogin, 0, 1);
-            this.tableLayoutPanelRole.Controls.Add(this.checkBoxSuperuser, 2, 1);
-            this.tableLayoutPanelRole.Controls.Add(this.checkBoxCreateRoles, 0, 2);
-            this.tableLayoutPanelRole.Controls.Add(this.checkBoxCreateDB, 2, 2);
-            this.tableLayoutPanelRole.Controls.Add(this.labelRoleDescription, 0, 3);
-            this.tableLayoutPanelRole.Controls.Add(this.textBoxRoleDescription, 0, 4);
-            this.tableLayoutPanelRole.Controls.Add(this.labelRoleProperties, 1, 0);
-            this.tableLayoutPanelRole.Controls.Add(this.pictureBoxLoginProperties, 0, 0);
-            this.tableLayoutPanelRole.Controls.Add(this.checkBoxInherit, 2, 3);
-            this.tableLayoutPanelRole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelRole.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanelRole.Name = "tableLayoutPanelRole";
-            this.tableLayoutPanelRole.RowCount = 5;
-            this.tableLayoutPanelRole.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelRole.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelRole.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelRole.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelRole.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelRole.Size = new System.Drawing.Size(655, 442);
-            this.tableLayoutPanelRole.TabIndex = 0;
-            // 
-            // labelRoleProperties
-            // 
-            this.labelRoleProperties.AutoSize = true;
-            this.labelRoleProperties.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRoleProperties.Location = new System.Drawing.Point(23, 0);
-            this.labelRoleProperties.Name = "labelRoleProperties";
-            this.labelRoleProperties.Size = new System.Drawing.Size(311, 20);
-            this.labelRoleProperties.TabIndex = 6;
-            this.labelRoleProperties.Text = "Properties of ";
-            this.labelRoleProperties.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pictureBoxLoginProperties
-            // 
-            this.pictureBoxLoginProperties.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxLoginProperties.Image = global::DiversityWorkbench.Properties.Resources.Login;
-            this.pictureBoxLoginProperties.InitialImage = global::DiversityWorkbench.Properties.Resources.Login;
-            this.pictureBoxLoginProperties.Location = new System.Drawing.Point(2, 2);
-            this.pictureBoxLoginProperties.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxLoginProperties.Name = "pictureBoxLoginProperties";
-            this.pictureBoxLoginProperties.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxLoginProperties.TabIndex = 7;
-            this.pictureBoxLoginProperties.TabStop = false;
-            // 
-            // checkBoxInherit
-            // 
-            this.checkBoxInherit.AutoSize = true;
-            this.checkBoxInherit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxInherit.Location = new System.Drawing.Point(340, 66);
-            this.checkBoxInherit.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.checkBoxInherit.Name = "checkBoxInherit";
-            this.checkBoxInherit.Size = new System.Drawing.Size(315, 20);
-            this.checkBoxInherit.TabIndex = 8;
-            this.checkBoxInherit.Text = "Inherits permissions";
-            this.checkBoxInherit.UseVisualStyleBackColor = true;
-            this.checkBoxInherit.Click += new System.EventHandler(this.checkBoxInherit_Click);
-            // 
-            // tabPageProperties
-            // 
-            this.tabPageProperties.Controls.Add(this.tableLayoutPanelRole);
-            this.tabPageProperties.ImageIndex = 2;
-            this.tabPageProperties.Location = new System.Drawing.Point(4, 23);
-            this.tabPageProperties.Name = "tabPageProperties";
-            this.tabPageProperties.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProperties.Size = new System.Drawing.Size(661, 448);
-            this.tabPageProperties.TabIndex = 0;
-            this.tabPageProperties.Text = "Properties";
-            this.tabPageProperties.UseVisualStyleBackColor = true;
-            // 
-            // tabControlRole
-            // 
-            this.tableLayoutPanelDetails.SetColumnSpan(this.tabControlRole, 3);
-            this.tabControlRole.Controls.Add(this.tabPageProperties);
-            this.tabControlRole.Controls.Add(this.tabPageMembership);
-            this.tabControlRole.Controls.Add(this.tabPagePermissions);
-            this.tabControlRole.Controls.Add(this.tabPageActivity);
-            this.tabControlRole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlRole.Enabled = false;
-            this.tabControlRole.ImageList = this.imageListTab;
-            this.tabControlRole.Location = new System.Drawing.Point(0, 23);
-            this.tabControlRole.Margin = new System.Windows.Forms.Padding(0);
-            this.tabControlRole.Name = "tabControlRole";
-            this.tabControlRole.SelectedIndex = 0;
-            this.tabControlRole.Size = new System.Drawing.Size(669, 475);
-            this.tabControlRole.TabIndex = 1;
-            // 
-            // tabPageActivity
-            // 
-            this.tabPageActivity.Controls.Add(this.tableLayoutPanelActivity);
-            this.tabPageActivity.ImageIndex = 3;
-            this.tabPageActivity.Location = new System.Drawing.Point(4, 23);
-            this.tabPageActivity.Name = "tabPageActivity";
-            this.tabPageActivity.Size = new System.Drawing.Size(661, 448);
-            this.tabPageActivity.TabIndex = 3;
-            this.tabPageActivity.Text = "Activity";
-            this.tabPageActivity.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanelActivity
-            // 
-            this.tableLayoutPanelActivity.ColumnCount = 2;
-            this.tableLayoutPanelActivity.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelActivity.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelActivity.Controls.Add(this.dataGridViewActivity, 0, 1);
-            this.tableLayoutPanelActivity.Controls.Add(this.buttonShowActivity, 0, 0);
-            this.tableLayoutPanelActivity.Controls.Add(this.buttonActivityStop, 1, 0);
-            this.tableLayoutPanelActivity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelActivity.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelActivity.Name = "tableLayoutPanelActivity";
-            this.tableLayoutPanelActivity.RowCount = 2;
-            this.tableLayoutPanelActivity.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelActivity.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelActivity.Size = new System.Drawing.Size(661, 448);
-            this.tableLayoutPanelActivity.TabIndex = 0;
-            // 
-            // dataGridViewActivity
-            // 
-            this.dataGridViewActivity.AllowUserToAddRows = false;
-            this.dataGridViewActivity.AllowUserToDeleteRows = false;
-            this.dataGridViewActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanelActivity.SetColumnSpan(this.dataGridViewActivity, 2);
-            this.dataGridViewActivity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewActivity.Location = new System.Drawing.Point(3, 32);
-            this.dataGridViewActivity.Name = "dataGridViewActivity";
-            this.dataGridViewActivity.ReadOnly = true;
-            this.dataGridViewActivity.Size = new System.Drawing.Size(655, 413);
-            this.dataGridViewActivity.TabIndex = 1;
-            // 
-            // toolStripButtonRoleDelete
-            // 
-            this.toolStripButtonRoleDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRoleDelete.Image = global::DiversityWorkbench.Properties.Resources.Delete;
-            this.toolStripButtonRoleDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRoleDelete.Name = "toolStripButtonRoleDelete";
-            this.toolStripButtonRoleDelete.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonRoleDelete.Text = "Delete the selected login";
-            this.toolStripButtonRoleDelete.Click += new System.EventHandler(this.toolStripButtonRoleDelete_Click);
-            // 
-            // toolStripButtonRoleAdd
-            // 
-            this.toolStripButtonRoleAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRoleAdd.Image = global::DiversityWorkbench.Properties.Resources.Add;
-            this.toolStripButtonRoleAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRoleAdd.Name = "toolStripButtonRoleAdd";
-            this.toolStripButtonRoleAdd.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonRoleAdd.Text = "Add a new login";
-            this.toolStripButtonRoleAdd.Click += new System.EventHandler(this.toolStripButtonRoleAdd_Click);
-            // 
-            // listBoxRoles
-            // 
-            this.tableLayoutPanelLogins.SetColumnSpan(this.listBoxRoles, 2);
-            this.listBoxRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxRoles.FormattingEnabled = true;
-            this.listBoxRoles.IntegralHeight = false;
-            this.listBoxRoles.Location = new System.Drawing.Point(0, 22);
-            this.listBoxRoles.Margin = new System.Windows.Forms.Padding(0);
-            this.listBoxRoles.Name = "listBoxRoles";
-            this.listBoxRoles.Size = new System.Drawing.Size(215, 199);
-            this.listBoxRoles.TabIndex = 1;
-            this.listBoxRoles.SelectedIndexChanged += new System.EventHandler(this.listBoxRoles_SelectedIndexChanged);
-            // 
-            // toolStripRoles
-            // 
-            this.toolStripRoles.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStripRoles.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripRoles.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonRoleAdd,
-            this.toolStripButtonRoleDelete});
-            this.toolStripRoles.Location = new System.Drawing.Point(3, 224);
-            this.toolStripRoles.Name = "toolStripRoles";
-            this.toolStripRoles.Size = new System.Drawing.Size(215, 25);
-            this.toolStripRoles.TabIndex = 0;
-            this.toolStripRoles.Text = "toolStrip1";
-            // 
-            // splitContainerMain
-            // 
-            this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMain.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerMain.Name = "splitContainerMain";
-            // 
-            // splitContainerMain.Panel1
-            // 
-            this.splitContainerMain.Panel1.Controls.Add(this.splitContainerRoles);
-            // 
-            // splitContainerMain.Panel2
-            // 
-            this.splitContainerMain.Panel2.Controls.Add(this.tableLayoutPanelDetails);
-            this.splitContainerMain.Panel2.Padding = new System.Windows.Forms.Padding(3);
-            this.splitContainerMain.Size = new System.Drawing.Size(900, 504);
-            this.splitContainerMain.SplitterDistance = 221;
-            this.splitContainerMain.TabIndex = 1;
-            // 
-            // splitContainerRoles
-            // 
-            this.splitContainerRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerRoles.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerRoles.Name = "splitContainerRoles";
-            this.splitContainerRoles.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerRoles.Panel1
-            // 
-            this.splitContainerRoles.Panel1.Controls.Add(this.tableLayoutPanelLogins);
-            this.splitContainerRoles.Panel1.Controls.Add(this.toolStripRoles);
-            this.splitContainerRoles.Panel1.Padding = new System.Windows.Forms.Padding(3);
-            // 
-            // splitContainerRoles.Panel2
-            // 
-            this.splitContainerRoles.Panel2.Controls.Add(this.tableLayoutPanelGroups);
-            this.splitContainerRoles.Panel2.Padding = new System.Windows.Forms.Padding(3);
-            this.splitContainerRoles.Size = new System.Drawing.Size(221, 504);
-            this.splitContainerRoles.SplitterDistance = 252;
-            this.splitContainerRoles.TabIndex = 2;
-            // 
-            // tableLayoutPanelLogins
-            // 
-            this.tableLayoutPanelLogins.ColumnCount = 2;
-            this.tableLayoutPanelLogins.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelLogins.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelLogins.Controls.Add(this.listBoxRoles, 0, 1);
-            this.tableLayoutPanelLogins.Controls.Add(this.pictureBoxLogins, 0, 0);
-            this.tableLayoutPanelLogins.Controls.Add(this.labelLogins, 1, 0);
-            this.tableLayoutPanelLogins.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelLogins.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanelLogins.Name = "tableLayoutPanelLogins";
-            this.tableLayoutPanelLogins.RowCount = 2;
-            this.tableLayoutPanelLogins.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelLogins.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelLogins.Size = new System.Drawing.Size(215, 221);
-            this.tableLayoutPanelLogins.TabIndex = 2;
-            // 
-            // pictureBoxLogins
-            // 
-            this.pictureBoxLogins.Image = global::DiversityWorkbench.Properties.Resources.Login;
-            this.pictureBoxLogins.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxLogins.Name = "pictureBoxLogins";
-            this.pictureBoxLogins.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxLogins.TabIndex = 2;
-            this.pictureBoxLogins.TabStop = false;
-            // 
-            // labelLogins
-            // 
-            this.labelLogins.AutoSize = true;
-            this.labelLogins.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelLogins.Location = new System.Drawing.Point(25, 0);
-            this.labelLogins.Name = "labelLogins";
-            this.labelLogins.Size = new System.Drawing.Size(187, 22);
-            this.labelLogins.TabIndex = 3;
-            this.labelLogins.Text = "Logins";
-            this.labelLogins.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLayoutPanelGroups
-            // 
-            this.tableLayoutPanelGroups.ColumnCount = 2;
-            this.tableLayoutPanelGroups.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelGroups.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelGroups.Controls.Add(this.toolStripGroups, 0, 2);
-            this.tableLayoutPanelGroups.Controls.Add(this.labelGroups, 1, 0);
-            this.tableLayoutPanelGroups.Controls.Add(this.pictureBoxGroups, 0, 0);
-            this.tableLayoutPanelGroups.Controls.Add(this.listBoxGroups, 0, 1);
-            this.tableLayoutPanelGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelGroups.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanelGroups.Name = "tableLayoutPanelGroups";
-            this.tableLayoutPanelGroups.RowCount = 3;
-            this.tableLayoutPanelGroups.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelGroups.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelGroups.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelGroups.Size = new System.Drawing.Size(215, 242);
-            this.tableLayoutPanelGroups.TabIndex = 0;
-            // 
-            // toolStripGroups
-            // 
-            this.tableLayoutPanelGroups.SetColumnSpan(this.toolStripGroups, 2);
-            this.toolStripGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripGroups.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripGroups.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonAddGroup,
-            this.toolStripButtonDeleteGroup});
-            this.toolStripGroups.Location = new System.Drawing.Point(0, 217);
-            this.toolStripGroups.Name = "toolStripGroups";
-            this.toolStripGroups.Size = new System.Drawing.Size(215, 25);
-            this.toolStripGroups.TabIndex = 6;
-            this.toolStripGroups.Text = "toolStrip1";
-            // 
-            // toolStripButtonAddGroup
-            // 
-            this.toolStripButtonAddGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddGroup.Image = global::DiversityWorkbench.Properties.Resources.Add;
-            this.toolStripButtonAddGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddGroup.Name = "toolStripButtonAddGroup";
-            this.toolStripButtonAddGroup.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonAddGroup.Text = "Add a new group";
-            this.toolStripButtonAddGroup.Click += new System.EventHandler(this.toolStripButtonAddGroup_Click);
-            // 
-            // toolStripButtonDeleteGroup
-            // 
-            this.toolStripButtonDeleteGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDeleteGroup.Image = global::DiversityWorkbench.Properties.Resources.Delete;
-            this.toolStripButtonDeleteGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDeleteGroup.Name = "toolStripButtonDeleteGroup";
-            this.toolStripButtonDeleteGroup.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonDeleteGroup.Text = "Delete the selected group";
-            this.toolStripButtonDeleteGroup.Click += new System.EventHandler(this.toolStripButtonDeleteGroup_Click);
-            // 
-            // labelGroups
-            // 
-            this.labelGroups.AutoSize = true;
-            this.labelGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelGroups.Location = new System.Drawing.Point(25, 0);
-            this.labelGroups.Name = "labelGroups";
-            this.labelGroups.Size = new System.Drawing.Size(187, 22);
-            this.labelGroups.TabIndex = 7;
-            this.labelGroups.Text = "Groups";
-            this.labelGroups.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pictureBoxGroups
-            // 
-            this.pictureBoxGroups.Image = global::DiversityWorkbench.Properties.Resources.Group;
-            this.pictureBoxGroups.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxGroups.Name = "pictureBoxGroups";
-            this.pictureBoxGroups.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxGroups.TabIndex = 8;
-            this.pictureBoxGroups.TabStop = false;
-            // 
-            // listBoxGroups
-            // 
-            this.tableLayoutPanelGroups.SetColumnSpan(this.listBoxGroups, 2);
-            this.listBoxGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxGroups.FormattingEnabled = true;
-            this.listBoxGroups.IntegralHeight = false;
-            this.listBoxGroups.Location = new System.Drawing.Point(0, 22);
-            this.listBoxGroups.Margin = new System.Windows.Forms.Padding(0);
-            this.listBoxGroups.Name = "listBoxGroups";
-            this.listBoxGroups.Size = new System.Drawing.Size(215, 195);
-            this.listBoxGroups.TabIndex = 9;
-            this.listBoxGroups.SelectedIndexChanged += new System.EventHandler(this.listBoxGroups_SelectedIndexChanged);
-            // 
-            // tableLayoutPanelDetails
-            // 
-            this.tableLayoutPanelDetails.ColumnCount = 3;
-            this.tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelDetails.Controls.Add(this.tabControlRole, 0, 1);
-            this.tableLayoutPanelDetails.Controls.Add(this.buttonFeedback, 2, 0);
-            this.tableLayoutPanelDetails.Controls.Add(this.pictureBoxDetailsHeader, 0, 0);
-            this.tableLayoutPanelDetails.Controls.Add(this.labelDetailsHeader, 1, 0);
-            this.tableLayoutPanelDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelDetails.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanelDetails.Name = "tableLayoutPanelDetails";
-            this.tableLayoutPanelDetails.RowCount = 2;
-            this.tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelDetails.Size = new System.Drawing.Size(669, 498);
-            this.tableLayoutPanelDetails.TabIndex = 2;
-            // 
-            // pictureBoxDetailsHeader
-            // 
-            this.pictureBoxDetailsHeader.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxDetailsHeader.Name = "pictureBoxDetailsHeader";
-            this.pictureBoxDetailsHeader.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxDetailsHeader.TabIndex = 3;
-            this.pictureBoxDetailsHeader.TabStop = false;
-            // 
-            // labelDetailsHeader
-            // 
-            this.labelDetailsHeader.AutoSize = true;
-            this.labelDetailsHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDetailsHeader.Location = new System.Drawing.Point(25, 0);
-            this.labelDetailsHeader.Name = "labelDetailsHeader";
-            this.labelDetailsHeader.Size = new System.Drawing.Size(617, 23);
-            this.labelDetailsHeader.TabIndex = 4;
-            this.labelDetailsHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // checkBoxGrantAll
-            // 
-            this.checkBoxGrantAll.AutoSize = true;
-            this.checkBoxGrantAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxGrantAll.Location = new System.Drawing.Point(479, 16);
-            this.checkBoxGrantAll.Name = "checkBoxGrantAll";
-            this.checkBoxGrantAll.Size = new System.Drawing.Size(37, 20);
-            this.checkBoxGrantAll.TabIndex = 9;
-            this.checkBoxGrantAll.Text = "All";
-            this.checkBoxGrantAll.UseVisualStyleBackColor = true;
-            this.checkBoxGrantAll.Visible = false;
-            this.checkBoxGrantAll.Click += new System.EventHandler(this.checkBoxGrantAll_Click);
+            buttonActivityStop.Dock = System.Windows.Forms.DockStyle.Right;
+            buttonActivityStop.Image = Properties.Resources.Delete;
+            buttonActivityStop.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            buttonActivityStop.Location = new System.Drawing.Point(691, 3);
+            buttonActivityStop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonActivityStop.Name = "buttonActivityStop";
+            buttonActivityStop.Size = new System.Drawing.Size(77, 27);
+            buttonActivityStop.TabIndex = 2;
+            buttonActivityStop.Text = "Stop all";
+            buttonActivityStop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            toolTip.SetToolTip(buttonActivityStop, "Stop all processes in the database");
+            buttonActivityStop.UseVisualStyleBackColor = true;
+            buttonActivityStop.Click += buttonActivityStop_Click;
             // 
             // checkBoxGrantAllTables
             // 
-            this.checkBoxGrantAllTables.AutoSize = true;
-            this.checkBoxGrantAllTables.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxGrantAllTables.Location = new System.Drawing.Point(522, 16);
-            this.checkBoxGrantAllTables.Name = "checkBoxGrantAllTables";
-            this.checkBoxGrantAllTables.Size = new System.Drawing.Size(68, 20);
-            this.checkBoxGrantAllTables.TabIndex = 10;
-            this.checkBoxGrantAllTables.Text = "All tables";
-            this.toolTip.SetToolTip(this.checkBoxGrantAllTables, "All permissions for all tables in the schema");
-            this.checkBoxGrantAllTables.UseVisualStyleBackColor = true;
-            this.checkBoxGrantAllTables.Visible = false;
-            this.checkBoxGrantAllTables.Click += new System.EventHandler(this.checkBoxGrantAllTables_Click);
+            checkBoxGrantAllTables.AutoSize = true;
+            checkBoxGrantAllTables.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxGrantAllTables.Location = new System.Drawing.Point(593, 18);
+            checkBoxGrantAllTables.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            checkBoxGrantAllTables.Name = "checkBoxGrantAllTables";
+            checkBoxGrantAllTables.Size = new System.Drawing.Size(74, 24);
+            checkBoxGrantAllTables.TabIndex = 10;
+            checkBoxGrantAllTables.Text = "All tables";
+            toolTip.SetToolTip(checkBoxGrantAllTables, "All permissions for all tables in the schema");
+            checkBoxGrantAllTables.UseVisualStyleBackColor = true;
+            checkBoxGrantAllTables.Visible = false;
+            checkBoxGrantAllTables.Click += checkBoxGrantAllTables_Click;
+            // 
+            // imageListDatabaseObjects
+            // 
+            imageListDatabaseObjects.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            imageListDatabaseObjects.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageListDatabaseObjects.ImageStream");
+            imageListDatabaseObjects.TransparentColor = System.Drawing.Color.Transparent;
+            imageListDatabaseObjects.Images.SetKeyName(0, "Database.ico");
+            imageListDatabaseObjects.Images.SetKeyName(1, "Schema.ico");
+            imageListDatabaseObjects.Images.SetKeyName(2, "Speadsheet.ico");
+            imageListDatabaseObjects.Images.SetKeyName(3, "Lupe.ico");
+            imageListDatabaseObjects.Images.SetKeyName(4, "Function.ico");
+            // 
+            // treeViewPermissions
+            // 
+            tableLayoutPanelPermissions.SetColumnSpan(treeViewPermissions, 3);
+            treeViewPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
+            treeViewPermissions.ImageIndex = 0;
+            treeViewPermissions.ImageList = imageListDatabaseObjects;
+            treeViewPermissions.Location = new System.Drawing.Point(4, 26);
+            treeViewPermissions.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            treeViewPermissions.Name = "treeViewPermissions";
+            treeViewPermissions.SelectedImageIndex = 0;
+            treeViewPermissions.Size = new System.Drawing.Size(764, 444);
+            treeViewPermissions.TabIndex = 0;
+            treeViewPermissions.AfterSelect += treeViewPermissions_AfterSelect;
+            // 
+            // labelPermissions
+            // 
+            labelPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelPermissions.Location = new System.Drawing.Point(27, 0);
+            labelPermissions.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelPermissions.Name = "labelPermissions";
+            labelPermissions.Size = new System.Drawing.Size(372, 23);
+            labelPermissions.TabIndex = 1;
+            labelPermissions.Text = "Permissions for ";
+            labelPermissions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanelGrants
+            // 
+            tableLayoutPanelGrants.ColumnCount = 13;
+            tableLayoutPanelPermissions.SetColumnSpan(tableLayoutPanelGrants, 3);
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGrants.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelGrants.Controls.Add(labelGrants, 1, 0);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantSelect, 1, 1);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantInsert, 2, 1);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantUpdate, 3, 1);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantDelete, 4, 1);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantExecute, 5, 1);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantConnect, 6, 1);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantUsage, 7, 1);
+            tableLayoutPanelGrants.Controls.Add(pictureBoxGrants, 0, 0);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantAll, 9, 1);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantAllTables, 10, 1);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantWithGrantOption, 11, 1);
+            tableLayoutPanelGrants.Controls.Add(checkBoxGrantCreate, 8, 1);
+            tableLayoutPanelGrants.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelGrants.Location = new System.Drawing.Point(4, 476);
+            tableLayoutPanelGrants.Margin = new System.Windows.Forms.Padding(4, 3, 4, 0);
+            tableLayoutPanelGrants.MinimumSize = new System.Drawing.Size(0, 40);
+            tableLayoutPanelGrants.Name = "tableLayoutPanelGrants";
+            tableLayoutPanelGrants.RowCount = 2;
+            tableLayoutPanelGrants.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelGrants.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelGrants.Size = new System.Drawing.Size(764, 45);
+            tableLayoutPanelGrants.TabIndex = 0;
+            tableLayoutPanelGrants.Visible = false;
+            // 
+            // labelGrants
+            // 
+            labelGrants.AutoSize = true;
+            tableLayoutPanelGrants.SetColumnSpan(labelGrants, 11);
+            labelGrants.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelGrants.Location = new System.Drawing.Point(27, 0);
+            labelGrants.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelGrants.Name = "labelGrants";
+            labelGrants.Size = new System.Drawing.Size(760, 15);
+            labelGrants.TabIndex = 0;
+            labelGrants.Text = "Grants";
+            // 
+            // checkBoxGrantSelect
+            // 
+            checkBoxGrantSelect.AutoSize = true;
+            checkBoxGrantSelect.Dock = System.Windows.Forms.DockStyle.Left;
+            checkBoxGrantSelect.Location = new System.Drawing.Point(27, 18);
+            checkBoxGrantSelect.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            checkBoxGrantSelect.Name = "checkBoxGrantSelect";
+            checkBoxGrantSelect.Size = new System.Drawing.Size(57, 24);
+            checkBoxGrantSelect.TabIndex = 1;
+            checkBoxGrantSelect.Text = "Select";
+            checkBoxGrantSelect.UseVisualStyleBackColor = true;
+            checkBoxGrantSelect.Click += checkBoxGrantSelect_Click;
+            // 
+            // checkBoxGrantInsert
+            // 
+            checkBoxGrantInsert.AutoSize = true;
+            checkBoxGrantInsert.Dock = System.Windows.Forms.DockStyle.Left;
+            checkBoxGrantInsert.Location = new System.Drawing.Point(88, 18);
+            checkBoxGrantInsert.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            checkBoxGrantInsert.Name = "checkBoxGrantInsert";
+            checkBoxGrantInsert.Size = new System.Drawing.Size(55, 24);
+            checkBoxGrantInsert.TabIndex = 2;
+            checkBoxGrantInsert.Text = "Insert";
+            checkBoxGrantInsert.UseVisualStyleBackColor = true;
+            checkBoxGrantInsert.Click += checkBoxGrantInsert_Click;
+            // 
+            // checkBoxGrantUpdate
+            // 
+            checkBoxGrantUpdate.AutoSize = true;
+            checkBoxGrantUpdate.Dock = System.Windows.Forms.DockStyle.Left;
+            checkBoxGrantUpdate.Location = new System.Drawing.Point(147, 18);
+            checkBoxGrantUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            checkBoxGrantUpdate.Name = "checkBoxGrantUpdate";
+            checkBoxGrantUpdate.Size = new System.Drawing.Size(64, 24);
+            checkBoxGrantUpdate.TabIndex = 3;
+            checkBoxGrantUpdate.Text = "Update";
+            checkBoxGrantUpdate.UseVisualStyleBackColor = true;
+            checkBoxGrantUpdate.Click += checkBoxGrantUpdate_Click;
+            // 
+            // checkBoxGrantDelete
+            // 
+            checkBoxGrantDelete.AutoSize = true;
+            checkBoxGrantDelete.Dock = System.Windows.Forms.DockStyle.Left;
+            checkBoxGrantDelete.Location = new System.Drawing.Point(215, 18);
+            checkBoxGrantDelete.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            checkBoxGrantDelete.Name = "checkBoxGrantDelete";
+            checkBoxGrantDelete.Size = new System.Drawing.Size(59, 24);
+            checkBoxGrantDelete.TabIndex = 4;
+            checkBoxGrantDelete.Text = "Delete";
+            checkBoxGrantDelete.UseVisualStyleBackColor = true;
+            checkBoxGrantDelete.Click += checkBoxGrantDelete_Click;
+            // 
+            // checkBoxGrantExecute
+            // 
+            checkBoxGrantExecute.AutoSize = true;
+            checkBoxGrantExecute.Dock = System.Windows.Forms.DockStyle.Left;
+            checkBoxGrantExecute.Location = new System.Drawing.Point(278, 18);
+            checkBoxGrantExecute.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            checkBoxGrantExecute.Name = "checkBoxGrantExecute";
+            checkBoxGrantExecute.Size = new System.Drawing.Size(67, 24);
+            checkBoxGrantExecute.TabIndex = 5;
+            checkBoxGrantExecute.Text = "Execute";
+            checkBoxGrantExecute.UseVisualStyleBackColor = true;
+            checkBoxGrantExecute.Click += checkBoxGrantExecute_Click;
+            // 
+            // checkBoxGrantConnect
+            // 
+            checkBoxGrantConnect.AutoSize = true;
+            checkBoxGrantConnect.Dock = System.Windows.Forms.DockStyle.Left;
+            checkBoxGrantConnect.Location = new System.Drawing.Point(349, 18);
+            checkBoxGrantConnect.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            checkBoxGrantConnect.Name = "checkBoxGrantConnect";
+            checkBoxGrantConnect.Size = new System.Drawing.Size(71, 24);
+            checkBoxGrantConnect.TabIndex = 6;
+            checkBoxGrantConnect.Text = "Connect";
+            checkBoxGrantConnect.UseVisualStyleBackColor = true;
+            checkBoxGrantConnect.Click += checkBoxGrantConnect_Click;
+            // 
+            // checkBoxGrantUsage
+            // 
+            checkBoxGrantUsage.AutoSize = true;
+            checkBoxGrantUsage.Dock = System.Windows.Forms.DockStyle.Left;
+            checkBoxGrantUsage.Location = new System.Drawing.Point(424, 18);
+            checkBoxGrantUsage.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            checkBoxGrantUsage.Name = "checkBoxGrantUsage";
+            checkBoxGrantUsage.Size = new System.Drawing.Size(58, 24);
+            checkBoxGrantUsage.TabIndex = 7;
+            checkBoxGrantUsage.Text = "Usage";
+            checkBoxGrantUsage.UseVisualStyleBackColor = true;
+            checkBoxGrantUsage.Click += checkBoxGrantUsage_Click;
+            // 
+            // pictureBoxGrants
+            // 
+            pictureBoxGrants.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBoxGrants.Location = new System.Drawing.Point(2, 2);
+            pictureBoxGrants.Margin = new System.Windows.Forms.Padding(2);
+            pictureBoxGrants.Name = "pictureBoxGrants";
+            tableLayoutPanelGrants.SetRowSpan(pictureBoxGrants, 2);
+            pictureBoxGrants.Size = new System.Drawing.Size(19, 41);
+            pictureBoxGrants.TabIndex = 8;
+            pictureBoxGrants.TabStop = false;
+            // 
+            // checkBoxGrantAll
+            // 
+            checkBoxGrantAll.AutoSize = true;
+            checkBoxGrantAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxGrantAll.Location = new System.Drawing.Point(549, 18);
+            checkBoxGrantAll.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            checkBoxGrantAll.Name = "checkBoxGrantAll";
+            checkBoxGrantAll.Size = new System.Drawing.Size(40, 24);
+            checkBoxGrantAll.TabIndex = 9;
+            checkBoxGrantAll.Text = "All";
+            checkBoxGrantAll.UseVisualStyleBackColor = true;
+            checkBoxGrantAll.Visible = false;
+            checkBoxGrantAll.Click += checkBoxGrantAll_Click;
             // 
             // checkBoxGrantWithGrantOption
             // 
-            this.checkBoxGrantWithGrantOption.AutoSize = true;
-            this.checkBoxGrantWithGrantOption.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxGrantWithGrantOption.Location = new System.Drawing.Point(596, 16);
-            this.checkBoxGrantWithGrantOption.Name = "checkBoxGrantWithGrantOption";
-            this.checkBoxGrantWithGrantOption.Size = new System.Drawing.Size(107, 20);
-            this.checkBoxGrantWithGrantOption.TabIndex = 11;
-            this.checkBoxGrantWithGrantOption.Text = "With grant option";
-            this.checkBoxGrantWithGrantOption.UseVisualStyleBackColor = true;
+            checkBoxGrantWithGrantOption.AutoSize = true;
+            checkBoxGrantWithGrantOption.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxGrantWithGrantOption.Location = new System.Drawing.Point(671, 18);
+            checkBoxGrantWithGrantOption.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            checkBoxGrantWithGrantOption.Name = "checkBoxGrantWithGrantOption";
+            checkBoxGrantWithGrantOption.Size = new System.Drawing.Size(120, 24);
+            checkBoxGrantWithGrantOption.TabIndex = 11;
+            checkBoxGrantWithGrantOption.Text = "With grant option";
+            checkBoxGrantWithGrantOption.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxGrantCreate
+            // 
+            checkBoxGrantCreate.AutoSize = true;
+            checkBoxGrantCreate.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxGrantCreate.Location = new System.Drawing.Point(485, 18);
+            checkBoxGrantCreate.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            checkBoxGrantCreate.Name = "checkBoxGrantCreate";
+            checkBoxGrantCreate.Size = new System.Drawing.Size(60, 24);
+            checkBoxGrantCreate.TabIndex = 12;
+            checkBoxGrantCreate.Text = "Create";
+            checkBoxGrantCreate.UseVisualStyleBackColor = true;
+            checkBoxGrantCreate.Click += checkBoxGrantCreate_Click;
+            // 
+            // tabPagePermissions
+            // 
+            tabPagePermissions.Controls.Add(tableLayoutPanelPermissions);
+            tabPagePermissions.ImageIndex = 1;
+            tabPagePermissions.Location = new System.Drawing.Point(4, 24);
+            tabPagePermissions.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPagePermissions.Name = "tabPagePermissions";
+            tabPagePermissions.Size = new System.Drawing.Size(772, 521);
+            tabPagePermissions.TabIndex = 2;
+            tabPagePermissions.Text = "Permissions";
+            tabPagePermissions.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanelPermissions
+            // 
+            tableLayoutPanelPermissions.ColumnCount = 3;
+            tableLayoutPanelPermissions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelPermissions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelPermissions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelPermissions.Controls.Add(labelPermissions, 1, 0);
+            tableLayoutPanelPermissions.Controls.Add(tableLayoutPanelGrants, 0, 2);
+            tableLayoutPanelPermissions.Controls.Add(treeViewPermissions, 0, 1);
+            tableLayoutPanelPermissions.Controls.Add(pictureBoxPermissions, 0, 0);
+            tableLayoutPanelPermissions.Controls.Add(labelEffectivePermissions, 2, 0);
+            tableLayoutPanelPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelPermissions.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelPermissions.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelPermissions.Name = "tableLayoutPanelPermissions";
+            tableLayoutPanelPermissions.RowCount = 3;
+            tableLayoutPanelPermissions.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelPermissions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelPermissions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            tableLayoutPanelPermissions.Size = new System.Drawing.Size(772, 521);
+            tableLayoutPanelPermissions.TabIndex = 2;
+            // 
+            // pictureBoxPermissions
+            // 
+            pictureBoxPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBoxPermissions.Image = Properties.Resources.Group;
+            pictureBoxPermissions.Location = new System.Drawing.Point(2, 2);
+            pictureBoxPermissions.Margin = new System.Windows.Forms.Padding(2);
+            pictureBoxPermissions.Name = "pictureBoxPermissions";
+            pictureBoxPermissions.Size = new System.Drawing.Size(19, 19);
+            pictureBoxPermissions.TabIndex = 2;
+            pictureBoxPermissions.TabStop = false;
+            // 
+            // labelEffectivePermissions
+            // 
+            labelEffectivePermissions.AutoSize = true;
+            labelEffectivePermissions.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelEffectivePermissions.Location = new System.Drawing.Point(407, 0);
+            labelEffectivePermissions.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelEffectivePermissions.Name = "labelEffectivePermissions";
+            labelEffectivePermissions.Size = new System.Drawing.Size(361, 23);
+            labelEffectivePermissions.TabIndex = 3;
+            labelEffectivePermissions.Text = "(Effective permissions including those inherited from other groups)";
+            labelEffectivePermissions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonRemoveFromRole
+            // 
+            buttonRemoveFromRole.Dock = System.Windows.Forms.DockStyle.Top;
+            buttonRemoveFromRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            buttonRemoveFromRole.ForeColor = System.Drawing.Color.Red;
+            buttonRemoveFromRole.Location = new System.Drawing.Point(381, 279);
+            buttonRemoveFromRole.Margin = new System.Windows.Forms.Padding(0);
+            buttonRemoveFromRole.Name = "buttonRemoveFromRole";
+            buttonRemoveFromRole.Size = new System.Drawing.Size(23, 27);
+            buttonRemoveFromRole.TabIndex = 3;
+            buttonRemoveFromRole.Text = "<";
+            buttonRemoveFromRole.UseVisualStyleBackColor = true;
+            buttonRemoveFromRole.Click += buttonRemoveFromRole_Click;
+            // 
+            // labelRolesAvailable
+            // 
+            labelRolesAvailable.AutoSize = true;
+            tableLayoutPanelMembership.SetColumnSpan(labelRolesAvailable, 2);
+            labelRolesAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelRolesAvailable.Location = new System.Drawing.Point(4, 23);
+            labelRolesAvailable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelRolesAvailable.Name = "labelRolesAvailable";
+            labelRolesAvailable.Size = new System.Drawing.Size(194, 23);
+            labelRolesAvailable.TabIndex = 4;
+            labelRolesAvailable.Text = "Available groups";
+            labelRolesAvailable.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // labelRolesMemberOf
+            // 
+            labelRolesMemberOf.AutoSize = true;
+            labelRolesMemberOf.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelRolesMemberOf.Location = new System.Drawing.Point(408, 23);
+            labelRolesMemberOf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelRolesMemberOf.Name = "labelRolesMemberOf";
+            labelRolesMemberOf.Size = new System.Drawing.Size(171, 23);
+            labelRolesMemberOf.TabIndex = 5;
+            labelRolesMemberOf.Text = "Member in groups";
+            labelRolesMemberOf.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // checkBoxLogin
+            // 
+            checkBoxLogin.AutoSize = true;
+            tableLayoutPanelRole.SetColumnSpan(checkBoxLogin, 2);
+            checkBoxLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxLogin.Enabled = false;
+            checkBoxLogin.Location = new System.Drawing.Point(4, 26);
+            checkBoxLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxLogin.Name = "checkBoxLogin";
+            checkBoxLogin.Size = new System.Drawing.Size(385, 19);
+            checkBoxLogin.TabIndex = 0;
+            checkBoxLogin.Text = "Can log in";
+            checkBoxLogin.UseVisualStyleBackColor = true;
+            checkBoxLogin.Click += checkBoxLogin_Click;
+            // 
+            // checkBoxSuperuser
+            // 
+            checkBoxSuperuser.AutoSize = true;
+            checkBoxSuperuser.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxSuperuser.Enabled = false;
+            checkBoxSuperuser.Location = new System.Drawing.Point(397, 26);
+            checkBoxSuperuser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxSuperuser.Name = "checkBoxSuperuser";
+            checkBoxSuperuser.Size = new System.Drawing.Size(363, 19);
+            checkBoxSuperuser.TabIndex = 1;
+            checkBoxSuperuser.Text = "Is superuser";
+            checkBoxSuperuser.UseVisualStyleBackColor = true;
+            checkBoxSuperuser.Click += checkBoxSuperuser_Click;
+            // 
+            // checkBoxCreateRoles
+            // 
+            checkBoxCreateRoles.AutoSize = true;
+            tableLayoutPanelRole.SetColumnSpan(checkBoxCreateRoles, 2);
+            checkBoxCreateRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxCreateRoles.Location = new System.Drawing.Point(4, 51);
+            checkBoxCreateRoles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxCreateRoles.Name = "checkBoxCreateRoles";
+            checkBoxCreateRoles.Size = new System.Drawing.Size(385, 19);
+            checkBoxCreateRoles.TabIndex = 2;
+            checkBoxCreateRoles.Text = "Can create roles";
+            checkBoxCreateRoles.UseVisualStyleBackColor = true;
+            checkBoxCreateRoles.Click += checkBoxCreateRoles_Click;
+            // 
+            // checkBoxCreateDB
+            // 
+            checkBoxCreateDB.AutoSize = true;
+            checkBoxCreateDB.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxCreateDB.Location = new System.Drawing.Point(397, 51);
+            checkBoxCreateDB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxCreateDB.Name = "checkBoxCreateDB";
+            checkBoxCreateDB.Size = new System.Drawing.Size(363, 19);
+            checkBoxCreateDB.TabIndex = 3;
+            checkBoxCreateDB.Text = "Can create database";
+            checkBoxCreateDB.UseVisualStyleBackColor = true;
+            checkBoxCreateDB.Click += checkBoxCreateDB_Click;
+            // 
+            // labelRoleDescription
+            // 
+            labelRoleDescription.AutoSize = true;
+            tableLayoutPanelRole.SetColumnSpan(labelRoleDescription, 2);
+            labelRoleDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelRoleDescription.Location = new System.Drawing.Point(4, 73);
+            labelRoleDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelRoleDescription.Name = "labelRoleDescription";
+            labelRoleDescription.Size = new System.Drawing.Size(385, 23);
+            labelRoleDescription.TabIndex = 4;
+            labelRoleDescription.Text = "Description";
+            labelRoleDescription.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // listBoxAvailableRoles
+            // 
+            listBoxAvailableRoles.BackColor = System.Drawing.Color.Pink;
+            tableLayoutPanelMembership.SetColumnSpan(listBoxAvailableRoles, 3);
+            listBoxAvailableRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxAvailableRoles.FormattingEnabled = true;
+            listBoxAvailableRoles.IntegralHeight = false;
+            listBoxAvailableRoles.ItemHeight = 15;
+            listBoxAvailableRoles.Location = new System.Drawing.Point(4, 49);
+            listBoxAvailableRoles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            listBoxAvailableRoles.Name = "listBoxAvailableRoles";
+            tableLayoutPanelMembership.SetRowSpan(listBoxAvailableRoles, 2);
+            listBoxAvailableRoles.Size = new System.Drawing.Size(373, 460);
+            listBoxAvailableRoles.TabIndex = 0;
+            // 
+            // listBoxMemberInRoles
+            // 
+            listBoxMemberInRoles.BackColor = System.Drawing.Color.LightGreen;
+            tableLayoutPanelMembership.SetColumnSpan(listBoxMemberInRoles, 2);
+            listBoxMemberInRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxMemberInRoles.ForeColor = System.Drawing.SystemColors.WindowText;
+            listBoxMemberInRoles.FormattingEnabled = true;
+            listBoxMemberInRoles.IntegralHeight = false;
+            listBoxMemberInRoles.ItemHeight = 15;
+            listBoxMemberInRoles.Location = new System.Drawing.Point(408, 49);
+            listBoxMemberInRoles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            listBoxMemberInRoles.Name = "listBoxMemberInRoles";
+            tableLayoutPanelMembership.SetRowSpan(listBoxMemberInRoles, 3);
+            listBoxMemberInRoles.Size = new System.Drawing.Size(352, 463);
+            listBoxMemberInRoles.TabIndex = 1;
+            listBoxMemberInRoles.SelectedIndexChanged += listBoxMemberInRoles_SelectedIndexChanged;
+            // 
+            // buttonAddToRole
+            // 
+            buttonAddToRole.Dock = System.Windows.Forms.DockStyle.Bottom;
+            buttonAddToRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            buttonAddToRole.ForeColor = System.Drawing.Color.Green;
+            buttonAddToRole.Location = new System.Drawing.Point(381, 252);
+            buttonAddToRole.Margin = new System.Windows.Forms.Padding(0);
+            buttonAddToRole.Name = "buttonAddToRole";
+            buttonAddToRole.Size = new System.Drawing.Size(23, 27);
+            buttonAddToRole.TabIndex = 2;
+            buttonAddToRole.Text = ">";
+            buttonAddToRole.UseVisualStyleBackColor = true;
+            buttonAddToRole.Click += buttonAddToRole_Click;
+            // 
+            // textBoxRoleDescription
+            // 
+            tableLayoutPanelRole.SetColumnSpan(textBoxRoleDescription, 3);
+            textBoxRoleDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxRoleDescription.Enabled = false;
+            textBoxRoleDescription.Location = new System.Drawing.Point(4, 99);
+            textBoxRoleDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxRoleDescription.Multiline = true;
+            textBoxRoleDescription.Name = "textBoxRoleDescription";
+            textBoxRoleDescription.Size = new System.Drawing.Size(756, 413);
+            textBoxRoleDescription.TabIndex = 5;
+            textBoxRoleDescription.Leave += textBoxRoleDescription_Leave;
+            // 
+            // tabPageMembership
+            // 
+            tabPageMembership.Controls.Add(tableLayoutPanelMembership);
+            tabPageMembership.ImageIndex = 0;
+            tabPageMembership.Location = new System.Drawing.Point(4, 24);
+            tabPageMembership.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageMembership.Name = "tabPageMembership";
+            tabPageMembership.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageMembership.Size = new System.Drawing.Size(772, 521);
+            tabPageMembership.TabIndex = 1;
+            tabPageMembership.Text = "Membership in groups";
+            tabPageMembership.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanelMembership
+            // 
+            tableLayoutPanelMembership.ColumnCount = 6;
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanelMembership.Controls.Add(listBoxAvailableRoles, 0, 2);
+            tableLayoutPanelMembership.Controls.Add(listBoxMemberInRoles, 4, 2);
+            tableLayoutPanelMembership.Controls.Add(buttonAddToRole, 3, 2);
+            tableLayoutPanelMembership.Controls.Add(buttonRemoveFromRole, 3, 3);
+            tableLayoutPanelMembership.Controls.Add(labelRolesAvailable, 0, 1);
+            tableLayoutPanelMembership.Controls.Add(labelRolesMemberOf, 4, 1);
+            tableLayoutPanelMembership.Controls.Add(labelMembership, 1, 0);
+            tableLayoutPanelMembership.Controls.Add(pictureBoxMembership, 0, 0);
+            tableLayoutPanelMembership.Controls.Add(checkBoxAdminOption, 5, 1);
+            tableLayoutPanelMembership.Controls.Add(checkBoxGrantWithAdminOption, 2, 1);
+            tableLayoutPanelMembership.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelMembership.Location = new System.Drawing.Point(4, 3);
+            tableLayoutPanelMembership.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelMembership.Name = "tableLayoutPanelMembership";
+            tableLayoutPanelMembership.RowCount = 5;
+            tableLayoutPanelMembership.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelMembership.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelMembership.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelMembership.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelMembership.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelMembership.Size = new System.Drawing.Size(764, 515);
+            tableLayoutPanelMembership.TabIndex = 0;
+            // 
+            // labelMembership
+            // 
+            labelMembership.AutoSize = true;
+            labelMembership.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelMembership.Location = new System.Drawing.Point(27, 0);
+            labelMembership.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelMembership.Name = "labelMembership";
+            labelMembership.Size = new System.Drawing.Size(171, 23);
+            labelMembership.TabIndex = 6;
+            labelMembership.Text = "Membership";
+            labelMembership.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBoxMembership
+            // 
+            pictureBoxMembership.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBoxMembership.Location = new System.Drawing.Point(2, 2);
+            pictureBoxMembership.Margin = new System.Windows.Forms.Padding(2);
+            pictureBoxMembership.Name = "pictureBoxMembership";
+            pictureBoxMembership.Size = new System.Drawing.Size(19, 19);
+            pictureBoxMembership.TabIndex = 7;
+            pictureBoxMembership.TabStop = false;
             // 
             // checkBoxAdminOption
             // 
-            this.checkBoxAdminOption.AutoSize = true;
-            this.checkBoxAdminOption.Dock = System.Windows.Forms.DockStyle.Right;
-            this.checkBoxAdminOption.Location = new System.Drawing.Point(544, 20);
-            this.checkBoxAdminOption.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxAdminOption.Name = "checkBoxAdminOption";
-            this.checkBoxAdminOption.Size = new System.Drawing.Size(111, 20);
-            this.checkBoxAdminOption.TabIndex = 8;
-            this.checkBoxAdminOption.Text = "With admin option";
-            this.checkBoxAdminOption.UseVisualStyleBackColor = true;
-            this.checkBoxAdminOption.Click += new System.EventHandler(this.checkBoxAdminOption_Click);
+            checkBoxAdminOption.AutoSize = true;
+            checkBoxAdminOption.Dock = System.Windows.Forms.DockStyle.Right;
+            checkBoxAdminOption.Location = new System.Drawing.Point(638, 23);
+            checkBoxAdminOption.Margin = new System.Windows.Forms.Padding(0);
+            checkBoxAdminOption.Name = "checkBoxAdminOption";
+            checkBoxAdminOption.Size = new System.Drawing.Size(126, 23);
+            checkBoxAdminOption.TabIndex = 8;
+            checkBoxAdminOption.Text = "With admin option";
+            checkBoxAdminOption.UseVisualStyleBackColor = true;
+            checkBoxAdminOption.Click += checkBoxAdminOption_Click;
             // 
             // checkBoxGrantWithAdminOption
             // 
-            this.checkBoxGrantWithAdminOption.AutoSize = true;
-            this.checkBoxGrantWithAdminOption.Dock = System.Windows.Forms.DockStyle.Right;
-            this.checkBoxGrantWithAdminOption.Location = new System.Drawing.Point(215, 20);
-            this.checkBoxGrantWithAdminOption.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxGrantWithAdminOption.Name = "checkBoxGrantWithAdminOption";
-            this.checkBoxGrantWithAdminOption.Size = new System.Drawing.Size(111, 20);
-            this.checkBoxGrantWithAdminOption.TabIndex = 9;
-            this.checkBoxGrantWithAdminOption.Text = "With admin option";
-            this.checkBoxGrantWithAdminOption.UseVisualStyleBackColor = true;
+            checkBoxGrantWithAdminOption.AutoSize = true;
+            checkBoxGrantWithAdminOption.Dock = System.Windows.Forms.DockStyle.Right;
+            checkBoxGrantWithAdminOption.Location = new System.Drawing.Point(255, 23);
+            checkBoxGrantWithAdminOption.Margin = new System.Windows.Forms.Padding(0);
+            checkBoxGrantWithAdminOption.Name = "checkBoxGrantWithAdminOption";
+            checkBoxGrantWithAdminOption.Size = new System.Drawing.Size(126, 23);
+            checkBoxGrantWithAdminOption.TabIndex = 9;
+            checkBoxGrantWithAdminOption.Text = "With admin option";
+            checkBoxGrantWithAdminOption.UseVisualStyleBackColor = true;
+            // 
+            // imageListTab
+            // 
+            imageListTab.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            imageListTab.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageListTab.ImageStream");
+            imageListTab.TransparentColor = System.Drawing.Color.Transparent;
+            imageListTab.Images.SetKeyName(0, "Group.ico");
+            imageListTab.Images.SetKeyName(1, "Project.ico");
+            imageListTab.Images.SetKeyName(2, "Settings.ico");
+            imageListTab.Images.SetKeyName(3, "Graph.ico");
+            // 
+            // tableLayoutPanelRole
+            // 
+            tableLayoutPanelRole.ColumnCount = 3;
+            tableLayoutPanelRole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelRole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelRole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelRole.Controls.Add(checkBoxLogin, 0, 1);
+            tableLayoutPanelRole.Controls.Add(checkBoxSuperuser, 2, 1);
+            tableLayoutPanelRole.Controls.Add(checkBoxCreateRoles, 0, 2);
+            tableLayoutPanelRole.Controls.Add(checkBoxCreateDB, 2, 2);
+            tableLayoutPanelRole.Controls.Add(labelRoleDescription, 0, 3);
+            tableLayoutPanelRole.Controls.Add(textBoxRoleDescription, 0, 4);
+            tableLayoutPanelRole.Controls.Add(labelRoleProperties, 1, 0);
+            tableLayoutPanelRole.Controls.Add(pictureBoxLoginProperties, 0, 0);
+            tableLayoutPanelRole.Controls.Add(checkBoxInherit, 2, 3);
+            tableLayoutPanelRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelRole.Location = new System.Drawing.Point(4, 3);
+            tableLayoutPanelRole.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelRole.Name = "tableLayoutPanelRole";
+            tableLayoutPanelRole.RowCount = 5;
+            tableLayoutPanelRole.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelRole.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelRole.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelRole.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelRole.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelRole.Size = new System.Drawing.Size(764, 515);
+            tableLayoutPanelRole.TabIndex = 0;
+            // 
+            // labelRoleProperties
+            // 
+            labelRoleProperties.AutoSize = true;
+            labelRoleProperties.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelRoleProperties.Location = new System.Drawing.Point(27, 0);
+            labelRoleProperties.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelRoleProperties.Name = "labelRoleProperties";
+            labelRoleProperties.Size = new System.Drawing.Size(362, 23);
+            labelRoleProperties.TabIndex = 6;
+            labelRoleProperties.Text = "Properties of ";
+            labelRoleProperties.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBoxLoginProperties
+            // 
+            pictureBoxLoginProperties.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBoxLoginProperties.Image = Properties.Resources.Login;
+            pictureBoxLoginProperties.InitialImage = Properties.Resources.Login;
+            pictureBoxLoginProperties.Location = new System.Drawing.Point(2, 2);
+            pictureBoxLoginProperties.Margin = new System.Windows.Forms.Padding(2);
+            pictureBoxLoginProperties.Name = "pictureBoxLoginProperties";
+            pictureBoxLoginProperties.Size = new System.Drawing.Size(19, 19);
+            pictureBoxLoginProperties.TabIndex = 7;
+            pictureBoxLoginProperties.TabStop = false;
+            // 
+            // checkBoxInherit
+            // 
+            checkBoxInherit.AutoSize = true;
+            checkBoxInherit.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxInherit.Location = new System.Drawing.Point(397, 73);
+            checkBoxInherit.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            checkBoxInherit.Name = "checkBoxInherit";
+            checkBoxInherit.Size = new System.Drawing.Size(367, 23);
+            checkBoxInherit.TabIndex = 8;
+            checkBoxInherit.Text = "Inherits permissions";
+            checkBoxInherit.UseVisualStyleBackColor = true;
+            checkBoxInherit.Click += checkBoxInherit_Click;
+            // 
+            // tabPageProperties
+            // 
+            tabPageProperties.Controls.Add(tableLayoutPanelRole);
+            tabPageProperties.ImageIndex = 2;
+            tabPageProperties.Location = new System.Drawing.Point(4, 24);
+            tabPageProperties.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageProperties.Name = "tabPageProperties";
+            tabPageProperties.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageProperties.Size = new System.Drawing.Size(772, 521);
+            tabPageProperties.TabIndex = 0;
+            tabPageProperties.Text = "Properties";
+            tabPageProperties.UseVisualStyleBackColor = true;
+            // 
+            // tabControlRole
+            // 
+            tableLayoutPanelDetails.SetColumnSpan(tabControlRole, 3);
+            tabControlRole.Controls.Add(tabPageProperties);
+            tabControlRole.Controls.Add(tabPageMembership);
+            tabControlRole.Controls.Add(tabPagePermissions);
+            tabControlRole.Controls.Add(tabPageActivity);
+            tabControlRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControlRole.Enabled = false;
+            tabControlRole.ImageList = imageListTab;
+            tabControlRole.Location = new System.Drawing.Point(0, 27);
+            tabControlRole.Margin = new System.Windows.Forms.Padding(0);
+            tabControlRole.Name = "tabControlRole";
+            tabControlRole.SelectedIndex = 0;
+            tabControlRole.Size = new System.Drawing.Size(780, 549);
+            tabControlRole.TabIndex = 1;
+            // 
+            // tabPageActivity
+            // 
+            tabPageActivity.Controls.Add(tableLayoutPanelActivity);
+            tabPageActivity.ImageIndex = 3;
+            tabPageActivity.Location = new System.Drawing.Point(4, 24);
+            tabPageActivity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageActivity.Name = "tabPageActivity";
+            tabPageActivity.Size = new System.Drawing.Size(772, 521);
+            tabPageActivity.TabIndex = 3;
+            tabPageActivity.Text = "Activity";
+            tabPageActivity.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanelActivity
+            // 
+            tableLayoutPanelActivity.ColumnCount = 2;
+            tableLayoutPanelActivity.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelActivity.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelActivity.Controls.Add(dataGridViewActivity, 0, 1);
+            tableLayoutPanelActivity.Controls.Add(buttonShowActivity, 0, 0);
+            tableLayoutPanelActivity.Controls.Add(buttonActivityStop, 1, 0);
+            tableLayoutPanelActivity.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelActivity.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelActivity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelActivity.Name = "tableLayoutPanelActivity";
+            tableLayoutPanelActivity.RowCount = 2;
+            tableLayoutPanelActivity.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelActivity.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelActivity.Size = new System.Drawing.Size(772, 521);
+            tableLayoutPanelActivity.TabIndex = 0;
+            // 
+            // dataGridViewActivity
+            // 
+            dataGridViewActivity.AllowUserToAddRows = false;
+            dataGridViewActivity.AllowUserToDeleteRows = false;
+            dataGridViewActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tableLayoutPanelActivity.SetColumnSpan(dataGridViewActivity, 2);
+            dataGridViewActivity.Dock = System.Windows.Forms.DockStyle.Fill;
+            dataGridViewActivity.Location = new System.Drawing.Point(4, 36);
+            dataGridViewActivity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dataGridViewActivity.Name = "dataGridViewActivity";
+            dataGridViewActivity.ReadOnly = true;
+            dataGridViewActivity.Size = new System.Drawing.Size(764, 482);
+            dataGridViewActivity.TabIndex = 1;
+            // 
+            // toolStripButtonRoleDelete
+            // 
+            toolStripButtonRoleDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonRoleDelete.Image = Properties.Resources.Delete;
+            toolStripButtonRoleDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonRoleDelete.Name = "toolStripButtonRoleDelete";
+            toolStripButtonRoleDelete.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonRoleDelete.Text = "Delete the selected login";
+            toolStripButtonRoleDelete.Click += toolStripButtonRoleDelete_Click;
+            // 
+            // toolStripButtonRoleAdd
+            // 
+            toolStripButtonRoleAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonRoleAdd.Image = Properties.Resources.Add;
+            toolStripButtonRoleAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonRoleAdd.Name = "toolStripButtonRoleAdd";
+            toolStripButtonRoleAdd.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonRoleAdd.Text = "Add a new login";
+            toolStripButtonRoleAdd.Click += toolStripButtonRoleAdd_Click;
+            // 
+            // listBoxRoles
+            // 
+            tableLayoutPanelLogins.SetColumnSpan(listBoxRoles, 2);
+            listBoxRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxRoles.FormattingEnabled = true;
+            listBoxRoles.IntegralHeight = false;
+            listBoxRoles.ItemHeight = 15;
+            listBoxRoles.Location = new System.Drawing.Point(0, 24);
+            listBoxRoles.Margin = new System.Windows.Forms.Padding(0);
+            listBoxRoles.Name = "listBoxRoles";
+            listBoxRoles.Size = new System.Drawing.Size(249, 236);
+            listBoxRoles.TabIndex = 1;
+            listBoxRoles.SelectedIndexChanged += listBoxRoles_SelectedIndexChanged;
+            // 
+            // toolStripRoles
+            // 
+            toolStripRoles.Dock = System.Windows.Forms.DockStyle.Bottom;
+            toolStripRoles.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStripRoles.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonRoleAdd, toolStripButtonRoleDelete });
+            toolStripRoles.Location = new System.Drawing.Point(4, 263);
+            toolStripRoles.Name = "toolStripRoles";
+            toolStripRoles.Size = new System.Drawing.Size(249, 25);
+            toolStripRoles.TabIndex = 0;
+            toolStripRoles.Text = "toolStrip1";
+            // 
+            // splitContainerMain
+            // 
+            splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerMain.Location = new System.Drawing.Point(0, 0);
+            splitContainerMain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            splitContainerMain.Name = "splitContainerMain";
+            // 
+            // splitContainerMain.Panel1
+            // 
+            splitContainerMain.Panel1.Controls.Add(splitContainerRoles);
+            // 
+            // splitContainerMain.Panel2
+            // 
+            splitContainerMain.Panel2.Controls.Add(tableLayoutPanelDetails);
+            splitContainerMain.Panel2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            splitContainerMain.Size = new System.Drawing.Size(1050, 582);
+            splitContainerMain.SplitterDistance = 257;
+            splitContainerMain.SplitterWidth = 5;
+            splitContainerMain.TabIndex = 1;
+            // 
+            // splitContainerRoles
+            // 
+            splitContainerRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerRoles.Location = new System.Drawing.Point(0, 0);
+            splitContainerRoles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            splitContainerRoles.Name = "splitContainerRoles";
+            splitContainerRoles.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerRoles.Panel1
+            // 
+            splitContainerRoles.Panel1.Controls.Add(tableLayoutPanelLogins);
+            splitContainerRoles.Panel1.Controls.Add(toolStripRoles);
+            splitContainerRoles.Panel1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            // 
+            // splitContainerRoles.Panel2
+            // 
+            splitContainerRoles.Panel2.Controls.Add(tableLayoutPanelGroups);
+            splitContainerRoles.Panel2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            splitContainerRoles.Size = new System.Drawing.Size(257, 582);
+            splitContainerRoles.SplitterDistance = 291;
+            splitContainerRoles.SplitterWidth = 5;
+            splitContainerRoles.TabIndex = 2;
+            // 
+            // tableLayoutPanelLogins
+            // 
+            tableLayoutPanelLogins.ColumnCount = 2;
+            tableLayoutPanelLogins.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelLogins.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelLogins.Controls.Add(listBoxRoles, 0, 1);
+            tableLayoutPanelLogins.Controls.Add(pictureBoxLogins, 0, 0);
+            tableLayoutPanelLogins.Controls.Add(labelLogins, 1, 0);
+            tableLayoutPanelLogins.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelLogins.Location = new System.Drawing.Point(4, 3);
+            tableLayoutPanelLogins.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelLogins.Name = "tableLayoutPanelLogins";
+            tableLayoutPanelLogins.RowCount = 2;
+            tableLayoutPanelLogins.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelLogins.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelLogins.Size = new System.Drawing.Size(249, 260);
+            tableLayoutPanelLogins.TabIndex = 2;
+            // 
+            // pictureBoxLogins
+            // 
+            pictureBoxLogins.Image = Properties.Resources.Login;
+            pictureBoxLogins.Location = new System.Drawing.Point(4, 3);
+            pictureBoxLogins.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBoxLogins.Name = "pictureBoxLogins";
+            pictureBoxLogins.Size = new System.Drawing.Size(19, 18);
+            pictureBoxLogins.TabIndex = 2;
+            pictureBoxLogins.TabStop = false;
+            // 
+            // labelLogins
+            // 
+            labelLogins.AutoSize = true;
+            labelLogins.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelLogins.Location = new System.Drawing.Point(31, 0);
+            labelLogins.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelLogins.Name = "labelLogins";
+            labelLogins.Size = new System.Drawing.Size(214, 24);
+            labelLogins.TabIndex = 3;
+            labelLogins.Text = "Logins";
+            labelLogins.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanelGroups
+            // 
+            tableLayoutPanelGroups.ColumnCount = 2;
+            tableLayoutPanelGroups.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelGroups.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelGroups.Controls.Add(toolStripGroups, 0, 2);
+            tableLayoutPanelGroups.Controls.Add(labelGroups, 1, 0);
+            tableLayoutPanelGroups.Controls.Add(pictureBoxGroups, 0, 0);
+            tableLayoutPanelGroups.Controls.Add(listBoxGroups, 0, 1);
+            tableLayoutPanelGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelGroups.Location = new System.Drawing.Point(4, 3);
+            tableLayoutPanelGroups.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelGroups.Name = "tableLayoutPanelGroups";
+            tableLayoutPanelGroups.RowCount = 3;
+            tableLayoutPanelGroups.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelGroups.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelGroups.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelGroups.Size = new System.Drawing.Size(249, 280);
+            tableLayoutPanelGroups.TabIndex = 0;
+            // 
+            // toolStripGroups
+            // 
+            tableLayoutPanelGroups.SetColumnSpan(toolStripGroups, 2);
+            toolStripGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            toolStripGroups.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStripGroups.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonAddGroup, toolStripButtonDeleteGroup });
+            toolStripGroups.Location = new System.Drawing.Point(0, 255);
+            toolStripGroups.Name = "toolStripGroups";
+            toolStripGroups.Size = new System.Drawing.Size(249, 25);
+            toolStripGroups.TabIndex = 6;
+            toolStripGroups.Text = "toolStrip1";
+            // 
+            // toolStripButtonAddGroup
+            // 
+            toolStripButtonAddGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonAddGroup.Image = Properties.Resources.Add;
+            toolStripButtonAddGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonAddGroup.Name = "toolStripButtonAddGroup";
+            toolStripButtonAddGroup.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonAddGroup.Text = "Add a new group";
+            toolStripButtonAddGroup.Click += toolStripButtonAddGroup_Click;
+            // 
+            // toolStripButtonDeleteGroup
+            // 
+            toolStripButtonDeleteGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonDeleteGroup.Image = Properties.Resources.Delete;
+            toolStripButtonDeleteGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonDeleteGroup.Name = "toolStripButtonDeleteGroup";
+            toolStripButtonDeleteGroup.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonDeleteGroup.Text = "Delete the selected group";
+            toolStripButtonDeleteGroup.Click += toolStripButtonDeleteGroup_Click;
+            // 
+            // labelGroups
+            // 
+            labelGroups.AutoSize = true;
+            labelGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelGroups.Location = new System.Drawing.Point(31, 0);
+            labelGroups.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelGroups.Name = "labelGroups";
+            labelGroups.Size = new System.Drawing.Size(214, 24);
+            labelGroups.TabIndex = 7;
+            labelGroups.Text = "Groups";
+            labelGroups.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBoxGroups
+            // 
+            pictureBoxGroups.Image = Properties.Resources.Group;
+            pictureBoxGroups.Location = new System.Drawing.Point(4, 3);
+            pictureBoxGroups.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBoxGroups.Name = "pictureBoxGroups";
+            pictureBoxGroups.Size = new System.Drawing.Size(19, 18);
+            pictureBoxGroups.TabIndex = 8;
+            pictureBoxGroups.TabStop = false;
+            // 
+            // listBoxGroups
+            // 
+            tableLayoutPanelGroups.SetColumnSpan(listBoxGroups, 2);
+            listBoxGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxGroups.FormattingEnabled = true;
+            listBoxGroups.IntegralHeight = false;
+            listBoxGroups.ItemHeight = 15;
+            listBoxGroups.Location = new System.Drawing.Point(0, 24);
+            listBoxGroups.Margin = new System.Windows.Forms.Padding(0);
+            listBoxGroups.Name = "listBoxGroups";
+            listBoxGroups.Size = new System.Drawing.Size(249, 231);
+            listBoxGroups.TabIndex = 9;
+            listBoxGroups.SelectedIndexChanged += listBoxGroups_SelectedIndexChanged;
+            // 
+            // tableLayoutPanelDetails
+            // 
+            tableLayoutPanelDetails.ColumnCount = 3;
+            tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelDetails.Controls.Add(tabControlRole, 0, 1);
+            tableLayoutPanelDetails.Controls.Add(buttonFeedback, 2, 0);
+            tableLayoutPanelDetails.Controls.Add(pictureBoxDetailsHeader, 0, 0);
+            tableLayoutPanelDetails.Controls.Add(labelDetailsHeader, 1, 0);
+            tableLayoutPanelDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelDetails.Location = new System.Drawing.Point(4, 3);
+            tableLayoutPanelDetails.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelDetails.Name = "tableLayoutPanelDetails";
+            tableLayoutPanelDetails.RowCount = 2;
+            tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelDetails.Size = new System.Drawing.Size(780, 576);
+            tableLayoutPanelDetails.TabIndex = 2;
+            // 
+            // pictureBoxDetailsHeader
+            // 
+            pictureBoxDetailsHeader.Location = new System.Drawing.Point(4, 3);
+            pictureBoxDetailsHeader.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBoxDetailsHeader.Name = "pictureBoxDetailsHeader";
+            pictureBoxDetailsHeader.Size = new System.Drawing.Size(19, 18);
+            pictureBoxDetailsHeader.TabIndex = 3;
+            pictureBoxDetailsHeader.TabStop = false;
+            // 
+            // labelDetailsHeader
+            // 
+            labelDetailsHeader.AutoSize = true;
+            labelDetailsHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelDetailsHeader.Location = new System.Drawing.Point(31, 0);
+            labelDetailsHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelDetailsHeader.Name = "labelDetailsHeader";
+            labelDetailsHeader.Size = new System.Drawing.Size(717, 27);
+            labelDetailsHeader.TabIndex = 4;
+            labelDetailsHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormRoleAdministration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 504);
-            this.Controls.Add(this.splitContainerMain);
-            this.helpProvider.SetHelpKeyword(this, "Postgres database administration");
-            this.helpProvider.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.KeywordIndex);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormRoleAdministration";
-            this.helpProvider.SetShowHelp(this, true);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Role administration";
-            this.tableLayoutPanelGrants.ResumeLayout(false);
-            this.tableLayoutPanelGrants.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrants)).EndInit();
-            this.tabPagePermissions.ResumeLayout(false);
-            this.tableLayoutPanelPermissions.ResumeLayout(false);
-            this.tableLayoutPanelPermissions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPermissions)).EndInit();
-            this.tabPageMembership.ResumeLayout(false);
-            this.tableLayoutPanelMembership.ResumeLayout(false);
-            this.tableLayoutPanelMembership.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMembership)).EndInit();
-            this.tableLayoutPanelRole.ResumeLayout(false);
-            this.tableLayoutPanelRole.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoginProperties)).EndInit();
-            this.tabPageProperties.ResumeLayout(false);
-            this.tabControlRole.ResumeLayout(false);
-            this.tabPageActivity.ResumeLayout(false);
-            this.tableLayoutPanelActivity.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActivity)).EndInit();
-            this.toolStripRoles.ResumeLayout(false);
-            this.toolStripRoles.PerformLayout();
-            this.splitContainerMain.Panel1.ResumeLayout(false);
-            this.splitContainerMain.Panel2.ResumeLayout(false);
-            this.splitContainerMain.ResumeLayout(false);
-            this.splitContainerRoles.Panel1.ResumeLayout(false);
-            this.splitContainerRoles.Panel1.PerformLayout();
-            this.splitContainerRoles.Panel2.ResumeLayout(false);
-            this.splitContainerRoles.ResumeLayout(false);
-            this.tableLayoutPanelLogins.ResumeLayout(false);
-            this.tableLayoutPanelLogins.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogins)).EndInit();
-            this.tableLayoutPanelGroups.ResumeLayout(false);
-            this.tableLayoutPanelGroups.PerformLayout();
-            this.toolStripGroups.ResumeLayout(false);
-            this.toolStripGroups.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroups)).EndInit();
-            this.tableLayoutPanelDetails.ResumeLayout(false);
-            this.tableLayoutPanelDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDetailsHeader)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1050, 582);
+            Controls.Add(splitContainerMain);
+            helpProvider.SetHelpKeyword(this, "Postgres database administration");
+            helpProvider.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.KeywordIndex);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "FormRoleAdministration";
+            helpProvider.SetShowHelp(this, true);
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "Role administration";
+            tableLayoutPanelGrants.ResumeLayout(false);
+            tableLayoutPanelGrants.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxGrants).EndInit();
+            tabPagePermissions.ResumeLayout(false);
+            tableLayoutPanelPermissions.ResumeLayout(false);
+            tableLayoutPanelPermissions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxPermissions).EndInit();
+            tabPageMembership.ResumeLayout(false);
+            tableLayoutPanelMembership.ResumeLayout(false);
+            tableLayoutPanelMembership.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxMembership).EndInit();
+            tableLayoutPanelRole.ResumeLayout(false);
+            tableLayoutPanelRole.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLoginProperties).EndInit();
+            tabPageProperties.ResumeLayout(false);
+            tabControlRole.ResumeLayout(false);
+            tabPageActivity.ResumeLayout(false);
+            tableLayoutPanelActivity.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewActivity).EndInit();
+            toolStripRoles.ResumeLayout(false);
+            toolStripRoles.PerformLayout();
+            splitContainerMain.Panel1.ResumeLayout(false);
+            splitContainerMain.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerMain).EndInit();
+            splitContainerMain.ResumeLayout(false);
+            splitContainerRoles.Panel1.ResumeLayout(false);
+            splitContainerRoles.Panel1.PerformLayout();
+            splitContainerRoles.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerRoles).EndInit();
+            splitContainerRoles.ResumeLayout(false);
+            tableLayoutPanelLogins.ResumeLayout(false);
+            tableLayoutPanelLogins.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogins).EndInit();
+            tableLayoutPanelGroups.ResumeLayout(false);
+            tableLayoutPanelGroups.PerformLayout();
+            toolStripGroups.ResumeLayout(false);
+            toolStripGroups.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxGroups).EndInit();
+            tableLayoutPanelDetails.ResumeLayout(false);
+            tableLayoutPanelDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxDetailsHeader).EndInit();
+            ResumeLayout(false);
 
         }
 
@@ -1208,5 +1281,6 @@
         private System.Windows.Forms.CheckBox checkBoxGrantWithGrantOption;
         private System.Windows.Forms.CheckBox checkBoxAdminOption;
         private System.Windows.Forms.CheckBox checkBoxGrantWithAdminOption;
+        private System.Windows.Forms.CheckBox checkBoxGrantCreate;
     }
 }

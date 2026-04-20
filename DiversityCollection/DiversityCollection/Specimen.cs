@@ -1,8 +1,9 @@
 using System;
-using System.ComponentModel;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DiversityCollection
 {
@@ -367,7 +368,22 @@ namespace DiversityCollection
                     if (R["DependsOnIdentificationSequence"].Equals(System.DBNull.Value))
                         i = (int)OverviewImage.Identification;
                     else
-                        i=(int)OverviewImageTableOrField.IdentificationAdd;
+                    {
+                        bool IsTaxonomyRelated = false;
+                        bool IsDependent = !R["DependsOnIdentificationSequence"].Equals(System.DBNull.Value);
+                        if (IsDependent)
+                        {
+                            string SqlTaxGroup = "select TaxonomicGroup from IdentificationUnit where IdentificationUnitID = " + R["IdentificationUnitID"].ToString();
+                            string TaxGroup = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlTaxGroup);
+                            IsTaxonomyRelated = DiversityWorkbench.CollectionSpecimen.TaxonomyRelatedTaxonomicGroups.Contains(TaxGroup);
+                        }
+                        if (IsDependent && IsTaxonomyRelated)
+                        {
+                            i = (int)OverviewImage.Agent;
+                        }
+                        else
+                            i = (int)OverviewImageTableOrField.IdentificationAdd;
+                    }
                     break;
                 case "IdentificationUnitList":
                 case "IdentificationUnit":

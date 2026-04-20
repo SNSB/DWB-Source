@@ -33,10 +33,16 @@ namespace DWBServices.WebServices.TaxonomicServices.GbifSpecies
         }
         public override string DwbApiQueryUrlString(DwbServiceEnums.DwbService currentService, string queryRestrictions, int offset, int maxResults)
         {
+            // get datasetkey from current service
+            var serviceInfoDictionary = DwbServiceEnums.TaxonomicServiceInfoDictionary();
             GbifSpeciesTaxonomicSearchCriterias criterias = new GbifSpeciesTaxonomicSearchCriterias();
             queryRestrictions = Uri.EscapeDataString(queryRestrictions);
             if (criterias.ValidateQueryRestrictions(queryRestrictions, offset, maxResults))
             {
+                if (serviceInfoDictionary.TryGetValue(currentService, out var serviceInfo))
+                {
+                    criterias.datasetKey = serviceInfo.DatasetKey;
+                }
                 criterias.query = queryRestrictions;
                 criterias.limit = maxResults.ToString();
             }

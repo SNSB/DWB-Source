@@ -2402,7 +2402,8 @@ namespace DiversityCollection
                         }
                         break;
                     case QRcodeSource.PartAccessionNumber:
-                        System.Data.DataRow[] rrSP = this.dataSetCollectionSpecimen.CollectionSpecimenPart.Select("CollectionSpecimenID = " + SpecimenID.ToString());
+                        System.Data.DataRow[] rrSP = this.dataSetCollectionSpecimen.CollectionSpecimenPart.Select("CollectionSpecimenID = " + SpecimenID.ToString() + " AND SpecimenPartID = " + PartID.ToString());
+                        //System.Data.DataRow[] rrSP = this.dataSetCollectionSpecimen.CollectionSpecimenPart.Select("CollectionSpecimenID = " + SpecimenID.ToString());
                         if (rrSP.Length > 0)
                         {
                             if (!rrSP[0]["AccessionNumber"].Equals(System.DBNull.Value))
@@ -2459,7 +2460,9 @@ namespace DiversityCollection
                 {
                     W.WriteStartElement("QRcode");
                     W.WriteElementString("QRcode", QRcode);
-                    string ImagePath = DiversityWorkbench.QRCode.QRCodeImage(QRcode, DiversityWorkbench.Settings.QRcodeSize, this.ImageDirectory(), PartID.ToString());
+                    int ID = PartID;
+                    if (ID == -1 && SpecimenID != -1) ID = SpecimenID;
+                    string ImagePath = DiversityWorkbench.QRCode.QRCodeImage(QRcode, DiversityWorkbench.Settings.QRcodeSize, this.ImageDirectory(), ID.ToString());
                     W.WriteElementString("ImagePath", ImagePath);
                     W.WriteEndElement();  // QRcode
                 }

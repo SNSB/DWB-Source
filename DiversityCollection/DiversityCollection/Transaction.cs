@@ -15,6 +15,7 @@ namespace DiversityCollection
         public string AccessionNumber;
         public string AccessionNumberTo;
         public string Identification;
+        public string VernacularTerm;
         public string LocalityDescription;
         public string TypeStatus;
         public string TypeIdentification;
@@ -3413,6 +3414,16 @@ namespace DiversityCollection
                         SP.AccessionNumber = rr[i]["AccessionNumber"].ToString();
                         SP.AccessionNumberTo = "";
                         SP.Identification = rr[i]["LastIdentificationCache"].ToString();
+
+                        //#373
+                        string VernacularTerm = "";
+                        string sql = "SELECT TOP (1) VernacularTerm FROM Identification i "
+                            + " inner join CollectionSpecimenPart p on i.CollectionSpecimenID = p.CollectionSpecimenID "
+                            + " inner join IdentificationUnitInPart U on u.IdentificationUnitID = i.IdentificationUnitID and u.SpecimenPartID = " + rr[i]["SpecimenPartID"].ToString()
+                            + " WHERE i.CollectionSpecimenID = " + rr[i]["CollectionSpecimenID"].ToString() 
+                            + " AND NOT VernacularTerm IS NULL AND VernacularTerm <> ''";
+                        SP.VernacularTerm = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, DiversityWorkbench.Settings.ConnectionString);
+
                         SP.LocalityDescription = rr[i]["LocalityDescription"].ToString();
                         // #127
                         int PartID;
@@ -3530,6 +3541,9 @@ namespace DiversityCollection
                                 Counter++;
                             }
                             W.WriteElementString("Identification", kv.Value.TaxonSinYear);//.Identification);
+                            // #373
+                            if (kv.Value.VernacularTerm.Length > 0)
+                                W.WriteElementString("VernacularTerm", kv.Value.VernacularTerm);
                             // #127
                             if (this._AllUnits)
                             {

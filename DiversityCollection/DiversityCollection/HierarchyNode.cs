@@ -789,102 +789,119 @@ namespace DiversityCollection
                     #region Unit
                     case "Identification":
                         Title = this._DataRow["TaxonomicName"].ToString();
-                        if (!this._DataRow["IdentificationQualifier"].Equals(System.DBNull.Value)
-                            && this._DataRow["IdentificationQualifier"].ToString().Length > 0)
+                        // #383
+                        bool IsTaxonomyRelated = false;
+                        bool IsDependent = !this._DataRow["DependsOnIdentificationSequence"].Equals(System.DBNull.Value);
+                        if (IsDependent)
                         {
-                            string Qualifier = this._DataRow["IdentificationQualifier"].ToString();
-                            if (Title.Length > 0 && Qualifier.Length > 0 && !Title.EndsWith(Qualifier))
-                            {
-                                Title = this.Taxon(Title, Qualifier);
-                            }
+                            string SqlTaxGroup = "select TaxonomicGroup from IdentificationUnit where IdentificationUnitID = " + this._DataRow["IdentificationUnitID"].ToString();
+                            string TaxGroup = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlTaxGroup);
+                            IsTaxonomyRelated = DiversityWorkbench.CollectionSpecimen.TaxonomyRelatedTaxonomicGroups.Contains(TaxGroup);
                         }
-                        if (Title.Length == 0) Title = this._DataRow["VernacularTerm"].ToString();
-                        if (this._DataRow["TypeStatus"].ToString().Length > 0
-                            && !this._DataRow["TypeStatus"].ToString().StartsWith("not "))
-                            Title += " - " + this._DataRow["TypeStatus"].ToString();
-                        string Ident = "";
-                        if (!this._DataRow["ResponsibleName"].Equals(System.DBNull.Value))
+                        if (IsDependent && IsTaxonomyRelated)
                         {
-                            string User = this._DataRow["ResponsibleName"].ToString();
-                            if (User.Length > 0)
+                            Title = "& respons.: " + this._DataRow["ResponsibleName"].ToString();
+                        }
+
+                        else
+                        {
+                            if (!this._DataRow["IdentificationQualifier"].Equals(System.DBNull.Value)
+                                && this._DataRow["IdentificationQualifier"].ToString().Length > 0)
                             {
-                                string Prefix = "respons.:";
-                                if (!this._DataRow["IdentificationCategory"].Equals(System.DBNull.Value))
+                                string Qualifier = this._DataRow["IdentificationQualifier"].ToString();
+                                if (Title.Length > 0 && Qualifier.Length > 0 && !Title.EndsWith(Qualifier))
                                 {
-                                    string Category = this._DataRow["IdentificationCategory"].ToString();
-                                    switch (Category)
-                                    {
-                                        case "absence":
-                                            Prefix = "absent, " + User;
-                                            break;
-                                        case "confirmation":
-                                            Prefix = "conf. by " + User;
-                                            break;
-                                        case "correction":
-                                            Prefix = "corr. by " + User;
-                                            break;
-                                        case "determination":
-                                            Prefix = "det. by " + User;
-                                            break;
-                                        case "dubious":
-                                            Prefix = "dubious, " + User;
-                                            break;
-                                        case "implicit":
-                                            Prefix = "impl., " + User;
-                                            break;
-                                        case "negative":
-                                            Prefix = "neg., " + User;
-                                            break;
-                                        case "preference":
-                                            Prefix = "pref., " + User;
-                                            break;
-                                        case "renaming":
-                                            Prefix = "renamed by " + User;
-                                            break;
-                                        case "revision":
-                                            Prefix = "rev. by " + User;
-                                            break;
-                                        case "expert assignment":
-                                            Prefix = "exp. assgn. by " + User;
-                                            break;
-                                        default:
-                                            Ident += Prefix + " " + User;
-                                            break;
-                                    }
+                                    Title = this.Taxon(Title, Qualifier);
                                 }
-                                else
-                                    Prefix += " " + User;
-                                Ident += Prefix;
                             }
-                        }
-                        string IdentDate = "";
-                        // Markus 5.7.2023: Isodate if possible
-                        if(!(this._DataRow["IdentificationDate"].Equals(System.DBNull.Value)))
-                        {
-                            IdentDate = DiversityWorkbench.Forms.FormFunctions.IsoDate(this._DataRow["IdentificationDate"].ToString());
-                        }
-                        else if (!(this._DataRow["IdentificationYear"].Equals(System.DBNull.Value) &&
-                            this._DataRow["IdentificationYear"].ToString().Length > 0 &&
-                            this._DataRow["IdentificationYear"].ToString() != "0")
-                            ||
-                            (!this._DataRow["IdentificationMonth"].Equals(System.DBNull.Value) &&
-                            this._DataRow["IdentificationMonth"].ToString().Length > 0 &&
-                            this._DataRow["IdentificationMonth"].ToString() != "0")
-                            ||
-                            (!this._DataRow["IdentificationDay"].Equals(System.DBNull.Value) &&
-                            this._DataRow["IdentificationDay"].ToString().Length > 0 &&
-                            this._DataRow["IdentificationDay"].ToString() != "0"))
-                        {
-                            IdentDate = this._DataRow["IdentificationYear"].ToString() + "-" +
-                                this._DataRow["IdentificationMonth"].ToString() + "-" +
-                                this._DataRow["IdentificationDay"].ToString();
-                        }
-                        if (IdentDate.Replace("-", "").Length > 0 || Ident.Length > 0)
-                        {
-                            Title += "   [" + Ident;
-                            if (IdentDate.Length > 0 && IdentDate != "0-0-0" && IdentDate != "--")
-                                Title += "   Date: " + IdentDate;
-                            Title += "]";
+                            if (Title.Length == 0) Title = this._DataRow["VernacularTerm"].ToString();
+                            if (this._DataRow["TypeStatus"].ToString().Length > 0
+                                && !this._DataRow["TypeStatus"].ToString().StartsWith("not "))
+                                Title += " - " + this._DataRow["TypeStatus"].ToString();
+                            string Ident = "";
+                            if (!this._DataRow["ResponsibleName"].Equals(System.DBNull.Value))
+                            {
+                                string User = this._DataRow["ResponsibleName"].ToString();
+                                if (User.Length > 0)
+                                {
+                                    string Prefix = "respons.:";
+                                    if (!this._DataRow["IdentificationCategory"].Equals(System.DBNull.Value))
+                                    {
+                                        string Category = this._DataRow["IdentificationCategory"].ToString();
+                                        switch (Category)
+                                        {
+                                            case "absence":
+                                                Prefix = "absent, " + User;
+                                                break;
+                                            case "confirmation":
+                                                Prefix = "conf. by " + User;
+                                                break;
+                                            case "correction":
+                                                Prefix = "corr. by " + User;
+                                                break;
+                                            case "determination":
+                                                Prefix = "det. by " + User;
+                                                break;
+                                            case "dubious":
+                                                Prefix = "dubious, " + User;
+                                                break;
+                                            case "implicit":
+                                                Prefix = "impl., " + User;
+                                                break;
+                                            case "negative":
+                                                Prefix = "neg., " + User;
+                                                break;
+                                            case "preference":
+                                                Prefix = "pref., " + User;
+                                                break;
+                                            case "renaming":
+                                                Prefix = "renamed by " + User;
+                                                break;
+                                            case "revision":
+                                                Prefix = "rev. by " + User;
+                                                break;
+                                            case "expert assignment":
+                                                Prefix = "exp. assgn. by " + User;
+                                                break;
+                                            default:
+                                                Ident += Prefix + " " + User;
+                                                break;
+                                        }
+                                    }
+                                    else
+                                        Prefix += " " + User;
+                                    Ident += Prefix;
+                                }
+                            }
+                            string IdentDate = "";
+                            // Markus 5.7.2023: Isodate if possible
+                            if (!(this._DataRow["IdentificationDate"].Equals(System.DBNull.Value)))
+                            {
+                                IdentDate = DiversityWorkbench.Forms.FormFunctions.IsoDate(this._DataRow["IdentificationDate"].ToString());
+                            }
+                            else if (!(this._DataRow["IdentificationYear"].Equals(System.DBNull.Value) &&
+                                this._DataRow["IdentificationYear"].ToString().Length > 0 &&
+                                this._DataRow["IdentificationYear"].ToString() != "0")
+                                ||
+                                (!this._DataRow["IdentificationMonth"].Equals(System.DBNull.Value) &&
+                                this._DataRow["IdentificationMonth"].ToString().Length > 0 &&
+                                this._DataRow["IdentificationMonth"].ToString() != "0")
+                                ||
+                                (!this._DataRow["IdentificationDay"].Equals(System.DBNull.Value) &&
+                                this._DataRow["IdentificationDay"].ToString().Length > 0 &&
+                                this._DataRow["IdentificationDay"].ToString() != "0"))
+                            {
+                                IdentDate = this._DataRow["IdentificationYear"].ToString() + "-" +
+                                    this._DataRow["IdentificationMonth"].ToString() + "-" +
+                                    this._DataRow["IdentificationDay"].ToString();
+                            }
+                            if (IdentDate.Replace("-", "").Length > 0 || Ident.Length > 0)
+                            {
+                                Title += "   [" + Ident;
+                                if (IdentDate.Length > 0 && IdentDate != "0-0-0" && IdentDate != "--")
+                                    Title += "   Date: " + IdentDate;
+                                Title += "]";
+                            }
                         }
                         break;
                     case "IdentificationUnit":

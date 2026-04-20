@@ -51,8 +51,6 @@ namespace DiversityWorkbench.Forms
             labelDisclaimer = new System.Windows.Forms.Label();
             labelDotNet = new System.Windows.Forms.Label();
             linkLabelDotNet = new System.Windows.Forms.LinkLabel();
-            labelDotNetPresent = new System.Windows.Forms.Label();
-            labelDotNetOnMachine = new System.Windows.Forms.Label();
             imageListApplications = new System.Windows.Forms.ImageList(components);
             helpProvider = new System.Windows.Forms.HelpProvider();
             toolTip = new System.Windows.Forms.ToolTip(components);
@@ -82,8 +80,6 @@ namespace DiversityWorkbench.Forms
             tableLayoutPanel.Controls.Add(labelDisclaimer, 0, 8);
             tableLayoutPanel.Controls.Add(labelDotNet, 0, 11);
             tableLayoutPanel.Controls.Add(linkLabelDotNet, 1, 11);
-            tableLayoutPanel.Controls.Add(labelDotNetPresent, 0, 12);
-            tableLayoutPanel.Controls.Add(labelDotNetOnMachine, 1, 12);
             tableLayoutPanel.Name = "tableLayoutPanel";
             helpProvider.SetShowHelp(tableLayoutPanel, (bool)resources.GetObject("tableLayoutPanel.ShowHelp"));
             // 
@@ -225,21 +221,7 @@ namespace DiversityWorkbench.Forms
             resources.ApplyResources(linkLabelDotNet, "linkLabelDotNet");
             linkLabelDotNet.Name = "linkLabelDotNet";
             helpProvider.SetShowHelp(linkLabelDotNet, (bool)resources.GetObject("linkLabelDotNet.ShowHelp"));
-            linkLabelDotNet.TabStop = true;
-            toolTip.SetToolTip(linkLabelDotNet, resources.GetString("linkLabelDotNet.ToolTip"));
             linkLabelDotNet.LinkClicked += linkLabelDotNet_LinkClicked;
-            // 
-            // labelDotNetPresent
-            // 
-            resources.ApplyResources(labelDotNetPresent, "labelDotNetPresent");
-            labelDotNetPresent.Name = "labelDotNetPresent";
-            helpProvider.SetShowHelp(labelDotNetPresent, (bool)resources.GetObject("labelDotNetPresent.ShowHelp"));
-            // 
-            // labelDotNetOnMachine
-            // 
-            resources.ApplyResources(labelDotNetOnMachine, "labelDotNetOnMachine");
-            labelDotNetOnMachine.Name = "labelDotNetOnMachine";
-            helpProvider.SetShowHelp(labelDotNetOnMachine, (bool)resources.GetObject("labelDotNetOnMachine.ShowHelp"));
             // 
             // imageListApplications
             // 
@@ -306,7 +288,5 @@ namespace DiversityWorkbench.Forms
         private System.Windows.Forms.Label labelDotNet;
         private System.Windows.Forms.LinkLabel linkLabelDotNet;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.Label labelDotNetPresent;
-        private System.Windows.Forms.Label labelDotNetOnMachine;
     }
 }

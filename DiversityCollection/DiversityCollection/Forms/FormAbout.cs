@@ -16,7 +16,7 @@ namespace DiversityCollection.Forms
             InitializeComponent();
             this.setSeize();
             this.setDescription();
-            this.labelAuthorsText.Text = "Markus Weiss, Ariane Grunz, Wolfgang Reichert (GIS editor)";
+            this.labelAuthorsText.Text = "SNSB IT Center";
         }
 
         protected void setDescription()

@@ -33,10 +33,16 @@ namespace DWBServices.WebServices.TaxonomicServices.WoRMS
         }
         public override string DwbApiQueryUrlString(DwbServiceEnums.DwbService currentService, string queryRestrictions, int offset, int maxPerPage)
         {
+            // get datasetkey from current service
+            var serviceInfoDictionary = DwbServiceEnums.TaxonomicServiceInfoDictionary();
             WoRMSTaxonomicSearchCriterias criterias = new WoRMSTaxonomicSearchCriterias();
             queryRestrictions = Uri.EscapeDataString(queryRestrictions);
             if (criterias.ValidateQueryRestrictions(queryRestrictions, offset, maxPerPage))
             {
+                if (serviceInfoDictionary.TryGetValue(currentService, out var serviceInfo))
+                {
+                    criterias.endpoint = serviceInfo.SearchEndpoint;
+                }
                 criterias.query = queryRestrictions;
             }
             else

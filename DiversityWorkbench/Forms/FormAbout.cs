@@ -30,7 +30,7 @@ namespace DiversityWorkbench.Forms
             }
             this.labelCopyrightText.Text = "© 1999 - " + System.DateTime.Now.Year.ToString() + ", Diversity Workbench";
 
-            this.labelDotNetOnMachine.Text = DiversityWorkbench.Forms.FormFunctions.Get45or451FromRegistry();
+            //this.labelDotNetOnMachine.Text = DiversityWorkbench.Forms.FormFunctions.Get45or451FromRegistry();
             //this.labelCompanyText.Text = "Staatliche Naturwissenschaftliche Sammlungen Bayerns,\r\nIT Centre";
             //this.linkLabelLicence.Text = "http://www.gnu.org/licenses/gpl.html";
 

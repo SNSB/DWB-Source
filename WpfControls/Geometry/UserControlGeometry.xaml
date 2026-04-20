@@ -32,7 +32,7 @@
         </Canvas>
         <Rectangle x:Name="HintergrundToolstrip" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="11" Fill="#FFEEEEEE" Stroke="DarkGray" StrokeThickness="1">
         </Rectangle>
-        <Button ToolTip="Add a rectangle or redesign the current geometry" Grid.ColumnSpan="1" Grid.Column="0" Grid.Row="0" x:Name="buttonAddRectangle" Content="□" HorizontalAlignment="Left" Height="22" Margin="4,4,0,0" Padding="0,-9,0,0" VerticalAlignment="Top" Width="24" FontWeight="Heavy" Foreground="Red" FontSize="22" RenderTransformOrigin="0.5,0.5"/>
+        <Button ToolTip="Add a rectangle or redesign the current geometry" Grid.ColumnSpan="1" Grid.Column="0" Grid.Row="0" x:Name="buttonAddRectangle" Content="⬜" HorizontalAlignment="Left" Height="22" Margin="4,4,0,0" Padding="0,-9,0,0" VerticalAlignment="Top" Width="24" FontWeight="Heavy" Foreground="Red" FontSize="22" RenderTransformOrigin="0.5,0.5"/>
         <Button ToolTip="Clear geometry" Grid.ColumnSpan="1" Grid.Column="0" Grid.Row="1" x:Name="buttonClear" Content="×" HorizontalAlignment="Left" Height="22" Margin="4,4,0,0" Padding="0,-3,0,0" VerticalAlignment="Top" Width="24" FontWeight="Bold" Foreground="Red" FontSize="22"/>
         <!--<Button ToolTip="Add a polygone" Grid.ColumnSpan="1" Grid.Column="0" Grid.Row="1" x:Name="buttonAddPolygone" Content="⌂" HorizontalAlignment="Left" Height="22" Margin="4,4,0,0" Padding="0,-3,0,0" VerticalAlignment="Top" Width="24" FontWeight="Heavy" Foreground="Red" FontSize="18" RenderTransformOrigin="0.5,0.5" IsEnabled="False">
             <Button.RenderTransform>

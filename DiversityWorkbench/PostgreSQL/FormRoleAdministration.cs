@@ -209,6 +209,7 @@ namespace DiversityWorkbench.PostgreSQL
             this.checkBoxSuperuser.Visible = IsRole;
             this.checkBoxCreateRoles.Visible = IsRole;
             this.checkBoxCreateDB.Visible = IsRole;
+            this.checkBoxGrantCreate.Visible = false;
 
         }
         
@@ -271,6 +272,20 @@ namespace DiversityWorkbench.PostgreSQL
             DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL);
             DiversityWorkbench.PostgreSQL.Connection.ResetRoles();
         }
+
+        private void checkBoxGrantCreate_Click(object sender, EventArgs e)
+        {
+            string SQL = "";
+            if (checkBoxGrantCreate.Checked)
+                SQL += "GRANT";
+            else
+                SQL += "REVOKE";
+            SQL += " CREATE ON SCHEMA \"" + this._CurrentSchema + "\" TO \"" + this._CurrentGroupOrLogin + "\";";
+            DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL);
+            DiversityWorkbench.PostgreSQL.Connection.ResetRoles();
+        }
+
+
 
         #endregion
 
@@ -714,6 +729,7 @@ namespace DiversityWorkbench.PostgreSQL
                     this.checkBoxGrantAll.Visible = true;
                     this.checkBoxGrantAllTables.Visible = true;
                     this.checkBoxGrantWithGrantOption.Visible = true;
+                    this.checkBoxGrantCreate.Visible = true;
                     break;
                 case DatabaseObjects.Database:
                     this.labelGrants.Text += "database " + Node.Text;
@@ -756,6 +772,9 @@ namespace DiversityWorkbench.PostgreSQL
                     SQL = "SELECT has_schema_privilege('" + Role + "', '" + Node.Text + "', 'Usage')";
                     if (bool.TryParse(DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL), out HasPrivilege))
                         this.checkBoxGrantUsage.Checked = HasPrivilege;
+                    SQL = "SELECT has_schema_privilege('" + Role + "', '" + Node.Text + "', 'Create')";
+                    if (bool.TryParse(DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL), out HasPrivilege))
+                        this.checkBoxGrantCreate.Checked = HasPrivilege;
                     break;
                 case DatabaseObjects.Database:
                     SQL = "SELECT * FROM has_database_privilege('" + Role + "', '" + Node.Text + "', 'connect');";

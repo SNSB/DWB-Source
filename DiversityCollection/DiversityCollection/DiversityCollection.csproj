@@ -25,7 +25,7 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
 	<FileVersion>$(Version)</FileVersion>
-	<Version>4.6.4</Version>
+	<Version>4.6.5</Version>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
@@ -508,6 +508,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\info.ico" />
+    <None Include="DiversityCollectionSetup\DiversityCollectionSetup.vdproj" />
     <None Include="Resources\PostgresDatabaseUpdates\DiversityCollectionCacheProjectPG_000002_to_000003.sql" />
     <Content Include="CacheDatabase\Packages\ABCD\ABCD_000006_to_000007.sql" />
     <Content Include="CacheDatabase\Packages\ABCD\BayernFlora\ABCD_BayernFlora_000002_to_000003.sql" />

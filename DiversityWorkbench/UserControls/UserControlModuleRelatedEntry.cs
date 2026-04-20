@@ -471,6 +471,8 @@ namespace DiversityWorkbench.UserControls
             {
                 if (formHeight.HasValue)
                 {
+                    if (form == null)
+                        return;
                     form.Height = formHeight.Value;
                 }
                 form.ShowDialog();
@@ -508,6 +510,7 @@ namespace DiversityWorkbench.UserControls
                 if (!string.IsNullOrEmpty(this.DependsOnUri))
                 {
                     this.getDependentSource();
+                    return null;
                 }
                 return !string.IsNullOrEmpty(domain)
                     ? new DiversityWorkbench.Forms.FormRemoteQuery(this._IWorkbenchUnit, listInDatabase, domain, true)
@@ -988,27 +991,32 @@ namespace DiversityWorkbench.UserControls
                 fD.ShowDialog();
                 if (fD.DialogResult == DialogResult.OK)
                 {
-                    System.Data.DataRowView R = (System.Data.DataRowView)this._BindingSource.Current;
-                    R.BeginEdit();
-                    R[this._ValueColumn] = fD.URI;
-                    string Display = fD.DisplayText.Trim();
-                    try
+                    if (fD.URI.Length == 0)
+                        System.Windows.Forms.MessageBox.Show("Nothing selected");
+                    else
                     {
-                        System.Collections.Generic.Dictionary<string, string> VV = ST.UnitValues(fD.URI);
-                        if (VV.ContainsKey("RankingTerm") &&
-                            VV["RankingTerm"].Length > 0 &&
-                            Display != VV["RankingTerm"])
+                        System.Data.DataRowView R = (System.Data.DataRowView)this._BindingSource.Current;
+                        R.BeginEdit();
+                        R[this._ValueColumn] = fD.URI;
+                        string Display = fD.DisplayText.Trim();
+                        try
                         {
-                            Display = VV["RankingTerm"] + ": " + Display;
+                            System.Collections.Generic.Dictionary<string, string> VV = ST.UnitValues(fD.URI);
+                            if (VV.ContainsKey("RankingTerm") &&
+                                VV["RankingTerm"].Length > 0 &&
+                                Display != VV["RankingTerm"])
+                            {
+                                Display = VV["RankingTerm"] + ": " + Display;
+                            }
                         }
+                        catch (System.Exception ex)
+                        {
+                            DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                        }
+                        R[this._DisplayColumn] = Display;
+                        R.EndEdit();
+                        this.labelURI.Text = fD.URI;
                     }
-                    catch (System.Exception ex)
-                    {
-                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-                    }
-                    R[this._DisplayColumn] = Display;
-                    R.EndEdit();
-                    this.labelURI.Text = fD.URI;
                 }
             }
             else

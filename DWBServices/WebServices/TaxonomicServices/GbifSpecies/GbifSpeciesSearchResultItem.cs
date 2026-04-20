@@ -201,15 +201,16 @@ namespace DWBServices.WebServices.TaxonomicServices.GbifSpecies
 
     public class GbifSpeciesTaxonomicSearchCriterias : TaxonomicSearchCriteria
     {
-        public override string QueryParamString => $"search?datasetKey={datasetkey}&q={query}&limit={limit}%offset={offset}";
+        public override string QueryParamString => $"{endpoint}datasetKey={datasetKey}&q={query}&limit={limit}%offset={offset}";
 
+        public string endpoint { get; set; } = "search?"; // default
         public string query = ""; // QueryRestrictions
 
         public string offset = "0";
 
         public string limit = "";
 
-        public string datasetkey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"; // GBIF Backbone
+        public string datasetKey { get; set; } = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"; // GBIF Backbone
 
 
         public bool ValidateQueryRestrictions(string queryRestrictions, int offset, int maxResult)

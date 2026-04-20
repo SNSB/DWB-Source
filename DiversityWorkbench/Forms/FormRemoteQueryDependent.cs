@@ -113,8 +113,12 @@ namespace DiversityWorkbench.Forms
         {
             get
             {
-                System.Data.DataRowView R = (System.Data.DataRowView)this.userControlQueryList.listBoxQueryResult.SelectedItem;
-                return this._ServerConnection.BaseURL + R[0].ToString();
+                if (this.userControlQueryList.listBoxQueryResult.SelectedItem != null)
+                {
+                    System.Data.DataRowView R = (System.Data.DataRowView)this.userControlQueryList.listBoxQueryResult.SelectedItem;
+                    return this._ServerConnection.BaseURL + R[0].ToString();
+                }
+                else return "";
             }
         }
 

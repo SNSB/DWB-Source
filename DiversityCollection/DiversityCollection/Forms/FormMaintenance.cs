@@ -1083,6 +1083,15 @@ namespace DiversityCollection.Forms
             catch (System.Exception ex)
             {
             }
+            finally
+            {
+                this.Cursor = System.Windows.Forms.Cursors.Default;
+                this.buttonSynColTaxCancel.Enabled = false;
+                this.buttonSynColTaxCancel.Visible = false;
+                this.buttonSynColTaxCheck.Enabled = true;
+                this.buttonSynColTaxCheck.Visible = true;
+
+            }
 
             try
             {
@@ -1423,7 +1432,6 @@ namespace DiversityCollection.Forms
                         DwbEntity clientEntity = await getApiDetailModel(_api, nameUri, cancellationToken);
                         if (clientEntity == null)
                         {
-                            NameOfTaxon = "Error: Invalid URI or empty Response";
                             RowsWithErrors.Add(R);
                             R[0] = false;
                             //RowsToDelete.Add(R);
@@ -2122,6 +2130,9 @@ namespace DiversityCollection.Forms
                 this.buttonSynColTaxTextCancel.Visible = false;
                 this.buttonSynColTaxTextCheck.Enabled = true; // Re-enable the button
                 this.Cursor = System.Windows.Forms.Cursors.Default;
+                // Explicitly reset the cursor for the DataGridView
+                this.dataGridViewSynColTaxText.Cursor = System.Windows.Forms.Cursors.Default;
+               
             }
         }
 
@@ -3625,7 +3636,6 @@ namespace DiversityCollection.Forms
             if (this._dtSynColTaxText == null) this._dtSynColTaxText = new DataTable();
             else this._dtSynColTaxText.Clear();
             Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityCollection.Forms.FormMaintenanceSettings.Default.Timeout));
-            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             try
             {
                 ad.Fill(this._dtSynColTaxText);
@@ -3995,12 +4005,13 @@ namespace DiversityCollection.Forms
             }
         }
 
-        private void buttonSynColTaxBrokenSearch_Click(object sender, EventArgs e)
+        private async void buttonSynColTaxBrokenSearch_Click(object sender, EventArgs e)
         {
             string BaseURL = "";
             string LinkedServer = "";
             string ConnectionString = "";
             string TaxonDatabase = "";
+            bool isWebservice = false;
             try
             {
                 if (DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].DataBaseURIs().TryGetValue(this.comboBoxSynColTaxBrokenSource.Text, out BaseURL))
@@ -4018,6 +4029,10 @@ namespace DiversityCollection.Forms
                             LinkedServer = KV.Value.LinkedServer;
                         }
                     }
+                }
+                else if (DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityTaxonNames"].DatabaseAndServiceURIs().TryGetValue(this.comboBoxSynColTaxBrokenSource.Text, out BaseURL))
+                {
+                    isWebservice = true;
                 }
             }
             catch (System.Exception ex)
@@ -4056,70 +4071,104 @@ namespace DiversityCollection.Forms
                 this.progressBarSynColTaxBrokenLinks.Value = 0;
                 this.dataGridViewSynColTaxBroken.Columns.Clear();
 
-                foreach (System.Data.DataRow R in this._DtTaxaBrokenLinks.Rows)
+                if (isWebservice)
                 {
-                    string URI = R["NameURI"].ToString();
-                    string ID = DiversityWorkbench.WorkbenchUnit.getIDFromURI(URI);
-                    if (ID.Length == 0)
-                    {
-                        string Server = URI;
-                        if (Server.IndexOf("/") > -1)
-                            Server = Server.Substring(0, Server.LastIndexOf("/"));
-                        if (!FailedUris.Contains(Server) && !ExcludedUris.Contains(Server))
+                    try { 
+                    
+                        DwbServiceEnums.DwbService currentDwbService = getCurrentService(this.comboBoxSynColTaxBrokenSource.Text);
+                        IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api =
+                            DwbServiceProviderAccessor.GetDwbWebservice(currentDwbService);
+                        if (_api != null)
                         {
-                            if (System.Windows.Forms.MessageBox.Show("The retrieval of the ID for the server " + Server + " failed. Exclude this server from the search", "Exclude server?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            foreach (System.Data.DataRow R in this._DtTaxaBrokenLinks.Rows)
                             {
-                                if (!ExcludedUris.Contains(Server))
-                                    ExcludedUris.Add(Server);
-                            }
-                            else
-                            {
-                                if (!FailedUris.Contains(Server))
-                                    FailedUris.Add(Server);
+                                string nameUri = R["NameURI"]?.ToString(); 
+                                if (await checkWebserviceLink(this.comboBoxSynColTaxBrokenSource.Text, nameUri, _api))
+                                {
+                                    R.Delete();
+                                }
+                                this.progressBarSynColTaxBrokenLinks.Value++;
                             }
                         }
-                        if (ExcludedUris.Contains(Server))
-                            R.Delete();
-                        //this._DtTaxaBrokenLinks.Clear();
-                        //break;
                     }
-                    else
+                    catch (System.OperationCanceledException ex)
                     {
-                        //System.Collections.Generic.Dictionary<string, string> D = new Dictionary<string, string>();
-                        bool OK = false;
-                        try
+                        System.Windows.Forms.MessageBox.Show("The webservice call was cancelled.", "SynchronizeError", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        System.Windows.Forms.MessageBox.Show("An error occurred when trying to synchronize with the webservice: " + ex.Message, "SynchronizeError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                    }
+                }
+                else
+                {
+                    foreach (System.Data.DataRow R in this._DtTaxaBrokenLinks.Rows)
+                    {
+                        string URI = R["NameURI"].ToString();
+                        string ID = DiversityWorkbench.WorkbenchUnit.getIDFromURI(URI);
+                        if (ID.Length == 0)
                         {
-                            if (LinkedServer.Length > 0)
+                            string Server = URI;
+                            if (Server.IndexOf("/") > -1)
+                                Server = Server.Substring(0, Server.LastIndexOf("/"));
+                            if (!FailedUris.Contains(Server) && !ExcludedUris.Contains(Server))
                             {
-                                string SqlTest = "SELECT COUNT(*) FROM [" + LinkedServer + "].[" + TaxonDatabase + "].dbo.TaxonName AS T WHERE (T.NameID = " + ID.ToString() + ")";
-                                Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(ConnectionString);
-                                Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SqlTest, con);
-                                con.Open();
-                                if (int.Parse(C.ExecuteScalar()?.ToString()) > 0)
-                                    OK = true;
-                                con.Close();
-                                con.Dispose();
+                                if (System.Windows.Forms.MessageBox.Show("The retrieval of the ID for the server " + Server + " failed. Exclude this server from the search", "Exclude server?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    if (!ExcludedUris.Contains(Server))
+                                        ExcludedUris.Add(Server);
+                                }
+                                else
+                                {
+                                    if (!FailedUris.Contains(Server))
+                                        FailedUris.Add(Server);
+                                }
+                            }
+                            if (ExcludedUris.Contains(Server))
+                                R.Delete();
+                            //this._DtTaxaBrokenLinks.Clear();
+                            //break;
+                        }
+                        else
+                        {
+                            //System.Collections.Generic.Dictionary<string, string> D = new Dictionary<string, string>();
+                            bool OK = false;
+                            try
+                            {
+                                if (LinkedServer.Length > 0)
+                                {
+                                    string SqlTest = "SELECT COUNT(*) FROM [" + LinkedServer + "].[" + TaxonDatabase + "].dbo.TaxonName AS T WHERE (T.NameID = " + ID.ToString() + ")";
+                                    Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(ConnectionString);
+                                    Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SqlTest, con);
+                                    con.Open();
+                                    if (int.Parse(C.ExecuteScalar()?.ToString()) > 0)
+                                        OK = true;
+                                    con.Close();
+                                    con.Dispose();
 
+                                }
+                                else
+                                    OK = this._iWUTaxonBrokenLinks.DoesExist(int.Parse(ID));
+                                if (!OK)
+                                {
+                                    DiversityWorkbench.TaxonName T = new DiversityWorkbench.TaxonName(DiversityWorkbench.Settings.ServerConnection);
+                                    System.Collections.Generic.Dictionary<string, string> UV = T.UnitValues(URI);
+                                    if (UV.Count > 0 && UV["_URI"] == URI)
+                                        OK = true;
+                                }
+                                //D = this._iWUTaxonBrokenLinks.UnitValues(int.Parse(ID));
                             }
-                            else
-                                OK = this._iWUTaxonBrokenLinks.DoesExist(int.Parse(ID));
-                            if (!OK)
+                            catch (System.Exception ex)
                             {
-                                DiversityWorkbench.TaxonName T = new DiversityWorkbench.TaxonName(DiversityWorkbench.Settings.ServerConnection);
-                                System.Collections.Generic.Dictionary<string, string> UV = T.UnitValues(URI);
-                                if (UV.Count > 0 && UV["_URI"] == URI)
-                                    OK = true;
+                                OK = false;
                             }
-                            //D = this._iWUTaxonBrokenLinks.UnitValues(int.Parse(ID));
+                            if (/*D.Count > 0 && */OK)
+                                R.Delete();
                         }
-                        catch (System.Exception ex)
-                        {
-                            OK = false;
-                        }
-                        if (/*D.Count > 0 && */OK)
-                            R.Delete();
+                        this.progressBarSynColTaxBrokenLinks.Value++;
                     }
-                    this.progressBarSynColTaxBrokenLinks.Value++;
                 }
                 this._DtTaxaBrokenLinks.AcceptChanges();
                 this.labelSynColTaxBrokenCurrentState.Text = this._DtTaxaBrokenLinks.Rows.Count.ToString() + " broken links found";
@@ -4145,6 +4194,19 @@ namespace DiversityCollection.Forms
                 this.dataGridViewSynColTaxBroken.Columns[3].ReadOnly = true;
                 this.dataGridViewSynColTaxBroken.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
+        }
+        private async Task<bool> checkWebserviceLink(string text, string nameUri, IDwbWebservice<DwbSearchResult, DwbSearchResultItem, DwbEntity> _api)
+        {
+            _userCts = new CancellationTokenSource();
+            if (!_api.IsValidUrl(nameUri))
+            {
+                return false;
+            }
+
+            DwbEntity clientEntity = await getApiDetailModel(_api, nameUri, _userCts.Token);
+            if (clientEntity == null)
+                return false;
+            return true;
         }
 
         private void buttonSynColTaxBrokenAll_Click(object sender, EventArgs e)
@@ -5218,7 +5280,6 @@ namespace DiversityCollection.Forms
 
                 if (isTaxWebService(this.comboBoxSynColTaxFamOrdDatabase.Text))
                 {
-                    this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
                     this.progressBarSynColTaxFamOrdDatabase.Visible = true;
                     this.progressBarSynColTaxFamOrdDatabase.Value = 0;
                     this.progressBarSynColTaxFamOrdDatabase.Maximum = this._dtSynColTaxHierarchy.Rows.Count;
@@ -5273,7 +5334,6 @@ namespace DiversityCollection.Forms
                 }
                 else
                 {
-                    this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
                     Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
                     Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand("", con);
                     con.Open();

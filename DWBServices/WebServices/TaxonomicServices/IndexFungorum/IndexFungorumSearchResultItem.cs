@@ -71,7 +71,10 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
 
     public class IndexFungorumTaxonomicSearchCriterias : TaxonomicSearchCriteria
     {
-        public override string QueryParamString => $"NameSearch?SearchText={query}&AnywhereInText={anywhereInText}&MaxNumber={maxPerPage}";
+        // public override string QueryParamString => $"NameSearch?SearchText={query}&AnywhereInText={anywhereInText}&MaxNumber={maxPerPage}";
+        public override string QueryParamString => $"{endpoint}&SearchText={query}&MaxNumber={maxPerPage}";
+
+        public string endpoint = "NameSearch?AnywhereInText=true"; // default
 
         public string query = ""; // QueryRestrictions
 

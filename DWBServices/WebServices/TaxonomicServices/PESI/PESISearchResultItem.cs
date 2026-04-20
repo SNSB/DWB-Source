@@ -62,19 +62,13 @@ namespace DWBServices.WebServices.TaxonomicServices.PESI
 
     public class PESITaxonomicSearchCriterias : TaxonomicSearchCriteria
     {
-        public override string QueryParamString => $"search?&query={query}&match_type={matchtype}&terminologies={terminologies}&first_hit={firsthit}&format={format}&internal_only={internalonly}";
+        //public override string QueryParamString => $"search?&query={query}&match_type={matchtype}&terminologies={terminologies}&first_hit={firsthit}&format={format}&internal_only={internalonly}";
 
-        public string query = ""; // QueryRestrictions
+        public override string QueryParamString => $"{endpoint}&query={query}";
 
-        public string terminologies = "PESI";
+        public string endpoint = "search?terminologies=PESI&match_type=included&first_hit=false&format=json&internal_only=false"; // default
 
-        public string matchtype = "included";
-
-        public string firsthit = "false";
-
-        public string format = "json";
-        
-        public string internalonly = "false";
+        public string query = ""; 
 
 
         public bool ValidateQueryRestrictions(string queryRestrictions, int offset, int maxPerPage)

@@ -81,7 +81,9 @@ namespace DWBServices.WebServices.TaxonomicServices.WoRMS
 
     public class WoRMSTaxonomicSearchCriterias : TaxonomicSearchCriteria
     {
-        public override string QueryParamString => $"AphiaRecordsByNames?scientificnames%5B%5D={query}&&like={like}&marine_only={marine_only}";
+        public override string QueryParamString => $"{endpoint}&scientificnames%5B%5D={query}";
+
+        
 
         public string query = ""; // QueryRestrictions
 
@@ -89,9 +91,11 @@ namespace DWBServices.WebServices.TaxonomicServices.WoRMS
 
         public string limit = "20";
 
-        private string like = "true";
+        //private string like = "true";
 
-        private string marine_only = "false";
+        //private string marine_only = "false";
+
+        public string endpoint { get; set; } = "AphiaRecordsByNames?like =true&marine_only=false"; // default
 
 
         public bool ValidateQueryRestrictions(string queryRestrictions, int offset, int maxPerPage)

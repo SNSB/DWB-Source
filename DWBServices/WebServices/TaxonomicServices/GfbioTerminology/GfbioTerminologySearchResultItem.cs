@@ -67,18 +67,21 @@ namespace DWBServices.WebServices.TaxonomicServices.GfbioTerminology
 
     public class GfbioTerminologyTaxonomicSearchCriterias : TaxonomicSearchCriteria
     {
-        public override string QueryParamString => $"search?&query={query}&match_type={matchtype}&first_hit={firsthit}&format={format}&internal_only={internalonly}";
+        //public override string QueryParamString => $"search?query={query}&match_type={matchtype}&first_hit={firsthit}&format={format}&internal_only={internalonly}";
+
+        public override string QueryParamString => $"{endpoint}&query={query}";
+
+        public string endpoint = "search?match_type=included&first_hit=false&format=json&internal_only=false"; // default
 
         public string query = ""; // QueryRestrictions
 
-        public string matchtype = "included";
+        //public string matchtype = "included";
 
-        public string firsthit = "false";
+        //public string firsthit = "false";
 
-        public string format = "json";
+        //public string format = "json";
 
-        public string internalonly = "false";
-
+        //public string internalonly = "false";
 
         public bool ValidateQueryRestrictions(string queryRestrictions, int offset, int maxPerPage)
         {

@@ -287,9 +287,31 @@ namespace DiversityWorkbench.Forms
 
         private string _Filter = "";
 
+        private void setFilter(string Filter)
+        {
+            this._Filter = Filter;
+            this._dtLogins = null;
+            this.initLogins();
+        }
+
+        private void toolStripTextBoxFilter_TextChanged(object sender, EventArgs e)
+        {
+            // Filter directly when text is changed
+            this.setFilter(this.toolStripTextBoxFilter.Text);
+        }
+
         private void toolStripButtonFilter_Click(object sender, EventArgs e)
         {
-            this._Filter = this.toolStripTextBoxFilter.Text;
+            if (this.toolStripTextBoxFilter.Text.Length == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Please enter a filter. You can use * as wildcard. Example: 'Diversity*' will show all logins starting with 'Diversity'.");
+                return;
+            }
+            if (this.toolStripTextBoxFilter.Text.Length > 0)
+                this.toolStripTextBoxFilter.Text = this.toolStripTextBoxFilter.Text.Replace("*", "%");
+            if (this.toolStripTextBoxFilter.Text.Length > 0 && !this.toolStripTextBoxFilter.Text.EndsWith("%"))
+                this.toolStripTextBoxFilter.Text += "%";
+            this.setFilter(this.toolStripTextBoxFilter.Text);
             this._dtLogins = null;
             this.initLogins();
         }
@@ -904,7 +926,7 @@ namespace DiversityWorkbench.Forms
                 {
                     if (this.DatabaseForUserInfo.Length > 0)
                     {
-                        string SQL = this.SqlLoginAgentInfo(AgentInfo.Count); 
+                        string SQL = this.SqlLoginAgentInfo(AgentInfo.Count);
                         //"USE " + this.DatabaseForUserInfo + "; " +
                         //    "SELECT  U.AgentURI " +
                         //    "FROM UserProxy U, Agent A " +
@@ -951,7 +973,7 @@ namespace DiversityWorkbench.Forms
             }
         }
 
-        private enum AgentInfo{Count, URI, Name}
+        private enum AgentInfo { Count, URI, Name }
         private string SqlLoginAgentInfo(AgentInfo agentInfo)
         {
             string SQL = "USE " + this.DatabaseForUserInfo + "; " +
@@ -1355,6 +1377,12 @@ namespace DiversityWorkbench.Forms
         {
             try
             {
+                DiversityWorkbench.ServerConnection sc = this.CurrentServerConnection();
+                if (sc == null || sc.DatabaseName == null)
+                {
+                    System.Windows.Forms.MessageBox.Show("Please select a database");
+                    return;
+                }
                 string SQL = "use master; " +
                     "select p.name, U.LoginName " +
                     "from sys.server_principals p, " +

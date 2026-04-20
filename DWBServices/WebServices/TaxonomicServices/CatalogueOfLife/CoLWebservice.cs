@@ -91,6 +91,7 @@ namespace DWBServices.WebServices.TaxonomicServices.CatalogueOfLife
                 if (criterias.ValidateQueryRestrictions(queryRestrictions, offset, maxPerPage))
                 {
                     criterias.datasetKey = serviceInfo.DatasetKey;
+                    criterias.endpoint = serviceInfo.SearchEndpoint;
                     criterias.query = queryRestrictions;
                     criterias.offset = offset.ToString();
                     criterias.maxPerPage = maxPerPage.ToString();

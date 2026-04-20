@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Navigation;
 
 namespace DiversityWorkbench.PostgreSQL
 {
@@ -11,6 +12,13 @@ namespace DiversityWorkbench.PostgreSQL
 
         private static System.Collections.Generic.Dictionary<string, DiversityWorkbench.PostgreSQL.Server> _PreviousConnections;
         public static string Password;
+        /// <summary>
+        /// The server version number as returned by the query "SELECT current_setting('server_version_num');". 
+        /// This is used to check for compatibility of the database and the client. 
+        /// The value is cached after the first retrieval.
+        /// </summary>
+        private static int _server_version_num;
+        public static int ServerVersion { get => _server_version_num; }
 
         #endregion
 
@@ -116,6 +124,13 @@ namespace DiversityWorkbench.PostgreSQL
                     try
                     {
                         con.Open();
+                        // retrieve and cache server version number
+                        DiversityWorkbench.PostgreSQL.Connection._server_version_num = con.PostgreSqlVersion.Major; // this is needed to cache the server version number in NpgsqlConnection.PostgreSqlVersion
+                        //string SQL = "SELECT current_setting('server_version_num')::int / 10000;";
+                        //string Result = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL, _DefaultConnectionString);
+                        //if (Result.Length > 0)
+                        //     int.TryParse(Result, out DiversityWorkbench.PostgreSQL.Connection._server_version_num);
+
                         OK = true;
                     }
                     catch (System.Exception ex)

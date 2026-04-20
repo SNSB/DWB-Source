@@ -100,10 +100,18 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
 
         public override string DwbApiQueryUrlString(DwbServiceEnums.DwbService currentService, string queryRestrictions, int offset, int maxPerPage)
         {
+            // get datasetkey from current service
+            var serviceInfoDictionary = DwbServiceEnums.TaxonomicServiceInfoDictionary();
+
             IndexFungorumTaxonomicSearchCriterias criteria = new IndexFungorumTaxonomicSearchCriterias();
             queryRestrictions = Uri.EscapeDataString(queryRestrictions);
             if (criteria.ValidateQueryRestrictions(queryRestrictions, offset, maxPerPage))
             {
+                if (serviceInfoDictionary.TryGetValue(currentService, out var serviceInfo))
+                {
+                    criteria.endpoint = serviceInfo.SearchEndpoint;
+                }
+                
                 criteria.query = queryRestrictions;
                 // criteria.offset = offset.ToString();
                 criteria.maxPerPage = maxPerPage.ToString();

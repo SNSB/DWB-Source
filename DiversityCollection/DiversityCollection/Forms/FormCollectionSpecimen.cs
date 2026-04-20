@@ -1198,11 +1198,26 @@ namespace DiversityCollection.Forms
             //this.eventSheetToolStripMenuItem.Visible = false;
 #if DEBUG
             this.testToolStripMenuItem.Visible = true;
+#endif
             // #197 - Markus - showing JSON cache toolstrip menu item and button in debug mode
             // restore JSON cache menu item and button as soon as servers are uptodate
-            this.jsonCacheToolStripMenuItem.Visible = true;
-            this.buttonJsonCache.Visible = true;
-#endif
+            this.jsonCacheToolStripMenuItem.Visible = JsonAvailable();
+            this.buttonJsonCache.Visible = JsonAvailable();
+        }
+
+        private bool? _JsonAvailable = null;
+
+        private bool JsonAvailable()
+        {
+            if (this._JsonAvailable == null)
+            {
+                string SQL = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS C WHERE C.TABLE_NAME = 'JsonCache' AND C.COLUMN_NAME = 'Data' AND C.DATA_TYPE = 'nvarchar' AND C.CHARACTER_MAXIMUM_LENGTH = -1 AND C.CHARACTER_SET_NAME = 'UNICODE'";
+                this._JsonAvailable = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL).ToString() == "1";
+            }
+            if (this._JsonAvailable == true)
+                return true;
+            else
+                return false;
         }
 
         #region Connection
@@ -1783,6 +1798,12 @@ namespace DiversityCollection.Forms
                 this.updateSpecimen();
             int SpecimenID = this.SpecimenID;
             DiversityCollection.Forms.FormImageGrid f = new DiversityCollection.Forms.FormImageGrid(IDs, this.userControlQueryList.ProjectID);
+            if (f.RowCount == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("No images available for the selected datasets");
+                this.Cursor = System.Windows.Forms.Cursors.Default;
+                return;
+            }
             f.Width = this.Width - 10;
             f.Height = this.Height - 10;
             if (CanUpdate)
@@ -1818,6 +1839,12 @@ namespace DiversityCollection.Forms
                 this.updateSpecimen();
             int SpecimenID = this.SpecimenID;
             DiversityCollection.Forms.FormIdentificationUnitGridMode f = new FormIdentificationUnitGridMode(IDs, this.Text, this.userControlQueryList.ProjectID);
+            if (f.RowCount == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("No units available for the selected datasets");
+                this.Cursor = System.Windows.Forms.Cursors.Default;
+                return;
+            }
             f.Width = this.Width - 10;
             f.Height = this.Height - 10;
             DiversityWorkbench.Forms.FormFunctions.SetHelp(this.helpProviderDiversityCollection, f, "Grid organism");
@@ -1861,6 +1888,12 @@ namespace DiversityCollection.Forms
                 this.updateSpecimen();
             int SpecimenID = this.SpecimenID;
             DiversityCollection.Forms.FormPartGrid f = new DiversityCollection.Forms.FormPartGrid(IDs, this.Text, this.userControlQueryList.ProjectID);
+            if (f.RowCount == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("No parts available for the selected datasets");
+                this.Cursor = System.Windows.Forms.Cursors.Default;
+                return;
+            }
             f.Width = this.Width - 10;
             f.Height = this.Height - 10;
             f.StartPosition = FormStartPosition.CenterParent;
@@ -12458,6 +12491,8 @@ namespace DiversityCollection.Forms
                 DiversityWorkbench.PostgreSQL.Connection.ResetDefaultConnectionString();
                 if (fs != null) fs.ShowCurrentStep("Resetting roles");
                 DiversityWorkbench.Database.DatabaseRolesReset();
+
+                _JsonAvailable = null;
 
                 // Markus 29.01.2025: dataSetCollectionSpecimen is null - why? Designer misses initialization
                 if (this.dataSetCollectionSpecimen != null)
@@ -24933,8 +24968,10 @@ namespace DiversityCollection.Forms
 
                         break;
                     case "Identification":
+                        bool ShowIdentificationToolStripButtons = true;
                         if (this.treeViewOverviewHierarchy.SelectedNode != null)
                         {
+                            System.Data.DataRow RIdent = (System.Data.DataRow)this.treeViewOverviewHierarchy.SelectedNode.Tag;
                             System.Data.DataRow Runit = (System.Data.DataRow)this.treeViewOverviewHierarchy.SelectedNode.Parent.Tag;
                             if (Runit.Table.TableName != "IdentificationUnit")
                             {
@@ -24945,13 +24982,31 @@ namespace DiversityCollection.Forms
                             if (DiversityWorkbench.CollectionSpecimen.TaxonomyRelatedTaxonomicGroups.Contains(TaxonomicGroup))
                             {
                                 this.toolStripButtonOverviewHierarchyNewIdentDependent.Visible = false;
+                                if (RIdent["DependsOnIdentificationSequence"].Equals(System.DBNull.Value))
+                                    this.toolStripButtonOverviewHierarchyNewIdentAgent.Visible = false; //#383 vorerst disabled - CanInsertTable;
+                                else
+                                {
+                                    this.toolStripButtonOverviewHierarchyNewIdentAgent.Visible = false;
+                                    //this.toolStripButtonOverviewHierarchyIdentificationToBase.Visible = false;
+                                    //this.toolStripButtonOverviewHierarchyIdentificationToTop.Visible = false;
+                                    //this.toolStripButtonOverviewHierarchyNewConfirmation.Visible = false;
+                                    //this.toolStripButtonOverviewHierarchyNewReference.Visible = false;
+                                    ShowIdentificationToolStripButtons = false;
+                                }
+
 #if DEBUG
-                                this.toolStripButtonOverviewHierarchyNewIdentAgent.Visible = CanInsertTable;
 #endif
                             }
                             else
                             {
-                                this.toolStripButtonOverviewHierarchyNewIdentDependent.Visible = CanInsertTable;
+                                // #385: Nur wenn die Identifikation eines nicht biologischen Objekts nicht von einer anderen Identification abhängt,
+                                // soll die Schaltfläche zum Anlegen einer abhängigen Identifikation sichtbar sein
+                                // die Option für den Eintrag einer weiteren Person, die an der Identifikation beteiligt war, soll nur sichtbar sein, wenn es sich um biologische Objekte handelt
+                                // da es aber vorkommen kann, dass mehrere Personen an der Identifikation beteiligt waren kann die Schaltfläche zum Anlegen einer abhängigen Identifikation in einer weiteren Ausbaustufe auch hier Objekten sichtbar sein
+                                if (RIdent["DependsOnIdentificationSequence"].Equals(System.DBNull.Value))
+                                    this.toolStripButtonOverviewHierarchyNewIdentDependent.Visible = CanInsertTable;
+                                else
+                                    this.toolStripButtonOverviewHierarchyNewIdentDependent.Visible = false;
                                 this.toolStripButtonOverviewHierarchyNewIdentAgent.Visible = false;
                             }
                         }
@@ -24961,11 +25016,11 @@ namespace DiversityCollection.Forms
                             this.toolStripButtonOverviewHierarchyNewIdentAgent.Visible = false;
                         }
 
-                        this.toolStripButtonOverviewHierarchyNewConfirmation.Visible = CanInsertTable;
-                        this.toolStripButtonOverviewHierarchyIdentificationToBase.Visible = CanUpdateTable;
-                        this.toolStripButtonOverviewHierarchyIdentificationToTop.Visible = CanUpdateTable;
+                        this.toolStripButtonOverviewHierarchyNewConfirmation.Visible = CanInsertTable && ShowIdentificationToolStripButtons;
+                        this.toolStripButtonOverviewHierarchyIdentificationToBase.Visible = CanUpdateTable && ShowIdentificationToolStripButtons;
+                        this.toolStripButtonOverviewHierarchyIdentificationToTop.Visible = CanUpdateTable && ShowIdentificationToolStripButtons;
                         this.toolStripButtonOverviewHierarchyDelete.Visible = CanDeleteFromTable;
-                        this.toolStripButtonOverviewHierarchyNewReference.Visible = this.FormFunctions.getObjectPermissions("CollectionSpecimenReference", "INSERT");
+                        this.toolStripButtonOverviewHierarchyNewReference.Visible = this.FormFunctions.getObjectPermissions("CollectionSpecimenReference", "INSERT") && ShowIdentificationToolStripButtons;
                         this.MoveUnitBindingIfWrongDataset();
                         break;
                     case "IdentificationUnit":

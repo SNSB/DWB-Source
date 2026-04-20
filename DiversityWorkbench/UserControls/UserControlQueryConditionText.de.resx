@@ -219,4 +219,7 @@
   <data name="including_all_values" xml:space="preserve">
     <value>mit allen angegebenen Werten</value>
   </data>
+  <data name="not_existing" xml:space="preserve">
+    <value>nicht existent</value>
+  </data>
 </root>

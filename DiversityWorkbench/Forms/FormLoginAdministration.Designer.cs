@@ -28,1595 +28,1637 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLoginAdministration));
-            this.splitContainerMain = new System.Windows.Forms.SplitContainer();
-            this.treeViewLogins = new System.Windows.Forms.TreeView();
-            this.labelLogins = new System.Windows.Forms.Label();
-            this.toolStripLoginList = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonLoginCreate = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLoginCopy = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLoginDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonFilter = new System.Windows.Forms.ToolStripButton();
-            this.toolStripTextBoxFilter = new System.Windows.Forms.ToolStripTextBox();
-            this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBoxLogin = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelServerLogin = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBoxLoginHasAccess = new System.Windows.Forms.CheckBox();
-            this.splitContainerLogin = new System.Windows.Forms.SplitContainer();
-            this.groupBoxDatabases = new System.Windows.Forms.GroupBox();
-            this.treeViewDatabases = new System.Windows.Forms.TreeView();
-            this.toolStripDatabase = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonDatabaseOverview = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSynchronizeUserProxy = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonListAllDatabases = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLoginMissing = new System.Windows.Forms.ToolStripButton();
-            this.groupBoxDatabase = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelLogin = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBoxUser = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelUser = new System.Windows.Forms.TableLayoutPanel();
-            this.radioButtonLoginOnly = new System.Windows.Forms.RadioButton();
-            this.pictureBoxUser = new System.Windows.Forms.PictureBox();
-            this.radioButtonUser = new System.Windows.Forms.RadioButton();
-            this.userControlModuleRelatedEntryAgent = new DiversityWorkbench.UserControls.UserControlModuleRelatedEntry();
-            this.checkBoxIsDBO = new System.Windows.Forms.CheckBox();
-            this.checkBoxPrivacyConsent = new System.Windows.Forms.CheckBox();
-            this.buttonSetPrivacyConsent = new System.Windows.Forms.Button();
-            this.tabControlUserDetails = new System.Windows.Forms.TabControl();
-            this.tabPageRoles = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelRoles = new System.Windows.Forms.TableLayoutPanel();
-            this.listBoxUserRoles = new System.Windows.Forms.ListBox();
-            this.labelUserRoles = new System.Windows.Forms.Label();
-            this.buttonRoleRemove = new System.Windows.Forms.Button();
-            this.listBoxRoles = new System.Windows.Forms.ListBox();
-            this.buttonRoleAdd = new System.Windows.Forms.Button();
-            this.labelRoles = new System.Windows.Forms.Label();
-            this.buttonRoleOverview = new System.Windows.Forms.Button();
-            this.tabPageProjects = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelProjects = new System.Windows.Forms.TableLayoutPanel();
-            this.labelProjectsNotAvailable = new System.Windows.Forms.Label();
-            this.labelProjectsAvailable = new System.Windows.Forms.Label();
-            this.buttonProjectRemove = new System.Windows.Forms.Button();
-            this.buttonProjectAdd = new System.Windows.Forms.Button();
-            this.listBoxProjectsNotAvailable = new System.Windows.Forms.ListBox();
-            this.labelOrderProject = new System.Windows.Forms.Label();
-            this.radioButtonOrderProjectByName = new System.Windows.Forms.RadioButton();
-            this.radioButtonOrderProjectByID = new System.Windows.Forms.RadioButton();
-            this.buttonSynchronizeProjects = new System.Windows.Forms.Button();
-            this.userControlModuleRelatedEntryProject = new DiversityWorkbench.UserControls.UserControlModuleRelatedEntry();
-            this.splitContainerProjectAccessible = new System.Windows.Forms.SplitContainer();
-            this.listBoxProjectsAvailable = new System.Windows.Forms.ListBox();
-            this.tableLayoutPanelProjectsReadOnly = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonProjectsReadOnlyAdd = new System.Windows.Forms.Button();
-            this.buttonProjectsReadOnlyRemove = new System.Windows.Forms.Button();
-            this.listBoxProjectsReadOnly = new System.Windows.Forms.ListBox();
-            this.labelProjectsReadOnly = new System.Windows.Forms.Label();
-            this.listBoxProjectsLocked = new System.Windows.Forms.ListBox();
-            this.buttonProjectAddAll = new System.Windows.Forms.Button();
-            this.buttonProjectRemoveAll = new System.Windows.Forms.Button();
-            this.buttonRemoveProject = new System.Windows.Forms.Button();
-            this.buttonProjectUserNotAvailable = new System.Windows.Forms.Button();
-            this.buttonProjectUserAvailable = new System.Windows.Forms.Button();
-            this.buttonProjectUserNotAvailableIsLocked = new System.Windows.Forms.Button();
-            this.buttonProjectUserAvailableIsLocked = new System.Windows.Forms.Button();
-            this.pictureBoxProjectsLocked = new System.Windows.Forms.PictureBox();
-            this.tabPageSettings = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelSettings = new System.Windows.Forms.TableLayoutPanel();
-            this.labelContentSettings = new System.Windows.Forms.Label();
-            this.textBoxContentSettings = new System.Windows.Forms.TextBox();
-            this.treeViewSettings = new System.Windows.Forms.TreeView();
-            this.labelSettingsHeader = new System.Windows.Forms.Label();
-            this.buttonSearchSettingsTemplate = new System.Windows.Forms.Button();
-            this.buttonRemoveSettingsNode = new System.Windows.Forms.Button();
-            this.buttonAddSettingsNode = new System.Windows.Forms.Button();
-            this.imageListUserDetails = new System.Windows.Forms.ImageList(this.components);
-            this.pictureBoxLogin = new System.Windows.Forms.PictureBox();
-            this.labelDbUserInfo = new System.Windows.Forms.Label();
-            this.buttonChangePW = new System.Windows.Forms.Button();
-            this.comboBoxDBUserInfo = new System.Windows.Forms.ComboBox();
-            this.pictureBoxSecurityAdmin = new System.Windows.Forms.PictureBox();
-            this.checkBoxSecurityAdmin = new System.Windows.Forms.CheckBox();
-            this.labelDefaultDB = new System.Windows.Forms.Label();
-            this.textBoxDefaultDB = new System.Windows.Forms.TextBox();
-            this.labelLoginInfo = new System.Windows.Forms.Label();
-            this.buttonLoginStatistics = new System.Windows.Forms.Button();
-            this.buttonLoginOverview = new System.Windows.Forms.Button();
-            this.buttonShowCurrentActivity = new System.Windows.Forms.Button();
-            this.buttonFeedback = new System.Windows.Forms.Button();
-            this.buttonLinkedServer = new System.Windows.Forms.Button();
-            this.buttonSetPrivacyConsentInfoSite = new System.Windows.Forms.Button();
-            this.imageListLogin = new System.Windows.Forms.ImageList(this.components);
-            this.helpProvider = new System.Windows.Forms.HelpProvider();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
-            this.splitContainerMain.Panel1.SuspendLayout();
-            this.splitContainerMain.Panel2.SuspendLayout();
-            this.splitContainerMain.SuspendLayout();
-            this.toolStripLoginList.SuspendLayout();
-            this.tableLayoutPanelMain.SuspendLayout();
-            this.groupBoxLogin.SuspendLayout();
-            this.tableLayoutPanelServerLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerLogin)).BeginInit();
-            this.splitContainerLogin.Panel1.SuspendLayout();
-            this.splitContainerLogin.Panel2.SuspendLayout();
-            this.splitContainerLogin.SuspendLayout();
-            this.groupBoxDatabases.SuspendLayout();
-            this.toolStripDatabase.SuspendLayout();
-            this.groupBoxDatabase.SuspendLayout();
-            this.tableLayoutPanelLogin.SuspendLayout();
-            this.groupBoxUser.SuspendLayout();
-            this.tableLayoutPanelUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).BeginInit();
-            this.tabControlUserDetails.SuspendLayout();
-            this.tabPageRoles.SuspendLayout();
-            this.tableLayoutPanelRoles.SuspendLayout();
-            this.tabPageProjects.SuspendLayout();
-            this.tableLayoutPanelProjects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerProjectAccessible)).BeginInit();
-            this.splitContainerProjectAccessible.Panel1.SuspendLayout();
-            this.splitContainerProjectAccessible.Panel2.SuspendLayout();
-            this.splitContainerProjectAccessible.SuspendLayout();
-            this.tableLayoutPanelProjectsReadOnly.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProjectsLocked)).BeginInit();
-            this.tabPageSettings.SuspendLayout();
-            this.tableLayoutPanelSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSecurityAdmin)).BeginInit();
-            this.SuspendLayout();
+            splitContainerMain = new System.Windows.Forms.SplitContainer();
+            treeViewLogins = new System.Windows.Forms.TreeView();
+            labelLogins = new System.Windows.Forms.Label();
+            toolStripLoginList = new System.Windows.Forms.ToolStrip();
+            toolStripButtonLoginCreate = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonLoginCopy = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonLoginDelete = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonFilter = new System.Windows.Forms.ToolStripButton();
+            toolStripTextBoxFilter = new System.Windows.Forms.ToolStripTextBox();
+            tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
+            groupBoxLogin = new System.Windows.Forms.GroupBox();
+            tableLayoutPanelServerLogin = new System.Windows.Forms.TableLayoutPanel();
+            checkBoxLoginHasAccess = new System.Windows.Forms.CheckBox();
+            splitContainerLogin = new System.Windows.Forms.SplitContainer();
+            groupBoxDatabases = new System.Windows.Forms.GroupBox();
+            treeViewDatabases = new System.Windows.Forms.TreeView();
+            toolStripDatabase = new System.Windows.Forms.ToolStrip();
+            toolStripButtonDatabaseOverview = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonSynchronizeUserProxy = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonListAllDatabases = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonLoginMissing = new System.Windows.Forms.ToolStripButton();
+            groupBoxDatabase = new System.Windows.Forms.GroupBox();
+            tableLayoutPanelLogin = new System.Windows.Forms.TableLayoutPanel();
+            groupBoxUser = new System.Windows.Forms.GroupBox();
+            tableLayoutPanelUser = new System.Windows.Forms.TableLayoutPanel();
+            radioButtonLoginOnly = new System.Windows.Forms.RadioButton();
+            pictureBoxUser = new System.Windows.Forms.PictureBox();
+            radioButtonUser = new System.Windows.Forms.RadioButton();
+            userControlModuleRelatedEntryAgent = new DiversityWorkbench.UserControls.UserControlModuleRelatedEntry();
+            checkBoxIsDBO = new System.Windows.Forms.CheckBox();
+            checkBoxPrivacyConsent = new System.Windows.Forms.CheckBox();
+            buttonSetPrivacyConsent = new System.Windows.Forms.Button();
+            tabControlUserDetails = new System.Windows.Forms.TabControl();
+            tabPageRoles = new System.Windows.Forms.TabPage();
+            tableLayoutPanelRoles = new System.Windows.Forms.TableLayoutPanel();
+            listBoxUserRoles = new System.Windows.Forms.ListBox();
+            labelUserRoles = new System.Windows.Forms.Label();
+            buttonRoleRemove = new System.Windows.Forms.Button();
+            listBoxRoles = new System.Windows.Forms.ListBox();
+            buttonRoleAdd = new System.Windows.Forms.Button();
+            labelRoles = new System.Windows.Forms.Label();
+            buttonRoleOverview = new System.Windows.Forms.Button();
+            tabPageProjects = new System.Windows.Forms.TabPage();
+            tableLayoutPanelProjects = new System.Windows.Forms.TableLayoutPanel();
+            labelProjectsNotAvailable = new System.Windows.Forms.Label();
+            labelProjectsAvailable = new System.Windows.Forms.Label();
+            buttonProjectRemove = new System.Windows.Forms.Button();
+            buttonProjectAdd = new System.Windows.Forms.Button();
+            listBoxProjectsNotAvailable = new System.Windows.Forms.ListBox();
+            labelOrderProject = new System.Windows.Forms.Label();
+            radioButtonOrderProjectByName = new System.Windows.Forms.RadioButton();
+            radioButtonOrderProjectByID = new System.Windows.Forms.RadioButton();
+            buttonSynchronizeProjects = new System.Windows.Forms.Button();
+            userControlModuleRelatedEntryProject = new DiversityWorkbench.UserControls.UserControlModuleRelatedEntry();
+            splitContainerProjectAccessible = new System.Windows.Forms.SplitContainer();
+            listBoxProjectsAvailable = new System.Windows.Forms.ListBox();
+            tableLayoutPanelProjectsReadOnly = new System.Windows.Forms.TableLayoutPanel();
+            buttonProjectsReadOnlyAdd = new System.Windows.Forms.Button();
+            buttonProjectsReadOnlyRemove = new System.Windows.Forms.Button();
+            listBoxProjectsReadOnly = new System.Windows.Forms.ListBox();
+            labelProjectsReadOnly = new System.Windows.Forms.Label();
+            listBoxProjectsLocked = new System.Windows.Forms.ListBox();
+            buttonProjectAddAll = new System.Windows.Forms.Button();
+            buttonProjectRemoveAll = new System.Windows.Forms.Button();
+            buttonRemoveProject = new System.Windows.Forms.Button();
+            buttonProjectUserNotAvailable = new System.Windows.Forms.Button();
+            buttonProjectUserAvailable = new System.Windows.Forms.Button();
+            buttonProjectUserNotAvailableIsLocked = new System.Windows.Forms.Button();
+            buttonProjectUserAvailableIsLocked = new System.Windows.Forms.Button();
+            pictureBoxProjectsLocked = new System.Windows.Forms.PictureBox();
+            tabPageSettings = new System.Windows.Forms.TabPage();
+            tableLayoutPanelSettings = new System.Windows.Forms.TableLayoutPanel();
+            labelContentSettings = new System.Windows.Forms.Label();
+            textBoxContentSettings = new System.Windows.Forms.TextBox();
+            treeViewSettings = new System.Windows.Forms.TreeView();
+            labelSettingsHeader = new System.Windows.Forms.Label();
+            buttonSearchSettingsTemplate = new System.Windows.Forms.Button();
+            buttonRemoveSettingsNode = new System.Windows.Forms.Button();
+            buttonAddSettingsNode = new System.Windows.Forms.Button();
+            imageListUserDetails = new System.Windows.Forms.ImageList(components);
+            pictureBoxLogin = new System.Windows.Forms.PictureBox();
+            labelDbUserInfo = new System.Windows.Forms.Label();
+            buttonChangePW = new System.Windows.Forms.Button();
+            comboBoxDBUserInfo = new System.Windows.Forms.ComboBox();
+            pictureBoxSecurityAdmin = new System.Windows.Forms.PictureBox();
+            checkBoxSecurityAdmin = new System.Windows.Forms.CheckBox();
+            labelDefaultDB = new System.Windows.Forms.Label();
+            textBoxDefaultDB = new System.Windows.Forms.TextBox();
+            labelLoginInfo = new System.Windows.Forms.Label();
+            buttonLoginStatistics = new System.Windows.Forms.Button();
+            buttonLoginOverview = new System.Windows.Forms.Button();
+            buttonShowCurrentActivity = new System.Windows.Forms.Button();
+            buttonFeedback = new System.Windows.Forms.Button();
+            buttonLinkedServer = new System.Windows.Forms.Button();
+            buttonSetPrivacyConsentInfoSite = new System.Windows.Forms.Button();
+            imageListLogin = new System.Windows.Forms.ImageList(components);
+            helpProvider = new System.Windows.Forms.HelpProvider();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            ((System.ComponentModel.ISupportInitialize)splitContainerMain).BeginInit();
+            splitContainerMain.Panel1.SuspendLayout();
+            splitContainerMain.Panel2.SuspendLayout();
+            splitContainerMain.SuspendLayout();
+            toolStripLoginList.SuspendLayout();
+            tableLayoutPanelMain.SuspendLayout();
+            groupBoxLogin.SuspendLayout();
+            tableLayoutPanelServerLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerLogin).BeginInit();
+            splitContainerLogin.Panel1.SuspendLayout();
+            splitContainerLogin.Panel2.SuspendLayout();
+            splitContainerLogin.SuspendLayout();
+            groupBoxDatabases.SuspendLayout();
+            toolStripDatabase.SuspendLayout();
+            groupBoxDatabase.SuspendLayout();
+            tableLayoutPanelLogin.SuspendLayout();
+            groupBoxUser.SuspendLayout();
+            tableLayoutPanelUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxUser).BeginInit();
+            tabControlUserDetails.SuspendLayout();
+            tabPageRoles.SuspendLayout();
+            tableLayoutPanelRoles.SuspendLayout();
+            tabPageProjects.SuspendLayout();
+            tableLayoutPanelProjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerProjectAccessible).BeginInit();
+            splitContainerProjectAccessible.Panel1.SuspendLayout();
+            splitContainerProjectAccessible.Panel2.SuspendLayout();
+            splitContainerProjectAccessible.SuspendLayout();
+            tableLayoutPanelProjectsReadOnly.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProjectsLocked).BeginInit();
+            tabPageSettings.SuspendLayout();
+            tableLayoutPanelSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogin).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxSecurityAdmin).BeginInit();
+            SuspendLayout();
             // 
             // splitContainerMain
             // 
-            this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.helpProvider.SetHelpNavigator(this.splitContainerMain, System.Windows.Forms.HelpNavigator.KeywordIndex);
-            this.helpProvider.SetHelpString(this.splitContainerMain, "Login administration");
-            this.splitContainerMain.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerMain.Name = "splitContainerMain";
+            splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            helpProvider.SetHelpNavigator(splitContainerMain, System.Windows.Forms.HelpNavigator.KeywordIndex);
+            helpProvider.SetHelpString(splitContainerMain, "Login administration");
+            splitContainerMain.Location = new System.Drawing.Point(0, 0);
+            splitContainerMain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            splitContainerMain.Name = "splitContainerMain";
             // 
             // splitContainerMain.Panel1
             // 
-            this.splitContainerMain.Panel1.Controls.Add(this.treeViewLogins);
-            this.splitContainerMain.Panel1.Controls.Add(this.labelLogins);
-            this.splitContainerMain.Panel1.Controls.Add(this.toolStripLoginList);
+            splitContainerMain.Panel1.Controls.Add(treeViewLogins);
+            splitContainerMain.Panel1.Controls.Add(labelLogins);
+            splitContainerMain.Panel1.Controls.Add(toolStripLoginList);
             // 
             // splitContainerMain.Panel2
             // 
-            this.splitContainerMain.Panel2.Controls.Add(this.tableLayoutPanelMain);
-            this.helpProvider.SetShowHelp(this.splitContainerMain, true);
-            this.splitContainerMain.Size = new System.Drawing.Size(829, 546);
-            this.splitContainerMain.SplitterDistance = 165;
-            this.splitContainerMain.TabIndex = 0;
+            splitContainerMain.Panel2.Controls.Add(tableLayoutPanelMain);
+            helpProvider.SetShowHelp(splitContainerMain, true);
+            splitContainerMain.Size = new System.Drawing.Size(967, 630);
+            splitContainerMain.SplitterDistance = 192;
+            splitContainerMain.SplitterWidth = 5;
+            splitContainerMain.TabIndex = 0;
             // 
             // treeViewLogins
             // 
-            this.treeViewLogins.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewLogins.Location = new System.Drawing.Point(0, 20);
-            this.treeViewLogins.Name = "treeViewLogins";
-            this.treeViewLogins.ShowLines = false;
-            this.treeViewLogins.ShowPlusMinus = false;
-            this.treeViewLogins.ShowRootLines = false;
-            this.treeViewLogins.Size = new System.Drawing.Size(165, 501);
-            this.treeViewLogins.TabIndex = 1;
-            this.treeViewLogins.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewLogins_AfterSelect);
-            this.treeViewLogins.Click += new System.EventHandler(this.treeViewLogins_Click);
+            treeViewLogins.Dock = System.Windows.Forms.DockStyle.Fill;
+            treeViewLogins.Location = new System.Drawing.Point(0, 23);
+            treeViewLogins.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            treeViewLogins.Name = "treeViewLogins";
+            treeViewLogins.ShowLines = false;
+            treeViewLogins.ShowPlusMinus = false;
+            treeViewLogins.ShowRootLines = false;
+            treeViewLogins.Size = new System.Drawing.Size(192, 582);
+            treeViewLogins.TabIndex = 1;
+            treeViewLogins.AfterSelect += treeViewLogins_AfterSelect;
+            treeViewLogins.Click += treeViewLogins_Click;
             // 
             // labelLogins
             // 
-            this.labelLogins.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelLogins.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLogins.Location = new System.Drawing.Point(0, 0);
-            this.labelLogins.Margin = new System.Windows.Forms.Padding(3);
-            this.labelLogins.Name = "labelLogins";
-            this.labelLogins.Size = new System.Drawing.Size(165, 20);
-            this.labelLogins.TabIndex = 2;
-            this.labelLogins.Text = "Logins";
-            this.labelLogins.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            labelLogins.Dock = System.Windows.Forms.DockStyle.Top;
+            labelLogins.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            labelLogins.Location = new System.Drawing.Point(0, 0);
+            labelLogins.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            labelLogins.Name = "labelLogins";
+            labelLogins.Size = new System.Drawing.Size(192, 23);
+            labelLogins.TabIndex = 2;
+            labelLogins.Text = "Logins";
+            labelLogins.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // toolStripLoginList
             // 
-            this.toolStripLoginList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStripLoginList.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripLoginList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonLoginCreate,
-            this.toolStripButtonLoginCopy,
-            this.toolStripButtonLoginDelete,
-            this.toolStripButtonFilter,
-            this.toolStripTextBoxFilter});
-            this.toolStripLoginList.Location = new System.Drawing.Point(0, 521);
-            this.toolStripLoginList.Name = "toolStripLoginList";
-            this.toolStripLoginList.Size = new System.Drawing.Size(165, 25);
-            this.toolStripLoginList.TabIndex = 0;
-            this.toolStripLoginList.Text = "toolStrip1";
+            toolStripLoginList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            toolStripLoginList.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStripLoginList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonLoginCreate, toolStripButtonLoginCopy, toolStripButtonLoginDelete, toolStripButtonFilter, toolStripTextBoxFilter });
+            toolStripLoginList.Location = new System.Drawing.Point(0, 605);
+            toolStripLoginList.Name = "toolStripLoginList";
+            toolStripLoginList.Size = new System.Drawing.Size(192, 25);
+            toolStripLoginList.TabIndex = 0;
+            toolStripLoginList.Text = "toolStrip1";
             // 
             // toolStripButtonLoginCreate
             // 
-            this.toolStripButtonLoginCreate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonLoginCreate.Image = global::DiversityWorkbench.Properties.Resources.Login;
-            this.toolStripButtonLoginCreate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLoginCreate.Name = "toolStripButtonLoginCreate";
-            this.toolStripButtonLoginCreate.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonLoginCreate.Text = "New login";
-            this.toolStripButtonLoginCreate.Click += new System.EventHandler(this.toolStripButtonLoginCreate_Click);
+            toolStripButtonLoginCreate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonLoginCreate.Image = Properties.Resources.Login;
+            toolStripButtonLoginCreate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonLoginCreate.Name = "toolStripButtonLoginCreate";
+            toolStripButtonLoginCreate.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonLoginCreate.Text = "New login";
+            toolStripButtonLoginCreate.Click += toolStripButtonLoginCreate_Click;
             // 
             // toolStripButtonLoginCopy
             // 
-            this.toolStripButtonLoginCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonLoginCopy.Image = global::DiversityWorkbench.Properties.Resources.CopyAgent;
-            this.toolStripButtonLoginCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLoginCopy.Name = "toolStripButtonLoginCopy";
-            this.toolStripButtonLoginCopy.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonLoginCopy.Text = "Copy the selected login";
-            this.toolStripButtonLoginCopy.Click += new System.EventHandler(this.toolStripButtonLoginCopy_Click);
+            toolStripButtonLoginCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonLoginCopy.Image = Properties.Resources.CopyAgent;
+            toolStripButtonLoginCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonLoginCopy.Name = "toolStripButtonLoginCopy";
+            toolStripButtonLoginCopy.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonLoginCopy.Text = "Copy the selected login";
+            toolStripButtonLoginCopy.Click += toolStripButtonLoginCopy_Click;
             // 
             // toolStripButtonLoginDelete
             // 
-            this.toolStripButtonLoginDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonLoginDelete.Image = global::DiversityWorkbench.Properties.Resources.Delete;
-            this.toolStripButtonLoginDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLoginDelete.Name = "toolStripButtonLoginDelete";
-            this.toolStripButtonLoginDelete.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonLoginDelete.Text = "Delete login and remove all settings in the databases";
-            this.toolStripButtonLoginDelete.Click += new System.EventHandler(this.toolStripButtonLoginDelete_Click);
+            toolStripButtonLoginDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonLoginDelete.Image = Properties.Resources.Delete;
+            toolStripButtonLoginDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonLoginDelete.Name = "toolStripButtonLoginDelete";
+            toolStripButtonLoginDelete.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonLoginDelete.Text = "Delete login and remove all settings in the databases";
+            toolStripButtonLoginDelete.Click += toolStripButtonLoginDelete_Click;
             // 
             // toolStripButtonFilter
             // 
-            this.toolStripButtonFilter.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonFilter.Image = global::DiversityWorkbench.Properties.Resources.Filter;
-            this.toolStripButtonFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonFilter.Name = "toolStripButtonFilter";
-            this.toolStripButtonFilter.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonFilter.Text = "Filter for logins";
-            this.toolStripButtonFilter.Click += new System.EventHandler(this.toolStripButtonFilter_Click);
+            toolStripButtonFilter.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            toolStripButtonFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonFilter.Image = Properties.Resources.Filter;
+            toolStripButtonFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonFilter.Name = "toolStripButtonFilter";
+            toolStripButtonFilter.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonFilter.Text = "Filter for logins";
+            toolStripButtonFilter.Click += toolStripButtonFilter_Click;
             // 
             // toolStripTextBoxFilter
             // 
-            this.toolStripTextBoxFilter.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripTextBoxFilter.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBoxFilter.Name = "toolStripTextBoxFilter";
-            this.toolStripTextBoxFilter.Size = new System.Drawing.Size(50, 25);
-            this.toolStripTextBoxFilter.ToolTipText = "Text for filtering logins. Use % as wildcard";
+            toolStripTextBoxFilter.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            toolStripTextBoxFilter.Name = "toolStripTextBoxFilter";
+            toolStripTextBoxFilter.Size = new System.Drawing.Size(58, 25);
+            toolStripTextBoxFilter.ToolTipText = "Text for filtering logins. Use % as wildcard";
+            toolStripTextBoxFilter.TextChanged += toolStripTextBoxFilter_TextChanged;
             // 
             // tableLayoutPanelMain
             // 
-            this.tableLayoutPanelMain.ColumnCount = 5;
-            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanelMain.Controls.Add(this.groupBoxLogin, 0, 1);
-            this.tableLayoutPanelMain.Controls.Add(this.buttonShowCurrentActivity, 2, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.buttonFeedback, 4, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.buttonLinkedServer, 3, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.buttonSetPrivacyConsentInfoSite, 1, 0);
-            this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
-            this.tableLayoutPanelMain.RowCount = 2;
-            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(660, 546);
-            this.tableLayoutPanelMain.TabIndex = 2;
+            tableLayoutPanelMain.ColumnCount = 5;
+            tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            tableLayoutPanelMain.Controls.Add(groupBoxLogin, 0, 1);
+            tableLayoutPanelMain.Controls.Add(buttonShowCurrentActivity, 2, 0);
+            tableLayoutPanelMain.Controls.Add(buttonFeedback, 4, 0);
+            tableLayoutPanelMain.Controls.Add(buttonLinkedServer, 3, 0);
+            tableLayoutPanelMain.Controls.Add(buttonSetPrivacyConsentInfoSite, 1, 0);
+            tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelMain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelMain.Name = "tableLayoutPanelMain";
+            tableLayoutPanelMain.RowCount = 2;
+            tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelMain.Size = new System.Drawing.Size(770, 630);
+            tableLayoutPanelMain.TabIndex = 2;
             // 
             // groupBoxLogin
             // 
-            this.tableLayoutPanelMain.SetColumnSpan(this.groupBoxLogin, 5);
-            this.groupBoxLogin.Controls.Add(this.tableLayoutPanelServerLogin);
-            this.groupBoxLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxLogin.Location = new System.Drawing.Point(3, 29);
-            this.groupBoxLogin.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.groupBoxLogin.Name = "groupBoxLogin";
-            this.groupBoxLogin.Size = new System.Drawing.Size(654, 514);
-            this.groupBoxLogin.TabIndex = 0;
-            this.groupBoxLogin.TabStop = false;
-            this.groupBoxLogin.Text = "Login";
+            tableLayoutPanelMain.SetColumnSpan(groupBoxLogin, 5);
+            groupBoxLogin.Controls.Add(tableLayoutPanelServerLogin);
+            groupBoxLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            groupBoxLogin.Location = new System.Drawing.Point(4, 33);
+            groupBoxLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 3);
+            groupBoxLogin.Name = "groupBoxLogin";
+            groupBoxLogin.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxLogin.Size = new System.Drawing.Size(762, 594);
+            groupBoxLogin.TabIndex = 0;
+            groupBoxLogin.TabStop = false;
+            groupBoxLogin.Text = "Login";
             // 
             // tableLayoutPanelServerLogin
             // 
-            this.tableLayoutPanelServerLogin.ColumnCount = 7;
-            this.tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanelServerLogin.Controls.Add(this.checkBoxLoginHasAccess, 1, 0);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.splitContainerLogin, 0, 3);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.pictureBoxLogin, 0, 0);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.labelDbUserInfo, 5, 0);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.buttonChangePW, 0, 2);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.comboBoxDBUserInfo, 5, 1);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.pictureBoxSecurityAdmin, 2, 0);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.checkBoxSecurityAdmin, 3, 0);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.labelDefaultDB, 4, 0);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.textBoxDefaultDB, 4, 1);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.labelLoginInfo, 2, 2);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.buttonLoginStatistics, 6, 1);
-            this.tableLayoutPanelServerLogin.Controls.Add(this.buttonLoginOverview, 6, 2);
-            this.tableLayoutPanelServerLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelServerLogin.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanelServerLogin.Name = "tableLayoutPanelServerLogin";
-            this.tableLayoutPanelServerLogin.RowCount = 4;
-            this.tableLayoutPanelServerLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14F));
-            this.tableLayoutPanelServerLogin.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelServerLogin.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelServerLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelServerLogin.Size = new System.Drawing.Size(648, 495);
-            this.tableLayoutPanelServerLogin.TabIndex = 0;
+            tableLayoutPanelServerLogin.ColumnCount = 7;
+            tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelServerLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            tableLayoutPanelServerLogin.Controls.Add(checkBoxLoginHasAccess, 1, 0);
+            tableLayoutPanelServerLogin.Controls.Add(splitContainerLogin, 0, 3);
+            tableLayoutPanelServerLogin.Controls.Add(pictureBoxLogin, 0, 0);
+            tableLayoutPanelServerLogin.Controls.Add(labelDbUserInfo, 5, 0);
+            tableLayoutPanelServerLogin.Controls.Add(buttonChangePW, 0, 2);
+            tableLayoutPanelServerLogin.Controls.Add(comboBoxDBUserInfo, 5, 1);
+            tableLayoutPanelServerLogin.Controls.Add(pictureBoxSecurityAdmin, 2, 0);
+            tableLayoutPanelServerLogin.Controls.Add(checkBoxSecurityAdmin, 3, 0);
+            tableLayoutPanelServerLogin.Controls.Add(labelDefaultDB, 4, 0);
+            tableLayoutPanelServerLogin.Controls.Add(textBoxDefaultDB, 4, 1);
+            tableLayoutPanelServerLogin.Controls.Add(labelLoginInfo, 2, 2);
+            tableLayoutPanelServerLogin.Controls.Add(buttonLoginStatistics, 6, 1);
+            tableLayoutPanelServerLogin.Controls.Add(buttonLoginOverview, 6, 2);
+            tableLayoutPanelServerLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelServerLogin.Location = new System.Drawing.Point(4, 16);
+            tableLayoutPanelServerLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelServerLogin.Name = "tableLayoutPanelServerLogin";
+            tableLayoutPanelServerLogin.RowCount = 4;
+            tableLayoutPanelServerLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            tableLayoutPanelServerLogin.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelServerLogin.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelServerLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelServerLogin.Size = new System.Drawing.Size(754, 575);
+            tableLayoutPanelServerLogin.TabIndex = 0;
             // 
             // checkBoxLoginHasAccess
             // 
-            this.checkBoxLoginHasAccess.AutoSize = true;
-            this.checkBoxLoginHasAccess.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxLoginHasAccess.Location = new System.Drawing.Point(25, 3);
-            this.checkBoxLoginHasAccess.Name = "checkBoxLoginHasAccess";
-            this.tableLayoutPanelServerLogin.SetRowSpan(this.checkBoxLoginHasAccess, 2);
-            this.checkBoxLoginHasAccess.Size = new System.Drawing.Size(86, 36);
-            this.checkBoxLoginHasAccess.TabIndex = 0;
-            this.checkBoxLoginHasAccess.Text = "Enabled";
-            this.checkBoxLoginHasAccess.UseVisualStyleBackColor = true;
-            this.checkBoxLoginHasAccess.CheckedChanged += new System.EventHandler(this.checkBoxLoginHasAccess_CheckedChanged);
-            this.checkBoxLoginHasAccess.Click += new System.EventHandler(this.checkBoxLoginHasAccess_Click);
+            checkBoxLoginHasAccess.AutoSize = true;
+            checkBoxLoginHasAccess.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxLoginHasAccess.Location = new System.Drawing.Point(31, 3);
+            checkBoxLoginHasAccess.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxLoginHasAccess.Name = "checkBoxLoginHasAccess";
+            tableLayoutPanelServerLogin.SetRowSpan(checkBoxLoginHasAccess, 2);
+            checkBoxLoginHasAccess.Size = new System.Drawing.Size(98, 42);
+            checkBoxLoginHasAccess.TabIndex = 0;
+            checkBoxLoginHasAccess.Text = "Enabled";
+            checkBoxLoginHasAccess.UseVisualStyleBackColor = true;
+            checkBoxLoginHasAccess.CheckedChanged += checkBoxLoginHasAccess_CheckedChanged;
+            checkBoxLoginHasAccess.Click += checkBoxLoginHasAccess_Click;
             // 
             // splitContainerLogin
             // 
-            this.tableLayoutPanelServerLogin.SetColumnSpan(this.splitContainerLogin, 7);
-            this.splitContainerLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.splitContainerLogin.Location = new System.Drawing.Point(3, 74);
-            this.splitContainerLogin.Name = "splitContainerLogin";
+            tableLayoutPanelServerLogin.SetColumnSpan(splitContainerLogin, 7);
+            splitContainerLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            splitContainerLogin.Location = new System.Drawing.Point(4, 84);
+            splitContainerLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            splitContainerLogin.Name = "splitContainerLogin";
             // 
             // splitContainerLogin.Panel1
             // 
-            this.splitContainerLogin.Panel1.Controls.Add(this.groupBoxDatabases);
+            splitContainerLogin.Panel1.Controls.Add(groupBoxDatabases);
             // 
             // splitContainerLogin.Panel2
             // 
-            this.splitContainerLogin.Panel2.Controls.Add(this.groupBoxDatabase);
-            this.splitContainerLogin.Panel2.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.splitContainerLogin.Size = new System.Drawing.Size(642, 418);
-            this.splitContainerLogin.SplitterDistance = 213;
-            this.splitContainerLogin.TabIndex = 5;
+            splitContainerLogin.Panel2.Controls.Add(groupBoxDatabase);
+            splitContainerLogin.Panel2.Padding = new System.Windows.Forms.Padding(0, 23, 0, 0);
+            splitContainerLogin.Size = new System.Drawing.Size(746, 488);
+            splitContainerLogin.SplitterDistance = 247;
+            splitContainerLogin.SplitterWidth = 5;
+            splitContainerLogin.TabIndex = 5;
             // 
             // groupBoxDatabases
             // 
-            this.groupBoxDatabases.Controls.Add(this.treeViewDatabases);
-            this.groupBoxDatabases.Controls.Add(this.toolStripDatabase);
-            this.groupBoxDatabases.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxDatabases.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxDatabases.Name = "groupBoxDatabases";
-            this.groupBoxDatabases.Size = new System.Drawing.Size(213, 418);
-            this.groupBoxDatabases.TabIndex = 1;
-            this.groupBoxDatabases.TabStop = false;
-            this.groupBoxDatabases.Text = "Databases";
+            groupBoxDatabases.Controls.Add(treeViewDatabases);
+            groupBoxDatabases.Controls.Add(toolStripDatabase);
+            groupBoxDatabases.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxDatabases.Location = new System.Drawing.Point(0, 0);
+            groupBoxDatabases.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxDatabases.Name = "groupBoxDatabases";
+            groupBoxDatabases.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxDatabases.Size = new System.Drawing.Size(247, 488);
+            groupBoxDatabases.TabIndex = 1;
+            groupBoxDatabases.TabStop = false;
+            groupBoxDatabases.Text = "Databases";
             // 
             // treeViewDatabases
             // 
-            this.treeViewDatabases.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewDatabases.Location = new System.Drawing.Point(3, 16);
-            this.treeViewDatabases.Name = "treeViewDatabases";
-            this.treeViewDatabases.Size = new System.Drawing.Size(207, 374);
-            this.treeViewDatabases.TabIndex = 0;
-            this.treeViewDatabases.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewDatabases_AfterSelect);
+            treeViewDatabases.Dock = System.Windows.Forms.DockStyle.Fill;
+            treeViewDatabases.Location = new System.Drawing.Point(4, 16);
+            treeViewDatabases.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            treeViewDatabases.Name = "treeViewDatabases";
+            treeViewDatabases.Size = new System.Drawing.Size(239, 444);
+            treeViewDatabases.TabIndex = 0;
+            treeViewDatabases.AfterSelect += treeViewDatabases_AfterSelect;
             // 
             // toolStripDatabase
             // 
-            this.toolStripDatabase.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStripDatabase.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripDatabase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonDatabaseOverview,
-            this.toolStripButtonSynchronizeUserProxy,
-            this.toolStripButtonListAllDatabases,
-            this.toolStripButtonLoginMissing});
-            this.toolStripDatabase.Location = new System.Drawing.Point(3, 390);
-            this.toolStripDatabase.Name = "toolStripDatabase";
-            this.toolStripDatabase.Size = new System.Drawing.Size(207, 25);
-            this.toolStripDatabase.TabIndex = 1;
-            this.toolStripDatabase.Text = "toolStrip1";
+            toolStripDatabase.Dock = System.Windows.Forms.DockStyle.Bottom;
+            toolStripDatabase.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStripDatabase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonDatabaseOverview, toolStripButtonSynchronizeUserProxy, toolStripButtonListAllDatabases, toolStripButtonLoginMissing });
+            toolStripDatabase.Location = new System.Drawing.Point(4, 460);
+            toolStripDatabase.Name = "toolStripDatabase";
+            toolStripDatabase.Size = new System.Drawing.Size(239, 25);
+            toolStripDatabase.TabIndex = 1;
+            toolStripDatabase.Text = "toolStrip1";
             // 
             // toolStripButtonDatabaseOverview
             // 
-            this.toolStripButtonDatabaseOverview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDatabaseOverview.Image = global::DiversityWorkbench.Properties.Resources.DatabaseLogin;
-            this.toolStripButtonDatabaseOverview.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDatabaseOverview.Name = "toolStripButtonDatabaseOverview";
-            this.toolStripButtonDatabaseOverview.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonDatabaseOverview.Text = "Show overview for database";
-            this.toolStripButtonDatabaseOverview.Click += new System.EventHandler(this.toolStripButtonDatabaseOverview_Click);
+            toolStripButtonDatabaseOverview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonDatabaseOverview.Image = Properties.Resources.DatabaseLogin;
+            toolStripButtonDatabaseOverview.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonDatabaseOverview.Name = "toolStripButtonDatabaseOverview";
+            toolStripButtonDatabaseOverview.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonDatabaseOverview.Text = "Show overview for database";
+            toolStripButtonDatabaseOverview.Click += toolStripButtonDatabaseOverview_Click;
             // 
             // toolStripButtonSynchronizeUserProxy
             // 
-            this.toolStripButtonSynchronizeUserProxy.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonSynchronizeUserProxy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSynchronizeUserProxy.Image = global::DiversityWorkbench.Properties.Resources.SynchronizeAgent;
-            this.toolStripButtonSynchronizeUserProxy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSynchronizeUserProxy.Name = "toolStripButtonSynchronizeUserProxy";
-            this.toolStripButtonSynchronizeUserProxy.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonSynchronizeUserProxy.Text = "Synchronize logins in table UserProxy with server  logins ";
-            this.toolStripButtonSynchronizeUserProxy.Click += new System.EventHandler(this.toolStripButtonSynchronizeUserProxy_Click);
+            toolStripButtonSynchronizeUserProxy.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            toolStripButtonSynchronizeUserProxy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonSynchronizeUserProxy.Image = Properties.Resources.SynchronizeAgent;
+            toolStripButtonSynchronizeUserProxy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonSynchronizeUserProxy.Name = "toolStripButtonSynchronizeUserProxy";
+            toolStripButtonSynchronizeUserProxy.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonSynchronizeUserProxy.Text = "Synchronize logins in table UserProxy with server  logins ";
+            toolStripButtonSynchronizeUserProxy.Click += toolStripButtonSynchronizeUserProxy_Click;
             // 
             // toolStripButtonListAllDatabases
             // 
-            this.toolStripButtonListAllDatabases.Image = global::DiversityWorkbench.ResourceWorkbench.DatabaseList;
-            this.toolStripButtonListAllDatabases.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonListAllDatabases.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonListAllDatabases.Name = "toolStripButtonListAllDatabases";
-            this.toolStripButtonListAllDatabases.Size = new System.Drawing.Size(115, 22);
-            this.toolStripButtonListAllDatabases.Text = "List all databases";
-            this.toolStripButtonListAllDatabases.Click += new System.EventHandler(this.toolStripButtonListAllDatabases_Click);
+            toolStripButtonListAllDatabases.Image = ResourceWorkbench.DatabaseList;
+            toolStripButtonListAllDatabases.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            toolStripButtonListAllDatabases.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonListAllDatabases.Name = "toolStripButtonListAllDatabases";
+            toolStripButtonListAllDatabases.Size = new System.Drawing.Size(115, 22);
+            toolStripButtonListAllDatabases.Text = "List all databases";
+            toolStripButtonListAllDatabases.Click += toolStripButtonListAllDatabases_Click;
             // 
             // toolStripButtonLoginMissing
             // 
-            this.toolStripButtonLoginMissing.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonLoginMissing.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonLoginMissing.Image = global::DiversityWorkbench.Properties.Resources.LoginMissing;
-            this.toolStripButtonLoginMissing.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLoginMissing.Name = "toolStripButtonLoginMissing";
-            this.toolStripButtonLoginMissing.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonLoginMissing.Text = "Search for database users without a valid login on the server";
-            this.toolStripButtonLoginMissing.Click += new System.EventHandler(this.toolStripButtonLoginMissing_Click);
+            toolStripButtonLoginMissing.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            toolStripButtonLoginMissing.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonLoginMissing.Image = Properties.Resources.LoginMissing;
+            toolStripButtonLoginMissing.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonLoginMissing.Name = "toolStripButtonLoginMissing";
+            toolStripButtonLoginMissing.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonLoginMissing.Text = "Search for database users without a valid login on the server";
+            toolStripButtonLoginMissing.Click += toolStripButtonLoginMissing_Click;
             // 
             // groupBoxDatabase
             // 
-            this.groupBoxDatabase.Controls.Add(this.tableLayoutPanelLogin);
-            this.groupBoxDatabase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxDatabase.Location = new System.Drawing.Point(0, 20);
-            this.groupBoxDatabase.Name = "groupBoxDatabase";
-            this.groupBoxDatabase.Size = new System.Drawing.Size(425, 398);
-            this.groupBoxDatabase.TabIndex = 5;
-            this.groupBoxDatabase.TabStop = false;
-            this.groupBoxDatabase.Text = "Database";
+            groupBoxDatabase.Controls.Add(tableLayoutPanelLogin);
+            groupBoxDatabase.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            groupBoxDatabase.Location = new System.Drawing.Point(0, 23);
+            groupBoxDatabase.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxDatabase.Name = "groupBoxDatabase";
+            groupBoxDatabase.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxDatabase.Size = new System.Drawing.Size(494, 465);
+            groupBoxDatabase.TabIndex = 5;
+            groupBoxDatabase.TabStop = false;
+            groupBoxDatabase.Text = "Database";
             // 
             // tableLayoutPanelLogin
             // 
-            this.tableLayoutPanelLogin.ColumnCount = 1;
-            this.tableLayoutPanelLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelLogin.Controls.Add(this.groupBoxUser, 0, 0);
-            this.tableLayoutPanelLogin.Controls.Add(this.tabControlUserDetails, 0, 1);
-            this.tableLayoutPanelLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanelLogin.ForeColor = System.Drawing.Color.Black;
-            this.tableLayoutPanelLogin.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanelLogin.Name = "tableLayoutPanelLogin";
-            this.tableLayoutPanelLogin.RowCount = 2;
-            this.tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelLogin.Size = new System.Drawing.Size(419, 379);
-            this.tableLayoutPanelLogin.TabIndex = 4;
+            tableLayoutPanelLogin.ColumnCount = 1;
+            tableLayoutPanelLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelLogin.Controls.Add(groupBoxUser, 0, 0);
+            tableLayoutPanelLogin.Controls.Add(tabControlUserDetails, 0, 1);
+            tableLayoutPanelLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tableLayoutPanelLogin.ForeColor = System.Drawing.Color.Black;
+            tableLayoutPanelLogin.Location = new System.Drawing.Point(4, 16);
+            tableLayoutPanelLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelLogin.Name = "tableLayoutPanelLogin";
+            tableLayoutPanelLogin.RowCount = 2;
+            tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelLogin.Size = new System.Drawing.Size(486, 446);
+            tableLayoutPanelLogin.TabIndex = 4;
             // 
             // groupBoxUser
             // 
-            this.groupBoxUser.Controls.Add(this.tableLayoutPanelUser);
-            this.groupBoxUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxUser.ForeColor = System.Drawing.Color.Black;
-            this.groupBoxUser.Location = new System.Drawing.Point(3, 3);
-            this.groupBoxUser.Name = "groupBoxUser";
-            this.groupBoxUser.Size = new System.Drawing.Size(413, 72);
-            this.groupBoxUser.TabIndex = 3;
-            this.groupBoxUser.TabStop = false;
-            this.groupBoxUser.Text = "User";
+            groupBoxUser.Controls.Add(tableLayoutPanelUser);
+            groupBoxUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxUser.ForeColor = System.Drawing.Color.Black;
+            groupBoxUser.Location = new System.Drawing.Point(4, 3);
+            groupBoxUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxUser.Name = "groupBoxUser";
+            groupBoxUser.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxUser.Size = new System.Drawing.Size(478, 83);
+            groupBoxUser.TabIndex = 3;
+            groupBoxUser.TabStop = false;
+            groupBoxUser.Text = "User";
             // 
             // tableLayoutPanelUser
             // 
-            this.tableLayoutPanelUser.ColumnCount = 6;
-            this.tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelUser.Controls.Add(this.radioButtonLoginOnly, 1, 0);
-            this.tableLayoutPanelUser.Controls.Add(this.pictureBoxUser, 0, 0);
-            this.tableLayoutPanelUser.Controls.Add(this.radioButtonUser, 2, 0);
-            this.tableLayoutPanelUser.Controls.Add(this.userControlModuleRelatedEntryAgent, 0, 1);
-            this.tableLayoutPanelUser.Controls.Add(this.checkBoxIsDBO, 5, 0);
-            this.tableLayoutPanelUser.Controls.Add(this.checkBoxPrivacyConsent, 3, 0);
-            this.tableLayoutPanelUser.Controls.Add(this.buttonSetPrivacyConsent, 4, 0);
-            this.tableLayoutPanelUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelUser.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanelUser.Name = "tableLayoutPanelUser";
-            this.tableLayoutPanelUser.RowCount = 2;
-            this.tableLayoutPanelUser.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanelUser.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelUser.Size = new System.Drawing.Size(407, 53);
-            this.tableLayoutPanelUser.TabIndex = 3;
+            tableLayoutPanelUser.ColumnCount = 6;
+            tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelUser.Controls.Add(radioButtonLoginOnly, 1, 0);
+            tableLayoutPanelUser.Controls.Add(pictureBoxUser, 0, 0);
+            tableLayoutPanelUser.Controls.Add(radioButtonUser, 2, 0);
+            tableLayoutPanelUser.Controls.Add(userControlModuleRelatedEntryAgent, 0, 1);
+            tableLayoutPanelUser.Controls.Add(checkBoxIsDBO, 5, 0);
+            tableLayoutPanelUser.Controls.Add(checkBoxPrivacyConsent, 3, 0);
+            tableLayoutPanelUser.Controls.Add(buttonSetPrivacyConsent, 4, 0);
+            tableLayoutPanelUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelUser.Location = new System.Drawing.Point(4, 16);
+            tableLayoutPanelUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelUser.Name = "tableLayoutPanelUser";
+            tableLayoutPanelUser.RowCount = 2;
+            tableLayoutPanelUser.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            tableLayoutPanelUser.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelUser.Size = new System.Drawing.Size(470, 64);
+            tableLayoutPanelUser.TabIndex = 3;
             // 
             // radioButtonLoginOnly
             // 
-            this.radioButtonLoginOnly.AutoSize = true;
-            this.radioButtonLoginOnly.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButtonLoginOnly.ForeColor = System.Drawing.Color.Gray;
-            this.radioButtonLoginOnly.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.radioButtonLoginOnly.Location = new System.Drawing.Point(25, 3);
-            this.radioButtonLoginOnly.Name = "radioButtonLoginOnly";
-            this.radioButtonLoginOnly.Size = new System.Drawing.Size(100, 20);
-            this.radioButtonLoginOnly.TabIndex = 2;
-            this.radioButtonLoginOnly.TabStop = true;
-            this.radioButtonLoginOnly.Text = "Not in database";
-            this.radioButtonLoginOnly.UseVisualStyleBackColor = true;
-            this.radioButtonLoginOnly.Click += new System.EventHandler(this.radioButtonLoginOnly_Click);
+            radioButtonLoginOnly.AutoSize = true;
+            radioButtonLoginOnly.Dock = System.Windows.Forms.DockStyle.Fill;
+            radioButtonLoginOnly.ForeColor = System.Drawing.Color.Gray;
+            radioButtonLoginOnly.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            radioButtonLoginOnly.Location = new System.Drawing.Point(31, 3);
+            radioButtonLoginOnly.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radioButtonLoginOnly.Name = "radioButtonLoginOnly";
+            radioButtonLoginOnly.Size = new System.Drawing.Size(100, 24);
+            radioButtonLoginOnly.TabIndex = 2;
+            radioButtonLoginOnly.TabStop = true;
+            radioButtonLoginOnly.Text = "Not in database";
+            radioButtonLoginOnly.UseVisualStyleBackColor = true;
+            radioButtonLoginOnly.Click += radioButtonLoginOnly_Click;
             // 
             // pictureBoxUser
             // 
-            this.pictureBoxUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxUser.Image = global::DiversityWorkbench.Properties.Resources.Agent;
-            this.pictureBoxUser.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxUser.Name = "pictureBoxUser";
-            this.pictureBoxUser.Size = new System.Drawing.Size(16, 20);
-            this.pictureBoxUser.TabIndex = 3;
-            this.pictureBoxUser.TabStop = false;
+            pictureBoxUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBoxUser.Image = Properties.Resources.Agent;
+            pictureBoxUser.Location = new System.Drawing.Point(4, 3);
+            pictureBoxUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBoxUser.Name = "pictureBoxUser";
+            pictureBoxUser.Size = new System.Drawing.Size(19, 24);
+            pictureBoxUser.TabIndex = 3;
+            pictureBoxUser.TabStop = false;
             // 
             // radioButtonUser
             // 
-            this.radioButtonUser.AutoSize = true;
-            this.radioButtonUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButtonUser.ForeColor = System.Drawing.Color.Black;
-            this.radioButtonUser.Location = new System.Drawing.Point(131, 3);
-            this.radioButtonUser.Name = "radioButtonUser";
-            this.radioButtonUser.Size = new System.Drawing.Size(81, 20);
-            this.radioButtonUser.TabIndex = 4;
-            this.radioButtonUser.TabStop = true;
-            this.radioButtonUser.Text = "In database";
-            this.radioButtonUser.UseVisualStyleBackColor = true;
-            this.radioButtonUser.Click += new System.EventHandler(this.radioButtonUser_Click);
+            radioButtonUser.AutoSize = true;
+            radioButtonUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            radioButtonUser.ForeColor = System.Drawing.Color.Black;
+            radioButtonUser.Location = new System.Drawing.Point(139, 3);
+            radioButtonUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radioButtonUser.Name = "radioButtonUser";
+            radioButtonUser.Size = new System.Drawing.Size(81, 24);
+            radioButtonUser.TabIndex = 4;
+            radioButtonUser.TabStop = true;
+            radioButtonUser.Text = "In database";
+            radioButtonUser.UseVisualStyleBackColor = true;
+            radioButtonUser.Click += radioButtonUser_Click;
             // 
             // userControlModuleRelatedEntryAgent
             // 
-            this.userControlModuleRelatedEntryAgent.CanDeleteConnectionToModule = true;
-            this.tableLayoutPanelUser.SetColumnSpan(this.userControlModuleRelatedEntryAgent, 6);
-            this.userControlModuleRelatedEntryAgent.DependsOnUri = "";
-            this.userControlModuleRelatedEntryAgent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlModuleRelatedEntryAgent.Domain = "";
-            this.userControlModuleRelatedEntryAgent.LinkDeleteConnectionToModuleToTableGrant = false;
-            this.userControlModuleRelatedEntryAgent.Location = new System.Drawing.Point(3, 28);
-            this.userControlModuleRelatedEntryAgent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.userControlModuleRelatedEntryAgent.Module = null;
-            this.userControlModuleRelatedEntryAgent.Name = "userControlModuleRelatedEntryAgent";
-            this.userControlModuleRelatedEntryAgent.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.userControlModuleRelatedEntryAgent.ShowHtmlUnitValues = false;
-            this.userControlModuleRelatedEntryAgent.ShowInfo = false;
-            this.userControlModuleRelatedEntryAgent.Size = new System.Drawing.Size(401, 23);
-            this.userControlModuleRelatedEntryAgent.SupressEmptyRemoteValues = false;
-            this.userControlModuleRelatedEntryAgent.TabIndex = 6;
+            userControlModuleRelatedEntryAgent.CanDeleteConnectionToModule = true;
+            tableLayoutPanelUser.SetColumnSpan(userControlModuleRelatedEntryAgent, 6);
+            userControlModuleRelatedEntryAgent.DependsOnUri = "";
+            userControlModuleRelatedEntryAgent.Dock = System.Windows.Forms.DockStyle.Fill;
+            userControlModuleRelatedEntryAgent.Domain = "";
+            userControlModuleRelatedEntryAgent.LinkDeleteConnectionToModuleToTableGrant = false;
+            userControlModuleRelatedEntryAgent.Location = new System.Drawing.Point(4, 32);
+            userControlModuleRelatedEntryAgent.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            userControlModuleRelatedEntryAgent.Module = null;
+            userControlModuleRelatedEntryAgent.Name = "userControlModuleRelatedEntryAgent";
+            userControlModuleRelatedEntryAgent.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            userControlModuleRelatedEntryAgent.ShowHtmlUnitValues = false;
+            userControlModuleRelatedEntryAgent.ShowInfo = false;
+            userControlModuleRelatedEntryAgent.Size = new System.Drawing.Size(462, 30);
+            userControlModuleRelatedEntryAgent.SupressEmptyRemoteValues = false;
+            userControlModuleRelatedEntryAgent.TabIndex = 6;
             // 
             // checkBoxIsDBO
             // 
-            this.checkBoxIsDBO.AutoSize = true;
-            this.checkBoxIsDBO.Dock = System.Windows.Forms.DockStyle.Right;
-            this.checkBoxIsDBO.Location = new System.Drawing.Point(349, 3);
-            this.checkBoxIsDBO.Name = "checkBoxIsDBO";
-            this.checkBoxIsDBO.Size = new System.Drawing.Size(55, 20);
-            this.checkBoxIsDBO.TabIndex = 7;
-            this.checkBoxIsDBO.Text = "Is dbo";
-            this.toolTip.SetToolTip(this.checkBoxIsDBO, "If the login is a database owner of the database");
-            this.checkBoxIsDBO.UseVisualStyleBackColor = true;
-            this.checkBoxIsDBO.Click += new System.EventHandler(this.checkBoxIsDBO_Click);
+            checkBoxIsDBO.AutoSize = true;
+            checkBoxIsDBO.Dock = System.Windows.Forms.DockStyle.Right;
+            checkBoxIsDBO.Location = new System.Drawing.Point(411, 3);
+            checkBoxIsDBO.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxIsDBO.Name = "checkBoxIsDBO";
+            checkBoxIsDBO.Size = new System.Drawing.Size(55, 24);
+            checkBoxIsDBO.TabIndex = 7;
+            checkBoxIsDBO.Text = "Is dbo";
+            toolTip.SetToolTip(checkBoxIsDBO, "If the login is a database owner of the database");
+            checkBoxIsDBO.UseVisualStyleBackColor = true;
+            checkBoxIsDBO.Click += checkBoxIsDBO_Click;
             // 
             // checkBoxPrivacyConsent
             // 
-            this.checkBoxPrivacyConsent.AutoCheck = false;
-            this.checkBoxPrivacyConsent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxPrivacyConsent.Enabled = false;
-            this.checkBoxPrivacyConsent.Image = global::DiversityWorkbench.Properties.Resources.Paragraf;
-            this.checkBoxPrivacyConsent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.checkBoxPrivacyConsent.Location = new System.Drawing.Point(218, 0);
-            this.checkBoxPrivacyConsent.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.checkBoxPrivacyConsent.Name = "checkBoxPrivacyConsent";
-            this.checkBoxPrivacyConsent.Size = new System.Drawing.Size(100, 26);
-            this.checkBoxPrivacyConsent.TabIndex = 5;
-            this.checkBoxPrivacyConsent.UseVisualStyleBackColor = true;
-            this.checkBoxPrivacyConsent.Visible = false;
+            checkBoxPrivacyConsent.AutoCheck = false;
+            checkBoxPrivacyConsent.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxPrivacyConsent.Enabled = false;
+            checkBoxPrivacyConsent.Image = Properties.Resources.Paragraf;
+            checkBoxPrivacyConsent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            checkBoxPrivacyConsent.Location = new System.Drawing.Point(228, 0);
+            checkBoxPrivacyConsent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            checkBoxPrivacyConsent.Name = "checkBoxPrivacyConsent";
+            checkBoxPrivacyConsent.Size = new System.Drawing.Size(117, 30);
+            checkBoxPrivacyConsent.TabIndex = 5;
+            checkBoxPrivacyConsent.UseVisualStyleBackColor = true;
+            checkBoxPrivacyConsent.Visible = false;
             // 
             // buttonSetPrivacyConsent
             // 
-            this.buttonSetPrivacyConsent.BackColor = System.Drawing.Color.PaleGreen;
-            this.buttonSetPrivacyConsent.FlatAppearance.BorderSize = 0;
-            this.buttonSetPrivacyConsent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSetPrivacyConsent.Image = global::DiversityWorkbench.Properties.Resources.Paragraf;
-            this.buttonSetPrivacyConsent.Location = new System.Drawing.Point(321, 0);
-            this.buttonSetPrivacyConsent.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSetPrivacyConsent.Name = "buttonSetPrivacyConsent";
-            this.buttonSetPrivacyConsent.Size = new System.Drawing.Size(12, 23);
-            this.buttonSetPrivacyConsent.TabIndex = 8;
-            this.toolTip.SetToolTip(this.buttonSetPrivacyConsent, "Set the privacy consent to YES");
-            this.buttonSetPrivacyConsent.UseVisualStyleBackColor = false;
-            this.buttonSetPrivacyConsent.Visible = false;
-            this.buttonSetPrivacyConsent.Click += new System.EventHandler(this.buttonSetPrivacyConsent_Click);
+            buttonSetPrivacyConsent.BackColor = System.Drawing.Color.PaleGreen;
+            buttonSetPrivacyConsent.FlatAppearance.BorderSize = 0;
+            buttonSetPrivacyConsent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonSetPrivacyConsent.Image = Properties.Resources.Paragraf;
+            buttonSetPrivacyConsent.Location = new System.Drawing.Point(349, 0);
+            buttonSetPrivacyConsent.Margin = new System.Windows.Forms.Padding(0);
+            buttonSetPrivacyConsent.Name = "buttonSetPrivacyConsent";
+            buttonSetPrivacyConsent.Size = new System.Drawing.Size(14, 27);
+            buttonSetPrivacyConsent.TabIndex = 8;
+            toolTip.SetToolTip(buttonSetPrivacyConsent, "Set the privacy consent to YES");
+            buttonSetPrivacyConsent.UseVisualStyleBackColor = false;
+            buttonSetPrivacyConsent.Visible = false;
+            buttonSetPrivacyConsent.Click += buttonSetPrivacyConsent_Click;
             // 
             // tabControlUserDetails
             // 
-            this.tabControlUserDetails.Controls.Add(this.tabPageRoles);
-            this.tabControlUserDetails.Controls.Add(this.tabPageProjects);
-            this.tabControlUserDetails.Controls.Add(this.tabPageSettings);
-            this.tabControlUserDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlUserDetails.ImageList = this.imageListUserDetails;
-            this.tabControlUserDetails.Location = new System.Drawing.Point(3, 81);
-            this.tabControlUserDetails.Name = "tabControlUserDetails";
-            this.tabControlUserDetails.SelectedIndex = 0;
-            this.tabControlUserDetails.Size = new System.Drawing.Size(413, 295);
-            this.tabControlUserDetails.TabIndex = 5;
+            tabControlUserDetails.Controls.Add(tabPageRoles);
+            tabControlUserDetails.Controls.Add(tabPageProjects);
+            tabControlUserDetails.Controls.Add(tabPageSettings);
+            tabControlUserDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControlUserDetails.ImageList = imageListUserDetails;
+            tabControlUserDetails.Location = new System.Drawing.Point(4, 92);
+            tabControlUserDetails.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabControlUserDetails.Name = "tabControlUserDetails";
+            tabControlUserDetails.SelectedIndex = 0;
+            tabControlUserDetails.Size = new System.Drawing.Size(478, 351);
+            tabControlUserDetails.TabIndex = 5;
             // 
             // tabPageRoles
             // 
-            this.tabPageRoles.Controls.Add(this.tableLayoutPanelRoles);
-            this.tabPageRoles.ImageIndex = 0;
-            this.tabPageRoles.Location = new System.Drawing.Point(4, 23);
-            this.tabPageRoles.Name = "tabPageRoles";
-            this.tabPageRoles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRoles.Size = new System.Drawing.Size(405, 268);
-            this.tabPageRoles.TabIndex = 0;
-            this.tabPageRoles.Text = "Roles";
-            this.tabPageRoles.UseVisualStyleBackColor = true;
+            tabPageRoles.Controls.Add(tableLayoutPanelRoles);
+            tabPageRoles.ImageIndex = 0;
+            tabPageRoles.Location = new System.Drawing.Point(4, 23);
+            tabPageRoles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageRoles.Name = "tabPageRoles";
+            tabPageRoles.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageRoles.Size = new System.Drawing.Size(470, 324);
+            tabPageRoles.TabIndex = 0;
+            tabPageRoles.Text = "Roles";
+            tabPageRoles.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelRoles
             // 
-            this.tableLayoutPanelRoles.ColumnCount = 3;
-            this.tableLayoutPanelRoles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelRoles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelRoles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelRoles.Controls.Add(this.listBoxUserRoles, 2, 1);
-            this.tableLayoutPanelRoles.Controls.Add(this.labelUserRoles, 2, 0);
-            this.tableLayoutPanelRoles.Controls.Add(this.buttonRoleRemove, 1, 3);
-            this.tableLayoutPanelRoles.Controls.Add(this.listBoxRoles, 0, 1);
-            this.tableLayoutPanelRoles.Controls.Add(this.buttonRoleAdd, 1, 2);
-            this.tableLayoutPanelRoles.Controls.Add(this.labelRoles, 0, 0);
-            this.tableLayoutPanelRoles.Controls.Add(this.buttonRoleOverview, 1, 1);
-            this.tableLayoutPanelRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelRoles.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanelRoles.Name = "tableLayoutPanelRoles";
-            this.tableLayoutPanelRoles.RowCount = 4;
-            this.tableLayoutPanelRoles.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelRoles.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelRoles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanelRoles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanelRoles.Size = new System.Drawing.Size(399, 262);
-            this.tableLayoutPanelRoles.TabIndex = 0;
+            tableLayoutPanelRoles.ColumnCount = 3;
+            tableLayoutPanelRoles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelRoles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelRoles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelRoles.Controls.Add(listBoxUserRoles, 2, 1);
+            tableLayoutPanelRoles.Controls.Add(labelUserRoles, 2, 0);
+            tableLayoutPanelRoles.Controls.Add(buttonRoleRemove, 1, 3);
+            tableLayoutPanelRoles.Controls.Add(listBoxRoles, 0, 1);
+            tableLayoutPanelRoles.Controls.Add(buttonRoleAdd, 1, 2);
+            tableLayoutPanelRoles.Controls.Add(labelRoles, 0, 0);
+            tableLayoutPanelRoles.Controls.Add(buttonRoleOverview, 1, 1);
+            tableLayoutPanelRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelRoles.Location = new System.Drawing.Point(4, 3);
+            tableLayoutPanelRoles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelRoles.Name = "tableLayoutPanelRoles";
+            tableLayoutPanelRoles.RowCount = 4;
+            tableLayoutPanelRoles.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelRoles.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelRoles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanelRoles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            tableLayoutPanelRoles.Size = new System.Drawing.Size(462, 318);
+            tableLayoutPanelRoles.TabIndex = 0;
             // 
             // listBoxUserRoles
             // 
-            this.listBoxUserRoles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.listBoxUserRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxUserRoles.FormattingEnabled = true;
-            this.listBoxUserRoles.IntegralHeight = false;
-            this.listBoxUserRoles.Location = new System.Drawing.Point(215, 16);
-            this.listBoxUserRoles.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.listBoxUserRoles.Name = "listBoxUserRoles";
-            this.tableLayoutPanelRoles.SetRowSpan(this.listBoxUserRoles, 3);
-            this.listBoxUserRoles.Size = new System.Drawing.Size(181, 243);
-            this.listBoxUserRoles.TabIndex = 4;
+            listBoxUserRoles.BackColor = System.Drawing.Color.FromArgb(192, 255, 192);
+            listBoxUserRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxUserRoles.FormattingEnabled = true;
+            listBoxUserRoles.IntegralHeight = false;
+            listBoxUserRoles.ItemHeight = 13;
+            listBoxUserRoles.Location = new System.Drawing.Point(249, 16);
+            listBoxUserRoles.Margin = new System.Windows.Forms.Padding(0, 3, 4, 3);
+            listBoxUserRoles.Name = "listBoxUserRoles";
+            tableLayoutPanelRoles.SetRowSpan(listBoxUserRoles, 3);
+            listBoxUserRoles.Size = new System.Drawing.Size(209, 299);
+            listBoxUserRoles.TabIndex = 4;
             // 
             // labelUserRoles
             // 
-            this.labelUserRoles.AutoSize = true;
-            this.labelUserRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelUserRoles.ForeColor = System.Drawing.Color.Green;
-            this.labelUserRoles.Location = new System.Drawing.Point(218, 0);
-            this.labelUserRoles.Name = "labelUserRoles";
-            this.labelUserRoles.Size = new System.Drawing.Size(178, 13);
-            this.labelUserRoles.TabIndex = 18;
-            this.labelUserRoles.Text = "Granted";
+            labelUserRoles.AutoSize = true;
+            labelUserRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelUserRoles.ForeColor = System.Drawing.Color.Green;
+            labelUserRoles.Location = new System.Drawing.Point(253, 0);
+            labelUserRoles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelUserRoles.Name = "labelUserRoles";
+            labelUserRoles.Size = new System.Drawing.Size(205, 13);
+            labelUserRoles.TabIndex = 18;
+            labelUserRoles.Text = "Granted";
             // 
             // buttonRoleRemove
             // 
-            this.buttonRoleRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonRoleRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRoleRemove.Location = new System.Drawing.Point(187, 133);
-            this.buttonRoleRemove.Name = "buttonRoleRemove";
-            this.buttonRoleRemove.Size = new System.Drawing.Size(25, 21);
-            this.buttonRoleRemove.TabIndex = 25;
-            this.buttonRoleRemove.Tag = "";
-            this.buttonRoleRemove.Text = "<";
-            this.buttonRoleRemove.UseVisualStyleBackColor = true;
-            this.buttonRoleRemove.Click += new System.EventHandler(this.buttonRoleRemove_Click);
+            buttonRoleRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            buttonRoleRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            buttonRoleRemove.Location = new System.Drawing.Point(216, 158);
+            buttonRoleRemove.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonRoleRemove.Name = "buttonRoleRemove";
+            buttonRoleRemove.Size = new System.Drawing.Size(29, 24);
+            buttonRoleRemove.TabIndex = 25;
+            buttonRoleRemove.Tag = "";
+            buttonRoleRemove.Text = "<";
+            buttonRoleRemove.UseVisualStyleBackColor = true;
+            buttonRoleRemove.Click += buttonRoleRemove_Click;
             // 
             // listBoxRoles
             // 
-            this.listBoxRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxRoles.FormattingEnabled = true;
-            this.listBoxRoles.IntegralHeight = false;
-            this.listBoxRoles.Location = new System.Drawing.Point(3, 16);
-            this.listBoxRoles.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.listBoxRoles.Name = "listBoxRoles";
-            this.tableLayoutPanelRoles.SetRowSpan(this.listBoxRoles, 3);
-            this.listBoxRoles.Size = new System.Drawing.Size(181, 243);
-            this.listBoxRoles.TabIndex = 12;
+            listBoxRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxRoles.FormattingEnabled = true;
+            listBoxRoles.IntegralHeight = false;
+            listBoxRoles.ItemHeight = 13;
+            listBoxRoles.Location = new System.Drawing.Point(4, 16);
+            listBoxRoles.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            listBoxRoles.Name = "listBoxRoles";
+            tableLayoutPanelRoles.SetRowSpan(listBoxRoles, 3);
+            listBoxRoles.Size = new System.Drawing.Size(208, 299);
+            listBoxRoles.TabIndex = 12;
             // 
             // buttonRoleAdd
             // 
-            this.buttonRoleAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonRoleAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRoleAdd.Location = new System.Drawing.Point(187, 106);
-            this.buttonRoleAdd.Name = "buttonRoleAdd";
-            this.buttonRoleAdd.Size = new System.Drawing.Size(25, 21);
-            this.buttonRoleAdd.TabIndex = 24;
-            this.buttonRoleAdd.Text = ">";
-            this.buttonRoleAdd.UseVisualStyleBackColor = true;
-            this.buttonRoleAdd.Click += new System.EventHandler(this.buttonRoleAdd_Click);
+            buttonRoleAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
+            buttonRoleAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            buttonRoleAdd.Location = new System.Drawing.Point(216, 128);
+            buttonRoleAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonRoleAdd.Name = "buttonRoleAdd";
+            buttonRoleAdd.Size = new System.Drawing.Size(29, 24);
+            buttonRoleAdd.TabIndex = 24;
+            buttonRoleAdd.Text = ">";
+            buttonRoleAdd.UseVisualStyleBackColor = true;
+            buttonRoleAdd.Click += buttonRoleAdd_Click;
             // 
             // labelRoles
             // 
-            this.labelRoles.AutoSize = true;
-            this.labelRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRoles.ForeColor = System.Drawing.Color.Crimson;
-            this.labelRoles.Location = new System.Drawing.Point(3, 0);
-            this.labelRoles.Name = "labelRoles";
-            this.labelRoles.Size = new System.Drawing.Size(178, 13);
-            this.labelRoles.TabIndex = 17;
-            this.labelRoles.Text = "Available";
+            labelRoles.AutoSize = true;
+            labelRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelRoles.ForeColor = System.Drawing.Color.Crimson;
+            labelRoles.Location = new System.Drawing.Point(4, 0);
+            labelRoles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelRoles.Name = "labelRoles";
+            labelRoles.Size = new System.Drawing.Size(204, 13);
+            labelRoles.TabIndex = 17;
+            labelRoles.Text = "Available";
             // 
             // buttonRoleOverview
             // 
-            this.buttonRoleOverview.Image = global::DiversityWorkbench.Properties.Resources.RoleOverview;
-            this.buttonRoleOverview.Location = new System.Drawing.Point(184, 16);
-            this.buttonRoleOverview.Margin = new System.Windows.Forms.Padding(0, 3, 6, 3);
-            this.buttonRoleOverview.Name = "buttonRoleOverview";
-            this.buttonRoleOverview.Size = new System.Drawing.Size(25, 24);
-            this.buttonRoleOverview.TabIndex = 26;
-            this.toolTip.SetToolTip(this.buttonRoleOverview, "Show permissions of the selected role");
-            this.buttonRoleOverview.UseVisualStyleBackColor = true;
-            this.buttonRoleOverview.Click += new System.EventHandler(this.buttonRoleOverview_Click);
+            buttonRoleOverview.Image = Properties.Resources.RoleOverview;
+            buttonRoleOverview.Location = new System.Drawing.Point(212, 16);
+            buttonRoleOverview.Margin = new System.Windows.Forms.Padding(0, 3, 7, 3);
+            buttonRoleOverview.Name = "buttonRoleOverview";
+            buttonRoleOverview.Size = new System.Drawing.Size(29, 28);
+            buttonRoleOverview.TabIndex = 26;
+            toolTip.SetToolTip(buttonRoleOverview, "Show permissions of the selected role");
+            buttonRoleOverview.UseVisualStyleBackColor = true;
+            buttonRoleOverview.Click += buttonRoleOverview_Click;
             // 
             // tabPageProjects
             // 
-            this.tabPageProjects.Controls.Add(this.tableLayoutPanelProjects);
-            this.tabPageProjects.ImageIndex = 1;
-            this.tabPageProjects.Location = new System.Drawing.Point(4, 23);
-            this.tabPageProjects.Name = "tabPageProjects";
-            this.tabPageProjects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProjects.Size = new System.Drawing.Size(405, 268);
-            this.tabPageProjects.TabIndex = 1;
-            this.tabPageProjects.Text = "Projects";
-            this.tabPageProjects.UseVisualStyleBackColor = true;
+            tabPageProjects.Controls.Add(tableLayoutPanelProjects);
+            tabPageProjects.ImageIndex = 1;
+            tabPageProjects.Location = new System.Drawing.Point(4, 23);
+            tabPageProjects.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageProjects.Name = "tabPageProjects";
+            tabPageProjects.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageProjects.Size = new System.Drawing.Size(470, 324);
+            tabPageProjects.TabIndex = 1;
+            tabPageProjects.Text = "Projects";
+            tabPageProjects.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelProjects
             // 
-            this.tableLayoutPanelProjects.ColumnCount = 4;
-            this.tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelProjects.Controls.Add(this.labelProjectsNotAvailable, 0, 0);
-            this.tableLayoutPanelProjects.Controls.Add(this.labelProjectsAvailable, 3, 0);
-            this.tableLayoutPanelProjects.Controls.Add(this.buttonProjectRemove, 1, 5);
-            this.tableLayoutPanelProjects.Controls.Add(this.buttonProjectAdd, 1, 4);
-            this.tableLayoutPanelProjects.Controls.Add(this.listBoxProjectsNotAvailable, 0, 1);
-            this.tableLayoutPanelProjects.Controls.Add(this.labelOrderProject, 0, 8);
-            this.tableLayoutPanelProjects.Controls.Add(this.radioButtonOrderProjectByName, 2, 8);
-            this.tableLayoutPanelProjects.Controls.Add(this.radioButtonOrderProjectByID, 1, 8);
-            this.tableLayoutPanelProjects.Controls.Add(this.buttonSynchronizeProjects, 1, 10);
-            this.tableLayoutPanelProjects.Controls.Add(this.userControlModuleRelatedEntryProject, 0, 9);
-            this.tableLayoutPanelProjects.Controls.Add(this.splitContainerProjectAccessible, 3, 1);
-            this.tableLayoutPanelProjects.Controls.Add(this.buttonProjectAddAll, 1, 3);
-            this.tableLayoutPanelProjects.Controls.Add(this.buttonProjectRemoveAll, 1, 6);
-            this.tableLayoutPanelProjects.Controls.Add(this.buttonRemoveProject, 0, 10);
-            this.tableLayoutPanelProjects.Controls.Add(this.buttonProjectUserNotAvailable, 1, 0);
-            this.tableLayoutPanelProjects.Controls.Add(this.buttonProjectUserAvailable, 2, 0);
-            this.tableLayoutPanelProjects.Controls.Add(this.buttonProjectUserNotAvailableIsLocked, 1, 2);
-            this.tableLayoutPanelProjects.Controls.Add(this.buttonProjectUserAvailableIsLocked, 2, 2);
-            this.tableLayoutPanelProjects.Controls.Add(this.pictureBoxProjectsLocked, 2, 7);
-            this.tableLayoutPanelProjects.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelProjects.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanelProjects.Name = "tableLayoutPanelProjects";
-            this.tableLayoutPanelProjects.RowCount = 11;
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanelProjects.Size = new System.Drawing.Size(399, 262);
-            this.tableLayoutPanelProjects.TabIndex = 0;
+            tableLayoutPanelProjects.ColumnCount = 4;
+            tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelProjects.Controls.Add(labelProjectsNotAvailable, 0, 0);
+            tableLayoutPanelProjects.Controls.Add(labelProjectsAvailable, 3, 0);
+            tableLayoutPanelProjects.Controls.Add(buttonProjectRemove, 1, 5);
+            tableLayoutPanelProjects.Controls.Add(buttonProjectAdd, 1, 4);
+            tableLayoutPanelProjects.Controls.Add(listBoxProjectsNotAvailable, 0, 1);
+            tableLayoutPanelProjects.Controls.Add(labelOrderProject, 0, 8);
+            tableLayoutPanelProjects.Controls.Add(radioButtonOrderProjectByName, 2, 8);
+            tableLayoutPanelProjects.Controls.Add(radioButtonOrderProjectByID, 1, 8);
+            tableLayoutPanelProjects.Controls.Add(buttonSynchronizeProjects, 1, 10);
+            tableLayoutPanelProjects.Controls.Add(userControlModuleRelatedEntryProject, 0, 9);
+            tableLayoutPanelProjects.Controls.Add(splitContainerProjectAccessible, 3, 1);
+            tableLayoutPanelProjects.Controls.Add(buttonProjectAddAll, 1, 3);
+            tableLayoutPanelProjects.Controls.Add(buttonProjectRemoveAll, 1, 6);
+            tableLayoutPanelProjects.Controls.Add(buttonRemoveProject, 0, 10);
+            tableLayoutPanelProjects.Controls.Add(buttonProjectUserNotAvailable, 1, 0);
+            tableLayoutPanelProjects.Controls.Add(buttonProjectUserAvailable, 2, 0);
+            tableLayoutPanelProjects.Controls.Add(buttonProjectUserNotAvailableIsLocked, 1, 2);
+            tableLayoutPanelProjects.Controls.Add(buttonProjectUserAvailableIsLocked, 2, 2);
+            tableLayoutPanelProjects.Controls.Add(pictureBoxProjectsLocked, 2, 7);
+            tableLayoutPanelProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelProjects.Location = new System.Drawing.Point(4, 3);
+            tableLayoutPanelProjects.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelProjects.Name = "tableLayoutPanelProjects";
+            tableLayoutPanelProjects.RowCount = 11;
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            tableLayoutPanelProjects.Size = new System.Drawing.Size(462, 318);
+            tableLayoutPanelProjects.TabIndex = 0;
             // 
             // labelProjectsNotAvailable
             // 
-            this.labelProjectsNotAvailable.AutoSize = true;
-            this.labelProjectsNotAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProjectsNotAvailable.ForeColor = System.Drawing.Color.Red;
-            this.labelProjectsNotAvailable.Image = global::DiversityWorkbench.Properties.Resources.NoAccess16;
-            this.labelProjectsNotAvailable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelProjectsNotAvailable.Location = new System.Drawing.Point(3, 0);
-            this.labelProjectsNotAvailable.Name = "labelProjectsNotAvailable";
-            this.labelProjectsNotAvailable.Size = new System.Drawing.Size(175, 23);
-            this.labelProjectsNotAvailable.TabIndex = 16;
-            this.labelProjectsNotAvailable.Text = "      No access";
-            this.labelProjectsNotAvailable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            labelProjectsNotAvailable.AutoSize = true;
+            labelProjectsNotAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelProjectsNotAvailable.ForeColor = System.Drawing.Color.Red;
+            labelProjectsNotAvailable.Image = Properties.Resources.NoAccess16;
+            labelProjectsNotAvailable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            labelProjectsNotAvailable.Location = new System.Drawing.Point(4, 0);
+            labelProjectsNotAvailable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelProjectsNotAvailable.Name = "labelProjectsNotAvailable";
+            labelProjectsNotAvailable.Size = new System.Drawing.Size(202, 26);
+            labelProjectsNotAvailable.TabIndex = 16;
+            labelProjectsNotAvailable.Text = "      No access";
+            labelProjectsNotAvailable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelProjectsAvailable
             // 
-            this.labelProjectsAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProjectsAvailable.ForeColor = System.Drawing.Color.Green;
-            this.labelProjectsAvailable.Image = global::DiversityWorkbench.Properties.Resources.ProjectOpen;
-            this.labelProjectsAvailable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelProjectsAvailable.Location = new System.Drawing.Point(220, 3);
-            this.labelProjectsAvailable.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.labelProjectsAvailable.Name = "labelProjectsAvailable";
-            this.labelProjectsAvailable.Size = new System.Drawing.Size(176, 20);
-            this.labelProjectsAvailable.TabIndex = 15;
-            this.labelProjectsAvailable.Text = "      Accessible";
-            this.labelProjectsAvailable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            labelProjectsAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelProjectsAvailable.ForeColor = System.Drawing.Color.Green;
+            labelProjectsAvailable.Image = Properties.Resources.ProjectOpen;
+            labelProjectsAvailable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            labelProjectsAvailable.Location = new System.Drawing.Point(256, 3);
+            labelProjectsAvailable.Margin = new System.Windows.Forms.Padding(4, 3, 4, 0);
+            labelProjectsAvailable.Name = "labelProjectsAvailable";
+            labelProjectsAvailable.Size = new System.Drawing.Size(202, 23);
+            labelProjectsAvailable.TabIndex = 15;
+            labelProjectsAvailable.Text = "      Accessible";
+            labelProjectsAvailable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // buttonProjectRemove
             // 
-            this.tableLayoutPanelProjects.SetColumnSpan(this.buttonProjectRemove, 2);
-            this.buttonProjectRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonProjectRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProjectRemove.ForeColor = System.Drawing.Color.Red;
-            this.buttonProjectRemove.Location = new System.Drawing.Point(184, 102);
-            this.buttonProjectRemove.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonProjectRemove.Name = "buttonProjectRemove";
-            this.buttonProjectRemove.Size = new System.Drawing.Size(30, 20);
-            this.buttonProjectRemove.TabIndex = 23;
-            this.buttonProjectRemove.Text = "<";
-            this.toolTip.SetToolTip(this.buttonProjectRemove, "Remove the selected project from the Accessible list");
-            this.buttonProjectRemove.UseVisualStyleBackColor = true;
-            this.buttonProjectRemove.Click += new System.EventHandler(this.buttonProjectRemove_Click);
+            tableLayoutPanelProjects.SetColumnSpan(buttonProjectRemove, 2);
+            buttonProjectRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            buttonProjectRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            buttonProjectRemove.ForeColor = System.Drawing.Color.Red;
+            buttonProjectRemove.Location = new System.Drawing.Point(214, 117);
+            buttonProjectRemove.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            buttonProjectRemove.Name = "buttonProjectRemove";
+            buttonProjectRemove.Size = new System.Drawing.Size(34, 23);
+            buttonProjectRemove.TabIndex = 23;
+            buttonProjectRemove.Text = "<";
+            toolTip.SetToolTip(buttonProjectRemove, "Remove the selected project from the Accessible list");
+            buttonProjectRemove.UseVisualStyleBackColor = true;
+            buttonProjectRemove.Click += buttonProjectRemove_Click;
             // 
             // buttonProjectAdd
             // 
-            this.tableLayoutPanelProjects.SetColumnSpan(this.buttonProjectAdd, 2);
-            this.buttonProjectAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonProjectAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProjectAdd.ForeColor = System.Drawing.Color.Green;
-            this.buttonProjectAdd.Location = new System.Drawing.Point(184, 82);
-            this.buttonProjectAdd.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonProjectAdd.Name = "buttonProjectAdd";
-            this.buttonProjectAdd.Size = new System.Drawing.Size(30, 20);
-            this.buttonProjectAdd.TabIndex = 22;
-            this.buttonProjectAdd.Text = ">";
-            this.toolTip.SetToolTip(this.buttonProjectAdd, "Add the selected project to the Accessible list");
-            this.buttonProjectAdd.UseVisualStyleBackColor = true;
-            this.buttonProjectAdd.Click += new System.EventHandler(this.buttonProjectAdd_Click);
+            tableLayoutPanelProjects.SetColumnSpan(buttonProjectAdd, 2);
+            buttonProjectAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
+            buttonProjectAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            buttonProjectAdd.ForeColor = System.Drawing.Color.Green;
+            buttonProjectAdd.Location = new System.Drawing.Point(214, 94);
+            buttonProjectAdd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            buttonProjectAdd.Name = "buttonProjectAdd";
+            buttonProjectAdd.Size = new System.Drawing.Size(34, 23);
+            buttonProjectAdd.TabIndex = 22;
+            buttonProjectAdd.Text = ">";
+            toolTip.SetToolTip(buttonProjectAdd, "Add the selected project to the Accessible list");
+            buttonProjectAdd.UseVisualStyleBackColor = true;
+            buttonProjectAdd.Click += buttonProjectAdd_Click;
             // 
             // listBoxProjectsNotAvailable
             // 
-            this.listBoxProjectsNotAvailable.BackColor = System.Drawing.Color.Pink;
-            this.listBoxProjectsNotAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxProjectsNotAvailable.FormattingEnabled = true;
-            this.listBoxProjectsNotAvailable.IntegralHeight = false;
-            this.listBoxProjectsNotAvailable.Location = new System.Drawing.Point(3, 23);
-            this.listBoxProjectsNotAvailable.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.listBoxProjectsNotAvailable.Name = "listBoxProjectsNotAvailable";
-            this.tableLayoutPanelProjects.SetRowSpan(this.listBoxProjectsNotAvailable, 7);
-            this.listBoxProjectsNotAvailable.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxProjectsNotAvailable.Size = new System.Drawing.Size(178, 167);
-            this.listBoxProjectsNotAvailable.TabIndex = 6;
-            this.listBoxProjectsNotAvailable.Click += new System.EventHandler(this.listBoxProjectsNotAvailable_Click);
-            this.listBoxProjectsNotAvailable.SelectedIndexChanged += new System.EventHandler(this.listBoxProjectsNotAvailable_SelectedIndexChanged);
+            listBoxProjectsNotAvailable.BackColor = System.Drawing.Color.Pink;
+            listBoxProjectsNotAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxProjectsNotAvailable.FormattingEnabled = true;
+            listBoxProjectsNotAvailable.IntegralHeight = false;
+            listBoxProjectsNotAvailable.ItemHeight = 13;
+            listBoxProjectsNotAvailable.Location = new System.Drawing.Point(4, 26);
+            listBoxProjectsNotAvailable.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            listBoxProjectsNotAvailable.Name = "listBoxProjectsNotAvailable";
+            tableLayoutPanelProjects.SetRowSpan(listBoxProjectsNotAvailable, 7);
+            listBoxProjectsNotAvailable.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            listBoxProjectsNotAvailable.Size = new System.Drawing.Size(206, 210);
+            listBoxProjectsNotAvailable.TabIndex = 6;
+            listBoxProjectsNotAvailable.Click += listBoxProjectsNotAvailable_Click;
+            listBoxProjectsNotAvailable.SelectedIndexChanged += listBoxProjectsNotAvailable_SelectedIndexChanged;
             // 
             // labelOrderProject
             // 
-            this.labelOrderProject.AutoSize = true;
-            this.labelOrderProject.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelOrderProject.Location = new System.Drawing.Point(117, 190);
-            this.labelOrderProject.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelOrderProject.Name = "labelOrderProject";
-            this.labelOrderProject.Size = new System.Drawing.Size(64, 20);
-            this.labelOrderProject.TabIndex = 39;
-            this.labelOrderProject.Text = "Order by: ID";
-            this.labelOrderProject.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelOrderProject.AutoSize = true;
+            labelOrderProject.Dock = System.Windows.Forms.DockStyle.Right;
+            labelOrderProject.Location = new System.Drawing.Point(146, 236);
+            labelOrderProject.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelOrderProject.Name = "labelOrderProject";
+            labelOrderProject.Size = new System.Drawing.Size(64, 23);
+            labelOrderProject.TabIndex = 39;
+            labelOrderProject.Text = "Order by: ID";
+            labelOrderProject.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // radioButtonOrderProjectByName
             // 
-            this.radioButtonOrderProjectByName.AutoSize = true;
-            this.radioButtonOrderProjectByName.Checked = true;
-            this.tableLayoutPanelProjects.SetColumnSpan(this.radioButtonOrderProjectByName, 2);
-            this.radioButtonOrderProjectByName.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radioButtonOrderProjectByName.Location = new System.Drawing.Point(202, 190);
-            this.radioButtonOrderProjectByName.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.radioButtonOrderProjectByName.Name = "radioButtonOrderProjectByName";
-            this.radioButtonOrderProjectByName.Size = new System.Drawing.Size(53, 20);
-            this.radioButtonOrderProjectByName.TabIndex = 40;
-            this.radioButtonOrderProjectByName.TabStop = true;
-            this.radioButtonOrderProjectByName.Text = "Name";
-            this.radioButtonOrderProjectByName.UseVisualStyleBackColor = true;
+            radioButtonOrderProjectByName.AutoSize = true;
+            radioButtonOrderProjectByName.Checked = true;
+            tableLayoutPanelProjects.SetColumnSpan(radioButtonOrderProjectByName, 2);
+            radioButtonOrderProjectByName.Dock = System.Windows.Forms.DockStyle.Left;
+            radioButtonOrderProjectByName.Location = new System.Drawing.Point(235, 236);
+            radioButtonOrderProjectByName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            radioButtonOrderProjectByName.Name = "radioButtonOrderProjectByName";
+            radioButtonOrderProjectByName.Size = new System.Drawing.Size(53, 23);
+            radioButtonOrderProjectByName.TabIndex = 40;
+            radioButtonOrderProjectByName.TabStop = true;
+            radioButtonOrderProjectByName.Text = "Name";
+            radioButtonOrderProjectByName.UseVisualStyleBackColor = true;
             // 
             // radioButtonOrderProjectByID
             // 
-            this.radioButtonOrderProjectByID.AutoSize = true;
-            this.radioButtonOrderProjectByID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButtonOrderProjectByID.Location = new System.Drawing.Point(184, 193);
-            this.radioButtonOrderProjectByID.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.radioButtonOrderProjectByID.Name = "radioButtonOrderProjectByID";
-            this.radioButtonOrderProjectByID.Size = new System.Drawing.Size(15, 14);
-            this.radioButtonOrderProjectByID.TabIndex = 41;
-            this.radioButtonOrderProjectByID.Text = "ID";
-            this.radioButtonOrderProjectByID.UseVisualStyleBackColor = true;
-            this.radioButtonOrderProjectByID.CheckedChanged += new System.EventHandler(this.radioButtonOrderProjectByID_CheckedChanged);
+            radioButtonOrderProjectByID.AutoSize = true;
+            radioButtonOrderProjectByID.Dock = System.Windows.Forms.DockStyle.Fill;
+            radioButtonOrderProjectByID.Location = new System.Drawing.Point(214, 239);
+            radioButtonOrderProjectByID.Margin = new System.Windows.Forms.Padding(4, 3, 0, 3);
+            radioButtonOrderProjectByID.Name = "radioButtonOrderProjectByID";
+            radioButtonOrderProjectByID.Size = new System.Drawing.Size(17, 17);
+            radioButtonOrderProjectByID.TabIndex = 41;
+            radioButtonOrderProjectByID.Text = "ID";
+            radioButtonOrderProjectByID.UseVisualStyleBackColor = true;
+            radioButtonOrderProjectByID.CheckedChanged += radioButtonOrderProjectByID_CheckedChanged;
             // 
             // buttonSynchronizeProjects
             // 
-            this.tableLayoutPanelProjects.SetColumnSpan(this.buttonSynchronizeProjects, 3);
-            this.buttonSynchronizeProjects.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSynchronizeProjects.Image = global::DiversityWorkbench.ResourceWorkbench.Download;
-            this.buttonSynchronizeProjects.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSynchronizeProjects.Location = new System.Drawing.Point(181, 238);
-            this.buttonSynchronizeProjects.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSynchronizeProjects.Name = "buttonSynchronizeProjects";
-            this.buttonSynchronizeProjects.Size = new System.Drawing.Size(218, 24);
-            this.buttonSynchronizeProjects.TabIndex = 42;
-            this.buttonSynchronizeProjects.Text = "Load projects from DiversityProjects";
-            this.buttonSynchronizeProjects.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolTip.SetToolTip(this.buttonSynchronizeProjects, "Load projects defined in the module DiversityProjects");
-            this.buttonSynchronizeProjects.UseVisualStyleBackColor = true;
-            this.buttonSynchronizeProjects.Click += new System.EventHandler(this.buttonSynchronizeProjects_Click);
+            tableLayoutPanelProjects.SetColumnSpan(buttonSynchronizeProjects, 3);
+            buttonSynchronizeProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonSynchronizeProjects.Image = ResourceWorkbench.Download;
+            buttonSynchronizeProjects.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            buttonSynchronizeProjects.Location = new System.Drawing.Point(210, 290);
+            buttonSynchronizeProjects.Margin = new System.Windows.Forms.Padding(0);
+            buttonSynchronizeProjects.Name = "buttonSynchronizeProjects";
+            buttonSynchronizeProjects.Size = new System.Drawing.Size(252, 28);
+            buttonSynchronizeProjects.TabIndex = 42;
+            buttonSynchronizeProjects.Text = "Load projects from DiversityProjects";
+            buttonSynchronizeProjects.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            toolTip.SetToolTip(buttonSynchronizeProjects, "Load projects defined in the module DiversityProjects");
+            buttonSynchronizeProjects.UseVisualStyleBackColor = true;
+            buttonSynchronizeProjects.Click += buttonSynchronizeProjects_Click;
             // 
             // userControlModuleRelatedEntryProject
             // 
-            this.userControlModuleRelatedEntryProject.CanDeleteConnectionToModule = true;
-            this.tableLayoutPanelProjects.SetColumnSpan(this.userControlModuleRelatedEntryProject, 4);
-            this.userControlModuleRelatedEntryProject.DependsOnUri = "";
-            this.userControlModuleRelatedEntryProject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlModuleRelatedEntryProject.Domain = "";
-            this.userControlModuleRelatedEntryProject.LinkDeleteConnectionToModuleToTableGrant = false;
-            this.userControlModuleRelatedEntryProject.Location = new System.Drawing.Point(3, 213);
-            this.userControlModuleRelatedEntryProject.Module = null;
-            this.userControlModuleRelatedEntryProject.Name = "userControlModuleRelatedEntryProject";
-            this.userControlModuleRelatedEntryProject.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.userControlModuleRelatedEntryProject.ShowHtmlUnitValues = false;
-            this.userControlModuleRelatedEntryProject.ShowInfo = false;
-            this.userControlModuleRelatedEntryProject.Size = new System.Drawing.Size(393, 22);
-            this.userControlModuleRelatedEntryProject.SupressEmptyRemoteValues = false;
-            this.userControlModuleRelatedEntryProject.TabIndex = 43;
+            userControlModuleRelatedEntryProject.CanDeleteConnectionToModule = true;
+            tableLayoutPanelProjects.SetColumnSpan(userControlModuleRelatedEntryProject, 4);
+            userControlModuleRelatedEntryProject.DependsOnUri = "";
+            userControlModuleRelatedEntryProject.Dock = System.Windows.Forms.DockStyle.Fill;
+            userControlModuleRelatedEntryProject.Domain = "";
+            userControlModuleRelatedEntryProject.LinkDeleteConnectionToModuleToTableGrant = false;
+            userControlModuleRelatedEntryProject.Location = new System.Drawing.Point(5, 262);
+            userControlModuleRelatedEntryProject.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            userControlModuleRelatedEntryProject.Module = null;
+            userControlModuleRelatedEntryProject.Name = "userControlModuleRelatedEntryProject";
+            userControlModuleRelatedEntryProject.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            userControlModuleRelatedEntryProject.ShowHtmlUnitValues = false;
+            userControlModuleRelatedEntryProject.ShowInfo = false;
+            userControlModuleRelatedEntryProject.Size = new System.Drawing.Size(452, 25);
+            userControlModuleRelatedEntryProject.SupressEmptyRemoteValues = false;
+            userControlModuleRelatedEntryProject.TabIndex = 43;
             // 
             // splitContainerProjectAccessible
             // 
-            this.splitContainerProjectAccessible.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerProjectAccessible.Location = new System.Drawing.Point(217, 23);
-            this.splitContainerProjectAccessible.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.splitContainerProjectAccessible.Name = "splitContainerProjectAccessible";
-            this.splitContainerProjectAccessible.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            splitContainerProjectAccessible.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerProjectAccessible.Location = new System.Drawing.Point(252, 26);
+            splitContainerProjectAccessible.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            splitContainerProjectAccessible.Name = "splitContainerProjectAccessible";
+            splitContainerProjectAccessible.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainerProjectAccessible.Panel1
             // 
-            this.splitContainerProjectAccessible.Panel1.Controls.Add(this.listBoxProjectsAvailable);
+            splitContainerProjectAccessible.Panel1.Controls.Add(listBoxProjectsAvailable);
             // 
             // splitContainerProjectAccessible.Panel2
             // 
-            this.splitContainerProjectAccessible.Panel2.Controls.Add(this.tableLayoutPanelProjectsReadOnly);
-            this.tableLayoutPanelProjects.SetRowSpan(this.splitContainerProjectAccessible, 7);
-            this.splitContainerProjectAccessible.Size = new System.Drawing.Size(179, 167);
-            this.splitContainerProjectAccessible.SplitterDistance = 99;
-            this.splitContainerProjectAccessible.SplitterWidth = 2;
-            this.splitContainerProjectAccessible.TabIndex = 44;
+            splitContainerProjectAccessible.Panel2.Controls.Add(tableLayoutPanelProjectsReadOnly);
+            tableLayoutPanelProjects.SetRowSpan(splitContainerProjectAccessible, 7);
+            splitContainerProjectAccessible.Size = new System.Drawing.Size(206, 210);
+            splitContainerProjectAccessible.SplitterDistance = 123;
+            splitContainerProjectAccessible.SplitterWidth = 2;
+            splitContainerProjectAccessible.TabIndex = 44;
             // 
             // listBoxProjectsAvailable
             // 
-            this.listBoxProjectsAvailable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.listBoxProjectsAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxProjectsAvailable.FormattingEnabled = true;
-            this.listBoxProjectsAvailable.IntegralHeight = false;
-            this.listBoxProjectsAvailable.Location = new System.Drawing.Point(0, 0);
-            this.listBoxProjectsAvailable.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
-            this.listBoxProjectsAvailable.Name = "listBoxProjectsAvailable";
-            this.listBoxProjectsAvailable.Size = new System.Drawing.Size(179, 99);
-            this.listBoxProjectsAvailable.TabIndex = 5;
-            this.listBoxProjectsAvailable.Click += new System.EventHandler(this.listBoxProjectsAvailable_Click);
-            this.listBoxProjectsAvailable.SelectedIndexChanged += new System.EventHandler(this.listBoxProjectsAvailable_SelectedIndexChanged);
+            listBoxProjectsAvailable.BackColor = System.Drawing.Color.FromArgb(192, 255, 192);
+            listBoxProjectsAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxProjectsAvailable.FormattingEnabled = true;
+            listBoxProjectsAvailable.IntegralHeight = false;
+            listBoxProjectsAvailable.ItemHeight = 13;
+            listBoxProjectsAvailable.Location = new System.Drawing.Point(0, 0);
+            listBoxProjectsAvailable.Margin = new System.Windows.Forms.Padding(0, 3, 4, 0);
+            listBoxProjectsAvailable.Name = "listBoxProjectsAvailable";
+            listBoxProjectsAvailable.Size = new System.Drawing.Size(206, 123);
+            listBoxProjectsAvailable.TabIndex = 5;
+            listBoxProjectsAvailable.Click += listBoxProjectsAvailable_Click;
+            listBoxProjectsAvailable.SelectedIndexChanged += listBoxProjectsAvailable_SelectedIndexChanged;
             // 
             // tableLayoutPanelProjectsReadOnly
             // 
-            this.tableLayoutPanelProjectsReadOnly.ColumnCount = 3;
-            this.tableLayoutPanelProjectsReadOnly.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelProjectsReadOnly.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelProjectsReadOnly.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelProjectsReadOnly.Controls.Add(this.buttonProjectsReadOnlyAdd, 1, 0);
-            this.tableLayoutPanelProjectsReadOnly.Controls.Add(this.buttonProjectsReadOnlyRemove, 2, 0);
-            this.tableLayoutPanelProjectsReadOnly.Controls.Add(this.listBoxProjectsReadOnly, 0, 1);
-            this.tableLayoutPanelProjectsReadOnly.Controls.Add(this.labelProjectsReadOnly, 0, 0);
-            this.tableLayoutPanelProjectsReadOnly.Controls.Add(this.listBoxProjectsLocked, 0, 2);
-            this.tableLayoutPanelProjectsReadOnly.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelProjectsReadOnly.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelProjectsReadOnly.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.tableLayoutPanelProjectsReadOnly.Name = "tableLayoutPanelProjectsReadOnly";
-            this.tableLayoutPanelProjectsReadOnly.RowCount = 3;
-            this.tableLayoutPanelProjectsReadOnly.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelProjectsReadOnly.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelProjectsReadOnly.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelProjectsReadOnly.Size = new System.Drawing.Size(179, 66);
-            this.tableLayoutPanelProjectsReadOnly.TabIndex = 0;
+            tableLayoutPanelProjectsReadOnly.ColumnCount = 3;
+            tableLayoutPanelProjectsReadOnly.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelProjectsReadOnly.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelProjectsReadOnly.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelProjectsReadOnly.Controls.Add(buttonProjectsReadOnlyAdd, 1, 0);
+            tableLayoutPanelProjectsReadOnly.Controls.Add(buttonProjectsReadOnlyRemove, 2, 0);
+            tableLayoutPanelProjectsReadOnly.Controls.Add(listBoxProjectsReadOnly, 0, 1);
+            tableLayoutPanelProjectsReadOnly.Controls.Add(labelProjectsReadOnly, 0, 0);
+            tableLayoutPanelProjectsReadOnly.Controls.Add(listBoxProjectsLocked, 0, 2);
+            tableLayoutPanelProjectsReadOnly.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelProjectsReadOnly.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelProjectsReadOnly.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            tableLayoutPanelProjectsReadOnly.Name = "tableLayoutPanelProjectsReadOnly";
+            tableLayoutPanelProjectsReadOnly.RowCount = 3;
+            tableLayoutPanelProjectsReadOnly.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelProjectsReadOnly.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelProjectsReadOnly.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelProjectsReadOnly.Size = new System.Drawing.Size(206, 85);
+            tableLayoutPanelProjectsReadOnly.TabIndex = 0;
             // 
             // buttonProjectsReadOnlyAdd
             // 
-            this.buttonProjectsReadOnlyAdd.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonProjectsReadOnlyAdd.Image = global::DiversityWorkbench.Properties.Resources.ArrowDownSmall;
-            this.buttonProjectsReadOnlyAdd.Location = new System.Drawing.Point(98, 0);
-            this.buttonProjectsReadOnlyAdd.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.buttonProjectsReadOnlyAdd.Name = "buttonProjectsReadOnlyAdd";
-            this.buttonProjectsReadOnlyAdd.Size = new System.Drawing.Size(30, 20);
-            this.buttonProjectsReadOnlyAdd.TabIndex = 0;
-            this.toolTip.SetToolTip(this.buttonProjectsReadOnlyAdd, "Change selected project to read only");
-            this.buttonProjectsReadOnlyAdd.UseVisualStyleBackColor = true;
-            this.buttonProjectsReadOnlyAdd.Click += new System.EventHandler(this.buttonProjectsReadOnlyAdd_Click);
+            buttonProjectsReadOnlyAdd.Dock = System.Windows.Forms.DockStyle.Right;
+            buttonProjectsReadOnlyAdd.Image = Properties.Resources.ArrowDownSmall;
+            buttonProjectsReadOnlyAdd.Location = new System.Drawing.Point(112, 0);
+            buttonProjectsReadOnlyAdd.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            buttonProjectsReadOnlyAdd.Name = "buttonProjectsReadOnlyAdd";
+            buttonProjectsReadOnlyAdd.Size = new System.Drawing.Size(35, 23);
+            buttonProjectsReadOnlyAdd.TabIndex = 0;
+            toolTip.SetToolTip(buttonProjectsReadOnlyAdd, "Change selected project to read only");
+            buttonProjectsReadOnlyAdd.UseVisualStyleBackColor = true;
+            buttonProjectsReadOnlyAdd.Click += buttonProjectsReadOnlyAdd_Click;
             // 
             // buttonProjectsReadOnlyRemove
             // 
-            this.buttonProjectsReadOnlyRemove.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonProjectsReadOnlyRemove.Image = global::DiversityWorkbench.Properties.Resources.ArrowUpSmall;
-            this.buttonProjectsReadOnlyRemove.Location = new System.Drawing.Point(134, 0);
-            this.buttonProjectsReadOnlyRemove.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.buttonProjectsReadOnlyRemove.Name = "buttonProjectsReadOnlyRemove";
-            this.buttonProjectsReadOnlyRemove.Size = new System.Drawing.Size(30, 20);
-            this.buttonProjectsReadOnlyRemove.TabIndex = 1;
-            this.toolTip.SetToolTip(this.buttonProjectsReadOnlyRemove, "Remove selected project from read only list");
-            this.buttonProjectsReadOnlyRemove.UseVisualStyleBackColor = true;
-            this.buttonProjectsReadOnlyRemove.Click += new System.EventHandler(this.buttonProjectsReadOnlyRemove_Click);
+            buttonProjectsReadOnlyRemove.Dock = System.Windows.Forms.DockStyle.Left;
+            buttonProjectsReadOnlyRemove.Image = Properties.Resources.ArrowUpSmall;
+            buttonProjectsReadOnlyRemove.Location = new System.Drawing.Point(155, 0);
+            buttonProjectsReadOnlyRemove.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            buttonProjectsReadOnlyRemove.Name = "buttonProjectsReadOnlyRemove";
+            buttonProjectsReadOnlyRemove.Size = new System.Drawing.Size(35, 23);
+            buttonProjectsReadOnlyRemove.TabIndex = 1;
+            toolTip.SetToolTip(buttonProjectsReadOnlyRemove, "Remove selected project from read only list");
+            buttonProjectsReadOnlyRemove.UseVisualStyleBackColor = true;
+            buttonProjectsReadOnlyRemove.Click += buttonProjectsReadOnlyRemove_Click;
             // 
             // listBoxProjectsReadOnly
             // 
-            this.listBoxProjectsReadOnly.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tableLayoutPanelProjectsReadOnly.SetColumnSpan(this.listBoxProjectsReadOnly, 3);
-            this.listBoxProjectsReadOnly.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxProjectsReadOnly.FormattingEnabled = true;
-            this.listBoxProjectsReadOnly.IntegralHeight = false;
-            this.listBoxProjectsReadOnly.Location = new System.Drawing.Point(0, 20);
-            this.listBoxProjectsReadOnly.Margin = new System.Windows.Forms.Padding(0);
-            this.listBoxProjectsReadOnly.Name = "listBoxProjectsReadOnly";
-            this.listBoxProjectsReadOnly.Size = new System.Drawing.Size(179, 26);
-            this.listBoxProjectsReadOnly.TabIndex = 2;
-            this.listBoxProjectsReadOnly.Click += new System.EventHandler(this.listBoxProjectsReadOnly_Click);
+            listBoxProjectsReadOnly.BackColor = System.Drawing.SystemColors.ControlLight;
+            tableLayoutPanelProjectsReadOnly.SetColumnSpan(listBoxProjectsReadOnly, 3);
+            listBoxProjectsReadOnly.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxProjectsReadOnly.FormattingEnabled = true;
+            listBoxProjectsReadOnly.IntegralHeight = false;
+            listBoxProjectsReadOnly.ItemHeight = 13;
+            listBoxProjectsReadOnly.Location = new System.Drawing.Point(0, 23);
+            listBoxProjectsReadOnly.Margin = new System.Windows.Forms.Padding(0);
+            listBoxProjectsReadOnly.Name = "listBoxProjectsReadOnly";
+            listBoxProjectsReadOnly.Size = new System.Drawing.Size(206, 40);
+            listBoxProjectsReadOnly.TabIndex = 2;
+            listBoxProjectsReadOnly.Click += listBoxProjectsReadOnly_Click;
             // 
             // labelProjectsReadOnly
             // 
-            this.labelProjectsReadOnly.ForeColor = System.Drawing.Color.DimGray;
-            this.labelProjectsReadOnly.Image = global::DiversityWorkbench.Properties.Resources.ProjectGrey;
-            this.labelProjectsReadOnly.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelProjectsReadOnly.Location = new System.Drawing.Point(0, 0);
-            this.labelProjectsReadOnly.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.labelProjectsReadOnly.Name = "labelProjectsReadOnly";
-            this.labelProjectsReadOnly.Size = new System.Drawing.Size(80, 20);
-            this.labelProjectsReadOnly.TabIndex = 3;
-            this.labelProjectsReadOnly.Text = "      Read Only";
-            this.labelProjectsReadOnly.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            labelProjectsReadOnly.ForeColor = System.Drawing.Color.DimGray;
+            labelProjectsReadOnly.Image = Properties.Resources.ProjectGrey;
+            labelProjectsReadOnly.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            labelProjectsReadOnly.Location = new System.Drawing.Point(0, 0);
+            labelProjectsReadOnly.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            labelProjectsReadOnly.Name = "labelProjectsReadOnly";
+            labelProjectsReadOnly.Size = new System.Drawing.Size(93, 23);
+            labelProjectsReadOnly.TabIndex = 3;
+            labelProjectsReadOnly.Text = "      Read Only";
+            labelProjectsReadOnly.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // listBoxProjectsLocked
             // 
-            this.listBoxProjectsLocked.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tableLayoutPanelProjectsReadOnly.SetColumnSpan(this.listBoxProjectsLocked, 3);
-            this.listBoxProjectsLocked.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxProjectsLocked.ForeColor = System.Drawing.Color.Red;
-            this.listBoxProjectsLocked.FormattingEnabled = true;
-            this.listBoxProjectsLocked.IntegralHeight = false;
-            this.listBoxProjectsLocked.Location = new System.Drawing.Point(0, 46);
-            this.listBoxProjectsLocked.Margin = new System.Windows.Forms.Padding(0);
-            this.listBoxProjectsLocked.Name = "listBoxProjectsLocked";
-            this.listBoxProjectsLocked.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBoxProjectsLocked.Size = new System.Drawing.Size(179, 20);
-            this.listBoxProjectsLocked.TabIndex = 4;
-            this.toolTip.SetToolTip(this.listBoxProjectsLocked, "Locked projects");
-            this.listBoxProjectsLocked.Visible = false;
+            listBoxProjectsLocked.BackColor = System.Drawing.SystemColors.ControlLight;
+            tableLayoutPanelProjectsReadOnly.SetColumnSpan(listBoxProjectsLocked, 3);
+            listBoxProjectsLocked.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxProjectsLocked.ForeColor = System.Drawing.Color.Red;
+            listBoxProjectsLocked.FormattingEnabled = true;
+            listBoxProjectsLocked.IntegralHeight = false;
+            listBoxProjectsLocked.ItemHeight = 13;
+            listBoxProjectsLocked.Location = new System.Drawing.Point(0, 63);
+            listBoxProjectsLocked.Margin = new System.Windows.Forms.Padding(0);
+            listBoxProjectsLocked.Name = "listBoxProjectsLocked";
+            listBoxProjectsLocked.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            listBoxProjectsLocked.Size = new System.Drawing.Size(206, 22);
+            listBoxProjectsLocked.TabIndex = 4;
+            toolTip.SetToolTip(listBoxProjectsLocked, "Locked projects");
+            listBoxProjectsLocked.Visible = false;
             // 
             // buttonProjectAddAll
             // 
-            this.tableLayoutPanelProjects.SetColumnSpan(this.buttonProjectAddAll, 2);
-            this.buttonProjectAddAll.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonProjectAddAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProjectAddAll.ForeColor = System.Drawing.Color.Green;
-            this.buttonProjectAddAll.Location = new System.Drawing.Point(184, 62);
-            this.buttonProjectAddAll.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.buttonProjectAddAll.Name = "buttonProjectAddAll";
-            this.buttonProjectAddAll.Size = new System.Drawing.Size(30, 20);
-            this.buttonProjectAddAll.TabIndex = 45;
-            this.buttonProjectAddAll.Text = ">>";
-            this.toolTip.SetToolTip(this.buttonProjectAddAll, "Add all projects to the Accessible list");
-            this.buttonProjectAddAll.UseVisualStyleBackColor = true;
-            this.buttonProjectAddAll.Click += new System.EventHandler(this.buttonProjectAddAll_Click);
+            tableLayoutPanelProjects.SetColumnSpan(buttonProjectAddAll, 2);
+            buttonProjectAddAll.Dock = System.Windows.Forms.DockStyle.Bottom;
+            buttonProjectAddAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            buttonProjectAddAll.ForeColor = System.Drawing.Color.Green;
+            buttonProjectAddAll.Location = new System.Drawing.Point(214, 71);
+            buttonProjectAddAll.Margin = new System.Windows.Forms.Padding(4, 3, 4, 0);
+            buttonProjectAddAll.Name = "buttonProjectAddAll";
+            buttonProjectAddAll.Size = new System.Drawing.Size(34, 23);
+            buttonProjectAddAll.TabIndex = 45;
+            buttonProjectAddAll.Text = ">>";
+            toolTip.SetToolTip(buttonProjectAddAll, "Add all projects to the Accessible list");
+            buttonProjectAddAll.UseVisualStyleBackColor = true;
+            buttonProjectAddAll.Click += buttonProjectAddAll_Click;
             // 
             // buttonProjectRemoveAll
             // 
-            this.tableLayoutPanelProjects.SetColumnSpan(this.buttonProjectRemoveAll, 2);
-            this.buttonProjectRemoveAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonProjectRemoveAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProjectRemoveAll.ForeColor = System.Drawing.Color.Red;
-            this.buttonProjectRemoveAll.Location = new System.Drawing.Point(184, 122);
-            this.buttonProjectRemoveAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonProjectRemoveAll.Name = "buttonProjectRemoveAll";
-            this.buttonProjectRemoveAll.Size = new System.Drawing.Size(30, 20);
-            this.buttonProjectRemoveAll.TabIndex = 46;
-            this.buttonProjectRemoveAll.Text = "<<";
-            this.toolTip.SetToolTip(this.buttonProjectRemoveAll, "Remove all projects from the Accessible list");
-            this.buttonProjectRemoveAll.UseVisualStyleBackColor = true;
-            this.buttonProjectRemoveAll.Click += new System.EventHandler(this.buttonProjectRemoveAll_Click);
+            tableLayoutPanelProjects.SetColumnSpan(buttonProjectRemoveAll, 2);
+            buttonProjectRemoveAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonProjectRemoveAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            buttonProjectRemoveAll.ForeColor = System.Drawing.Color.Red;
+            buttonProjectRemoveAll.Location = new System.Drawing.Point(214, 140);
+            buttonProjectRemoveAll.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            buttonProjectRemoveAll.Name = "buttonProjectRemoveAll";
+            buttonProjectRemoveAll.Size = new System.Drawing.Size(34, 23);
+            buttonProjectRemoveAll.TabIndex = 46;
+            buttonProjectRemoveAll.Text = "<<";
+            toolTip.SetToolTip(buttonProjectRemoveAll, "Remove all projects from the Accessible list");
+            buttonProjectRemoveAll.UseVisualStyleBackColor = true;
+            buttonProjectRemoveAll.Click += buttonProjectRemoveAll_Click;
             // 
             // buttonRemoveProject
             // 
-            this.buttonRemoveProject.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonRemoveProject.Image = global::DiversityWorkbench.Properties.Resources.Delete;
-            this.buttonRemoveProject.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonRemoveProject.Location = new System.Drawing.Point(0, 238);
-            this.buttonRemoveProject.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonRemoveProject.Name = "buttonRemoveProject";
-            this.buttonRemoveProject.Size = new System.Drawing.Size(107, 24);
-            this.buttonRemoveProject.TabIndex = 47;
-            this.buttonRemoveProject.Text = "Remove project";
-            this.buttonRemoveProject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolTip.SetToolTip(this.buttonRemoveProject, "Remove the project selected in the No access list from the database");
-            this.buttonRemoveProject.UseVisualStyleBackColor = true;
-            this.buttonRemoveProject.Click += new System.EventHandler(this.buttonRemoveProject_Click);
+            buttonRemoveProject.Dock = System.Windows.Forms.DockStyle.Left;
+            buttonRemoveProject.Image = Properties.Resources.Delete;
+            buttonRemoveProject.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            buttonRemoveProject.Location = new System.Drawing.Point(0, 290);
+            buttonRemoveProject.Margin = new System.Windows.Forms.Padding(0);
+            buttonRemoveProject.Name = "buttonRemoveProject";
+            buttonRemoveProject.Size = new System.Drawing.Size(125, 28);
+            buttonRemoveProject.TabIndex = 47;
+            buttonRemoveProject.Text = "Remove project";
+            buttonRemoveProject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            toolTip.SetToolTip(buttonRemoveProject, "Remove the project selected in the No access list from the database");
+            buttonRemoveProject.UseVisualStyleBackColor = true;
+            buttonRemoveProject.Click += buttonRemoveProject_Click;
             // 
             // buttonProjectUserNotAvailable
             // 
-            this.buttonProjectUserNotAvailable.BackColor = System.Drawing.Color.Pink;
-            this.buttonProjectUserNotAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonProjectUserNotAvailable.FlatAppearance.BorderSize = 0;
-            this.buttonProjectUserNotAvailable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProjectUserNotAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProjectUserNotAvailable.ForeColor = System.Drawing.Color.Red;
-            this.buttonProjectUserNotAvailable.Image = global::DiversityWorkbench.Properties.Resources.Agent;
-            this.buttonProjectUserNotAvailable.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonProjectUserNotAvailable.Location = new System.Drawing.Point(181, 0);
-            this.buttonProjectUserNotAvailable.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonProjectUserNotAvailable.Name = "buttonProjectUserNotAvailable";
-            this.tableLayoutPanelProjects.SetRowSpan(this.buttonProjectUserNotAvailable, 2);
-            this.buttonProjectUserNotAvailable.Size = new System.Drawing.Size(18, 39);
-            this.buttonProjectUserNotAvailable.TabIndex = 48;
-            this.buttonProjectUserNotAvailable.Text = "?";
-            this.buttonProjectUserNotAvailable.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.buttonProjectUserNotAvailable, "Show Users for selected project");
-            this.buttonProjectUserNotAvailable.UseVisualStyleBackColor = false;
-            this.buttonProjectUserNotAvailable.Click += new System.EventHandler(this.buttonProjectUserNotAvailable_Click);
+            buttonProjectUserNotAvailable.BackColor = System.Drawing.Color.Pink;
+            buttonProjectUserNotAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonProjectUserNotAvailable.FlatAppearance.BorderSize = 0;
+            buttonProjectUserNotAvailable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonProjectUserNotAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            buttonProjectUserNotAvailable.ForeColor = System.Drawing.Color.Red;
+            buttonProjectUserNotAvailable.Image = Properties.Resources.Agent;
+            buttonProjectUserNotAvailable.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            buttonProjectUserNotAvailable.Location = new System.Drawing.Point(210, 0);
+            buttonProjectUserNotAvailable.Margin = new System.Windows.Forms.Padding(0);
+            buttonProjectUserNotAvailable.Name = "buttonProjectUserNotAvailable";
+            tableLayoutPanelProjects.SetRowSpan(buttonProjectUserNotAvailable, 2);
+            buttonProjectUserNotAvailable.Size = new System.Drawing.Size(21, 45);
+            buttonProjectUserNotAvailable.TabIndex = 48;
+            buttonProjectUserNotAvailable.Text = "?";
+            buttonProjectUserNotAvailable.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            toolTip.SetToolTip(buttonProjectUserNotAvailable, "Show Users for selected project");
+            buttonProjectUserNotAvailable.UseVisualStyleBackColor = false;
+            buttonProjectUserNotAvailable.Click += buttonProjectUserNotAvailable_Click;
             // 
             // buttonProjectUserAvailable
             // 
-            this.buttonProjectUserAvailable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.buttonProjectUserAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonProjectUserAvailable.FlatAppearance.BorderSize = 0;
-            this.buttonProjectUserAvailable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProjectUserAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProjectUserAvailable.ForeColor = System.Drawing.Color.Green;
-            this.buttonProjectUserAvailable.Image = global::DiversityWorkbench.Properties.Resources.Agent;
-            this.buttonProjectUserAvailable.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonProjectUserAvailable.Location = new System.Drawing.Point(199, 0);
-            this.buttonProjectUserAvailable.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonProjectUserAvailable.Name = "buttonProjectUserAvailable";
-            this.tableLayoutPanelProjects.SetRowSpan(this.buttonProjectUserAvailable, 2);
-            this.buttonProjectUserAvailable.Size = new System.Drawing.Size(18, 39);
-            this.buttonProjectUserAvailable.TabIndex = 49;
-            this.buttonProjectUserAvailable.Text = "?";
-            this.buttonProjectUserAvailable.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.buttonProjectUserAvailable, "Show users for selected project");
-            this.buttonProjectUserAvailable.UseVisualStyleBackColor = false;
-            this.buttonProjectUserAvailable.Click += new System.EventHandler(this.buttonProjectUserAvailable_Click);
+            buttonProjectUserAvailable.BackColor = System.Drawing.Color.FromArgb(192, 255, 192);
+            buttonProjectUserAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonProjectUserAvailable.FlatAppearance.BorderSize = 0;
+            buttonProjectUserAvailable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonProjectUserAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            buttonProjectUserAvailable.ForeColor = System.Drawing.Color.Green;
+            buttonProjectUserAvailable.Image = Properties.Resources.Agent;
+            buttonProjectUserAvailable.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            buttonProjectUserAvailable.Location = new System.Drawing.Point(231, 0);
+            buttonProjectUserAvailable.Margin = new System.Windows.Forms.Padding(0);
+            buttonProjectUserAvailable.Name = "buttonProjectUserAvailable";
+            tableLayoutPanelProjects.SetRowSpan(buttonProjectUserAvailable, 2);
+            buttonProjectUserAvailable.Size = new System.Drawing.Size(21, 45);
+            buttonProjectUserAvailable.TabIndex = 49;
+            buttonProjectUserAvailable.Text = "?";
+            buttonProjectUserAvailable.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            toolTip.SetToolTip(buttonProjectUserAvailable, "Show users for selected project");
+            buttonProjectUserAvailable.UseVisualStyleBackColor = false;
+            buttonProjectUserAvailable.Click += buttonProjectUserAvailable_Click;
             // 
             // buttonProjectUserNotAvailableIsLocked
             // 
-            this.buttonProjectUserNotAvailableIsLocked.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonProjectUserNotAvailableIsLocked.FlatAppearance.BorderSize = 0;
-            this.buttonProjectUserNotAvailableIsLocked.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProjectUserNotAvailableIsLocked.Image = global::DiversityWorkbench.Properties.Resources.ProjectOpen;
-            this.buttonProjectUserNotAvailableIsLocked.Location = new System.Drawing.Point(181, 39);
-            this.buttonProjectUserNotAvailableIsLocked.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonProjectUserNotAvailableIsLocked.Name = "buttonProjectUserNotAvailableIsLocked";
-            this.buttonProjectUserNotAvailableIsLocked.Size = new System.Drawing.Size(18, 20);
-            this.buttonProjectUserNotAvailableIsLocked.TabIndex = 50;
-            this.buttonProjectUserNotAvailableIsLocked.UseVisualStyleBackColor = true;
-            this.buttonProjectUserNotAvailableIsLocked.Visible = false;
-            this.buttonProjectUserNotAvailableIsLocked.Click += new System.EventHandler(this.buttonProjectUserNotAvailableIsLocked_Click);
+            buttonProjectUserNotAvailableIsLocked.Dock = System.Windows.Forms.DockStyle.Top;
+            buttonProjectUserNotAvailableIsLocked.FlatAppearance.BorderSize = 0;
+            buttonProjectUserNotAvailableIsLocked.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonProjectUserNotAvailableIsLocked.Image = Properties.Resources.ProjectOpen;
+            buttonProjectUserNotAvailableIsLocked.Location = new System.Drawing.Point(210, 45);
+            buttonProjectUserNotAvailableIsLocked.Margin = new System.Windows.Forms.Padding(0);
+            buttonProjectUserNotAvailableIsLocked.Name = "buttonProjectUserNotAvailableIsLocked";
+            buttonProjectUserNotAvailableIsLocked.Size = new System.Drawing.Size(21, 23);
+            buttonProjectUserNotAvailableIsLocked.TabIndex = 50;
+            buttonProjectUserNotAvailableIsLocked.UseVisualStyleBackColor = true;
+            buttonProjectUserNotAvailableIsLocked.Visible = false;
+            buttonProjectUserNotAvailableIsLocked.Click += buttonProjectUserNotAvailableIsLocked_Click;
             // 
             // buttonProjectUserAvailableIsLocked
             // 
-            this.buttonProjectUserAvailableIsLocked.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonProjectUserAvailableIsLocked.FlatAppearance.BorderSize = 0;
-            this.buttonProjectUserAvailableIsLocked.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProjectUserAvailableIsLocked.Image = global::DiversityWorkbench.Properties.Resources.ProjectGrey;
-            this.buttonProjectUserAvailableIsLocked.Location = new System.Drawing.Point(199, 39);
-            this.buttonProjectUserAvailableIsLocked.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonProjectUserAvailableIsLocked.Name = "buttonProjectUserAvailableIsLocked";
-            this.buttonProjectUserAvailableIsLocked.Size = new System.Drawing.Size(18, 20);
-            this.buttonProjectUserAvailableIsLocked.TabIndex = 51;
-            this.buttonProjectUserAvailableIsLocked.UseVisualStyleBackColor = true;
-            this.buttonProjectUserAvailableIsLocked.Visible = false;
-            this.buttonProjectUserAvailableIsLocked.Click += new System.EventHandler(this.buttonProjectUserAvailableIsLocked_Click);
+            buttonProjectUserAvailableIsLocked.Dock = System.Windows.Forms.DockStyle.Top;
+            buttonProjectUserAvailableIsLocked.FlatAppearance.BorderSize = 0;
+            buttonProjectUserAvailableIsLocked.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonProjectUserAvailableIsLocked.Image = Properties.Resources.ProjectGrey;
+            buttonProjectUserAvailableIsLocked.Location = new System.Drawing.Point(231, 45);
+            buttonProjectUserAvailableIsLocked.Margin = new System.Windows.Forms.Padding(0);
+            buttonProjectUserAvailableIsLocked.Name = "buttonProjectUserAvailableIsLocked";
+            buttonProjectUserAvailableIsLocked.Size = new System.Drawing.Size(21, 23);
+            buttonProjectUserAvailableIsLocked.TabIndex = 51;
+            buttonProjectUserAvailableIsLocked.UseVisualStyleBackColor = true;
+            buttonProjectUserAvailableIsLocked.Visible = false;
+            buttonProjectUserAvailableIsLocked.Click += buttonProjectUserAvailableIsLocked_Click;
             // 
             // pictureBoxProjectsLocked
             // 
-            this.pictureBoxProjectsLocked.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBoxProjectsLocked.Image = global::DiversityWorkbench.Properties.Resources.Project;
-            this.pictureBoxProjectsLocked.Location = new System.Drawing.Point(199, 172);
-            this.pictureBoxProjectsLocked.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxProjectsLocked.Name = "pictureBoxProjectsLocked";
-            this.pictureBoxProjectsLocked.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.pictureBoxProjectsLocked.Size = new System.Drawing.Size(18, 18);
-            this.pictureBoxProjectsLocked.TabIndex = 52;
-            this.pictureBoxProjectsLocked.TabStop = false;
-            this.toolTip.SetToolTip(this.pictureBoxProjectsLocked, "Locked projects");
-            this.pictureBoxProjectsLocked.Visible = false;
-            this.pictureBoxProjectsLocked.Click += new System.EventHandler(this.pictureBoxProjectsLocked_Click);
+            pictureBoxProjectsLocked.Dock = System.Windows.Forms.DockStyle.Bottom;
+            pictureBoxProjectsLocked.Image = Properties.Resources.Project;
+            pictureBoxProjectsLocked.Location = new System.Drawing.Point(231, 215);
+            pictureBoxProjectsLocked.Margin = new System.Windows.Forms.Padding(0);
+            pictureBoxProjectsLocked.Name = "pictureBoxProjectsLocked";
+            pictureBoxProjectsLocked.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            pictureBoxProjectsLocked.Size = new System.Drawing.Size(21, 21);
+            pictureBoxProjectsLocked.TabIndex = 52;
+            pictureBoxProjectsLocked.TabStop = false;
+            toolTip.SetToolTip(pictureBoxProjectsLocked, "Locked projects");
+            pictureBoxProjectsLocked.Visible = false;
+            pictureBoxProjectsLocked.Click += pictureBoxProjectsLocked_Click;
             // 
             // tabPageSettings
             // 
-            this.tabPageSettings.Controls.Add(this.tableLayoutPanelSettings);
-            this.tabPageSettings.ImageIndex = 2;
-            this.tabPageSettings.Location = new System.Drawing.Point(4, 23);
-            this.tabPageSettings.Name = "tabPageSettings";
-            this.tabPageSettings.Size = new System.Drawing.Size(405, 268);
-            this.tabPageSettings.TabIndex = 2;
-            this.tabPageSettings.Text = "Settings";
-            this.tabPageSettings.UseVisualStyleBackColor = true;
+            tabPageSettings.Controls.Add(tableLayoutPanelSettings);
+            tabPageSettings.ImageIndex = 2;
+            tabPageSettings.Location = new System.Drawing.Point(4, 23);
+            tabPageSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageSettings.Name = "tabPageSettings";
+            tabPageSettings.Size = new System.Drawing.Size(470, 324);
+            tabPageSettings.TabIndex = 2;
+            tabPageSettings.Text = "Settings";
+            tabPageSettings.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelSettings
             // 
-            this.tableLayoutPanelSettings.ColumnCount = 5;
-            this.tableLayoutPanelSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanelSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSettings.Controls.Add(this.labelContentSettings, 0, 2);
-            this.tableLayoutPanelSettings.Controls.Add(this.textBoxContentSettings, 0, 3);
-            this.tableLayoutPanelSettings.Controls.Add(this.treeViewSettings, 0, 1);
-            this.tableLayoutPanelSettings.Controls.Add(this.labelSettingsHeader, 0, 0);
-            this.tableLayoutPanelSettings.Controls.Add(this.buttonSearchSettingsTemplate, 4, 0);
-            this.tableLayoutPanelSettings.Controls.Add(this.buttonRemoveSettingsNode, 3, 0);
-            this.tableLayoutPanelSettings.Controls.Add(this.buttonAddSettingsNode, 2, 0);
-            this.tableLayoutPanelSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelSettings.Name = "tableLayoutPanelSettings";
-            this.tableLayoutPanelSettings.RowCount = 4;
-            this.tableLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSettings.Size = new System.Drawing.Size(405, 268);
-            this.tableLayoutPanelSettings.TabIndex = 1;
+            tableLayoutPanelSettings.ColumnCount = 5;
+            tableLayoutPanelSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            tableLayoutPanelSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelSettings.Controls.Add(labelContentSettings, 0, 2);
+            tableLayoutPanelSettings.Controls.Add(textBoxContentSettings, 0, 3);
+            tableLayoutPanelSettings.Controls.Add(treeViewSettings, 0, 1);
+            tableLayoutPanelSettings.Controls.Add(labelSettingsHeader, 0, 0);
+            tableLayoutPanelSettings.Controls.Add(buttonSearchSettingsTemplate, 4, 0);
+            tableLayoutPanelSettings.Controls.Add(buttonRemoveSettingsNode, 3, 0);
+            tableLayoutPanelSettings.Controls.Add(buttonAddSettingsNode, 2, 0);
+            tableLayoutPanelSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelSettings.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelSettings.Name = "tableLayoutPanelSettings";
+            tableLayoutPanelSettings.RowCount = 4;
+            tableLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSettings.Size = new System.Drawing.Size(470, 324);
+            tableLayoutPanelSettings.TabIndex = 1;
             // 
             // labelContentSettings
             // 
-            this.labelContentSettings.AutoSize = true;
-            this.tableLayoutPanelSettings.SetColumnSpan(this.labelContentSettings, 5);
-            this.labelContentSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelContentSettings.Location = new System.Drawing.Point(3, 219);
-            this.labelContentSettings.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            this.labelContentSettings.Name = "labelContentSettings";
-            this.labelContentSettings.Size = new System.Drawing.Size(399, 13);
-            this.labelContentSettings.TabIndex = 7;
-            this.labelContentSettings.Text = "Content:";
-            this.labelContentSettings.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            labelContentSettings.AutoSize = true;
+            tableLayoutPanelSettings.SetColumnSpan(labelContentSettings, 5);
+            labelContentSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelContentSettings.Location = new System.Drawing.Point(4, 271);
+            labelContentSettings.Margin = new System.Windows.Forms.Padding(4, 7, 4, 0);
+            labelContentSettings.Name = "labelContentSettings";
+            labelContentSettings.Size = new System.Drawing.Size(462, 13);
+            labelContentSettings.TabIndex = 7;
+            labelContentSettings.Text = "Content:";
+            labelContentSettings.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // textBoxContentSettings
             // 
-            this.tableLayoutPanelSettings.SetColumnSpan(this.textBoxContentSettings, 5);
-            this.textBoxContentSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxContentSettings.Location = new System.Drawing.Point(3, 235);
-            this.textBoxContentSettings.Multiline = true;
-            this.textBoxContentSettings.Name = "textBoxContentSettings";
-            this.textBoxContentSettings.Size = new System.Drawing.Size(399, 30);
-            this.textBoxContentSettings.TabIndex = 6;
-            this.textBoxContentSettings.Text = "Content";
-            this.textBoxContentSettings.Leave += new System.EventHandler(this.textBoxSettingsContent_Leave);
+            tableLayoutPanelSettings.SetColumnSpan(textBoxContentSettings, 5);
+            textBoxContentSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxContentSettings.Location = new System.Drawing.Point(4, 287);
+            textBoxContentSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBoxContentSettings.Multiline = true;
+            textBoxContentSettings.Name = "textBoxContentSettings";
+            textBoxContentSettings.Size = new System.Drawing.Size(462, 34);
+            textBoxContentSettings.TabIndex = 6;
+            textBoxContentSettings.Text = "Content";
+            textBoxContentSettings.Leave += textBoxSettingsContent_Leave;
             // 
             // treeViewSettings
             // 
-            this.tableLayoutPanelSettings.SetColumnSpan(this.treeViewSettings, 5);
-            this.treeViewSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewSettings.Location = new System.Drawing.Point(3, 34);
-            this.treeViewSettings.Name = "treeViewSettings";
-            this.treeViewSettings.Size = new System.Drawing.Size(399, 176);
-            this.treeViewSettings.TabIndex = 0;
-            this.treeViewSettings.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSettings_AfterSelect);
+            tableLayoutPanelSettings.SetColumnSpan(treeViewSettings, 5);
+            treeViewSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            treeViewSettings.Location = new System.Drawing.Point(4, 38);
+            treeViewSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            treeViewSettings.Name = "treeViewSettings";
+            treeViewSettings.Size = new System.Drawing.Size(462, 223);
+            treeViewSettings.TabIndex = 0;
+            treeViewSettings.AfterSelect += treeViewSettings_AfterSelect;
             // 
             // labelSettingsHeader
             // 
-            this.labelSettingsHeader.AutoSize = true;
-            this.tableLayoutPanelSettings.SetColumnSpan(this.labelSettingsHeader, 2);
-            this.labelSettingsHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSettingsHeader.Location = new System.Drawing.Point(3, 0);
-            this.labelSettingsHeader.Name = "labelSettingsHeader";
-            this.labelSettingsHeader.Size = new System.Drawing.Size(237, 31);
-            this.labelSettingsHeader.TabIndex = 3;
-            this.labelSettingsHeader.Text = "Edit the settings for the user";
-            this.labelSettingsHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            labelSettingsHeader.AutoSize = true;
+            tableLayoutPanelSettings.SetColumnSpan(labelSettingsHeader, 2);
+            labelSettingsHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSettingsHeader.Location = new System.Drawing.Point(4, 0);
+            labelSettingsHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelSettingsHeader.Name = "labelSettingsHeader";
+            labelSettingsHeader.Size = new System.Drawing.Size(270, 35);
+            labelSettingsHeader.TabIndex = 3;
+            labelSettingsHeader.Text = "Edit the settings for the user";
+            labelSettingsHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // buttonSearchSettingsTemplate
             // 
-            this.buttonSearchSettingsTemplate.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonSearchSettingsTemplate.Location = new System.Drawing.Point(308, 3);
-            this.buttonSearchSettingsTemplate.Name = "buttonSearchSettingsTemplate";
-            this.buttonSearchSettingsTemplate.Size = new System.Drawing.Size(94, 25);
-            this.buttonSearchSettingsTemplate.TabIndex = 4;
-            this.buttonSearchSettingsTemplate.Text = "Search template";
-            this.buttonSearchSettingsTemplate.UseVisualStyleBackColor = true;
-            this.buttonSearchSettingsTemplate.Click += new System.EventHandler(this.buttonSearchSettingsTemplate_Click);
+            buttonSearchSettingsTemplate.Dock = System.Windows.Forms.DockStyle.Right;
+            buttonSearchSettingsTemplate.Location = new System.Drawing.Point(356, 3);
+            buttonSearchSettingsTemplate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonSearchSettingsTemplate.Name = "buttonSearchSettingsTemplate";
+            buttonSearchSettingsTemplate.Size = new System.Drawing.Size(110, 29);
+            buttonSearchSettingsTemplate.TabIndex = 4;
+            buttonSearchSettingsTemplate.Text = "Search template";
+            buttonSearchSettingsTemplate.UseVisualStyleBackColor = true;
+            buttonSearchSettingsTemplate.Click += buttonSearchSettingsTemplate_Click;
             // 
             // buttonRemoveSettingsNode
             // 
-            this.buttonRemoveSettingsNode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonRemoveSettingsNode.Image = global::DiversityWorkbench.Properties.Resources.Delete;
-            this.buttonRemoveSettingsNode.Location = new System.Drawing.Point(277, 3);
-            this.buttonRemoveSettingsNode.Name = "buttonRemoveSettingsNode";
-            this.buttonRemoveSettingsNode.Size = new System.Drawing.Size(25, 25);
-            this.buttonRemoveSettingsNode.TabIndex = 2;
-            this.buttonRemoveSettingsNode.UseVisualStyleBackColor = true;
-            this.buttonRemoveSettingsNode.Click += new System.EventHandler(this.buttonRemoveSettingsNode_Click);
+            buttonRemoveSettingsNode.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonRemoveSettingsNode.Image = Properties.Resources.Delete;
+            buttonRemoveSettingsNode.Location = new System.Drawing.Point(319, 3);
+            buttonRemoveSettingsNode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonRemoveSettingsNode.Name = "buttonRemoveSettingsNode";
+            buttonRemoveSettingsNode.Size = new System.Drawing.Size(29, 29);
+            buttonRemoveSettingsNode.TabIndex = 2;
+            buttonRemoveSettingsNode.UseVisualStyleBackColor = true;
+            buttonRemoveSettingsNode.Click += buttonRemoveSettingsNode_Click;
             // 
             // buttonAddSettingsNode
             // 
-            this.buttonAddSettingsNode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonAddSettingsNode.Image = global::DiversityWorkbench.Properties.Resources.Add;
-            this.buttonAddSettingsNode.Location = new System.Drawing.Point(246, 3);
-            this.buttonAddSettingsNode.Name = "buttonAddSettingsNode";
-            this.buttonAddSettingsNode.Size = new System.Drawing.Size(25, 25);
-            this.buttonAddSettingsNode.TabIndex = 1;
-            this.buttonAddSettingsNode.UseVisualStyleBackColor = true;
-            this.buttonAddSettingsNode.Click += new System.EventHandler(this.buttonAddSettingsNode_Click);
+            buttonAddSettingsNode.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonAddSettingsNode.Image = Properties.Resources.Add;
+            buttonAddSettingsNode.Location = new System.Drawing.Point(282, 3);
+            buttonAddSettingsNode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonAddSettingsNode.Name = "buttonAddSettingsNode";
+            buttonAddSettingsNode.Size = new System.Drawing.Size(29, 29);
+            buttonAddSettingsNode.TabIndex = 1;
+            buttonAddSettingsNode.UseVisualStyleBackColor = true;
+            buttonAddSettingsNode.Click += buttonAddSettingsNode_Click;
             // 
             // imageListUserDetails
             // 
-            this.imageListUserDetails.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListUserDetails.ImageStream")));
-            this.imageListUserDetails.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListUserDetails.Images.SetKeyName(0, "Group.ico");
-            this.imageListUserDetails.Images.SetKeyName(1, "Project.ico");
-            this.imageListUserDetails.Images.SetKeyName(2, "Settings.ico");
+            imageListUserDetails.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            imageListUserDetails.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageListUserDetails.ImageStream");
+            imageListUserDetails.TransparentColor = System.Drawing.Color.Transparent;
+            imageListUserDetails.Images.SetKeyName(0, "Group.ico");
+            imageListUserDetails.Images.SetKeyName(1, "Project.ico");
+            imageListUserDetails.Images.SetKeyName(2, "Settings.ico");
             // 
             // pictureBoxLogin
             // 
-            this.pictureBoxLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxLogin.Location = new System.Drawing.Point(3, 9);
-            this.pictureBoxLogin.Margin = new System.Windows.Forms.Padding(3, 9, 3, 3);
-            this.pictureBoxLogin.Name = "pictureBoxLogin";
-            this.tableLayoutPanelServerLogin.SetRowSpan(this.pictureBoxLogin, 2);
-            this.pictureBoxLogin.Size = new System.Drawing.Size(16, 30);
-            this.pictureBoxLogin.TabIndex = 2;
-            this.pictureBoxLogin.TabStop = false;
+            pictureBoxLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBoxLogin.Location = new System.Drawing.Point(4, 10);
+            pictureBoxLogin.Margin = new System.Windows.Forms.Padding(4, 10, 4, 3);
+            pictureBoxLogin.Name = "pictureBoxLogin";
+            tableLayoutPanelServerLogin.SetRowSpan(pictureBoxLogin, 2);
+            pictureBoxLogin.Size = new System.Drawing.Size(19, 35);
+            pictureBoxLogin.TabIndex = 2;
+            pictureBoxLogin.TabStop = false;
             // 
             // labelDbUserInfo
             // 
-            this.labelDbUserInfo.AutoSize = true;
-            this.labelDbUserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDbUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDbUserInfo.ForeColor = System.Drawing.Color.Black;
-            this.labelDbUserInfo.Location = new System.Drawing.Point(444, 0);
-            this.labelDbUserInfo.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelDbUserInfo.Name = "labelDbUserInfo";
-            this.labelDbUserInfo.Size = new System.Drawing.Size(180, 14);
-            this.labelDbUserInfo.TabIndex = 6;
-            this.labelDbUserInfo.Text = "Database for user informations:";
-            this.labelDbUserInfo.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            labelDbUserInfo.AutoSize = true;
+            labelDbUserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelDbUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            labelDbUserInfo.ForeColor = System.Drawing.Color.Black;
+            labelDbUserInfo.Location = new System.Drawing.Point(517, 0);
+            labelDbUserInfo.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelDbUserInfo.Name = "labelDbUserInfo";
+            labelDbUserInfo.Size = new System.Drawing.Size(209, 16);
+            labelDbUserInfo.TabIndex = 6;
+            labelDbUserInfo.Text = "Database for user informations:";
+            labelDbUserInfo.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // buttonChangePW
             // 
-            this.tableLayoutPanelServerLogin.SetColumnSpan(this.buttonChangePW, 2);
-            this.buttonChangePW.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonChangePW.Enabled = false;
-            this.buttonChangePW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonChangePW.Image = global::DiversityWorkbench.Properties.Resources.KeyBig;
-            this.buttonChangePW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonChangePW.Location = new System.Drawing.Point(0, 42);
-            this.buttonChangePW.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonChangePW.Name = "buttonChangePW";
-            this.buttonChangePW.Size = new System.Drawing.Size(114, 29);
-            this.buttonChangePW.TabIndex = 7;
-            this.buttonChangePW.Text = "Change password";
-            this.buttonChangePW.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip.SetToolTip(this.buttonChangePW, "Change the password for the selected login");
-            this.buttonChangePW.UseVisualStyleBackColor = true;
-            this.buttonChangePW.Click += new System.EventHandler(this.buttonChangePW_Click);
+            tableLayoutPanelServerLogin.SetColumnSpan(buttonChangePW, 2);
+            buttonChangePW.Dock = System.Windows.Forms.DockStyle.Right;
+            buttonChangePW.Enabled = false;
+            buttonChangePW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            buttonChangePW.Image = Properties.Resources.KeyBig;
+            buttonChangePW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            buttonChangePW.Location = new System.Drawing.Point(0, 48);
+            buttonChangePW.Margin = new System.Windows.Forms.Padding(0);
+            buttonChangePW.Name = "buttonChangePW";
+            buttonChangePW.Size = new System.Drawing.Size(133, 33);
+            buttonChangePW.TabIndex = 7;
+            buttonChangePW.Text = "Change password";
+            buttonChangePW.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            toolTip.SetToolTip(buttonChangePW, "Change the password for the selected login");
+            buttonChangePW.UseVisualStyleBackColor = true;
+            buttonChangePW.Click += buttonChangePW_Click;
             // 
             // comboBoxDBUserInfo
             // 
-            this.comboBoxDBUserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxDBUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxDBUserInfo.FormattingEnabled = true;
-            this.comboBoxDBUserInfo.Location = new System.Drawing.Point(441, 14);
-            this.comboBoxDBUserInfo.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.comboBoxDBUserInfo.Name = "comboBoxDBUserInfo";
-            this.comboBoxDBUserInfo.Size = new System.Drawing.Size(180, 21);
-            this.comboBoxDBUserInfo.TabIndex = 7;
+            comboBoxDBUserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            comboBoxDBUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            comboBoxDBUserInfo.FormattingEnabled = true;
+            comboBoxDBUserInfo.Location = new System.Drawing.Point(513, 16);
+            comboBoxDBUserInfo.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            comboBoxDBUserInfo.Name = "comboBoxDBUserInfo";
+            comboBoxDBUserInfo.Size = new System.Drawing.Size(209, 21);
+            comboBoxDBUserInfo.TabIndex = 7;
             // 
             // pictureBoxSecurityAdmin
             // 
-            this.pictureBoxSecurityAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxSecurityAdmin.Image = global::DiversityWorkbench.Properties.Resources.Security;
-            this.pictureBoxSecurityAdmin.Location = new System.Drawing.Point(117, 9);
-            this.pictureBoxSecurityAdmin.Margin = new System.Windows.Forms.Padding(3, 9, 3, 3);
-            this.pictureBoxSecurityAdmin.Name = "pictureBoxSecurityAdmin";
-            this.tableLayoutPanelServerLogin.SetRowSpan(this.pictureBoxSecurityAdmin, 2);
-            this.pictureBoxSecurityAdmin.Size = new System.Drawing.Size(16, 30);
-            this.pictureBoxSecurityAdmin.TabIndex = 8;
-            this.pictureBoxSecurityAdmin.TabStop = false;
+            pictureBoxSecurityAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBoxSecurityAdmin.Image = Properties.Resources.Security;
+            pictureBoxSecurityAdmin.Location = new System.Drawing.Point(137, 10);
+            pictureBoxSecurityAdmin.Margin = new System.Windows.Forms.Padding(4, 10, 4, 3);
+            pictureBoxSecurityAdmin.Name = "pictureBoxSecurityAdmin";
+            tableLayoutPanelServerLogin.SetRowSpan(pictureBoxSecurityAdmin, 2);
+            pictureBoxSecurityAdmin.Size = new System.Drawing.Size(19, 35);
+            pictureBoxSecurityAdmin.TabIndex = 8;
+            pictureBoxSecurityAdmin.TabStop = false;
             // 
             // checkBoxSecurityAdmin
             // 
-            this.checkBoxSecurityAdmin.AutoSize = true;
-            this.checkBoxSecurityAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxSecurityAdmin.Location = new System.Drawing.Point(136, 3);
-            this.checkBoxSecurityAdmin.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.checkBoxSecurityAdmin.Name = "checkBoxSecurityAdmin";
-            this.tableLayoutPanelServerLogin.SetRowSpan(this.checkBoxSecurityAdmin, 2);
-            this.checkBoxSecurityAdmin.Size = new System.Drawing.Size(142, 36);
-            this.checkBoxSecurityAdmin.TabIndex = 9;
-            this.checkBoxSecurityAdmin.Text = "System administrator";
-            this.toolTip.SetToolTip(this.checkBoxSecurityAdmin, "Allow login to administrate the server");
-            this.checkBoxSecurityAdmin.UseVisualStyleBackColor = true;
-            this.checkBoxSecurityAdmin.Click += new System.EventHandler(this.checkBoxSecurityAdmin_Click);
+            checkBoxSecurityAdmin.AutoSize = true;
+            checkBoxSecurityAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxSecurityAdmin.Location = new System.Drawing.Point(160, 3);
+            checkBoxSecurityAdmin.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            checkBoxSecurityAdmin.Name = "checkBoxSecurityAdmin";
+            tableLayoutPanelServerLogin.SetRowSpan(checkBoxSecurityAdmin, 2);
+            checkBoxSecurityAdmin.Size = new System.Drawing.Size(142, 42);
+            checkBoxSecurityAdmin.TabIndex = 9;
+            checkBoxSecurityAdmin.Text = "System administrator";
+            toolTip.SetToolTip(checkBoxSecurityAdmin, "Allow login to administrate the server");
+            checkBoxSecurityAdmin.UseVisualStyleBackColor = true;
+            checkBoxSecurityAdmin.Click += checkBoxSecurityAdmin_Click;
             // 
             // labelDefaultDB
             // 
-            this.labelDefaultDB.AutoSize = true;
-            this.labelDefaultDB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDefaultDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDefaultDB.Location = new System.Drawing.Point(281, 0);
-            this.labelDefaultDB.Name = "labelDefaultDB";
-            this.labelDefaultDB.Size = new System.Drawing.Size(157, 14);
-            this.labelDefaultDB.TabIndex = 10;
-            this.labelDefaultDB.Text = "Default database";
-            this.labelDefaultDB.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            labelDefaultDB.AutoSize = true;
+            labelDefaultDB.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelDefaultDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            labelDefaultDB.Location = new System.Drawing.Point(306, 0);
+            labelDefaultDB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelDefaultDB.Name = "labelDefaultDB";
+            labelDefaultDB.Size = new System.Drawing.Size(203, 16);
+            labelDefaultDB.TabIndex = 10;
+            labelDefaultDB.Text = "Default database";
+            labelDefaultDB.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // textBoxDefaultDB
             // 
-            this.textBoxDefaultDB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDefaultDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDefaultDB.Location = new System.Drawing.Point(281, 14);
-            this.textBoxDefaultDB.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.textBoxDefaultDB.Name = "textBoxDefaultDB";
-            this.textBoxDefaultDB.ReadOnly = true;
-            this.textBoxDefaultDB.Size = new System.Drawing.Size(157, 20);
-            this.textBoxDefaultDB.TabIndex = 11;
+            textBoxDefaultDB.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxDefaultDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            textBoxDefaultDB.Location = new System.Drawing.Point(306, 16);
+            textBoxDefaultDB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 3);
+            textBoxDefaultDB.Name = "textBoxDefaultDB";
+            textBoxDefaultDB.ReadOnly = true;
+            textBoxDefaultDB.Size = new System.Drawing.Size(203, 20);
+            textBoxDefaultDB.TabIndex = 11;
             // 
             // labelLoginInfo
             // 
-            this.labelLoginInfo.AutoSize = true;
-            this.tableLayoutPanelServerLogin.SetColumnSpan(this.labelLoginInfo, 4);
-            this.labelLoginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelLoginInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLoginInfo.Location = new System.Drawing.Point(117, 42);
-            this.labelLoginInfo.Name = "labelLoginInfo";
-            this.labelLoginInfo.Size = new System.Drawing.Size(504, 29);
-            this.labelLoginInfo.TabIndex = 12;
-            this.labelLoginInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            labelLoginInfo.AutoSize = true;
+            tableLayoutPanelServerLogin.SetColumnSpan(labelLoginInfo, 4);
+            labelLoginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelLoginInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            labelLoginInfo.Location = new System.Drawing.Point(137, 48);
+            labelLoginInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelLoginInfo.Name = "labelLoginInfo";
+            labelLoginInfo.Size = new System.Drawing.Size(585, 33);
+            labelLoginInfo.TabIndex = 12;
+            labelLoginInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // buttonLoginStatistics
             // 
-            this.buttonLoginStatistics.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonLoginStatistics.Image = global::DiversityWorkbench.Properties.Resources.Graph;
-            this.buttonLoginStatistics.Location = new System.Drawing.Point(624, 14);
-            this.buttonLoginStatistics.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonLoginStatistics.Name = "buttonLoginStatistics";
-            this.buttonLoginStatistics.Size = new System.Drawing.Size(24, 23);
-            this.buttonLoginStatistics.TabIndex = 13;
-            this.toolTip.SetToolTip(this.buttonLoginStatistics, "Show the activity of the login");
-            this.buttonLoginStatistics.UseVisualStyleBackColor = true;
-            this.buttonLoginStatistics.Click += new System.EventHandler(this.buttonLoginStatistics_Click);
+            buttonLoginStatistics.Dock = System.Windows.Forms.DockStyle.Top;
+            buttonLoginStatistics.Image = Properties.Resources.Graph;
+            buttonLoginStatistics.Location = new System.Drawing.Point(726, 16);
+            buttonLoginStatistics.Margin = new System.Windows.Forms.Padding(0);
+            buttonLoginStatistics.Name = "buttonLoginStatistics";
+            buttonLoginStatistics.Size = new System.Drawing.Size(28, 27);
+            buttonLoginStatistics.TabIndex = 13;
+            toolTip.SetToolTip(buttonLoginStatistics, "Show the activity of the login");
+            buttonLoginStatistics.UseVisualStyleBackColor = true;
+            buttonLoginStatistics.Click += buttonLoginStatistics_Click;
             // 
             // buttonLoginOverview
             // 
-            this.buttonLoginOverview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonLoginOverview.Image = global::DiversityWorkbench.Properties.Resources.AgentOverview;
-            this.buttonLoginOverview.Location = new System.Drawing.Point(624, 44);
-            this.buttonLoginOverview.Margin = new System.Windows.Forms.Padding(0, 2, 0, 3);
-            this.buttonLoginOverview.Name = "buttonLoginOverview";
-            this.buttonLoginOverview.Size = new System.Drawing.Size(24, 24);
-            this.buttonLoginOverview.TabIndex = 14;
-            this.toolTip.SetToolTip(this.buttonLoginOverview, "Show a summary for the login");
-            this.buttonLoginOverview.UseVisualStyleBackColor = true;
-            this.buttonLoginOverview.Click += new System.EventHandler(this.buttonLoginOverview_Click);
+            buttonLoginOverview.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonLoginOverview.Image = Properties.Resources.AgentOverview;
+            buttonLoginOverview.Location = new System.Drawing.Point(726, 50);
+            buttonLoginOverview.Margin = new System.Windows.Forms.Padding(0, 2, 0, 3);
+            buttonLoginOverview.Name = "buttonLoginOverview";
+            buttonLoginOverview.Size = new System.Drawing.Size(28, 28);
+            buttonLoginOverview.TabIndex = 14;
+            toolTip.SetToolTip(buttonLoginOverview, "Show a summary for the login");
+            buttonLoginOverview.UseVisualStyleBackColor = true;
+            buttonLoginOverview.Click += buttonLoginOverview_Click;
             // 
             // buttonShowCurrentActivity
             // 
-            this.buttonShowCurrentActivity.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonShowCurrentActivity.Image = global::DiversityWorkbench.Properties.Resources.ServerIO;
-            this.buttonShowCurrentActivity.Location = new System.Drawing.Point(577, 0);
-            this.buttonShowCurrentActivity.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.buttonShowCurrentActivity.Name = "buttonShowCurrentActivity";
-            this.buttonShowCurrentActivity.Size = new System.Drawing.Size(27, 29);
-            this.buttonShowCurrentActivity.TabIndex = 1;
-            this.toolTip.SetToolTip(this.buttonShowCurrentActivity, "Show the current activity on the server");
-            this.buttonShowCurrentActivity.UseVisualStyleBackColor = true;
-            this.buttonShowCurrentActivity.Click += new System.EventHandler(this.buttonShowCurrentActivity_Click);
+            buttonShowCurrentActivity.Dock = System.Windows.Forms.DockStyle.Right;
+            buttonShowCurrentActivity.Image = Properties.Resources.ServerIO;
+            buttonShowCurrentActivity.Location = new System.Drawing.Point(673, 0);
+            buttonShowCurrentActivity.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            buttonShowCurrentActivity.Name = "buttonShowCurrentActivity";
+            buttonShowCurrentActivity.Size = new System.Drawing.Size(31, 33);
+            buttonShowCurrentActivity.TabIndex = 1;
+            toolTip.SetToolTip(buttonShowCurrentActivity, "Show the current activity on the server");
+            buttonShowCurrentActivity.UseVisualStyleBackColor = true;
+            buttonShowCurrentActivity.Click += buttonShowCurrentActivity_Click;
             // 
             // buttonFeedback
             // 
-            this.buttonFeedback.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonFeedback.Image = global::DiversityWorkbench.Properties.Resources.Feedback;
-            this.buttonFeedback.Location = new System.Drawing.Point(631, 0);
-            this.buttonFeedback.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.buttonFeedback.Name = "buttonFeedback";
-            this.buttonFeedback.Size = new System.Drawing.Size(26, 29);
-            this.buttonFeedback.TabIndex = 2;
-            this.toolTip.SetToolTip(this.buttonFeedback, "Send a feedback to the software developer");
-            this.buttonFeedback.UseVisualStyleBackColor = true;
-            this.buttonFeedback.Click += new System.EventHandler(this.buttonFeedback_Click);
+            buttonFeedback.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonFeedback.Image = Properties.Resources.Feedback;
+            buttonFeedback.Location = new System.Drawing.Point(736, 0);
+            buttonFeedback.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            buttonFeedback.Name = "buttonFeedback";
+            buttonFeedback.Size = new System.Drawing.Size(30, 33);
+            buttonFeedback.TabIndex = 2;
+            toolTip.SetToolTip(buttonFeedback, "Send a feedback to the software developer");
+            buttonFeedback.UseVisualStyleBackColor = true;
+            buttonFeedback.Click += buttonFeedback_Click;
             // 
             // buttonLinkedServer
             // 
-            this.buttonLinkedServer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonLinkedServer.Image = global::DiversityWorkbench.Properties.Resources.ServerLinked;
-            this.buttonLinkedServer.Location = new System.Drawing.Point(604, 0);
-            this.buttonLinkedServer.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.buttonLinkedServer.Name = "buttonLinkedServer";
-            this.buttonLinkedServer.Size = new System.Drawing.Size(24, 29);
-            this.buttonLinkedServer.TabIndex = 3;
-            this.toolTip.SetToolTip(this.buttonLinkedServer, "Administrate linked servers");
-            this.buttonLinkedServer.UseVisualStyleBackColor = true;
-            this.buttonLinkedServer.Click += new System.EventHandler(this.buttonLinkedServer_Click);
+            buttonLinkedServer.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonLinkedServer.Image = Properties.Resources.ServerLinked;
+            buttonLinkedServer.Location = new System.Drawing.Point(704, 0);
+            buttonLinkedServer.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            buttonLinkedServer.Name = "buttonLinkedServer";
+            buttonLinkedServer.Size = new System.Drawing.Size(28, 33);
+            buttonLinkedServer.TabIndex = 3;
+            toolTip.SetToolTip(buttonLinkedServer, "Administrate linked servers");
+            buttonLinkedServer.UseVisualStyleBackColor = true;
+            buttonLinkedServer.Click += buttonLinkedServer_Click;
             // 
             // buttonSetPrivacyConsentInfoSite
             // 
-            this.buttonSetPrivacyConsentInfoSite.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonSetPrivacyConsentInfoSite.Image = global::DiversityWorkbench.Properties.Resources.Paragraf;
-            this.buttonSetPrivacyConsentInfoSite.Location = new System.Drawing.Point(550, 0);
-            this.buttonSetPrivacyConsentInfoSite.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSetPrivacyConsentInfoSite.Name = "buttonSetPrivacyConsentInfoSite";
-            this.buttonSetPrivacyConsentInfoSite.Size = new System.Drawing.Size(24, 29);
-            this.buttonSetPrivacyConsentInfoSite.TabIndex = 4;
-            this.toolTip.SetToolTip(this.buttonSetPrivacyConsentInfoSite, "Set the site where more information about the storage and processing of personal " +
-        "data can be found");
-            this.buttonSetPrivacyConsentInfoSite.UseVisualStyleBackColor = true;
-            this.buttonSetPrivacyConsentInfoSite.Visible = false;
-            this.buttonSetPrivacyConsentInfoSite.Click += new System.EventHandler(this.buttonSetPrivacyConsentInfoSite_Click);
+            buttonSetPrivacyConsentInfoSite.Dock = System.Windows.Forms.DockStyle.Right;
+            buttonSetPrivacyConsentInfoSite.Image = Properties.Resources.Paragraf;
+            buttonSetPrivacyConsentInfoSite.Location = new System.Drawing.Point(641, 0);
+            buttonSetPrivacyConsentInfoSite.Margin = new System.Windows.Forms.Padding(0);
+            buttonSetPrivacyConsentInfoSite.Name = "buttonSetPrivacyConsentInfoSite";
+            buttonSetPrivacyConsentInfoSite.Size = new System.Drawing.Size(28, 33);
+            buttonSetPrivacyConsentInfoSite.TabIndex = 4;
+            toolTip.SetToolTip(buttonSetPrivacyConsentInfoSite, "Set the site where more information about the storage and processing of personal data can be found");
+            buttonSetPrivacyConsentInfoSite.UseVisualStyleBackColor = true;
+            buttonSetPrivacyConsentInfoSite.Visible = false;
+            buttonSetPrivacyConsentInfoSite.Click += buttonSetPrivacyConsentInfoSite_Click;
             // 
             // imageListLogin
             // 
-            this.imageListLogin.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListLogin.ImageStream")));
-            this.imageListLogin.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListLogin.Images.SetKeyName(0, "Login.ico");
-            this.imageListLogin.Images.SetKeyName(1, "LoginLocked.ico");
+            imageListLogin.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            imageListLogin.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageListLogin.ImageStream");
+            imageListLogin.TransparentColor = System.Drawing.Color.Transparent;
+            imageListLogin.Images.SetKeyName(0, "Login.ico");
+            imageListLogin.Images.SetKeyName(1, "LoginLocked.ico");
             // 
             // FormLoginAdministration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 546);
-            this.Controls.Add(this.splitContainerMain);
-            this.helpProvider.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.KeywordIndex);
-            this.helpProvider.SetHelpString(this, "Login administration");
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormLoginAdministration";
-            this.helpProvider.SetShowHelp(this, true);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Login administration";
-            this.splitContainerMain.Panel1.ResumeLayout(false);
-            this.splitContainerMain.Panel1.PerformLayout();
-            this.splitContainerMain.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
-            this.splitContainerMain.ResumeLayout(false);
-            this.toolStripLoginList.ResumeLayout(false);
-            this.toolStripLoginList.PerformLayout();
-            this.tableLayoutPanelMain.ResumeLayout(false);
-            this.groupBoxLogin.ResumeLayout(false);
-            this.tableLayoutPanelServerLogin.ResumeLayout(false);
-            this.tableLayoutPanelServerLogin.PerformLayout();
-            this.splitContainerLogin.Panel1.ResumeLayout(false);
-            this.splitContainerLogin.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerLogin)).EndInit();
-            this.splitContainerLogin.ResumeLayout(false);
-            this.groupBoxDatabases.ResumeLayout(false);
-            this.groupBoxDatabases.PerformLayout();
-            this.toolStripDatabase.ResumeLayout(false);
-            this.toolStripDatabase.PerformLayout();
-            this.groupBoxDatabase.ResumeLayout(false);
-            this.tableLayoutPanelLogin.ResumeLayout(false);
-            this.groupBoxUser.ResumeLayout(false);
-            this.tableLayoutPanelUser.ResumeLayout(false);
-            this.tableLayoutPanelUser.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).EndInit();
-            this.tabControlUserDetails.ResumeLayout(false);
-            this.tabPageRoles.ResumeLayout(false);
-            this.tableLayoutPanelRoles.ResumeLayout(false);
-            this.tableLayoutPanelRoles.PerformLayout();
-            this.tabPageProjects.ResumeLayout(false);
-            this.tableLayoutPanelProjects.ResumeLayout(false);
-            this.tableLayoutPanelProjects.PerformLayout();
-            this.splitContainerProjectAccessible.Panel1.ResumeLayout(false);
-            this.splitContainerProjectAccessible.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerProjectAccessible)).EndInit();
-            this.splitContainerProjectAccessible.ResumeLayout(false);
-            this.tableLayoutPanelProjectsReadOnly.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProjectsLocked)).EndInit();
-            this.tabPageSettings.ResumeLayout(false);
-            this.tableLayoutPanelSettings.ResumeLayout(false);
-            this.tableLayoutPanelSettings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSecurityAdmin)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(967, 630);
+            Controls.Add(splitContainerMain);
+            helpProvider.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.KeywordIndex);
+            helpProvider.SetHelpString(this, "Login administration");
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "FormLoginAdministration";
+            helpProvider.SetShowHelp(this, true);
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "Login administration";
+            splitContainerMain.Panel1.ResumeLayout(false);
+            splitContainerMain.Panel1.PerformLayout();
+            splitContainerMain.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerMain).EndInit();
+            splitContainerMain.ResumeLayout(false);
+            toolStripLoginList.ResumeLayout(false);
+            toolStripLoginList.PerformLayout();
+            tableLayoutPanelMain.ResumeLayout(false);
+            groupBoxLogin.ResumeLayout(false);
+            tableLayoutPanelServerLogin.ResumeLayout(false);
+            tableLayoutPanelServerLogin.PerformLayout();
+            splitContainerLogin.Panel1.ResumeLayout(false);
+            splitContainerLogin.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerLogin).EndInit();
+            splitContainerLogin.ResumeLayout(false);
+            groupBoxDatabases.ResumeLayout(false);
+            groupBoxDatabases.PerformLayout();
+            toolStripDatabase.ResumeLayout(false);
+            toolStripDatabase.PerformLayout();
+            groupBoxDatabase.ResumeLayout(false);
+            tableLayoutPanelLogin.ResumeLayout(false);
+            groupBoxUser.ResumeLayout(false);
+            tableLayoutPanelUser.ResumeLayout(false);
+            tableLayoutPanelUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxUser).EndInit();
+            tabControlUserDetails.ResumeLayout(false);
+            tabPageRoles.ResumeLayout(false);
+            tableLayoutPanelRoles.ResumeLayout(false);
+            tableLayoutPanelRoles.PerformLayout();
+            tabPageProjects.ResumeLayout(false);
+            tableLayoutPanelProjects.ResumeLayout(false);
+            tableLayoutPanelProjects.PerformLayout();
+            splitContainerProjectAccessible.Panel1.ResumeLayout(false);
+            splitContainerProjectAccessible.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerProjectAccessible).EndInit();
+            splitContainerProjectAccessible.ResumeLayout(false);
+            tableLayoutPanelProjectsReadOnly.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProjectsLocked).EndInit();
+            tabPageSettings.ResumeLayout(false);
+            tableLayoutPanelSettings.ResumeLayout(false);
+            tableLayoutPanelSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogin).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxSecurityAdmin).EndInit();
+            ResumeLayout(false);
 
         }
 

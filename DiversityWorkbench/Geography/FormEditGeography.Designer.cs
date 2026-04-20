@@ -382,7 +382,7 @@
             this.radioButtonTypePolygon.Name = "radioButtonTypePolygon";
             this.radioButtonTypePolygon.Size = new System.Drawing.Size(33, 15);
             this.radioButtonTypePolygon.TabIndex = 3;
-            this.radioButtonTypePolygon.Text = "□";
+            this.radioButtonTypePolygon.Text = "⬜";
             this.toolTip.SetToolTip(this.radioButtonTypePolygon, "Polygon");
             this.radioButtonTypePolygon.UseVisualStyleBackColor = true;
             this.radioButtonTypePolygon.Click += new System.EventHandler(this.radioButtonTypePolygon_Click);

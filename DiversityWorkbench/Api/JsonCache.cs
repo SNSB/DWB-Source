@@ -77,7 +77,7 @@ namespace DiversityWorkbench.Api
 
         public static bool DoesExist()
         {
-            string SQL = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.VIEWS V WHERE V.TABLE_NAME = 'JsonCache'"; // _FullAccess'"; // "select count(*) from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'JsonCache'";
+            string SQL = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES V WHERE V.TABLE_NAME = 'JsonCache'"; // _FullAccess'"; // "select count(*) from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'JsonCache'";
             int i = 0;
             int.TryParse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL), out i);
             return i == 1;

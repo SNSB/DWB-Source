@@ -1838,7 +1838,7 @@ namespace DiversityCollection.CacheDatabase
                 {
                     SQL = "select tableowner from pg_tables where tablename = '" + this.TargetTemp + "' and schemaname = '" + this.SchemaPostgres + "'";
                     string Owner = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL);
-                    if (Owner == "CacheAdmin" || Owner == "" || Owner.StartsWith("CacheAdmin"))
+                    if (Owner != null && (Owner == "CacheAdmin" || Owner == "" || Owner.StartsWith("CacheAdmin")))
                         OK = true;
                 }
             }

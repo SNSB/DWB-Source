@@ -42,10 +42,16 @@ namespace DiversityCollection.Forms
 
         private System.Collections.Generic.List<DiversityCollection.Forms.GridModeQueryField> _GridModeQueryFields;
 
+        private int _RowCount = 0;
+        public int RowCount
+        {
+            get { return this._RowCount; }
+        }
+
         #endregion
 
         #region Interface
-        
+
         public int SpecimenID { get { return this._SpecimenID; } }
 
         public int? CollectionSpecimenID
@@ -109,6 +115,8 @@ namespace DiversityCollection.Forms
                 "FROM CollectionSpecimenImage WHERE CollectionSpecimenID IN (" + this._sIDs + ") " +
                 "ORDER BY URI, CollectionSpecimenID";
             DiversityWorkbench.Forms.FormFunctions.initSqlAdapter(ref this._SqlDataAdapterCollectionSpecimenImage, this.dataSetImageGrid.CollectionSpecimenImage, SQL, DiversityWorkbench.Settings.ConnectionString);
+
+            _RowCount = this.dataSetImageGrid.CollectionSpecimenImage.Rows.Count;
 
             this.tabControlDescription.TabPages.Remove(this.tabPageDescription);
             this.tabControlDescription.TabPages.Remove(this.tabPageTemplate);
