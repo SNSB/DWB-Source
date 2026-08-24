@@ -900,6 +900,30 @@ namespace DiversityCollection.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die 
+        ///declare @CurrentVersion varchar(10)
+        ///declare @ScriptVersion varchar(10)
+        ///set @CurrentVersion = (SELECT [dbo].[Version]())
+        ///set @CurrentVersion = (SELECT REPLACE(@CurrentVersion, &apos;/&apos;, &apos;.&apos;))
+        ///set @ScriptVersion = &apos;01.00.32&apos;
+        ///IF (@CurrentVersion &lt;&gt; @ScriptVersion)
+        ///BEGIN
+        ///declare @Message nvarchar (199)
+        ///set @Message = &apos;WRONG VERION. Script is scheduled as update for version &apos; + @ScriptVersion + &apos;. Current version = &apos; + @CurrentVersion
+        ///RAISERROR (@Message, 18, 1) 
+        ///END
+        ///GO
+        ///
+        ///
+        ///--########################### [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionCacheUpdate_010032_to_010033 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionCacheUpdate_010032_to_010033", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 
         ///--#####################################################################################################################
         ///--######   Roles   ####################################################################################################
         ///--#####################################################################################################################
@@ -1173,12 +1197,13 @@ namespace DiversityCollection.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die --#####################################################################################################################
-        ///--######  Removing OIDs from tables    ################################################################################
+        ///--######   TaxonAnalysisCategory - Add SortingID     ##################################################################
         ///--#####################################################################################################################
         ///
-        ///ALTER TABLE public.&quot;Agent&quot; SET WITHOUT OIDS;
-        ///ALTER TABLE public.&quot;AgentContactInformation&quot; SET WITHOUT OIDS;
-        ///ALTER TABLE public.&quot;Gazetteer&quot; SET WI [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///ALTER TABLE public.&quot;TaxonAnalysisCategory&quot;
+        ///    ADD COLUMN IF NOT EXISTS &quot;SortingID&quot; integer NULL;
+        ///
+        /// ähnelt.
         /// </summary>
         internal static string DiversityCollectionCacheUpdatePG_000015_to_000016 {
             get {
@@ -1250,6 +1275,39 @@ namespace DiversityCollection.Properties {
         internal static string DiversityCollectionCacheUpdatePG_000019_to_000020 {
             get {
                 return ResourceManager.GetString("DiversityCollectionCacheUpdatePG_000019_to_000020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 
+        ///--#####################################################################################################################
+        ///--######   Setting permissions - needed after change to latest version of Postgres ####################################
+        ///--#####################################################################################################################
+        ///
+        ///--ALTER DEFAULT PRIVILEGES IN SCHEMA public
+        ///--GRANT INSERT, SELECT, UPDATE, DELETE ON TABLES TO &quot;CacheAdmin&quot;;
+        ///
+        ///GRANT USAGE, CREATE ON SCHEMA p [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionCacheUpdatePG_000020_to_000021 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionCacheUpdatePG_000020_to_000021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die --#####################################################################################################################
+        ///--######   Setting permissions - needed after change to version 17 of Postgres ####################################
+        ///--#####################################################################################################################
+        ///
+        ///-- schema access
+        ///GRANT USAGE, CREATE ON SCHEMA public TO &quot;CacheAdmin&quot;;
+        ///-- CacheUser can access objects in public schema ??
+        ///GRANT USAGE ON SCHEMA pub [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionCacheUpdatePG_000021_to_000022 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionCacheUpdatePG_000021_to_000022", resourceCulture);
             }
         }
         

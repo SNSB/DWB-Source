@@ -17,7 +17,7 @@ namespace DiversityCollection.UserControls
         private System.Windows.Forms.BindingSource _NotInPartListBindingSource;
         private System.Windows.Forms.BindingSource _InPartHideListBindingSource;
         private System.Windows.Forms.BindingSource _InPartDisplayListBindingSource;
-        
+
         #endregion
 
         #region Construction
@@ -39,7 +39,7 @@ namespace DiversityCollection.UserControls
             this._HelpNamespace = HelpNamespace;
             this.initControl();
         }
-        
+
         #endregion
 
         #region Control
@@ -304,7 +304,7 @@ namespace DiversityCollection.UserControls
 
         private void fillPartDisplayLists(System.Data.DataRowView RowView)
         {
-            if (RowView == null) 
+            if (RowView == null)
                 return;
             this._iMainForm.DataSetCollectionSpecimen().IdentificationUnitInPartDisplayList.Clear();
             this._iMainForm.DataSetCollectionSpecimen().IdentificationUnitInPartHideList.Clear();
@@ -469,6 +469,75 @@ namespace DiversityCollection.UserControls
             }
             catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
+        private void toolStripButtonUnitRemoveFromPartAll_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Collections.Generic.List<System.Data.DataRowView> RowsToDelete = new List<DataRowView>();
+                System.Collections.Generic.HashSet<int> PartIDsToUpdate = new HashSet<int>();
+
+                foreach (System.Object O in this.listBoxPartShowInLabel.Items)
+                {
+                    System.Data.DataRowView RVdel = (System.Data.DataRowView)O;
+                    RowsToDelete.Add(RVdel);
+                }
+                System.Windows.Forms.TreeNode TNdel = this._iMainForm.SelectedPartHierarchyNode();
+                foreach (System.Object O in RowsToDelete)
+                {
+                    System.Data.DataRowView RVdel = (System.Data.DataRowView)O;
+                    int SpecimenPartID = int.Parse(RVdel["SpecimenPartID"].ToString());
+                    PartIDsToUpdate.Add(SpecimenPartID);
+
+                    System.Data.DataRow[] RUdel = this._iMainForm.DataSetCollectionSpecimen().IdentificationUnitInPart.Select(
+                        "CollectionSpecimenID = " + RVdel["CollectionSpecimenID"].ToString() +
+                        " AND IdentificationUnitID = " + RVdel["IdentificationUnitID"].ToString() +
+                        " AND SpecimenPartID = " + RVdel["SpecimenPartID"].ToString());
+                    System.Data.DataRow[] RUlistDel = this._iMainForm.DataSetCollectionSpecimen().IdentificationUnitInPartDisplayList.Select(
+                        "CollectionSpecimenID = " + RVdel["CollectionSpecimenID"].ToString() +
+                        " AND IdentificationUnitID = " + RVdel["IdentificationUnitID"].ToString() +
+                        " AND SpecimenPartID = " + RVdel["SpecimenPartID"].ToString());
+
+                    if (RUdel.Length > 0 && RUlistDel.Length > 0 && TNdel != null)
+                    {
+                        DiversityCollection.Datasets.DataSetCollectionSpecimen.IdentificationUnitNotInPartListRow RUnot = this._iMainForm.DataSetCollectionSpecimen().IdentificationUnitNotInPartList.NewIdentificationUnitNotInPartListRow();
+                        RUnot["CollectionSpecimenID"] = RVdel["CollectionSpecimenID"];
+                        RUnot["IdentificationUnitID"] = RVdel["IdentificationUnitID"];
+
+                        int DisplayOrder = this._iMainForm.DataSetCollectionSpecimen().IdentificationUnitNotInPartList.Rows.Count + 1;
+                        string WhereClause = "CollectionSpecimenID = " + RVdel["CollectionSpecimenID"].ToString() +
+                            " AND IdentificationUnitID = " + RVdel["IdentificationUnitID"].ToString();
+                        if (int.TryParse(this._iMainForm.DataSetCollectionSpecimen().IdentificationUnit.Select(WhereClause)[0]["DisplayOrder"].ToString(), out DisplayOrder))
+                            RUnot["DisplayOrder"] = DisplayOrder;
+
+                        RUnot["DisplayText"] = RVdel[4].ToString();
+                        this._iMainForm.DataSetCollectionSpecimen().IdentificationUnitNotInPartList.Rows.Add(RUnot);
+                        RUdel[0].Delete();
+                        RUlistDel[0].Delete();
+                    }
+                }
+                if (TNdel != null)
+                    TNdel.Remove();
+
+                string Table = "CollectionSpecimenPart";
+                this._iMainForm.setSpecimen();
+
+                // Select the first part that was updated
+                if (PartIDsToUpdate.Count > 0)
+                {
+                    int FirstPartID = PartIDsToUpdate.First();
+                    string Restriction = "SpecimenPartID = " + FirstPartID.ToString();
+                    System.Data.DataRow[] RR = this._iMainForm.DataSetCollectionSpecimen().Tables[Table].Select(Restriction);
+                    if (RR.Length > 0)
+                        this._iMainForm.SelectNode(RR[0], Forms.FormCollectionSpecimen.Tree.PartTree);
+                }
+                this.listBoxUnitsNotInPart.Focus();
+            }
+            catch (System.Exception ex) {
+                System.Windows.Forms.MessageBox.Show("An error occured when trying to remove all units from part: " + ex.Message);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); 
+            }
+        }
+
 
         /// <summary>
         /// Moving a unit into a part
@@ -627,7 +696,7 @@ namespace DiversityCollection.UserControls
                 {
                     DiversityCollection.Datasets.DataSetCollectionSpecimen.IdentificationUnitInPartRow RU =
                         (DiversityCollection.Datasets.DataSetCollectionSpecimen.IdentificationUnitInPartRow)this._iMainForm.DataSetCollectionSpecimen().IdentificationUnitInPart.NewRow();
-                    RU.CollectionSpecimenID = this._iMainForm.ID_Specimen() ;
+                    RU.CollectionSpecimenID = this._iMainForm.ID_Specimen();
                     RU.IdentificationUnitID = UnitID;
                     RU.SpecimenPartID = SpecimenPartID;
                     RU.DisplayOrder = (System.Int16)DisplayOrder;

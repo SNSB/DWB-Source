@@ -4231,9 +4231,12 @@ namespace DiversityWorkbench.Forms
         {
             string paq = uri.PathAndQuery; // need to access PathAndQuery
             System.Reflection.FieldInfo flagsFieldInfo = typeof(Uri).GetField("m_Flags", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-            ulong flags = (ulong)flagsFieldInfo.GetValue(uri);
-            flags &= ~((ulong)0x30); // Flags.PathNotCanonical|Flags.QueryNotCanonical
-            flagsFieldInfo.SetValue(uri, flags);
+            if (flagsFieldInfo != null)
+            {
+                ulong flags = (ulong)flagsFieldInfo?.GetValue(uri);
+                flags &= ~((ulong)0x30); // Flags.PathNotCanonical|Flags.QueryNotCanonical
+                flagsFieldInfo.SetValue(uri, flags);
+            }
         }
 
         public static void setImageDescription(System.Windows.Forms.BindingSource BindingSource)
@@ -5717,7 +5720,7 @@ namespace DiversityWorkbench.Forms
                         "FROM ScientificTerm T " +
                         "WHERE (T.SourceView = '" + serverConnection.CacheDBSourceView + "')";
                     else
-                        SQL = "SELECT U.BaseURL + CAST(T.TermRepresentationID AS varchar) AS URI, T.DisplayText " +
+                        SQL = "SELECT U.BaseURL + CAST(T.RepresentationID AS varchar) AS URI, T.DisplayText " +
                         "FROM " + serverConnection.Prefix() + "TermRepresentation AS T INNER JOIN " +
                         serverConnection.Prefix() + "Terminology AS P ON T.TerminologyID = P.TerminologyID CROSS JOIN " +
                         serverConnection.Prefix() + "ViewBaseURL AS U " +
@@ -6493,7 +6496,7 @@ namespace DiversityWorkbench.Forms
         public static int SqlServerVersion()
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionString))
                 return 0;
             int VersionMajor = 0;
             using (Microsoft.Data.SqlClient.SqlConnection sqlConnection = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString))
@@ -6530,7 +6533,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlExecuteNonQuery(string SqlCommand, bool UseDefaultConnection = false)
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionString))
                 return false;
 
             bool OK = true;
@@ -6570,7 +6573,7 @@ namespace DiversityWorkbench.Forms
         public static async Task<bool> SqlExecuteNonQueryAsync(string sqlCommand, bool useDefaultConnection = false) 
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionString))
                 return false;
 
             bool ok = true; 
@@ -6593,7 +6596,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlExecuteNonQuery(string SqlCommand, bool? IgnoreException)
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionString))
                 return false;
 
             bool OK = true;
@@ -6633,7 +6636,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlExecuteNonQuery(string SqlCommand, string ConnectionString)
         {
             // #235
-            if (ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(ConnectionString))
                 return false;
 
             bool OK = true;
@@ -6669,7 +6672,7 @@ namespace DiversityWorkbench.Forms
             if (con == null)
                 return false;
             // #235
-            if (con.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(con.ConnectionString))
                 return false;
 
             try
@@ -6701,7 +6704,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlExecuteNonQuery(string SqlCommand, string ConnectionString, ref string Message)
         {
             // #235
-            if (ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(ConnectionString))
                 return false;
 
             bool OK = true;
@@ -6733,7 +6736,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlExecuteNonQuery(string SqlCommand, ref string Message, ref int ErrorCode)
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionString))
                 return false;
 
             bool OK = true;
@@ -6768,7 +6771,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlExecuteNonQuery(string SqlCommand, ref string ExceptionMessage)
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionString))
                 return false;
 
             bool OK = true;
@@ -6800,7 +6803,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlExecuteNonQuery(string SqlCommand, ref string ExceptionMessage, int Timeout)
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionStringWithTimeout(Timeout).IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionStringWithTimeout(Timeout)))
                 return false;
 
             bool OK = true;
@@ -6829,7 +6832,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlExecuteNonQuery(string SqlCommand, Microsoft.Data.SqlClient.SqlConnection Connection, ref string Message, ref int ErrorCode)
         {
             // #235
-            if (Connection.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(Connection.ConnectionString))
                 return false;
 
             bool OK = true;
@@ -6853,7 +6856,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlExecuteNonQuery(string SqlCommand, Microsoft.Data.SqlClient.SqlConnection Connection, ref string Message)
         {
             // #235
-            if (Connection.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(Connection.ConnectionString))
                 return false;
 
             bool OK = true;
@@ -6877,7 +6880,7 @@ namespace DiversityWorkbench.Forms
         public static string SqlExecuteScalar(string SqlCommand, bool IgnoreException = false)
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionString))
                 return "";
 
             string Result = "";
@@ -6933,7 +6936,7 @@ namespace DiversityWorkbench.Forms
         public static string SqlExecuteScalar(string SqlCommand, Microsoft.Data.SqlClient.SqlConnection Connection)
         {
             // #235
-            if (Connection.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(Connection.ConnectionString))
                 return "";
 
             string Result = "";
@@ -6980,7 +6983,7 @@ namespace DiversityWorkbench.Forms
         public static string SqlExecuteScalar(string SqlCommand, ref string ExceptionMessage, bool IncludeNullReferenceException = false, bool UseConnectionTimeout = false)
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase).IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase)))
                 return "";
 
             string Result = "";
@@ -7021,7 +7024,7 @@ namespace DiversityWorkbench.Forms
         public static string SqlExecuteScalar(string SqlCommand, ref string ExceptionMessage, System.Data.IsolationLevel Level)
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase).IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase)))
                 return "";
 
             string Result = "";
@@ -7067,9 +7070,9 @@ namespace DiversityWorkbench.Forms
         public static bool SqlFillTable(string SqlCommand, ref System.Data.DataTable DT, ref string ExceptionMessage, int? Timeout = null)
         {
             // #235
-            if (Timeout == null && DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase).IsNullOrEmpty())
+            if (Timeout == null && String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase)))
                 return false;
-            if (Timeout != null && DiversityWorkbench.Settings.ConnectionStringWithTimeout((int)Timeout).IsNullOrEmpty())
+            if (Timeout != null && String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionStringWithTimeout((int)Timeout)))
                 return false;
 
             bool OK = false;
@@ -7154,7 +7157,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlFillTable(string SqlCommand, ref System.Data.DataTable DT, Microsoft.Data.SqlClient.SqlConnection con, bool CloseConnection = false)
         {
             // #235
-            if (con.ConnectionString.IsNullOrEmpty())
+            if (String.IsNullOrEmpty(con.ConnectionString))
                 return false;
 
             bool OK = false;
@@ -7198,7 +7201,7 @@ namespace DiversityWorkbench.Forms
         public static bool SqlDatabaseReadOnly()
         {
             // #235
-            if (DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase).IsNullOrEmpty())
+            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionStringWithTimeout(DiversityWorkbench.Settings.TimeoutDatabase)))
                 return false;
 
             bool Result = true;

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <ApplicationIcon>DiversityCollection.ico</ApplicationIcon>
     <SccProjectName>
@@ -25,7 +25,7 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
 	<FileVersion>$(Version)</FileVersion>
-	<Version>4.6.5</Version>
+	<Version>4.6.6</Version>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
@@ -37,7 +37,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
     <StartupObject>DiversityCollection.Program</StartupObject>
     <AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
     <AssemblyVersion>$(Version)</AssemblyVersion>
@@ -93,11 +93,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DataSetTransferHistory.xsd</DependentUpon>
-    </Compile>
-    <Compile Update="CacheDatabase\Packages\FloraRaster\ResourceFloraRaster.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ResourceFloraRaster.resx</DependentUpon>
     </Compile>
     <Compile Update="CacheDatabase\Packages\ResourcePackages.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -728,19 +723,19 @@
   <ItemGroup>
     <PackageReference Include="HtmlTextWriter" Version="3.0.2" />
     <PackageReference Include="log4net">
-      <Version>3.2.0</Version>
+      <Version>3.3.2</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3595.46" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4078.44" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.6901" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.28000.2270" />
     <PackageReference Include="Npgsql">
-      <Version>9.0.4</Version>
+      <Version>10.0.3</Version>
     </PackageReference>
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="2.1.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="2.3.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.10" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="CacheDatabase\FormCacheDB.cs" />
@@ -915,10 +910,6 @@
     <ProjectReference Include="..\..\DiversityWorkbench\DiversityWorkbench.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="CacheDatabase\Packages\FloraRaster\ResourceFloraRaster.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourceFloraRaster.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Update="CacheDatabase\Packages\ResourcePackages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcePackages.Designer.cs</LastGenOutput>

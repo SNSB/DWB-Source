@@ -1,3 +1,4 @@
+using DiversityCollection.Tasks;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -545,7 +546,16 @@ namespace DiversityCollection
                         TaskType = R["Type"].ToString();
                     else if (R.Table.Columns.Contains("TaskID"))
                         TaskType = DiversityCollection.LookupTable.TaskType(int.Parse(R["TaskID"].ToString())).ToLower();
-                    i = Specimen.TaskTypeImage(TaskType, GreyImage);
+                    i = Specimen.TaskTypeImage(TaskType, false);
+                    // #416 - grey image only outside exhibition period
+                    if (GreyImage && TaskType == "exhibition" && R.Table.Columns.Contains("TaskStart") && R.Table.Columns.Contains("TaskEnd"))
+                    {
+                        System.DateTime von;
+                        System.DateTime bis;
+                        if (System.DateTime.TryParse(R["TaskStart"].ToString(), out von) && von < System.DateTime.Now
+                            && System.DateTime.TryParse(R["TaskEnd"].ToString(), out bis) && bis > System.DateTime.Now)
+                            i--;
+                    }
                     break;
             }
             if (GreyImage) i++;
@@ -1577,6 +1587,13 @@ namespace DiversityCollection
                 case "core":
                     I = (int)OverviewImageTableOrField.Core;
                     break;
+                case "synthetic":
+                case "synthetic specimen":
+                     I = (int)OverviewImageTableOrField.Synthetic;
+                    break;
+                case "3d data":
+                    I = (int)OverviewImageTableOrField.Scan;
+                    break;
                 case "material sample":
                     I = (int)OverviewImageTaxon.Other;
                     break;
@@ -1698,22 +1715,23 @@ namespace DiversityCollection
             /*320-324*/ PoisonGrey, Radiation, RadiationGrey, Bug, BugGrey,
             /*325-329*/ Date, DateGray, Terminology, TerminologyGrey, Descriptions,
             /*330-334*/ DescriptionsGrey, DiversityAgents, DiversityAgentsGrey, DiversityCollection, DiversityCollectionGrey,
-            DiversityGazetteer, DiversityGazetteerGrey, DiversityProjects, DiversityProjectsGrey, DiversityReferences,
-            DiversityReferencesGrey, DiversitySamplingPlots, DiversitySamplingPlotsGrey, DiversityScientificTerms, DiversityScientificTermsGrey,
-            DiversityTaxonNames, DiversityTaxonNamesGrey, Gazetteer, GazetteerGrey, Inspection,
-            InspectionGrey, Query, QueryGrey, Graph, GraphGrey,
-            Repair, RepairGrey, Damage, DamageGrey, Cleaning,
-            CleaningGrey, CollectionTask, CollectionTaskGrey, Sensor, SensorGrey,
-            Warning, WarningGrey, SubdividedContainer, SubdividedContainerGray, Trapped,
-            TrapEnded, SensorHumidity, SensorHumidityGrey, SensorTemperature, SensorTemperatureGrey,
-            WetCollection, WetCollectionGrey, Container, ContainerGrey, Department,
-            DepartmentGrey, Location, LocationGrey, Battery, BatteryGrey,
-            Diptera, DipteraGrey, Lepidoptera, LepidopteraGrey, Heteroptera,
-            HeteropteraGrey, Hymenoptera, HymenopteraGrey, Coleoptera, ColeopteraGrey,
-            Exhibition, ExhibitionGrey, Area, AreaGrey, Pinned,
-            PinnedGrey, UTM, UTMgrey, Hardware, HardwareGrey,
-            RelationInvers, RelationInversGray, Rack, RackGrey, KeyBlue, 
-            KeyBlueGray, Organism, OrganismGrey, Core, CoreGray // #115
+            /*335-339*/ DiversityGazetteer, DiversityGazetteerGrey, DiversityProjects, DiversityProjectsGrey, DiversityReferences,
+            /*340-344*/ DiversityReferencesGrey, DiversitySamplingPlots, DiversitySamplingPlotsGrey, DiversityScientificTerms, DiversityScientificTermsGrey,
+            /*345-349*/ DiversityTaxonNames, DiversityTaxonNamesGrey, Gazetteer, GazetteerGrey, Inspection,
+            /*350-354*/ InspectionGrey, Query, QueryGrey, Graph, GraphGrey,
+            /*355-359*/ Repair, RepairGrey, Damage, DamageGrey, Cleaning,
+            /*360-364*/ CleaningGrey, CollectionTask, CollectionTaskGrey, Sensor, SensorGrey,
+            /*365-369*/ Warning, WarningGrey, SubdividedContainer, SubdividedContainerGray, Trapped,
+            /*370-374*/ TrapEnded, SensorHumidity, SensorHumidityGrey, SensorTemperature, SensorTemperatureGrey,
+            /*375-379*/ WetCollection, WetCollectionGrey, Container, ContainerGrey, Department,
+            /*380-384*/ DepartmentGrey, Location, LocationGrey, Battery, BatteryGrey,
+            /*385-389*/ Diptera, DipteraGrey, Lepidoptera, LepidopteraGrey, Heteroptera,
+            /*390-394*/ HeteropteraGrey, Hymenoptera, HymenopteraGrey, Coleoptera, ColeopteraGrey,
+            /*395-399*/ Exhibition, ExhibitionGrey, Area, AreaGrey, Pinned,
+            /*400-404*/ PinnedGrey, UTM, UTMgrey, Hardware, HardwareGrey,
+            /*405-409*/ RelationInvers, RelationInversGray, Rack, RackGrey, KeyBlue, 
+            /*410-414*/ KeyBlueGray, Organism, OrganismGrey, Core, CoreGray, 
+            /*415-419*/ Synthetic, SyntheticGrey, Scan, ScanGrey
         }
 
         public enum OverviewImageState { Plain, Grey, Hierarchy }

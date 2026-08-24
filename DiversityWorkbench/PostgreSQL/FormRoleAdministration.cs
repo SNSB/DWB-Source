@@ -122,6 +122,8 @@ namespace DiversityWorkbench.PostgreSQL
                     // seems to be needed
                     this.initPermissions();
                     this.listBoxGroups.SelectedIndex = -1;
+
+                    this.initListBoxAllRoles(_CurrentGroupOrLogin);
                 }
             }
             catch(System.Exception ex)
@@ -297,6 +299,7 @@ namespace DiversityWorkbench.PostgreSQL
             {
                 this.listBoxMemberInRoles.Items.Clear();
                 this.listBoxAvailableRoles.Items.Clear();
+                this.listBoxAllRoles.Items.Clear();
                 if (Role != null)
                 {
                     bool IsGroup = false;
@@ -349,6 +352,7 @@ namespace DiversityWorkbench.PostgreSQL
                 }
                 else
                     System.Windows.Forms.MessageBox.Show("Granting the membership failed");
+                this.initListBoxAllRoles("");
             }
             catch (System.Exception ex)
             {
@@ -370,6 +374,7 @@ namespace DiversityWorkbench.PostgreSQL
             }
             else
                 System.Windows.Forms.MessageBox.Show("Revoking the membership failed");
+            this.initListBoxAllRoles("");
         }
 
         private void listBoxMemberInRoles_SelectedIndexChanged(object sender, EventArgs e)
@@ -402,6 +407,20 @@ namespace DiversityWorkbench.PostgreSQL
                 string Message = "";
                 bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL,ref Message);
             }
+        }
+
+        private void initListBoxAllRoles(string CurrentRole)
+        {
+            this.listBoxAllRoles.Items.Clear();
+            if (CurrentRole == null || CurrentRole.Length == 0) { 
+                this.listBoxAllRoles.BackColor = System.Drawing.SystemColors.ControlLightLight;
+                return;
+            }
+            foreach (string R in DiversityWorkbench.PostgreSQL.Connection.AllRoles(CurrentRole))
+            {
+                this.listBoxAllRoles.Items.Add(R);
+            }
+            this.listBoxAllRoles.BackColor = System.Drawing.Color.LightGreen;
         }
 
         #endregion
@@ -462,6 +481,8 @@ namespace DiversityWorkbench.PostgreSQL
             //    "AND datname <> 'postgres' " +
             //    "ORDER BY datname";
 
+            if (DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase() == null)
+                return;
 
             string SQL = "SELECT datname FROM pg_database " +
                 "WHERE datname = '" + DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().Name + "' ";

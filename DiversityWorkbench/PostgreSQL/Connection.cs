@@ -84,7 +84,7 @@ namespace DiversityWorkbench.PostgreSQL
         #region Current connection
 
         private static string _DefaultConnectionString = "";
-
+        
         public static string DefaultConnectionString(bool OptimizeForBulkOperations = false)
         {
             if (!DiversityWorkbench.PostgreSQL.Settings.Default.IsTrusted && (DiversityWorkbench.PostgreSQL.Connection.Password == null || DiversityWorkbench.PostgreSQL.Connection.Password.Length == 0))
@@ -326,6 +326,18 @@ namespace DiversityWorkbench.PostgreSQL
             return null;
         }
 
+        /// <summary>
+        /// Gets the connection string for dwb_maintenance_db
+        /// </summary>
+        public static string GetMaintenanceDbConnectionString()
+        {
+            var currentConnStr = DiversityWorkbench.PostgreSQL.Connection.DefaultConnectionString();
+            var builder = new NpgsqlConnectionStringBuilder(currentConnStr);
+            builder.Database = DiversityWorkbench.PostgreSQL.Settings.Default.MaintenanceDB;
+            builder.Pooling = false;
+            return builder.ToString();
+        }
+
         public static bool SetCurrentDatabase(string Database)
         {
             bool OK = true;
@@ -334,7 +346,7 @@ namespace DiversityWorkbench.PostgreSQL
                 DiversityWorkbench.PostgreSQL.Connection.ResetDefaultConnectionString();
                 DiversityWorkbench.PostgreSQL.Settings.Default.Database = Database;
                 DiversityWorkbench.PostgreSQL.Settings.Default.Save();
-                _PostgresConnection = null;
+                ResetPostgresConnection();
             }
             catch (System.Exception ex)
             {
@@ -506,6 +518,43 @@ namespace DiversityWorkbench.PostgreSQL
             return DiversityWorkbench.PostgreSQL.Connection._Roles;
         }
 
+        public static System.Collections.Generic.List<string> AllRoles(string CurrentLogin)
+        {
+            System.Collections.Generic.List<string> _AllRoles = new List<string>();
+            try
+            {
+                string SQL = "WITH RECURSIVE role_hierarchy AS (\r\n" +
+                    "-- Base case: roles directly granted to the user\r\n" +
+                    "SELECT m.roleid\r\n" +
+                    "FROM pg_auth_members m\r\n" +
+                    "JOIN pg_roles r ON r.oid = m.member\r\n" +
+                    "WHERE r.rolname = '" + CurrentLogin + "'\r\n" +
+                    "UNION \r\n" +
+                    "-- Recursive case: roles granted to those roles\r\n" +
+                    "SELECT m.roleid " +
+                    "FROM pg_auth_members m " +
+                    "JOIN role_hierarchy rh ON m.member = rh.roleid) \r\n" +
+                    "SELECT rolname " +
+                    "FROM pg_roles " +
+                    "WHERE oid IN (SELECT roleid FROM role_hierarchy) " +
+                    "ORDER BY rolname;";
+                System.Data.DataTable dtRoles = new DataTable();
+                string Message = "";
+                if (!DiversityWorkbench.PostgreSQL.Connection.SqlFillTable(SQL, ref dtRoles, ref Message))
+                    return _AllRoles;
+                //System.Windows.Forms.MessageBox.Show(Message);
+                foreach (System.Data.DataRow R in dtRoles.Rows)
+                {
+                    _AllRoles.Add(R[0].ToString());
+                }
+            }
+            catch (System.Exception ex)
+            { }
+            return _AllRoles;
+        }
+
+
+
         public static System.Collections.Generic.Dictionary<string, DiversityWorkbench.PostgreSQL.Role> Groups()
         {
             System.Collections.Generic.Dictionary<string, DiversityWorkbench.PostgreSQL.Role> GG = new Dictionary<string, Role>();
@@ -542,6 +591,12 @@ namespace DiversityWorkbench.PostgreSQL
             OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
             if (!OK)
                 System.Windows.Forms.MessageBox.Show(Message);
+            else
+            {
+                // Grant the new role to CacheAdmin with ADMIN OPTION (required for PostgreSQL 16+ CREATEROLE restrictions)
+                SQL = "GRANT \"" + Name + "\" TO \"CacheAdmin\" WITH ADMIN OPTION;";
+                DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+            }
             return OK;
         }
 
@@ -557,6 +612,12 @@ namespace DiversityWorkbench.PostgreSQL
                 OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
                 if (!OK)
                     System.Windows.Forms.MessageBox.Show(Message);
+                else
+                {
+                    // Grant the new role to CacheAdmin with ADMIN OPTION (required for PostgreSQL 16+ CREATEROLE restrictions)
+                    SQL = "GRANT \"" + Name + "\" TO \"CacheAdmin\" WITH ADMIN OPTION;";
+                    DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
+                }
             }
             return OK;
         }
@@ -639,7 +700,7 @@ namespace DiversityWorkbench.PostgreSQL
                     {
                         try
                         {
-                            string SQL = "SELECT datname FROM pg_database WHERE datname not like 'template%' AND datname <> 'postgres' ORDER BY datname";
+                            string SQL = "SELECT datname FROM pg_database WHERE datname not like 'template%' AND datname <> 'postgres' AND datname not like 'dwb_template%' ORDER BY datname";
                             System.Data.DataTable dtDatabases = new DataTable();
                             string Message = "";
                             if (!DiversityWorkbench.PostgreSQL.Connection.SqlFillTable(SQL, ref dtDatabases, ref Message))
@@ -741,6 +802,83 @@ namespace DiversityWorkbench.PostgreSQL
 
         #endregion
 
+        #region PostgresApplicationDirectory
+        
+        public static string GetPostgresApplicationDirectory()
+        {
+            string WorkingDirectory = @"C:\";
+            bool DirectoryFound = false;
+            try
+            {
+                System.IO.DirectoryInfo DirRoot = new System.IO.DirectoryInfo(WorkingDirectory);
+                if (DirRoot.Exists)
+                {
+                    foreach (System.IO.DirectoryInfo Dir2 in DirRoot.GetDirectories())
+                    {
+                        if (Dir2.Name.ToLower().StartsWith("progra"))
+                        {
+                            foreach (System.IO.DirectoryInfo Dir3 in Dir2.GetDirectories())
+                            {
+                                if (Dir3.Name.ToLower().StartsWith("postgre"))
+                                {
+                                    foreach (System.IO.DirectoryInfo Dir4 in Dir3.GetDirectories())
+                                    {
+                                        foreach (System.IO.DirectoryInfo Dir5 in Dir4.GetDirectories())
+                                        {
+                                            if (Dir5.Name.ToLower() == "bin")
+                                            {
+                                                if (DirectoryContainsPostgresApplications(Dir5))
+                                                {
+                                                    WorkingDirectory = Dir5.FullName;
+                                                    DirectoryFound = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (DirectoryFound)
+                                                break;
+                                        }
+                                        if (DirectoryFound)
+                                            break;
+                                    }
+                                }
+                                if (DirectoryFound)
+                                    break;
+                            }
+                        }
+                        if (DirectoryFound)
+                            break;
+                    }
+                }
+                if (!DirectoryFound)
+                {
+                    WorkingDirectory = "";
+                }
+            }
+            catch (System.Exception ex)
+            { }
+            return WorkingDirectory;
+        }
+
+        public static bool DirectoryContainsPostgresApplications(System.IO.DirectoryInfo Dir)
+        {
+            bool pg_dump_found = false;
+            bool psql_found = false;
+            foreach (System.IO.FileInfo F in Dir.GetFiles())
+            {
+                if (F.Name.ToLower() == "pg_dump.exe")
+                    pg_dump_found = true;
+                if (F.Name.ToLower() == "psql.exe")
+                    psql_found = true;
+                if (pg_dump_found && psql_found)
+                    break;
+            }
+            if (pg_dump_found && psql_found)
+                return true;
+            else
+                return false;
+        }
+
+        #endregion
         #region SQL
 
         private static Npgsql.NpgsqlConnection _NpgsqlConnection;
@@ -885,7 +1023,8 @@ namespace DiversityWorkbench.PostgreSQL
         bool OptimizeForBulkOperations = false,
         bool Retry = false,
         string Role = "",
-        int Timeout = -1)
+        int Timeout = -1,
+        bool IncludeErrorDetails = false)
         {
             //Microsoft.Data.SqlClient.SqlTransaction t;
 
@@ -898,7 +1037,7 @@ namespace DiversityWorkbench.PostgreSQL
                 if (DiversityWorkbench.PostgreSQL.Connection.DefaultConnectionString().Length > 0)// .Postgres.PostgresConnection() != null)
                 {
                     // Markus 20.5.2019 - über zentrale Verbindung
-                    if (UseDefaultConnection)
+                    if (UseDefaultConnection && !IncludeErrorDetails)
                     {
                         if (IncludeInTransaction) // Toni 20200226
                         {
@@ -910,13 +1049,16 @@ namespace DiversityWorkbench.PostgreSQL
                     }
                     else
                     {
-                        con = new NpgsqlConnection(DiversityWorkbench.PostgreSQL.Connection.DefaultConnectionString());
+                        string ConString = DiversityWorkbench.PostgreSQL.Connection.DefaultConnectionString();
+                        if (IncludeErrorDetails)
+                            ConString += "Include Error Detail=true;";
+                        con = new NpgsqlConnection(ConString);
+                        if (con.State == ConnectionState.Closed)
+                            con.Open();
                         if (IncludeInTransaction) // Toni 20200226
                             T = con.BeginTransaction();
                         C = new NpgsqlCommand(SQL, con, T);// .Postgres.PostgresConnection());
                         C.CommandTimeout = Timeout >= 0 ? Timeout : DiversityWorkbench.Settings.TimeoutDatabase;
-                        if (con.State == ConnectionState.Closed)
-                            con.Open();
                         C.ExecuteNonQuery();
                     }
                 }
@@ -997,14 +1139,22 @@ namespace DiversityWorkbench.PostgreSQL
             return Owner;
         }
 
+        private static string _PostgresConnectionString = "";
+
         private static NpgsqlConnection _PostgresConnection;
         private static NpgsqlConnection PostgresConnection()
         {
+            // Store the connection string on first call
+            if (_PostgresConnectionString.Length == 0)
+            {
+                _PostgresConnectionString = DiversityWorkbench.PostgreSQL.Connection.DefaultConnectionString();
+            }
+
             if (_PostgresConnection == null)
             {
                 try
                 {
-                    _PostgresConnection = new NpgsqlConnection(DiversityWorkbench.PostgreSQL.Connection.DefaultConnectionString());
+                    _PostgresConnection = new NpgsqlConnection(_PostgresConnectionString);
                     //if (_PostgresConnection.State == ConnectionState.Closed)
                     //    _PostgresConnection.Open();
                 }
@@ -1021,6 +1171,18 @@ namespace DiversityWorkbench.PostgreSQL
             catch (System.Exception ex)
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                // If reopening fails, discard the connection and try creating a fresh one
+                try
+                {
+                    if (_PostgresConnection != null)
+                    {
+                        _PostgresConnection.Dispose();
+                    }
+                }
+                catch { }
+                _PostgresConnection = new NpgsqlConnection(_PostgresConnectionString);
+                if (_PostgresConnection.State == ConnectionState.Closed)
+                    _PostgresConnection.Open();
             }
 
             return _PostgresConnection;
@@ -1028,8 +1190,24 @@ namespace DiversityWorkbench.PostgreSQL
 
         public static void PostgresConnectionClose()
         {
-            PostgresConnection().Close();
-            _PostgresConnection.Dispose();
+            if (_PostgresConnection != null)
+            {
+                try
+                {
+                    if (_PostgresConnection.State == ConnectionState.Open)
+                        _PostgresConnection.Close();
+                    _PostgresConnection.Dispose();
+                }
+                catch { }
+                _PostgresConnection = null;
+            }
+            _PostgresConnectionString = "";
+        }
+
+        public static void ResetPostgresConnection()
+        {
+            PostgresConnectionClose();
+            _PostgresConnectionString = "";
         }
 
         public static string SqlExecuteSkalar(string SQL, bool Retry = false, bool IgnoreException = false)
@@ -1094,7 +1272,7 @@ namespace DiversityWorkbench.PostgreSQL
                     {
                         string SqlCount = "SELECT COUNT(*) " + SQL.Substring(SQL.IndexOf(" FROM "));
                         Npgsql.NpgsqlCommand Count = new Npgsql.NpgsqlCommand(SqlCount, con);
-                        string count = Count.ExecuteScalar().ToString();
+                        string count = Count.ExecuteScalar()?.ToString();
                         int i = 0;
                         if (int.TryParse(count, out i) && i == 0)
                             AnyData = false;
@@ -1102,7 +1280,7 @@ namespace DiversityWorkbench.PostgreSQL
                     if (AnyData)
                     {
                         C = new NpgsqlCommand(SQL, con);
-                        Result = C.ExecuteScalar().ToString();
+                        Result = C.ExecuteScalar()?.ToString();
                     }
                 }
             }

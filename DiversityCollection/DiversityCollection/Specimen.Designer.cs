@@ -465,6 +465,10 @@
             imageList.Images.SetKeyName(412, "OrganismGrey.ico");
             imageList.Images.SetKeyName(413, "Bohrkern.ico");
             imageList.Images.SetKeyName(414, "BohrkernGrey.ico");
+            imageList.Images.SetKeyName(415, "Synthetic.ico");
+            imageList.Images.SetKeyName(416, "SyntheticGrey.ico");
+            imageList.Images.SetKeyName(417, "3Ddata.ico");
+            imageList.Images.SetKeyName(418, "3DdataGrey.ico");
             // 
             // imageListPart
             // 

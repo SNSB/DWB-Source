@@ -23126,7 +23126,7 @@ namespace DiversityCollection.Forms
                             {
                                 foreach (System.Data.DataRow row in RStart)
                                 {
-                                    DiversityCollection.HierarchyNode Nct = new HierarchyNode(false, row);
+                                    DiversityCollection.HierarchyNode Nct = new HierarchyNode(true, row);
                                     Nct.Tag = row;
                                     N.Nodes.Add(Nct);
                                     this.addOverviewHierarchyCollectionTask(Nct, this.DataSetCollectionTask().Tables["CollectionTask"]);

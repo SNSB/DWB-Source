@@ -37,10 +37,8 @@ ALTER TABLE "TaxonAnalysisCategory" ADD "ReferenceURI" character varying(255) NU
 --#####################################################################################################################
 
 ALTER TABLE "Gazetteer" ADD "ExternalNameID" character varying(50) NULL;
-GO
 
 ALTER TABLE "Gazetteer" ADD "ExternalDatabaseID" integer NULL;
-GO
 
 --#####################################################################################################################
 --######   GazetteerExternalDatabase    ###############################################################################

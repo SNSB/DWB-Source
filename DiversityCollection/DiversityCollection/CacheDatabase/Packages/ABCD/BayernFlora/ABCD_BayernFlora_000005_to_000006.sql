@@ -12,7 +12,8 @@
 --######   Provide empty string in "DateTime_ISODateTimeBegin" if year is missing
 --#####################################################################################################################
 
-
+-- in Package übertragen
+/*
 CREATE OR REPLACE FUNCTION "#project#".abcd__unit_gathering(
 	)
 RETURNS void
@@ -268,6 +269,82 @@ GRANT EXECUTE ON FUNCTION "#project#".abcd__unit_gathering() TO PUBLIC;
 
 COMMENT ON FUNCTION "#project#".abcd__unit_gathering()
     IS 'Filling ABCD_Unit_Gathering via a temp table for inclusion of coutry code ISO3166';
+*/
+
+--#####################################################################################################################
+--######   view public."ABCD_MeasurementOrFact": 
+--######   Exclusion of stati listed in ABCD__BayernFlora_WrongStatusUnitID
+--#####################################################################################################################
+
+CREATE OR REPLACE VIEW public."ABCD_MeasurementOrFact"
+ AS
+ SELECT "ID",
+    "Parameter",
+    "UnitOfMeasurement",
+    "LowerValue",
+    "MeasurementDateTime",
+    "MeasuredBy",
+    "IdentificationUnitID",
+    "SpecimenPartID",
+    "CollectionSpecimenID",
+    "AnalysisID",
+    "AnalysisNumber",
+    "MeasurementOrFactReference"
+   FROM "#project#"."ABCD_MeasurementOrFact" M
+   WHERE NOT EXISTS
+   (SELECT * FROM "#project#"."ABCD__BayernFlora_WrongStatusUnitID" W 
+   WHERE M."IdentificationUnitID" = W."IdentificationUnitID" AND M."AnalysisID" = 2);
+
+ALTER TABLE public."ABCD_MeasurementOrFact"
+    OWNER TO "CacheAdmin";
+COMMENT ON VIEW public."ABCD_MeasurementOrFact"
+    IS 'ABCD entity /DataSets/DataSet/Units/Unit/MultiMediaObjects/MultiMediaObject/';
+
+GRANT ALL ON TABLE public."ABCD_MeasurementOrFact" TO "CacheAdmin";
+GRANT SELECT ON TABLE public."ABCD_MeasurementOrFact" TO "CacheUser";
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."ID"
+    IS 'Unique ID for the Unit, combined from IdentificationUnitID and SpecimenPartID';
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."Parameter"
+    IS 'ABCD: Unit/MeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/Parameter. Retrieved from table Analysis - DisplayText';
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."UnitOfMeasurement"
+    IS 'ABCD: Unit/MeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/UnitOfMeasurement. Retrieved from table Analysis - MeasurementUnit';
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."LowerValue"
+    IS 'ABCD: Unit/MeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/LowerValue. Retrieved from table IdentificationUnitAnalysis - AnalysisResult';
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."MeasurementDateTime"
+    IS 'ABCD: Unit/MeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/MeasurementDateTime. Retrieved from table IdentificationUnitAnalysis - AnalysisDate.
+Formatting rules:
+-- Format: YYYY/MM/DD -> Convert to YYYY-MM-DDTHH:MM:SS (add T and 00:00:00)
+-- Format: YYYY-MM-DD -> Convert to YYYY-MM-DDTHH:MM:SS (add T and 00:00:00)
+-- Format: DD.MM.YYYY -> Convert to YYYY-MM-DDTHH:MM:SS (add T and 00:00:00)
+-- Format: YYYY-MM-DD hh:mm:ss -> Convert to ISO 8601 with T separator
+-- Format: YYYY-MM-DD hh:mm:ss.ttt -> Convert to ISO 8601 with T separator
+-- Format: YYYY/MM/DD-YYYY/MM/DD -> Convert to YYYY-MM-DDTHH:MM:SS
+-- Format: YYYY-MM-DD/YYYY-MM-DD -> Convert to YYYY-MM-DDTHH:MM:SS
+-- Default: Returns the content of AnalysisDate without formatting.';
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."MeasuredBy"
+    IS 'ABCD: Unit/MeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/MeasuredBy. Retrieved from table IdentificationUnitAnalysis - ResponsibleName';
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."IdentificationUnitID"
+    IS 'PK of table IdentificationUnitID';
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."SpecimenPartID"
+    IS 'PK of table CollectionSpecimenPart';
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."AnalysisID"
+    IS 'PK of table Analysis';
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."AnalysisNumber"
+    IS 'Retrieved from table IdentificationUnitAnalysis - AnalysisNumber';
+
+COMMENT ON COLUMN public."ABCD_MeasurementOrFact"."MeasurementOrFactReference"
+    IS 'ABCD entity to provide information about the analysis';
+
 
 
 --#####################################################################################################################

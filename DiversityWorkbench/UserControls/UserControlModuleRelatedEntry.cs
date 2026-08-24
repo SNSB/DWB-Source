@@ -3733,7 +3733,7 @@ namespace DiversityWorkbench.UserControls
                                 "WHERE(P.ProjectID = " + this.SourceServerConnection().ProjectID.ToString() + ")";
                             break;
                         case "DiversityScientificTerms":
-                            SQL = "SELECT U.BaseURL + CAST(T.TermRepresentationID AS varchar) AS URI, T.DisplayText " +
+                            SQL = "SELECT U.BaseURL + CAST(T.RepresentationID AS varchar) AS URI, T.DisplayText " +
                                 "FROM " + Prefix + "TermRepresentation AS T INNER JOIN " +
                                 Prefix + "Terminology AS P ON T.TerminologyID = P.TerminologyID CROSS JOIN " +
                                 Prefix + "ViewBaseURL AS U " +

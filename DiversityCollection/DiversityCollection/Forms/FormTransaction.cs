@@ -744,6 +744,8 @@ namespace DiversityCollection.Forms
         {
             try
             {
+                this._Transaction.saveDependentTables();
+
                 DiversityCollection.LookupTable.ResetTransaction();
                 this._Transaction.setLookUpTableHierarchy(DiversityCollection.LookupTable.DtTransactionHierarchy);
                 if (this._Transaction.ID != null)
@@ -4266,9 +4268,16 @@ namespace DiversityCollection.Forms
 
         private void textBoxTransactionDocumentInternalNotes_Leave(object sender, EventArgs e)
         {
+            if (this.transactionDocumentBindingSource.Current == null)
+            {
+                return;
+            }
             System.Data.DataRowView R = (System.Data.DataRowView)this.transactionDocumentBindingSource.Current;
-            R.BeginEdit();
-            R.EndEdit();
+            if (R != null)
+            {
+                R.BeginEdit();
+                R.EndEdit();
+            }
         }
 
         private void comboBoxDocumentType_DropDown(object sender, EventArgs e)

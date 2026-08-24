@@ -71,11 +71,11 @@ namespace DiversityCollection.CacheDatabase
             {
                 PackageAddOn._PackageAddOns = new Dictionary<Package.Pack, Dictionary<AddOn, string>>();
                 Dictionary<AddOn, string> BFL = new Dictionary<AddOn, string>();
-                string ABCD_BayernFloraDescription = "Add on for ABCD for project BayernFlora (http://daten.bayernflora.de/de/index.php): " +
-                    "(1) For endangered species (on the basis of a list of TaxonIDs including their synonyms) the locality is set to ''. " +
-                    "(2) Providing additional information concerning the source of the taxonomic names. " +
-                    "(3) Observations with an identifications qualified with cf...  are not published. " +
-                    "(4) Inclusion of a site containing an explanation for the analysis. " +
+                string ABCD_BayernFloraDescription = "Add on for ABCD for project BayernFlora (http://daten.bayernflora.de/de/index.php):\r\n\r\n" +
+                    "(1) For endangered species (on the basis of a list of TaxonIDs including their synonyms) the locality is set to ''. \r\n\r\n" +
+                    "(2) Providing additional information concerning the source of the taxonomic names. \r\n\r\n" +
+                    "(3) Observations with an identification qualified with cf...  are not published. \r\n\r\n" +
+                    "(4) Inclusion of a site containing an explanation for the analysis. \r\n\r\n" +
                     "(5) Observations with a status like X (on the basis of a list of values) and their associations are not published.";
                 BFL.Add(AddOn.ABCD_BayernFlora, ABCD_BayernFloraDescription);
                 PackageAddOn._PackageAddOns.Add(DiversityCollection.CacheDatabase.Package.Pack.ABCD, BFL);
@@ -93,7 +93,7 @@ namespace DiversityCollection.CacheDatabase
             if (PackageAddOn._CompatibleVersions == null)
             {
                 PackageAddOn._CompatibleVersions = new Dictionary<AddOn, int>();
-                PackageAddOn._CompatibleVersions.Add(AddOn.ABCD_BayernFlora, 13); // TODO Ariane: can we outsource the version numbers somewhere so that we only have to change it at one place?
+                PackageAddOn._CompatibleVersions.Add(AddOn.ABCD_BayernFlora, 14); // TODO Ariane: can we outsource the version numbers somewhere so that we only have to change it at one place?
             }
             return PackageAddOn._CompatibleVersions;
         }
@@ -118,7 +118,7 @@ namespace DiversityCollection.CacheDatabase
             switch (AddOn)
             {
                 case PackageAddOn.AddOn.ABCD_BayernFlora:
-                    return 6;
+                    return 7;
                 default:
                     return 1;
             }

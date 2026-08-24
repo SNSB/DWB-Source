@@ -1623,10 +1623,10 @@ namespace DiversityWorkbench.UserControls
                 string SQL = "";
                 if (this._SqlRestriction.Length > 0)
                 {
-                    string Prefix = "";
-                    if (this.LinkedServer.Length > 0)
-                        Prefix = "[" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".dbo.";
-                    else Prefix = "dbo.";
+                    //string Prefix = "";
+                    //if (this.LinkedServer.Length > 0)
+                    //    Prefix = "[" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".dbo.";
+                    //else Prefix = "dbo.";
                     SQL = " AND ";
                     // Markus 15.3.2023: Bugfix ManyOrderByColumns using deviating table alias
                     // Markus 30.5.23: nur wenn Optimizing
@@ -1642,19 +1642,19 @@ namespace DiversityWorkbench.UserControls
                             {
                                 if (!SQL.EndsWith(" AND "))
                                     SQL += " AND ";
-                                SQL += KV.Value + "." + this._SqlRestriction.Replace(this._PrefixReplacement, Prefix);
+                                SQL += KV.Value + "." + this._SqlRestriction.Replace(this._PrefixReplacement, Prefix());
                                 OK = true;
                                 //break;
                             }
                         }
                         if (!OK)
                         {
-                            SQL += "T." + this._SqlRestriction.Replace(this._PrefixReplacement, Prefix);
+                            SQL += "T." + this._SqlRestriction.Replace(this._PrefixReplacement, Prefix());
                             //SQL += "T";
                         }
                     }
                     else
-                        SQL += "T." + this._SqlRestriction.Replace(this._PrefixReplacement, Prefix);
+                        SQL += "T." + this._SqlRestriction.Replace(this._PrefixReplacement, Prefix());
                     //SQL += "." + this._SqlRestriction.Replace(this._PrefixReplacement, Prefix);
                 }
                 return SQL;
@@ -3281,10 +3281,10 @@ namespace DiversityWorkbench.UserControls
                     }
                     else
                     {
-                        string Prefix = "";
-                        if (this.LinkedServer.Length > 0)
-                            Prefix = "[" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".dbo.";
-                        else Prefix = "dbo.";
+                        //string Prefix = "";
+                        //if (this.LinkedServer.Length > 0)
+                        //    Prefix = "[" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".dbo.";
+                        //else Prefix = "dbo.";
 
                         string QueryTable = "";
                         string IdentityColumn = "";
@@ -3311,11 +3311,11 @@ namespace DiversityWorkbench.UserControls
                                     SQL += " FROM [" + QueryTable + "] AS T ";
                                 else if (QueryTable.EndsWith("()"))
                                 {
-                                    SQL += " FROM " + Prefix + QueryTable + " AS T WHERE 1 = 1";
+                                    SQL += " FROM " + Prefix() + QueryTable + " AS T WHERE 1 = 1";
                                 }
                                 else
                                 {
-                                    SQL += " FROM " + Prefix;
+                                    SQL += " FROM " + Prefix();
                                     SQL += "[" + QueryTable + "] AS T WHERE 1 = 1";
                                 }
                             }
@@ -4778,6 +4778,21 @@ namespace DiversityWorkbench.UserControls
 
         public string OptimizedWhereClause() { return this.OptimizedQueryStringWhereClause(); }
 
+
+        private string Prefix(bool IncludeDBO = true)
+        {
+            string Prefix = "";
+            if (this.LinkedServer != null && this.LinkedServer.Length > 0 && this.LinkedServerDatabase != null && this.LinkedServerDatabase.Length > 0)
+            {
+                if (this.LinkedServerDatabase.StartsWith("[" + this.LinkedServer + "]."))
+                    Prefix = this.LinkedServerDatabase.Substring(this.LinkedServerDatabase.IndexOf("].") + 2);
+                Prefix = "[" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".";
+            }
+            if (IncludeDBO && Prefix.Length > 0)
+                Prefix += "dbo.";
+            return Prefix;
+        }
+
         /// <summary>
         /// Getting the where clause based on the interface IUserControlQueryCondition for optimized queries
         /// </summary>
@@ -5170,7 +5185,7 @@ namespace DiversityWorkbench.UserControls
                                                                 {
                                                                     // #392 - check if column does exist in table with alias T, otherwise find table containing this column
                                                                     // Check for Column
-                                                                    string SqlCheckColumn = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS C WHERE C.TABLE_NAME = '" + UserControlQueryList.QueryMainTable + "' AND C.COLUMN_NAME = '" + QC.Condition().ForeignKey + "';";
+                                                                    string SqlCheckColumn = "SELECT COUNT(*) FROM " + this.Prefix(false) + "INFORMATION_SCHEMA.COLUMNS C WHERE C.TABLE_NAME = '" + UserControlQueryList.QueryMainTable + "' AND C.COLUMN_NAME = '" + QC.Condition().ForeignKey + "';";
                                                                     bool TableTdoesContainColumn = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlCheckColumn) == "1";
                                                                     if (!TableTdoesContainColumn)
                                                                     {
@@ -5178,7 +5193,7 @@ namespace DiversityWorkbench.UserControls
                                                                         string LinkColumn = QC.Condition().ForeignKey;
                                                                         foreach(var t in CurrentTables)
                                                                         {
-                                                                            SqlCheckColumn = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS C WHERE C.TABLE_NAME = '" + t.Key + "' AND C.COLUMN_NAME = '" + LinkColumn + "';";
+                                                                            SqlCheckColumn = "SELECT COUNT(*) FROM " + this.Prefix(false) + "INFORMATION_SCHEMA.COLUMNS C WHERE C.TABLE_NAME = '" + t.Key + "' AND C.COLUMN_NAME = '" + LinkColumn + "';";
                                                                             TableTdoesContainColumn = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlCheckColumn) == "1";
                                                                             if (TableTdoesContainColumn && t.Value != UserControlQueryList.TableAliases[QC.Condition().Table])
                                                                             {
@@ -5960,7 +5975,7 @@ namespace DiversityWorkbench.UserControls
 
         private string OptimizedQueryFromClause()
         {
-            string SQL = " FROM " + UserControlQueryList.QueryMainTable + " AS T ";
+            string SQL = " FROM " + this.Prefix() + UserControlQueryList.QueryMainTable + " AS T ";
             try
             {
                 if (ManyOrderByColumns())
@@ -5998,28 +6013,28 @@ namespace DiversityWorkbench.UserControls
                         + " ON T." + UserControlQueryList.IdentityColumnOptimizing + " = " + ManyOrderByColumns_TableAliases()[this._QueryMainTableLocal] + "." + UserControlQueryList.IdentityColumnOptimizing;
                 }
 
-                if (this.LinkedServer.Length > 0)
-                {
-                    if (this.LinkedServerDatabase.StartsWith("[" + this.LinkedServer + "]."))
-                        SQL = " FROM " + this.LinkedServerDatabase + ".dbo." + UserControlQueryList.QueryMainTable + " AS T ";
-                    else
-                        SQL = " FROM [" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".dbo." + UserControlQueryList.QueryMainTable + " AS T ";
-                }
+                //if (this.LinkedServer.Length > 0)
+                //{
+                //    if (this.LinkedServerDatabase.StartsWith("[" + this.LinkedServer + "]."))
+                //        SQL = " FROM " + this.LinkedServerDatabase + ".dbo." + UserControlQueryList.QueryMainTable + " AS T ";
+                //    else
+                //        SQL = " FROM [" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".dbo." + UserControlQueryList.QueryMainTable + " AS T ";
+                //}
                 foreach (System.Collections.Generic.KeyValuePair<string, string> KV in UserControlQueryList.TableAliases)
                 {
                     if (KV.Key != UserControlQueryList.QueryMainTable)// && !NotExistsTableAliases.Contains(KV.Value))
                     {
-                        if (this.LinkedServer.Length > 0)
-                        {
-                            if (this.LinkedServerDatabase.StartsWith("[" + this.LinkedServer + "]."))
-                                SQL += ", " + this.LinkedServerDatabase + ".dbo." + KV.Key + " AS " + KV.Value;
-                            else
-                                SQL += ", [" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".dbo." + KV.Key + " AS " + KV.Value;
-                        }
-                        else
+                        //if (this.LinkedServer.Length > 0)
+                        //{
+                        //    if (this.LinkedServerDatabase.StartsWith("[" + this.LinkedServer + "]."))
+                        //        SQL += ", " + this.LinkedServerDatabase + ".dbo." + KV.Key + " AS " + KV.Value;
+                        //    else
+                        //        SQL += ", [" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".dbo." + KV.Key + " AS " + KV.Value;
+                        //}
+                        //else
                         {
                             if (!UserControlQueryList.TableAliasesNotExists.ContainsKey(KV.Key))
-                                SQL += ", " + KV.Key + " AS " + KV.Value;
+                                SQL += ", " + this.Prefix() + KV.Key + " AS " + KV.Value;
                             else
                             {
                                 bool IsOnlyNonExists = true;
@@ -6036,7 +6051,7 @@ namespace DiversityWorkbench.UserControls
                                     }
                                 }
                                 if (!IsOnlyNonExists)
-                                    SQL += ", " + KV.Key + " AS " + KV.Value;
+                                    SQL += ", " + this.Prefix() + KV.Key + " AS " + KV.Value;
                             }
                         }
                     }
@@ -6050,12 +6065,12 @@ namespace DiversityWorkbench.UserControls
                         continue;
                     if (!UserControlQueryList.TableAliases.ContainsValue(KV.Value))
                     {
-                        if (this.LinkedServer.Length > 0)
-                        {
-                            SQL += ", [" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".dbo." + KV.Key.getCondition().Table + " AS " + KV.Value;
-                        }
-                        else
-                            SQL += ", " + KV.Key.getCondition().Table + " AS " + KV.Value;
+                        //if (this.LinkedServer.Length > 0)
+                        //{
+                        //    SQL += ", [" + this.LinkedServer + "]." + this.LinkedServerDatabase + ".dbo." + KV.Key.getCondition().Table + " AS " + KV.Value;
+                        //}
+                        //else
+                            SQL += ", " + Prefix() + KV.Key.getCondition().Table + " AS " + KV.Value;
                         AliasCheckAdd(KV.Key.getCondition().Table + " AS T" + UserControlQueryList.TableAliases.Count.ToString());
                     }
                 }

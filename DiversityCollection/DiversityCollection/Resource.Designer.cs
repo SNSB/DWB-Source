@@ -323,6 +323,16 @@ namespace DiversityCollection {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ArrowLeftLeftBlack {
+            get {
+                object obj = ResourceManager.GetObject("ArrowLeftLeftBlack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ArrowNext {
             get {
                 object obj = ResourceManager.GetObject("ArrowNext", resourceCulture);

@@ -20,5 +20,11 @@
     <Setting Name="IsTrusted" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="MaintenanceDB" Type="System.String" Scope="User">
+      <Value Profile="(Default)">dwb_maintenance_db</Value>
+    </Setting>
+    <Setting Name="TemplateDB" Type="System.String" Scope="User">
+      <Value Profile="(Default)">dwb_template_cache_initialized</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

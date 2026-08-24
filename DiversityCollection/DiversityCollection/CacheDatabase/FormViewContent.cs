@@ -239,7 +239,7 @@ namespace DiversityCollection.CacheDatabase
                         }
                     }
                     catch (System.Exception ex)
-                    { }
+                    { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
                 }
                 else
                 {

@@ -2403,7 +2403,6 @@ namespace DiversityCollection
                         break;
                     case QRcodeSource.PartAccessionNumber:
                         System.Data.DataRow[] rrSP = this.dataSetCollectionSpecimen.CollectionSpecimenPart.Select("CollectionSpecimenID = " + SpecimenID.ToString() + " AND SpecimenPartID = " + PartID.ToString());
-                        //System.Data.DataRow[] rrSP = this.dataSetCollectionSpecimen.CollectionSpecimenPart.Select("CollectionSpecimenID = " + SpecimenID.ToString());
                         if (rrSP.Length > 0)
                         {
                             if (!rrSP[0]["AccessionNumber"].Equals(System.DBNull.Value))

@@ -73,6 +73,8 @@
             pictureBoxMembership = new System.Windows.Forms.PictureBox();
             checkBoxAdminOption = new System.Windows.Forms.CheckBox();
             checkBoxGrantWithAdminOption = new System.Windows.Forms.CheckBox();
+            labelAllRoles = new System.Windows.Forms.Label();
+            listBoxAllRoles = new System.Windows.Forms.ListBox();
             imageListTab = new System.Windows.Forms.ImageList(components);
             tableLayoutPanelRole = new System.Windows.Forms.TableLayoutPanel();
             labelRoleProperties = new System.Windows.Forms.Label();
@@ -103,6 +105,7 @@
             pictureBoxDetailsHeader = new System.Windows.Forms.PictureBox();
             labelDetailsHeader = new System.Windows.Forms.Label();
             helpProvider = new System.Windows.Forms.HelpProvider();
+            labelHelp = new System.Windows.Forms.Label();
             tableLayoutPanelGrants.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxGrants).BeginInit();
             tabPagePermissions.SuspendLayout();
@@ -213,11 +216,11 @@
             treeViewPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
             treeViewPermissions.ImageIndex = 0;
             treeViewPermissions.ImageList = imageListDatabaseObjects;
-            treeViewPermissions.Location = new System.Drawing.Point(4, 26);
+            treeViewPermissions.Location = new System.Drawing.Point(4, 41);
             treeViewPermissions.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             treeViewPermissions.Name = "treeViewPermissions";
             treeViewPermissions.SelectedImageIndex = 0;
-            treeViewPermissions.Size = new System.Drawing.Size(764, 444);
+            treeViewPermissions.Size = new System.Drawing.Size(764, 429);
             treeViewPermissions.TabIndex = 0;
             treeViewPermissions.AfterSelect += treeViewPermissions_AfterSelect;
             // 
@@ -446,15 +449,17 @@
             tableLayoutPanelPermissions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelPermissions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             tableLayoutPanelPermissions.Controls.Add(labelPermissions, 1, 0);
-            tableLayoutPanelPermissions.Controls.Add(tableLayoutPanelGrants, 0, 2);
-            tableLayoutPanelPermissions.Controls.Add(treeViewPermissions, 0, 1);
+            tableLayoutPanelPermissions.Controls.Add(tableLayoutPanelGrants, 0, 3);
+            tableLayoutPanelPermissions.Controls.Add(treeViewPermissions, 0, 2);
             tableLayoutPanelPermissions.Controls.Add(pictureBoxPermissions, 0, 0);
             tableLayoutPanelPermissions.Controls.Add(labelEffectivePermissions, 2, 0);
+            tableLayoutPanelPermissions.Controls.Add(labelHelp, 0, 1);
             tableLayoutPanelPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanelPermissions.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanelPermissions.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanelPermissions.Name = "tableLayoutPanelPermissions";
-            tableLayoutPanelPermissions.RowCount = 3;
+            tableLayoutPanelPermissions.RowCount = 4;
+            tableLayoutPanelPermissions.RowStyles.Add(new System.Windows.Forms.RowStyle());
             tableLayoutPanelPermissions.RowStyles.Add(new System.Windows.Forms.RowStyle());
             tableLayoutPanelPermissions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelPermissions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
@@ -489,7 +494,7 @@
             buttonRemoveFromRole.Dock = System.Windows.Forms.DockStyle.Top;
             buttonRemoveFromRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             buttonRemoveFromRole.ForeColor = System.Drawing.Color.Red;
-            buttonRemoveFromRole.Location = new System.Drawing.Point(381, 279);
+            buttonRemoveFromRole.Location = new System.Drawing.Point(273, 279);
             buttonRemoveFromRole.Margin = new System.Windows.Forms.Padding(0);
             buttonRemoveFromRole.Name = "buttonRemoveFromRole";
             buttonRemoveFromRole.Size = new System.Drawing.Size(23, 27);
@@ -506,7 +511,7 @@
             labelRolesAvailable.Location = new System.Drawing.Point(4, 23);
             labelRolesAvailable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelRolesAvailable.Name = "labelRolesAvailable";
-            labelRolesAvailable.Size = new System.Drawing.Size(194, 23);
+            labelRolesAvailable.Size = new System.Drawing.Size(158, 23);
             labelRolesAvailable.TabIndex = 4;
             labelRolesAvailable.Text = "Available groups";
             labelRolesAvailable.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -515,10 +520,10 @@
             // 
             labelRolesMemberOf.AutoSize = true;
             labelRolesMemberOf.Dock = System.Windows.Forms.DockStyle.Fill;
-            labelRolesMemberOf.Location = new System.Drawing.Point(408, 23);
+            labelRolesMemberOf.Location = new System.Drawing.Point(300, 23);
             labelRolesMemberOf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelRolesMemberOf.Name = "labelRolesMemberOf";
-            labelRolesMemberOf.Size = new System.Drawing.Size(171, 23);
+            labelRolesMemberOf.Size = new System.Drawing.Size(135, 23);
             labelRolesMemberOf.TabIndex = 5;
             labelRolesMemberOf.Text = "Member in groups";
             labelRolesMemberOf.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -604,7 +609,7 @@
             listBoxAvailableRoles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             listBoxAvailableRoles.Name = "listBoxAvailableRoles";
             tableLayoutPanelMembership.SetRowSpan(listBoxAvailableRoles, 2);
-            listBoxAvailableRoles.Size = new System.Drawing.Size(373, 460);
+            listBoxAvailableRoles.Size = new System.Drawing.Size(265, 460);
             listBoxAvailableRoles.TabIndex = 0;
             // 
             // listBoxMemberInRoles
@@ -616,11 +621,11 @@
             listBoxMemberInRoles.FormattingEnabled = true;
             listBoxMemberInRoles.IntegralHeight = false;
             listBoxMemberInRoles.ItemHeight = 15;
-            listBoxMemberInRoles.Location = new System.Drawing.Point(408, 49);
+            listBoxMemberInRoles.Location = new System.Drawing.Point(300, 49);
             listBoxMemberInRoles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             listBoxMemberInRoles.Name = "listBoxMemberInRoles";
             tableLayoutPanelMembership.SetRowSpan(listBoxMemberInRoles, 3);
-            listBoxMemberInRoles.Size = new System.Drawing.Size(352, 463);
+            listBoxMemberInRoles.Size = new System.Drawing.Size(242, 463);
             listBoxMemberInRoles.TabIndex = 1;
             listBoxMemberInRoles.SelectedIndexChanged += listBoxMemberInRoles_SelectedIndexChanged;
             // 
@@ -629,7 +634,7 @@
             buttonAddToRole.Dock = System.Windows.Forms.DockStyle.Bottom;
             buttonAddToRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             buttonAddToRole.ForeColor = System.Drawing.Color.Green;
-            buttonAddToRole.Location = new System.Drawing.Point(381, 252);
+            buttonAddToRole.Location = new System.Drawing.Point(273, 252);
             buttonAddToRole.Margin = new System.Windows.Forms.Padding(0);
             buttonAddToRole.Name = "buttonAddToRole";
             buttonAddToRole.Size = new System.Drawing.Size(23, 27);
@@ -666,13 +671,14 @@
             // 
             // tableLayoutPanelMembership
             // 
-            tableLayoutPanelMembership.ColumnCount = 6;
+            tableLayoutPanelMembership.ColumnCount = 7;
             tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanelMembership.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             tableLayoutPanelMembership.Controls.Add(listBoxAvailableRoles, 0, 2);
             tableLayoutPanelMembership.Controls.Add(listBoxMemberInRoles, 4, 2);
             tableLayoutPanelMembership.Controls.Add(buttonAddToRole, 3, 2);
@@ -681,8 +687,10 @@
             tableLayoutPanelMembership.Controls.Add(labelRolesMemberOf, 4, 1);
             tableLayoutPanelMembership.Controls.Add(labelMembership, 1, 0);
             tableLayoutPanelMembership.Controls.Add(pictureBoxMembership, 0, 0);
-            tableLayoutPanelMembership.Controls.Add(checkBoxAdminOption, 5, 1);
-            tableLayoutPanelMembership.Controls.Add(checkBoxGrantWithAdminOption, 2, 1);
+            tableLayoutPanelMembership.Controls.Add(checkBoxAdminOption, 5, 0);
+            tableLayoutPanelMembership.Controls.Add(checkBoxGrantWithAdminOption, 2, 0);
+            tableLayoutPanelMembership.Controls.Add(labelAllRoles, 6, 0);
+            tableLayoutPanelMembership.Controls.Add(listBoxAllRoles, 6, 1);
             tableLayoutPanelMembership.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanelMembership.Location = new System.Drawing.Point(4, 3);
             tableLayoutPanelMembership.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -703,7 +711,7 @@
             labelMembership.Location = new System.Drawing.Point(27, 0);
             labelMembership.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelMembership.Name = "labelMembership";
-            labelMembership.Size = new System.Drawing.Size(171, 23);
+            labelMembership.Size = new System.Drawing.Size(135, 23);
             labelMembership.TabIndex = 6;
             labelMembership.Text = "Membership";
             labelMembership.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -722,10 +730,11 @@
             // 
             checkBoxAdminOption.AutoSize = true;
             checkBoxAdminOption.Dock = System.Windows.Forms.DockStyle.Right;
-            checkBoxAdminOption.Location = new System.Drawing.Point(638, 23);
+            checkBoxAdminOption.Location = new System.Drawing.Point(439, 0);
             checkBoxAdminOption.Margin = new System.Windows.Forms.Padding(0);
             checkBoxAdminOption.Name = "checkBoxAdminOption";
-            checkBoxAdminOption.Size = new System.Drawing.Size(126, 23);
+            tableLayoutPanelMembership.SetRowSpan(checkBoxAdminOption, 2);
+            checkBoxAdminOption.Size = new System.Drawing.Size(107, 46);
             checkBoxAdminOption.TabIndex = 8;
             checkBoxAdminOption.Text = "With admin option";
             checkBoxAdminOption.UseVisualStyleBackColor = true;
@@ -735,13 +744,37 @@
             // 
             checkBoxGrantWithAdminOption.AutoSize = true;
             checkBoxGrantWithAdminOption.Dock = System.Windows.Forms.DockStyle.Right;
-            checkBoxGrantWithAdminOption.Location = new System.Drawing.Point(255, 23);
+            checkBoxGrantWithAdminOption.Location = new System.Drawing.Point(166, 0);
             checkBoxGrantWithAdminOption.Margin = new System.Windows.Forms.Padding(0);
             checkBoxGrantWithAdminOption.Name = "checkBoxGrantWithAdminOption";
-            checkBoxGrantWithAdminOption.Size = new System.Drawing.Size(126, 23);
+            tableLayoutPanelMembership.SetRowSpan(checkBoxGrantWithAdminOption, 2);
+            checkBoxGrantWithAdminOption.Size = new System.Drawing.Size(107, 46);
             checkBoxGrantWithAdminOption.TabIndex = 9;
             checkBoxGrantWithAdminOption.Text = "With admin option";
             checkBoxGrantWithAdminOption.UseVisualStyleBackColor = true;
+            // 
+            // labelAllRoles
+            // 
+            labelAllRoles.AutoSize = true;
+            labelAllRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelAllRoles.Location = new System.Drawing.Point(549, 0);
+            labelAllRoles.Name = "labelAllRoles";
+            labelAllRoles.Size = new System.Drawing.Size(212, 23);
+            labelAllRoles.TabIndex = 10;
+            labelAllRoles.Text = "Roles summarized";
+            labelAllRoles.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // listBoxAllRoles
+            // 
+            listBoxAllRoles.BackColor = System.Drawing.Color.LightGreen;
+            listBoxAllRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxAllRoles.FormattingEnabled = true;
+            listBoxAllRoles.ItemHeight = 15;
+            listBoxAllRoles.Location = new System.Drawing.Point(549, 26);
+            listBoxAllRoles.Name = "listBoxAllRoles";
+            tableLayoutPanelMembership.SetRowSpan(listBoxAllRoles, 3);
+            listBoxAllRoles.Size = new System.Drawing.Size(212, 483);
+            listBoxAllRoles.TabIndex = 11;
             // 
             // imageListTab
             // 
@@ -1148,6 +1181,18 @@
             labelDetailsHeader.TabIndex = 4;
             labelDetailsHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // labelHelp
+            // 
+            labelHelp.AutoSize = true;
+            tableLayoutPanelPermissions.SetColumnSpan(labelHelp, 3);
+            labelHelp.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelHelp.Location = new System.Drawing.Point(3, 23);
+            labelHelp.Name = "labelHelp";
+            labelHelp.Size = new System.Drawing.Size(766, 15);
+            labelHelp.TabIndex = 4;
+            labelHelp.Text = "Select an item in the tree to show/edit the respective permissions (shown at the base of the window)";
+            labelHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FormRoleAdministration
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1282,5 +1327,8 @@
         private System.Windows.Forms.CheckBox checkBoxAdminOption;
         private System.Windows.Forms.CheckBox checkBoxGrantWithAdminOption;
         private System.Windows.Forms.CheckBox checkBoxGrantCreate;
+        private System.Windows.Forms.Label labelAllRoles;
+        private System.Windows.Forms.ListBox listBoxAllRoles;
+        private System.Windows.Forms.Label labelHelp;
     }
 }

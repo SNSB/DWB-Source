@@ -2524,15 +2524,21 @@ namespace DiversityCollection.CacheDatabase
                     string Result = DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlSkalarInCacheDB(SQL);
                     if (Result != "1")
                     {
-                        SQL = "SELECT [Project_" + this._Project + "].[ProjectID] ()";
-                        string ProjectID = DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlSkalarInCacheDB(SQL);
-                        int ID;
-                        if (int.TryParse(ProjectID, out ID))
+                        //#407 - Testing schema
+                        SQL = "select count(*) from INFORMATION_SCHEMA.SCHEMATA s where s.SCHEMA_NAME = 'Project_" + this._Project + "'";
+                        int i = 0;
+                        if (int.TryParse(DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL), out i) && i > 0)
                         {
-                            if (ID == this._ProjectID)
+                            SQL = "SELECT [Project_" + this._Project + "].[ProjectID] ()";
+                            string ProjectID = DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlSkalarInCacheDB(SQL);
+                            int ID;
+                            if (int.TryParse(ProjectID, out ID))
                             {
-                                SQL = "INSERT INTO ProjectTarget (ProjectID, TargetID, LastUpdatedWhen, IncludeInTransfer) VALUES (" + this._ProjectID.ToString() + ", " + _TargetID.ToString() + ", NULL, 0)";
-                                DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlNonQueryInCacheDB(SQL);
+                                if (ID == this._ProjectID)
+                                {
+                                    SQL = "INSERT INTO ProjectTarget (ProjectID, TargetID, LastUpdatedWhen, IncludeInTransfer) VALUES (" + this._ProjectID.ToString() + ", " + _TargetID.ToString() + ", NULL, 0)";
+                                    DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlNonQueryInCacheDB(SQL);
+                                }
                             }
                         }
                     }

@@ -170,6 +170,12 @@ namespace DiversityCollection.CacheDatabase
                 {
                     foreach (System.Data.DataRow R in dtSchemata.Rows)
                     {
+                        // Test if table exists:
+                        SQL = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.Tables WHERE Table_Name = 'Package' AND TABLE_SCHEMA = '" + R[0].ToString() + "'";
+                        string Count = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL);
+                        if (Count == "0")
+                            return false;
+
                         SQL = "SELECT COUNT(*) FROM \"" + R[0].ToString() + "\".\"Package\" WHERE \"Package\" = '" + Pack.ToString() + "';";
                         string Result = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL);
                         if (Result == "1")

@@ -12,7 +12,7 @@ namespace DiversityWorkbench.PostgreSQL {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.11.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -91,6 +91,30 @@ namespace DiversityWorkbench.PostgreSQL {
             }
             set {
                 this["IsTrusted"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("dwb_maintenance_db")]
+        public string MaintenanceDB {
+            get {
+                return ((string)(this["MaintenanceDB"]));
+            }
+            set {
+                this["MaintenanceDB"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("dwb_template_cache_initialized")]
+        public string TemplateDB {
+            get {
+                return ((string)(this["TemplateDB"]));
+            }
+            set {
+                this["TemplateDB"] = value;
             }
         }
     }

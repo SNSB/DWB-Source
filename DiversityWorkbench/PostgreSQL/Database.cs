@@ -62,72 +62,9 @@ namespace DiversityWorkbench.PostgreSQL
             }
             catch (Exception ex)
             {
-            } 
+            }
             return Version;
         }
-
-        //public DiversityWorkbench.PostgreSQL.Schema GetProject(int ProjectID)
-        //{
-        //    DiversityWorkbench.PostgreSQL.Schema S = new Schema("", DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase());
-        //    foreach(System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.PostgreSQL.Schema> KV in this.Schemas)
-        //    {
-        //        if (KV.Value.ProjectID == ProjectID)
-        //            return KV.Value;
-        //    }
-        //    return S;
-        //}
-
-        //private System.Collections.Generic.Dictionary<string, DiversityWorkbench.PostgreSQL.Project> _Projects;
-
-        //public System.Collections.Generic.Dictionary<string, DiversityWorkbench.PostgreSQL.Project> Projects
-        //{
-        //    get
-        //    {
-        //        if (this._Projects == null)
-        //        {
-        //            this._Projects = new Dictionary<string, Project>();
-        //            foreach (System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.PostgreSQL.Schema> KV in this.Schemas)
-        //            {
-        //                string SQL = "select \"" + KV.Key + "\".ProjectID()";
-        //                int ProjectID;
-        //                if (int.TryParse(DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL), out ProjectID))
-        //                {
-        //                    SQL = "select \"" + KV.Key + "\".version()";
-        //                    string Version = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL);
-        //                    if (Version.Length > 0)
-        //                    {
-        //                        DiversityWorkbench.PostgreSQL.Project P = new Project();
-        //                        _Projects.Add(KV.Key, P);
-        //                    }
-        //                }
-        //            }
-        //        }
-        //        return _Projects;
-        //    }
-        //}
-
-        //public void RestrictSchemataToProjects()
-        //{
-        //    System.Collections.Generic.List<string> NoProjects = new List<string>();
-        //    foreach (System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.PostgreSQL.Schema> KV in this.Schemas)
-        //    {
-        //        NoProjects.Add(KV.Key);
-        //    }
-        //    foreach (System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.PostgreSQL.Schema> KV in this.Schemas)
-        //    {
-        //        string SQL = "select \"" + KV.Key + "\".ProjectID()";
-        //        int ProjectID;
-        //        if (int.TryParse(DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL), out ProjectID))
-        //        {
-        //            SQL = "select \"" + KV.Key + "\".version()";
-        //            string Version = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL);
-        //            if (Version.Length > 0)
-        //                NoProjects.Remove(KV.Key);
-        //        }
-        //    }
-        //    foreach (string S in NoProjects)
-        //        this.Schemas.Remove(S);
-        //}
 
         /// <summary>
         /// Creates a schema used as a project containing a function for the project ID and a function the version
@@ -142,6 +79,16 @@ namespace DiversityWorkbench.PostgreSQL
                 string SQL = "CREATE SCHEMA  \"" + ProjectName + "\"" +
                     "AUTHORIZATION \"CacheAdmin\";";
                 DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL);// .Postgres.PostgresExecuteSqlNonQuery(SQL);
+
+                // Add USAGE grant for CacheUser (required for PostgreSQL 15+)
+                SQL = "GRANT USAGE ON SCHEMA \"" + ProjectName + "\" TO \"CacheUser\";";
+                DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL);
+                // Add USAGE grant for CachePublicUser if it exists
+                SQL = "DO $$ BEGIN " +
+                    "IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'CachePublicUser') THEN " +
+                    "EXECUTE 'GRANT USAGE ON SCHEMA \"" + ProjectName + "\" TO \"CachePublicUser\"'; " +
+                    "END IF; END $$;";
+                DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL);
 
                 SQL = "ALTER DEFAULT PRIVILEGES IN SCHEMA \"" + ProjectName + "\"" +
                     "GRANT EXECUTE ON FUNCTIONS " +
@@ -194,7 +141,7 @@ namespace DiversityWorkbench.PostgreSQL
             { OK = false; }
             return OK;
         }
-        
+
         public bool DeleteSchema(string Name)
         {
             bool OK = true;
@@ -233,181 +180,423 @@ namespace DiversityWorkbench.PostgreSQL
             return OK;
         }
 
-        //private DiversityWorkbench.PostgreSQL.Role _Role;
-
-        //public DiversityWorkbench.PostgreSQL.Role Role
-        //{
-        //    get { return _Role; }
-        //}
 
         public Database(string Name)
         {
             this._Name = Name;
         }
 
-        #region Copy of database
+        #region Create and Copy of database
 
-        public bool CreateCopy(string NameOfCopy, string DatabaseOwner, bool IncludeData, string PostgresApplicationgDirectory, ref string Message)
+        public bool CreateCopy(string NameOfCopy, string DatabaseOwner, bool IncludeData, ref string Message)
         {
             if (IncludeData)
                 return CopyDatabaseIncludingData(NameOfCopy, DatabaseOwner, ref Message);
             else
-                return CopyDatabaseStructure(NameOfCopy, DatabaseOwner, PostgresApplicationgDirectory, ref Message);
+                return CreateDatabaseFromTemplate(NameOfCopy, ref Message);  // Use template for empty copy
         }
 
-        private bool CopyDatabaseStructure(string NameOfCopy, string DatabaseOwner, string PostgresApplicationgDirectory, ref string Message)
+        /// <summary>
+        /// Create database from pre-configured template (replaces all inline role creation by using template in postgres db)
+        /// </summary>
+        public bool CreateDatabaseFromTemplate(string DatabaseName, ref string Message)
         {
-            bool OK = false;
             try
             {
-                // Create the new database
-                string SQL = "CREATE DATABASE \"" + NameOfCopy + "\" " +
-                    "WITH ENCODING='UTF8' TABLESPACE = pg_default CONNECTION LIMIT=-1;";
-                if (PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
+                // Connect to dwb_maintenance_db to execute CREATE DATABASE
+                string maintenanceConnectionString = DiversityWorkbench.PostgreSQL.Connection.GetMaintenanceDbConnectionString();
+                string templateName = DiversityWorkbench.PostgreSQL.Settings.Default.TemplateDB; 
+                using (var con = new NpgsqlConnection(maintenanceConnectionString))
                 {
-                    // Copy the structure into the new database
-                    string DumpFile = DiversityWorkbench.WorkbenchResources.WorkbenchDirectory.Folder(WorkbenchResources.WorkbenchDirectory.FolderType.Backup) + NameOfCopy + ".dmp";
-                    string CommandPgDump = "pg_dump -s" +
-                        " -h " + PostgreSQL.Connection.CurrentServer().Name +
-                        " -p " + PostgreSQL.Connection.CurrentServer().Port.ToString() +
-                        " -U postgres" +
-                        " -d \"" + PostgreSQL.Connection.CurrentDatabase().Name + "\"" +
-                        " -f \"" + DumpFile + "\"";
-                    //string Command2 = "pg_dump -s -v" +
-                    //    " -h " + PostgreSQL.Connection.CurrentServer().Name +
-                    //    " -p " + PostgreSQL.Connection.CurrentServer().Port.ToString() +
-                    //    " -U postgres" +
-                    //    " -d " + PostgreSQL.Connection.CurrentDatabase().Name +
-                    //    " | psql -h " + PostgreSQL.Connection.CurrentServer().Name +
-                    //    " -p " + PostgreSQL.Connection.CurrentServer().Port.ToString() +
-                    //    " -U postgres " + NameOfCopy;
-                    //string Command3 = "pg_dump -s" +
-                    //    " -h " + PostgreSQL.Connection.CurrentServer().Name +
-                    //    " -p " + PostgreSQL.Connection.CurrentServer().Port.ToString() +
-                    //    " -U postgres" +
-                    //    " -d \"" + PostgreSQL.Connection.CurrentDatabase().Name + "\"" +
-                    //    " | psql -h " + PostgreSQL.Connection.CurrentServer().Name +
-                    //    " -p " + PostgreSQL.Connection.CurrentServer().Port.ToString() +
-                    //    " -U postgres \"" + NameOfCopy + "\"";
-                    //string Command4 = "psql -h " + PostgreSQL.Connection.CurrentServer().Name +
-                    //    " -p " + PostgreSQL.Connection.CurrentServer().Port.ToString() +
-                    //    " -U postgres \"" + NameOfCopy + "\"";
-                    string CommandPsql = "psql " +
-                        " -h " + PostgreSQL.Connection.CurrentServer().Name +
-                        " -p " + PostgreSQL.Connection.CurrentServer().Port.ToString() +
-                        " -U postgres" +
-                        " \"" + NameOfCopy + "\" <  \"" + DumpFile + "\"";
-                    try
+                    con.Open();
+
+                    // Step 1: Validate the operation
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT public.validate_database_operation('CREATE', @dbname)", con))
                     {
-                        //System.Diagnostics.Process pg_dump = new System.Diagnostics.Process();
-                        //pg_dump.StartInfo.FileName = "pg_dump.exe";
-                        //pg_dump.StartInfo.WorkingDirectory = @"C:\Program Files\PostgreSQL\9.4\bin";
-                        //pg_dump.StartInfo.Arguments = "pg_dump /c  -s -v" +
-                        //" -h " + PostgreSQL.Connection.CurrentServer().Name +
-                        //" -p " + PostgreSQL.Connection.CurrentServer().Port.ToString() +
-                        //" -U postgres" +
-                        //" -d database \"" + PostgreSQL.Connection.CurrentDatabase().Name + "\"" +
-                        //" -f \"" + ...Windows.Forms.Application.StartupPath + "\\" + NameOfCopy + ".dmp\""; 
-                        //pg_dump.Start();
-
-                        System.Diagnostics.Process pg_dump = new System.Diagnostics.Process();
-                        pg_dump.StartInfo.FileName = "cmd.exe";
-
-                        //cmd.StartInfo.RedirectStandardInput = true;
-                        //cmd.StartInfo.RedirectStandardOutput = true;
-                        //cmd.StartInfo.CreateNoWindow = true;
-                        //cmd.StartInfo.UseShellExecute = false;
-
-                        pg_dump.StartInfo.WorkingDirectory = PostgresApplicationgDirectory;
-                        pg_dump.StartInfo.Arguments = "/c " + CommandPgDump;
-                        pg_dump.Start();
-
-                        //cmd.StandardInput.WriteLine("echo Oscar");
-                        //cmd.StandardInput.Flush();
-                        //cmd.StandardInput.Close();
-
-                        pg_dump.WaitForExit();
-
-                        System.Diagnostics.Process psql = new System.Diagnostics.Process();
-                        psql.StartInfo.FileName = "cmd.exe";
-                        psql.StartInfo.WorkingDirectory = PostgresApplicationgDirectory;
-                        psql.StartInfo.Arguments = "/c " + CommandPsql;
-                        psql.Start();
-
-                        //cmd.StandardInput.WriteLine("echo Oscar");
-                        //cmd.StandardInput.Flush();
-                        //cmd.StandardInput.Close();
-
-                        psql.WaitForExit();
-
-
-                        //Console.WriteLine(cmd.StandardOutput.ReadToEnd());
-                        //System.Diagnostics.Process.Start("cmd.exe", Command);
-                        System.IO.FileInfo DF = new System.IO.FileInfo(DumpFile);
-                        DF.Delete();
-                        return true;
+                        cmd.Parameters.AddWithValue("@dbname", DatabaseName);
+                        cmd.ExecuteScalar();
                     }
-                    catch (System.Exception ex)
+
+                    string SQL = $@"
+                        CREATE DATABASE ""{DatabaseName}"" 
+                        WITH TEMPLATE ""{templateName}"" 
+                        OWNER ""CacheAdmin"" 
+                        ENCODING 'UTF8' 
+                        CONNECTION LIMIT=-1;";
+
+                    using (var cmd = new NpgsqlCommand(SQL, con))
                     {
-                        return false;
+                        cmd.ExecuteNonQuery();
                     }
                 }
-                else
-                    return false;
+
+                return true;
             }
             catch (System.Exception ex)
             {
-                OK = false;
+                Message = "Error creating database: " + ex.Message;
+                return false;
             }
-            return OK;
         }
 
+        /// <summary>
+        /// Copy database with content - terminates sessions via dwb_maintenance_db, then creates copy
+        /// </summary>
         private bool CopyDatabaseIncludingData(string NameOfCopy, string DatabaseOwner, ref string Message)
         {
-            // KILL ALL EXISTING CONNECTIONS
-            string SQL = "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity " +
-                "WHERE pg_stat_activity.datname = '" + this.Name + "' AND pid <> pg_backend_pid(); ";
-            string ConnectionString = DiversityWorkbench.PostgreSQL.Connection.DefaultConnectionString();
-            if (ConnectionString.Length > 0)// .Postgres.PostgresConnection() != null)
+            try
             {
-                try
+                string maintenanceConnectionString = DiversityWorkbench.PostgreSQL.Connection.GetMaintenanceDbConnectionString();
+
+                using (var con = new NpgsqlConnection(maintenanceConnectionString))
                 {
-                    NpgsqlConnection con = new NpgsqlConnection(ConnectionString);
-                    Npgsql.NpgsqlCommand C = new NpgsqlCommand(SQL, con);// .Postgres.PostgresConnection());
-                    C.CommandTimeout = 0;
-                    if (con.State == ConnectionState.Closed)
-                        con.Open();
-                    C.ExecuteNonQuery();
-                    C.CommandText = "CREATE DATABASE \"" + NameOfCopy + "\" WITH TEMPLATE \"" + this.Name + "\" OWNER \"CacheAdmin\"; ";
-                    //if (DatabaseOwner == "postgres")
-                    //    C.CommandText += DatabaseOwner + " ;";
-                    //else
-                    //    C.CommandText += "\"" + DatabaseOwner + "\";";
-                    C.ExecuteNonQuery();
-                    C.Dispose();
-                    con.Close();
-                    con.Dispose();
+                    con.Open();
+
+                    // Step 1: Validate
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT public.validate_database_operation('COPY', @source, @target)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@source", this.Name);
+                        cmd.Parameters.AddWithValue("@target", NameOfCopy);
+                        cmd.ExecuteScalar();
+                    }
+
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT public.terminate_database_sessions(@dbname)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@dbname", this.Name);
+                        cmd.ExecuteScalar();
+                    }
+
+                    // Small delay to allow connections to close
+                    System.Threading.Thread.Sleep(500);
+
+                    // Step 2: Create the copy using source as template
+                    string SQL = $@"
+                        CREATE DATABASE ""{NameOfCopy}"" 
+                        WITH TEMPLATE ""{this.Name}"" 
+                        OWNER ""CacheAdmin"";";
+
+                    using (var cmd = new NpgsqlCommand(SQL, con))
+                    {
+                        cmd.CommandTimeout = 0; // No timeout for large databases
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-                catch (System.Exception ex)
-                {
-                    Message = ex.Message;
-                    return false;
-                }
+
+                return true;
             }
-
-
-            //if (PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
-            //{
-            //    //DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase(DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().Name);
-            //    // Create the copy
-            //    SQL = "CREATE DATABASE \"" + NameOfCopy + "\" WITH TEMPLATE \"" + this.Name + "\" OWNER " + DatabaseOwner + " ;";
-            //    if (PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
-            //        return true;
-            //}
-            return true;
+            catch (Exception ex)
+            {
+                Message = "Error: " + ex.Message;
+                return false;
+            }
         }
-        
-        #endregion
 
+        /// <summary>
+        /// Drop a database
+        /// </summary>
+        public bool DropDatabase(string databaseName, ref string message)
+        {
+            try
+            {
+                string maintenanceConnectionString = DiversityWorkbench.PostgreSQL.Connection.GetMaintenanceDbConnectionString();
+
+                using (var con = new NpgsqlConnection(maintenanceConnectionString))
+                {
+                    con.Open();
+
+                    // Validate
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT public.validate_database_operation('DROP', @dbname)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@dbname", databaseName);
+                        cmd.ExecuteScalar();
+                    }
+
+                    // Terminate sessions
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT public.terminate_database_sessions(@dbname)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@dbname", databaseName);
+                        cmd.ExecuteScalar();
+                    }
+
+                    System.Threading.Thread.Sleep(500);
+
+                    // DROP DATABASE (DDL - direct)
+                    using (var cmd = new NpgsqlCommand($@"DROP DATABASE ""{databaseName}""", con))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                message = "Error: " + ex.Message;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Rename a database using dwb_maintenance_db function
+        /// </summary>
+        public bool RenameDatabase(string oldName, string newName, ref string message)
+        {
+            try
+            {
+                string maintenanceConnectionString = DiversityWorkbench.PostgreSQL.Connection.GetMaintenanceDbConnectionString();
+
+                using (var con = new NpgsqlConnection(maintenanceConnectionString))
+                {
+                    con.Open();
+
+                    // Validate
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT public.validate_database_operation('RENAME', @oldname, @newname)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@oldname", oldName);
+                        cmd.Parameters.AddWithValue("@newname", newName);
+                        cmd.ExecuteScalar();
+                    }
+
+                    // Terminate sessions
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT public.terminate_database_sessions(@dbname)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@dbname", oldName);
+                        cmd.ExecuteScalar();
+                    }
+
+                    System.Threading.Thread.Sleep(500);
+                    using (var cmd = new NpgsqlCommand(
+                        $@"ALTER DATABASE ""{oldName}"" RENAME TO ""{newName}""", con))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                message = "Error: " + ex.Message;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Replace a database with another by renaming
+        /// ReplaceDatabase(database_1, database_1_prod)
+        ///   -> database_1_prod wird zu database_1_prod_backup (falls existent)
+        ///   -> database_1 wird zu database_1_prod
+        /// </summary>
+        public static bool ReplaceDatabase(string targetDatabase, string sourceDatabase, ref string message,
+            bool dropBackup = true, bool saveCopyOfSource = true, string backupSuffix = "_OLD", string sourceCopySuffix = "_temp"
+            )
+        {
+            message = null;
+            try
+            {
+                string maintenanceConnectionString = DiversityWorkbench.PostgreSQL.Connection.GetMaintenanceDbConnectionString();
+                string backupName = targetDatabase + backupSuffix;
+                string sourceCopyName = sourceDatabase + sourceCopySuffix;
+
+                // Step 1: Validate and prepare
+                using (var con = new NpgsqlConnection(maintenanceConnectionString))
+                {
+                    con.Open();
+
+                    // Check if source exists
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT EXISTS (SELECT 1 FROM pg_database WHERE datname = @source)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@source", sourceDatabase);
+                        if (!(bool)cmd.ExecuteScalar())
+                        {
+                            message = $"Source database '{sourceDatabase}' does not exist";
+                            return false;
+                        }
+                    }
+                    // Check if target exists
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT EXISTS (SELECT 1 FROM pg_database WHERE datname = @target)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@target", targetDatabase);
+                        if (!(bool)cmd.ExecuteScalar())
+                        {
+                            message = $"Target database '{targetDatabase}' does not exist";
+                            return false;
+                        }
+                    }
+
+                    // Check if backup name already exists
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT EXISTS (SELECT 1 FROM pg_database WHERE datname = @backup)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@backup", backupName);
+                        if ((bool)cmd.ExecuteScalar())
+                        {
+                            message = $"Backup database '{backupName}' already exists. Please remove it first.";
+                            return false;
+                        }
+                    }
+                }
+
+                // Step 2: If saveCopyOfSource, create copy first
+                if (saveCopyOfSource)
+                {
+                    using (var con = new NpgsqlConnection(maintenanceConnectionString))
+                    {
+                        con.Open();
+
+                        // Check if copy already exists
+                        using (var cmd = new NpgsqlCommand(
+                            "SELECT EXISTS (SELECT 1 FROM pg_database WHERE datname = @copy)", con))
+                        {
+                            cmd.Parameters.AddWithValue("@copy", sourceCopyName);
+                            if ((bool)cmd.ExecuteScalar())
+                            {
+                                message = $"Source copy '{sourceCopyName}' already exists.";
+                                return false;
+                            }
+                        }
+
+                        // Terminate sessions on source
+                        using (var cmd = new NpgsqlCommand(
+                            "SELECT public.terminate_database_sessions(@dbname)", con))
+                        {
+                            cmd.Parameters.AddWithValue("@dbname", sourceDatabase);
+                            cmd.ExecuteScalar();
+                        }
+
+                        System.Threading.Thread.Sleep(500);
+
+                        // Create copy
+                        using (var cmd = new NpgsqlCommand(
+                            $@"CREATE DATABASE ""{sourceCopyName}"" WITH TEMPLATE ""{sourceDatabase}"" OWNER ""CacheAdmin""", con))
+                        {
+                            cmd.CommandTimeout = 0;
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+
+                // Step 3: Rename target to backup (if exists)
+                using (var con = new NpgsqlConnection(maintenanceConnectionString))
+                {
+                    con.Open();
+
+                    bool targetExists = false;
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT EXISTS (SELECT 1 FROM pg_database WHERE datname = @target)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@target", targetDatabase);
+                        targetExists = (bool)cmd.ExecuteScalar();
+                    }
+
+                    if (targetExists)
+                    {
+                        // Terminate sessions on target
+                        using (var cmd = new NpgsqlCommand(
+                            "SELECT public.terminate_database_sessions(@dbname)", con))
+                        {
+                            cmd.Parameters.AddWithValue("@dbname", targetDatabase);
+                            cmd.ExecuteScalar();
+                        }
+
+                        System.Threading.Thread.Sleep(500);
+
+                        // Rename target to backup
+                        using (var cmd = new NpgsqlCommand(
+                            $@"ALTER DATABASE ""{targetDatabase}"" RENAME TO ""{backupName}""", con))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+
+                // Step 4: Rename source to target (MUST use new connection)
+                using (var con = new NpgsqlConnection(maintenanceConnectionString))
+                {
+                    con.Open();
+
+                    // Terminate sessions on source
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT public.terminate_database_sessions(@dbname)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@dbname", sourceDatabase);
+                        cmd.ExecuteScalar();
+                    }
+
+                    System.Threading.Thread.Sleep(500);
+
+                    // Rename source to target
+                    using (var cmd = new NpgsqlCommand(
+                        $@"ALTER DATABASE ""{sourceDatabase}"" RENAME TO ""{targetDatabase}""", con))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // Step 5: Optionally drop backup
+                if (dropBackup)
+                {
+                    using (var con = new NpgsqlConnection(maintenanceConnectionString))
+                    {
+                        con.Open();
+
+                        bool backupExists = false;
+                        using (var cmd = new NpgsqlCommand(
+                            "SELECT EXISTS (SELECT 1 FROM pg_database WHERE datname = @backup)", con))
+                        {
+                            cmd.Parameters.AddWithValue("@backup", backupName);
+                            backupExists = (bool)cmd.ExecuteScalar();
+                        }
+
+                        if (backupExists)
+                        {
+                            using (var cmd = new NpgsqlCommand(
+                                "SELECT public.terminate_database_sessions(@dbname)", con))
+                            {
+                                cmd.Parameters.AddWithValue("@dbname", backupName);
+                                cmd.ExecuteScalar();
+                            }
+
+                            System.Threading.Thread.Sleep(500);
+
+                            using (var cmd = new NpgsqlCommand(
+                                $@"DROP DATABASE ""{backupName}""", con))
+                            {
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+                // rename _temp zu newDatabase
+                // Step 5: Rename temp to source (MUST use new connection)
+                using (var con = new NpgsqlConnection(maintenanceConnectionString))
+                {
+                    con.Open();
+
+                    // Rename source to target
+                    using (var cmd = new NpgsqlCommand(
+                        $@"ALTER DATABASE ""{sourceCopyName}"" RENAME TO ""{sourceDatabase}""", con))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+                return false;
+            }
+        }
+
+        #endregion
     }
 }

@@ -2728,16 +2728,20 @@ namespace DiversityWorkbench
             System.Data.DataTable dt = new System.Data.DataTable();
             try
             {
-                // resetting the project
-                _ProjectID = null;
-                // getting the server connection for the URL
-                setServerConnection(URL);
-                // Inserting the ID to start the query
-                string ID = DiversityWorkbench.WorkbenchUnit.getIDFromURI(URL);
-                string SQL = "SELECT NameID FROM " + _SC.Prefix() + "TaxonName N WHERE NameID = " + ID + " " +
-                    "AND (N.IgnoreButKeepForReference = 0 OR N.IgnoreButKeepForReference IS NULL)";
-                Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, _SC.ConnectionString);
-                ad.Fill(dt);
+                // #412 - restriction to existing DWB-Connection
+                if (_SC != null)
+                {
+                    // resetting the project
+                    _ProjectID = null;
+                    // getting the server connection for the URL
+                    setServerConnection(URL);
+                    // Inserting the ID to start the query
+                    string ID = DiversityWorkbench.WorkbenchUnit.getIDFromURI(URL);
+                    string SQL = "SELECT NameID FROM " + _SC.Prefix() + "TaxonName N WHERE NameID = " + ID + " " +
+                        "AND (N.IgnoreButKeepForReference = 0 OR N.IgnoreButKeepForReference IS NULL)";
+                    Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, _SC.ConnectionString);
+                    ad.Fill(dt);
+                }
             }
             catch (System.Exception ex)
             {

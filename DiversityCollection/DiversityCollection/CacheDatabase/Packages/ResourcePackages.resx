@@ -154,6 +154,10 @@
   <data name="ABCD_000012_to_000013" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>ABCD\ABCD_000012_to_000013.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="ABCD_000013_to_000014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>ABCD\ABCD_000013_to_000014.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <comment>bugfixes</comment>
+  </data>
   <data name="ABCD_BayernFlora_000001_to_000002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>ABCD\BayernFlora\ABCD_BayernFlora_000001_to_000002.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -169,8 +173,13 @@
   <data name="ABCD_BayernFlora_000005_to_000006" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>ABCD\BayernFlora\ABCD_BayernFlora_000005_to_000006.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="ABCD_BayernFlora_000006_to_000007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>ABCD\BayernFlora\ABCD_BayernFlora_000006_to_000007.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <comment>exclusion of locality for endagered species added</comment>
+  </data>
   <data name="FloraRaster_000001_to_000002" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FloraRaster\FloraRaster_000001_to_000002.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>FloraRaster\FloraRaster_000001_to_000002.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <comment>Gesch.Arten von DTN</comment>
   </data>
   <data name="GUC_000001_to_000002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>GUC\GUC_000001_to_000002.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

@@ -31,11 +31,46 @@ namespace DiversityCollection.CacheDatabase
                     _LookupSourceVersion.Add(TypeOfSource.Plots, 2);
                     _LookupSourceVersion.Add(TypeOfSource.References, 1);
                     _LookupSourceVersion.Add(TypeOfSource.ScientificTerms, 3); // Markus 10.4.25: Hochsetzen nach aenderung
-                    _LookupSourceVersion.Add(TypeOfSource.Taxa, 3); // Markus 2.4.25: Hochsetzen nach aenderung in CommonName
+                    _LookupSourceVersion.Add(TypeOfSource.Taxa, 4); // #402, #403 -  Markus 2.4.25: Hochsetzen nach aenderung in CommonName
                 }
                 return _LookupSourceVersion;
             }
         }
+
+        private static System.Collections.Generic.Dictionary<TypeOfSource, string> _LookupMinDBVersion;
+
+        /// <summary>
+        /// The minimum database version required for each type of source. 
+        /// This dictionary maps each TypeOfSource to its corresponding minimum database version, represented as an integer. 
+        /// If a source type does not have a specific minimum version requirement, it is mapped to null.
+        /// </summary>
+        private static System.Collections.Generic.Dictionary<TypeOfSource, string> LookupMinDBVersion
+        {
+            get
+            {
+                if (_LookupMinDBVersion == null || _LookupMinDBVersion.Count == 0)
+                {
+                    _LookupMinDBVersion = new Dictionary<TypeOfSource, string>();
+                    _LookupMinDBVersion.Add(TypeOfSource.Agents, "02.01.25");
+                    _LookupMinDBVersion.Add(TypeOfSource.Descriptions, "03.03.09");
+                    _LookupMinDBVersion.Add(TypeOfSource.Gazetteer, "01.00.341");
+                    _LookupMinDBVersion.Add(TypeOfSource.Plots, "01.00.37");
+                    _LookupMinDBVersion.Add(TypeOfSource.References, "02.01.07");
+                    _LookupMinDBVersion.Add(TypeOfSource.ScientificTerms, "01.00.15"); 
+                    _LookupMinDBVersion.Add(TypeOfSource.Taxa, "02.05.41"); 
+                }
+                return _LookupMinDBVersion;
+            }
+        }
+
+        public static string MinDBVersion(TypeOfSource SourceType)
+        {
+            if (LookupMinDBVersion.ContainsKey(SourceType))
+                return LookupMinDBVersion[SourceType];
+            else
+                return null;
+        }
+
 
         private bool _NeedsRecreation = false;
 
@@ -84,7 +119,7 @@ namespace DiversityCollection.CacheDatabase
             ReferenceTitle, ReferenceRelator, 
             Gazetteer, GazetteerExternalDatabase, 
             ScientificTerm,  
-            TaxonSynonymy, TaxonAnalysis, TaxonAnalysisCategory, TaxonAnalysisCategoryValue, TaxonCommonName, TaxonList, TaxonNameExternalDatabase, TaxonNameExternalID, procTaxonNameHierarchy, TaxonHierarchy,
+            TaxonSynonymy, TaxonAnalysis, TaxonAnalysisCategory, TaxonAnalysisCategoryValue, TaxonCommonName, TaxonList, TaxonNameExternalDatabase, TaxonNameExternalID, procTaxonNameHierarchy, TaxonHierarchy, TaxonRelation,
             SamplingPlot, SamplingPlotLocalisation, SamplingPlotProperty, procSamplingPlotLocalisationHierarchy, procSamplingPlotPropertyHierarchy
         }
 
@@ -107,6 +142,7 @@ namespace DiversityCollection.CacheDatabase
                             this._Subsets.Add(SubsetTable.TaxonNameExternalDatabase, "_E");
                             this._Subsets.Add(SubsetTable.TaxonNameExternalID, "_EID");
                             this._Subsets.Add(SubsetTable.TaxonHierarchy, "_H");
+                            this._Subsets.Add(SubsetTable.TaxonRelation, "_R");
                             this._Subsets.Add(SubsetTable.procTaxonNameHierarchy, "_PH"); //#102
                             break;
                         case TypeOfSource.Agents:
@@ -1052,6 +1088,9 @@ namespace DiversityCollection.CacheDatabase
                         case "TaxonHierarchy":
                             this._TransferredSubsets.Add(SubsetTable.TaxonHierarchy, this.Subsets[SubsetTable.TaxonHierarchy]);
                             break;
+                        case "TaxonRelation":
+                            this._TransferredSubsets.Add(SubsetTable.TaxonRelation, this.Subsets[SubsetTable.TaxonRelation]);
+                            break;
                         // Agent
                         case "AgentContactInformation":
                             this._TransferredSubsets.Add(SubsetTable.AgentContactInformation, this.Subsets[SubsetTable.AgentContactInformation]);
@@ -1122,6 +1161,7 @@ namespace DiversityCollection.CacheDatabase
                     Tables.Add(SubsetTable.TaxonNameExternalID);
                     //#102
                     Tables.Add(SubsetTable.TaxonHierarchy);
+                    Tables.Add(SubsetTable.TaxonRelation);
                     Tables.Add(SubsetTable.procTaxonNameHierarchy);
                     break;
             }
@@ -1838,7 +1878,7 @@ namespace DiversityCollection.CacheDatabase
                     SQL = "BaseURL, RepresentationID, RepresentationURI, DisplayText, HierarchyCache, HierarchyCacheDown, RankingTerm, ExternalID";
                     break;
                 case SubsetTable.TaxonAnalysis:
-                    SQL = "NameID, ProjectID, AnalysisID, AnalysisValue, Notes";
+                    SQL = "NameID, ProjectID, AnalysisID, AnalysisNumber, AnalysisValue, Notes";
                     break;
                 case SubsetTable.TaxonAnalysisCategory:
                     SQL = "AnalysisID, AnalysisParentID, DisplayText, [Description], AnalysisURI, ReferenceTitle, ReferenceURI, SortingID";
@@ -1848,6 +1888,9 @@ namespace DiversityCollection.CacheDatabase
                     break;
                 case SubsetTable.TaxonCommonName:
                     SQL = "NameID, CommonName, LanguageCode, CountryCode";
+                    break;
+                case SubsetTable.TaxonRelation:
+                    SQL = "NameID, RelationType, RelationNameURI, TaxonNameCache, Stage, RelatedStage, Notes";
                     break;
                 case SubsetTable.TaxonList:
                     SQL = "ProjectID, Project, DisplayText";
@@ -3064,6 +3107,8 @@ namespace DiversityCollection.CacheDatabase
                             TE.I_Transfer = this;
                             DiversityCollection.CacheDatabase.TransferStep TED = new TransferStep("TaxonNameExternalID", null, "TaxonNameExternalID", "dbo", "public", true, true, SuppressedColumns, this.SourceView);
                             TED.I_Transfer = this;
+                            DiversityCollection.CacheDatabase.TransferStep TR = new TransferStep("TaxonRelation", null, "TaxonRelation", "dbo", "public", true, true, SuppressedColumns, this.SourceView);
+                            TR.I_Transfer = this;
 
                             // Transfer of TaxonSynonymy
                             if (!DiversityCollection.CacheDatabase.CacheDB.ProcessOnly) this.TransferToPostgresSetMessage("Transfer TaxonSynonymy");
@@ -3204,6 +3249,24 @@ namespace DiversityCollection.CacheDatabase
                             }
                             else
                                 Message = TED.Report();
+
+                            // Transfer of TaxonRelation
+                            if (OK)
+                            {
+                                if (!DiversityCollection.CacheDatabase.CacheDB.ProcessOnly) this.TransferToPostgresSetMessage("Transfer TaxonRelation");
+                                OK = TR.TransferData();
+                                Error = TR.Errors();
+                                if (Error.Length > 0)
+                                {
+                                    this.WriteTransferErrorsPostgres(Error);
+                                    this._TransferHistory.Add(TR.TableName(), Error);
+                                }
+                                else
+                                    this._TransferHistory.Add(TR.TableName(), TR.TotalCount);
+                                Report += TR.Report();
+                            }
+                            else
+                                Message = TR.Report();
 
                             break;
 

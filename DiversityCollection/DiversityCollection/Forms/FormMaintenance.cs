@@ -6116,7 +6116,8 @@ namespace DiversityCollection.Forms
                                             cGaz.CommandText += "CASE WHEN RTRIM(C.HierarchyCountryToPlace) <> '' THEN REPLACE(C.HierarchyCountryToPlace, '|', '" + DiversityWorkbench.Settings.GazetteerHierarchySeparator + "') + '" + DiversityWorkbench.Settings.GazetteerHierarchySeparator + "' ELSE '' END + N.Name";
                                         cGaz.CommandText += " FROM " + Prefix + "GeoName N, " + Prefix + "GeoCache C " +
                                             "WHERE C.PlaceID = N.PlaceID AND N.NameID = " + ID;
-                                        string PlaceName = cGaz.ExecuteScalar().ToString();
+                                        string PlaceName = "";
+                                        try { PlaceName = cGaz.ExecuteScalar().ToString(); } catch { }
                                         R["Place name in Gazetteer"] = PlaceName;
                                         if (R["Place name in Gazetteer"].ToString() == R["Place name in Collection"].ToString())
                                             RowsToRemove.Add(R);
@@ -6985,7 +6986,7 @@ namespace DiversityCollection.Forms
                     SQL += " CollectionEventLocalisation SET Location1 = N'" + R["Place name in Gazetteer"].ToString().Replace("'", "''") + "' ";
                     SQL += this.SqlGazetteerPlaceFromAndWhere(this.GazetteerBaseURL);
                     SQL += " AND L.Location2 = N'" + R["Link to Gazetteer"].ToString() + "'";
-                    SQL += " AND L.Location1 <> N'" + R["Place name in Gazetteer"].ToString().Replace("'", "''") + "' ";
+                    SQL += " AND (L.Location1 <> N'" + R["Place name in Gazetteer"].ToString().Replace("'", "''") + "' OR L.Location1 IS NULL) ";
                     break;
 
                 case "Country":  //Country//
@@ -19345,6 +19346,17 @@ ORDER BY [Geography]
             string Message = "";
             int iNoTK = 0;
             int iTK = 0;
+
+            if (this._TK25ServerConnection == null)
+            {
+                System.Collections.Generic.Dictionary<string, DiversityWorkbench.ServerConnection> DD = DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["DiversityGazetteer"].ServerConnectionList();
+                this._TK25ServerConnection = DD[this.comboBoxTK25forCoordinatesSource.SelectedItem.ToString()];
+                if (this.comboBoxTK25forCoordinatesSource.SelectedItem.ToString().IndexOf("[") > -1 && (_TK25SourcePrefix == null || _TK25SourcePrefix.Length == 0))
+                {
+                    _TK25SourcePrefix = this.comboBoxTK25forCoordinatesSource.SelectedItem.ToString() + ".dbo.";
+                }
+            }
+
             foreach (System.Data.DataRow R in this._DtTK25forCoordinates.Rows)
             {
                 if (this.progressBarTK25forCoordinates.Value < this.progressBarTK25forCoordinates.Maximum)
@@ -19566,6 +19578,7 @@ ORDER BY [Geography]
         }
 
         private DiversityWorkbench.ServerConnection _TK25ServerConnection;
+        private System.Collections.Generic.Dictionary<string, string> _TK25ServerConnectionPrefixes;
 
         private bool initTK25Database()
         {
@@ -19573,6 +19586,8 @@ ORDER BY [Geography]
             {
                 if (this._TK25ConnectionString == null)
                     this._TK25ConnectionString = DiversityWorkbench.Settings.ConnectionString;
+                if (this._TK25ServerConnectionPrefixes == null)
+                    this._TK25ServerConnectionPrefixes = new Dictionary<string, string>();
                 if (this._TK25ConnectionString != null && this._TK25ConnectionString.Length > 0)
                 {
                     DiversityWorkbench.ServerConnection SC = new DiversityWorkbench.ServerConnection(this._TK25ConnectionString);
@@ -19599,6 +19614,11 @@ ORDER BY [Geography]
                                     this.comboBoxTK25forCoordinatesSource.SelectedIndex = i;
                                 i++;
                             }
+                        }
+                        if (!this._TK25ServerConnectionPrefixes.ContainsKey(KVconn.Value.DisplayText)
+                            && KVconn.Value.ConnectionIsValid)
+                        {
+                            this._TK25ServerConnectionPrefixes.Add(KVconn.Value.DisplayText, KVconn.Value.Prefix());
                         }
                     }
                     if (this.comboBoxTK25forCoordinatesSource.SelectedIndex == -1)

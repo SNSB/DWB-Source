@@ -2101,146 +2101,57 @@ namespace DiversityCollection.CacheDatabase
             {
                 bool OK = false;
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-                if (DiversityWorkbench.PostgreSQL.Connection.DefaultConnectionString().Length == 0)// .Postgres.PostgresConnection() == null)
+                if (DiversityWorkbench.PostgreSQL.Connection.DefaultConnectionString().Length == 0)
                     this.buttonConnectToPostgres_Click(null, null);
+                
                 string CacheDatabase = DiversityCollection.CacheDatabase.CacheDB.DatabaseName;
                 DiversityWorkbench.Forms.FormGetString f = new DiversityWorkbench.Forms.FormGetString("New Database", "Please enter the name of the new database", CacheDatabase);
                 f.ShowDialog();
+
                 if (f.DialogResult == System.Windows.Forms.DialogResult.OK)
                 {
-                    char x = '"';
                     string Database = f.String.Replace("\"", "").Replace("'", "");
-                    string SQL = "CREATE DATABASE " + x + f.String + x +
-                        "WITH ENCODING='UTF8' CONNECTION LIMIT=-1;"; // OWNER=postgres MW 2017/03/01: removed to enable other users than postgres to create a database
                     string Message = "";
-                    if (!DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, false))// .Postgres.PostgresExecuteSqlNonQuery(SQL, ref Message))
-                        System.Windows.Forms.MessageBox.Show(Message);
-                    else
+
+                    if (DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().CreateDatabaseFromTemplate(Database, ref Message))
                     {
-                        OK = DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase(Database);
-                        // Anlegen der Rollen falls fehlend
-                        if (OK)
-                            OK = this.CreatePostgresRole("CacheAdmin", true, ref Message);
-                        if (OK)
-                            OK = this.CreatePostgresRole("CacheUser", false, ref Message);
-                        if (OK)
+                        // Get description
+                        DiversityWorkbench.Forms.FormGetString fDes =
+                            new DiversityWorkbench.Forms.FormGetString(
+                                "Description for database",
+                                "Please enter a short description for the new database",
+                                "");
+                        fDes.TopMost = true;
+                        fDes.ShowDialog();
+
+                        if (fDes.String.Length > 0 && fDes.DialogResult == System.Windows.Forms.DialogResult.OK)
                         {
-                            SQL = "CREATE OR REPLACE FUNCTION diversityworkbenchmodule() " +
-                                "RETURNS text AS " +
-                                "$BODY$ " +
-                                "declare " +
-                                "v text; " +
-                                "BEGIN " +
-                                "SELECT 'DiversityCollectionCache' into v; " +
-                                "RETURN v; " +
-                                "END; " +
-                                "$BODY$ " +
-                                "LANGUAGE plpgsql STABLE " +
-                                "COST 100; " +
-                                "ALTER FUNCTION diversityworkbenchmodule() OWNER TO \"CacheAdmin\";" +
-                                "GRANT EXECUTE ON FUNCTION diversityworkbenchmodule() TO GROUP \"CacheUser\"; ";
-                            if (!DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))// .Postgres.PostgresExecuteSqlNonQuery(SQL, ref Message))
-                            {
-                                System.Windows.Forms.MessageBox.Show(Message);
-                                OK = false;
-                            }
-                            else
-                            {
-                                SQL = "CREATE OR REPLACE FUNCTION public.version() " +
-                                    "RETURNS text AS " +
-                                    "$BODY$ " +
-                                    "declare " +
-                                    "v text; " +
-                                    "BEGIN " +
-                                    "SELECT '00.00.00' into v; " +
-                                    "RETURN v; " +
-                                    "END; " +
-                                    "$BODY$ " +
-                                    "LANGUAGE plpgsql STABLE " +
-                                    "COST 100; " +
-                                    "ALTER FUNCTION public.version() OWNER TO \"CacheAdmin\"; " +
-                                    "GRANT EXECUTE ON FUNCTION version() TO GROUP \"CacheUser\"; ";
-                                if (!DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, false, true))
-                                {
-                                    System.Windows.Forms.MessageBox.Show(Message);
-                                    OK = false;
-                                }
-                                else
-                                {
-                                    DiversityWorkbench.Forms.FormGetString fDes = new DiversityWorkbench.Forms.FormGetString("Description for database", "Please enter a short description for the new database", "");
-                                    fDes.TopMost = true;
-                                    fDes.ShowDialog();
-                                    if (fDes.String.Length > 0 && fDes.DialogResult == System.Windows.Forms.DialogResult.OK)
-                                    {
-                                        string Description = fDes.String.Replace("\"", "").Replace("'", "");
-                                        SQL = "SET ROLE \"CacheAdmin\"; COMMENT ON DATABASE \"" + Database + "\" IS '" + Description + "';";
-                                        if (!DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message)) // .Postgres.PostgresExecuteSqlNonQuery(SQL, ref Message))
-                                        {
-                                            System.Windows.Forms.MessageBox.Show(Message);
-                                            OK = false;
-                                        }
-                                        else
-                                            OK = true;
-                                    }
-                                }
-                            }
+                            string Description = fDes.String.Replace("\"", "").Replace("'", "");
+                            string SQL = "COMMENT ON DATABASE \"" + Database + "\" IS '" + Description + "';";
+                            DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message);
                         }
-                        if(!OK && Message.Length > 0)
-                            System.Windows.Forms.MessageBox.Show(Message);
+
+                        // Initialize
                         DiversityWorkbench.PostgreSQL.Connection.ResetDatabases();
                         DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase(Database);
-                        if (OK)
-                        {
-                            this.initPostgresDatabase();
-                            this.setPostgresControls();
-                            this.resetPostgresControlsForSources();
-                            //this.setPostgresControlsForTaxonomy();
-                            this.setProjectPostgresControls();
-                        }
+                        this.initPostgresDatabase();
+                        this.setPostgresControls();
+                        this.resetPostgresControlsForSources();
+                        this.setProjectPostgresControls();
                     }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show(Message);
+                    }
+
                 }
             }
             catch (System.Exception ex)
             {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                System.Windows.Forms.MessageBox.Show("Error: " + ex.Message);
             }
             this.Cursor = System.Windows.Forms.Cursors.Default;
-        }
-
-        /// <summary>
-        /// Anlegen von Rollen auf Postgres server (von Toni übernommen)
-        /// </summary>
-        /// <param name="Role">Name of the role</param>
-        /// <param name="IsAdmin">If the role is admin for the database</param>
-        /// <param name="Message">Any error messages</param>
-        /// <returns></returns>
-        private bool CreatePostgresRole(string Role, bool IsAdmin, ref string Message)
-        {
-            bool OK = false;
-            string SQL = "CREATE or replace FUNCTION MakeRole() RETURNS void AS " +
-                "$BODY$  " +
-                "declare i INTEGER:= 0; ";
-            if (IsAdmin)
-                SQL += "db character varying; ";
-            SQL += "begin " +
-                "SELECT count(*) FROM pg_roles R where R.rolname = '" + Role + "' into i; " +
-                "if i = 0 " +
-                "then " +
-                "CREATE ROLE \"" + Role + "\" VALID UNTIL 'infinity'; " +
-                "end if; " +
-                "GRANT \"" + Role + "\" TO CURRENT_USER WITH ADMIN OPTION;  ";
-            if (IsAdmin)
-            {
-                SQL += "db = (SELECT current_database()); " +
-                "EXECUTE 'GRANT ALL PRIVILEGES ON DATABASE \"' || db || '\" TO \"CacheAdmin\";'; " +
-                "EXECUTE 'ALTER DATABASE \"' || db || '\" OWNER TO \"CacheAdmin\";'; ";
-            }
-            SQL += "end; " +
-                "$BODY$ LANGUAGE plpgsql; " +
-                "SELECT MakeRole(); " +
-                "DROP FUNCTION MakeRole(); ";
-            if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message)) 
-                OK = true;
-            return OK;
         }
 
         private void toolStripButtonPostgresCopyDatabase_Click(object sender, EventArgs e)
@@ -2251,39 +2162,37 @@ namespace DiversityCollection.CacheDatabase
 
         private void toolStripButtonPostgresRename_Click(object sender, EventArgs e)
         {
-            string CurrentDB = DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().Name;
-            DiversityWorkbench.Forms.FormGetString f = new DiversityWorkbench.Forms.FormGetString("New name of database", "Please enter the new name for the current database", CurrentDB);
-            f.ShowDialog();
-            if (f.DialogResult == DialogResult.OK && f.String.Length > 0)
+            try
             {
-                string NewNameForDB = f.String;
-                DiversityWorkbench.PostgreSQL.Connection.ResetDatabases();
-                if (DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase("postgres"))
+                string CurrentDB = DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().Name;
+                DiversityWorkbench.Forms.FormGetString f = new DiversityWorkbench.Forms.FormGetString("New name of database", "Please enter the new name for the current database", CurrentDB);
+                f.ShowDialog();
+                if (f.DialogResult == DialogResult.OK && f.String.Length > 0)
                 {
-                    string SQL = "SELECT pg_terminate_backend( pid ) " +
-                        "FROM pg_stat_activity " +
-                        "WHERE pid <> pg_backend_pid( ) " +
-                        "AND datname = '" + CurrentDB + "'; " +
-                        "ALTER DATABASE \"" + CurrentDB + "\" RENAME TO \"" + NewNameForDB + "\"; ";
-                    string Message = "";
-                    if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
+                    string NewNameForDB = f.String;
+                    DiversityWorkbench.PostgreSQL.Connection.ResetDatabases();
+                    string message = "";
+
+                    bool ok = DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().RenameDatabase(CurrentDB, NewNameForDB, ref message);
+                    if (ok && message.Length == 0)
                     {
-                        if (Message.Length == 0)
+                        if (DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase(NewNameForDB))
                         {
-                            if (DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase(NewNameForDB))
-                            {
-                                DiversityWorkbench.PostgreSQL.Connection.ResetDatabases();
-                                System.Windows.Forms.MessageBox.Show("Renaming has been successful");
-                                this.initPostgres();
-                            }
+                            DiversityWorkbench.PostgreSQL.Connection.ResetDatabases();
+                            System.Windows.Forms.MessageBox.Show("Renaming has been successful");
+                            this.initPostgres();
                         }
-                        else
-                            System.Windows.Forms.MessageBox.Show("Renaming failed:\r\n" + Message);
                     }
                     else
-                        System.Windows.Forms.MessageBox.Show("Renaming failed:\r\n" + Message);
+                        System.Windows.Forms.MessageBox.Show("Renaming failed:\r\n" + message);
                 }
             }
+            catch (System.Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                System.Windows.Forms.MessageBox.Show("Error: " + ex.Message);
+            }
+           
         }
 
         private void toolStripButtonPostgesExchangeDB_Click(object sender, EventArgs e)
@@ -2380,28 +2289,21 @@ namespace DiversityCollection.CacheDatabase
                     DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().Name != null)
                 {
                     string Database = DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().Name; // this.listBoxPostgresDBs.SelectedItem.ToString();
-                    string SQL = "SELECT pg_terminate_backend(pg_stat_activity.pid) " +
-                        "FROM pg_stat_activity " +
-                        "WHERE pg_stat_activity.datname = '" + Database + "' " +
-                        "AND pid <> pg_backend_pid();";// DROP DATABASE \"" + Database + "\";";
                     if (System.Windows.Forms.MessageBox.Show("Do you really want to delete the database " + Database + "?", "Delete database", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                     {
-                        DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase("postgres");
+                        //DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase("postgres");
                         string Message = "";
-                        if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
+                        if (DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().DropDatabase(Database, ref Message))
                         {
-                            SQL = "DROP DATABASE \"" + Database + "\";";
-                            if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, false))
-                            {
-                                System.Windows.Forms.MessageBox.Show("Database " + Database + " deleted");
-                                DiversityWorkbench.PostgreSQL.Connection.ResetDatabases();
-                                DiversityWorkbench.PostgreSQL.Connection.ResetDefaultConnectionString();
+                            System.Windows.Forms.MessageBox.Show("Database " + Database + " deleted");
+                            DiversityWorkbench.PostgreSQL.Connection.ResetDatabases();
+                            DiversityWorkbench.PostgreSQL.Connection.ResetDefaultConnectionString();
 
-                                this.initPostgresDatabase();
-                            }
-                            else
-                                System.Windows.Forms.MessageBox.Show("Deleting database " + Database + " failed:\r\n" + Message);
+                            this.initPostgresDatabase();
                         }
+                        else
+                            System.Windows.Forms.MessageBox.Show("Deleting database " + Database + " failed:\r\n" + Message);
+                        
                         this.setPostgresControls();
                         this.resetPostgresControlsForSources();
                         this.setProjectPostgresControls();
@@ -2570,6 +2472,18 @@ namespace DiversityCollection.CacheDatabase
                 Subsets += T.ToString();
             }
             return Subsets;
+        }
+
+        private bool DatabaseHasMinDbVersion(DiversityWorkbench.WorkbenchUnit.ModuleType Module, string SourceView, string LinkedServerName, string DatabaseName, ref string MinVersion)
+        {
+            bool OK = false;
+            string Message = "";
+            string SQL = "SELECT MinDBVersion FROM [dbo].[SourceMinDBVersion] " +
+                "WHERE Module = '" + Module.ToString() + "' AND SourceView = '" + SourceView + "' AND LinkedServerName = '" + LinkedServerName + "' AND DatabaseName = '" + DatabaseName + "'";
+            MinVersion = DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlSkalarInCacheDB(SQL, ref Message);
+            if (Message.Length == 0 && MinVersion.Length > 0)
+                OK = true;
+            return OK;
         }
 
         //private void RecreateSource(string Source)
@@ -4302,6 +4216,7 @@ namespace DiversityCollection.CacheDatabase
             DataTables.Add(UserControlLookupSource.SubsetTable.TaxonList, "_L");
             DataTables.Add(UserControlLookupSource.SubsetTable.TaxonNameExternalDatabase, "_E");
             DataTables.Add(UserControlLookupSource.SubsetTable.TaxonNameExternalID, "_EID");
+            DataTables.Add(UserControlLookupSource.SubsetTable.TaxonRelation, "_R");
             if (this.AddSource(DiversityWorkbench.WorkbenchUnit.ModuleType.TaxonNames, UserControlLookupSource.SubsetTable.TaxonSynonymy, DataTables, UserControlLookupSource.TypeOfSource.Taxa))
                 this.initTaxonSources();
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -4668,7 +4583,8 @@ namespace DiversityCollection.CacheDatabase
                         this.CreateTaxonCommonNameSource(PrefixDB, View, BaseURL, ref Message) &&
                         this.CreateTaxonHierarchySource(PrefixDB, View, ProjectID, BaseURL, ref Message) &&
                         this.CreateTaxonNameExternalDatabaseSource(PrefixDB, View, BaseURL, ref Message) &&
-                        this.CreateTaxonNameExternalIDSource(PrefixDB, View, BaseURL, ref Message))
+                        this.CreateTaxonNameExternalIDSource(PrefixDB, View, BaseURL, ref Message) &&
+                        this.CreateTaxonRelationSource(PrefixDB, View, BaseURL, ref Message))
                         return View;
                     else
                     {
@@ -4997,6 +4913,32 @@ namespace DiversityCollection.CacheDatabase
                 OK = false;
             return OK;
         }
+
+        private bool CreateTaxonRelationSource(string PrefixDB, string View, string BaseURL, ref string Message)
+        {
+            bool OK = true;
+            View += "_R";
+
+            // Check if previous version exists
+            if (!this.RemovePreviousViewVersion(View))
+                return false;
+
+            string SQL = "CREATE VIEW [dbo].[" + View + "] " +
+            "AS " +
+            "SELECT TOP 100 PERCENT '" + BaseURL + "' AS BaseURL, NameID, RelationType, RelationNameURI, TaxonNameCache, Stage, RelatedStage, Notes, LogUpdatedWhen " +
+            "FROM " + PrefixDB + "TaxonRelation T ";
+            if (DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlNonQueryInCacheDB(SQL, ref Message))
+            {
+                SQL = "GRANT SELECT ON " + View + " TO CacheUser";
+                if (DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlNonQueryInCacheDB(SQL, ref Message))
+                    OK = true;
+                else OK = false;
+            }
+            else
+                OK = false;
+            return OK;
+        }
+
 
         private bool RemovePreviousViewVersion(string View)
         {
@@ -5539,11 +5481,46 @@ namespace DiversityCollection.CacheDatabase
 
             // getting the source list
             System.Collections.Generic.List<string> SourceList = new List<string>();
+            System.Collections.Generic.List<string> OutdatedSourceList = new List<string>();
             foreach (System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.ServerConnection> KV in DiversityWorkbench.WorkbenchUnit.GlobalWorkbenchUnitList()["Diversity" + Module.ToString()].ServerConnections())
             {
                 if (KV.Value.DatabaseServer != DiversityWorkbench.Settings.DatabaseServer)
                     continue; // these are sources that had been linked in manually and so far are not prepared for use as cache db sources
-                SourceList.Add(KV.Value.DisplayText);
+
+                //Testing if the database has an outdated version
+                bool Outdated = false;
+                string SqlVersion = "SELECT TOP 1 Version FROM ";
+                if (KV.Value.LinkedServer.Length > 0)
+                    SqlVersion += "[" + KV.Value.LinkedServer + "].";
+                SqlVersion += "[" + KV.Value.DatabaseName + "].dbo.ViewVersion";
+                string DbVersion = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SqlVersion, true);
+                if(DbVersion.Length > 0)
+                {
+                    string[] VersionDB = DbVersion.Split(new Char[] { '.' });
+                    string[] VersionMin = UserControlLookupSource.MinDBVersion(SourceType).Split(new Char[] { '.' });
+                    for(int i =0; i < VersionDB.Length && i < VersionMin.Length; i++)
+                    {
+                        if(int.TryParse(VersionDB[i], out int vDB) && int.TryParse(VersionMin[i], out int vMin))
+                        {
+                            if(vDB < vMin)
+                            {
+                                Outdated = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (Outdated)
+                    OutdatedSourceList.Add(KV.Value.DisplayText);
+                else
+                    SourceList.Add(KV.Value.DisplayText);
+            }
+
+            // If there are outdated sources, inform the user
+            if (OutdatedSourceList.Count > 0)
+            {
+                string OutdatedSources = string.Join(", ", OutdatedSourceList);
+                System.Windows.Forms.MessageBox.Show("The following sources are outdated.\r\nThey are not included in the source list:\r\n " + OutdatedSources + "\r\n\r\nIf you need access to these sources,\r\nplease turn to your administrator for an update.", "Outdated sources", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             // Check existence of table
@@ -6028,13 +6005,13 @@ namespace DiversityCollection.CacheDatabase
                         "R.ExternalID, R.Notes, R.LanguageCode, R.LogUpdatedWhen";
                     break;
                 case UserControlLookupSource.SubsetTable.TaxonAnalysis:
-                    SQL += "SELECT B.BaseURL, T.NameID, T.ProjectID, T.AnalysisID, MIN(T.AnalysisValue) AS AnalysisValue, MIN(T.Notes) AS Notes, MAX(T.LogUpdatedWhen) AS LogUpdatedWhen " +
+                    SQL += "SELECT B.BaseURL, T.NameID, T.ProjectID, T.AnalysisID, T.AnalysisNumber, MIN(T.AnalysisValue) AS AnalysisValue, MIN(T.Notes) AS Notes, MAX(T.LogUpdatedWhen) AS LogUpdatedWhen " +
                         "FROM " + PrefixDB + "TaxonNameListAnalysis AS T INNER JOIN " +
                         PrefixDB + "TaxonNameListAnalysisCategory AS C ON T.AnalysisID = C.AnalysisID INNER JOIN " +
                         PrefixDB + "TaxonNameProject AS P ON T.NameID = P.NameID CROSS JOIN " +
                         PrefixDB + "ViewBaseURL AS B " +
                         "WHERE (P.ProjectID = " + ProjectID.ToString() + ") AND (C.DataWithholdingReason = N'' OR C.DataWithholdingReason IS NULL) " +
-                        "GROUP BY T.NameID, T.ProjectID, T.AnalysisID, B.BaseURL";
+                        "GROUP BY T.NameID, T.ProjectID, T.AnalysisID, T.AnalysisNumber, B.BaseURL";
                     break;
                 case UserControlLookupSource.SubsetTable.TaxonAnalysisCategory:
                     SQL += "SELECT B.BaseURL,  T.AnalysisID, T.AnalysisParentID, T.DisplayText, T.Description, AnalysisURI, ReferenceTitle, ReferenceURI, SortingID, T.LogUpdatedWhen " +
@@ -6078,6 +6055,13 @@ namespace DiversityCollection.CacheDatabase
                 case UserControlLookupSource.SubsetTable.TaxonNameExternalID:
                     SQL += "SELECT TOP 100 PERCENT B.BaseURL, T.NameID, T.ExternalDatabaseID, T.ExternalNameURI, T.LogUpdatedWhen " +
                         "FROM " + PrefixDB + "TaxonNameExternalID T INNER JOIN " +
+                        PrefixDB + "TaxonNameProject AS P ON T.NameID = P.NameID, " +
+                        PrefixDB + "ViewBaseURL AS B " +
+                        "WHERE P.ProjectID = " + ProjectID.ToString();
+                    break;
+                case UserControlLookupSource.SubsetTable.TaxonRelation:
+                    SQL += "SELECT TOP 100 PERCENT B.BaseURL, T.NameID, RelationType, RelationNameURI, TaxonNameCache, Stage, RelatedStage, Notes, T.LogUpdatedWhen " +
+                        "FROM " + PrefixDB + "TaxonRelation T INNER JOIN " +
                         PrefixDB + "TaxonNameProject AS P ON T.NameID = P.NameID, " +
                         PrefixDB + "ViewBaseURL AS B " +
                         "WHERE P.ProjectID = " + ProjectID.ToString();

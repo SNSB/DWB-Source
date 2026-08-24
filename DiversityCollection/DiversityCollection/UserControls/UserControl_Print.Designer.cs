@@ -64,8 +64,8 @@
             pictureBoxLabelQRcodeSource = new System.Windows.Forms.PictureBox();
             comboBoxLabelQRcodeType = new System.Windows.Forms.ComboBox();
             checkBoxLabelQRcode = new System.Windows.Forms.CheckBox();
-            panelWebbrowserLabel = new System.Windows.Forms.Panel();
             webBrowserLabel = new System.Windows.Forms.WebBrowser();
+            panelWebbrowserLabel = new System.Windows.Forms.Panel();
             openFileDialogLabelSchema = new System.Windows.Forms.OpenFileDialog();
             saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             tableLayoutPanelLabel.SuspendLayout();
@@ -479,6 +479,9 @@
             // 
             panelWebbrowserLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             panelWebbrowserLabel.Controls.Add(webBrowserLabel);
+            //this.userControlWebViewLabel = new DiversityWorkbench.UserControls.UserControlWebView();
+            //this.userControlWebViewLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            //panelWebbrowserLabel.Controls.Add(this.userControlWebViewLabel);
             panelWebbrowserLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             panelWebbrowserLabel.Location = new System.Drawing.Point(0, 0);
             panelWebbrowserLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -555,6 +558,7 @@
         private System.Windows.Forms.ToolStripMenuItem sNSBToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zFMKToolStripMenuItem;
         private System.Windows.Forms.WebBrowser webBrowserLabel;
+        //private DiversityWorkbench.UserControls.UserControlWebView userControlWebViewLabel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripQR;
         private System.Windows.Forms.ToolStripMenuItem setServiceTemplateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setSizeToolStripMenuItem;

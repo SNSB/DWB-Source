@@ -12,7 +12,7 @@ namespace DiversityCollection.UserControls
 {
     public partial class UserControl_Print : UserControl__Data
     {
-
+        
         #region Construction
 
         public UserControl_Print(
@@ -35,8 +35,9 @@ namespace DiversityCollection.UserControls
         private void initControl()
         {
             this.webBrowserLabel.Url = new Uri("about:blank ");
-            //this.userControlWebViewLabel.Url = null;
-            //this.userControlWebViewLabel.Navigate(new Uri("about:blank "));
+            //new with WebView2
+            //this.userControlWebViewLabel.Navigate(new Uri("about:blank"));
+
             if (this.comboBoxLabelConversion.Items.Count == 0)
             {
                 foreach (System.Collections.Generic.KeyValuePair<DiversityCollection.Transaction.ConversionType, string> KV in DiversityCollection.Transaction.ConversionDictionary)
@@ -44,9 +45,7 @@ namespace DiversityCollection.UserControls
             }
 
             DiversityWorkbench.Forms.FormFunctions.setAutoCompletion(this, true);
-
             DiversityWorkbench.Entity.setEntity(this, this.toolTip);
-
             this.CheckIfClientIsUpToDate();
         }
 
@@ -95,10 +94,12 @@ namespace DiversityCollection.UserControls
                 {
                     System.Uri URI = new Uri(File);
                     this.webBrowserLabel.Url = URI;
+                    //this.userControlWebViewLabel.Navigate(URI);
                 }
                 catch (Exception ex)
                 {
                     DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                    MessageBox.Show("Error providing the label preview: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -289,7 +290,7 @@ namespace DiversityCollection.UserControls
             {
                 this._iMainForm.SelectAll();
             }
-            if (this._iMainForm.SelectedIDs().Count > 50)// this._iMainForm.SelectedIDs().Count > 50)
+            if (this._iMainForm.SelectedIDs().Count > 50)
             {
                 if (System.Windows.Forms.MessageBox.Show("Do you really want to generate the labels for\r\n\t\t"
                     + this._iMainForm.SelectedIDs().Count.ToString()
@@ -304,8 +305,6 @@ namespace DiversityCollection.UserControls
             {
                 for (int i = 0; i < this._iMainForm.SelectedIDs().Count; i++)
                 {
-                    //System.Data.DataRowView rv = (System.Data.DataRowView)this._iMainForm.SelectedIDs()[i];
-                    //int SpecimenID = int.Parse(rv["ID"].ToString());
                     Specimen.fillSpecimen(this._iMainForm.SelectedIDs()[i], ref dsSpecimen, ref dsEventSeries);
                 }
                 string File = this.createXmlFromDataset(dsSpecimen, dsEventSeries, true);
@@ -313,12 +312,14 @@ namespace DiversityCollection.UserControls
                 {
                     System.Uri URI = new Uri(File);
                     this.webBrowserLabel.Url = URI;
+                    //new WebView2
+                    //this.userControlWebViewLabel.Navigate(URI);
                 }
-
             }
             catch (Exception ex)
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                MessageBox.Show("Error loading label preview: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -348,14 +349,56 @@ namespace DiversityCollection.UserControls
         {
             this.webBrowserLabel.ShowPageSetupDialog();
             this.webBrowserLabel.Refresh();
-
-            //this.userControlWebViewLabel.ShowPageSetupDialog();
-            //this.webBrowserLabel.Refresh();
+            // new webview2
+            // Page setup will be handled by the browser's print dialog
+            //MessageBox.Show("Page setup options are available in the Print dialog when you click Print.", "Page Setup", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void toolStripButtonPrint_Click(object sender, EventArgs e)
         {
-            this.webBrowserLabel.ShowPrintPreviewDialog();
+            try
+            {
+                this.webBrowserLabel.ShowPrintPreviewDialog();
+
+                //new webview2
+                //// Get the current HTML file path
+                //Uri currentUrl = this.userControlWebViewLabel.Url;
+
+                //if (currentUrl == null || currentUrl.Scheme == "about")
+                //{
+                //    MessageBox.Show("Please generate a preview first before printing.", "No Preview", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    return;
+                //}
+
+                //// Convert URI to file path
+                //string htmlFilePath = currentUrl.IsFile
+                //    ? currentUrl.LocalPath
+                //    : currentUrl.AbsolutePath;
+
+                //if (!System.IO.File.Exists(htmlFilePath))
+                //{
+                //    MessageBox.Show("Label HTML file not found. Please generate a preview first.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    return;
+                //}
+
+                ////// Call window.print() directly on the existing WebView2
+                //this.userControlWebViewLabel.CallJavaScript("window.print();");
+                //////DiversityWorkbench.Forms.FormPrintPreview printForm = new DiversityWorkbench.Forms.FormPrintPreview(htmlFilePath, autoOpenPrintDialog: true);
+                //////printForm.ShowDialog();
+
+                /////neu mit WebView2
+                ////using (var printDialog = new DiversityWorkbench.Forms.FormPrintPreview(currentUrl.ToString(), true))
+                ////{
+                ////    printDialog.ShowDialog();
+                ////}
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error showing print preview dialog");
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                MessageBox.Show("Print preview is temporarily unavailable.", "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void toolStripButtonLabelExport_Click(object sender, EventArgs e)
@@ -367,12 +410,36 @@ namespace DiversityCollection.UserControls
             this.saveFileDialog.FileName = "Label.htm";
             if (this.saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string Text = this.webBrowserLabel.DocumentText;
-                System.IO.StreamWriter w = new System.IO.StreamWriter(this.saveFileDialog.FileName, false, System.Text.Encoding.UTF8);
-                w.Write(Text);
-                w.Close();
+                try
+                {
+                    string Text = this.webBrowserLabel.DocumentText;
+                    System.IO.StreamWriter w = new System.IO.StreamWriter(this.saveFileDialog.FileName, false, System.Text.Encoding.UTF8);
+                    w.Write(Text);
+                    w.Close();
+                    
+                    //new webview2
+                    //var task = this.userControlWebViewLabel.ExecuteScriptAsync("document.documentElement.outerHTML");
+                    //if (task != null)
+                    //{
+                    //    task.ContinueWith(t =>
+                    //    {
+                    //        if (!t.IsFaulted && t.Result != null)
+                    //        {
+                    //            string html = t.Result.ToString();
+                    //            System.IO.StreamWriter w = new System.IO.StreamWriter(this.saveFileDialog.FileName, false, System.Text.Encoding.UTF8);
+                    //            w.Write(html);
+                    //            w.Close();
+                    //        }
+                    //    });
+                    //}
+                }
+                catch (Exception ex)
+                {
+                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                }
             }
         }
+
 
         private void sNSBToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -492,10 +559,12 @@ namespace DiversityCollection.UserControls
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
-        
+
         public void ResetLabel()
         {
             this.webBrowserLabel.Url = new Uri("about:blank ");
+            //new webview2
+            //this.userControlWebViewLabel.Navigate(new Uri("about:blank"));
         }
 
         public System.Windows.Forms.TableLayoutPanel TableLayoutPanel { get { return this.tableLayoutPanelLabel; } }

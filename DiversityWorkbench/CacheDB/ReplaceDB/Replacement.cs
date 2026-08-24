@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
+
 
 namespace DiversityWorkbench.CacheDB.ReplaceDB
 {
@@ -346,158 +343,16 @@ namespace DiversityWorkbench.CacheDB.ReplaceDB
 
         public bool ReplaceDatabase(ref string Message)
         {
-            string DatabaseOwner = "CacheAdmin";
-            string CurrentDB = DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().Name;
-            string SQL = "";
-            string TempDB = "";
-            bool OK = false;
             try
             {
-                // Ensure owner of databases is CacheAdmin
-                System.Collections.Generic.List<string> CheckDBs = new List<string>();
-                CheckDBs.Add(this.OldDatabase);
-                CheckDBs.Add(this.NewDatabase);
-                foreach(string DB in CheckDBs)
-                {
-                    Message = "";
-                    SQL = "SELECT u.usename " +
-                        "FROM pg_database d " +
-                        "JOIN pg_user u ON(d.datdba = u.usesysid) " +
-                        "WHERE d.datname = '" + DB + "'; ";
-                    string CheckOwner = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL, ref Message);
-                    if (Message.Length > 0 && Message.StartsWith("Object "))
-                    {
-                        Message = "";
-                        // try with roles
-                        SQL = "SELECT U.rolname " +
-                            "FROM pg_roles AS U JOIN pg_database AS D ON(D.datdba = U.oid) " +
-                            "WHERE D.datname = '" + DB + "'; ";
-                        CheckOwner = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL, ref Message);
-                    }
-                    if (Message.Length > 0)
-                    {
-                        System.Windows.Forms.MessageBox.Show(Message);
-                        return false;
-                    }
-                    if (CheckOwner.Length == 0)
-                    {
-                        Message = "Can not read owner of database. Owner of " + DB + " must be CacheAdmin";
-                        System.Windows.Forms.MessageBox.Show(Message);
-                        return false;
-                    }
-                    else if (CheckOwner != "CacheAdmin")
-                    {
-                        // try to set Owner to CacheAdmin
-                        SQL = "ALTER DATABASE \"" + DB + "\" OWNER TO \"CacheAdmin\";";
-                        if (!DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL))
-                        {
-                            Message = "Owner of " + DB + " must be CacheAdmin";
-                            System.Windows.Forms.MessageBox.Show(Message);
-                            return false;
-                        }
-                    }
-                }
-
-                if (this.KeepCopyOfDB)
-                {
-                    // if the current database should be kept, create a copy of it
-                    TempDB = this.NewDatabase + "_Temp";
-                    // remove a database with this name if it exists
-                    SQL = "DROP DATABASE IF EXISTS \"" + TempDB + "\";";
-                    OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, false);
-                    if (!OK)
-                        OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, false);
-                    if (!OK)
-                    {
-                        if (Message.Length > 0)
-                            System.Windows.Forms.MessageBox.Show("Removal of " + TempDB + " failed:\r\n" + Message);
-                        return false;
-                    }
-                    // create a copy of the current DB
-                    OK = DiversityWorkbench.PostgreSQL.Connection.CurrentDatabase().CreateCopy(TempDB, DatabaseOwner, true, "", ref Message);
-                    if (!OK)
-                    {
-                        if (Message.Length > 0)
-                            System.Windows.Forms.MessageBox.Show(Message);
-                        return false;
-                    }
-                    DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase(CurrentDB);
-                }
-
-                // Rename the old database that should be replaced to ..._OLD
-                SQL = "SELECT pg_terminate_backend( pid ) " +
-                    "FROM pg_stat_activity " +
-                    "WHERE pid <> pg_backend_pid( ) " +
-                    "AND datname = '" + this.OldDatabase + "'; " +
-                    "ALTER DATABASE \"" + this.OldDatabase + "\" RENAME TO \"" + this.OldDatabase + "_OLD\"; ";
-                OK = false;
-                if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
-                {
-                    if (Message.Length == 0)
-                    {
-                        DiversityWorkbench.PostgreSQL.Connection.ResetDatabases();
-                        // Change to the renamed database
-                        if (DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase(this.OldDatabase + "_OLD"))
-                        {
-                            // Rename the new database that should be the replacement to the name of the old replaced database
-                            SQL = "SELECT pg_terminate_backend( pid ) " +
-                                "FROM pg_stat_activity " +
-                                "WHERE pid <> pg_backend_pid( ) " +
-                                "AND datname = '" + this.NewDatabase + "'; " +
-                                "ALTER DATABASE \"" + this.NewDatabase + "\" RENAME TO \"" + this.OldDatabase + "\";";
-                            if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
-                            {
-                                if (Message.Length == 0)
-                                {
-                                    // Change to the replacement database
-                                    if (DiversityWorkbench.PostgreSQL.Connection.SetCurrentDatabase(this.OldDatabase))
-                                    {
-                                        DiversityWorkbench.PostgreSQL.Connection.ResetDatabases();
-                                        // Drop the old database
-                                        SQL = "SELECT pg_terminate_backend( pid ) " +
-                                            "FROM pg_stat_activity " +
-                                            "WHERE pid <> pg_backend_pid( ) " +
-                                            "AND datname = '" + this.OldDatabase + "_OLD'; ";
-                                        if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message))
-                                        {
-                                            SQL = "DROP DATABASE \"" + this.OldDatabase + "_OLD\";";
-                                            if (DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, false))
-                                            {
-                                                OK = true;
-                                                if (this.KeepCopyOfDB && TempDB.Length > 0)
-                                                {
-                                                    // Rename the temp database that
-                                                    SQL = "SELECT pg_terminate_backend( pid ) " +
-                                                        "FROM pg_stat_activity " +
-                                                        "WHERE pid <> pg_backend_pid( ) " +
-                                                        "AND datname = '" + TempDB + "'; " +
-                                                        "ALTER DATABASE \"" + TempDB + "\" RENAME TO \"" + this.NewDatabase + "\"; ";
-                                                    OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, false);
-                                                }
-                                                //this.buttonReplace.Enabled = false;
-                                                //this.comboBoxReplacedDatabase.Enabled = false;
-                                                //_DatabaseHasBeenReplaced = true;
-                                                //System.Windows.Forms.MessageBox.Show("Replacement has been successful");
-                                                //this.Close();
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                return DiversityWorkbench.PostgreSQL.Database.ReplaceDatabase(this.OldDatabase, this.NewDatabase, ref Message, false, this.KeepCopyOfDB);
             }
             catch (System.Exception ex)
             {
-                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-                OK = false;
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex + " Message: " + Message);
+                return false;
             }
-            if (!OK)
-            {
-                System.Windows.Forms.MessageBox.Show("Replacement failed: " + Message);
-            }
-            return OK;
+
         }
 
         #endregion

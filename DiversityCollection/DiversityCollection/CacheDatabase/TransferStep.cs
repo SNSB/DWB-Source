@@ -878,16 +878,17 @@ namespace DiversityCollection.CacheDatabase
             }
 
             // Export File exists
-            if (Step == bcpStep.Export)
-            {
-                OK = this.PostgresTransferViaFile_ExportFileExists(ref Error, ref SQL);
-                if (OK)
-                    Step = bcpStep.ExportFileExists;
-                this.PostgresTransferViaFile_SetMessage(Step, OK, SQL);
-            }
+            // #418 - old version - obsoleter for current version
+            //if (Step == bcpStep.Export)
+            //{
+            //    OK = this.PostgresTransferViaFile_ExportFileExists(ref Error, ref SQL);
+            //    if (OK)
+            //        Step = bcpStep.ExportFileExists;
+            //    this.PostgresTransferViaFile_SetMessage(Step, OK, SQL);
+            //}
 
             // Create temp table if not existing
-            if (Step == bcpStep.ExportFileExists)
+            if (Step == bcpStep.Export)
             {
                 OK = this.PostgresTransferViaFile_CreateTempTable(ref Error, ref SQL);
                 if (OK)
@@ -1068,17 +1069,28 @@ namespace DiversityCollection.CacheDatabase
 
         private bool PostgresTransferViaFile_ExportData(string TransferDirectory, ref string Error, ref string SQL)
         {
-            SQL = "DECLARE @RC int " +
-                "DECLARE @TableName varchar(200) " +
-                "DECLARE @Schema varchar(200) " +
-                "DECLARE @TargetPath varchar(200) " +
-                "DECLARE @ProtocolFileName varchar(200) " +
-                "SET @TableName = '" + this.TableName() + "' " +
-                "SET @Schema = '" + this.Schema + "' " +
-                "SET @TargetPath = '" + TransferDirectory + "' " +
-                "SET @ProtocolFileName = 'Outfile.txt' " +
+            //SQL = "DECLARE @RC int " +
+            //    "DECLARE @TableName varchar(200) " +
+            //    "DECLARE @Schema varchar(200) " +
+            //    "DECLARE @TargetPath varchar(200) " +
+            //    "DECLARE @ProtocolFileName varchar(200) " +
+            //    "SET @TableName = '" + this.TableName() + "' " +
+            //    "SET @Schema = '" + this.Schema + "' " +
+            //    "SET @TargetPath = '" + TransferDirectory + "' " +
+            //    "SET @ProtocolFileName = 'Outfile.txt' " +
+            //    "EXECUTE @RC = [dbo].[procBcpExport] " +
+            //    "@TableName, @Schema, @TargetPath, @ProtocolFileName";
+            SQL = "DECLARE @RC int; " +
+                "DECLARE @TableName varchar(200); " +
+                "DECLARE @Schema varchar(200); " +
+                "DECLARE @TargetPath varchar(200); " +
+                "DECLARE @ProtocolFileName varchar(200); " +
+                "SET @TableName = '" + this.TableName() + "'; " +
+                "SET @Schema = '" + this.Schema + "'; " +
+                "SET @TargetPath = '" + TransferDirectory + "'; " +
+                "SET @ProtocolFileName = 'Outfile.txt'; " +
                 "EXECUTE @RC = [dbo].[procBcpExport] " +
-                "@TableName, @Schema, @TargetPath, @ProtocolFileName";
+                "@TableName, @Schema, @TargetPath, @ProtocolFileName;";
             string Message = "";
             //Message = DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlSkalarInCacheDB(SQL, ref Message);
 
@@ -1090,32 +1102,141 @@ namespace DiversityCollection.CacheDatabase
             return OK;
         }
 
+        /// <summary>
+        /// in old version used to check if the file exists - obsolete in current version
+        /// </summary>
+        /// <param name="Error"></param>
+        /// <param name="SQL"></param>
+        /// <returns></returns>
         private bool PostgresTransferViaFile_ExportFileExists(ref string Error, ref string SQL)
         {
+            return true;
+
             string Message = "";
+            // #418 - zerlegung zur Fehlersuche
+            string ServerInstanz = DiversityCollection.CacheDatabase.CacheDB.BulkTransferMountPoint;
+            string ConvertFunction = "bcpconv_" + ServerInstanz;
+            //string TargetTable = "files"; // "\"" + this.SchemaPostgres + "\".files";
+            string TargetTable = "files"; // "\"" + this.SchemaPostgres + "\".files";
+            string SourceFile = DiversityCollection.CacheDatabase.CacheDB.DatabaseName + "/" + this.Schema + "/" + this.Target + ".csv";
+
+            // Only for testing
+            /*
+            SQL = "SET ROLE \"CacheAdmin\"; " +
+                "DROP TABLE IF EXISTS " + Files + "; " +
+                "CREATE TABLE " + Files + "(" + this.Target + " text); " +
+                "ALTER TABLE " + Files + " OWNER to \"CacheAdmin\"; ";
+            bool Step1 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
+
+            // nicht notwendiger Schritt
+            //SQL = "COPY (SELECT 1) TO PROGRAM 'chmod g+x /database/exchange/" + ConvertFunction + "';";
+            //bool Step2 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB, true);
+
+            //Npgsql.PostgresException: "38000: program "chmod g+x /database/exchange/bcpconv_bfl" failed
+            //DETAIL: child process exited with exit code 1"
+
+
+
+            //SQL = "SET ROLE \"CacheAdmin\"; " +
+            //    "COPY " + Files + " FROM PROGRAM " +
+            //    "'bash /database/exchange/" + ConvertFunction + " " + 
+            //    DiversityCollection.CacheDatabase.CacheDB.DatabaseName + "/" + this.Schema +
+            //    "'; ";
+            //bool Step3 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB, true);
+            
+            //SQL = "SELECT " + this.Target + " FROM " + Files + " WHERE " + this.Target + " = '" + this.Target + ".csv' ; ";
+            //bool Step4 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB, true);
+
+            SQL = "SET ROLE \"CacheAdmin\"; " +
+                "DROP TABLE IF EXISTS " + TargetTable + "; " +
+                "CREATE TABLE " + TargetTable + "(filename text); " +
+                "ALTER TABLE " + TargetTable + " OWNER to \"CacheAdmin\"; ";
+            bool Step10 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
+            */
+
+            //SQL = "SET ROLE \"CacheAdmin\"; " +
+            //    "COPY " + TargetTable + " FROM PROGRAM " +
+            //    "'bash /database/exchange/" + ConvertFunction + " " +
+            //    SourceFile +
+            //    "'; ";
+            //bool Step20 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB, true);
+
+            //SQL = "SET ROLE \"CacheAdmin\"; " +
+            //    "COPY " + TargetTable + " FROM PROGRAM " +
+            //    "'bash /database/exchange/" + ConvertFunction + " " +
+            //    SourceFile +
+            //    "'; ";
+            //bool Step21 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB, true);
+
+            //SQL = "SET ROLE \"CacheAdmin\"; " +
+            //    "COPY " + TargetTable + " FROM PROGRAM " +
+            //    "'bash /database/exchange/" + ConvertFunction + " " +
+            //    DiversityCollection.CacheDatabase.CacheDB.DatabaseName + "/" + this.Target + ".csv" +
+            //    "'; ";
+            //bool Step22 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB, true);
+
+            /*
+            SQL = "SET ROLE \"CacheAdmin\"; " +
+                "COPY " + TargetTable + " FROM PROGRAM " +
+                "'bash /database/exchange/" + ConvertFunction + " " +
+                SourceFile +
+                "'; ";
+            bool Step23 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB, true);
+
+            SQL = "SELECT filename FROM " + TargetTable + " WHERE filename = '" + this.Target + ".csv' ; ";
+            //bool Step30 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB, true);
+            string Test = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL);
+            */
+            /*
+            SQL = "SELECT filename FROM " + Files + " WHERE filename = '" + this.Target + ".csv' ; ";
+            string Step40 = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL);
+            */
+            /*
+
             SQL = "SET ROLE \"CacheAdmin\"; " +
                 "DROP TABLE IF EXISTS files; " +
-                "CREATE TABLE files(filename text); " +
+                "CREATE TABLE files(" + this.Target + " text); " +
                 "ALTER TABLE files OWNER to \"CacheAdmin\"; " +
+                //"COPY (SELECT 1) TO PROGRAM 'chmod g+x /database/exchange/" + ConvertFunction + "';" +
                 "COPY files FROM PROGRAM " +
-                "'bash " + CacheDatabase.CacheDB.BulkTransferBashFile + " " +
-                CacheDatabase.CacheDB.BulkTransferMountPoint + " " +
-                "list " +
-                DiversityCollection.CacheDatabase.CacheDB.DatabaseName + "/" + this.Schema +
+                "'bash /database/exchange/" + ConvertFunction + " " + //CacheDatabase.CacheDB.BulkTransferBashFile + " " +
+                //CacheDatabase.CacheDB.BulkTransferMountPoint + " " +
+                //"list " +
+                "" + DiversityCollection.CacheDatabase.CacheDB.DatabaseName + "/" + this.Schema +
                 "'; " + //-maxdepth 1 -type f -printf \"% f\\n\"'; " +
                 "SELECT filename FROM files WHERE filename = '" + this.Target + ".csv' ; ";
-            //SQL = "DROP TABLE IF EXISTS files; " +
-            //    "CREATE TABLE files(filename text); " +
-            //    "COPY files FROM PROGRAM 'find " + DiversityCollection.CacheDatabase.CacheDB.DatabaseName + "/" + this.Schema + " -maxdepth 1 -type f -printf \"% f\\n\"'; " +
-            //    "SELECT filename FROM files WHERE filename = '" + this.Target + ".csv' ; ";
-            bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
+            */
+
+            SQL = "SET ROLE \"CacheAdmin\"; " +
+                "DROP TABLE IF EXISTS " + TargetTable + "; " +
+                "CREATE TABLE " + TargetTable + "(filename text); " +
+                "ALTER TABLE " + TargetTable + " OWNER to \"CacheAdmin\"; " +
+                "COPY " + TargetTable + " FROM PROGRAM " +
+                "'bash /database/exchange/" + ConvertFunction + " " +
+                SourceFile + "'; " +
+                "INSERT filename INTO " + TargetTable + " VALUES( '" + this.Target + ".csv') ; ";
+
+
+            //SQL = "SET ROLE \"CacheAdmin\"; " +
+            //    "DROP TABLE IF EXISTS " + TargetTable + "; " +
+            //    "CREATE TABLE " + TargetTable + "(filename text); " +
+            //    "ALTER TABLE " + TargetTable + " OWNER to \"CacheAdmin\"; " +
+            //    "COPY " + TargetTable + " FROM PROGRAM " +
+            //    "'bash /database/exchange/" + ConvertFunction + " " +
+            //    SourceFile + "'; " +
+            //    "SELECT filename FROM " + TargetTable + " WHERE filename = '" + this.Target + ".csv' ; ";
+
+
+            bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB, true);
+
+            //bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Message, true, true, true, false, "", DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
             {
                 Error += Message + ": " + SQL;
             }
             else
             {
-                SQL = "SELECT filename FROM files WHERE filename = '" + this.Target + ".csv' ; ";
+                SQL = "SELECT filename FROM " + TargetTable + " WHERE filename = '" + this.Target + ".csv' ; ";
                 Message = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteSkalar(SQL);
                 if (Message != this.Target + ".csv")
                 {
@@ -1140,10 +1261,6 @@ namespace DiversityCollection.CacheDatabase
             }
             // set the ownership
             SQL = "ALTER TABLE \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" OWNER TO \"CacheAdmin\"";//_" + this.SchemaPostgres + "\"; ";
-            //if (this.SchemaPostgres == "public")
-            //    SQL += "\"";
-            //else
-            //    SQL += "_" + this.SchemaPostgres + "\"; ";
             SqlForLog += "\r\n\r\n" + SQL;
             OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB);
             if (!OK)
@@ -1167,12 +1284,11 @@ namespace DiversityCollection.CacheDatabase
         private bool PostgresTransferViaFile_BashImport(ref string Error, ref string SQL)
         {
             string Message = "";
-             SQL = "COPY \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" FROM PROGRAM " +
-                "'bash " + CacheDatabase.CacheDB.BulkTransferBashFile + " " +
-                CacheDatabase.CacheDB.BulkTransferMountPoint + " " +
-                "conv " +
-                DiversityCollection.CacheDatabase.CacheDB.DatabaseName + "/" + this.Schema + "/" + this.Target + ".csv' " +
-                "with delimiter E'\t' csv; ";
+            SQL = "COPY \"" + this.SchemaPostgres + "\".\"" + this.TargetTemp + "\" FROM PROGRAM " +
+               "'bash " + CacheDatabase.CacheDB.BulkTransferBashFile + "_" +
+               CacheDatabase.CacheDB.BulkTransferMountPoint + " " +
+               DiversityCollection.CacheDatabase.CacheDB.DatabaseName + "/" + this.Schema + "/" + this.Target + ".csv' " +
+               "with (FORMAT csv, DELIMITER E'\t', NULL ''); ";
             bool OK = DiversityWorkbench.PostgreSQL.Connection.SqlExecuteNonQuery(SQL, ref Error, DiversityCollection.CacheDatabase.CacheDBsettings.Default.TimeoutCacheDB); // #314
             if (!OK)
             {

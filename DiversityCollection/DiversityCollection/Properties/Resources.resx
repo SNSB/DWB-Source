@@ -940,4 +940,13 @@
   <data name="DiversityCollectionCacheUpdateSchema_000036_to_000037" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000036_to_000037.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="DiversityCollectionCacheUpdatePG_000020_to_000021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000020_to_000021.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010032_to_010033" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010032_to_010033.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000021_to_000022" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000021_to_000022.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

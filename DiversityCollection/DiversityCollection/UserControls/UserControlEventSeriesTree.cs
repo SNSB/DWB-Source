@@ -23,7 +23,7 @@ namespace DiversityCollection.UserControls
         private Microsoft.Data.SqlClient.SqlDataAdapter _sqlDataAdapterEventSeriesUnit;
         private Microsoft.Data.SqlClient.SqlDataAdapter _sqlDataAdapterEventSeriesGeography;
 
-        private System.Drawing.Color _ColorOfNotPresentNodes = System.Drawing.Color.LightGray;
+        private System.Drawing.Color _ColorOfNotPresentNodes = System.Drawing.Color.Gray;
         private System.Drawing.Color _ColorOfNodes = System.Drawing.Color.Black;
 
         private enum OrderColumn { Locality, Date };
