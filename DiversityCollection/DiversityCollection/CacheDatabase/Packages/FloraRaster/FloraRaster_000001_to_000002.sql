@@ -379,7 +379,7 @@ CREATE OR REPLACE VIEW "#project#"."FloraRaster_TaxRef" AS
      LEFT JOIN "#project#"."FloraRaster__TaxRef_Analysis_VerantwortungBayerns" avb ON avb."NameID" = t."NameID"
      LEFT JOIN "#project#"."FloraRaster__TaxRef_Analysis_VerantwortungDeutschlands" avd ON avd."NameID" = t."NameID";
 
-ALTER TABLE "#project#"."FloraRaster_TaxRef"
+ALTER TABLE "#project#"."FloraRaster_TaxRef""FloraRaster_EndangeredSpeciesBase"
   OWNER TO "CacheAdmin";
 GRANT ALL ON TABLE "#project#"."FloraRaster_TaxRef" TO "CacheAdmin";
 GRANT SELECT ON TABLE "#project#"."FloraRaster_TaxRef" TO "CacheUser";

@@ -306,7 +306,7 @@ COMMENT ON COLUMN public."ABCD_Unit_Identification_References"."ID"
     IS 'Unique ID for the Unit, combined from IdentificationUnitID and SpecimenPartID';
 
 COMMENT ON COLUMN public."ABCD_Unit_Identification_References"."CitationDetail"
-    IS 'ABCD entity /Unit/Identification/References.Identification/Reference/CitationDetail. Retrieved from CacheCollectionSpecimenReference.ReferenceDetails';
+    IS 'ABCD entity /Unit/Identification/References.Identification/Reference/CitationDetail. Retrieved from CacheCollectionSpecimenReference.ReferenceDetails. Contains NameID or ExternalNameURI from DiversityTaxonNames';
 
 COMMENT ON COLUMN public."ABCD_Unit_Identification_References"."ReferenceGUID"
     IS 'ABCD entity /Unit/Identification/References.Identification/Reference/ReferenceGUID. Retrieved from CacheCollectionSpecimenReference.ReferenceID';

@@ -7,6 +7,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DiversityWorkbench.Forms
 {
@@ -7677,6 +7678,13 @@ namespace DiversityWorkbench.Forms
                         _DisplayZoomFactor = (float)1.25;
                     else if (dpi == 144)
                         _DisplayZoomFactor = (float)1.5;
+                    else
+                    {
+                        float dpiX = graphics.DpiX;
+                        float dpiY = graphics.DpiY;
+                        float dpiXY = (dpiX + dpiY) / 2;
+                        _DisplayZoomFactor = dpiXY * (float)1.5 / (float)144;
+                    }
                 }
                 return (float)_DisplayZoomFactor;
             }

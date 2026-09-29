@@ -63,6 +63,8 @@ namespace DiversityCollection.CacheDatabase
                 {
                     DiversityCollection.CacheDatabase.UserControlTransfer U = new UserControlTransfer(T);
                     T.I_Transfer = U;
+                    if (T.Target == "CacheMetadata")
+                        U.EnableSelection = false;
                     this.panelTransferSteps.Controls.Add(U);
                     U.Dock = DockStyle.Top;
                     U.BringToFront();

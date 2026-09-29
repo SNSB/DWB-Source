@@ -2728,6 +2728,8 @@ namespace DiversityWorkbench
             System.Data.DataTable dt = new System.Data.DataTable();
             try
             {
+                if (_SC == null && URL.Length > 0)
+                    setServerConnection(URL);
                 // #412 - restriction to existing DWB-Connection
                 if (_SC != null)
                 {
@@ -2735,6 +2737,8 @@ namespace DiversityWorkbench
                     _ProjectID = null;
                     // getting the server connection for the URL
                     setServerConnection(URL);
+                    if (_SC == null)
+                        return dt;
                     // Inserting the ID to start the query
                     string ID = DiversityWorkbench.WorkbenchUnit.getIDFromURI(URL);
                     string SQL = "SELECT NameID FROM " + _SC.Prefix() + "TaxonName N WHERE NameID = " + ID + " " +

@@ -14,9 +14,9 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
             var configuration = DwbServiceProviderAccessor.Instance?.GetRequiredService<IConfiguration>()
                                 ?? throw new InvalidOperationException("DwbServiceProviderAccessor.Instance is not initialized.");
             string settingValue = configuration["IndexFungorum:IndexFungorum_DetailListPrefix"];
-            _URL = settingValue + taxonName?.rdf_about;
+            _URL = settingValue + taxonName?.record_number;
             _DisplayText = taxonName?.nameComplete + " " + taxonName?.authorship ?? string.Empty;
-            Taxon = taxonName?.ns_Title ?? string.Empty;
+            Taxon = taxonName?.nameComplete ?? string.Empty;
             TaxonNameSinAuthor = taxonName?.nameComplete ?? string.Empty;
             AcceptedName = string.Empty;
             Family = taxonName?.family ?? string.Empty;
@@ -27,7 +27,7 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
             CommonNames = string.Empty; // TODO
             Status = string.Empty;
             Authors = taxonName?.authorship ?? string.Empty; // TODO ?
-            BasionymAuthors = taxonName?.basionymAuthorship?.ToString() ?? string.Empty; // TODO ?
+            BasionymAuthors = string.Empty; // TODO ?
             CombiningAuthors = string.Empty; // TODO ?
             Kingdom = string.Empty;
             Subkingdom = string.Empty;
@@ -39,11 +39,9 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
         }
         public class TaxonName
         {
-            public string rdf_about { get; set; } 
-            public string ns_Title { get; set; } 
-            public string owl_versionInfo { get; set; } 
-
-            public string genusPart { get; set; }
+            public string record_number { get; set; } 
+            public string current_name { get; set; } 
+           
             public string nameComplete
                 { get; set; } 
             public string specificEpithet { get; set; } 
@@ -51,18 +49,10 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
             public string infraspecificEpithet { get; set; }
             public string authorship { get; set; }
 
-            public string basionymAuthorship { get; set; }
-
-            public string combinationAuthorship { get; set; }
             public string year { get; set; } 
-            public string microReference { get; set; }
 
-            public string Common_publishedInCitation { get; set; }
-
-            public string rank { get; set; }
             public string rankString { get; set; } 
 
-            public string nomenclaturalCode { get; set; } 
             public string family { get; set; }
 
             public string genus { get; set; }
@@ -73,7 +63,6 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
 
         public class PublicationCitation
         {
-            public string rdf_nodeID { get; set; }
             public string year { get; set; } 
             public string title { get; set; } 
             public string volume   { get; set; }

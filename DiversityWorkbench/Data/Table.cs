@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiversityWorkbench.PostgreSQL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -109,7 +110,12 @@ namespace DiversityWorkbench.Data
             if (ConnectionString.Length == 0)
                 this._ConnectionString = DiversityWorkbench.Settings.ConnectionString;
             else
-                this._ConnectionString = ConnectionString;
+            {
+                if (DiversityWorkbench.Settings.ConnectionString.IndexOf("Password=") > -1 && ConnectionString.IndexOf("Password=") == -1 && ConnectionString.IndexOf("Integrated Security = True;") == -1)
+                    this._ConnectionString = DiversityWorkbench.Settings.ConnectionString;
+                else
+                    this._ConnectionString = ConnectionString;
+            }
         }
 
         public Table(string TableName, string Schema, string ConnectionString)

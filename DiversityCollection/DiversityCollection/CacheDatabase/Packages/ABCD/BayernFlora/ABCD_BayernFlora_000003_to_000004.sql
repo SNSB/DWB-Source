@@ -66,7 +66,7 @@ SELECT DISTINCT A."ID",
    FROM "#project#"."ABCD__UnitNoPart" AS A
    JOIN "#project#"."CacheIdentificationUnit" AS U
    ON U."IdentificationUnitID" = A."IdentificationUnitID"
-   AND (A."Identification_Taxon_ScientificName_Qualifier" NOT LIKE 'cf %'
+   AND (A."Identification_Taxon_ScientificName_Qualifier" NOT LIKE 'cf. %'
 		OR A."Identification_Taxon_ScientificName_Qualifier" IS NULL)
    JOIN "#project#"."CacheIdentification" AS I 
    ON U."IdentificationUnitID" = I."IdentificationUnitID"
@@ -110,7 +110,7 @@ SELECT DISTINCT A."ID",
    WHERE A."IdentificationUnitID" = I."IdentificationUnitID"
    AND U."IdentificationUnitID" = I."IdentificationUnitID"
    AND U."LastIdentificationCache" = I."TaxonomicName"
-   AND (A."Identification_Taxon_ScientificName_Qualifier" NOT LIKE 'cf %'
+   AND (A."Identification_Taxon_ScientificName_Qualifier" NOT LIKE 'cf. %'
 		OR A."Identification_Taxon_ScientificName_Qualifier" IS NULL)
    AND NOT I."NameID" IS NULL;
    

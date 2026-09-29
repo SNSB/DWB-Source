@@ -75,6 +75,11 @@ namespace DiversityCollection.CacheDatabase
 
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
+            if (this.comboBoxColumn.SelectedValue == null || this.comboBoxOperator.Text.Length == 0 || this.textBoxValue.Text.Length == 0)
+            {
+                MessageBox.Show("Please select a column, an operator and enter a value.");
+                return;
+            }
             this._WhereClause = "";
             this.labelFilter.Text = this._WhereClause;
         }
@@ -114,7 +119,23 @@ namespace DiversityCollection.CacheDatabase
         private void textBoxValue_TextChanged(object sender, EventArgs e)
         {
             if (this.textBoxValue.Text.Length > 0)
+            {
                 this.buttonAddFilter.BackColor = System.Drawing.Color.Red;
+
+                // let the user see that the button is active by flashing it a few times
+                this.buttonAddFilter.Visible = false;
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+                this.buttonAddFilter.Visible = true;
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+                this.buttonAddFilter.Visible = false;
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+                this.buttonAddFilter.Visible = true;
+                Application.DoEvents();
+            }
+            else this.buttonAddFilter.BackColor = System.Drawing.SystemColors.Control;
         }
 
         #endregion

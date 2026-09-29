@@ -24,7 +24,7 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
             IndexFungorumEntity indexEntity = (dwbEntity as IndexFungorumEntity);
             url = url.TrimEnd('/');
             int lastIndex = url.LastIndexOf('=');
-            string baseUrl = "http://www.indexfungorum.org/IXFWebService/Fungus.asmx/NameByKey?NameKey="; // to get the hierarchy we need to call another endpoint for indexfungorum
+            string baseUrl = "https://www.indexfungorum.org/IXFWebService/Fungus.asmx/NameByKey?NameKey="; // to get the hierarchy we need to call another endpoint for indexfungorum
             string currentId = url.Substring(lastIndex + 1);    // Everything after the '='
 
             if (!string.IsNullOrEmpty(currentId))
@@ -55,18 +55,34 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
             return dwbEntity;
         }
 
+        public string TransformUrl(string url)
+        {
+            if (string.IsNullOrEmpty(url))
+                return url;
+
+            // Replace old endpoint with new endpoint
+            if (url.Contains("NameByKeyRDF?NameLsid="))
+            {
+                url = url.Replace("NameByKeyRDF?NameLsid=", "NameByKey?NameKey=");
+            }
+
+            return url;
+        }
+
         public override async Task<T> CallWebServiceAsync<T>(
             string url, CancellationToken cancellationToken,
             DwbServiceEnums.HttpAction action = DwbServiceEnums.HttpAction.GET,
             HttpContent? content = null)
         {
             HttpResponseMessage? response;
+            
             try {
+                string transformedUrl = TransformUrl(url);
                 // Set a timeout of 1 minute
                 using var timeoutCts = new CancellationTokenSource(TimeSpan.FromMinutes(1));
                 using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeoutCts.Token);
 
-                response = await HttpClient.GetAsync(url, linkedCts.Token);
+                response = await HttpClient.GetAsync(transformedUrl, linkedCts.Token);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -273,7 +289,6 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
             return items.ToArray();
         }
 
-
         public override IndexFungorumEntity GetDwbApiDetailModel<T>(T tt)
         {
             try
@@ -290,51 +305,63 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
                 }
 
                 XDocument xDocument = XDocument.Parse(xml);
-                //// Define namespaces
-                XNamespace rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-                XNamespace taxonNameNs = "http://rs.tdwg.org/ontology/voc/TaxonName#";
-                XNamespace ns = "http://purl.org/dc/elements/1.1/";
-                XNamespace owl = "http://www.w3.org/2002/07/owl#";
-                XNamespace publicationCitationNs = "http://rs.tdwg.org/ontology/voc/PublicationCitation#";
 
-                XNamespace commonNs = "http://rs.tdwg.org/ontology/voc/Common#";
-                // Extract TaxonName data
-                var taxonNameElement = xDocument.Descendants(taxonNameNs + "TaxonName").FirstOrDefault();
+                var indexFungorumElement = xDocument.Descendants("IndexFungorum").FirstOrDefault();
+
+                if (indexFungorumElement == null)
+                {
+                    return null;
+                }
+
                 var taxonName = new TaxonName
                 {
-                    rdf_about = taxonNameElement?.Attribute(rdf + "about")?.Value ?? string.Empty,
-                    ns_Title = taxonNameElement?.Element(ns + "Title")?.Value ?? string.Empty,
-                    owl_versionInfo = taxonNameElement?.Element(owl + "versionInfo")?.Value ?? string.Empty,
-                    nameComplete = taxonNameElement?.Element(taxonNameNs + "nameComplete")?.Value ?? string.Empty,
-                    genusPart = taxonNameElement?.Element(taxonNameNs + "genusPart")?.Value ?? string.Empty,
-                    specificEpithet = taxonNameElement?.Element(taxonNameNs + "specificEpithet")?.Value ?? string.Empty,
-                    authorship = taxonNameElement?.Element(taxonNameNs + "authorship")?.Value ?? string.Empty,
-                    basionymAuthorship = taxonNameElement?.Element(taxonNameNs + "basionymAuthorship")?.Value ??
-                                         string.Empty,
-                    combinationAuthorship = taxonNameElement?.Element(taxonNameNs + "combinationAuthorship")?.Value ??
-                                            string.Empty,
-                    year = taxonNameElement?.Element(taxonNameNs + "year")?.Value ?? string.Empty,
-                    microReference = taxonNameElement?.Element(taxonNameNs + "microReference")?.Value ?? string.Empty,
-                    rankString = taxonNameElement?.Element(taxonNameNs + "rankString")?.Value ?? string.Empty,
-                    //NomenclaturalCode = taxonNameElement?.Element(taxonNameNs + "nomenclaturalCode")?.Attribute(rdf + "resource")?.Value,
-                    //HasBasionym = taxonNameElement?.Element(taxonNameNs + "hasBasionym")?.Attribute(rdf + "resource")?.Value
+                    nameComplete = indexFungorumElement?.Element("NAME_x0020_OF_x0020_FUNGUS")?.Value ?? string.Empty,
+                    authorship = indexFungorumElement?.Element("AUTHORS")?.Value ?? string.Empty,
+                    specificEpithet = indexFungorumElement?.Element("SPECIFIC_x0020_EPITHET")?.Value ?? string.Empty,
+                    rankString = indexFungorumElement?.Element("INFRASPECIFIC_x0020_RANK")?.Value ?? string.Empty,
+                    infraspecificEpithet = indexFungorumElement?.Element("INFRASPECIFIC_x0020_EPITHET")?.Value ?? string.Empty,
+                    year = indexFungorumElement?.Element("YEAR_x0020_OF_x0020_PUBLICATION")?.Value ?? string.Empty,
+                    family = indexFungorumElement?.Element("Family_x0020_name")?.Value ?? string.Empty,
+                    order = indexFungorumElement?.Element("Order_x0020_name")?.Value ?? string.Empty,
+                    genus = indexFungorumElement?.Element("Genus_x0020_name")?.Value ?? string.Empty,
+                    record_number = indexFungorumElement?.Element("RECORD_x0020_NUMBER")?.Value ?? string.Empty,
+                    current_name = indexFungorumElement?.Element("CURRENT_x0020_NAME")?.Value ?? string.Empty
                 };
-                // Extract PublicationCitation data
-                var publicationCitationElement = xDocument.Descendants(publicationCitationNs + "PublicationCitation")
-                    .FirstOrDefault();
+
+                // Build hierarchy from taxonomy fields
+                var hierarchyParts = new List<string>();
+                var kingdom = indexFungorumElement?.Element("Kingdom_x0020_name")?.Value;
+                var phylum = indexFungorumElement?.Element("Phylum_x0020_name")?.Value;
+                var subphylum = indexFungorumElement?.Element("Subphylum_x0020_name")?.Value;
+                var classElement = indexFungorumElement?.Element("Class_x0020_name")?.Value;
+                var subclass = indexFungorumElement?.Element("Subclass_x0020_name")?.Value;
+                var order = indexFungorumElement?.Element("Order_x0020_name")?.Value;
+                var family = indexFungorumElement?.Element("Family_x0020_name")?.Value;
+
+                if (!string.IsNullOrEmpty(kingdom)) hierarchyParts.Add(kingdom);
+                if (!string.IsNullOrEmpty(phylum)) hierarchyParts.Add(phylum);
+                if (!string.IsNullOrEmpty(subphylum)) hierarchyParts.Add(subphylum);
+                if (!string.IsNullOrEmpty(classElement)) hierarchyParts.Add(classElement);
+                if (!string.IsNullOrEmpty(subclass)) hierarchyParts.Add(subclass);
+                if (!string.IsNullOrEmpty(order)) hierarchyParts.Add(order);
+                if (!string.IsNullOrEmpty(family)) hierarchyParts.Add(family);
+
+                taxonName.hierarchy = string.Join(" > ", hierarchyParts);
+
                 var publicationCitation = new PublicationCitation
                 {
-                    //Year = int.TryParse(publicationCitationElement?.Element(publicationCitationNs + "year")?.Value, out int pubYear) ? pubYear : 0,
-                    //Title = publicationCitationElement?.Element(publicationCitationNs + "title")?.Value,
-                    //Volume = publicationCitationElement?.Element(publicationCitationNs + "volume")?.Value,
-                    //Number = publicationCitationElement?.Element(publicationCitationNs + "number")?.Value,
-                    //Pages = publicationCitationElement?.Element(publicationCitationNs + "pages")?.Value
+                    year = indexFungorumElement?.Element("YEAR_x0020_OF_x0020_PUBLICATION")?.Value ?? string.Empty,
+                    title = indexFungorumElement?.Element("pubAcceptedTitle")?.Value ?? string.Empty,
+                    volume = indexFungorumElement?.Element("VOLUME")?.Value ?? string.Empty,
+                    pages = indexFungorumElement?.Element("PAGE")?.Value ?? string.Empty
                 };
+
                 IndexFungorumEntity result = new IndexFungorumEntity
                 {
                     taxonName = taxonName,
                     publicationCitation = publicationCitation
                 };
+
                 return result;
             }
             catch (Exception ex)

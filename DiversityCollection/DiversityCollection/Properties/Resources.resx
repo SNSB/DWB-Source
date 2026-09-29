@@ -949,4 +949,19 @@
   <data name="DiversityCollectionCacheUpdatePG_000021_to_000022" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000021_to_000022.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="DiversityCollectionCacheUpdatePGSchema_000027_to_000028" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePGSchema_000027_to_000028.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdatePG_000022_to_000023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PostgresDatabaseUpdates\DiversityCollectionCacheUpdatePG_000022_to_000023.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdate_010033_to_010034" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdate_010033_to_010034.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionCacheUpdateSchema_000037_to_000038" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CacheDatabaseUpdates\DiversityCollectionCacheUpdateSchema_000037_to_000038.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DiversityCollectionUpdate_020657_to_020658" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DatabaseUpdates\DiversityCollectionUpdate_020657_to_020658.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

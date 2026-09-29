@@ -98,7 +98,8 @@ namespace DiversityWorkbench.UserControls
                 if (_creationProperties == null)
                 {
                     _creationProperties = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
-                    _creationProperties.UserDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\DiversityWorkbench\NETwebView";
+                    _creationProperties.UserDataFolder = GetUserDataFolder();
+                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile($"WebView2 UserDataFolder: {_creationProperties.UserDataFolder}");
                 }
                 return _creationProperties;
             }
@@ -108,16 +109,94 @@ namespace DiversityWorkbench.UserControls
             }
         }
 
+        private string GetUserDataFolder()
+        {
+            // Try multiple locations in order of preference
+            var possiblePaths = new[]
+            {
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DiversityWorkbench", "NETwebView"),
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DiversityWorkbench", "NETwebView"),
+        Path.Combine(Path.GetTempPath(), "DiversityWorkbench", "NETwebView")
+    };
+
+            foreach (var path in possiblePaths)
+            {
+                try
+                {
+                    // Try to create and verify write access
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+
+                    // Test write permission by creating a test file
+                    var testFile = Path.Combine(path, "test.tmp");
+                    File.WriteAllText(testFile, "test");
+                    File.Delete(testFile);
+
+                    // If we got here, we have full access
+                    return path;
+                }
+                catch (Exception ex)
+                {
+                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile($"Failed to use path {path}: {ex.Message}");
+                    // Continue to next path
+                }
+            }
+
+            // Last resort - use temp path without verification
+            var fallbackPath = Path.Combine(Path.GetTempPath(), "DiversityWorkbench", "NETwebView", Guid.NewGuid().ToString());
+            Directory.CreateDirectory(fallbackPath);
+            return fallbackPath;
+        }
+
         #region Construction
         public UserControlWebView()
         {
             // Initialize control
             InitializeComponent();
             webView2.CreationProperties = CreationProperties;
-            ////// Initialize webView2 control
-            ////InitializeWebView();
-            // this.Load += UserControlWebView_Load;
+
+            // Handle the form/control load to initialize WebView2
+            this.Load += UserControlWebView_Load;
         }
+
+        private async void UserControlWebView_Load(object sender, EventArgs e)
+        {
+            if (!DesignMode)
+            {
+                await InitializeAsync();
+            }
+        }
+
+        public async Task InitializeAsync()
+        {
+            try
+            {
+                await webView2.EnsureCoreWebView2Async();
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile($"WebView2 initialization failed with access denied: {ex.Message}. UserDataFolder: {CreationProperties.UserDataFolder}");
+                throw new InvalidOperationException("Unable to initialize web browser. Please check application permissions.", ex);
+            }
+            catch (Exception ex)
+            {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile($"WebView2 initialization failed: {ex.Message}");
+                throw;
+            }
+        }
+
+        //public UserControlWebView()
+        //{
+        //    // Initialize control
+        //    InitializeComponent();
+        //    webView2.CreationProperties = CreationProperties;
+
+        //    ////// Initialize webView2 control
+        //    ////InitializeWebView();
+        //    // this.Load += UserControlWebView_Load;
+        //}
 
         public UserControlWebView(CoreWebView2CreationProperties creationProperties = null)
         {

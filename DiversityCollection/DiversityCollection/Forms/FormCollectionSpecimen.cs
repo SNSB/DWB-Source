@@ -25016,6 +25016,7 @@ namespace DiversityCollection.Forms
                             this.toolStripButtonOverviewHierarchyNewIdentAgent.Visible = false;
                         }
 
+                        this.toolStripButtonOverviewHierarchyNewIdentification.Visible = CanInsertTable && ShowIdentificationToolStripButtons;
                         this.toolStripButtonOverviewHierarchyNewConfirmation.Visible = CanInsertTable && ShowIdentificationToolStripButtons;
                         this.toolStripButtonOverviewHierarchyIdentificationToBase.Visible = CanUpdateTable && ShowIdentificationToolStripButtons;
                         this.toolStripButtonOverviewHierarchyIdentificationToTop.Visible = CanUpdateTable && ShowIdentificationToolStripButtons;
@@ -36567,7 +36568,7 @@ namespace DiversityCollection.Forms
         {
             try
             {
-                DiversityWorkbench.Import.DataTable DTSpecimenIdentifier = this.ImportWizardDataTable("IdentifierSpecimen", "CollectionSpecimen", "Identifier", DiversityWorkbench.Import.DataTable.Parallelity.parallel, (int)DiversityCollection.Forms.FormCollectionSpecimen.ImportWizardMainTables.ExternalIdentifier, "ID, CollectionSpecimenID, RowGIUD", "");//, ReferencedTable
+                DiversityWorkbench.Import.DataTable DTSpecimenIdentifier = this.ImportWizardDataTable("IdentifierSpecimen", "CollectionSpecimen", "Identifier", DiversityWorkbench.Import.DataTable.Parallelity.parallel, (int)DiversityCollection.Forms.FormCollectionSpecimen.ImportWizardMainTables.ExternalIdentifier, "ID, CollectionSpecimenID, RowGUID", "");//, ReferencedTable
                 DTSpecimenIdentifier.DataColumns["CollectionSpecimenID"].ForeignRelationColumn = "CollectionSpecimenID";
                 DTSpecimenIdentifier.DataColumns["CollectionSpecimenID"].ForeignRelationTable = "CollectionSpecimen";
                 DTSpecimenIdentifier.DataColumns["CollectionSpecimenID"].ForeignRelationTableAlias = "CollectionSpecimen";

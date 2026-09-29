@@ -1308,12 +1308,15 @@ namespace DiversityCollection
                 case "gall":
                     I = (int)OverviewImageUnitPart.Gall;
                     break;
+                case "archaebacterium":
                 case "archaea":
                     I = (int)OverviewImageTableOrField.Archaea;
                     break;
+                case "chromist":
                 case "chromista":
                     I = (int)OverviewImageTableOrField.Chromista;
                     break;
+                case "protozoan":
                 case "protozoa":
                     I = (int)OverviewImageTableOrField.Protozoa;
                     break;

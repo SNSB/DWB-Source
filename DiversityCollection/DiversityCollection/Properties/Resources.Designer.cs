@@ -924,6 +924,30 @@ namespace DiversityCollection.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die 
+        ///declare @CurrentVersion varchar(10)
+        ///declare @ScriptVersion varchar(10)
+        ///set @CurrentVersion = (SELECT [dbo].[Version]())
+        ///set @CurrentVersion = (SELECT REPLACE(@CurrentVersion, &apos;/&apos;, &apos;.&apos;))
+        ///set @ScriptVersion = &apos;01.00.33&apos;
+        ///IF (@CurrentVersion &lt;&gt; @ScriptVersion)
+        ///BEGIN
+        ///declare @Message nvarchar (199)
+        ///set @Message = &apos;WRONG VERION. Script is scheduled as update for version &apos; + @ScriptVersion + &apos;. Current version = &apos; + @CurrentVersion
+        ///RAISERROR (@Message, 18, 1) 
+        ///END
+        ///GO
+        ///
+        ///
+        ///--########################### [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionCacheUpdate_010033_to_010034 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionCacheUpdate_010033_to_010034", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 
         ///--#####################################################################################################################
         ///--######   Roles   ####################################################################################################
         ///--#####################################################################################################################
@@ -1313,6 +1337,19 @@ namespace DiversityCollection.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die --#####################################################################################################################
+        ///--######   Adaptions to get Name Details from DTN   ###################################################################
+        ///--#####################################################################################################################
+        ///--#####################################################################################################################
+        ///--######   TaxonSynonymy - A [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionCacheUpdatePG_000022_to_000023 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionCacheUpdatePG_000022_to_000023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die --#####################################################################################################################
         ///--#####################################################################################################################
         ///--Skript for Update of Postgres project to version 1
         ///--replace &quot;#project#&quot; with Name of the project
@@ -1686,6 +1723,20 @@ namespace DiversityCollection.Properties {
         internal static string DiversityCollectionCacheUpdatePGSchema_000026_to_000027 {
             get {
                 return ResourceManager.GetString("DiversityCollectionCacheUpdatePGSchema_000026_to_000027", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die --#####################################################################################################################
+        ///--#####################################################################################################################
+        ///--Skript for Update of Postgres project to version 28
+        ///--replace &quot;#project#&quot; with Name of the project
+        ///--the string at the begin of the line --## is used to mark end and begin of a command
+        ///--############################################################################## [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionCacheUpdatePGSchema_000027_to_000028 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionCacheUpdatePGSchema_000027_to_000028", resourceCulture);
             }
         }
         
@@ -2334,6 +2385,21 @@ namespace DiversityCollection.Properties {
         internal static string DiversityCollectionCacheUpdateSchema_000036_to_000037 {
             get {
                 return ResourceManager.GetString("DiversityCollectionCacheUpdateSchema_000036_to_000037", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 
+        ///--#####################################################################################################################
+        ///--######   Issue #451  ################################################################################################
+        ///--#####################################################################################################################
+        ///
+        ///--#####################################################################################################################
+        ///--######   Adding column [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionCacheUpdateSchema_000037_to_000038 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionCacheUpdateSchema_000037_to_000038", resourceCulture);
             }
         }
         
@@ -5755,6 +5821,28 @@ namespace DiversityCollection.Properties {
         internal static string DiversityCollectionUpdate_020656_to_020657 {
             get {
                 return ResourceManager.GetString("DiversityCollectionUpdate_020656_to_020657", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die declare @CurrentVersion varchar(10)
+        ///declare @ScriptVersion varchar(10)
+        ///set @CurrentVersion = (SELECT [dbo].[Version]())
+        ///set @CurrentVersion = (SELECT REPLACE(@CurrentVersion, &apos;/&apos;, &apos;.&apos;))
+        ///set @ScriptVersion = &apos;02.06.57&apos;
+        ///IF (@CurrentVersion &lt;&gt; @ScriptVersion)
+        ///BEGIN
+        ///declare @Message nvarchar (199)
+        ///set @Message = &apos;WRONG VERION. Script is scheduled as update for version &apos; + @ScriptVersion + &apos;. Current version = &apos; + @CurrentVersion
+        ///RAISERROR (@Message, 18, 1) 
+        ///END
+        ///GO
+        ///
+        ///--############################### [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string DiversityCollectionUpdate_020657_to_020658 {
+            get {
+                return ResourceManager.GetString("DiversityCollectionUpdate_020657_to_020658", resourceCulture);
             }
         }
         

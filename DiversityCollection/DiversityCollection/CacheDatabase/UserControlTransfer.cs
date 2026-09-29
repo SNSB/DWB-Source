@@ -32,7 +32,18 @@ namespace DiversityCollection.CacheDatabase
         }
 
         public DiversityCollection.CacheDatabase.InterfaceCacheDB _InterfaceCacheDB;
-        
+
+        private bool _EnableSelection = true;
+        public bool EnableSelection
+        {
+            get { return _EnableSelection; }
+            set
+            {
+                _EnableSelection = value;
+                this.checkBoxTransfer.Enabled = value;
+            }
+        }
+
         #endregion
 
         #region Construction
@@ -176,7 +187,8 @@ namespace DiversityCollection.CacheDatabase
 
         public void SetDoTransfer(bool DoTransfer)
         {
-            this.checkBoxTransfer.Checked = DoTransfer;
+            if (EnableSelection)
+                this.checkBoxTransfer.Checked = DoTransfer;
         }
 
         public void SetTransferStart()

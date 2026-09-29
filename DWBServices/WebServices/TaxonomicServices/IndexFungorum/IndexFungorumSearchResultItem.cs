@@ -47,7 +47,7 @@ namespace DWBServices.WebServices.TaxonomicServices.IndexFungorum
             var configuration = DwbServiceProviderAccessor.Instance?.GetRequiredService<IConfiguration>()
                                 ?? throw new InvalidOperationException("DwbServiceProviderAccessor.Instance is not initialized.");
             string settingValue = configuration["IndexFungorum:IndexFungorum_BaseAddress"];
-            string QueryListPrefix = settingValue + "NameByKeyRDF?NameLsid=";
+            string QueryListPrefix = settingValue + "NameByKey?NameKey=";
             this._URL = QueryListPrefix + RECORD_x0020_NUMBER;
             _DisplayText = NAME_x0020_OF_x0020_FUNGUS + " " + AUTHORS ?? string.Empty;
             Taxon = NAME_x0020_OF_x0020_FUNGUS ?? string.Empty;

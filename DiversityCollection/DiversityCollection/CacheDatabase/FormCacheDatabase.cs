@@ -6134,11 +6134,13 @@ namespace DiversityCollection.CacheDatabase
                 "T.InfraspecificEpithet <> '' THEN ' ' + CASE WHEN T.TaxonomicRank IS NULL OR " +
                 "T.TaxonomicRank = '' OR T.NomenclaturalCode = 3 THEN '' ELSE T.TaxonomicRank + ' ' END + T.InfraspecificEpithet ELSE '' END END + CASE WHEN T.NonNomenclaturalNameSuffix IS NULL  " +
                 "THEN '' ELSE ' ' + T.NonNomenclaturalNameSuffix END AS AcceptedNameSinAuthor, T.LogUpdatedWhen " +
-                "FROM            " + PrefixDB + "TaxonName T INNER JOIN " +
+                ", \r\nT.InfragenericEpithet, T.SpeciesEpithet, T.InfraspecificEpithet, \r\ncase when T.NomenclaturalCode = 3 /* Zoology */\r\n\tthen \r\n\t\tcase when  T.BasionymAuthors is null or T.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse \r\n\t\t\tcase when T.IsRecombination = 1 then ' (' else ' ' end +\r\n\t\t\tRTRIM(T.BasionymAuthors) +\r\n\t\t\tcase when T.IsRecombination = 1 and NOT T.BasionymAuthorsYear IS null \r\n\t\t\t\tthen ', ' + cast(T.BasionymAuthorsYear AS varchar) \r\n\t\t\t\telse case when T.IsRecombination = 0 and not T.YearOfPubl is null \r\n\t\t\t\t\tthen ', ' + cast(T.YearOfPubl AS varchar) \r\n\t\t\t\t\telse '' end\r\n\t\t\tend\r\n\t\t\t+ case when T.IsRecombination = 1 then ')' else '' end\r\n\t\tend +\r\n\t\tcase when T.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T.NonNomenclaturalNameSuffix) end\r\n\telse\r\n\t\tcase when  T.BasionymAuthors is null or T.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse case when T.CombiningAuthors is null or T.CombiningAuthors = '' \r\n\t\t\tthen  \t'' + RTRIM(T.BasionymAuthors) +\r\n\t\t\t\tcase when  T.SanctioningAuthor is null or T.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T.SanctioningAuthor) end \r\n\t\t\telse \t' (' + RTRIM(T.BasionymAuthors) +\r\n\t\t\t\tcase when  T.SanctioningAuthor is null or T.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T.SanctioningAuthor) end\r\n\t\t\t\t+ ') ' \r\n\t\t\tend \r\n\t\tend +\r\n\t\tcase when  T.CombiningAuthors is null or T.CombiningAuthors = ''  then '' else RTRIM(T.CombiningAuthors) end +\r\n\t\tcase when T.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T.NonNomenclaturalNameSuffix) end\r\n\tend\r\nAS Authors " +
+                ",\r\nT.BasionymAuthors, T.CombiningAuthors, T.SanctioningAuthor, T.NonNomenclaturalNameSuffix, T.IsRecombination, T.YearOfPubl, T.NomenclaturalCode " +
+                "\r\nFROM            " + PrefixDB + "TaxonName T INNER JOIN " +
                 "" + PrefixDB + "TaxonAcceptedName A ON T.NameID = A.NameID " +
                 "WHERE        (T.IgnoreButKeepForReference = 0) AND (A.IgnoreButKeepForReference = 0) AND A.ProjectID = " + ProjectID.ToString() + " " +
 
-                "UNION " +
+                "\r\n\r\nUNION\r\n\r\n " +
 
                 "SELECT        TOP (100) PERCENT T1.NameID, '" + BaseURL + "' AS BaseURL, T1.TaxonNameCache AS TaxonName,  " +
                 "T.NameID AS AcceptedNameID, T.TaxonNameCache AS AcceptedName, T1.TaxonomicRank, T1.GenusOrSupragenericName, T1.SpeciesGenusNameID,  " +
@@ -6160,7 +6162,9 @@ namespace DiversityCollection.CacheDatabase
                 "T.InfraspecificEpithet <> '' THEN ' ' + CASE WHEN T.TaxonomicRank IS NULL OR " +
                 "T.TaxonomicRank = '' OR T.NomenclaturalCode = 3 THEN '' ELSE T.TaxonomicRank + ' ' END + T.InfraspecificEpithet ELSE '' END END + CASE WHEN T.NonNomenclaturalNameSuffix IS NULL  " +
                 "THEN '' ELSE ' ' + T.NonNomenclaturalNameSuffix END AS AcceptedNameSinAuthor, T1.LogUpdatedWhen " +
-                "FROM            " + PrefixDB + "TaxonSynonymy AS S INNER JOIN " +
+                ", \r\nT1.InfragenericEpithet, T1.SpeciesEpithet, T1.InfraspecificEpithet, \r\ncase when T1.NomenclaturalCode = 3 /* Zoology */\r\n\tthen \r\n\t\tcase when  T1.BasionymAuthors is null or T1.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse \r\n\t\t\tcase when T1.IsRecombination = 1 then ' (' else ' ' end +\r\n\t\t\tRTRIM(T1.BasionymAuthors) +\r\n\t\t\tcase when T1.IsRecombination = 1 and NOT T1.BasionymAuthorsYear IS null \r\n\t\t\t\tthen ', ' + cast(T1.BasionymAuthorsYear AS varchar) \r\n\t\t\t\telse case when T1.IsRecombination = 0 and not T1.YearOfPubl is null \r\n\t\t\t\t\tthen ', ' + cast(T1.YearOfPubl AS varchar) \r\n\t\t\t\t\telse '' end\r\n\t\t\tend\r\n\t\t\t+ case when T1.IsRecombination = 1 then ')' else '' end\r\n\t\tend +\r\n\t\tcase when T1.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T1.NonNomenclaturalNameSuffix) end\r\n\telse\r\n\t\tcase when  T1.BasionymAuthors is null or T1.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse case when T1.CombiningAuthors is null or T1.CombiningAuthors = '' \r\n\t\t\tthen  \t'' + RTRIM(T1.BasionymAuthors) +\r\n\t\t\t\tcase when  T1.SanctioningAuthor is null or T1.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T1.SanctioningAuthor) end \r\n\t\t\telse \t' (' + RTRIM(T1.BasionymAuthors) +\r\n\t\t\t\tcase when  T1.SanctioningAuthor is null or T1.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T1.SanctioningAuthor) end\r\n\t\t\t\t+ ') ' \r\n\t\t\tend \r\n\t\tend +\r\n\t\tcase when  T1.CombiningAuthors is null or T1.CombiningAuthors = ''  then '' else RTRIM(T1.CombiningAuthors) end +\r\n\t\tcase when T1.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T1.NonNomenclaturalNameSuffix) end\r\n\tend\r\nAS Authors " +
+                ",\r\nT1.BasionymAuthors, T1.CombiningAuthors, T1.SanctioningAuthor, T1.NonNomenclaturalNameSuffix, T1.IsRecombination, T1.YearOfPubl, T1.NomenclaturalCode " +
+                "\r\nFROM            " + PrefixDB + "TaxonSynonymy AS S INNER JOIN " +
                 "" + PrefixDB + "TaxonName AS T ON S.SynNameID = T.NameID INNER JOIN " +
                 "" + PrefixDB + "TaxonAcceptedName AS A ON T.NameID = A.NameID AND  " +
                 "S.ProjectID = A.ProjectID INNER JOIN " +
@@ -6168,7 +6172,7 @@ namespace DiversityCollection.CacheDatabase
                 "WHERE        (S.IgnoreButKeepForReference = 0) AND (A.IgnoreButKeepForReference = 0) AND (T.IgnoreButKeepForReference = 0) " +
                 "AND A.ProjectID = " + ProjectID.ToString() + " " +
 
-                "UNION " +
+                "\r\n\r\nUNION\r\n\r\n " +
 
                 "SELECT        TOP 100 PERCENT T.NameID, '" + BaseURL + "' AS BaseURL, T.TaxonNameCache AS TaxonName,  " +
                 "T.NameID AS AcceptedNameID, T.TaxonNameCache AS AcceptedName, T.TaxonomicRank, T.GenusOrSupragenericName, T.SpeciesGenusNameID,  " +
@@ -6190,7 +6194,9 @@ namespace DiversityCollection.CacheDatabase
                 "T.InfraspecificEpithet <> '' THEN ' ' + CASE WHEN T.TaxonomicRank IS NULL OR " +
                 "T.TaxonomicRank = '' OR T.NomenclaturalCode = 3 THEN '' ELSE T.TaxonomicRank + ' ' END + T.InfraspecificEpithet ELSE '' END END + CASE WHEN T.NonNomenclaturalNameSuffix IS NULL  " +
                 "THEN '' ELSE ' ' + T.NonNomenclaturalNameSuffix END AS AcceptedNameSinAuthor, T.LogUpdatedWhen " +
-                "FROM            " + PrefixDB + "TaxonName T " +
+                ", \r\nT.InfragenericEpithet, T.SpeciesEpithet, T.InfraspecificEpithet, \r\ncase when T.NomenclaturalCode = 3 /* Zoology */\r\n\tthen \r\n\t\tcase when  T.BasionymAuthors is null or T.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse \r\n\t\t\tcase when T.IsRecombination = 1 then ' (' else ' ' end +\r\n\t\t\tRTRIM(T.BasionymAuthors) +\r\n\t\t\tcase when T.IsRecombination = 1 and NOT T.BasionymAuthorsYear IS null \r\n\t\t\t\tthen ', ' + cast(T.BasionymAuthorsYear AS varchar) \r\n\t\t\t\telse case when T.IsRecombination = 0 and not T.YearOfPubl is null \r\n\t\t\t\t\tthen ', ' + cast(T.YearOfPubl AS varchar) \r\n\t\t\t\t\telse '' end\r\n\t\t\tend\r\n\t\t\t+ case when T.IsRecombination = 1 then ')' else '' end\r\n\t\tend +\r\n\t\tcase when T.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T.NonNomenclaturalNameSuffix) end\r\n\telse\r\n\t\tcase when  T.BasionymAuthors is null or T.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse case when T.CombiningAuthors is null or T.CombiningAuthors = '' \r\n\t\t\tthen  \t'' + RTRIM(T.BasionymAuthors) +\r\n\t\t\t\tcase when  T.SanctioningAuthor is null or T.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T.SanctioningAuthor) end \r\n\t\t\telse \t' (' + RTRIM(T.BasionymAuthors) +\r\n\t\t\t\tcase when  T.SanctioningAuthor is null or T.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T.SanctioningAuthor) end\r\n\t\t\t\t+ ') ' \r\n\t\t\tend \r\n\t\tend +\r\n\t\tcase when  T.CombiningAuthors is null or T.CombiningAuthors = ''  then '' else RTRIM(T.CombiningAuthors) end +\r\n\t\tcase when T.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T.NonNomenclaturalNameSuffix) end\r\n\tend\r\nAS Authors " +
+                ",\r\nT.BasionymAuthors, T.CombiningAuthors, T.SanctioningAuthor, T.NonNomenclaturalNameSuffix, T.IsRecombination, T.YearOfPubl, T.NomenclaturalCode " +
+                "\r\nFROM            " + PrefixDB + "TaxonName T " +
                 ",  " + PrefixDB + "TaxonNameProject P " +
                 "WHERE        T.IgnoreButKeepForReference = 0 AND T.NameID NOT IN " +
                 "(SELECT        NameID " +
@@ -6201,7 +6207,7 @@ namespace DiversityCollection.CacheDatabase
                 "FROM            " + PrefixDB + "TaxonSynonymy) " +
                 "AND P.NameID = T.NameID AND P.ProjectID = " + ProjectID.ToString() + " " +
 
-                "UNION " +
+                "\r\n\r\nUNION\r\n\r\n " +
 
                 "SELECT        TOP (100) PERCENT T1.NameID, '" + BaseURL + "' AS BaseURL, T1.TaxonNameCache AS TaxonName,  " +
                 "T.NameID AS AcceptedNameID, T.TaxonNameCache AS AcceptedName, T1.TaxonomicRank, T1.GenusOrSupragenericName, T1.SpeciesGenusNameID,  " +
@@ -6223,7 +6229,9 @@ namespace DiversityCollection.CacheDatabase
                 "T.InfraspecificEpithet <> '' THEN ' ' + CASE WHEN T.TaxonomicRank IS NULL OR " +
                 "T.TaxonomicRank = '' OR T.NomenclaturalCode = 3 THEN '' ELSE T.TaxonomicRank + ' ' END + T.InfraspecificEpithet ELSE '' END END + CASE WHEN T.NonNomenclaturalNameSuffix IS NULL  " +
                 "THEN '' ELSE ' ' + T.NonNomenclaturalNameSuffix END AS AcceptedNameSinAuthor, T1.LogUpdatedWhen " +
-                "FROM            " + PrefixDB + "TaxonAcceptedName AS A INNER JOIN " +
+                ", \r\nT1.InfragenericEpithet, T1.SpeciesEpithet, T1.InfraspecificEpithet, \r\ncase when T1.NomenclaturalCode = 3 /* Zoology */\r\n\tthen \r\n\t\tcase when  T1.BasionymAuthors is null or T1.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse \r\n\t\t\tcase when T1.IsRecombination = 1 then ' (' else ' ' end +\r\n\t\t\tRTRIM(T1.BasionymAuthors) +\r\n\t\t\tcase when T1.IsRecombination = 1 and NOT T1.BasionymAuthorsYear IS null \r\n\t\t\t\tthen ', ' + cast(T1.BasionymAuthorsYear AS varchar) \r\n\t\t\t\telse case when T1.IsRecombination = 0 and not T1.YearOfPubl is null \r\n\t\t\t\t\tthen ', ' + cast(T1.YearOfPubl AS varchar) \r\n\t\t\t\t\telse '' end\r\n\t\t\tend\r\n\t\t\t+ case when T1.IsRecombination = 1 then ')' else '' end\r\n\t\tend +\r\n\t\tcase when T1.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T1.NonNomenclaturalNameSuffix) end\r\n\telse\r\n\t\tcase when  T1.BasionymAuthors is null or T1.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse case when T1.CombiningAuthors is null or T1.CombiningAuthors = '' \r\n\t\t\tthen  \t'' + RTRIM(T1.BasionymAuthors) +\r\n\t\t\t\tcase when  T1.SanctioningAuthor is null or T1.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T1.SanctioningAuthor) end \r\n\t\t\telse \t' (' + RTRIM(T1.BasionymAuthors) +\r\n\t\t\t\tcase when  T1.SanctioningAuthor is null or T1.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T1.SanctioningAuthor) end\r\n\t\t\t\t+ ') ' \r\n\t\t\tend \r\n\t\tend +\r\n\t\tcase when  T1.CombiningAuthors is null or T1.CombiningAuthors = ''  then '' else RTRIM(T1.CombiningAuthors) end +\r\n\t\tcase when T1.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T1.NonNomenclaturalNameSuffix) end\r\n\tend\r\nAS Authors " +
+                ",\r\nT1.BasionymAuthors, T1.CombiningAuthors, T1.SanctioningAuthor, T1.NonNomenclaturalNameSuffix, T1.IsRecombination, T1.YearOfPubl, T1.NomenclaturalCode " +
+                "\r\nFROM            " + PrefixDB + "TaxonAcceptedName AS A INNER JOIN " +
                 "" + PrefixDB + "TaxonName AS T ON A.NameID = T.NameID INNER JOIN " +
                 "" + PrefixDB + "TaxonSynonymy AS S1 ON T.NameID = S1.SynNameID AND  " +
                 "A.ProjectID = S1.ProjectID INNER JOIN " +
@@ -6232,7 +6240,7 @@ namespace DiversityCollection.CacheDatabase
                 "WHERE        (S.IgnoreButKeepForReference = 0) AND (A.IgnoreButKeepForReference = 0) AND (T.IgnoreButKeepForReference = 0) AND (S1.IgnoreButKeepForReference = 0) AND  " +
                 "A.ProjectID = " + ProjectID.ToString() + " AND S.ProjectID = " + ProjectID.ToString() + " AND S1.ProjectID = " + ProjectID.ToString() + " " +
 
-                "UNION " +
+                "\r\n\r\nUNION\r\n\r\n " +
 
                 "SELECT        TOP (100) PERCENT T1.NameID, '" + BaseURL + "' AS BaseURL, T1.TaxonNameCache AS TaxonName,  " +
                 "T.NameID AS AcceptedNameID, T.TaxonNameCache AS AcceptedName, T1.TaxonomicRank, T1.GenusOrSupragenericName, T1.SpeciesGenusNameID,  " +
@@ -6254,7 +6262,9 @@ namespace DiversityCollection.CacheDatabase
                 "T.InfraspecificEpithet <> '' THEN ' ' + CASE WHEN T.TaxonomicRank IS NULL OR " +
                 "T.TaxonomicRank = '' OR T.NomenclaturalCode = 3 THEN '' ELSE T.TaxonomicRank + ' ' END + T.InfraspecificEpithet ELSE '' END END + CASE WHEN T.NonNomenclaturalNameSuffix IS NULL  " +
                 "THEN '' ELSE ' ' + T.NonNomenclaturalNameSuffix END AS AcceptedNameSinAuthor, T1.LogUpdatedWhen " +
-                "FROM            " + PrefixDB + "TaxonSynonymy AS S2 INNER JOIN " +
+                ", \r\nT1.InfragenericEpithet, T1.SpeciesEpithet, T1.InfraspecificEpithet, \r\ncase when T1.NomenclaturalCode = 3 /* Zoology */\r\n\tthen \r\n\t\tcase when  T1.BasionymAuthors is null or T1.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse \r\n\t\t\tcase when T1.IsRecombination = 1 then ' (' else ' ' end +\r\n\t\t\tRTRIM(T1.BasionymAuthors) +\r\n\t\t\tcase when T1.IsRecombination = 1 and NOT T1.BasionymAuthorsYear IS null \r\n\t\t\t\tthen ', ' + cast(T1.BasionymAuthorsYear AS varchar) \r\n\t\t\t\telse case when T1.IsRecombination = 0 and not T1.YearOfPubl is null \r\n\t\t\t\t\tthen ', ' + cast(T1.YearOfPubl AS varchar) \r\n\t\t\t\t\telse '' end\r\n\t\t\tend\r\n\t\t\t+ case when T1.IsRecombination = 1 then ')' else '' end\r\n\t\tend +\r\n\t\tcase when T1.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T1.NonNomenclaturalNameSuffix) end\r\n\telse\r\n\t\tcase when  T1.BasionymAuthors is null or T1.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse case when T1.CombiningAuthors is null or T1.CombiningAuthors = '' \r\n\t\t\tthen  \t'' + RTRIM(T1.BasionymAuthors) +\r\n\t\t\t\tcase when  T1.SanctioningAuthor is null or T1.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T1.SanctioningAuthor) end \r\n\t\t\telse \t' (' + RTRIM(T1.BasionymAuthors) +\r\n\t\t\t\tcase when  T1.SanctioningAuthor is null or T1.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T1.SanctioningAuthor) end\r\n\t\t\t\t+ ') ' \r\n\t\t\tend \r\n\t\tend +\r\n\t\tcase when  T1.CombiningAuthors is null or T1.CombiningAuthors = ''  then '' else RTRIM(T1.CombiningAuthors) end +\r\n\t\tcase when T1.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T1.NonNomenclaturalNameSuffix) end\r\n\tend\r\nAS Authors " +
+                ",\r\nT1.BasionymAuthors, T1.CombiningAuthors, T1.SanctioningAuthor, T1.NonNomenclaturalNameSuffix, T1.IsRecombination, T1.YearOfPubl, T1.NomenclaturalCode " +
+                "\r\nFROM            " + PrefixDB + "TaxonSynonymy AS S2 INNER JOIN " +
                 "" + PrefixDB + "TaxonAcceptedName AS A INNER JOIN " +
                 "" + PrefixDB + "TaxonName AS T ON A.NameID = T.NameID ON S2.SynNameID = T.NameID AND  " +
                 "S2.ProjectID = A.ProjectID INNER JOIN " +
@@ -6266,7 +6276,7 @@ namespace DiversityCollection.CacheDatabase
                 "WHERE        (S.IgnoreButKeepForReference = 0) AND (A.IgnoreButKeepForReference = 0) AND (T.IgnoreButKeepForReference = 0) AND (S1.IgnoreButKeepForReference = 0) AND  " +
                 "(S2.IgnoreButKeepForReference = 0) AND A.ProjectID = " + ProjectID.ToString() + " AND S.ProjectID = " + ProjectID.ToString() + " AND S1.ProjectID = " + ProjectID.ToString() + " AND S2.ProjectID = " + ProjectID.ToString() + " " +
 
-                "UNION " +
+                "\r\n\r\nUNION\r\n\r\n " +
 
                 "SELECT        TOP (100) PERCENT T1.NameID, '" + BaseURL + "' AS BaseURL, T1.TaxonNameCache AS TaxonName,  " +
                 "T.NameID AS AcceptedNameID, T.TaxonNameCache AS AcceptedName, T1.TaxonomicRank, T1.GenusOrSupragenericName, T1.SpeciesGenusNameID,  " +
@@ -6288,7 +6298,9 @@ namespace DiversityCollection.CacheDatabase
                 "T.InfraspecificEpithet <> '' THEN ' ' + CASE WHEN T.TaxonomicRank IS NULL OR " +
                 "T.TaxonomicRank = '' OR T.NomenclaturalCode = 3 THEN '' ELSE T.TaxonomicRank + ' ' END + T.InfraspecificEpithet ELSE '' END END + CASE WHEN T.NonNomenclaturalNameSuffix IS NULL  " +
                 "THEN '' ELSE ' ' + T.NonNomenclaturalNameSuffix END AS AcceptedNameSinAuthor, T1.LogUpdatedWhen " +
-                "FROM            " + PrefixDB + "TaxonSynonymy AS S3 INNER JOIN " +
+                ", \r\nT1.InfragenericEpithet, T1.SpeciesEpithet, T1.InfraspecificEpithet, \r\ncase when T1.NomenclaturalCode = 3 /* Zoology */\r\n\tthen \r\n\t\tcase when  T1.BasionymAuthors is null or T1.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse \r\n\t\t\tcase when T1.IsRecombination = 1 then ' (' else ' ' end +\r\n\t\t\tRTRIM(T1.BasionymAuthors) +\r\n\t\t\tcase when T1.IsRecombination = 1 and NOT T1.BasionymAuthorsYear IS null \r\n\t\t\t\tthen ', ' + cast(T1.BasionymAuthorsYear AS varchar) \r\n\t\t\t\telse case when T1.IsRecombination = 0 and not T1.YearOfPubl is null \r\n\t\t\t\t\tthen ', ' + cast(T1.YearOfPubl AS varchar) \r\n\t\t\t\t\telse '' end\r\n\t\t\tend\r\n\t\t\t+ case when T1.IsRecombination = 1 then ')' else '' end\r\n\t\tend +\r\n\t\tcase when T1.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T1.NonNomenclaturalNameSuffix) end\r\n\telse\r\n\t\tcase when  T1.BasionymAuthors is null or T1.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse case when T1.CombiningAuthors is null or T1.CombiningAuthors = '' \r\n\t\t\tthen  \t'' + RTRIM(T1.BasionymAuthors) +\r\n\t\t\t\tcase when  T1.SanctioningAuthor is null or T1.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T1.SanctioningAuthor) end \r\n\t\t\telse \t' (' + RTRIM(T1.BasionymAuthors) +\r\n\t\t\t\tcase when  T1.SanctioningAuthor is null or T1.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T1.SanctioningAuthor) end\r\n\t\t\t\t+ ') ' \r\n\t\t\tend \r\n\t\tend +\r\n\t\tcase when  T1.CombiningAuthors is null or T1.CombiningAuthors = ''  then '' else RTRIM(T1.CombiningAuthors) end +\r\n\t\tcase when T1.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T1.NonNomenclaturalNameSuffix) end\r\n\tend\r\nAS Authors " +
+                ",\r\nT1.BasionymAuthors, T1.CombiningAuthors, T1.SanctioningAuthor, T1.NonNomenclaturalNameSuffix, T1.IsRecombination, T1.YearOfPubl, T1.NomenclaturalCode " +
+                "\r\nFROM            " + PrefixDB + "TaxonSynonymy AS S3 INNER JOIN " +
                 "" + PrefixDB + "TaxonAcceptedName AS A INNER JOIN " +
                 "" + PrefixDB + "TaxonName AS T ON A.NameID = T.NameID ON S3.SynNameID = T.NameID AND  " +
                 "S3.ProjectID = A.ProjectID INNER JOIN " +
@@ -6302,7 +6314,7 @@ namespace DiversityCollection.CacheDatabase
                 "(S2.IgnoreButKeepForReference = 0) AND (S3.IgnoreButKeepForReference = 0) AND A.ProjectID = " + ProjectID.ToString() + " AND S1.ProjectID = " + ProjectID.ToString() + " AND S2.ProjectID = " + ProjectID.ToString() + " AND  " +
                 "S3.ProjectID = " + ProjectID.ToString() + " " +
 
-                "UNION " +
+                "\r\n\r\nUNION\r\n\r\n " +
 
                 "SELECT        TOP (100) PERCENT T1.NameID, '" + BaseURL + "' AS BaseURL, T1.TaxonNameCache AS TaxonName,  " +
                 "T1.NameID AS AcceptedNameID, T1.TaxonNameCache AS AcceptedName, T1.TaxonomicRank, T1.GenusOrSupragenericName, T1.SpeciesGenusNameID,  " +
@@ -6324,12 +6336,14 @@ namespace DiversityCollection.CacheDatabase
                 "T.InfraspecificEpithet <> '' THEN ' ' + CASE WHEN T.TaxonomicRank IS NULL OR " +
                 "T.TaxonomicRank = '' OR T.NomenclaturalCode = 3 THEN '' ELSE T.TaxonomicRank + ' ' END + T.InfraspecificEpithet ELSE '' END END + CASE WHEN T.NonNomenclaturalNameSuffix IS NULL  " +
                 "THEN '' ELSE ' ' + T.NonNomenclaturalNameSuffix END AS AcceptedNameSinAuthor, T1.LogUpdatedWhen " +
-                "FROM " + PrefixDB + "TaxonSynonymy AS S1 " +
+                ", \r\nT1.InfragenericEpithet, T1.SpeciesEpithet, T1.InfraspecificEpithet, \r\ncase when T1.NomenclaturalCode = 3 /* Zoology */\r\n\tthen \r\n\t\tcase when  T1.BasionymAuthors is null or T1.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse \r\n\t\t\tcase when T1.IsRecombination = 1 then ' (' else ' ' end +\r\n\t\t\tRTRIM(T1.BasionymAuthors) +\r\n\t\t\tcase when T1.IsRecombination = 1 and NOT T1.BasionymAuthorsYear IS null \r\n\t\t\t\tthen ', ' + cast(T1.BasionymAuthorsYear AS varchar) \r\n\t\t\t\telse case when T1.IsRecombination = 0 and not T1.YearOfPubl is null \r\n\t\t\t\t\tthen ', ' + cast(T1.YearOfPubl AS varchar) \r\n\t\t\t\t\telse '' end\r\n\t\t\tend\r\n\t\t\t+ case when T1.IsRecombination = 1 then ')' else '' end\r\n\t\tend +\r\n\t\tcase when T1.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T1.NonNomenclaturalNameSuffix) end\r\n\telse\r\n\t\tcase when  T1.BasionymAuthors is null or T1.BasionymAuthors = '' \r\n\t\tthen '' \r\n\t\telse case when T1.CombiningAuthors is null or T1.CombiningAuthors = '' \r\n\t\t\tthen  \t'' + RTRIM(T1.BasionymAuthors) +\r\n\t\t\t\tcase when  T1.SanctioningAuthor is null or T1.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T1.SanctioningAuthor) end \r\n\t\t\telse \t' (' + RTRIM(T1.BasionymAuthors) +\r\n\t\t\t\tcase when  T1.SanctioningAuthor is null or T1.SanctioningAuthor = ''  then '' else ' : ' + RTRIM(T1.SanctioningAuthor) end\r\n\t\t\t\t+ ') ' \r\n\t\t\tend \r\n\t\tend +\r\n\t\tcase when  T1.CombiningAuthors is null or T1.CombiningAuthors = ''  then '' else RTRIM(T1.CombiningAuthors) end +\r\n\t\tcase when T1.NonNomenclaturalNameSuffix IS NULL then '' else ' ' + RTRIM(T1.NonNomenclaturalNameSuffix) end\r\n\tend\r\nAS Authors " +
+                ",\r\nT1.BasionymAuthors, T1.CombiningAuthors, T1.SanctioningAuthor, T1.NonNomenclaturalNameSuffix, T1.IsRecombination, T1.YearOfPubl, T1.NomenclaturalCode " +
+                "\r\nFROM " + PrefixDB + "TaxonSynonymy AS S1 " +
                 " INNER JOIN " + PrefixDB + "TaxonName AS T1 ON S1.NameID = T1.NameID AND ((S1.SynType = N'duplicate') OR (S1.SynType = N'isonym')) AND (S1.IgnoreButKeepForReference = 0) AND S1.ProjectID = " + ProjectID.ToString() +
                 " INNER JOIN " + PrefixDB + "TaxonSynonymy AS S ON S1.SynNameID = S.NameID AND (S.IgnoreButKeepForReference = 0) AND (S1.IgnoreButKeepForReference = 0) AND S1.ProjectID = S.ProjectID AND S.ProjectID = " + ProjectID.ToString() +
                 " INNER JOIN " + PrefixDB + "TaxonName AS T ON (T.IgnoreButKeepForReference = 0) AND (S.IgnoreButKeepForReference = 0) AND S.SynNameID = T.NameID " +
-                " INNER JOIN " + PrefixDB + "TaxonAcceptedName AS A ON T.NameID = A.NameID AND (T.IgnoreButKeepForReference = 0) AND (A.IgnoreButKeepForReference = 0) AND S.ProjectID = A.ProjectID AND A.ProjectID = " + ProjectID.ToString() + 
-                " ORDER BY TaxonName, AcceptedName";
+                " INNER JOIN " + PrefixDB + "TaxonAcceptedName AS A ON T.NameID = A.NameID AND (T.IgnoreButKeepForReference = 0) AND (A.IgnoreButKeepForReference = 0) AND S.ProjectID = A.ProjectID AND A.ProjectID = " + ProjectID.ToString() +
+                " \r\nORDER BY TaxonName, AcceptedName";
 
 #endregion
 

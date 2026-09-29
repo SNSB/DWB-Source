@@ -26,7 +26,7 @@ namespace DiversityWorkbench.Forms
         /// <param name="def">Default button (accepted wit 'Enter') button1 = Yes, button2 = No</param>
         /// <param name="icon">Message box icon</param>
         /// <returns>Yes or No</returns>
-        public static DialogResult Show(string message, string caption, string yes, string no, MessageBoxDefaultButton def, MessageBoxIcon icon)
+        public static DialogResult Show(string message, string caption, string yes, string no, MessageBoxDefaultButton def, MessageBoxIcon icon, bool AdaptSize = false)
         {
             FormMessageDialog MD = new FormMessageDialog();
 
@@ -57,6 +57,12 @@ namespace DiversityWorkbench.Forms
                 default:
                     MD.splitContainerMain.Panel1Collapsed = true;
                     break;
+            }
+
+            if (AdaptSize)
+            {
+                MD.Height = MD.MinimumSize.Height;
+                MD.Width = MD.MinimumSize.Width;
             }
 
             if (MD.ShowDialog() == DialogResult.Yes)

@@ -580,13 +580,7 @@ begin catch
 set @SQL = 'ALTER ' + SUBSTRING(@SQL, 8, 80000)
 exec sp_executesql @SQL
 end catch
-
-
 GO
-
-GO
-
-
 
 GRANT EXEC ON [dbo].[procTransferTaxonSynonymy] TO [CollectionCacheUser]
 GO

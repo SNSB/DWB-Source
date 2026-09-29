@@ -77,7 +77,7 @@ GRANT SELECT ON TABLE "#project#"."ABCD__BayernFlora_EndangeredSpeciesEventID" T
 --######   Differences to main version: Explizit values in "Identification_Reference_ReferenceGUID",   ################
 --######	"Identification_Reference_TitleCitation", "Identification_Reference_CitationDetail",       ################
 --######	"Identification_Reference_URI"                                                             ################
---######	Restriction to "Identification_Taxon_ScientificName_Qualifier" NOT LIKE 'cf %'             ################
+--######	Restriction to "Identification_Taxon_ScientificName_Qualifier" NOT LIKE 'cf. %'            ################
 --######	AND NOT I."NameID" IS NULL                                                                 ################
 --#####################################################################################################################
 
@@ -144,7 +144,7 @@ SELECT DISTINCT A."ID",
    FROM "#project#"."ABCD__UnitNoPart" AS A
    JOIN "#project#"."CacheIdentificationUnit" AS U
    ON U."IdentificationUnitID" = A."IdentificationUnitID"
-   AND (A."Identification_Taxon_ScientificName_Qualifier" NOT LIKE 'cf %'
+   AND (A."Identification_Taxon_ScientificName_Qualifier" NOT LIKE 'cf. %'
 		OR A."Identification_Taxon_ScientificName_Qualifier" IS NULL)
    JOIN "#project#"."CacheIdentification" AS I 
    ON U."IdentificationUnitID" = I."IdentificationUnitID"
@@ -195,7 +195,7 @@ SELECT DISTINCT A."ID",
    JOIN "#project#"."CacheIdentificationUnit" AS U
    ON U."IdentificationUnitID" = I."IdentificationUnitID" AND U."CollectionSpecimenID" = I."CollectionSpecimenID"
    AND U."LastIdentificationCache" = I."TaxonomicName"
-   AND (A."Identification_Taxon_ScientificName_Qualifier" NOT LIKE 'cf %'
+   AND (A."Identification_Taxon_ScientificName_Qualifier" NOT LIKE 'cf. %'
 		OR A."Identification_Taxon_ScientificName_Qualifier" IS NULL)
    AND NOT I."NameID" IS NULL
    JOIN "#project#"."ABCD__Unit_LastIdentification" AS L

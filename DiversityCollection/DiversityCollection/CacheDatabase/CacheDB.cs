@@ -2402,6 +2402,7 @@ namespace DiversityCollection.CacheDatabase
                     System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> D_Tax = new Dictionary<string, System.Collections.Generic.List<string>>();
                     System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> D_Mat = new Dictionary<string, System.Collections.Generic.List<string>>();
                     System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> D_Ana = new Dictionary<string, System.Collections.Generic.List<string>>();
+                    System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> D_Spe = new Dictionary<string, System.Collections.Generic.List<string>>();
 
                     // CoordinatePrecision
                     SQL = "SELECT CoordinatePrecision FROM ProjectPublished WHERE ProjectID = " + ProjectID.ToString();
@@ -2465,6 +2466,9 @@ namespace DiversityCollection.CacheDatabase
                             L.Add(R[0].ToString());
                         D_Ana.Add("AnalysisIDs", L);
                     }
+
+                    // Specimen filter
+                    /// TODO
 
                     System.Collections.Generic.List<object> OO_settings = new List<object>();
                     if (D_Pre.Count > 0)

@@ -3548,30 +3548,6 @@ namespace DiversityWorkbench.Forms
                         this.splitContainerURI.Panel2Collapsed = true;
                         return;
                     }
-                    // Markus 22.8.2016 - try to get the header information only for unknown websites
-                    if (URI.IndexOf("/GoogleMaps/") == -1)
-                    {
-                        System.Net.WebRequest request = System.Net.WebRequest.Create(URI);
-                        // Toni 6.9.2017 - 100 ms for timeout is too short for some requests
-                        request.Timeout = 10000;
-                        request.Method = "HEAD";
-                        // Toni 6.9.2017 - Handle time out (-> WebException)
-                        try
-                        {
-                            System.Net.WebResponse response = request.GetResponse();
-                            if (!response.ContentType.StartsWith("text/"))
-                            {
-                                this.splitContainerURI.Panel2Collapsed = true;
-                                this.panelWebControls.Visible = false;
-                                return;
-                            }
-                        }
-                        catch (System.Net.WebException)
-                        {
-                            this.splitContainerURI.Panel2Collapsed = true;
-                            return;
-                        }
-                    }
                 }
                 else
                 {

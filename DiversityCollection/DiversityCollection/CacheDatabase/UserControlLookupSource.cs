@@ -31,7 +31,7 @@ namespace DiversityCollection.CacheDatabase
                     _LookupSourceVersion.Add(TypeOfSource.Plots, 2);
                     _LookupSourceVersion.Add(TypeOfSource.References, 1);
                     _LookupSourceVersion.Add(TypeOfSource.ScientificTerms, 3); // Markus 10.4.25: Hochsetzen nach aenderung
-                    _LookupSourceVersion.Add(TypeOfSource.Taxa, 4); // #402, #403 -  Markus 2.4.25: Hochsetzen nach aenderung in CommonName
+                    _LookupSourceVersion.Add(TypeOfSource.Taxa, 5); //#451 #402, #403 -  Markus 2.4.25: Hochsetzen nach aenderung in CommonName
                 }
                 return _LookupSourceVersion;
             }
@@ -1903,7 +1903,8 @@ namespace DiversityCollection.CacheDatabase
                     break;
                 case SubsetTable.TaxonSynonymy:
                     SQL = "NameID, BaseURL, TaxonName, AcceptedNameID, AcceptedName, TaxonomicRank, SpeciesGenusNameID, GenusOrSupragenericName, " +
-                         "TaxonNameSinAuthor, AcceptedNameSinAuthor, ProjectID";
+                         "TaxonNameSinAuthor, AcceptedNameSinAuthor, ProjectID, InfragenericEpithet, SpeciesEpithet, InfraspecificEpithet, Authors, " +
+                         "BasionymAuthors, CombiningAuthors, SanctioningAuthor, NonNomenclaturalNameSuffix, IsRecombination, YearOfPubl, NomenclaturalCode";
                     break;
             }
             if (Alias.Length > 0)

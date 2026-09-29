@@ -32,6 +32,38 @@ VALUES        ('synthetic specimen', 'synthetic materials e.g. used in a 3D-prin
 end
 GO
 
+
+
+--#####################################################################################################################
+--######   Adding new taxonomic groups archaebacterium, protozoan, chromist  ##########################################
+--#####################################################################################################################
+
+if (select count(*) from CollTaxonomicGroup_Enum where code = 'archaebacterium') = 0
+begin
+INSERT INTO CollTaxonomicGroup_Enum
+(Code, Description, DisplayText, DisplayOrder, DisplayEnable)
+VALUES        ('archaebacterium', 'member of the kingdom Archaebacteria', 'archaebacterium', 22, 1)
+end
+GO
+
+if (select count(*) from CollTaxonomicGroup_Enum where code = 'protozoan') = 0
+begin
+INSERT INTO CollTaxonomicGroup_Enum
+(Code, Description, DisplayText, DisplayOrder, DisplayEnable)
+VALUES        ('protozoan', 'member of the paraphyletic group Protista', 'protozoan', 107, 1)
+end
+GO
+
+if (select count(*) from CollTaxonomicGroup_Enum where code = 'chromist') = 0
+begin
+INSERT INTO CollTaxonomicGroup_Enum
+(Code, Description, DisplayText, DisplayOrder, DisplayEnable)
+VALUES        ('chromist', 'member of the kingdom Chromista', 'chromist', 103, 1)
+end
+GO
+
+
+
 --#####################################################################################################################
 --######   setting the Version   ######################################################################################
 --#####################################################################################################################

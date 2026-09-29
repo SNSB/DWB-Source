@@ -1959,18 +1959,18 @@ namespace DiversityCollection.Forms
                 this.progressBarSaveAll.Value = 0;
                 for (int i = 0; i < this.dataSetCollectionSpecimenGridMode.FirstLinesCollectionSpecimen.Rows.Count; i++)
                 {
+                    this.dataGridViewActive.Rows[i].Cells[0].Selected = true;
+                    this.dataSetCollectionSpecimenGridMode.FirstLinesCollectionSpecimen.Rows[i].BeginEdit();
+                    this.dataSetCollectionSpecimenGridMode.FirstLinesCollectionSpecimen.Rows[i].EndEdit();
                     if (this.dataSetCollectionSpecimenGridMode.FirstLinesCollectionSpecimen.Rows[i].RowState == DataRowState.Deleted
                         || this.dataSetCollectionSpecimenGridMode.FirstLinesCollectionSpecimen.Rows[i].RowState == DataRowState.Detached
                         || this.dataSetCollectionSpecimenGridMode.FirstLinesCollectionSpecimen.Rows[i].RowState == DataRowState.Unchanged)
                         continue;
-                    this.dataGridViewActive.Rows[i].Cells[0].Selected = true;
-                    this.dataSetCollectionSpecimenGridMode.FirstLinesCollectionSpecimen.Rows[i].BeginEdit();
-                    this.dataSetCollectionSpecimenGridMode.FirstLinesCollectionSpecimen.Rows[i].EndEdit();
                     this.GridModeUpdate(i);
                     this.progressBarSaveAll.Value = i;
                 }
             }
-            catch { }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
             finally { this.progressBarSaveAll.Visible = false; }
             this.Cursor = Cursors.Default;
         }
@@ -6505,6 +6505,7 @@ System.Windows.Forms.MessageBox.Show(Message);
                         }
                         catch (System.Exception ex)
                         {
+                            DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
                         }
                     }
                 }
@@ -6532,6 +6533,7 @@ System.Windows.Forms.MessageBox.Show(Message);
                             PK.Add(iPK);
                     }
                 }
+
 
                 foreach (int ID in PK)
                 {
@@ -6647,7 +6649,7 @@ System.Windows.Forms.MessageBox.Show(Message);
                             }
                         }
                     }
-                    catch { }
+                    catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
                     if (this._StopReplacing)
                         break;
                 }

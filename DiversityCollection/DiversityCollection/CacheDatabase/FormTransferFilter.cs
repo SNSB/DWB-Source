@@ -6,11 +6,14 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Windows.Forms;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace DiversityCollection.CacheDatabase
 {
-    public partial class FormTransferFilter : Form
+    public partial class FormTransferFilter : Form, DiversityWorkbench.UserControls.iQueryFilter
     {
         #region Parameter
 
@@ -22,7 +25,15 @@ namespace DiversityCollection.CacheDatabase
         private Microsoft.Data.SqlClient.SqlDataAdapter _SqlDataAdapterAnalysis;
         private Microsoft.Data.SqlClient.SqlDataAdapter _SqlDataAdapterEventProperty;
         private DiversityWorkbench.CollectionSpecimen _CollectionSpecimen;
-        
+
+        private bool UseJsonForSpecimenRestriction
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         #endregion
 
         #region Construction and form
@@ -74,11 +85,31 @@ namespace DiversityCollection.CacheDatabase
             }
         }
 
+        private void buttonFeedback_Click(object sender, EventArgs e)
+        {
+            DiversityWorkbench.Feedback.SendFeedback(System.Reflection.Assembly.GetAssembly(this.GetType()).GetName().Version.ToString(), "", "");
+        }
+        #endregion
+
+        #region Public functions
+
+        /// <summary>
+        /// Setting the helpprovider
+        /// </summary>
+        /// <param name="KeyWord">The keyword as defined in the manual</param>
+        public void setHelp(string KeyWord)
+        {
+            DiversityWorkbench.Forms.FormFunctions.SetHelp(this.helpProvider, this, KeyWord);
+        }
+
+        #endregion
+
+        #region Specimen query
         private void initSpecimenQuery()
         {
             try
             {
-                this.userControlQueryListSpecimen.setModeOfControl(DiversityWorkbench.UserControls.UserControlQueryList.Mode.Embedded);
+                this.userControlQueryListSpecimen.setModeOfControl(DiversityWorkbench.UserControls.UserControlQueryList.Mode.Embedded, true, this);
 
                 this.userControlQueryListSpecimen.TableColors = DiversityCollection.HierarchyNode.TableColors;
                 this.userControlQueryListSpecimen.TableImageIndex = DiversityCollection.HierarchyNode.TableAndGroupImageIndex;
@@ -89,7 +120,7 @@ namespace DiversityCollection.CacheDatabase
                 if (this._CollectionSpecimen == null)
                     this._CollectionSpecimen = new DiversityWorkbench.CollectionSpecimen(DiversityWorkbench.Settings.ServerConnection);
                 if (DiversityWorkbench.Settings.ConnectionString.Length > 0)
-                    this.userControlQueryListSpecimen.setQueryConditions(this._CollectionSpecimen.QueryConditions(), DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.QueryConditionVisibility.ToString());
+                    this.userControlQueryListSpecimen.setQueryConditions(this._CollectionSpecimen.QueryConditions(), SpecimenQueryConditionVisibility); // DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.QueryConditionVisibility.ToString());
                 //this.userControlQueryListSpecimen.AllowOptimizing(true);
                 DiversityWorkbench.UserControls.QueryDisplayColumn[] CC = this._CollectionSpecimen.QueryDisplayColumns();
                 this.userControlQueryListSpecimen.SetQueryDisplayColumns(CC, "AccessionNumber", "CollectionSpecimen_Core2");
@@ -127,27 +158,132 @@ namespace DiversityCollection.CacheDatabase
             //}
         }
 
-        private void buttonFeedback_Click(object sender, EventArgs e)
+        private System.Text.Json.JsonDocument SpecimenRestriction
         {
-            DiversityWorkbench.Feedback.SendFeedback(System.Reflection.Assembly.GetAssembly(this.GetType()).GetName().Version.ToString(), "", "");
+            get
+            {
+                string SQL = "SELECT Restriction FROM ProjectPublished WHERE ProjectID = " + this._ProjectID.ToString();
+                string Restriction = DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlSkalarInCacheDB(SQL);
+                try
+                {
+                    if (Restriction.Length > 0)
+                    {
+                        if (Restriction.Trim().StartsWith("WHERE", System.StringComparison.OrdinalIgnoreCase))
+                            Restriction = "{\"Filter\":\"" + Restriction + "\", \"QueryConditionVisibility\":\"" + this.userControlQueryListSpecimen.QueryConditionVisiblity + "\"}";
+                        return System.Text.Json.JsonDocument.Parse(Restriction);
+                    }
+                    else
+                        return System.Text.Json.JsonDocument.Parse("{}");
+                }
+                catch (System.Exception ex)
+                {
+                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+                    return System.Text.Json.JsonDocument.Parse("{}");
+                }
+            }
+            set
+            {
+                string SQL = "UPDATE P SET P.Restriction = '" + value + "' FROM ProjectPublished P WHERE P.ProjectID = " + this._ProjectID.ToString();
+                DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlNonQueryInCacheDB(SQL, true);
+            }
         }
-        
-#endregion
 
-#region Public functions
-
-        /// <summary>
-        /// Setting the helpprovider
-        /// </summary>
-        /// <param name="KeyWord">The keyword as defined in the manual</param>
-        public void setHelp(string KeyWord)
+        private void setSpecimenRestriction(string Value, bool IsFilterValue = true)
         {
-            DiversityWorkbench.Forms.FormFunctions.SetHelp(this.helpProvider, this, KeyWord);
+            string SQL = "UPDATE P SET P.Restriction = '";
+            if (UseJsonForSpecimenRestriction)
+            {
+                System.Text.Json.JsonDocument jsonDocument = System.Text.Json.JsonDocument.Parse("{}");
+                string Filter = SpecimenQueryFilter;
+                string Visibility = SpecimenQueryConditionVisibility;
+                switch (IsFilterValue)
+                {
+                    case true:
+                        Filter = Value;
+                        if (!Filter.StartsWith("\""))
+                            Filter = "\"" + Filter + "\"";
+                        if (Filter.IndexOf("'") > -1)
+                            Filter = DiversityWorkbench.Forms.FormFunctions.SqlRemoveHyphens(Filter);
+                        break;
+                    case false:
+                        Visibility = Value;
+                        break;
+                }
+                try
+                {
+                    // Testing for a valid json document
+                    jsonDocument = System.Text.Json.JsonDocument.Parse("{\"Filter\": " + Filter + ", \"QueryConditionVisibility\": " + Visibility + "}");
+                    SQL += "{\"Filter\": " + Filter + ", \"QueryConditionVisibility\": " + Visibility + "}' FROM ProjectPublished P WHERE P.ProjectID = " + this._ProjectID.ToString();
+                    DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlNonQueryInCacheDB(SQL, true);
+                }
+                catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+            }
+            else
+            {
+                try
+                {
+                    if (Value.IndexOf("'") > -1)
+                        Value = DiversityWorkbench.Forms.FormFunctions.SqlRemoveHyphens(Value);
+                    SQL += Value + "' FROM ProjectPublished P WHERE P.ProjectID = " + this._ProjectID.ToString();
+                    DiversityCollection.CacheDatabase.CacheDB.ExecuteSqlNonQueryInCacheDB(SQL, true);
+                }
+                catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+            }
         }
 
-#endregion
+        private string SpecimenQueryConditionVisibility
+        {
+            get
+            {
+                string Visibility = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.QueryConditionVisibility.ToString();
+                if (!UseJsonForSpecimenRestriction)
+                    return Visibility;
+                System.Text.Json.JsonDocument Restriction = SpecimenRestriction;
+                JsonElement root = Restriction.RootElement;
+                if (root.TryGetProperty("QueryConditionVisibility", out JsonElement VisibilityElement))
+                {
+                    Visibility = VisibilityElement.GetRawText();
+                }
+                if (Visibility.Length == 0)
+                    Visibility = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.QueryConditionVisibility.ToString();  
+                return Visibility;
+            }
+            set
+            {
+                this.setSpecimenRestriction(value, false);
+            }
+        }
 
-#region Coordinate precision
+        private string SpecimenQueryFilter
+        {
+            get
+            {
+                string Filter = "";
+                System.Text.Json.JsonDocument Restriction = SpecimenRestriction;
+                JsonElement root = Restriction.RootElement;
+                if (root.TryGetProperty("Filter", out JsonElement FilterElement))
+                {
+                    Filter = FilterElement.GetRawText();
+                }
+                return Filter;
+            }
+            set
+            {
+                this.setSpecimenRestriction(value, true);
+            }
+        }
+
+        public void setQueryFilter(string Filter)
+        {
+            this.SpecimenQueryFilter = Filter;
+            //this.userControlQueryListSpecimen.setQueryConditions("", "CollectionSpecimen_Core2", Filter);
+        }
+
+        #endregion
+
+
+
+        #region Coordinate precision
 
         private void checkBoxCoordinatePrecision_Click(object sender, EventArgs e)
         {
@@ -186,7 +322,7 @@ namespace DiversityCollection.CacheDatabase
 
 #endregion
 
-#region Localisation
+        #region Localisation
 
         private void buttonLocalisationPublished_Click(object sender, EventArgs e)
         {
@@ -293,7 +429,7 @@ namespace DiversityCollection.CacheDatabase
 
 #endregion
 
-#region Taxonomic groups
+        #region Taxonomic groups
 
         private void buttonProjectTaxonomicGroupPublished_Click(object sender, EventArgs e)
         {
@@ -477,7 +613,7 @@ namespace DiversityCollection.CacheDatabase
 
 #endregion
 
-#region Material category
+        #region Material category
 
         private System.Data.DataTable _DtMaterialPublished;
         private System.Data.DataTable _DtMaterialNotPublished;
@@ -588,7 +724,7 @@ namespace DiversityCollection.CacheDatabase
 
 #endregion
 
-#region Analysis
+        #region Analysis
 
         private System.Data.DataTable _DtAnalysisPublished;
         private System.Data.DataTable _DtAnalysisNotPublished;

@@ -1,9 +1,12 @@
 ﻿using DiversityWorkbench.Forms;
 using DiversityWorkbench.PostgreSQL;
+using Microsoft.SqlServer.Management.Smo;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DiversityWorkbench.UserControls
@@ -103,7 +106,9 @@ namespace DiversityWorkbench.UserControls
 
         // The main form can subscribe to this event to receive notifications whenever it should suppress the selectedindexchanged event of the querylist.
         public event EventHandler<bool> SuppressSelectedIndexChangedEvent;
-        
+
+        protected iQueryFilter _QueryFilter;
+
         #endregion
 
         #region Construction
@@ -1492,7 +1497,7 @@ namespace DiversityWorkbench.UserControls
             }
         }
 
-        public void setModeOfControl(Mode Mode)
+        public void setModeOfControl(Mode Mode, bool ShowOptions = false, DiversityWorkbench.UserControls.iQueryFilter QueryFilter = null)
         {
             switch (Mode)
             {
@@ -1514,7 +1519,8 @@ namespace DiversityWorkbench.UserControls
                     break;
                 case Mode.Embedded:
                     this.ModeOfControl = Mode;
-
+                    if (QueryFilter != null)
+                        this._QueryFilter = QueryFilter;
                     this.OptimizingAllow(true);
                     this.Optimizing_SetUsage(true);
                     this.buttonOptimize.Visible = true;
@@ -1526,8 +1532,22 @@ namespace DiversityWorkbench.UserControls
                     //this.buttonShowQueryConditions.BackColor = System.Drawing.Color.Red;
                     this.buttonShowQueryConditions.Image = DiversityWorkbench.Properties.Resources.Delete;
                     this.toolTipQueryList.SetToolTip(this.buttonShowQueryConditions, "Remove current restriction");
+                    if (ShowOptions)
+                    {
+                        foreach(System.Windows.Forms.ToolStripItem I in this.toolStripQueryList.Items)
+                        {
+                            if (I == this.toolStripButtonOptions)
+                                I.Visible = true;
+                            else
+                                I.Visible = false;
+                        }
+                        this.toolStripButtonOptions.Enabled = true;
+                        this.toolStripQueryList.Visible = true;
+                    }
+                    else
+                        this.toolStripQueryList.Visible = false;
 
-                    this.toolStripQueryList.Visible = false;
+
                     this.buttonFreeText.Visible = false;
                     this.buttonQueryAdd.Visible = false;
                     this.buttonQueryClear.Visible = false;
@@ -2654,6 +2674,8 @@ namespace DiversityWorkbench.UserControls
 
                         }
                         this.setQueryConditions("", QueryTable, SQL, "");
+                        if (this._QueryFilter != null)
+                            this._QueryFilter.setQueryFilter(SQL);
                     }
                 }
                 catch (System.Exception ex)
@@ -4779,7 +4801,7 @@ namespace DiversityWorkbench.UserControls
         public string OptimizedWhereClause() { return this.OptimizedQueryStringWhereClause(); }
 
 
-        private string Prefix(bool IncludeDBO = true)
+        private string Prefix(bool IncludeDBO = true, bool setDatabase = false)
         {
             string Prefix = "";
             if (this.LinkedServer != null && this.LinkedServer.Length > 0 && this.LinkedServerDatabase != null && this.LinkedServerDatabase.Length > 0)
@@ -4790,6 +4812,10 @@ namespace DiversityWorkbench.UserControls
             }
             if (IncludeDBO && Prefix.Length > 0)
                 Prefix += "dbo.";
+            else if (setDatabase && DiversityWorkbench.Settings.Connection.Database.Length > 0 && this.Connection.Database.Length > 0 && DiversityWorkbench.Settings.Connection.Database.ToString() != this.Connection.Database.ToString())
+            {
+                Prefix = this.Connection.Database + ".dbo.";
+            }
             return Prefix;
         }
 
@@ -4827,26 +4853,29 @@ namespace DiversityWorkbench.UserControls
                     // get the tables and the QueryConditions
                     this.OptimizedQueryAnalyseTables();
 
-                    SQL = this.OptimizedQueryFromClause();
+                    string SqlFromClause = this.OptimizedQueryFromClause();
+
+                    SQL = SqlFromClause;
 
                     // Markus 12.8.24 #1:
                     // Bei e.g. Tabellen wie Identification in Kombination ohne Suchfeld in IdentificationUnit in DC wird Tabelle IdentificationUnit in die For Clausel genommen,
                     // aber nicht in die Where Klausel. Das führt zu Cross Joins
                     // Daher muss das in der Where Clause überprüft und evtl. nachgezogen werden
                     // Alternativ könnte man die nicht eingebundene Tabelle in der Funktion OptimizedQueryAnalyseTables ausschliessen
-                    System.Collections.Generic.Dictionary<string, string> MissingJoins = new Dictionary<string, string>(); 
-                    System.Collections.Generic.Dictionary<string, string> CurrentTables = new Dictionary<string, string>();
-                    try
-                    {
-                        foreach (System.Collections.Generic.KeyValuePair<string, string> kv in UserControlQueryList.TableAliases)
-                        {
-                            MissingJoins.Add(kv.Key, kv.Value);
-                            CurrentTables.Add(kv.Key, kv.Value);
-                        }
-                        MissingJoins.Add(UserControlQueryList.QueryMainTable, "T");
-                        CurrentTables.Add(UserControlQueryList.QueryMainTable, "T");
-                    }
-                    catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+                    var CurrentTables = UserControlQueryList.TableAliases.ToDictionary(x => x.Key, x => x.Value);
+                    //System.Collections.Generic.Dictionary<string, string> MissingJoins = new Dictionary<string, string>(); 
+                    //System.Collections.Generic.Dictionary<string, string> CurrentTables = new Dictionary<string, string>();
+                    //try
+                    //{
+                    //    foreach (System.Collections.Generic.KeyValuePair<string, string> kv in UserControlQueryList.TableAliases)
+                    //    {
+                    //        MissingJoins.Add(kv.Key, kv.Value);
+                    //        CurrentTables.Add(kv.Key, kv.Value);
+                    //    }
+                    //    MissingJoins.Add(UserControlQueryList.QueryMainTable, "T");
+                    //    CurrentTables.Add(UserControlQueryList.QueryMainTable, "T");
+                    //}
+                    //catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
 
                     // Adding the Where clause
                     string WhereClause = "";
@@ -5320,80 +5349,151 @@ namespace DiversityWorkbench.UserControls
 
 
                         // Markus 12.8.24 #1
-                        string table = KV.Key;
-                        if (MissingJoins.ContainsKey(table)) 
-                        { 
-                            //string Key = MissingJoins.FirstOrDefault(c => c.Value == table).Key;
-                            // If the table is present, it can be removed from the missing joins
-                            MissingJoins.Remove(table);
-                        }
+                        //string table = KV.Key;
+                        //if (MissingJoins.ContainsKey(table)) 
+                        //{
+                        //    //string Key = MissingJoins.FirstOrDefault(c => c.Value == table).Key;
+                        //    // If the table is present, it can be removed from the missing joins
+                        //    // but only if the columns containing the keys are involved
+                        //    bool RemoveMissingJoin = false;
+                        //    try 
+                        //    {
+                        //        DiversityWorkbench.UserControls.UserControlQueryCondition Q = (DiversityWorkbench.UserControls.UserControlQueryCondition)KV.Value[0];
+                        //        if (Q.QueryCondition.ForeignKey == null && Q.QueryCondition.ForeignKey.Length > 0 && Q.QueryCondition.Column != Q.QueryCondition.ForeignKey) 
+                        //            RemoveMissingJoin = true;
+                        //        if (Q.QueryCondition.ForeignKeySecondColumn == null && Q.QueryCondition.ForeignKeySecondColumn.Length > 0 && Q.QueryCondition.Column != Q.QueryCondition.ForeignKeySecondColumn)
+                        //            RemoveMissingJoin = true;
+                        //    }
+                        //    catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+                        //    if(RemoveMissingJoin) 
+                        //        MissingJoins.Remove(table);
+                        //}
 
                     }
                     // Markus 12.8.24 #1
-                    if (MissingJoins.Count > 0)
-                    {
-                        // There are tables in the from clause that had not been taken into the where clause
-                        try
-                        {
-                            foreach (System.Collections.Generic.KeyValuePair<string, string> kvp in MissingJoins)
-                            {
-                                if (WhereClause.IndexOf(" " + kvp.Value + ".") > -1)
-                                {
-                                    continue;
-                                }
-                                if (kvp.Value != null)
-                                {
-                                    string Parent = kvp.Key;
-                                    if (Parent.IndexOf("_") > -1)
-                                    {
-                                        Parent = Parent.Substring(0, Parent.IndexOf("_"));
-                                    }
-                                    foreach (System.Collections.Generic.KeyValuePair<string, string> currentTable in CurrentTables)
-                                    {
-                                        if (kvp.Value == currentTable.Value)
-                                            continue;
-                                        string Child = currentTable.Key;
-                                        if (Child.IndexOf("_") > -1)
-                                        {
-                                            // Get base table of View
-                                            Child = Child.Substring(0, Child.IndexOf("_"));
-                                        }
-                                        // Get links to other tables
-                                        string SqlLinks = "SELECT DISTINCT " +
-                                            "cr.name AS ReferencedColumn " +
-                                            "FROM " +
-                                            "sys.foreign_keys AS fk " +
-                                            "INNER JOIN  " +
-                                            "sys.tables AS tp ON fk.parent_object_id = tp.object_id " +
-                                            "INNER JOIN " +
-                                            "sys.tables AS tr ON fk.referenced_object_id = tr.object_id " +
-                                            "INNER JOIN  " +
-                                            "sys.foreign_key_columns AS fkc ON fk.object_id = fkc.constraint_object_id " +
-                                            "INNER JOIN  " +
-                                            "sys.columns AS cp ON fkc.parent_column_id = cp.column_id AND fkc.parent_object_id = cp.object_id " +
-                                            "INNER JOIN  " +
-                                            "sys.columns AS cr ON fkc.referenced_column_id = cr.column_id AND fkc.referenced_object_id = cr.object_id " +
-                                            "WHERE  " +
-                                            "(tr.name = '" + Parent + "' AND tp.name = '" + Child + "') " +
-                                            "OR (tp.name = '" + Parent + "' AND tr.name = '" + Child + "');";
-                                        System.Data.DataTable dtCol = DiversityWorkbench.Forms.FormFunctions.DataTable(SqlLinks);
-                                        string Join = "";
-                                        foreach (System.Data.DataRow dataRow in dtCol.Rows)
-                                        {
-                                            if (Join.Length > 0)
-                                                Join += " AND ";
-                                            Join += kvp.Value + "." + dataRow[0].ToString() + " = " + currentTable.Value + "." + dataRow[0].ToString();
-                                        }
-                                        if (!WhereClause.Contains(Join))
-                                        {
-                                            WhereClause += " AND (" + Join + ") ";
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
-                    }
+                    //var MissingJoins = this.OptimizedQueryMissingJoins(); // UserControlQueryList.TableAliases.ToDictionary(x => x.Key, x => x.Value);
+                    //if (false && MissingJoins.Count > 0)
+                    //{
+                    //    // There are tables in the from clause that had not been taken into the where clause
+                    //    // and the link to the key of the main table is missing
+                    //    try
+                    //    {
+                    //        foreach (System.Collections.Generic.KeyValuePair<string, string> kvp in MissingJoins)
+                    //        {
+                    //            // Getting the type of the main table
+                    //            string sql = "SELECT T.TABLE_TYPE FROM " + Prefix(false) + "INFORMATION_SCHEMA.TABLES T WHERE T.TABLE_NAME = '" + UserControlQueryList.QueryMainTable + "'";
+                    //            string con = this.Connection.ConnectionString;
+                    //            string Message = "";
+                    //            string TABLE_TYPE = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, con, ref Message);
+                    //            string PkTable = UserControlQueryList.QueryMainTable;
+                    //            string PkColumn = "";
+
+                    //            // getting the key column of the main table
+                    //            if (TABLE_TYPE == "VIEW")
+                    //            {
+                    //                sql = "SELECT TOP 1 " +
+                    //                    "referenced_entity_name AS TableName " +
+                    //                    "FROM sys.sql_expression_dependencies " +
+                    //                    "WHERE referencing_id = OBJECT_ID('dbo." + UserControlQueryList.QueryMainTable + "') " +
+                    //                    "AND referenced_entity_name NOT LIKE '%[_]%'";
+                    //                PkTable = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, con, ref Message);
+                    //            }
+
+                    //            // getting PK of table
+                    //            if (PkTable.Length > 0)
+                    //            {
+                    //                sql = "select top 1 c.COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS c  " +
+                    //                    "inner join INFORMATION_SCHEMA.KEY_COLUMN_USAGE k on c.COLUMN_NAME = k.COLUMN_NAME and c.TABLE_NAME = k.TABLE_NAME and c.IS_NULLABLE = 'NO' " +
+                    //                    "and c.TABLE_NAME = '" + PkTable + "'";
+                    //                PkColumn = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, con, ref Message);
+                    //                /*
+                    //                sql = "SELECT " +
+                    //                    "t.name AS TableName, " +
+                    //                    "c.name AS PK_Column, " +
+                    //                    "ic.key_ordinal AS OrdinalPosition " +
+                    //                    "FROM sys.tables t " +
+                    //                    "JOIN sys.indexes i " +
+                    //                    "ON t.object_id = i.object_id " +
+                    //                    "AND i.is_primary_key = 1 " +
+                    //                    "JOIN sys.index_columns ic " +
+                    //                    "ON i.object_id = ic.object_id " +
+                    //                    "AND i.index_id = ic.index_id " +
+                    //                    "JOIN sys.columns c " +
+                    //                    "ON ic.object_id = c.object_id " +
+                    //                    "AND ic.column_id = c.column_id " +
+                    //                    "WHERE t.name = '" + PkTable + "' " +
+                    //                    "ORDER BY ic.key_ordinal;";
+                    //                */
+                    //            }
+
+
+                    //            if (WhereClause.IndexOf(" " + kvp.Value + ".") > -1)
+                    //            {
+                    //                if (PkColumn.Length > 0) 
+                    //                {  
+                    //                    if(WhereClause.IndexOf(" " + kvp.Value + "." + PkColumn) > -1)
+                    //                        continue;
+                    //                }
+                    //                else
+                    //                    continue;
+                    //            }
+                    //            if (kvp.Value != null)
+                    //            {
+                    //                string Parent = kvp.Key;
+                    //                if (Parent.IndexOf("_") > -1)
+                    //                {
+                    //                    Parent = Parent.Substring(0, Parent.IndexOf("_"));
+                    //                }
+                    //                foreach (System.Collections.Generic.KeyValuePair<string, string> currentTable in CurrentTables)
+                    //                {
+                    //                    if (kvp.Value == currentTable.Value)
+                    //                        continue;
+                    //                    string Child = currentTable.Key;
+                    //                    if (Child.IndexOf("_") > -1)
+                    //                    {
+                    //                        // Get base table of View
+                    //                        Child = Child.Substring(0, Child.IndexOf("_"));
+                    //                    }
+                    //                    // Get links to other tables
+                    //                    string SqlLinks = "SELECT DISTINCT " +
+                    //                        "cr.name AS ReferencedColumn " +
+                    //                        "FROM " +
+                    //                        "sys.foreign_keys AS fk " +
+                    //                        "INNER JOIN  " +
+                    //                        "sys.tables AS tp ON fk.parent_object_id = tp.object_id " +
+                    //                        "INNER JOIN " +
+                    //                        "sys.tables AS tr ON fk.referenced_object_id = tr.object_id " +
+                    //                        "INNER JOIN  " +
+                    //                        "sys.foreign_key_columns AS fkc ON fk.object_id = fkc.constraint_object_id " +
+                    //                        "INNER JOIN  " +
+                    //                        "sys.columns AS cp ON fkc.parent_column_id = cp.column_id AND fkc.parent_object_id = cp.object_id " +
+                    //                        "INNER JOIN  " +
+                    //                        "sys.columns AS cr ON fkc.referenced_column_id = cr.column_id AND fkc.referenced_object_id = cr.object_id " +
+                    //                        "WHERE  " +
+                    //                        "(tr.name = '" + Parent + "' AND tp.name = '" + Child + "') " +
+                    //                        "OR (tp.name = '" + Parent + "' AND tr.name = '" + Child + "');";
+                    //                    System.Data.DataTable dtCol = DiversityWorkbench.Forms.FormFunctions.DataTable(SqlLinks, this.Connection, PkTable);
+                    //                    string Join = "";
+                    //                    foreach (System.Data.DataRow dataRow in dtCol.Rows)
+                    //                    {
+                    //                        if (Join.Length > 0)
+                    //                            Join += " AND ";
+                    //                        Join += kvp.Value + "." + dataRow[0].ToString() + " = " + currentTable.Value + "." + dataRow[0].ToString();
+                    //                    }
+                    //                    if (!WhereClause.Contains(Join))
+                    //                    {
+                    //                        WhereClause += " AND (" + Join + ") ";
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //    catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+                    //}
+
+                    string MissingJoinsInWhereClause = this.OptimizedQuerMissingJoinsInWhereClause(WhereClause);
+                    if (MissingJoinsInWhereClause != null && MissingJoinsInWhereClause.Length > 0) 
+                        WhereClause += MissingJoinsInWhereClause;
 
                     SQL += " WHERE " + WhereClause;
                     if (this._AnnotationControls.Count > 0)
@@ -5456,14 +5556,299 @@ namespace DiversityWorkbench.UserControls
             return SQL;
         }
 
+        private System.Collections.Generic.Dictionary<string, string> OptimizedQueryMissingJoins()
+        {
+            var MissingJoins = UserControlQueryList.TableAliases.ToDictionary(x => x.Key, x => x.Value);
+            foreach (System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.List<DiversityWorkbench.IUserControlQueryCondition>> KV in UserControlQueryList.TableQueryConditions)
+            {
+                if (MissingJoins.ContainsKey(KV.Key))
+                {
+                    //string Key = MissingJoins.FirstOrDefault(c => c.Value == table).Key;
+                    // If the table is present, it can be removed from the missing joins
+                    // but only if the columns containing the keys are involved
+                    bool RemoveMissingJoin = false;
+                    try
+                    {
+                        string TypeOfCondition = KV.Value.GetType().ToString();
+                        switch (TypeOfCondition)
+                        {
+                            case "UserControlQueryCondition":
+                                break;
+                            case "System.Collections.Generic.List`1[DiversityWorkbench.IUserControlQueryCondition]":
+                                DiversityWorkbench.IUserControlQueryCondition conditionSet = (DiversityWorkbench.IUserControlQueryCondition)KV.Value[0];
+                                break;
+                            default:
+                                break;
+                        }
+                        if (KV.Value.GetType() == typeof(DiversityWorkbench.UserControls.UserControlQueryCondition))
+                        {
+                            DiversityWorkbench.UserControls.UserControlQueryCondition Q = (DiversityWorkbench.UserControls.UserControlQueryCondition)KV.Value[0];
+                            if (Q.QueryCondition.ForMultiFieldQuery)
+                                RemoveMissingJoin = true;
+                            if (Q.QueryCondition.ForeignKey == null && Q.QueryCondition.ForeignKey.Length > 0 && Q.QueryCondition.Column != Q.QueryCondition.ForeignKey)
+                                RemoveMissingJoin = true;
+                            if (Q.QueryCondition.ForeignKeySecondColumn == null && Q.QueryCondition.ForeignKeySecondColumn.Length > 0 && Q.QueryCondition.Column != Q.QueryCondition.ForeignKeySecondColumn)
+                                RemoveMissingJoin = true;
+                        }
+                    }
+                    catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+                    if (RemoveMissingJoin)
+                        MissingJoins.Remove(KV.Key);
+                }
+            }
+            return MissingJoins;
+        }
+
+        private System.Collections.Generic.List<string> _OptimizedQueryPkMainTable;
+        private System.Collections.Generic.List<string> OptimizedQueryPkMainTable()
+        {
+            if (_OptimizedQueryPkMainTable == null)
+            {
+                _OptimizedQueryPkMainTable = new List<string>();
+                string PkTable = this.OptimizedQueryBaseTable(UserControlQueryList.QueryMainTable);
+                DiversityWorkbench.Data.Table maintable = new Data.Table(PkTable, this.Connection.ConnectionString);
+                _OptimizedQueryPkMainTable = maintable.PrimaryKeyColumnList;
+                //System.Data.DataTable Pk;
+
+                //// Getting the type of the main table
+                //string sql = "SELECT T.TABLE_TYPE FROM " + Prefix(false) + "INFORMATION_SCHEMA.TABLES T WHERE T.TABLE_NAME = '" + UserControlQueryList.QueryMainTable + "'";
+                //string TABLE_TYPE = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, this.Connection);
+                //// getting the key column of the main table
+                //switch (TABLE_TYPE)
+                //{
+                //    case "VIEW":
+                //        sql = "select C.COLUMN_NAME from INFORMATION_SCHEMA.VIEW_COLUMN_USAGE C where C.VIEW_NAME = '" + UserControlQueryList.QueryMainTable + "' group by C.COLUMN_NAME having count(*) > 1;";
+                //        break;
+                //    default:
+                //        sql = "select TK.COLUMN_NAME from INFORMATION_SCHEMA.TABLE_CONSTRAINTS TC " +
+                //            "inner join INFORMATION_SCHEMA.KEY_COLUMN_USAGE TK on TC.CONSTRAINT_NAME = TK.CONSTRAINT_NAME and TC.TABLE_NAME = TK.TABLE_NAME and TC.CONSTRAINT_TYPE = 'PRIMARY KEY' " +
+                //            "and TC.TABLE_NAME = '" + UserControlQueryList.QueryMainTable + "';";
+                //        break;
+                //}
+                //Pk = DiversityWorkbench.Forms.FormFunctions.DataTable(sql, this.Connection, PkTable);
+                //foreach (DataRow row in Pk.Rows)
+                //{
+                //    _OptimizedQueryPkMainTable.Add(row[0].ToString());
+                //}
+
+
+                //if (TABLE_TYPE == "VIEW")
+                //{
+                //    sql = "SELECT TOP 1 " +
+                //        "referenced_entity_name AS TableName " +
+                //        "FROM sys.sql_expression_dependencies " +
+                //        "WHERE referencing_id = OBJECT_ID('dbo." + UserControlQueryList.QueryMainTable + "') " +
+                //        "AND referenced_entity_name NOT LIKE '%[_]%'";
+                //    PkTable = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, this.Connection);
+                //}
+
+                //// getting PK of table
+                //if (PkTable.Length > 0)
+                //{
+                //    sql = "select TK.COLUMN_NAME from INFORMATION_SCHEMA.TABLE_CONSTRAINTS TC " +
+                //        "inner join INFORMATION_SCHEMA.KEY_COLUMN_USAGE TK on TC.CONSTRAINT_NAME = TK.CONSTRAINT_NAME and TC.TABLE_NAME = TK.TABLE_NAME and TC.CONSTRAINT_TYPE = 'PRIMARY KEY' " +
+                //        "and TC.TABLE_NAME = '" + PkTable + "';";
+                //    Pk = DiversityWorkbench.Forms.FormFunctions.DataTable(sql, this.Connection, PkTable);
+                //    foreach(DataRow row in Pk.Rows) 
+                //    {
+                //        _OptimizedQueryPkMainTable.Add(row[0].ToString()); 
+                //    }
+                //}
+            }
+            return _OptimizedQueryPkMainTable;
+        }
+
+        private string OptimizedQuerMissingJoinsInWhereClause(string WhereClause)
+        {
+            string MissingJoins = "";
+            System.Collections.Generic.Dictionary<string, string> CurrentTables = UserControlQueryList.TableAliases.ToDictionary(x => x.Key, x => x.Value);
+            CurrentTables.Add(UserControlQueryList.QueryMainTable, "T");
+
+            foreach (System.Collections.Generic.KeyValuePair<string, string> kvp in CurrentTables)
+            {
+                foreach(System.Collections.Generic.KeyValuePair<Tuple<string, string>, Tuple<string, string>> link in this.OptimizedQueryTableLinks(kvp.Key))
+                {
+                    if (link.Key.Item1 == kvp.Key)
+                    {
+                        if (CurrentTables.ContainsKey(link.Value.Item1))
+                        {
+                            string Join = kvp.Value + "." + link.Key.Item2 + " = " + CurrentTables[link.Value.Item1] + "." + link.Value.Item2;
+                            string JoinReverse = CurrentTables[link.Value.Item1] + "." + link.Value.Item2 + " = " + kvp.Value + "." + link.Key.Item2;
+                            if (!WhereClause.Contains(Join) && !WhereClause.Contains(JoinReverse))
+                            {
+                                MissingJoins += " AND (" + Join + ") ";
+                            }
+                        }
+                        else if (_OptimizedQueryBaseTable != null && link.Value.Item1 == _OptimizedQueryBaseTable)
+                        {
+                            string Join = kvp.Value + "." + link.Key.Item2 + " = T." + link.Value.Item2;
+                            string JoinReverse = "T." + link.Value.Item2 + " = " + kvp.Value + "." + link.Key.Item2;
+                            if (!WhereClause.Contains(Join) && !WhereClause.Contains(JoinReverse))
+                            {
+                                MissingJoins += " AND (" + Join + ") ";
+                            }
+                        }
+                    }
+                }
+                //foreach (string PkColumn in this.OptimizedQueryPkMainTable())
+                //{
+                //    if (kvp.Value != null)
+                //    {
+                //        string Parent = kvp.Key;
+                //        if (Parent.IndexOf("_") > -1)
+                //        {
+                //            Parent = Parent.Substring(0, Parent.IndexOf("_"));
+                //        }
+                //        foreach (System.Collections.Generic.KeyValuePair<string, string> currentTable in CurrentTables)
+                //        {
+                //            if (kvp.Value == currentTable.Value)
+                //                continue;
+                //            string Child = currentTable.Key;
+                //            if (Child.IndexOf("_") > -1)
+                //            {
+                //                // Get base table of View
+                //                Child = Child.Substring(0, Child.IndexOf("_"));
+                //            }
+                //            // Get links to other tables
+
+                //            string SqlLinks = "SELECT DISTINCT " +
+                //                "cr.name AS ReferencedColumn " +
+                //                "FROM " +
+                //                "sys.foreign_keys AS fk " +
+                //                "INNER JOIN  " +
+                //                "sys.tables AS tp ON fk.parent_object_id = tp.object_id " +
+                //                "INNER JOIN " +
+                //                "sys.tables AS tr ON fk.referenced_object_id = tr.object_id " +
+                //                "INNER JOIN  " +
+                //                "sys.foreign_key_columns AS fkc ON fk.object_id = fkc.constraint_object_id " +
+                //                "INNER JOIN  " +
+                //                "sys.columns AS cp ON fkc.parent_column_id = cp.column_id AND fkc.parent_object_id = cp.object_id " +
+                //                "INNER JOIN  " +
+                //                "sys.columns AS cr ON fkc.referenced_column_id = cr.column_id AND fkc.referenced_object_id = cr.object_id " +
+                //                "WHERE  " +
+                //                "(tr.name = '" + Parent + "' AND tp.name = '" + Child + "') " +
+                //                "OR (tp.name = '" + Parent + "' AND tr.name = '" + Child + "');";
+                //            System.Data.DataTable dtCol = DiversityWorkbench.Forms.FormFunctions.DataTable(SqlLinks, this.Connection, "PkTable");
+                //            string Join = "";
+                //            string JoinReverse = "";
+                //            foreach (System.Data.DataRow dataRow in dtCol.Rows)
+                //            {
+                //                if (Join.Length > 0)
+                //                    Join += " AND ";
+                //                Join += kvp.Value + "." + dataRow[0].ToString() + " = " + currentTable.Value + "." + dataRow[0].ToString();
+                //                if (JoinReverse.Length > 0)
+                //                    JoinReverse += " AND ";
+                //                JoinReverse += currentTable.Value + "." + dataRow[0].ToString() + " = " + kvp.Value + "." + dataRow[0].ToString();
+                //            }
+                //            if (!WhereClause.Contains(Join) && !WhereClause.Contains(JoinReverse))
+                //            {
+                //                MissingJoins += " AND (" + Join + ") ";
+                //            }
+                //        }
+                //    }
+                //}
+            }
+            return MissingJoins;
+        }
+
+        private System.Collections.Generic.Dictionary<Tuple<string, string>, Tuple<string, string>> OptimizedQueryTableLinks(string ChildTable)
+        {
+            System.Collections.Generic.Dictionary<Tuple<string, string>, Tuple<string, string>> FK = new Dictionary<Tuple<string, string>, Tuple<string, string>>();
+            string maintable = this.OptimizedQueryBaseTable(UserControlQueryList.QueryMainTable);
+            string childtable = this.OptimizedQueryBaseTable(ChildTable);
+            if (childtable == maintable)
+            {
+                DiversityWorkbench.Data.Table t = new Data.Table(maintable, this.Connection.ConnectionString);
+                foreach(string pk in t.PrimaryKeyColumnList)
+                {
+                    var parent = Tuple.Create(UserControlQueryList.QueryMainTable, pk);
+                    var child = Tuple.Create(maintable, pk);
+                    if (!FK.ContainsKey(child))
+                        FK.Add(child, parent);
+                    else { }
+                }
+            }
+            else
+            {
+                string sql = "DECLARE @ParentTable  SYSNAME = 'dbo." + maintable + "'; " +
+                    "DECLARE @ChildTable   SYSNAME = 'dbo." + childtable + "'; " +
+                    "SELECT " +
+                    "pk.TABLE_NAME      AS ParentTable, pk_tc.COLUMN_NAME     AS ParentColumn, " +
+                    "fk.TABLE_NAME      AS ChildTable, fk.COLUMN_NAME     AS ChildColumn " +
+                    "FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS rc " +
+                    "JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS pk ON rc.UNIQUE_CONSTRAINT_NAME = pk.CONSTRAINT_NAME " +
+                    "JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS fk_tc ON rc.CONSTRAINT_NAME = fk_tc.CONSTRAINT_NAME " +
+                    "JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE fk ON fk.CONSTRAINT_NAME = fk_tc.CONSTRAINT_NAME " +
+                    "JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE pk_tc ON pk.CONSTRAINT_NAME = pk_tc.CONSTRAINT_NAME AND pk_tc.ORDINAL_POSITION = fk.ORDINAL_POSITION " +
+                    "WHERE pk.TABLE_SCHEMA + '.' + pk.TABLE_NAME = @ParentTable AND fk.TABLE_SCHEMA + '.' + fk.TABLE_NAME = @ChildTable " +
+                    "ORDER BY rc.CONSTRAINT_NAME, fk.ORDINAL_POSITION;";
+                System.Data.DataTable dataTable = DiversityWorkbench.Forms.FormFunctions.DataTable(sql, this.Connection, "Links");
+                foreach (System.Data.DataRow dataRow in dataTable.Rows)
+                {
+                    var parent = Tuple.Create(dataRow[0].ToString(), dataRow[1].ToString());
+                    var child = Tuple.Create(dataRow[2].ToString(), dataRow[3].ToString());
+                    if (!FK.ContainsKey(child))
+                        FK.Add(child, parent);
+                    else { }
+                }
+            }
+            return FK;
+        }
+
+        private string _OptimizedQueryBaseTable;
+        private string OptimizedQueryBaseTable(string ViewOrTableName)
+        {
+            if (_OptimizedQueryBaseTable != null && ViewOrTableName == UserControlQueryList.QueryMainTable)
+            {
+                return _OptimizedQueryBaseTable;
+            }
+            string basetable = "";
+            basetable = ViewOrTableName;
+            string sql = "SELECT T.TABLE_TYPE FROM " + Prefix(false) + "INFORMATION_SCHEMA.TABLES T WHERE T.TABLE_NAME = '" + ViewOrTableName + "'";
+            string TABLE_TYPE = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, this.Connection);
+
+            if (TABLE_TYPE == "VIEW")
+            {
+                sql = "SELECT " + //TOP 1 " +
+                    "referenced_entity_name AS TableName " +
+                    "FROM sys.sql_expression_dependencies " +
+                    "WHERE referencing_id = OBJECT_ID('dbo." + ViewOrTableName + "') " +
+                    "AND referenced_entity_name NOT LIKE '%[_]%'";
+                System.Data.DataTable dtBaseTables = DiversityWorkbench.Forms.FormFunctions.DataTable(sql, this.Connection.ConnectionString);
+                foreach(System.Data.DataRow dataRow in dtBaseTables.Rows)
+                {
+                    if (ViewOrTableName.IndexOf(dataRow[0].ToString()) > -1)
+                    {
+                        basetable = dataRow[0].ToString();
+                        break;
+                    }
+                }
+                if (basetable.Length == 0)
+                {
+                    sql = "SELECT TOP 1 " +
+                        "referenced_entity_name AS TableName " +
+                        "FROM sys.sql_expression_dependencies " +
+                        "WHERE referencing_id = OBJECT_ID('dbo." + ViewOrTableName + "') " +
+                        "AND referenced_entity_name NOT LIKE '%[_]%'";
+                    basetable = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, this.Connection);
+                }
+            }
+            if (_OptimizedQueryBaseTable == null && ViewOrTableName == UserControlQueryList.QueryMainTable)
+            {
+                _OptimizedQueryBaseTable = basetable;
+            }
+            return basetable;
+        }
+
+
         private System.Collections.Generic.List<string> IncludedPK(DiversityWorkbench.IUserControlQueryCondition QC, string Where)
         {
             System.Collections.Generic.List<string> PKlist = new List<string>();
             try
             {
                 bool IncludePK = false;
-                DiversityWorkbench.Data.Table table = new Data.Table(QC.Condition().Table);
-                DiversityWorkbench.Data.Table maintable = new Data.Table(UserControlQueryList.QueryMainTable);
+                DiversityWorkbench.Data.Table table = new Data.Table(QC.Condition().Table, this.Connection.ConnectionString);
+                DiversityWorkbench.Data.Table maintable = new Data.Table(UserControlQueryList.QueryMainTable, this.Connection.ConnectionString);
 
                 System.Collections.Generic.Dictionary<string, DiversityWorkbench.Data.Table.TableRelation> TableRelations = table.RelatedTables();
                 System.Collections.Generic.Dictionary<string, DiversityWorkbench.Data.Table.TableRelation> TableParents = table.ParentTables();
@@ -5490,7 +5875,7 @@ namespace DiversityWorkbench.UserControls
                     {
                         foreach (string Table in maintable.ViewTables)
                         {
-                            DiversityWorkbench.Data.Table ViewTable = new Data.Table(Table);
+                            DiversityWorkbench.Data.Table ViewTable = new Data.Table(Table, this.Connection.ConnectionString);
                             if (TableRelations.ContainsKey(Table) ||
                             TableParents.ContainsKey(Table))
                             {
@@ -5508,7 +5893,7 @@ namespace DiversityWorkbench.UserControls
                     {
                         foreach (string Table in table.ViewTables)
                         {
-                            DiversityWorkbench.Data.Table ViewTable = new Data.Table(Table);
+                            DiversityWorkbench.Data.Table ViewTable = new Data.Table(Table, this.Connection.ConnectionString);
                             if (MainTableRelations.ContainsKey(Table) ||
                             MainTableParents.ContainsKey(Table))
                             {
@@ -5696,8 +6081,8 @@ namespace DiversityWorkbench.UserControls
                     if (KV.Value.StartsWith("M")) SQL += " LEFT OUTER ";
                     else SQL += " INNER ";
                     SQL += "JOIN " + KV.Key + " AS " + KV.Value + " ON ";
-                    DiversityWorkbench.Data.Table Tmain = new Data.Table(_QueryMainTableOptimizing);
-                    DiversityWorkbench.Data.Table Tmissing = new Data.Table(KV.Key);
+                    DiversityWorkbench.Data.Table Tmain = new Data.Table(_QueryMainTableOptimizing, this.Connection.ConnectionString);
+                    DiversityWorkbench.Data.Table Tmissing = new Data.Table(KV.Key, this.Connection.ConnectionString);
                     string Join = "";
                     foreach (string PK in Tmain.PrimaryKeyColumnList)
                     {
@@ -7893,7 +8278,7 @@ namespace DiversityWorkbench.UserControls
             {
                 string SQL = "SELECT " + this.ManyOrderByColumns_DisplayColumnClause() + " FROM " + OptimizingColumns[OptimizingColumn.Table] + " AS T " + this.ManyOrderByColumns_FromClause() + " WHERE " + this.ManyOrderByColumns_WhereClause() + " AND T." + OptimizingColumns[OptimizingColumn.IdentityColumn] + " = " + ID.ToString();
                 // Get PK from Table
-                DiversityWorkbench.Data.Table table = new Data.Table(Table);
+                DiversityWorkbench.Data.Table table = new Data.Table(Table, this.Connection.ConnectionString);
                 foreach (string PK in table.PrimaryKeyColumnList)
                 {
                     SQL += " AND T." + PK + " = '" + Dataset.Tables[Table].Rows[Index][PK].ToString() + "'";
@@ -7994,15 +8379,15 @@ namespace DiversityWorkbench.UserControls
                     TabAli.Add(KV.Value.QueryOrderColumn.TableName, this.ManyOrderByColumns_TableAliases()[KV.Value.QueryOrderColumn.TableName]);
                 }
             }
-            DiversityWorkbench.Data.Table tableMain = new Data.Table(UserControlQueryList.QueryMainTable);
+            DiversityWorkbench.Data.Table tableMain = new Data.Table(UserControlQueryList.QueryMainTable, this.Connection.ConnectionString);
             // may interfere with previous query - check PK to correct
             if (tableMain.PrimaryKeyColumnList.Count == 0)
             {
-                tableMain = new Data.Table(this._QueryMainTableLocal);
+                tableMain = new Data.Table(this._QueryMainTableLocal, this.Connection.ConnectionString);
             }
             foreach (System.Collections.Generic.KeyValuePair<string, string> KV in TabAli)
             {
-                DiversityWorkbench.Data.Table tab = new Data.Table(KV.Key);
+                DiversityWorkbench.Data.Table tab = new Data.Table(KV.Key, this.Connection.ConnectionString);
                 if (KV.Key == this.QueryMainTableLocal)
                     SQL += " RIGHT OUTER JOIN ";
                 else

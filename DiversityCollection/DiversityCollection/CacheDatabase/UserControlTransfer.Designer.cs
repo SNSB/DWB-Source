@@ -28,268 +28,274 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlTransfer));
-            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.labelStep = new System.Windows.Forms.Label();
-            this.buttonViewResult = new System.Windows.Forms.Button();
-            this.buttonInfo = new System.Windows.Forms.Button();
-            this.pictureBoxStep = new System.Windows.Forms.PictureBox();
-            this.labelStart = new System.Windows.Forms.Label();
-            this.labelStartTime = new System.Windows.Forms.Label();
-            this.labelEnd = new System.Windows.Forms.Label();
-            this.labelEndTime = new System.Windows.Forms.Label();
-            this.labelCount = new System.Windows.Forms.Label();
-            this.checkBoxTransfer = new System.Windows.Forms.CheckBox();
-            this.labelCountSource = new System.Windows.Forms.Label();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.labelInfo = new System.Windows.Forms.Label();
-            this.buttonShowProcedure = new System.Windows.Forms.Button();
-            this.imageListInfo = new System.Windows.Forms.ImageList();
-            this.toolTip = new System.Windows.Forms.ToolTip();
-            this.tableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStep)).BeginInit();
-            this.SuspendLayout();
+            tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            labelStep = new System.Windows.Forms.Label();
+            buttonViewResult = new System.Windows.Forms.Button();
+            buttonInfo = new System.Windows.Forms.Button();
+            pictureBoxStep = new System.Windows.Forms.PictureBox();
+            labelStart = new System.Windows.Forms.Label();
+            labelStartTime = new System.Windows.Forms.Label();
+            labelEnd = new System.Windows.Forms.Label();
+            labelEndTime = new System.Windows.Forms.Label();
+            labelCount = new System.Windows.Forms.Label();
+            checkBoxTransfer = new System.Windows.Forms.CheckBox();
+            labelCountSource = new System.Windows.Forms.Label();
+            progressBar = new System.Windows.Forms.ProgressBar();
+            labelInfo = new System.Windows.Forms.Label();
+            buttonShowProcedure = new System.Windows.Forms.Button();
+            imageListInfo = new System.Windows.Forms.ImageList(components);
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            tableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxStep).BeginInit();
+            SuspendLayout();
             // 
             // tableLayoutPanel
             // 
-            this.tableLayoutPanel.ColumnCount = 13;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel.Controls.Add(this.labelStep, 2, 0);
-            this.tableLayoutPanel.Controls.Add(this.buttonViewResult, 11, 0);
-            this.tableLayoutPanel.Controls.Add(this.buttonInfo, 10, 0);
-            this.tableLayoutPanel.Controls.Add(this.pictureBoxStep, 1, 0);
-            this.tableLayoutPanel.Controls.Add(this.labelStart, 4, 0);
-            this.tableLayoutPanel.Controls.Add(this.labelStartTime, 5, 0);
-            this.tableLayoutPanel.Controls.Add(this.labelEnd, 6, 0);
-            this.tableLayoutPanel.Controls.Add(this.labelEndTime, 7, 0);
-            this.tableLayoutPanel.Controls.Add(this.labelCount, 9, 0);
-            this.tableLayoutPanel.Controls.Add(this.checkBoxTransfer, 0, 0);
-            this.tableLayoutPanel.Controls.Add(this.labelCountSource, 8, 0);
-            this.tableLayoutPanel.Controls.Add(this.progressBar, 2, 1);
-            this.tableLayoutPanel.Controls.Add(this.labelInfo, 3, 0);
-            this.tableLayoutPanel.Controls.Add(this.buttonShowProcedure, 12, 0);
-            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 2;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(615, 30);
-            this.tableLayoutPanel.TabIndex = 1;
+            tableLayoutPanel.ColumnCount = 13;
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel.Controls.Add(labelStep, 2, 0);
+            tableLayoutPanel.Controls.Add(buttonViewResult, 11, 0);
+            tableLayoutPanel.Controls.Add(buttonInfo, 10, 0);
+            tableLayoutPanel.Controls.Add(pictureBoxStep, 1, 0);
+            tableLayoutPanel.Controls.Add(labelStart, 4, 0);
+            tableLayoutPanel.Controls.Add(labelStartTime, 5, 0);
+            tableLayoutPanel.Controls.Add(labelEnd, 6, 0);
+            tableLayoutPanel.Controls.Add(labelEndTime, 7, 0);
+            tableLayoutPanel.Controls.Add(labelCount, 9, 0);
+            tableLayoutPanel.Controls.Add(checkBoxTransfer, 0, 0);
+            tableLayoutPanel.Controls.Add(labelCountSource, 8, 0);
+            tableLayoutPanel.Controls.Add(progressBar, 2, 1);
+            tableLayoutPanel.Controls.Add(labelInfo, 3, 0);
+            tableLayoutPanel.Controls.Add(buttonShowProcedure, 12, 0);
+            tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanel.Name = "tableLayoutPanel";
+            tableLayoutPanel.RowCount = 2;
+            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            tableLayoutPanel.Size = new System.Drawing.Size(718, 35);
+            tableLayoutPanel.TabIndex = 1;
             // 
             // labelStep
             // 
-            this.labelStep.AutoSize = true;
-            this.labelStep.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelStep.Location = new System.Drawing.Point(40, 0);
-            this.labelStep.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.labelStep.Name = "labelStep";
-            this.labelStep.Size = new System.Drawing.Size(129, 22);
-            this.labelStep.TabIndex = 0;
-            this.labelStep.Text = "label1";
-            this.labelStep.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            labelStep.AutoSize = true;
+            labelStep.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelStep.Location = new System.Drawing.Point(46, 0);
+            labelStep.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            labelStep.Name = "labelStep";
+            labelStep.Size = new System.Drawing.Size(150, 26);
+            labelStep.TabIndex = 0;
+            labelStep.Text = "label1";
+            labelStep.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // buttonViewResult
             // 
-            this.buttonViewResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonViewResult.Image = global::DiversityCollection.Resource.Lupe;
-            this.buttonViewResult.Location = new System.Drawing.Point(564, 3);
-            this.buttonViewResult.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.buttonViewResult.Name = "buttonViewResult";
-            this.tableLayoutPanel.SetRowSpan(this.buttonViewResult, 2);
-            this.buttonViewResult.Size = new System.Drawing.Size(32, 24);
-            this.buttonViewResult.TabIndex = 2;
-            this.toolTip.SetToolTip(this.buttonViewResult, "View first 100 data lines");
-            this.buttonViewResult.UseVisualStyleBackColor = true;
-            this.buttonViewResult.Click += new System.EventHandler(this.buttonViewResult_Click);
+            buttonViewResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonViewResult.Image = Resource.Lupe;
+            buttonViewResult.Location = new System.Drawing.Point(655, 3);
+            buttonViewResult.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            buttonViewResult.Name = "buttonViewResult";
+            tableLayoutPanel.SetRowSpan(buttonViewResult, 2);
+            buttonViewResult.Size = new System.Drawing.Size(37, 29);
+            buttonViewResult.TabIndex = 2;
+            toolTip.SetToolTip(buttonViewResult, "View first 100 data lines");
+            buttonViewResult.UseVisualStyleBackColor = true;
+            buttonViewResult.Click += buttonViewResult_Click;
             // 
             // buttonInfo
             // 
-            this.buttonInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonInfo.Image = global::DiversityCollection.Resource.wait_animation;
-            this.buttonInfo.Location = new System.Drawing.Point(540, 3);
-            this.buttonInfo.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.buttonInfo.Name = "buttonInfo";
-            this.tableLayoutPanel.SetRowSpan(this.buttonInfo, 2);
-            this.buttonInfo.Size = new System.Drawing.Size(24, 24);
-            this.buttonInfo.TabIndex = 5;
-            this.buttonInfo.UseVisualStyleBackColor = true;
-            this.buttonInfo.Visible = false;
-            this.buttonInfo.Click += new System.EventHandler(this.buttonInfo_Click);
+            buttonInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonInfo.Image = Resource.wait_animation;
+            buttonInfo.Location = new System.Drawing.Point(627, 3);
+            buttonInfo.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            buttonInfo.Name = "buttonInfo";
+            tableLayoutPanel.SetRowSpan(buttonInfo, 2);
+            buttonInfo.Size = new System.Drawing.Size(28, 29);
+            buttonInfo.TabIndex = 5;
+            buttonInfo.UseVisualStyleBackColor = true;
+            buttonInfo.Visible = false;
+            buttonInfo.Click += buttonInfo_Click;
             // 
             // pictureBoxStep
             // 
-            this.pictureBoxStep.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxStep.Location = new System.Drawing.Point(22, 7);
-            this.pictureBoxStep.Margin = new System.Windows.Forms.Padding(2, 7, 2, 7);
-            this.pictureBoxStep.Name = "pictureBoxStep";
-            this.tableLayoutPanel.SetRowSpan(this.pictureBoxStep, 2);
-            this.pictureBoxStep.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxStep.TabIndex = 6;
-            this.pictureBoxStep.TabStop = false;
+            pictureBoxStep.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBoxStep.Location = new System.Drawing.Point(25, 8);
+            pictureBoxStep.Margin = new System.Windows.Forms.Padding(2, 8, 2, 8);
+            pictureBoxStep.Name = "pictureBoxStep";
+            tableLayoutPanel.SetRowSpan(pictureBoxStep, 2);
+            pictureBoxStep.Size = new System.Drawing.Size(19, 19);
+            pictureBoxStep.TabIndex = 6;
+            pictureBoxStep.TabStop = false;
             // 
             // labelStart
             // 
-            this.labelStart.AutoSize = true;
-            this.labelStart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelStart.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelStart.Location = new System.Drawing.Point(295, 0);
-            this.labelStart.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelStart.Name = "labelStart";
-            this.labelStart.Size = new System.Drawing.Size(32, 22);
-            this.labelStart.TabIndex = 7;
-            this.labelStart.Text = "Start:";
-            this.labelStart.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.labelStart.Visible = false;
+            labelStart.AutoSize = true;
+            labelStart.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelStart.ForeColor = System.Drawing.SystemColors.ControlDark;
+            labelStart.Location = new System.Drawing.Point(344, 0);
+            labelStart.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelStart.Name = "labelStart";
+            labelStart.Size = new System.Drawing.Size(34, 26);
+            labelStart.TabIndex = 7;
+            labelStart.Text = "Start:";
+            labelStart.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            labelStart.Visible = false;
             // 
             // labelStartTime
             // 
-            this.labelStartTime.AutoSize = true;
-            this.labelStartTime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelStartTime.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelStartTime.Location = new System.Drawing.Point(327, 0);
-            this.labelStartTime.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.labelStartTime.Name = "labelStartTime";
-            this.labelStartTime.Size = new System.Drawing.Size(25, 22);
-            this.labelStartTime.TabIndex = 8;
-            this.labelStartTime.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            labelStartTime.AutoSize = true;
+            labelStartTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelStartTime.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            labelStartTime.Location = new System.Drawing.Point(378, 0);
+            labelStartTime.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            labelStartTime.Name = "labelStartTime";
+            labelStartTime.Size = new System.Drawing.Size(29, 26);
+            labelStartTime.TabIndex = 8;
+            labelStartTime.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // labelEnd
             // 
-            this.labelEnd.AutoSize = true;
-            this.labelEnd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelEnd.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelEnd.Location = new System.Drawing.Point(358, 0);
-            this.labelEnd.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelEnd.Name = "labelEnd";
-            this.labelEnd.Size = new System.Drawing.Size(29, 22);
-            this.labelEnd.TabIndex = 9;
-            this.labelEnd.Text = "End:";
-            this.labelEnd.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.labelEnd.Visible = false;
+            labelEnd.AutoSize = true;
+            labelEnd.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelEnd.ForeColor = System.Drawing.SystemColors.ControlDark;
+            labelEnd.Location = new System.Drawing.Point(415, 0);
+            labelEnd.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelEnd.Name = "labelEnd";
+            labelEnd.Size = new System.Drawing.Size(33, 26);
+            labelEnd.TabIndex = 9;
+            labelEnd.Text = "End:";
+            labelEnd.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            labelEnd.Visible = false;
             // 
             // labelEndTime
             // 
-            this.labelEndTime.AutoSize = true;
-            this.labelEndTime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelEndTime.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelEndTime.Location = new System.Drawing.Point(387, 0);
-            this.labelEndTime.Margin = new System.Windows.Forms.Padding(0);
-            this.labelEndTime.Name = "labelEndTime";
-            this.labelEndTime.Size = new System.Drawing.Size(28, 22);
-            this.labelEndTime.TabIndex = 10;
-            this.labelEndTime.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            labelEndTime.AutoSize = true;
+            labelEndTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelEndTime.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            labelEndTime.Location = new System.Drawing.Point(448, 0);
+            labelEndTime.Margin = new System.Windows.Forms.Padding(0);
+            labelEndTime.Name = "labelEndTime";
+            labelEndTime.Size = new System.Drawing.Size(33, 26);
+            labelEndTime.TabIndex = 10;
+            labelEndTime.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // labelCount
             // 
-            this.labelCount.AutoSize = true;
-            this.labelCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCount.Location = new System.Drawing.Point(485, 0);
-            this.labelCount.Margin = new System.Windows.Forms.Padding(0);
-            this.labelCount.MinimumSize = new System.Drawing.Size(40, 0);
-            this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(55, 22);
-            this.labelCount.TabIndex = 11;
-            this.labelCount.Text = "12345678";
-            this.labelCount.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            labelCount.AutoSize = true;
+            labelCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelCount.Location = new System.Drawing.Point(563, 0);
+            labelCount.Margin = new System.Windows.Forms.Padding(0);
+            labelCount.MinimumSize = new System.Drawing.Size(47, 0);
+            labelCount.Name = "labelCount";
+            labelCount.Size = new System.Drawing.Size(64, 26);
+            labelCount.TabIndex = 11;
+            labelCount.Text = "12345678";
+            labelCount.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // checkBoxTransfer
             // 
-            this.checkBoxTransfer.AutoSize = true;
-            this.checkBoxTransfer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxTransfer.Location = new System.Drawing.Point(3, 3);
-            this.checkBoxTransfer.Name = "checkBoxTransfer";
-            this.tableLayoutPanel.SetRowSpan(this.checkBoxTransfer, 2);
-            this.checkBoxTransfer.Size = new System.Drawing.Size(14, 24);
-            this.checkBoxTransfer.TabIndex = 12;
-            this.toolTip.SetToolTip(this.checkBoxTransfer, "Transfer these data");
-            this.checkBoxTransfer.UseVisualStyleBackColor = true;
-            this.checkBoxTransfer.Click += new System.EventHandler(this.checkBoxTransfer_Click);
+            checkBoxTransfer.AutoSize = true;
+            checkBoxTransfer.Dock = System.Windows.Forms.DockStyle.Fill;
+            checkBoxTransfer.Location = new System.Drawing.Point(4, 3);
+            checkBoxTransfer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxTransfer.Name = "checkBoxTransfer";
+            tableLayoutPanel.SetRowSpan(checkBoxTransfer, 2);
+            checkBoxTransfer.Size = new System.Drawing.Size(15, 29);
+            checkBoxTransfer.TabIndex = 12;
+            toolTip.SetToolTip(checkBoxTransfer, "Transfer these data");
+            checkBoxTransfer.UseVisualStyleBackColor = true;
+            checkBoxTransfer.Click += checkBoxTransfer_Click;
             // 
             // labelCountSource
             // 
-            this.labelCountSource.AutoSize = true;
-            this.labelCountSource.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCountSource.ForeColor = System.Drawing.Color.Red;
-            this.labelCountSource.Location = new System.Drawing.Point(415, 0);
-            this.labelCountSource.Margin = new System.Windows.Forms.Padding(0);
-            this.labelCountSource.Name = "labelCountSource";
-            this.labelCountSource.Size = new System.Drawing.Size(70, 22);
-            this.labelCountSource.TabIndex = 13;
-            this.labelCountSource.Text = "12345678 <>";
-            this.labelCountSource.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            labelCountSource.AutoSize = true;
+            labelCountSource.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelCountSource.ForeColor = System.Drawing.Color.Red;
+            labelCountSource.Location = new System.Drawing.Point(481, 0);
+            labelCountSource.Margin = new System.Windows.Forms.Padding(0);
+            labelCountSource.Name = "labelCountSource";
+            labelCountSource.Size = new System.Drawing.Size(82, 26);
+            labelCountSource.TabIndex = 13;
+            labelCountSource.Text = "12345678 <>";
+            labelCountSource.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // progressBar
             // 
-            this.tableLayoutPanel.SetColumnSpan(this.progressBar, 8);
-            this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar.Location = new System.Drawing.Point(40, 22);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(0);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(500, 8);
-            this.progressBar.TabIndex = 14;
-            this.progressBar.Visible = false;
+            tableLayoutPanel.SetColumnSpan(progressBar, 8);
+            progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            progressBar.Location = new System.Drawing.Point(46, 26);
+            progressBar.Margin = new System.Windows.Forms.Padding(0);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new System.Drawing.Size(581, 9);
+            progressBar.TabIndex = 14;
+            progressBar.Visible = false;
             // 
             // labelInfo
             // 
-            this.labelInfo.AutoSize = true;
-            this.labelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInfo.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.labelInfo.Location = new System.Drawing.Point(175, 0);
-            this.labelInfo.MaximumSize = new System.Drawing.Size(100, 0);
-            this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(100, 22);
-            this.labelInfo.TabIndex = 15;
-            this.labelInfo.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            labelInfo.AutoSize = true;
+            labelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            labelInfo.ForeColor = System.Drawing.SystemColors.GrayText;
+            labelInfo.Location = new System.Drawing.Point(204, 0);
+            labelInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelInfo.MaximumSize = new System.Drawing.Size(117, 0);
+            labelInfo.Name = "labelInfo";
+            labelInfo.Size = new System.Drawing.Size(117, 26);
+            labelInfo.TabIndex = 15;
+            labelInfo.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // buttonShowProcedure
             // 
-            this.buttonShowProcedure.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonShowProcedure.FlatAppearance.BorderSize = 0;
-            this.buttonShowProcedure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonShowProcedure.Image = global::DiversityCollection.Resource.Manual;
-            this.buttonShowProcedure.Location = new System.Drawing.Point(596, 3);
-            this.buttonShowProcedure.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.buttonShowProcedure.Name = "buttonShowProcedure";
-            this.tableLayoutPanel.SetRowSpan(this.buttonShowProcedure, 2);
-            this.buttonShowProcedure.Size = new System.Drawing.Size(19, 24);
-            this.buttonShowProcedure.TabIndex = 16;
-            this.buttonShowProcedure.UseVisualStyleBackColor = true;
-            this.buttonShowProcedure.Visible = false;
-            this.buttonShowProcedure.Click += new System.EventHandler(this.buttonShowProcedure_Click);
+            buttonShowProcedure.Dock = System.Windows.Forms.DockStyle.Fill;
+            buttonShowProcedure.FlatAppearance.BorderSize = 0;
+            buttonShowProcedure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonShowProcedure.Image = Resource.Manual;
+            buttonShowProcedure.Location = new System.Drawing.Point(692, 3);
+            buttonShowProcedure.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            buttonShowProcedure.Name = "buttonShowProcedure";
+            tableLayoutPanel.SetRowSpan(buttonShowProcedure, 2);
+            buttonShowProcedure.Size = new System.Drawing.Size(26, 29);
+            buttonShowProcedure.TabIndex = 16;
+            buttonShowProcedure.UseVisualStyleBackColor = true;
+            buttonShowProcedure.Visible = false;
+            buttonShowProcedure.Click += buttonShowProcedure_Click;
             // 
             // imageListInfo
             // 
-            this.imageListInfo.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListInfo.ImageStream")));
-            this.imageListInfo.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListInfo.Images.SetKeyName(0, "OK.ico");
-            this.imageListInfo.Images.SetKeyName(1, "info.ico");
-            this.imageListInfo.Images.SetKeyName(2, "Error.ico");
+            imageListInfo.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            imageListInfo.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageListInfo.ImageStream");
+            imageListInfo.TransparentColor = System.Drawing.Color.Transparent;
+            imageListInfo.Images.SetKeyName(0, "OK.ico");
+            imageListInfo.Images.SetKeyName(1, "info.ico");
+            imageListInfo.Images.SetKeyName(2, "Error.ico");
             // 
             // UserControlTransfer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel);
-            this.Name = "UserControlTransfer";
-            this.Size = new System.Drawing.Size(615, 30);
-            this.tableLayoutPanel.ResumeLayout(false);
-            this.tableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStep)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(tableLayoutPanel);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "UserControlTransfer";
+            Size = new System.Drawing.Size(718, 35);
+            tableLayoutPanel.ResumeLayout(false);
+            tableLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxStep).EndInit();
+            ResumeLayout(false);
 
         }
 

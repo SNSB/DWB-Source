@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows.Forms;
-using Npgsql;
-using System.Net.NetworkInformation;
 
 namespace DiversityWorkbench.Forms
 {
@@ -755,7 +756,15 @@ namespace DiversityWorkbench.Forms
                             {
                                 ConnectionOK = true;
                                 this.comboBoxDatabase.Text = "postgres";
-                                System.Windows.Forms.MessageBox.Show("No available cache databases\r\nyou are connected to the database postgres", "Connected to postgres", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //System.Windows.Forms.MessageBox.Show("No available cache databases\r\nyou are connected to the database postgres", "Connected to postgres", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (DiversityWorkbench.Forms.FormMessageDialog.Show("No available cache databases\r\nyou are connected to the database postgres\r\n\r\nDo you want to open the manual?", "Connected to postgres", "Open manual", "Cancel", MessageBoxDefaultButton.Button1, MessageBoxIcon.Question, true) == DialogResult.Yes)
+                                {
+                                    Process.Start(new ProcessStartInfo
+                                    {
+                                        FileName = "https://www.diversityworkbench.de/manual/dwb/modules/diversitycollection/import_export_dc/export_dc/cachedatabase_dc/cachedatabase_postgres_dc/postgres_maintenance_setup/",
+                                        UseShellExecute = true
+                                    });
+                                }
                                 this.userControlDialogPanel.buttonOK.Enabled = true;
                             }
                             else if (ExceptionMessage.Length > 0)

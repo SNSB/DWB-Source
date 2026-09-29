@@ -752,6 +752,10 @@ namespace DiversityCollection.CacheDatabase
                     TransferStep TU = new TransferStep("Unit: Part + Observation", PostGresSchema, "abcd__unit", "ABCD_Unit", DiversityCollection.Resource.Plant);
                     Steps.Add(TU);
 
+                    //TransferStep TIR = new TransferStep("Identification - Reference", PostGresSchema, "abcd__unit_identification_references", "ABCD_Unit_Identification_References", DiversityCollection.Resource.References);
+                    //Steps.Add(TIR);
+
+
                     TransferStep TUA = new TransferStep("Association", PostGresSchema, "abcd__unit_associations_unitassociation", "ABCD_Unit_Associations_UnitAssociation", DiversityCollection.Resource.Hierarchy);
                     Steps.Add(TUA);
                     TransferStep TG = new TransferStep("Gathering", PostGresSchema, "abcd__unit_gathering", "ABCD_Unit_Gathering", DiversityCollection.Resource.Event);
@@ -785,7 +789,7 @@ namespace DiversityCollection.CacheDatabase
             switch (Pack)
             {
                 case Package.Pack.ABCD:
-                    return 14; // #118 - fehlende Sicht fuer Pladias ergänzt // #18 - war auf 13 - vorerst das neue Skript nicht verwenden bis Unklarheiten geklärt #188 // ToDo: Bei Umstellung auf Version 10 Einbau der Anpassungen in BioCASE beachten
+                    return 16; // #118 - fehlende Sicht fuer Pladias ergänzt // #18 - war auf 13 - vorerst das neue Skript nicht verwenden bis Unklarheiten geklärt #188 // ToDo: Bei Umstellung auf Version 10 Einbau der Anpassungen in BioCASE beachten
                 case Package.Pack.FloraRaster:
                     return 2;
                 case Package.Pack.Observation:

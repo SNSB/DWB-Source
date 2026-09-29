@@ -1175,12 +1175,12 @@ namespace DiversityCollection.Forms
                 SQL += " FROM Identification I INNER JOIN " + Prefix;
                 if (this.checkBoxSynColTaxViaCacheDB.Checked)
                     SQL += "TaxonSynonymy T " +
-                        " ON I.NameURI = T.NameURI AND I.TaxonomicName <> T.TaxonName ";
+                        " ON I.NameURI = T.NameURI AND I.TaxonomicName COLLATE Latin1_General_CS_AS  <> T.TaxonName COLLATE Latin1_General_CS_AS  ";
                 else
                     SQL += "TaxonName T " +
                         " ON RTRIM(SUBSTRING(I.NameURI, LEN('" + BaseURL + "') + 1, 255))  " +
                         " = CAST(T.NameID AS varchar) AND  " +
-                        " I.TaxonomicName <> T.TaxonNameCache ";
+                        " I.TaxonomicName COLLATE Latin1_General_CS_AS  <> T.TaxonNameCache COLLATE Latin1_General_CS_AS  ";
                 if (this.comboBoxSynColTaxTaxonomicGroup.SelectedIndex > -1)
                 {
                     SQL += " INNER JOIN IdentificationUnit U ON U.CollectionSpecimenID = I.CollectionSpecimenID AND I.IdentificationUnitID = U.IdentificationUnitID ";
@@ -15633,7 +15633,16 @@ namespace DiversityCollection.Forms
                 Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
                 Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SQL, con);
                 con.Open();
-                C.ExecuteNonQuery();
+                if (SQL.Length > 0)
+                {
+                    C.ExecuteNonQuery();
+                    SQL = this.SqlBulkInsertTaxonNames(true, true);
+                    if (SQL.Length > 0)
+                    {
+                        C.CommandText = SQL;
+                        C.ExecuteNonQuery();
+                    }
+                }
                 con.Close();
                 this.dataGridViewBulk.DataSource = null;
                 System.Windows.Forms.MessageBox.Show("Identifications added");
@@ -15645,9 +15654,10 @@ namespace DiversityCollection.Forms
             }
         }
 
-        private string SqlBulkInsertTaxonNames(bool ForInsert)
+        private string SqlBulkInsertTaxonNames(bool ForInsert, bool ForReference = false)
         {
             string SQL = "";
+            string SqlReference = "";
             if (this.userControlModuleRelatedEntryBulkNewIdentification.textBoxValue.Text.Length == 0)
             {
                 System.Windows.Forms.MessageBox.Show("Please enter the new name");
@@ -15656,11 +15666,17 @@ namespace DiversityCollection.Forms
             try
             {
                 string SqlSource = "SELECT ";
+                string SqlInsert = "INSERT INTO Identification " +
+                    "( CollectionSpecimenID, IdentificationUnitID, IdentificationSequence, TaxonomicName, NameURI ";
+                // for insert, we also need to insert the reference, if provided
+                string SqlSourceReference = "SELECT ";
+                string SqlInsertReference = "INSERT INTO CollectionSpecimenReference (CollectionSpecimenID, IdentificationUnitID, IdentificationSequence ";
                 if (ForInsert)
                 {
                     SqlSource += " I.CollectionSpecimenID, I.IdentificationUnitID, MAX(M.IdentificationSequence) + 1" +
                     ", '" + this.userControlModuleRelatedEntryBulkNewIdentification.textBoxValue.Text + "' AS TaxonomicName " +
                     ", '" + this.userControlModuleRelatedEntryBulkNewIdentification.labelURI.Text + "' AS NameURI ";
+                    SqlSourceReference += " I.CollectionSpecimenID, I.IdentificationUnitID, MAX(M.IdentificationSequence)";
                 }
                 else
                 {
@@ -15671,8 +15687,6 @@ namespace DiversityCollection.Forms
                         "'" + this.userControlModuleRelatedEntryBulkNewIdentification.textBoxValue.Text + "' AS New_Name, " +
                         "'" + this.userControlModuleRelatedEntryBulkNewIdentification.labelURI.Text + "' AS New_URI ";
                 }
-                string SqlInsert = "INSERT INTO Identification " +
-                    "( CollectionSpecimenID, IdentificationUnitID, IdentificationSequence, TaxonomicName, NameURI ";
                 if (this.comboBoxBulkIdentCategory.Text.Length > 0)
                 {
                     SqlSource += ", '" + this.comboBoxBulkIdentCategory.Text + "' AS IdentificationCategory ";
@@ -15708,46 +15722,75 @@ namespace DiversityCollection.Forms
                     SqlSource += ", '" + this.userControlDatePanelBulkIdentDate.textBoxSupplement.Text + "' AS IdentificationDateSupplement ";
                     SqlInsert += ", IdentificationDateSupplement";
                 }
-                if (this.userControlModuleRelatedEntryBulkIdentReference.textBoxValue.Text.Length > 0)
-                {
-                    SqlSource += ", N'" + this.userControlModuleRelatedEntryBulkIdentReference.textBoxValue.Text + "' AS ReferenceTitle ";
-                    SqlInsert += ", ReferenceTitle";
-                }
-                if (this.userControlModuleRelatedEntryBulkIdentReference.labelURI.Text.Length > 0)
-                {
-                    SqlSource += ", '" + this.userControlModuleRelatedEntryBulkIdentReference.labelURI.Text + "' AS ReferenceURI ";
-                    SqlInsert += ", ReferenceURI";
-                }
                 if (this.userControlModuleRelatedEntryBulkIdentResponsible.textBoxValue.Text.Length > 0)
                 {
                     SqlSource += ", N'" + this.userControlModuleRelatedEntryBulkIdentResponsible.textBoxValue.Text + "' AS ResponsibleName ";
+                    SqlSourceReference += ", N'" + this.userControlModuleRelatedEntryBulkIdentResponsible.textBoxValue.Text + "' AS ResponsibleName ";
                     SqlInsert += ", ResponsibleName";
+                    SqlInsertReference += ", ResponsibleName";
                 }
                 if (this.userControlModuleRelatedEntryBulkIdentResponsible.labelURI.Text.Length > 0)
                 {
                     SqlSource += ", '" + this.userControlModuleRelatedEntryBulkIdentResponsible.labelURI.Text + "' AS ResponsibleURI ";
+                    SqlSourceReference += ", '" + this.userControlModuleRelatedEntryBulkIdentResponsible.labelURI.Text + "' AS ResponsibleURI ";
                     SqlInsert += ", ResponsibleAgentURI";
+                    SqlInsertReference += ", ResponsibleAgentURI";
+                }
+                if (this.userControlModuleRelatedEntryBulkIdentReference.textBoxValue.Text.Length > 0)
+                {
+                    SqlSourceReference += ", N'" + this.userControlModuleRelatedEntryBulkIdentReference.textBoxValue.Text + "' AS ReferenceTitle ";
+                    SqlInsertReference += ", ReferenceTitle";
+                    if (this.userControlModuleRelatedEntryBulkIdentReference.labelURI.Text.Length > 0)
+                    {
+                        SqlSourceReference += ", '" + this.userControlModuleRelatedEntryBulkIdentReference.labelURI.Text + "' AS ReferenceURI ";
+                        SqlInsertReference += ", ReferenceURI";
+                    }
+                }
+                else
+                {
+                    SqlSourceReference += ", NULL AS ReferenceTitle, NULL AS ReferenceURI ";
+                    SqlInsertReference += ", ReferenceTitle, ReferenceURI";
                 }
                 SqlInsert += ") ";
+                SqlInsertReference += ") ";
                 SqlSource += "FROM ";
+                SqlSourceReference += "FROM ";
                 SqlSource += " Identification AS I INNER JOIN " +
+                    "CollectionProject AS P ON I.CollectionSpecimenID = P.CollectionSpecimenID INNER JOIN " +
+                    "IdentificationUnit AS U ON I.CollectionSpecimenID = U.CollectionSpecimenID AND I.IdentificationUnitID = U.IdentificationUnitID  ";
+                SqlSourceReference += " Identification AS I INNER JOIN " +
                     "CollectionProject AS P ON I.CollectionSpecimenID = P.CollectionSpecimenID INNER JOIN " +
                     "IdentificationUnit AS U ON I.CollectionSpecimenID = U.CollectionSpecimenID AND I.IdentificationUnitID = U.IdentificationUnitID  ";
                 if (!ForInsert && this.checkBoxBulkIncludeAccNr.Checked)
                     SqlSource += " INNER JOIN CollectionSpecimen AS S ON U.CollectionSpecimenID = S.CollectionSpecimenID ";
                 if (ForInsert)
+                {
                     SqlSource += "INNER JOIN Identification AS M ON U.CollectionSpecimenID = M.CollectionSpecimenID AND U.IdentificationUnitID = M.IdentificationUnitID ";
+                    SqlSourceReference += "INNER JOIN Identification AS M ON U.CollectionSpecimenID = M.CollectionSpecimenID AND U.IdentificationUnitID = M.IdentificationUnitID ";
+                }
                 SqlSource += "WHERE (U.TaxonomicGroup = '" + this.comboBoxBulkTaxonomicGroup.SelectedValue.ToString() + "') " +
                     "AND (P.ProjectID = " + this.comboBoxBulkProject.SelectedValue.ToString() + ") " +
                     "AND RTRIM(I.TaxonomicName) <> '' " +
                     "AND (I.TaxonomicName = N'" + this.comboBoxBulkOldIdentification.Text + "') ";
+                SqlSourceReference += "WHERE (U.TaxonomicGroup = '" + this.comboBoxBulkTaxonomicGroup.SelectedValue.ToString() + "') " +
+                    "AND (P.ProjectID = " + this.comboBoxBulkProject.SelectedValue.ToString() + ") " +
+                    "AND RTRIM(I.TaxonomicName) <> '' " +
+                    "AND (I.TaxonomicName = N'" + this.comboBoxBulkOldIdentification.Text + "') ";
                 if (this.checkBoxBulkOnlyLastIdentification.Checked)
+                {
                     SqlSource += "and exists (select * from Identification I1  group by I1.CollectionSpecimenID, I1.IdentificationUnitID " +
                         "having U.CollectionSpecimenID = I1.CollectionSpecimenID AND U.IdentificationUnitID = I1.IdentificationUnitID AND " +
                         "I.IdentificationSequence = MAX(I1.IdentificationSequence)) ";
+                    SqlSourceReference += "and exists (select * from Identification I1  group by I1.CollectionSpecimenID, I1.IdentificationUnitID " +
+                        "having U.CollectionSpecimenID = I1.CollectionSpecimenID AND U.IdentificationUnitID = I1.IdentificationUnitID AND " +
+                        "I.IdentificationSequence = MAX(I1.IdentificationSequence) - 1) ";
+                }
                 if (ForInsert)
                 {
                     SQL = SqlInsert + " " + SqlSource + " GROUP BY I.CollectionSpecimenID, I.IdentificationUnitID ";
+                    if (this.userControlModuleRelatedEntryBulkIdentReference.textBoxValue.Text.Length > 0)
+                        SqlReference = SqlInsertReference + " " + SqlSourceReference + " GROUP BY I.CollectionSpecimenID, I.IdentificationUnitID ";
+                    else SqlReference = "";
                 }
                 else
                 {
@@ -15758,7 +15801,10 @@ namespace DiversityCollection.Forms
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
-            return SQL;
+            if (ForReference)
+                return SqlReference;
+            else
+                return SQL;
         }
 
         private void checkBoxBulkIncludeAccNr_Click(object sender, EventArgs e)
