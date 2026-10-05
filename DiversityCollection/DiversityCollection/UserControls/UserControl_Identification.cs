@@ -207,15 +207,15 @@ namespace DiversityCollection.UserControls
         {
             try
             {
-                this.userControlModuleRelatedEntryIdentificationResponsible.ShowInfo = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowAcceptedNames;
-                if (DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowAcceptedNames) // &&!_InfoTextAcceptedNameEventHandlerSet)
+                this.userControlModuleRelatedEntryIdentificationResponsible.ShowInfo = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowValidAgentName;
+                if (DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowValidAgentName) // &&!_InfoTextAcceptedNameEventHandlerSet)
                 {
                     this.userControlModuleRelatedEntryIdentificationResponsible.labelURI.TextChanged += new System.EventHandler(this.setInfoTextResponsible);
                 }
                 else
                 {
                     this.userControlModuleRelatedEntryIdentificationResponsible.labelURI.TextChanged -= this.setInfoTextResponsible;
-                    this.userControlModuleRelatedEntryIdentificationResponsible.SetInfoText(DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowAcceptedNames, "", "", System.Drawing.SystemColors.WindowText);
+                    this.userControlModuleRelatedEntryIdentificationResponsible.SetInfoText(DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowValidAgentName, "", "", System.Drawing.SystemColors.WindowText);
                 }
                 this.userControlModuleRelatedEntryIdentificationResponsible.Height = this.userControlModuleRelatedEntryIdentificationResponsible.HeightOfControl();
             }
@@ -232,77 +232,84 @@ namespace DiversityCollection.UserControls
             if (DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowAcceptedNames)
                 this.setInfoTextAcceptedName(this.userControlModuleRelatedEntryTaxonomicName.labelURI, null);
             this.setUserControlSourceFixing(ref this.userControlModuleRelatedEntryIdentificationResponsible, "ResponsibleAgentURI");
+
+            if (DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowValidAgentName)
+                this.setInfoTextResponsible(this.userControlModuleRelatedEntryIdentificationResponsible.labelURI, null);
             bool ShowNonAgentControls = true;
 
-#if DEBUG // waere zum Ausblenden aller nicht Bestimmer Controls falls abhängige Bestimmungen bei TaxononyRelated dafür verwendet werden - vorerst zurückgestellt (Label, CacheDB, ... etc. müssten ebenfalls angepasst werden, Nutzen unklar und kein aktueller Bedarf)
-            if(this._IsTaxonomyRelatedTaxonomicGroup)
+#if DEBUG // waere zum Ausblenden aller nicht Bestimmer Controls falls abhängige Bestimmungen bei TaxononyRelated dafür verwendet werden 
+            //- vorerst zurückgestellt (Label, CacheDB, ... etc. müssten ebenfalls angepasst werden, Nutzen unklar und kein aktueller Bedarf)
+            if (false)
             {
-                System.Data.DataRowView RV = (System.Data.DataRowView)this._Source.Current;
-                int i;
-                if (int.TryParse(RV["DependsOnIdentificationSequence"].ToString(), out i))
-                {
-                    ShowNonAgentControls = false;
-                }
-                this.labelIdentificationQualifier.Visible = ShowNonAgentControls;
-                this.comboBoxIdentificationQualifier.Visible = ShowNonAgentControls;
-                this.userControlHierarchySelectorIdentificationQualifier.Visible = ShowNonAgentControls;
-
-                this.labelTaxonomicName.Visible = ShowNonAgentControls;
-                this.userControlModuleRelatedEntryTaxonomicName.Visible = ShowNonAgentControls;
-
-                this.labelVernacularTerm.Visible = ShowNonAgentControls;
-                this.comboBoxVernacularTerm.Visible = ShowNonAgentControls;
-
-                this.labelTypeNotes.Visible = ShowNonAgentControls;
-                this.textBoxTypeNotes.Visible = ShowNonAgentControls;
-
-                this.comboBoxTypeStatus.Visible = ShowNonAgentControls;
-                this.labelTypeStatus.Visible = ShowNonAgentControls;
-                this.userControlHierarchySelectorTypeStatus.Visible = ShowNonAgentControls;
-
                 if (this._IsTaxonomyRelatedTaxonomicGroup)
                 {
-                    this.labelIdentificationScientificTerm.Visible = false;
-                    this.userControlModuleRelatedEntryIdentificationScientificTerm.Visible = false;
+                    System.Data.DataRowView RV = (System.Data.DataRowView)this._Source.Current;
+                    int i;
+                    if (int.TryParse(RV["DependsOnIdentificationSequence"].ToString(), out i))
+                    {
+                        ShowNonAgentControls = false;
+                    }
+                    this.labelIdentificationQualifier.Visible = ShowNonAgentControls;
+                    this.comboBoxIdentificationQualifier.Visible = ShowNonAgentControls;
+                    this.userControlHierarchySelectorIdentificationQualifier.Visible = ShowNonAgentControls;
+
+                    this.labelTaxonomicName.Visible = ShowNonAgentControls;
+                    this.userControlModuleRelatedEntryTaxonomicName.Visible = ShowNonAgentControls;
+
+                    this.labelVernacularTerm.Visible = ShowNonAgentControls;
+                    this.comboBoxVernacularTerm.Visible = ShowNonAgentControls;
+
+                    this.labelTypeNotes.Visible = ShowNonAgentControls;
+                    this.textBoxTypeNotes.Visible = ShowNonAgentControls;
+
+                    this.comboBoxTypeStatus.Visible = ShowNonAgentControls;
+                    this.labelTypeStatus.Visible = ShowNonAgentControls;
+                    this.userControlHierarchySelectorTypeStatus.Visible = ShowNonAgentControls;
+
+                    if (this._IsTaxonomyRelatedTaxonomicGroup)
+                    {
+                        this.labelIdentificationScientificTerm.Visible = false;
+                        this.userControlModuleRelatedEntryIdentificationScientificTerm.Visible = false;
+                    }
+                    //else
+                    //{
+
+                    //}
+
+                    this.userControlDatePanelIdentificationDate.Visible = ShowNonAgentControls;
+                    this.labelIdentificationDate.Visible = ShowNonAgentControls;
+
+                    this.labelIdentificationDateCategory.Visible = ShowNonAgentControls;
+                    this.comboBoxIdentificationDateCategory.Visible = ShowNonAgentControls;
+                    this.userControlHierarchySelectorIdentificationDateCategory.Visible = ShowNonAgentControls;
+
+                    this.labelIdentificationNotes.Visible = ShowNonAgentControls;
+                    this.textBoxIdentificationNotes.Visible = ShowNonAgentControls;
+
+                    this.labelIdentificationCategory.Visible = ShowNonAgentControls;
+                    this.comboBoxIdentificationCategory.Visible = ShowNonAgentControls;
+                    this.userControlHierarchySelectorIdentificationCategory.Visible = ShowNonAgentControls;
                 }
-                //else
-                //{
+                else
+                {
+                    this.setIdentificationTermControls(this._IsTaxonomyRelatedTaxonomicGroup);
 
-                //}
+                    this.userControlDatePanelIdentificationDate.Visible = ShowNonAgentControls;
+                    this.labelIdentificationDate.Visible = ShowNonAgentControls;
 
-                this.userControlDatePanelIdentificationDate.Visible = ShowNonAgentControls;
-                this.labelIdentificationDate.Visible = ShowNonAgentControls;
+                    this.labelIdentificationDateCategory.Visible = ShowNonAgentControls;
+                    this.comboBoxIdentificationDateCategory.Visible = ShowNonAgentControls;
+                    this.userControlHierarchySelectorIdentificationDateCategory.Visible = ShowNonAgentControls;
 
-                this.labelIdentificationDateCategory.Visible = ShowNonAgentControls;
-                this.comboBoxIdentificationDateCategory.Visible = ShowNonAgentControls;
-                this.userControlHierarchySelectorIdentificationDateCategory.Visible = ShowNonAgentControls;
+                    this.labelIdentificationNotes.Visible = ShowNonAgentControls;
+                    this.textBoxIdentificationNotes.Visible = ShowNonAgentControls;
 
-                this.labelIdentificationNotes.Visible = ShowNonAgentControls;
-                this.textBoxIdentificationNotes.Visible = ShowNonAgentControls;
-
-                this.labelIdentificationCategory.Visible = ShowNonAgentControls;
-                this.comboBoxIdentificationCategory.Visible = ShowNonAgentControls;
-                this.userControlHierarchySelectorIdentificationCategory.Visible = ShowNonAgentControls;
+                    this.labelIdentificationCategory.Visible = ShowNonAgentControls;
+                    this.comboBoxIdentificationCategory.Visible = ShowNonAgentControls;
+                    this.userControlHierarchySelectorIdentificationCategory.Visible = ShowNonAgentControls;
+                }
             }
-            else
-            {
-                this.setIdentificationTermControls(this._IsTaxonomyRelatedTaxonomicGroup);
-
-                this.userControlDatePanelIdentificationDate.Visible = ShowNonAgentControls;
-                this.labelIdentificationDate.Visible = ShowNonAgentControls;
-
-                this.labelIdentificationDateCategory.Visible = ShowNonAgentControls;
-                this.comboBoxIdentificationDateCategory.Visible = ShowNonAgentControls;
-                this.userControlHierarchySelectorIdentificationDateCategory.Visible = ShowNonAgentControls;
-
-                this.labelIdentificationNotes.Visible = ShowNonAgentControls;
-                this.textBoxIdentificationNotes.Visible = ShowNonAgentControls;
-
-                this.labelIdentificationCategory.Visible = ShowNonAgentControls;
-                this.comboBoxIdentificationCategory.Visible = ShowNonAgentControls;
-                this.userControlHierarchySelectorIdentificationCategory.Visible = ShowNonAgentControls;
-            }
-#endif     
+#endif
         }
 
         public void setIdentificationTermControls(bool IsTaxonomyRelatedTaxonomicGroup)

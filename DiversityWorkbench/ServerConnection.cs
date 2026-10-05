@@ -775,7 +775,11 @@ namespace DiversityWorkbench
 
                     // MW 2018/10/01: Encrypted connection
                     if (ConStr.Length > 0 && DiversityWorkbench.Settings.IsEncryptedConnection)
-                        ConStr += ";Encrypt=true;TrustServerCertificate=true";
+                        if (!ConStr.Contains("Encrypt=true"))
+                            ConStr += ";Encrypt=true;";
+                        if (!ConStr.Contains("TrustServerCertificate=true"))
+                            ConStr += "TrustServerCertificate=true";
+
 
 #if xxDEBUG
                     // Markus 3.12.2021 - Mehrfach aufruf

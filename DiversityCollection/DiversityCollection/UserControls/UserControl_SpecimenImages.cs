@@ -100,6 +100,8 @@ namespace DiversityCollection.UserControls
                 this.tabControlSpecimenImage.TabPages.Remove(this.tabPageSpecimenImageProperty);
 
                 DiversityWorkbench.Settings.WebViewUsage(this.toolStripButtonUseWebView);
+
+                this.pictureBoxIcon.Visible = false;
             }
             catch(System.Exception ex)
             {

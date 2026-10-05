@@ -28,1178 +28,1181 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl_SpecimenImages));
-            this.groupBoxImage = new System.Windows.Forms.GroupBox();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
-            this.splitContainerImage = new System.Windows.Forms.SplitContainer();
-            this.userControlImageSpecimenImage = new DiversityWorkbench.UserControls.UserControlImage();
-            this.tabControlSpecimenImage = new System.Windows.Forms.TabControl();
-            this.tabPageSpecimenImageType = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelSpecimenImage = new System.Windows.Forms.TableLayoutPanel();
-            this.labelSpecimenImageIdentificationUnitID = new System.Windows.Forms.Label();
-            this.labelSpecimenImageType = new System.Windows.Forms.Label();
-            this.comboBoxSpecimenImageIdentificationUnitID = new System.Windows.Forms.ComboBox();
-            this.comboBoxSpecimenImageType = new System.Windows.Forms.ComboBox();
-            this.labelSpecimenImageNotes = new System.Windows.Forms.Label();
-            this.textBoxSpecimenImageNotes = new System.Windows.Forms.TextBox();
-            this.labelSpecimenImageSpecimenPart = new System.Windows.Forms.Label();
-            this.comboBoxSpecimenImageSpecimenPart = new System.Windows.Forms.ComboBox();
-            this.labelSpecimenImageWithholdingReason = new System.Windows.Forms.Label();
-            this.comboBoxSpecimenImageWithholdingReason = new System.Windows.Forms.ComboBox();
-            this.labelSpecimenImageTitle = new System.Windows.Forms.Label();
-            this.textBoxSpecimenImageTitle = new System.Windows.Forms.TextBox();
-            this.labelSpecimenImageInternalNotes = new System.Windows.Forms.Label();
-            this.textBoxSpecimenImageInternalNotes = new System.Windows.Forms.TextBox();
-            this.pictureBoxSpecimenImageWithholdingReason = new System.Windows.Forms.PictureBox();
-            this.labelSpecimenImageDisplayOrder = new System.Windows.Forms.Label();
-            this.textBoxSpecimenImageDisplayOrder = new System.Windows.Forms.TextBox();
-            this.tabPageSpecimenImageIPR = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelSpecimenImageIPR = new System.Windows.Forms.TableLayoutPanel();
-            this.labelSpecimenImageCreator = new System.Windows.Forms.Label();
-            this.userControlModuleRelatedEntrySpecimenImageCreator = new DiversityWorkbench.UserControls.UserControlModuleRelatedEntry();
-            this.labelSpecimenImageIPR = new System.Windows.Forms.Label();
-            this.labelSpecimenImageCopyright = new System.Windows.Forms.Label();
-            this.textBoxSpecimenImageIPR = new System.Windows.Forms.TextBox();
-            this.textBoxSpecimenImageCopyright = new System.Windows.Forms.TextBox();
-            this.groupBoxImageLicense = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelImageLicense = new System.Windows.Forms.TableLayoutPanel();
-            this.labelSpecimenImageLicenseHolder = new System.Windows.Forms.Label();
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder = new DiversityWorkbench.UserControls.UserControlModuleRelatedEntry();
-            this.labelImageLicenseType = new System.Windows.Forms.Label();
-            this.labelSpecimenImageLicenseYear = new System.Windows.Forms.Label();
-            this.textBoxSpecimenImageLicenseYear = new System.Windows.Forms.TextBox();
-            this.textBoxSpecimenImageLicense = new System.Windows.Forms.TextBox();
-            this.labelImageLicenseNotes = new System.Windows.Forms.Label();
-            this.labelImageLicenseURI = new System.Windows.Forms.Label();
-            this.textBoxImageLicenseURI = new System.Windows.Forms.TextBox();
-            this.textBoxImageLicenseNotes = new System.Windows.Forms.TextBox();
-            this.tabPageSpecimenImageProperty = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelImageProperty = new System.Windows.Forms.TableLayoutPanel();
-            this.listBoxImageProperty = new System.Windows.Forms.ListBox();
-            this.toolStripImageProperty = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonImagePropertyAdd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonImagePropertyGeometry = new System.Windows.Forms.ToolStripButton();
-            this.toolStripDropDownButtonImagePropertyArea = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItemImagePropertyAreaHide = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemImagePropertyAreaShow = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemImagePropertyAreaAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonImagePropertyDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonImagePropertySave = new System.Windows.Forms.ToolStripButton();
-            this.labelImagePropertyDescription = new System.Windows.Forms.Label();
-            this.textBoxImagePropertyDescription = new System.Windows.Forms.TextBox();
-            this.toolStripImagePropertyFilter = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonImagePropertyFilter = new System.Windows.Forms.ToolStripButton();
-            this.toolStripTextBoxImagePropertyFilter = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButtonImagePropertyFilterClear = new System.Windows.Forms.ToolStripButton();
-            this.tabPageSpecimenImageExif = new System.Windows.Forms.TabPage();
-            this.userControlXMLTreeExif = new DiversityWorkbench.UserControls.UserControlXMLTree();
-            this.toolStripSpecimenImage = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonSpecimenImageNew = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSpecimenImageDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOpenSpecimenImageModule = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonImagesSpecimenShowAll = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonImageDescription = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonImageUp = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonImageDown = new System.Windows.Forms.ToolStripButton();
-            this.toolStripDropDownButtonImageDisplayOrder = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItemImageDisplayOrderUriUp = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemImageDisplayOrderUriDown = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemImageDisplayOrderDateUp = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemImageDisplayOrderDateDown = new System.Windows.Forms.ToolStripMenuItem();
-            this.listBoxSpecimenImage = new System.Windows.Forms.ListBox();
-            this.imageListForm = new System.Windows.Forms.ImageList(this.components);
-            this.imageListSpecimenImages = new System.Windows.Forms.ImageList(this.components);
-            this.toolStripButtonUseWebView = new System.Windows.Forms.ToolStripButton();
-            this.groupBoxImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerImage)).BeginInit();
-            this.splitContainerImage.Panel1.SuspendLayout();
-            this.splitContainerImage.Panel2.SuspendLayout();
-            this.splitContainerImage.SuspendLayout();
-            this.tabControlSpecimenImage.SuspendLayout();
-            this.tabPageSpecimenImageType.SuspendLayout();
-            this.tableLayoutPanelSpecimenImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpecimenImageWithholdingReason)).BeginInit();
-            this.tabPageSpecimenImageIPR.SuspendLayout();
-            this.tableLayoutPanelSpecimenImageIPR.SuspendLayout();
-            this.groupBoxImageLicense.SuspendLayout();
-            this.tableLayoutPanelImageLicense.SuspendLayout();
-            this.tabPageSpecimenImageProperty.SuspendLayout();
-            this.tableLayoutPanelImageProperty.SuspendLayout();
-            this.toolStripImageProperty.SuspendLayout();
-            this.toolStripImagePropertyFilter.SuspendLayout();
-            this.tabPageSpecimenImageExif.SuspendLayout();
-            this.toolStripSpecimenImage.SuspendLayout();
-            this.SuspendLayout();
+            groupBoxImage = new System.Windows.Forms.GroupBox();
+            pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            splitContainerImage = new System.Windows.Forms.SplitContainer();
+            userControlImageSpecimenImage = new DiversityWorkbench.UserControls.UserControlImage();
+            tabControlSpecimenImage = new System.Windows.Forms.TabControl();
+            tabPageSpecimenImageType = new System.Windows.Forms.TabPage();
+            tableLayoutPanelSpecimenImage = new System.Windows.Forms.TableLayoutPanel();
+            labelSpecimenImageIdentificationUnitID = new System.Windows.Forms.Label();
+            labelSpecimenImageType = new System.Windows.Forms.Label();
+            comboBoxSpecimenImageIdentificationUnitID = new System.Windows.Forms.ComboBox();
+            comboBoxSpecimenImageType = new System.Windows.Forms.ComboBox();
+            labelSpecimenImageNotes = new System.Windows.Forms.Label();
+            textBoxSpecimenImageNotes = new System.Windows.Forms.TextBox();
+            labelSpecimenImageSpecimenPart = new System.Windows.Forms.Label();
+            comboBoxSpecimenImageSpecimenPart = new System.Windows.Forms.ComboBox();
+            labelSpecimenImageWithholdingReason = new System.Windows.Forms.Label();
+            comboBoxSpecimenImageWithholdingReason = new System.Windows.Forms.ComboBox();
+            labelSpecimenImageTitle = new System.Windows.Forms.Label();
+            textBoxSpecimenImageTitle = new System.Windows.Forms.TextBox();
+            labelSpecimenImageInternalNotes = new System.Windows.Forms.Label();
+            textBoxSpecimenImageInternalNotes = new System.Windows.Forms.TextBox();
+            pictureBoxSpecimenImageWithholdingReason = new System.Windows.Forms.PictureBox();
+            labelSpecimenImageDisplayOrder = new System.Windows.Forms.Label();
+            textBoxSpecimenImageDisplayOrder = new System.Windows.Forms.TextBox();
+            tabPageSpecimenImageIPR = new System.Windows.Forms.TabPage();
+            tableLayoutPanelSpecimenImageIPR = new System.Windows.Forms.TableLayoutPanel();
+            labelSpecimenImageCreator = new System.Windows.Forms.Label();
+            userControlModuleRelatedEntrySpecimenImageCreator = new DiversityWorkbench.UserControls.UserControlModuleRelatedEntry();
+            labelSpecimenImageIPR = new System.Windows.Forms.Label();
+            labelSpecimenImageCopyright = new System.Windows.Forms.Label();
+            textBoxSpecimenImageIPR = new System.Windows.Forms.TextBox();
+            textBoxSpecimenImageCopyright = new System.Windows.Forms.TextBox();
+            groupBoxImageLicense = new System.Windows.Forms.GroupBox();
+            tableLayoutPanelImageLicense = new System.Windows.Forms.TableLayoutPanel();
+            labelSpecimenImageLicenseHolder = new System.Windows.Forms.Label();
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder = new DiversityWorkbench.UserControls.UserControlModuleRelatedEntry();
+            labelImageLicenseType = new System.Windows.Forms.Label();
+            labelSpecimenImageLicenseYear = new System.Windows.Forms.Label();
+            textBoxSpecimenImageLicenseYear = new System.Windows.Forms.TextBox();
+            textBoxSpecimenImageLicense = new System.Windows.Forms.TextBox();
+            labelImageLicenseNotes = new System.Windows.Forms.Label();
+            labelImageLicenseURI = new System.Windows.Forms.Label();
+            textBoxImageLicenseURI = new System.Windows.Forms.TextBox();
+            textBoxImageLicenseNotes = new System.Windows.Forms.TextBox();
+            tabPageSpecimenImageProperty = new System.Windows.Forms.TabPage();
+            tableLayoutPanelImageProperty = new System.Windows.Forms.TableLayoutPanel();
+            listBoxImageProperty = new System.Windows.Forms.ListBox();
+            toolStripImageProperty = new System.Windows.Forms.ToolStrip();
+            toolStripButtonImagePropertyAdd = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonImagePropertyGeometry = new System.Windows.Forms.ToolStripButton();
+            toolStripDropDownButtonImagePropertyArea = new System.Windows.Forms.ToolStripDropDownButton();
+            toolStripMenuItemImagePropertyAreaHide = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemImagePropertyAreaShow = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemImagePropertyAreaAll = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripButtonImagePropertyDelete = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonImagePropertySave = new System.Windows.Forms.ToolStripButton();
+            labelImagePropertyDescription = new System.Windows.Forms.Label();
+            textBoxImagePropertyDescription = new System.Windows.Forms.TextBox();
+            toolStripImagePropertyFilter = new System.Windows.Forms.ToolStrip();
+            toolStripButtonImagePropertyFilter = new System.Windows.Forms.ToolStripButton();
+            toolStripTextBoxImagePropertyFilter = new System.Windows.Forms.ToolStripTextBox();
+            toolStripButtonImagePropertyFilterClear = new System.Windows.Forms.ToolStripButton();
+            tabPageSpecimenImageExif = new System.Windows.Forms.TabPage();
+            userControlXMLTreeExif = new DiversityWorkbench.UserControls.UserControlXMLTree();
+            toolStripSpecimenImage = new System.Windows.Forms.ToolStrip();
+            toolStripButtonSpecimenImageNew = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonSpecimenImageDelete = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonOpenSpecimenImageModule = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonImagesSpecimenShowAll = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonImageDescription = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonImageUp = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonImageDown = new System.Windows.Forms.ToolStripButton();
+            toolStripDropDownButtonImageDisplayOrder = new System.Windows.Forms.ToolStripDropDownButton();
+            toolStripMenuItemImageDisplayOrderUriUp = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemImageDisplayOrderUriDown = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemImageDisplayOrderDateUp = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemImageDisplayOrderDateDown = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripButtonUseWebView = new System.Windows.Forms.ToolStripButton();
+            listBoxSpecimenImage = new System.Windows.Forms.ListBox();
+            imageListForm = new System.Windows.Forms.ImageList(components);
+            imageListSpecimenImages = new System.Windows.Forms.ImageList(components);
+            groupBoxImage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxIcon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainerImage).BeginInit();
+            splitContainerImage.Panel1.SuspendLayout();
+            splitContainerImage.Panel2.SuspendLayout();
+            splitContainerImage.SuspendLayout();
+            tabControlSpecimenImage.SuspendLayout();
+            tabPageSpecimenImageType.SuspendLayout();
+            tableLayoutPanelSpecimenImage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxSpecimenImageWithholdingReason).BeginInit();
+            tabPageSpecimenImageIPR.SuspendLayout();
+            tableLayoutPanelSpecimenImageIPR.SuspendLayout();
+            groupBoxImageLicense.SuspendLayout();
+            tableLayoutPanelImageLicense.SuspendLayout();
+            tabPageSpecimenImageProperty.SuspendLayout();
+            tableLayoutPanelImageProperty.SuspendLayout();
+            toolStripImageProperty.SuspendLayout();
+            toolStripImagePropertyFilter.SuspendLayout();
+            tabPageSpecimenImageExif.SuspendLayout();
+            toolStripSpecimenImage.SuspendLayout();
+            SuspendLayout();
             // 
             // imageListDataWithholding
             // 
-            this.imageListDataWithholding.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListDataWithholding.ImageStream")));
-            this.imageListDataWithholding.Images.SetKeyName(0, "Stop3.ico");
-            this.imageListDataWithholding.Images.SetKeyName(1, "Stop3Grey.ico");
+            imageListDataWithholding.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageListDataWithholding.ImageStream");
+            imageListDataWithholding.Images.SetKeyName(0, "Stop3.ico");
+            imageListDataWithholding.Images.SetKeyName(1, "Stop3Grey.ico");
             // 
             // groupBoxImage
             // 
-            this.groupBoxImage.AccessibleName = "CollectionSpecimenImage";
-            this.groupBoxImage.Controls.Add(this.pictureBoxIcon);
-            this.groupBoxImage.Controls.Add(this.splitContainerImage);
-            this.groupBoxImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxImage.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxImage.Name = "groupBoxImage";
-            this.groupBoxImage.Size = new System.Drawing.Size(742, 499);
-            this.groupBoxImage.TabIndex = 2;
-            this.groupBoxImage.TabStop = false;
-            this.groupBoxImage.Text = "Specimen images and resources";
+            groupBoxImage.AccessibleName = "CollectionSpecimenImage";
+            groupBoxImage.Controls.Add(pictureBoxIcon);
+            groupBoxImage.Controls.Add(splitContainerImage);
+            groupBoxImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            groupBoxImage.Location = new System.Drawing.Point(0, 0);
+            groupBoxImage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxImage.Name = "groupBoxImage";
+            groupBoxImage.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxImage.Size = new System.Drawing.Size(866, 576);
+            groupBoxImage.TabIndex = 2;
+            groupBoxImage.TabStop = false;
+            groupBoxImage.Text = "Specimen images and resources";
             // 
             // pictureBoxIcon
             // 
-            this.pictureBoxIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxIcon.Image = global::DiversityCollection.Resource.CollectionSpecimen;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(724, 0);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxIcon.TabIndex = 1;
-            this.pictureBoxIcon.TabStop = false;
+            pictureBoxIcon.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            pictureBoxIcon.Image = Resource.CollectionSpecimen;
+            pictureBoxIcon.Location = new System.Drawing.Point(845, 0);
+            pictureBoxIcon.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBoxIcon.Name = "pictureBoxIcon";
+            pictureBoxIcon.Size = new System.Drawing.Size(19, 18);
+            pictureBoxIcon.TabIndex = 1;
+            pictureBoxIcon.TabStop = false;
+            pictureBoxIcon.Visible = false;
             // 
             // splitContainerImage
             // 
-            this.splitContainerImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerImage.Location = new System.Drawing.Point(3, 16);
-            this.splitContainerImage.Name = "splitContainerImage";
+            splitContainerImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerImage.Location = new System.Drawing.Point(4, 16);
+            splitContainerImage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            splitContainerImage.Name = "splitContainerImage";
             // 
             // splitContainerImage.Panel1
             // 
-            this.splitContainerImage.Panel1.Controls.Add(this.userControlImageSpecimenImage);
+            splitContainerImage.Panel1.Controls.Add(userControlImageSpecimenImage);
             // 
             // splitContainerImage.Panel2
             // 
-            this.splitContainerImage.Panel2.Controls.Add(this.tabControlSpecimenImage);
-            this.splitContainerImage.Panel2.Controls.Add(this.toolStripSpecimenImage);
-            this.splitContainerImage.Panel2.Controls.Add(this.listBoxSpecimenImage);
-            this.splitContainerImage.Size = new System.Drawing.Size(736, 480);
-            this.splitContainerImage.SplitterDistance = 443;
-            this.splitContainerImage.TabIndex = 0;
+            splitContainerImage.Panel2.Controls.Add(tabControlSpecimenImage);
+            splitContainerImage.Panel2.Controls.Add(toolStripSpecimenImage);
+            splitContainerImage.Panel2.Controls.Add(listBoxSpecimenImage);
+            splitContainerImage.Size = new System.Drawing.Size(858, 557);
+            splitContainerImage.SplitterDistance = 516;
+            splitContainerImage.SplitterWidth = 5;
+            splitContainerImage.TabIndex = 0;
             // 
             // userControlImageSpecimenImage
             // 
-            this.userControlImageSpecimenImage.AutorotationEnabled = false;
-            this.userControlImageSpecimenImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlImageSpecimenImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userControlImageSpecimenImage.ImagePath = "";
-            this.userControlImageSpecimenImage.Location = new System.Drawing.Point(0, 0);
-            this.userControlImageSpecimenImage.MediumType = DiversityWorkbench.Forms.FormFunctions.Medium.Unknown;
-            this.userControlImageSpecimenImage.Name = "userControlImageSpecimenImage";
-            this.userControlImageSpecimenImage.Size = new System.Drawing.Size(443, 480);
-            this.userControlImageSpecimenImage.TabIndex = 0;
+            userControlImageSpecimenImage.AutorotationEnabled = false;
+            userControlImageSpecimenImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            userControlImageSpecimenImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            userControlImageSpecimenImage.ImagePath = "";
+            userControlImageSpecimenImage.Location = new System.Drawing.Point(0, 0);
+            userControlImageSpecimenImage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            userControlImageSpecimenImage.MediumType = DiversityWorkbench.Forms.FormFunctions.Medium.Unknown;
+            userControlImageSpecimenImage.Name = "userControlImageSpecimenImage";
+            userControlImageSpecimenImage.Size = new System.Drawing.Size(516, 557);
+            userControlImageSpecimenImage.TabIndex = 0;
             // 
             // tabControlSpecimenImage
             // 
-            this.tabControlSpecimenImage.Controls.Add(this.tabPageSpecimenImageType);
-            this.tabControlSpecimenImage.Controls.Add(this.tabPageSpecimenImageIPR);
-            this.tabControlSpecimenImage.Controls.Add(this.tabPageSpecimenImageProperty);
-            this.tabControlSpecimenImage.Controls.Add(this.tabPageSpecimenImageExif);
-            this.tabControlSpecimenImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlSpecimenImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControlSpecimenImage.Location = new System.Drawing.Point(104, 0);
-            this.tabControlSpecimenImage.Name = "tabControlSpecimenImage";
-            this.tabControlSpecimenImage.SelectedIndex = 0;
-            this.tabControlSpecimenImage.Size = new System.Drawing.Size(185, 480);
-            this.tabControlSpecimenImage.TabIndex = 8;
+            tabControlSpecimenImage.Controls.Add(tabPageSpecimenImageType);
+            tabControlSpecimenImage.Controls.Add(tabPageSpecimenImageIPR);
+            tabControlSpecimenImage.Controls.Add(tabPageSpecimenImageProperty);
+            tabControlSpecimenImage.Controls.Add(tabPageSpecimenImageExif);
+            tabControlSpecimenImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControlSpecimenImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tabControlSpecimenImage.Location = new System.Drawing.Point(113, 0);
+            tabControlSpecimenImage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabControlSpecimenImage.Name = "tabControlSpecimenImage";
+            tabControlSpecimenImage.SelectedIndex = 0;
+            tabControlSpecimenImage.Size = new System.Drawing.Size(224, 557);
+            tabControlSpecimenImage.TabIndex = 8;
             // 
             // tabPageSpecimenImageType
             // 
-            this.tabPageSpecimenImageType.Controls.Add(this.tableLayoutPanelSpecimenImage);
-            this.tabPageSpecimenImageType.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSpecimenImageType.Name = "tabPageSpecimenImageType";
-            this.tabPageSpecimenImageType.Size = new System.Drawing.Size(177, 454);
-            this.tabPageSpecimenImageType.TabIndex = 0;
-            this.tabPageSpecimenImageType.Text = "Type";
-            this.tabPageSpecimenImageType.UseVisualStyleBackColor = true;
+            tabPageSpecimenImageType.Controls.Add(tableLayoutPanelSpecimenImage);
+            tabPageSpecimenImageType.Location = new System.Drawing.Point(4, 22);
+            tabPageSpecimenImageType.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageSpecimenImageType.Name = "tabPageSpecimenImageType";
+            tabPageSpecimenImageType.Size = new System.Drawing.Size(216, 531);
+            tabPageSpecimenImageType.TabIndex = 0;
+            tabPageSpecimenImageType.Text = "Type";
+            tabPageSpecimenImageType.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelSpecimenImage
             // 
-            this.tableLayoutPanelSpecimenImage.ColumnCount = 3;
-            this.tableLayoutPanelSpecimenImage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSpecimenImage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanelSpecimenImage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.labelSpecimenImageIdentificationUnitID, 0, 1);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.labelSpecimenImageType, 0, 8);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.comboBoxSpecimenImageIdentificationUnitID, 1, 1);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.comboBoxSpecimenImageType, 1, 8);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.labelSpecimenImageNotes, 0, 9);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.textBoxSpecimenImageNotes, 1, 9);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.labelSpecimenImageSpecimenPart, 0, 2);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.comboBoxSpecimenImageSpecimenPart, 1, 2);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.labelSpecimenImageWithholdingReason, 0, 11);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.comboBoxSpecimenImageWithholdingReason, 2, 11);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.labelSpecimenImageTitle, 0, 0);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.textBoxSpecimenImageTitle, 1, 0);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.labelSpecimenImageInternalNotes, 0, 10);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.textBoxSpecimenImageInternalNotes, 1, 10);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.pictureBoxSpecimenImageWithholdingReason, 1, 11);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.labelSpecimenImageDisplayOrder, 0, 12);
-            this.tableLayoutPanelSpecimenImage.Controls.Add(this.textBoxSpecimenImageDisplayOrder, 1, 12);
-            this.tableLayoutPanelSpecimenImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSpecimenImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanelSpecimenImage.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelSpecimenImage.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.tableLayoutPanelSpecimenImage.Name = "tableLayoutPanelSpecimenImage";
-            this.tableLayoutPanelSpecimenImage.RowCount = 13;
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImage.Size = new System.Drawing.Size(177, 454);
-            this.tableLayoutPanelSpecimenImage.TabIndex = 0;
+            tableLayoutPanelSpecimenImage.ColumnCount = 3;
+            tableLayoutPanelSpecimenImage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelSpecimenImage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            tableLayoutPanelSpecimenImage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelSpecimenImage.Controls.Add(labelSpecimenImageIdentificationUnitID, 0, 1);
+            tableLayoutPanelSpecimenImage.Controls.Add(labelSpecimenImageType, 0, 8);
+            tableLayoutPanelSpecimenImage.Controls.Add(comboBoxSpecimenImageIdentificationUnitID, 1, 1);
+            tableLayoutPanelSpecimenImage.Controls.Add(comboBoxSpecimenImageType, 1, 8);
+            tableLayoutPanelSpecimenImage.Controls.Add(labelSpecimenImageNotes, 0, 9);
+            tableLayoutPanelSpecimenImage.Controls.Add(textBoxSpecimenImageNotes, 1, 9);
+            tableLayoutPanelSpecimenImage.Controls.Add(labelSpecimenImageSpecimenPart, 0, 2);
+            tableLayoutPanelSpecimenImage.Controls.Add(comboBoxSpecimenImageSpecimenPart, 1, 2);
+            tableLayoutPanelSpecimenImage.Controls.Add(labelSpecimenImageWithholdingReason, 0, 11);
+            tableLayoutPanelSpecimenImage.Controls.Add(comboBoxSpecimenImageWithholdingReason, 2, 11);
+            tableLayoutPanelSpecimenImage.Controls.Add(labelSpecimenImageTitle, 0, 0);
+            tableLayoutPanelSpecimenImage.Controls.Add(textBoxSpecimenImageTitle, 1, 0);
+            tableLayoutPanelSpecimenImage.Controls.Add(labelSpecimenImageInternalNotes, 0, 10);
+            tableLayoutPanelSpecimenImage.Controls.Add(textBoxSpecimenImageInternalNotes, 1, 10);
+            tableLayoutPanelSpecimenImage.Controls.Add(pictureBoxSpecimenImageWithholdingReason, 1, 11);
+            tableLayoutPanelSpecimenImage.Controls.Add(labelSpecimenImageDisplayOrder, 0, 12);
+            tableLayoutPanelSpecimenImage.Controls.Add(textBoxSpecimenImageDisplayOrder, 1, 12);
+            tableLayoutPanelSpecimenImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelSpecimenImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tableLayoutPanelSpecimenImage.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelSpecimenImage.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            tableLayoutPanelSpecimenImage.Name = "tableLayoutPanelSpecimenImage";
+            tableLayoutPanelSpecimenImage.RowCount = 13;
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImage.Size = new System.Drawing.Size(216, 531);
+            tableLayoutPanelSpecimenImage.TabIndex = 0;
             // 
             // labelSpecimenImageIdentificationUnitID
             // 
-            this.labelSpecimenImageIdentificationUnitID.AccessibleName = "CollectionSpecimenImage.IdentificationUnitID";
-            this.labelSpecimenImageIdentificationUnitID.AutoSize = true;
-            this.labelSpecimenImageIdentificationUnitID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageIdentificationUnitID.Location = new System.Drawing.Point(0, 20);
-            this.labelSpecimenImageIdentificationUnitID.Margin = new System.Windows.Forms.Padding(0);
-            this.labelSpecimenImageIdentificationUnitID.Name = "labelSpecimenImageIdentificationUnitID";
-            this.labelSpecimenImageIdentificationUnitID.Size = new System.Drawing.Size(42, 21);
-            this.labelSpecimenImageIdentificationUnitID.TabIndex = 2;
-            this.labelSpecimenImageIdentificationUnitID.Text = "Unit:";
-            this.labelSpecimenImageIdentificationUnitID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelSpecimenImageIdentificationUnitID.AccessibleName = "CollectionSpecimenImage.IdentificationUnitID";
+            labelSpecimenImageIdentificationUnitID.AutoSize = true;
+            labelSpecimenImageIdentificationUnitID.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageIdentificationUnitID.Location = new System.Drawing.Point(0, 20);
+            labelSpecimenImageIdentificationUnitID.Margin = new System.Windows.Forms.Padding(0);
+            labelSpecimenImageIdentificationUnitID.Name = "labelSpecimenImageIdentificationUnitID";
+            labelSpecimenImageIdentificationUnitID.Size = new System.Drawing.Size(43, 21);
+            labelSpecimenImageIdentificationUnitID.TabIndex = 2;
+            labelSpecimenImageIdentificationUnitID.Text = "Unit:";
+            labelSpecimenImageIdentificationUnitID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelSpecimenImageType
             // 
-            this.labelSpecimenImageType.AccessibleName = "CollectionSpecimenImage.ImageType";
-            this.labelSpecimenImageType.AutoSize = true;
-            this.labelSpecimenImageType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageType.Location = new System.Drawing.Point(0, 62);
-            this.labelSpecimenImageType.Margin = new System.Windows.Forms.Padding(0);
-            this.labelSpecimenImageType.Name = "labelSpecimenImageType";
-            this.labelSpecimenImageType.Size = new System.Drawing.Size(42, 21);
-            this.labelSpecimenImageType.TabIndex = 3;
-            this.labelSpecimenImageType.Text = "Type:";
-            this.labelSpecimenImageType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelSpecimenImageType.AccessibleName = "CollectionSpecimenImage.ImageType";
+            labelSpecimenImageType.AutoSize = true;
+            labelSpecimenImageType.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageType.Location = new System.Drawing.Point(0, 62);
+            labelSpecimenImageType.Margin = new System.Windows.Forms.Padding(0);
+            labelSpecimenImageType.Name = "labelSpecimenImageType";
+            labelSpecimenImageType.Size = new System.Drawing.Size(43, 21);
+            labelSpecimenImageType.TabIndex = 3;
+            labelSpecimenImageType.Text = "Type:";
+            labelSpecimenImageType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // comboBoxSpecimenImageIdentificationUnitID
             // 
-            this.comboBoxSpecimenImageIdentificationUnitID.AccessibleName = "CollectionSpecimenImage.IdentificationUnitID";
-            this.tableLayoutPanelSpecimenImage.SetColumnSpan(this.comboBoxSpecimenImageIdentificationUnitID, 2);
-            this.comboBoxSpecimenImageIdentificationUnitID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxSpecimenImageIdentificationUnitID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSpecimenImageIdentificationUnitID.FormattingEnabled = true;
-            this.comboBoxSpecimenImageIdentificationUnitID.Location = new System.Drawing.Point(42, 20);
-            this.comboBoxSpecimenImageIdentificationUnitID.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBoxSpecimenImageIdentificationUnitID.Name = "comboBoxSpecimenImageIdentificationUnitID";
-            this.comboBoxSpecimenImageIdentificationUnitID.Size = new System.Drawing.Size(135, 21);
-            this.comboBoxSpecimenImageIdentificationUnitID.TabIndex = 4;
-            this.comboBoxSpecimenImageIdentificationUnitID.SelectionChangeCommitted += new System.EventHandler(this.comboBoxSpecimenImageIdentificationUnitID_SelectionChangeCommitted);
+            comboBoxSpecimenImageIdentificationUnitID.AccessibleName = "CollectionSpecimenImage.IdentificationUnitID";
+            tableLayoutPanelSpecimenImage.SetColumnSpan(comboBoxSpecimenImageIdentificationUnitID, 2);
+            comboBoxSpecimenImageIdentificationUnitID.Dock = System.Windows.Forms.DockStyle.Fill;
+            comboBoxSpecimenImageIdentificationUnitID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxSpecimenImageIdentificationUnitID.FormattingEnabled = true;
+            comboBoxSpecimenImageIdentificationUnitID.Location = new System.Drawing.Point(43, 20);
+            comboBoxSpecimenImageIdentificationUnitID.Margin = new System.Windows.Forms.Padding(0);
+            comboBoxSpecimenImageIdentificationUnitID.Name = "comboBoxSpecimenImageIdentificationUnitID";
+            comboBoxSpecimenImageIdentificationUnitID.Size = new System.Drawing.Size(173, 21);
+            comboBoxSpecimenImageIdentificationUnitID.TabIndex = 4;
+            comboBoxSpecimenImageIdentificationUnitID.SelectionChangeCommitted += comboBoxSpecimenImageIdentificationUnitID_SelectionChangeCommitted;
             // 
             // comboBoxSpecimenImageType
             // 
-            this.comboBoxSpecimenImageType.AccessibleName = "CollectionSpecimenImage.ImageType";
-            this.tableLayoutPanelSpecimenImage.SetColumnSpan(this.comboBoxSpecimenImageType, 2);
-            this.comboBoxSpecimenImageType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxSpecimenImageType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSpecimenImageType.FormattingEnabled = true;
-            this.comboBoxSpecimenImageType.Location = new System.Drawing.Point(42, 62);
-            this.comboBoxSpecimenImageType.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBoxSpecimenImageType.Name = "comboBoxSpecimenImageType";
-            this.comboBoxSpecimenImageType.Size = new System.Drawing.Size(135, 21);
-            this.comboBoxSpecimenImageType.TabIndex = 5;
+            comboBoxSpecimenImageType.AccessibleName = "CollectionSpecimenImage.ImageType";
+            tableLayoutPanelSpecimenImage.SetColumnSpan(comboBoxSpecimenImageType, 2);
+            comboBoxSpecimenImageType.Dock = System.Windows.Forms.DockStyle.Fill;
+            comboBoxSpecimenImageType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxSpecimenImageType.FormattingEnabled = true;
+            comboBoxSpecimenImageType.Location = new System.Drawing.Point(43, 62);
+            comboBoxSpecimenImageType.Margin = new System.Windows.Forms.Padding(0);
+            comboBoxSpecimenImageType.Name = "comboBoxSpecimenImageType";
+            comboBoxSpecimenImageType.Size = new System.Drawing.Size(173, 21);
+            comboBoxSpecimenImageType.TabIndex = 5;
             // 
             // labelSpecimenImageNotes
             // 
-            this.labelSpecimenImageNotes.AccessibleName = "CollectionSpecimenImage.Notes";
-            this.labelSpecimenImageNotes.AutoSize = true;
-            this.labelSpecimenImageNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageNotes.Location = new System.Drawing.Point(0, 89);
-            this.labelSpecimenImageNotes.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.labelSpecimenImageNotes.Name = "labelSpecimenImageNotes";
-            this.labelSpecimenImageNotes.Size = new System.Drawing.Size(42, 303);
-            this.labelSpecimenImageNotes.TabIndex = 8;
-            this.labelSpecimenImageNotes.Text = "Notes:";
-            this.labelSpecimenImageNotes.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            labelSpecimenImageNotes.AccessibleName = "CollectionSpecimenImage.Notes";
+            labelSpecimenImageNotes.AutoSize = true;
+            labelSpecimenImageNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageNotes.Location = new System.Drawing.Point(0, 90);
+            labelSpecimenImageNotes.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
+            labelSpecimenImageNotes.Name = "labelSpecimenImageNotes";
+            labelSpecimenImageNotes.Size = new System.Drawing.Size(43, 374);
+            labelSpecimenImageNotes.TabIndex = 8;
+            labelSpecimenImageNotes.Text = "Notes:";
+            labelSpecimenImageNotes.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxSpecimenImageNotes
             // 
-            this.textBoxSpecimenImageNotes.AccessibleName = "CollectionSpecimenImage.Notes";
-            this.tableLayoutPanelSpecimenImage.SetColumnSpan(this.textBoxSpecimenImageNotes, 2);
-            this.textBoxSpecimenImageNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpecimenImageNotes.Location = new System.Drawing.Point(42, 83);
-            this.textBoxSpecimenImageNotes.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxSpecimenImageNotes.Multiline = true;
-            this.textBoxSpecimenImageNotes.Name = "textBoxSpecimenImageNotes";
-            this.textBoxSpecimenImageNotes.Size = new System.Drawing.Size(135, 309);
-            this.textBoxSpecimenImageNotes.TabIndex = 9;
+            textBoxSpecimenImageNotes.AccessibleName = "CollectionSpecimenImage.Notes";
+            tableLayoutPanelSpecimenImage.SetColumnSpan(textBoxSpecimenImageNotes, 2);
+            textBoxSpecimenImageNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxSpecimenImageNotes.Location = new System.Drawing.Point(43, 83);
+            textBoxSpecimenImageNotes.Margin = new System.Windows.Forms.Padding(0);
+            textBoxSpecimenImageNotes.Multiline = true;
+            textBoxSpecimenImageNotes.Name = "textBoxSpecimenImageNotes";
+            textBoxSpecimenImageNotes.Size = new System.Drawing.Size(173, 381);
+            textBoxSpecimenImageNotes.TabIndex = 9;
             // 
             // labelSpecimenImageSpecimenPart
             // 
-            this.labelSpecimenImageSpecimenPart.AccessibleName = "CollectionSpecimenImage.SpecimenPartID";
-            this.labelSpecimenImageSpecimenPart.AutoSize = true;
-            this.labelSpecimenImageSpecimenPart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageSpecimenPart.Location = new System.Drawing.Point(0, 41);
-            this.labelSpecimenImageSpecimenPart.Margin = new System.Windows.Forms.Padding(0);
-            this.labelSpecimenImageSpecimenPart.Name = "labelSpecimenImageSpecimenPart";
-            this.labelSpecimenImageSpecimenPart.Size = new System.Drawing.Size(42, 21);
-            this.labelSpecimenImageSpecimenPart.TabIndex = 10;
-            this.labelSpecimenImageSpecimenPart.Text = "Part:";
-            this.labelSpecimenImageSpecimenPart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelSpecimenImageSpecimenPart.AccessibleName = "CollectionSpecimenImage.SpecimenPartID";
+            labelSpecimenImageSpecimenPart.AutoSize = true;
+            labelSpecimenImageSpecimenPart.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageSpecimenPart.Location = new System.Drawing.Point(0, 41);
+            labelSpecimenImageSpecimenPart.Margin = new System.Windows.Forms.Padding(0);
+            labelSpecimenImageSpecimenPart.Name = "labelSpecimenImageSpecimenPart";
+            labelSpecimenImageSpecimenPart.Size = new System.Drawing.Size(43, 21);
+            labelSpecimenImageSpecimenPart.TabIndex = 10;
+            labelSpecimenImageSpecimenPart.Text = "Part:";
+            labelSpecimenImageSpecimenPart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // comboBoxSpecimenImageSpecimenPart
             // 
-            this.comboBoxSpecimenImageSpecimenPart.AccessibleName = "CollectionSpecimenImage.SpecimenPartID";
-            this.tableLayoutPanelSpecimenImage.SetColumnSpan(this.comboBoxSpecimenImageSpecimenPart, 2);
-            this.comboBoxSpecimenImageSpecimenPart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxSpecimenImageSpecimenPart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSpecimenImageSpecimenPart.FormattingEnabled = true;
-            this.comboBoxSpecimenImageSpecimenPart.Location = new System.Drawing.Point(42, 41);
-            this.comboBoxSpecimenImageSpecimenPart.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBoxSpecimenImageSpecimenPart.Name = "comboBoxSpecimenImageSpecimenPart";
-            this.comboBoxSpecimenImageSpecimenPart.Size = new System.Drawing.Size(135, 21);
-            this.comboBoxSpecimenImageSpecimenPart.TabIndex = 11;
-            this.comboBoxSpecimenImageSpecimenPart.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpecimenImageSpecimenPart_SelectedIndexChanged);
-            this.comboBoxSpecimenImageSpecimenPart.SelectionChangeCommitted += new System.EventHandler(this.comboBoxSpecimenImageSpecimenPart_SelectionChangeCommitted);
+            comboBoxSpecimenImageSpecimenPart.AccessibleName = "CollectionSpecimenImage.SpecimenPartID";
+            tableLayoutPanelSpecimenImage.SetColumnSpan(comboBoxSpecimenImageSpecimenPart, 2);
+            comboBoxSpecimenImageSpecimenPart.Dock = System.Windows.Forms.DockStyle.Fill;
+            comboBoxSpecimenImageSpecimenPart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxSpecimenImageSpecimenPart.FormattingEnabled = true;
+            comboBoxSpecimenImageSpecimenPart.Location = new System.Drawing.Point(43, 41);
+            comboBoxSpecimenImageSpecimenPart.Margin = new System.Windows.Forms.Padding(0);
+            comboBoxSpecimenImageSpecimenPart.Name = "comboBoxSpecimenImageSpecimenPart";
+            comboBoxSpecimenImageSpecimenPart.Size = new System.Drawing.Size(173, 21);
+            comboBoxSpecimenImageSpecimenPart.TabIndex = 11;
+            comboBoxSpecimenImageSpecimenPart.SelectedIndexChanged += comboBoxSpecimenImageSpecimenPart_SelectedIndexChanged;
+            comboBoxSpecimenImageSpecimenPart.SelectionChangeCommitted += comboBoxSpecimenImageSpecimenPart_SelectionChangeCommitted;
             // 
             // labelSpecimenImageWithholdingReason
             // 
-            this.labelSpecimenImageWithholdingReason.AccessibleName = "CollectionSpecimenImage.DataWithholdingReason";
-            this.labelSpecimenImageWithholdingReason.AutoSize = true;
-            this.labelSpecimenImageWithholdingReason.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageWithholdingReason.Location = new System.Drawing.Point(0, 412);
-            this.labelSpecimenImageWithholdingReason.Margin = new System.Windows.Forms.Padding(0);
-            this.labelSpecimenImageWithholdingReason.Name = "labelSpecimenImageWithholdingReason";
-            this.labelSpecimenImageWithholdingReason.Size = new System.Drawing.Size(42, 22);
-            this.labelSpecimenImageWithholdingReason.TabIndex = 12;
-            this.labelSpecimenImageWithholdingReason.Text = "Withh.:";
-            this.labelSpecimenImageWithholdingReason.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelSpecimenImageWithholdingReason.AccessibleName = "CollectionSpecimenImage.DataWithholdingReason";
+            labelSpecimenImageWithholdingReason.AutoSize = true;
+            labelSpecimenImageWithholdingReason.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageWithholdingReason.Location = new System.Drawing.Point(0, 484);
+            labelSpecimenImageWithholdingReason.Margin = new System.Windows.Forms.Padding(0);
+            labelSpecimenImageWithholdingReason.Name = "labelSpecimenImageWithholdingReason";
+            labelSpecimenImageWithholdingReason.Size = new System.Drawing.Size(43, 27);
+            labelSpecimenImageWithholdingReason.TabIndex = 12;
+            labelSpecimenImageWithholdingReason.Text = "Withh.:";
+            labelSpecimenImageWithholdingReason.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // comboBoxSpecimenImageWithholdingReason
             // 
-            this.comboBoxSpecimenImageWithholdingReason.AccessibleName = "CollectionSpecimenImage.DataWithholdingReason";
-            this.comboBoxSpecimenImageWithholdingReason.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxSpecimenImageWithholdingReason.DropDownWidth = 200;
-            this.comboBoxSpecimenImageWithholdingReason.FormattingEnabled = true;
-            this.comboBoxSpecimenImageWithholdingReason.Location = new System.Drawing.Point(59, 412);
-            this.comboBoxSpecimenImageWithholdingReason.Margin = new System.Windows.Forms.Padding(1, 0, 0, 1);
-            this.comboBoxSpecimenImageWithholdingReason.Name = "comboBoxSpecimenImageWithholdingReason";
-            this.comboBoxSpecimenImageWithholdingReason.Size = new System.Drawing.Size(118, 21);
-            this.comboBoxSpecimenImageWithholdingReason.TabIndex = 13;
-            this.comboBoxSpecimenImageWithholdingReason.DropDown += new System.EventHandler(this.comboBoxSpecimenImageWithholdingReason_DropDown);
-            this.comboBoxSpecimenImageWithholdingReason.TextChanged += new System.EventHandler(this.comboBoxSpecimenImageWithholdingReason_TextChanged);
+            comboBoxSpecimenImageWithholdingReason.AccessibleName = "CollectionSpecimenImage.DataWithholdingReason";
+            comboBoxSpecimenImageWithholdingReason.Dock = System.Windows.Forms.DockStyle.Fill;
+            comboBoxSpecimenImageWithholdingReason.DropDownWidth = 200;
+            comboBoxSpecimenImageWithholdingReason.FormattingEnabled = true;
+            comboBoxSpecimenImageWithholdingReason.Location = new System.Drawing.Point(63, 484);
+            comboBoxSpecimenImageWithholdingReason.Margin = new System.Windows.Forms.Padding(1, 0, 0, 1);
+            comboBoxSpecimenImageWithholdingReason.Name = "comboBoxSpecimenImageWithholdingReason";
+            comboBoxSpecimenImageWithholdingReason.Size = new System.Drawing.Size(153, 21);
+            comboBoxSpecimenImageWithholdingReason.TabIndex = 13;
+            comboBoxSpecimenImageWithholdingReason.DropDown += comboBoxSpecimenImageWithholdingReason_DropDown;
+            comboBoxSpecimenImageWithholdingReason.TextChanged += comboBoxSpecimenImageWithholdingReason_TextChanged;
             // 
             // labelSpecimenImageTitle
             // 
-            this.labelSpecimenImageTitle.AccessibleName = "CollectionSpecimenImage.Title";
-            this.labelSpecimenImageTitle.AutoSize = true;
-            this.labelSpecimenImageTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageTitle.Location = new System.Drawing.Point(3, 0);
-            this.labelSpecimenImageTitle.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelSpecimenImageTitle.Name = "labelSpecimenImageTitle";
-            this.labelSpecimenImageTitle.Size = new System.Drawing.Size(39, 20);
-            this.labelSpecimenImageTitle.TabIndex = 14;
-            this.labelSpecimenImageTitle.Text = "Title:";
-            this.labelSpecimenImageTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelSpecimenImageTitle.AccessibleName = "CollectionSpecimenImage.Title";
+            labelSpecimenImageTitle.AutoSize = true;
+            labelSpecimenImageTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageTitle.Location = new System.Drawing.Point(4, 0);
+            labelSpecimenImageTitle.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelSpecimenImageTitle.Name = "labelSpecimenImageTitle";
+            labelSpecimenImageTitle.Size = new System.Drawing.Size(39, 20);
+            labelSpecimenImageTitle.TabIndex = 14;
+            labelSpecimenImageTitle.Text = "Title:";
+            labelSpecimenImageTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxSpecimenImageTitle
             // 
-            this.textBoxSpecimenImageTitle.AccessibleName = "CollectionSpecimenImage.Title";
-            this.tableLayoutPanelSpecimenImage.SetColumnSpan(this.textBoxSpecimenImageTitle, 2);
-            this.textBoxSpecimenImageTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpecimenImageTitle.Location = new System.Drawing.Point(42, 0);
-            this.textBoxSpecimenImageTitle.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxSpecimenImageTitle.Name = "textBoxSpecimenImageTitle";
-            this.textBoxSpecimenImageTitle.Size = new System.Drawing.Size(135, 20);
-            this.textBoxSpecimenImageTitle.TabIndex = 15;
+            textBoxSpecimenImageTitle.AccessibleName = "CollectionSpecimenImage.Title";
+            tableLayoutPanelSpecimenImage.SetColumnSpan(textBoxSpecimenImageTitle, 2);
+            textBoxSpecimenImageTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxSpecimenImageTitle.Location = new System.Drawing.Point(43, 0);
+            textBoxSpecimenImageTitle.Margin = new System.Windows.Forms.Padding(0);
+            textBoxSpecimenImageTitle.Name = "textBoxSpecimenImageTitle";
+            textBoxSpecimenImageTitle.Size = new System.Drawing.Size(173, 20);
+            textBoxSpecimenImageTitle.TabIndex = 15;
             // 
             // labelSpecimenImageInternalNotes
             // 
-            this.labelSpecimenImageInternalNotes.AccessibleName = "CollectionSpecimenImage.InternalNotes";
-            this.labelSpecimenImageInternalNotes.AutoSize = true;
-            this.labelSpecimenImageInternalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageInternalNotes.Location = new System.Drawing.Point(3, 392);
-            this.labelSpecimenImageInternalNotes.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelSpecimenImageInternalNotes.Name = "labelSpecimenImageInternalNotes";
-            this.labelSpecimenImageInternalNotes.Size = new System.Drawing.Size(39, 20);
-            this.labelSpecimenImageInternalNotes.TabIndex = 24;
-            this.labelSpecimenImageInternalNotes.Text = "Int.N.:";
-            this.labelSpecimenImageInternalNotes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelSpecimenImageInternalNotes.AccessibleName = "CollectionSpecimenImage.InternalNotes";
+            labelSpecimenImageInternalNotes.AutoSize = true;
+            labelSpecimenImageInternalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageInternalNotes.Location = new System.Drawing.Point(4, 464);
+            labelSpecimenImageInternalNotes.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelSpecimenImageInternalNotes.Name = "labelSpecimenImageInternalNotes";
+            labelSpecimenImageInternalNotes.Size = new System.Drawing.Size(39, 20);
+            labelSpecimenImageInternalNotes.TabIndex = 24;
+            labelSpecimenImageInternalNotes.Text = "Int.N.:";
+            labelSpecimenImageInternalNotes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxSpecimenImageInternalNotes
             // 
-            this.textBoxSpecimenImageInternalNotes.AccessibleName = "CollectionSpecimenImage.InternalNotes";
-            this.tableLayoutPanelSpecimenImage.SetColumnSpan(this.textBoxSpecimenImageInternalNotes, 2);
-            this.textBoxSpecimenImageInternalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpecimenImageInternalNotes.Location = new System.Drawing.Point(42, 392);
-            this.textBoxSpecimenImageInternalNotes.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxSpecimenImageInternalNotes.Name = "textBoxSpecimenImageInternalNotes";
-            this.textBoxSpecimenImageInternalNotes.Size = new System.Drawing.Size(135, 20);
-            this.textBoxSpecimenImageInternalNotes.TabIndex = 25;
+            textBoxSpecimenImageInternalNotes.AccessibleName = "CollectionSpecimenImage.InternalNotes";
+            tableLayoutPanelSpecimenImage.SetColumnSpan(textBoxSpecimenImageInternalNotes, 2);
+            textBoxSpecimenImageInternalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxSpecimenImageInternalNotes.Location = new System.Drawing.Point(43, 464);
+            textBoxSpecimenImageInternalNotes.Margin = new System.Windows.Forms.Padding(0);
+            textBoxSpecimenImageInternalNotes.Name = "textBoxSpecimenImageInternalNotes";
+            textBoxSpecimenImageInternalNotes.Size = new System.Drawing.Size(173, 20);
+            textBoxSpecimenImageInternalNotes.TabIndex = 25;
             // 
             // pictureBoxSpecimenImageWithholdingReason
             // 
-            this.pictureBoxSpecimenImageWithholdingReason.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxSpecimenImageWithholdingReason.Image = global::DiversityCollection.Resource.Stop3;
-            this.pictureBoxSpecimenImageWithholdingReason.Location = new System.Drawing.Point(42, 415);
-            this.pictureBoxSpecimenImageWithholdingReason.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.pictureBoxSpecimenImageWithholdingReason.Name = "pictureBoxSpecimenImageWithholdingReason";
-            this.pictureBoxSpecimenImageWithholdingReason.Size = new System.Drawing.Size(16, 19);
-            this.pictureBoxSpecimenImageWithholdingReason.TabIndex = 26;
-            this.pictureBoxSpecimenImageWithholdingReason.TabStop = false;
+            pictureBoxSpecimenImageWithholdingReason.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBoxSpecimenImageWithholdingReason.Image = Resource.Stop3;
+            pictureBoxSpecimenImageWithholdingReason.Location = new System.Drawing.Point(43, 487);
+            pictureBoxSpecimenImageWithholdingReason.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            pictureBoxSpecimenImageWithholdingReason.Name = "pictureBoxSpecimenImageWithholdingReason";
+            pictureBoxSpecimenImageWithholdingReason.Size = new System.Drawing.Size(19, 24);
+            pictureBoxSpecimenImageWithholdingReason.TabIndex = 26;
+            pictureBoxSpecimenImageWithholdingReason.TabStop = false;
             // 
             // labelSpecimenImageDisplayOrder
             // 
-            this.labelSpecimenImageDisplayOrder.AccessibleName = "CollectionSpecimenImage.DisplayOrder";
-            this.labelSpecimenImageDisplayOrder.AutoSize = true;
-            this.labelSpecimenImageDisplayOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageDisplayOrder.Location = new System.Drawing.Point(3, 434);
-            this.labelSpecimenImageDisplayOrder.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelSpecimenImageDisplayOrder.Name = "labelSpecimenImageDisplayOrder";
-            this.labelSpecimenImageDisplayOrder.Size = new System.Drawing.Size(39, 20);
-            this.labelSpecimenImageDisplayOrder.TabIndex = 27;
-            this.labelSpecimenImageDisplayOrder.Text = "D.ord.:";
-            this.labelSpecimenImageDisplayOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelSpecimenImageDisplayOrder.AccessibleName = "CollectionSpecimenImage.DisplayOrder";
+            labelSpecimenImageDisplayOrder.AutoSize = true;
+            labelSpecimenImageDisplayOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageDisplayOrder.Location = new System.Drawing.Point(4, 511);
+            labelSpecimenImageDisplayOrder.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelSpecimenImageDisplayOrder.Name = "labelSpecimenImageDisplayOrder";
+            labelSpecimenImageDisplayOrder.Size = new System.Drawing.Size(39, 20);
+            labelSpecimenImageDisplayOrder.TabIndex = 27;
+            labelSpecimenImageDisplayOrder.Text = "D.ord.:";
+            labelSpecimenImageDisplayOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxSpecimenImageDisplayOrder
             // 
-            this.tableLayoutPanelSpecimenImage.SetColumnSpan(this.textBoxSpecimenImageDisplayOrder, 2);
-            this.textBoxSpecimenImageDisplayOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpecimenImageDisplayOrder.Location = new System.Drawing.Point(42, 434);
-            this.textBoxSpecimenImageDisplayOrder.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxSpecimenImageDisplayOrder.Name = "textBoxSpecimenImageDisplayOrder";
-            this.textBoxSpecimenImageDisplayOrder.Size = new System.Drawing.Size(135, 20);
-            this.textBoxSpecimenImageDisplayOrder.TabIndex = 28;
-            this.textBoxSpecimenImageDisplayOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxSpecimenImageDisplayOrder.TextChanged += new System.EventHandler(this.textBoxSpecimenImageDisplayOrder_TextChanged);
+            tableLayoutPanelSpecimenImage.SetColumnSpan(textBoxSpecimenImageDisplayOrder, 2);
+            textBoxSpecimenImageDisplayOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxSpecimenImageDisplayOrder.Location = new System.Drawing.Point(43, 511);
+            textBoxSpecimenImageDisplayOrder.Margin = new System.Windows.Forms.Padding(0);
+            textBoxSpecimenImageDisplayOrder.Name = "textBoxSpecimenImageDisplayOrder";
+            textBoxSpecimenImageDisplayOrder.Size = new System.Drawing.Size(173, 20);
+            textBoxSpecimenImageDisplayOrder.TabIndex = 28;
+            textBoxSpecimenImageDisplayOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            textBoxSpecimenImageDisplayOrder.TextChanged += textBoxSpecimenImageDisplayOrder_TextChanged;
             // 
             // tabPageSpecimenImageIPR
             // 
-            this.tabPageSpecimenImageIPR.Controls.Add(this.tableLayoutPanelSpecimenImageIPR);
-            this.tabPageSpecimenImageIPR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPageSpecimenImageIPR.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSpecimenImageIPR.Name = "tabPageSpecimenImageIPR";
-            this.tabPageSpecimenImageIPR.Size = new System.Drawing.Size(179, 454);
-            this.tabPageSpecimenImageIPR.TabIndex = 1;
-            this.tabPageSpecimenImageIPR.Text = "IPR";
-            this.tabPageSpecimenImageIPR.UseVisualStyleBackColor = true;
+            tabPageSpecimenImageIPR.Controls.Add(tableLayoutPanelSpecimenImageIPR);
+            tabPageSpecimenImageIPR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tabPageSpecimenImageIPR.Location = new System.Drawing.Point(4, 22);
+            tabPageSpecimenImageIPR.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageSpecimenImageIPR.Name = "tabPageSpecimenImageIPR";
+            tabPageSpecimenImageIPR.Size = new System.Drawing.Size(192, 74);
+            tabPageSpecimenImageIPR.TabIndex = 1;
+            tabPageSpecimenImageIPR.Text = "IPR";
+            tabPageSpecimenImageIPR.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelSpecimenImageIPR
             // 
-            this.tableLayoutPanelSpecimenImageIPR.ColumnCount = 2;
-            this.tableLayoutPanelSpecimenImageIPR.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSpecimenImageIPR.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSpecimenImageIPR.Controls.Add(this.labelSpecimenImageCreator, 0, 0);
-            this.tableLayoutPanelSpecimenImageIPR.Controls.Add(this.userControlModuleRelatedEntrySpecimenImageCreator, 0, 1);
-            this.tableLayoutPanelSpecimenImageIPR.Controls.Add(this.labelSpecimenImageIPR, 0, 2);
-            this.tableLayoutPanelSpecimenImageIPR.Controls.Add(this.labelSpecimenImageCopyright, 0, 3);
-            this.tableLayoutPanelSpecimenImageIPR.Controls.Add(this.textBoxSpecimenImageIPR, 1, 2);
-            this.tableLayoutPanelSpecimenImageIPR.Controls.Add(this.textBoxSpecimenImageCopyright, 1, 3);
-            this.tableLayoutPanelSpecimenImageIPR.Controls.Add(this.groupBoxImageLicense, 0, 4);
-            this.tableLayoutPanelSpecimenImageIPR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSpecimenImageIPR.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelSpecimenImageIPR.Name = "tableLayoutPanelSpecimenImageIPR";
-            this.tableLayoutPanelSpecimenImageIPR.RowCount = 5;
-            this.tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelSpecimenImageIPR.Size = new System.Drawing.Size(179, 454);
-            this.tableLayoutPanelSpecimenImageIPR.TabIndex = 0;
+            tableLayoutPanelSpecimenImageIPR.ColumnCount = 2;
+            tableLayoutPanelSpecimenImageIPR.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelSpecimenImageIPR.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelSpecimenImageIPR.Controls.Add(labelSpecimenImageCreator, 0, 0);
+            tableLayoutPanelSpecimenImageIPR.Controls.Add(userControlModuleRelatedEntrySpecimenImageCreator, 0, 1);
+            tableLayoutPanelSpecimenImageIPR.Controls.Add(labelSpecimenImageIPR, 0, 2);
+            tableLayoutPanelSpecimenImageIPR.Controls.Add(labelSpecimenImageCopyright, 0, 3);
+            tableLayoutPanelSpecimenImageIPR.Controls.Add(textBoxSpecimenImageIPR, 1, 2);
+            tableLayoutPanelSpecimenImageIPR.Controls.Add(textBoxSpecimenImageCopyright, 1, 3);
+            tableLayoutPanelSpecimenImageIPR.Controls.Add(groupBoxImageLicense, 0, 4);
+            tableLayoutPanelSpecimenImageIPR.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelSpecimenImageIPR.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelSpecimenImageIPR.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelSpecimenImageIPR.Name = "tableLayoutPanelSpecimenImageIPR";
+            tableLayoutPanelSpecimenImageIPR.RowCount = 5;
+            tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelSpecimenImageIPR.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelSpecimenImageIPR.Size = new System.Drawing.Size(192, 74);
+            tableLayoutPanelSpecimenImageIPR.TabIndex = 0;
             // 
             // labelSpecimenImageCreator
             // 
-            this.labelSpecimenImageCreator.AccessibleName = "CollectionSpecimenImage.CreatorAgent";
-            this.labelSpecimenImageCreator.AutoSize = true;
-            this.tableLayoutPanelSpecimenImageIPR.SetColumnSpan(this.labelSpecimenImageCreator, 2);
-            this.labelSpecimenImageCreator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageCreator.Location = new System.Drawing.Point(3, 0);
-            this.labelSpecimenImageCreator.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelSpecimenImageCreator.Name = "labelSpecimenImageCreator";
-            this.labelSpecimenImageCreator.Size = new System.Drawing.Size(176, 13);
-            this.labelSpecimenImageCreator.TabIndex = 16;
-            this.labelSpecimenImageCreator.Text = "Creator:";
-            this.labelSpecimenImageCreator.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            labelSpecimenImageCreator.AccessibleName = "CollectionSpecimenImage.CreatorAgent";
+            labelSpecimenImageCreator.AutoSize = true;
+            tableLayoutPanelSpecimenImageIPR.SetColumnSpan(labelSpecimenImageCreator, 2);
+            labelSpecimenImageCreator.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageCreator.Location = new System.Drawing.Point(4, 0);
+            labelSpecimenImageCreator.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelSpecimenImageCreator.Name = "labelSpecimenImageCreator";
+            labelSpecimenImageCreator.Size = new System.Drawing.Size(188, 13);
+            labelSpecimenImageCreator.TabIndex = 16;
+            labelSpecimenImageCreator.Text = "Creator:";
+            labelSpecimenImageCreator.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // userControlModuleRelatedEntrySpecimenImageCreator
             // 
-            this.userControlModuleRelatedEntrySpecimenImageCreator.CanDeleteConnectionToModule = true;
-            this.tableLayoutPanelSpecimenImageIPR.SetColumnSpan(this.userControlModuleRelatedEntrySpecimenImageCreator, 2);
-            this.userControlModuleRelatedEntrySpecimenImageCreator.DependsOnUri = "";
-            this.userControlModuleRelatedEntrySpecimenImageCreator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlModuleRelatedEntrySpecimenImageCreator.Domain = "";
-            this.userControlModuleRelatedEntrySpecimenImageCreator.LinkDeleteConnectionToModuleToTableGrant = false;
-            this.userControlModuleRelatedEntrySpecimenImageCreator.Location = new System.Drawing.Point(0, 13);
-            this.userControlModuleRelatedEntrySpecimenImageCreator.Margin = new System.Windows.Forms.Padding(0);
-            this.userControlModuleRelatedEntrySpecimenImageCreator.Module = null;
-            this.userControlModuleRelatedEntrySpecimenImageCreator.Name = "userControlModuleRelatedEntrySpecimenImageCreator";
-            this.userControlModuleRelatedEntrySpecimenImageCreator.ShowHtmlUnitValues = false;
-            this.userControlModuleRelatedEntrySpecimenImageCreator.ShowInfo = false;
-            this.userControlModuleRelatedEntrySpecimenImageCreator.Size = new System.Drawing.Size(179, 22);
-            this.userControlModuleRelatedEntrySpecimenImageCreator.SupressEmptyRemoteValues = false;
-            this.userControlModuleRelatedEntrySpecimenImageCreator.TabIndex = 17;
+            userControlModuleRelatedEntrySpecimenImageCreator.CanDeleteConnectionToModule = true;
+            tableLayoutPanelSpecimenImageIPR.SetColumnSpan(userControlModuleRelatedEntrySpecimenImageCreator, 2);
+            userControlModuleRelatedEntrySpecimenImageCreator.DependsOnUri = "";
+            userControlModuleRelatedEntrySpecimenImageCreator.Dock = System.Windows.Forms.DockStyle.Fill;
+            userControlModuleRelatedEntrySpecimenImageCreator.Domain = "";
+            userControlModuleRelatedEntrySpecimenImageCreator.LinkDeleteConnectionToModuleToTableGrant = false;
+            userControlModuleRelatedEntrySpecimenImageCreator.Location = new System.Drawing.Point(0, 13);
+            userControlModuleRelatedEntrySpecimenImageCreator.Margin = new System.Windows.Forms.Padding(0);
+            userControlModuleRelatedEntrySpecimenImageCreator.Module = null;
+            userControlModuleRelatedEntrySpecimenImageCreator.Name = "userControlModuleRelatedEntrySpecimenImageCreator";
+            userControlModuleRelatedEntrySpecimenImageCreator.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            userControlModuleRelatedEntrySpecimenImageCreator.ShowHtmlUnitValues = false;
+            userControlModuleRelatedEntrySpecimenImageCreator.ShowInfo = false;
+            userControlModuleRelatedEntrySpecimenImageCreator.Size = new System.Drawing.Size(192, 25);
+            userControlModuleRelatedEntrySpecimenImageCreator.SupressEmptyRemoteValues = false;
+            userControlModuleRelatedEntrySpecimenImageCreator.TabIndex = 17;
             // 
             // labelSpecimenImageIPR
             // 
-            this.labelSpecimenImageIPR.AccessibleName = "CollectionSpecimenImage.IPR";
-            this.labelSpecimenImageIPR.AutoSize = true;
-            this.labelSpecimenImageIPR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageIPR.Location = new System.Drawing.Point(3, 35);
-            this.labelSpecimenImageIPR.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelSpecimenImageIPR.Name = "labelSpecimenImageIPR";
-            this.labelSpecimenImageIPR.Size = new System.Drawing.Size(37, 20);
-            this.labelSpecimenImageIPR.TabIndex = 18;
-            this.labelSpecimenImageIPR.Text = "IPR:";
-            this.labelSpecimenImageIPR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelSpecimenImageIPR.AccessibleName = "CollectionSpecimenImage.IPR";
+            labelSpecimenImageIPR.AutoSize = true;
+            labelSpecimenImageIPR.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageIPR.Location = new System.Drawing.Point(4, 38);
+            labelSpecimenImageIPR.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelSpecimenImageIPR.Name = "labelSpecimenImageIPR";
+            labelSpecimenImageIPR.Size = new System.Drawing.Size(36, 20);
+            labelSpecimenImageIPR.TabIndex = 18;
+            labelSpecimenImageIPR.Text = "IPR:";
+            labelSpecimenImageIPR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelSpecimenImageCopyright
             // 
-            this.labelSpecimenImageCopyright.AccessibleName = "CollectionSpecimenImage.CopyrightStatement";
-            this.labelSpecimenImageCopyright.AutoSize = true;
-            this.labelSpecimenImageCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageCopyright.Location = new System.Drawing.Point(0, 55);
-            this.labelSpecimenImageCopyright.Margin = new System.Windows.Forms.Padding(0);
-            this.labelSpecimenImageCopyright.Name = "labelSpecimenImageCopyright";
-            this.labelSpecimenImageCopyright.Size = new System.Drawing.Size(40, 20);
-            this.labelSpecimenImageCopyright.TabIndex = 20;
-            this.labelSpecimenImageCopyright.Text = "Copyr.:";
-            this.labelSpecimenImageCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelSpecimenImageCopyright.AccessibleName = "CollectionSpecimenImage.CopyrightStatement";
+            labelSpecimenImageCopyright.AutoSize = true;
+            labelSpecimenImageCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageCopyright.Location = new System.Drawing.Point(0, 58);
+            labelSpecimenImageCopyright.Margin = new System.Windows.Forms.Padding(0);
+            labelSpecimenImageCopyright.Name = "labelSpecimenImageCopyright";
+            labelSpecimenImageCopyright.Size = new System.Drawing.Size(40, 20);
+            labelSpecimenImageCopyright.TabIndex = 20;
+            labelSpecimenImageCopyright.Text = "Copyr.:";
+            labelSpecimenImageCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxSpecimenImageIPR
             // 
-            this.textBoxSpecimenImageIPR.AccessibleName = "CollectionSpecimenImage.IPR";
-            this.textBoxSpecimenImageIPR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpecimenImageIPR.Location = new System.Drawing.Point(40, 35);
-            this.textBoxSpecimenImageIPR.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxSpecimenImageIPR.Name = "textBoxSpecimenImageIPR";
-            this.textBoxSpecimenImageIPR.Size = new System.Drawing.Size(139, 20);
-            this.textBoxSpecimenImageIPR.TabIndex = 19;
+            textBoxSpecimenImageIPR.AccessibleName = "CollectionSpecimenImage.IPR";
+            textBoxSpecimenImageIPR.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxSpecimenImageIPR.Location = new System.Drawing.Point(40, 38);
+            textBoxSpecimenImageIPR.Margin = new System.Windows.Forms.Padding(0);
+            textBoxSpecimenImageIPR.Name = "textBoxSpecimenImageIPR";
+            textBoxSpecimenImageIPR.Size = new System.Drawing.Size(152, 20);
+            textBoxSpecimenImageIPR.TabIndex = 19;
             // 
             // textBoxSpecimenImageCopyright
             // 
-            this.textBoxSpecimenImageCopyright.AccessibleName = "CollectionSpecimenImage.CopyrightStatement";
-            this.textBoxSpecimenImageCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpecimenImageCopyright.Location = new System.Drawing.Point(40, 55);
-            this.textBoxSpecimenImageCopyright.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxSpecimenImageCopyright.Name = "textBoxSpecimenImageCopyright";
-            this.textBoxSpecimenImageCopyright.Size = new System.Drawing.Size(139, 20);
-            this.textBoxSpecimenImageCopyright.TabIndex = 21;
+            textBoxSpecimenImageCopyright.AccessibleName = "CollectionSpecimenImage.CopyrightStatement";
+            textBoxSpecimenImageCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxSpecimenImageCopyright.Location = new System.Drawing.Point(40, 58);
+            textBoxSpecimenImageCopyright.Margin = new System.Windows.Forms.Padding(0);
+            textBoxSpecimenImageCopyright.Name = "textBoxSpecimenImageCopyright";
+            textBoxSpecimenImageCopyright.Size = new System.Drawing.Size(152, 20);
+            textBoxSpecimenImageCopyright.TabIndex = 21;
             // 
             // groupBoxImageLicense
             // 
-            this.groupBoxImageLicense.AccessibleName = "CollectionSpecimenImage.LicenseHolder";
-            this.tableLayoutPanelSpecimenImageIPR.SetColumnSpan(this.groupBoxImageLicense, 2);
-            this.groupBoxImageLicense.Controls.Add(this.tableLayoutPanelImageLicense);
-            this.groupBoxImageLicense.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxImageLicense.Location = new System.Drawing.Point(3, 78);
-            this.groupBoxImageLicense.Name = "groupBoxImageLicense";
-            this.groupBoxImageLicense.Size = new System.Drawing.Size(173, 373);
-            this.groupBoxImageLicense.TabIndex = 29;
-            this.groupBoxImageLicense.TabStop = false;
-            this.groupBoxImageLicense.Text = "License";
+            groupBoxImageLicense.AccessibleName = "CollectionSpecimenImage.LicenseHolder";
+            tableLayoutPanelSpecimenImageIPR.SetColumnSpan(groupBoxImageLicense, 2);
+            groupBoxImageLicense.Controls.Add(tableLayoutPanelImageLicense);
+            groupBoxImageLicense.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxImageLicense.Location = new System.Drawing.Point(4, 81);
+            groupBoxImageLicense.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxImageLicense.Name = "groupBoxImageLicense";
+            groupBoxImageLicense.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxImageLicense.Size = new System.Drawing.Size(184, 1);
+            groupBoxImageLicense.TabIndex = 29;
+            groupBoxImageLicense.TabStop = false;
+            groupBoxImageLicense.Text = "License";
             // 
             // tableLayoutPanelImageLicense
             // 
-            this.tableLayoutPanelImageLicense.ColumnCount = 2;
-            this.tableLayoutPanelImageLicense.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelImageLicense.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelImageLicense.Controls.Add(this.labelSpecimenImageLicenseHolder, 0, 0);
-            this.tableLayoutPanelImageLicense.Controls.Add(this.userControlModuleRelatedEntrySpecimenImageLicenseHolder, 0, 1);
-            this.tableLayoutPanelImageLicense.Controls.Add(this.labelImageLicenseType, 0, 2);
-            this.tableLayoutPanelImageLicense.Controls.Add(this.labelSpecimenImageLicenseYear, 0, 3);
-            this.tableLayoutPanelImageLicense.Controls.Add(this.textBoxSpecimenImageLicenseYear, 1, 3);
-            this.tableLayoutPanelImageLicense.Controls.Add(this.textBoxSpecimenImageLicense, 1, 2);
-            this.tableLayoutPanelImageLicense.Controls.Add(this.labelImageLicenseNotes, 0, 5);
-            this.tableLayoutPanelImageLicense.Controls.Add(this.labelImageLicenseURI, 0, 4);
-            this.tableLayoutPanelImageLicense.Controls.Add(this.textBoxImageLicenseURI, 1, 4);
-            this.tableLayoutPanelImageLicense.Controls.Add(this.textBoxImageLicenseNotes, 1, 5);
-            this.tableLayoutPanelImageLicense.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelImageLicense.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanelImageLicense.Name = "tableLayoutPanelImageLicense";
-            this.tableLayoutPanelImageLicense.RowCount = 6;
-            this.tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelImageLicense.Size = new System.Drawing.Size(167, 354);
-            this.tableLayoutPanelImageLicense.TabIndex = 0;
+            tableLayoutPanelImageLicense.ColumnCount = 2;
+            tableLayoutPanelImageLicense.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelImageLicense.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelImageLicense.Controls.Add(labelSpecimenImageLicenseHolder, 0, 0);
+            tableLayoutPanelImageLicense.Controls.Add(userControlModuleRelatedEntrySpecimenImageLicenseHolder, 0, 1);
+            tableLayoutPanelImageLicense.Controls.Add(labelImageLicenseType, 0, 2);
+            tableLayoutPanelImageLicense.Controls.Add(labelSpecimenImageLicenseYear, 0, 3);
+            tableLayoutPanelImageLicense.Controls.Add(textBoxSpecimenImageLicenseYear, 1, 3);
+            tableLayoutPanelImageLicense.Controls.Add(textBoxSpecimenImageLicense, 1, 2);
+            tableLayoutPanelImageLicense.Controls.Add(labelImageLicenseNotes, 0, 5);
+            tableLayoutPanelImageLicense.Controls.Add(labelImageLicenseURI, 0, 4);
+            tableLayoutPanelImageLicense.Controls.Add(textBoxImageLicenseURI, 1, 4);
+            tableLayoutPanelImageLicense.Controls.Add(textBoxImageLicenseNotes, 1, 5);
+            tableLayoutPanelImageLicense.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelImageLicense.Location = new System.Drawing.Point(4, 16);
+            tableLayoutPanelImageLicense.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelImageLicense.Name = "tableLayoutPanelImageLicense";
+            tableLayoutPanelImageLicense.RowCount = 6;
+            tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelImageLicense.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelImageLicense.Size = new System.Drawing.Size(176, 0);
+            tableLayoutPanelImageLicense.TabIndex = 0;
             // 
             // labelSpecimenImageLicenseHolder
             // 
-            this.labelSpecimenImageLicenseHolder.AccessibleName = "CollectionSpecimenImage.LicenseHolder";
-            this.labelSpecimenImageLicenseHolder.AutoSize = true;
-            this.tableLayoutPanelImageLicense.SetColumnSpan(this.labelSpecimenImageLicenseHolder, 2);
-            this.labelSpecimenImageLicenseHolder.Location = new System.Drawing.Point(3, 0);
-            this.labelSpecimenImageLicenseHolder.Name = "labelSpecimenImageLicenseHolder";
-            this.labelSpecimenImageLicenseHolder.Size = new System.Drawing.Size(41, 13);
-            this.labelSpecimenImageLicenseHolder.TabIndex = 24;
-            this.labelSpecimenImageLicenseHolder.Text = "Holder:";
+            labelSpecimenImageLicenseHolder.AccessibleName = "CollectionSpecimenImage.LicenseHolder";
+            labelSpecimenImageLicenseHolder.AutoSize = true;
+            tableLayoutPanelImageLicense.SetColumnSpan(labelSpecimenImageLicenseHolder, 2);
+            labelSpecimenImageLicenseHolder.Location = new System.Drawing.Point(4, 0);
+            labelSpecimenImageLicenseHolder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelSpecimenImageLicenseHolder.Name = "labelSpecimenImageLicenseHolder";
+            labelSpecimenImageLicenseHolder.Size = new System.Drawing.Size(41, 13);
+            labelSpecimenImageLicenseHolder.TabIndex = 24;
+            labelSpecimenImageLicenseHolder.Text = "Holder:";
             // 
             // userControlModuleRelatedEntrySpecimenImageLicenseHolder
             // 
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.CanDeleteConnectionToModule = true;
-            this.tableLayoutPanelImageLicense.SetColumnSpan(this.userControlModuleRelatedEntrySpecimenImageLicenseHolder, 2);
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.DependsOnUri = "";
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.Domain = "";
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.LinkDeleteConnectionToModuleToTableGrant = false;
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.Location = new System.Drawing.Point(0, 13);
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.Margin = new System.Windows.Forms.Padding(0);
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.Module = null;
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.Name = "userControlModuleRelatedEntrySpecimenImageLicenseHolder";
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.ShowHtmlUnitValues = false;
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.ShowInfo = false;
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.Size = new System.Drawing.Size(167, 22);
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.SupressEmptyRemoteValues = false;
-            this.userControlModuleRelatedEntrySpecimenImageLicenseHolder.TabIndex = 27;
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.CanDeleteConnectionToModule = true;
+            tableLayoutPanelImageLicense.SetColumnSpan(userControlModuleRelatedEntrySpecimenImageLicenseHolder, 2);
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.DependsOnUri = "";
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.Domain = "";
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.LinkDeleteConnectionToModuleToTableGrant = false;
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.Location = new System.Drawing.Point(0, 13);
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.Margin = new System.Windows.Forms.Padding(0);
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.Module = null;
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.Name = "userControlModuleRelatedEntrySpecimenImageLicenseHolder";
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.ShowHtmlUnitValues = false;
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.ShowInfo = false;
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.Size = new System.Drawing.Size(176, 25);
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.SupressEmptyRemoteValues = false;
+            userControlModuleRelatedEntrySpecimenImageLicenseHolder.TabIndex = 27;
             // 
             // labelImageLicenseType
             // 
-            this.labelImageLicenseType.AccessibleName = "CollectionSpecimenImage.LicenseType";
-            this.labelImageLicenseType.AutoSize = true;
-            this.labelImageLicenseType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelImageLicenseType.Location = new System.Drawing.Point(3, 35);
-            this.labelImageLicenseType.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelImageLicenseType.Name = "labelImageLicenseType";
-            this.labelImageLicenseType.Size = new System.Drawing.Size(35, 20);
-            this.labelImageLicenseType.TabIndex = 28;
-            this.labelImageLicenseType.Text = "Type:";
-            this.labelImageLicenseType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelImageLicenseType.AccessibleName = "CollectionSpecimenImage.LicenseType";
+            labelImageLicenseType.AutoSize = true;
+            labelImageLicenseType.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelImageLicenseType.Location = new System.Drawing.Point(4, 38);
+            labelImageLicenseType.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelImageLicenseType.Name = "labelImageLicenseType";
+            labelImageLicenseType.Size = new System.Drawing.Size(34, 20);
+            labelImageLicenseType.TabIndex = 28;
+            labelImageLicenseType.Text = "Type:";
+            labelImageLicenseType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelSpecimenImageLicenseYear
             // 
-            this.labelSpecimenImageLicenseYear.AccessibleName = "CollectionSpecimenImage.LicenseYear";
-            this.labelSpecimenImageLicenseYear.AutoSize = true;
-            this.labelSpecimenImageLicenseYear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecimenImageLicenseYear.Location = new System.Drawing.Point(3, 55);
-            this.labelSpecimenImageLicenseYear.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelSpecimenImageLicenseYear.Name = "labelSpecimenImageLicenseYear";
-            this.labelSpecimenImageLicenseYear.Size = new System.Drawing.Size(35, 20);
-            this.labelSpecimenImageLicenseYear.TabIndex = 25;
-            this.labelSpecimenImageLicenseYear.Text = "Year:";
-            this.labelSpecimenImageLicenseYear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelSpecimenImageLicenseYear.AccessibleName = "CollectionSpecimenImage.LicenseYear";
+            labelSpecimenImageLicenseYear.AutoSize = true;
+            labelSpecimenImageLicenseYear.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelSpecimenImageLicenseYear.Location = new System.Drawing.Point(4, 58);
+            labelSpecimenImageLicenseYear.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            labelSpecimenImageLicenseYear.Name = "labelSpecimenImageLicenseYear";
+            labelSpecimenImageLicenseYear.Size = new System.Drawing.Size(34, 23);
+            labelSpecimenImageLicenseYear.TabIndex = 25;
+            labelSpecimenImageLicenseYear.Text = "Year:";
+            labelSpecimenImageLicenseYear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxSpecimenImageLicenseYear
             // 
-            this.textBoxSpecimenImageLicenseYear.AccessibleName = "CollectionSpecimenImage.LicenseYear";
-            this.textBoxSpecimenImageLicenseYear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpecimenImageLicenseYear.Location = new System.Drawing.Point(38, 55);
-            this.textBoxSpecimenImageLicenseYear.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxSpecimenImageLicenseYear.Name = "textBoxSpecimenImageLicenseYear";
-            this.textBoxSpecimenImageLicenseYear.Size = new System.Drawing.Size(129, 20);
-            this.textBoxSpecimenImageLicenseYear.TabIndex = 26;
+            textBoxSpecimenImageLicenseYear.AccessibleName = "CollectionSpecimenImage.LicenseYear";
+            textBoxSpecimenImageLicenseYear.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxSpecimenImageLicenseYear.Location = new System.Drawing.Point(38, 58);
+            textBoxSpecimenImageLicenseYear.Margin = new System.Windows.Forms.Padding(0);
+            textBoxSpecimenImageLicenseYear.Name = "textBoxSpecimenImageLicenseYear";
+            textBoxSpecimenImageLicenseYear.Size = new System.Drawing.Size(138, 20);
+            textBoxSpecimenImageLicenseYear.TabIndex = 26;
             // 
             // textBoxSpecimenImageLicense
             // 
-            this.textBoxSpecimenImageLicense.AccessibleName = "CollectionSpecimenImage.LicenseType";
-            this.textBoxSpecimenImageLicense.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpecimenImageLicense.Location = new System.Drawing.Point(38, 35);
-            this.textBoxSpecimenImageLicense.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxSpecimenImageLicense.Name = "textBoxSpecimenImageLicense";
-            this.textBoxSpecimenImageLicense.Size = new System.Drawing.Size(129, 20);
-            this.textBoxSpecimenImageLicense.TabIndex = 23;
+            textBoxSpecimenImageLicense.AccessibleName = "CollectionSpecimenImage.LicenseType";
+            textBoxSpecimenImageLicense.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxSpecimenImageLicense.Location = new System.Drawing.Point(38, 38);
+            textBoxSpecimenImageLicense.Margin = new System.Windows.Forms.Padding(0);
+            textBoxSpecimenImageLicense.Name = "textBoxSpecimenImageLicense";
+            textBoxSpecimenImageLicense.Size = new System.Drawing.Size(138, 20);
+            textBoxSpecimenImageLicense.TabIndex = 23;
             // 
             // labelImageLicenseNotes
             // 
-            this.labelImageLicenseNotes.AccessibleName = "CollectionSpecimenImage.LicenseNotes";
-            this.labelImageLicenseNotes.AutoSize = true;
-            this.labelImageLicenseNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelImageLicenseNotes.Location = new System.Drawing.Point(0, 98);
-            this.labelImageLicenseNotes.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.labelImageLicenseNotes.Name = "labelImageLicenseNotes";
-            this.labelImageLicenseNotes.Size = new System.Drawing.Size(38, 256);
-            this.labelImageLicenseNotes.TabIndex = 29;
-            this.labelImageLicenseNotes.Text = "Notes:";
-            this.labelImageLicenseNotes.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            labelImageLicenseNotes.AccessibleName = "CollectionSpecimenImage.LicenseNotes";
+            labelImageLicenseNotes.AutoSize = true;
+            labelImageLicenseNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelImageLicenseNotes.Location = new System.Drawing.Point(0, 107);
+            labelImageLicenseNotes.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            labelImageLicenseNotes.Name = "labelImageLicenseNotes";
+            labelImageLicenseNotes.Size = new System.Drawing.Size(38, 1);
+            labelImageLicenseNotes.TabIndex = 29;
+            labelImageLicenseNotes.Text = "Notes:";
+            labelImageLicenseNotes.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // labelImageLicenseURI
             // 
-            this.labelImageLicenseURI.AccessibleName = "CollectionSpecimenImage.LicenseURI";
-            this.labelImageLicenseURI.AutoSize = true;
-            this.labelImageLicenseURI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelImageLicenseURI.Location = new System.Drawing.Point(3, 75);
-            this.labelImageLicenseURI.Name = "labelImageLicenseURI";
-            this.labelImageLicenseURI.Size = new System.Drawing.Size(32, 20);
-            this.labelImageLicenseURI.TabIndex = 30;
-            this.labelImageLicenseURI.Text = "URI:";
-            this.labelImageLicenseURI.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelImageLicenseURI.AccessibleName = "CollectionSpecimenImage.LicenseURI";
+            labelImageLicenseURI.AutoSize = true;
+            labelImageLicenseURI.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelImageLicenseURI.Location = new System.Drawing.Point(4, 81);
+            labelImageLicenseURI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelImageLicenseURI.Name = "labelImageLicenseURI";
+            labelImageLicenseURI.Size = new System.Drawing.Size(30, 23);
+            labelImageLicenseURI.TabIndex = 30;
+            labelImageLicenseURI.Text = "URI:";
+            labelImageLicenseURI.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxImageLicenseURI
             // 
-            this.textBoxImageLicenseURI.AccessibleName = "CollectionSpecimenImage.LicenseURI";
-            this.textBoxImageLicenseURI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxImageLicenseURI.Location = new System.Drawing.Point(38, 75);
-            this.textBoxImageLicenseURI.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxImageLicenseURI.Name = "textBoxImageLicenseURI";
-            this.textBoxImageLicenseURI.Size = new System.Drawing.Size(129, 20);
-            this.textBoxImageLicenseURI.TabIndex = 31;
+            textBoxImageLicenseURI.AccessibleName = "CollectionSpecimenImage.LicenseURI";
+            textBoxImageLicenseURI.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxImageLicenseURI.Location = new System.Drawing.Point(38, 81);
+            textBoxImageLicenseURI.Margin = new System.Windows.Forms.Padding(0);
+            textBoxImageLicenseURI.Name = "textBoxImageLicenseURI";
+            textBoxImageLicenseURI.Size = new System.Drawing.Size(138, 20);
+            textBoxImageLicenseURI.TabIndex = 31;
             // 
             // textBoxImageLicenseNotes
             // 
-            this.textBoxImageLicenseNotes.AccessibleName = "CollectionSpecimenImage.LicenseNotes";
-            this.textBoxImageLicenseNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxImageLicenseNotes.Location = new System.Drawing.Point(38, 95);
-            this.textBoxImageLicenseNotes.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxImageLicenseNotes.Multiline = true;
-            this.textBoxImageLicenseNotes.Name = "textBoxImageLicenseNotes";
-            this.textBoxImageLicenseNotes.Size = new System.Drawing.Size(129, 259);
-            this.textBoxImageLicenseNotes.TabIndex = 32;
+            textBoxImageLicenseNotes.AccessibleName = "CollectionSpecimenImage.LicenseNotes";
+            textBoxImageLicenseNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxImageLicenseNotes.Location = new System.Drawing.Point(38, 104);
+            textBoxImageLicenseNotes.Margin = new System.Windows.Forms.Padding(0);
+            textBoxImageLicenseNotes.Multiline = true;
+            textBoxImageLicenseNotes.Name = "textBoxImageLicenseNotes";
+            textBoxImageLicenseNotes.Size = new System.Drawing.Size(138, 1);
+            textBoxImageLicenseNotes.TabIndex = 32;
             // 
             // tabPageSpecimenImageProperty
             // 
-            this.tabPageSpecimenImageProperty.Controls.Add(this.tableLayoutPanelImageProperty);
-            this.tabPageSpecimenImageProperty.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSpecimenImageProperty.Name = "tabPageSpecimenImageProperty";
-            this.tabPageSpecimenImageProperty.Size = new System.Drawing.Size(179, 454);
-            this.tabPageSpecimenImageProperty.TabIndex = 2;
-            this.tabPageSpecimenImageProperty.Text = "Prop.";
-            this.tabPageSpecimenImageProperty.UseVisualStyleBackColor = true;
+            tabPageSpecimenImageProperty.Controls.Add(tableLayoutPanelImageProperty);
+            tabPageSpecimenImageProperty.Location = new System.Drawing.Point(4, 22);
+            tabPageSpecimenImageProperty.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageSpecimenImageProperty.Name = "tabPageSpecimenImageProperty";
+            tabPageSpecimenImageProperty.Size = new System.Drawing.Size(192, 74);
+            tabPageSpecimenImageProperty.TabIndex = 2;
+            tabPageSpecimenImageProperty.Text = "Prop.";
+            tabPageSpecimenImageProperty.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelImageProperty
             // 
-            this.tableLayoutPanelImageProperty.ColumnCount = 1;
-            this.tableLayoutPanelImageProperty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelImageProperty.Controls.Add(this.listBoxImageProperty, 0, 1);
-            this.tableLayoutPanelImageProperty.Controls.Add(this.toolStripImageProperty, 0, 2);
-            this.tableLayoutPanelImageProperty.Controls.Add(this.labelImagePropertyDescription, 0, 3);
-            this.tableLayoutPanelImageProperty.Controls.Add(this.textBoxImagePropertyDescription, 0, 4);
-            this.tableLayoutPanelImageProperty.Controls.Add(this.toolStripImagePropertyFilter, 0, 0);
-            this.tableLayoutPanelImageProperty.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelImageProperty.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelImageProperty.Name = "tableLayoutPanelImageProperty";
-            this.tableLayoutPanelImageProperty.RowCount = 5;
-            this.tableLayoutPanelImageProperty.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelImageProperty.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelImageProperty.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelImageProperty.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelImageProperty.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelImageProperty.Size = new System.Drawing.Size(179, 454);
-            this.tableLayoutPanelImageProperty.TabIndex = 0;
+            tableLayoutPanelImageProperty.ColumnCount = 1;
+            tableLayoutPanelImageProperty.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelImageProperty.Controls.Add(listBoxImageProperty, 0, 1);
+            tableLayoutPanelImageProperty.Controls.Add(toolStripImageProperty, 0, 2);
+            tableLayoutPanelImageProperty.Controls.Add(labelImagePropertyDescription, 0, 3);
+            tableLayoutPanelImageProperty.Controls.Add(textBoxImagePropertyDescription, 0, 4);
+            tableLayoutPanelImageProperty.Controls.Add(toolStripImagePropertyFilter, 0, 0);
+            tableLayoutPanelImageProperty.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelImageProperty.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelImageProperty.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelImageProperty.Name = "tableLayoutPanelImageProperty";
+            tableLayoutPanelImageProperty.RowCount = 5;
+            tableLayoutPanelImageProperty.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelImageProperty.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelImageProperty.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelImageProperty.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelImageProperty.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelImageProperty.Size = new System.Drawing.Size(192, 74);
+            tableLayoutPanelImageProperty.TabIndex = 0;
             // 
             // listBoxImageProperty
             // 
-            this.listBoxImageProperty.DisplayMember = "Property";
-            this.listBoxImageProperty.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxImageProperty.FormattingEnabled = true;
-            this.listBoxImageProperty.IntegralHeight = false;
-            this.listBoxImageProperty.Location = new System.Drawing.Point(0, 25);
-            this.listBoxImageProperty.Margin = new System.Windows.Forms.Padding(0);
-            this.listBoxImageProperty.Name = "listBoxImageProperty";
-            this.listBoxImageProperty.Size = new System.Drawing.Size(179, 195);
-            this.listBoxImageProperty.TabIndex = 0;
-            this.listBoxImageProperty.SelectedIndexChanged += new System.EventHandler(this.listBoxImageProperty_SelectedIndexChanged);
+            listBoxImageProperty.DisplayMember = "Property";
+            listBoxImageProperty.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxImageProperty.FormattingEnabled = true;
+            listBoxImageProperty.IntegralHeight = false;
+            listBoxImageProperty.ItemHeight = 13;
+            listBoxImageProperty.Location = new System.Drawing.Point(0, 25);
+            listBoxImageProperty.Margin = new System.Windows.Forms.Padding(0);
+            listBoxImageProperty.Name = "listBoxImageProperty";
+            listBoxImageProperty.Size = new System.Drawing.Size(192, 5);
+            listBoxImageProperty.TabIndex = 0;
+            listBoxImageProperty.SelectedIndexChanged += listBoxImageProperty_SelectedIndexChanged;
             // 
             // toolStripImageProperty
             // 
-            this.toolStripImageProperty.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripImageProperty.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonImagePropertyAdd,
-            this.toolStripButtonImagePropertyGeometry,
-            this.toolStripDropDownButtonImagePropertyArea,
-            this.toolStripButtonImagePropertyDelete,
-            this.toolStripButtonImagePropertySave});
-            this.toolStripImageProperty.Location = new System.Drawing.Point(0, 220);
-            this.toolStripImageProperty.Name = "toolStripImageProperty";
-            this.toolStripImageProperty.Size = new System.Drawing.Size(179, 25);
-            this.toolStripImageProperty.TabIndex = 1;
-            this.toolStripImageProperty.Text = "toolStrip1";
+            toolStripImageProperty.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStripImageProperty.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonImagePropertyAdd, toolStripButtonImagePropertyGeometry, toolStripDropDownButtonImagePropertyArea, toolStripButtonImagePropertyDelete, toolStripButtonImagePropertySave });
+            toolStripImageProperty.Location = new System.Drawing.Point(0, 30);
+            toolStripImageProperty.Name = "toolStripImageProperty";
+            toolStripImageProperty.Size = new System.Drawing.Size(192, 25);
+            toolStripImageProperty.TabIndex = 1;
+            toolStripImageProperty.Text = "toolStrip1";
             // 
             // toolStripButtonImagePropertyAdd
             // 
-            this.toolStripButtonImagePropertyAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonImagePropertyAdd.Image = global::DiversityCollection.Resource.Add1;
-            this.toolStripButtonImagePropertyAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImagePropertyAdd.Name = "toolStripButtonImagePropertyAdd";
-            this.toolStripButtonImagePropertyAdd.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonImagePropertyAdd.Text = "Add a property to the selected resource";
-            this.toolStripButtonImagePropertyAdd.Click += new System.EventHandler(this.toolStripButtonImagePropertyAdd_Click);
+            toolStripButtonImagePropertyAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonImagePropertyAdd.Image = Resource.Add1;
+            toolStripButtonImagePropertyAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonImagePropertyAdd.Name = "toolStripButtonImagePropertyAdd";
+            toolStripButtonImagePropertyAdd.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonImagePropertyAdd.Text = "Add a property to the selected resource";
+            toolStripButtonImagePropertyAdd.Click += toolStripButtonImagePropertyAdd_Click;
             // 
             // toolStripButtonImagePropertyGeometry
             // 
-            this.toolStripButtonImagePropertyGeometry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonImagePropertyGeometry.Enabled = false;
-            this.toolStripButtonImagePropertyGeometry.Image = global::DiversityCollection.Resource.ImageArea;
-            this.toolStripButtonImagePropertyGeometry.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImagePropertyGeometry.Name = "toolStripButtonImagePropertyGeometry";
-            this.toolStripButtonImagePropertyGeometry.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonImagePropertyGeometry.Text = "Set range for this property in the image";
-            this.toolStripButtonImagePropertyGeometry.Click += new System.EventHandler(this.toolStripButtonImagePropertyGeometry_Click);
+            toolStripButtonImagePropertyGeometry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonImagePropertyGeometry.Enabled = false;
+            toolStripButtonImagePropertyGeometry.Image = Resource.ImageArea;
+            toolStripButtonImagePropertyGeometry.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonImagePropertyGeometry.Name = "toolStripButtonImagePropertyGeometry";
+            toolStripButtonImagePropertyGeometry.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonImagePropertyGeometry.Text = "Set range for this property in the image";
+            toolStripButtonImagePropertyGeometry.Click += toolStripButtonImagePropertyGeometry_Click;
             // 
             // toolStripDropDownButtonImagePropertyArea
             // 
-            this.toolStripDropDownButtonImagePropertyArea.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButtonImagePropertyArea.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemImagePropertyAreaHide,
-            this.toolStripMenuItemImagePropertyAreaShow,
-            this.toolStripMenuItemImagePropertyAreaAll});
-            this.toolStripDropDownButtonImagePropertyArea.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonImagePropertyArea.Image")));
-            this.toolStripDropDownButtonImagePropertyArea.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonImagePropertyArea.Name = "toolStripDropDownButtonImagePropertyArea";
-            this.toolStripDropDownButtonImagePropertyArea.Size = new System.Drawing.Size(45, 22);
-            this.toolStripDropDownButtonImagePropertyArea.Text = "Hide";
-            this.toolStripDropDownButtonImagePropertyArea.ToolTipText = "Show area of property only by demand";
+            toolStripDropDownButtonImagePropertyArea.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripDropDownButtonImagePropertyArea.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemImagePropertyAreaHide, toolStripMenuItemImagePropertyAreaShow, toolStripMenuItemImagePropertyAreaAll });
+            toolStripDropDownButtonImagePropertyArea.Image = (System.Drawing.Image)resources.GetObject("toolStripDropDownButtonImagePropertyArea.Image");
+            toolStripDropDownButtonImagePropertyArea.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripDropDownButtonImagePropertyArea.Name = "toolStripDropDownButtonImagePropertyArea";
+            toolStripDropDownButtonImagePropertyArea.Size = new System.Drawing.Size(45, 22);
+            toolStripDropDownButtonImagePropertyArea.Text = "Hide";
+            toolStripDropDownButtonImagePropertyArea.ToolTipText = "Show area of property only by demand";
             // 
             // toolStripMenuItemImagePropertyAreaHide
             // 
-            this.toolStripMenuItemImagePropertyAreaHide.Name = "toolStripMenuItemImagePropertyAreaHide";
-            this.toolStripMenuItemImagePropertyAreaHide.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemImagePropertyAreaHide.Text = "Hide area";
-            this.toolStripMenuItemImagePropertyAreaHide.ToolTipText = "Show area of a property only be demand";
-            this.toolStripMenuItemImagePropertyAreaHide.Click += new System.EventHandler(this.toolStripMenuItemImagePropertyAreaHide_Click);
+            toolStripMenuItemImagePropertyAreaHide.Name = "toolStripMenuItemImagePropertyAreaHide";
+            toolStripMenuItemImagePropertyAreaHide.Size = new System.Drawing.Size(152, 22);
+            toolStripMenuItemImagePropertyAreaHide.Text = "Hide area";
+            toolStripMenuItemImagePropertyAreaHide.ToolTipText = "Show area of a property only be demand";
+            toolStripMenuItemImagePropertyAreaHide.Click += toolStripMenuItemImagePropertyAreaHide_Click;
             // 
             // toolStripMenuItemImagePropertyAreaShow
             // 
-            this.toolStripMenuItemImagePropertyAreaShow.ForeColor = System.Drawing.Color.Red;
-            this.toolStripMenuItemImagePropertyAreaShow.Name = "toolStripMenuItemImagePropertyAreaShow";
-            this.toolStripMenuItemImagePropertyAreaShow.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemImagePropertyAreaShow.Text = "Show area";
-            this.toolStripMenuItemImagePropertyAreaShow.ToolTipText = "Show the area of the selected property of the image";
-            this.toolStripMenuItemImagePropertyAreaShow.Click += new System.EventHandler(this.toolStripMenuItemImagePropertyAreaShow_Click);
+            toolStripMenuItemImagePropertyAreaShow.ForeColor = System.Drawing.Color.Red;
+            toolStripMenuItemImagePropertyAreaShow.Name = "toolStripMenuItemImagePropertyAreaShow";
+            toolStripMenuItemImagePropertyAreaShow.Size = new System.Drawing.Size(152, 22);
+            toolStripMenuItemImagePropertyAreaShow.Text = "Show area";
+            toolStripMenuItemImagePropertyAreaShow.ToolTipText = "Show the area of the selected property of the image";
+            toolStripMenuItemImagePropertyAreaShow.Click += toolStripMenuItemImagePropertyAreaShow_Click;
             // 
             // toolStripMenuItemImagePropertyAreaAll
             // 
-            this.toolStripMenuItemImagePropertyAreaAll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItemImagePropertyAreaAll.ForeColor = System.Drawing.Color.Red;
-            this.toolStripMenuItemImagePropertyAreaAll.Name = "toolStripMenuItemImagePropertyAreaAll";
-            this.toolStripMenuItemImagePropertyAreaAll.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemImagePropertyAreaAll.Text = "Show all areas";
-            this.toolStripMenuItemImagePropertyAreaAll.ToolTipText = "Show areas of all properties of the image";
-            this.toolStripMenuItemImagePropertyAreaAll.Click += new System.EventHandler(this.toolStripMenuItemImagePropertyAreaAll_Click);
+            toolStripMenuItemImagePropertyAreaAll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            toolStripMenuItemImagePropertyAreaAll.ForeColor = System.Drawing.Color.Red;
+            toolStripMenuItemImagePropertyAreaAll.Name = "toolStripMenuItemImagePropertyAreaAll";
+            toolStripMenuItemImagePropertyAreaAll.Size = new System.Drawing.Size(152, 22);
+            toolStripMenuItemImagePropertyAreaAll.Text = "Show all areas";
+            toolStripMenuItemImagePropertyAreaAll.ToolTipText = "Show areas of all properties of the image";
+            toolStripMenuItemImagePropertyAreaAll.Click += toolStripMenuItemImagePropertyAreaAll_Click;
             // 
             // toolStripButtonImagePropertyDelete
             // 
-            this.toolStripButtonImagePropertyDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonImagePropertyDelete.Enabled = false;
-            this.toolStripButtonImagePropertyDelete.Image = global::DiversityCollection.Resource.Delete;
-            this.toolStripButtonImagePropertyDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImagePropertyDelete.Name = "toolStripButtonImagePropertyDelete";
-            this.toolStripButtonImagePropertyDelete.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonImagePropertyDelete.Text = "Remove the selected property";
-            this.toolStripButtonImagePropertyDelete.Click += new System.EventHandler(this.toolStripButtonImagePropertyDelete_Click);
+            toolStripButtonImagePropertyDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonImagePropertyDelete.Enabled = false;
+            toolStripButtonImagePropertyDelete.Image = Resource.Delete;
+            toolStripButtonImagePropertyDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonImagePropertyDelete.Name = "toolStripButtonImagePropertyDelete";
+            toolStripButtonImagePropertyDelete.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonImagePropertyDelete.Text = "Remove the selected property";
+            toolStripButtonImagePropertyDelete.Click += toolStripButtonImagePropertyDelete_Click;
             // 
             // toolStripButtonImagePropertySave
             // 
-            this.toolStripButtonImagePropertySave.BackColor = System.Drawing.Color.Red;
-            this.toolStripButtonImagePropertySave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonImagePropertySave.Image = global::DiversityCollection.Resource.Save;
-            this.toolStripButtonImagePropertySave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonImagePropertySave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImagePropertySave.Name = "toolStripButtonImagePropertySave";
-            this.toolStripButtonImagePropertySave.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonImagePropertySave.Text = "Save the current changes";
-            this.toolStripButtonImagePropertySave.Visible = false;
-            this.toolStripButtonImagePropertySave.Click += new System.EventHandler(this.toolStripButtonImagePropertySave_Click);
+            toolStripButtonImagePropertySave.BackColor = System.Drawing.Color.Red;
+            toolStripButtonImagePropertySave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonImagePropertySave.Image = Resource.Save;
+            toolStripButtonImagePropertySave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            toolStripButtonImagePropertySave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonImagePropertySave.Name = "toolStripButtonImagePropertySave";
+            toolStripButtonImagePropertySave.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonImagePropertySave.Text = "Save the current changes";
+            toolStripButtonImagePropertySave.Visible = false;
+            toolStripButtonImagePropertySave.Click += toolStripButtonImagePropertySave_Click;
             // 
             // labelImagePropertyDescription
             // 
-            this.labelImagePropertyDescription.AccessibleName = "CollectionSpecimenImageProperty.Description";
-            this.labelImagePropertyDescription.AutoSize = true;
-            this.labelImagePropertyDescription.Location = new System.Drawing.Point(3, 245);
-            this.labelImagePropertyDescription.Name = "labelImagePropertyDescription";
-            this.labelImagePropertyDescription.Size = new System.Drawing.Size(60, 13);
-            this.labelImagePropertyDescription.TabIndex = 2;
-            this.labelImagePropertyDescription.Text = "Description";
+            labelImagePropertyDescription.AccessibleName = "CollectionSpecimenImageProperty.Description";
+            labelImagePropertyDescription.AutoSize = true;
+            labelImagePropertyDescription.Location = new System.Drawing.Point(4, 55);
+            labelImagePropertyDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelImagePropertyDescription.Name = "labelImagePropertyDescription";
+            labelImagePropertyDescription.Size = new System.Drawing.Size(60, 13);
+            labelImagePropertyDescription.TabIndex = 2;
+            labelImagePropertyDescription.Text = "Description";
             // 
             // textBoxImagePropertyDescription
             // 
-            this.textBoxImagePropertyDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxImagePropertyDescription.Location = new System.Drawing.Point(0, 258);
-            this.textBoxImagePropertyDescription.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxImagePropertyDescription.Multiline = true;
-            this.textBoxImagePropertyDescription.Name = "textBoxImagePropertyDescription";
-            this.textBoxImagePropertyDescription.Size = new System.Drawing.Size(179, 196);
-            this.textBoxImagePropertyDescription.TabIndex = 3;
-            this.textBoxImagePropertyDescription.Leave += new System.EventHandler(this.textBoxImagePropertyDescription_Leave);
+            textBoxImagePropertyDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxImagePropertyDescription.Location = new System.Drawing.Point(0, 68);
+            textBoxImagePropertyDescription.Margin = new System.Windows.Forms.Padding(0);
+            textBoxImagePropertyDescription.Multiline = true;
+            textBoxImagePropertyDescription.Name = "textBoxImagePropertyDescription";
+            textBoxImagePropertyDescription.Size = new System.Drawing.Size(192, 6);
+            textBoxImagePropertyDescription.TabIndex = 3;
+            textBoxImagePropertyDescription.Leave += textBoxImagePropertyDescription_Leave;
             // 
             // toolStripImagePropertyFilter
             // 
-            this.toolStripImagePropertyFilter.Enabled = false;
-            this.toolStripImagePropertyFilter.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripImagePropertyFilter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonImagePropertyFilter,
-            this.toolStripTextBoxImagePropertyFilter,
-            this.toolStripButtonImagePropertyFilterClear});
-            this.toolStripImagePropertyFilter.Location = new System.Drawing.Point(0, 0);
-            this.toolStripImagePropertyFilter.Name = "toolStripImagePropertyFilter";
-            this.toolStripImagePropertyFilter.Size = new System.Drawing.Size(179, 25);
-            this.toolStripImagePropertyFilter.TabIndex = 4;
-            this.toolStripImagePropertyFilter.Text = "toolStrip1";
+            toolStripImagePropertyFilter.Enabled = false;
+            toolStripImagePropertyFilter.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStripImagePropertyFilter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonImagePropertyFilter, toolStripTextBoxImagePropertyFilter, toolStripButtonImagePropertyFilterClear });
+            toolStripImagePropertyFilter.Location = new System.Drawing.Point(0, 0);
+            toolStripImagePropertyFilter.Name = "toolStripImagePropertyFilter";
+            toolStripImagePropertyFilter.Size = new System.Drawing.Size(192, 25);
+            toolStripImagePropertyFilter.TabIndex = 4;
+            toolStripImagePropertyFilter.Text = "toolStrip1";
             // 
             // toolStripButtonImagePropertyFilter
             // 
-            this.toolStripButtonImagePropertyFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonImagePropertyFilter.Image = global::DiversityCollection.Resource.Filter;
-            this.toolStripButtonImagePropertyFilter.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonImagePropertyFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImagePropertyFilter.Name = "toolStripButtonImagePropertyFilter";
-            this.toolStripButtonImagePropertyFilter.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonImagePropertyFilter.Text = "Apply filter";
-            this.toolStripButtonImagePropertyFilter.Click += new System.EventHandler(this.toolStripButtonImagePropertyFilter_Click);
+            toolStripButtonImagePropertyFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonImagePropertyFilter.Image = Resource.Filter;
+            toolStripButtonImagePropertyFilter.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            toolStripButtonImagePropertyFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonImagePropertyFilter.Name = "toolStripButtonImagePropertyFilter";
+            toolStripButtonImagePropertyFilter.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonImagePropertyFilter.Text = "Apply filter";
+            toolStripButtonImagePropertyFilter.Click += toolStripButtonImagePropertyFilter_Click;
             // 
             // toolStripTextBoxImagePropertyFilter
             // 
-            this.toolStripTextBoxImagePropertyFilter.Name = "toolStripTextBoxImagePropertyFilter";
-            this.toolStripTextBoxImagePropertyFilter.Size = new System.Drawing.Size(50, 25);
-            this.toolStripTextBoxImagePropertyFilter.ToolTipText = "Text for filtering the images according to properties (use wildcards _ and %)";
-            this.toolStripTextBoxImagePropertyFilter.Enter += new System.EventHandler(this.toolStripTextBoxImagePropertyFilter_Enter);
+            toolStripTextBoxImagePropertyFilter.Name = "toolStripTextBoxImagePropertyFilter";
+            toolStripTextBoxImagePropertyFilter.Size = new System.Drawing.Size(58, 25);
+            toolStripTextBoxImagePropertyFilter.ToolTipText = "Text for filtering the images according to properties (use wildcards _ and %)";
+            toolStripTextBoxImagePropertyFilter.Enter += toolStripTextBoxImagePropertyFilter_Enter;
             // 
             // toolStripButtonImagePropertyFilterClear
             // 
-            this.toolStripButtonImagePropertyFilterClear.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonImagePropertyFilterClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonImagePropertyFilterClear.Image = global::DiversityCollection.Resource.ImageList;
-            this.toolStripButtonImagePropertyFilterClear.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonImagePropertyFilterClear.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImagePropertyFilterClear.Name = "toolStripButtonImagePropertyFilterClear";
-            this.toolStripButtonImagePropertyFilterClear.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonImagePropertyFilterClear.Text = "Clear filter and show all images";
-            this.toolStripButtonImagePropertyFilterClear.Click += new System.EventHandler(this.toolStripButtonImagePropertyFilterClear_Click);
+            toolStripButtonImagePropertyFilterClear.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            toolStripButtonImagePropertyFilterClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonImagePropertyFilterClear.Image = Resource.ImageList;
+            toolStripButtonImagePropertyFilterClear.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            toolStripButtonImagePropertyFilterClear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonImagePropertyFilterClear.Name = "toolStripButtonImagePropertyFilterClear";
+            toolStripButtonImagePropertyFilterClear.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonImagePropertyFilterClear.Text = "Clear filter and show all images";
+            toolStripButtonImagePropertyFilterClear.Click += toolStripButtonImagePropertyFilterClear_Click;
             // 
             // tabPageSpecimenImageExif
             // 
-            this.tabPageSpecimenImageExif.Controls.Add(this.userControlXMLTreeExif);
-            this.tabPageSpecimenImageExif.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSpecimenImageExif.Name = "tabPageSpecimenImageExif";
-            this.tabPageSpecimenImageExif.Size = new System.Drawing.Size(179, 454);
-            this.tabPageSpecimenImageExif.TabIndex = 3;
-            this.tabPageSpecimenImageExif.Text = "EXIF";
-            this.tabPageSpecimenImageExif.UseVisualStyleBackColor = true;
+            tabPageSpecimenImageExif.Controls.Add(userControlXMLTreeExif);
+            tabPageSpecimenImageExif.Location = new System.Drawing.Point(4, 22);
+            tabPageSpecimenImageExif.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageSpecimenImageExif.Name = "tabPageSpecimenImageExif";
+            tabPageSpecimenImageExif.Size = new System.Drawing.Size(192, 74);
+            tabPageSpecimenImageExif.TabIndex = 3;
+            tabPageSpecimenImageExif.Text = "EXIF";
+            tabPageSpecimenImageExif.UseVisualStyleBackColor = true;
             // 
             // userControlXMLTreeExif
             // 
-            this.userControlXMLTreeExif.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlXMLTreeExif.Location = new System.Drawing.Point(0, 0);
-            this.userControlXMLTreeExif.Name = "userControlXMLTreeExif";
-            this.userControlXMLTreeExif.Size = new System.Drawing.Size(179, 454);
-            this.userControlXMLTreeExif.TabIndex = 0;
-            this.userControlXMLTreeExif.XML = "";
+            userControlXMLTreeExif.Dock = System.Windows.Forms.DockStyle.Fill;
+            userControlXMLTreeExif.Location = new System.Drawing.Point(0, 0);
+            userControlXMLTreeExif.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            userControlXMLTreeExif.Name = "userControlXMLTreeExif";
+            userControlXMLTreeExif.Size = new System.Drawing.Size(192, 74);
+            userControlXMLTreeExif.TabIndex = 0;
+            userControlXMLTreeExif.XML = "";
             // 
             // toolStripSpecimenImage
             // 
-            this.toolStripSpecimenImage.Dock = System.Windows.Forms.DockStyle.Left;
-            this.toolStripSpecimenImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonSpecimenImageNew,
-            this.toolStripButtonSpecimenImageDelete,
-            this.toolStripButtonOpenSpecimenImageModule,
-            this.toolStripButtonImagesSpecimenShowAll,
-            this.toolStripButtonImageDescription,
-            this.toolStripButtonImageUp,
-            this.toolStripButtonImageDown,
-            this.toolStripDropDownButtonImageDisplayOrder,
-            this.toolStripButtonUseWebView});
-            this.toolStripSpecimenImage.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
-            this.toolStripSpecimenImage.Location = new System.Drawing.Point(72, 0);
-            this.toolStripSpecimenImage.Name = "toolStripSpecimenImage";
-            this.toolStripSpecimenImage.Size = new System.Drawing.Size(32, 480);
-            this.toolStripSpecimenImage.TabIndex = 7;
-            this.toolStripSpecimenImage.Text = "toolStrip1";
+            toolStripSpecimenImage.Dock = System.Windows.Forms.DockStyle.Left;
+            toolStripSpecimenImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonSpecimenImageNew, toolStripButtonSpecimenImageDelete, toolStripButtonOpenSpecimenImageModule, toolStripButtonImagesSpecimenShowAll, toolStripButtonImageDescription, toolStripButtonImageUp, toolStripButtonImageDown, toolStripDropDownButtonImageDisplayOrder, toolStripButtonUseWebView });
+            toolStripSpecimenImage.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
+            toolStripSpecimenImage.Location = new System.Drawing.Point(83, 0);
+            toolStripSpecimenImage.Name = "toolStripSpecimenImage";
+            toolStripSpecimenImage.Size = new System.Drawing.Size(30, 557);
+            toolStripSpecimenImage.TabIndex = 7;
+            toolStripSpecimenImage.Text = "toolStrip1";
             // 
             // toolStripButtonSpecimenImageNew
             // 
-            this.toolStripButtonSpecimenImageNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSpecimenImageNew.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSpecimenImageNew.Image")));
-            this.toolStripButtonSpecimenImageNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSpecimenImageNew.Name = "toolStripButtonSpecimenImageNew";
-            this.toolStripButtonSpecimenImageNew.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonSpecimenImageNew.Text = "Enter a new resource for the specimen";
-            this.toolStripButtonSpecimenImageNew.Click += new System.EventHandler(this.toolStripButtonSpecimenImageNew_Click);
+            toolStripButtonSpecimenImageNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonSpecimenImageNew.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonSpecimenImageNew.Image");
+            toolStripButtonSpecimenImageNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonSpecimenImageNew.Name = "toolStripButtonSpecimenImageNew";
+            toolStripButtonSpecimenImageNew.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonSpecimenImageNew.Text = "Enter a new resource for the specimen";
+            toolStripButtonSpecimenImageNew.Click += toolStripButtonSpecimenImageNew_Click;
             // 
             // toolStripButtonSpecimenImageDelete
             // 
-            this.toolStripButtonSpecimenImageDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSpecimenImageDelete.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSpecimenImageDelete.Image")));
-            this.toolStripButtonSpecimenImageDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSpecimenImageDelete.Name = "toolStripButtonSpecimenImageDelete";
-            this.toolStripButtonSpecimenImageDelete.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonSpecimenImageDelete.Text = "Delete the selected resource";
-            this.toolStripButtonSpecimenImageDelete.Click += new System.EventHandler(this.toolStripButtonSpecimenImageDelete_Click);
+            toolStripButtonSpecimenImageDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonSpecimenImageDelete.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonSpecimenImageDelete.Image");
+            toolStripButtonSpecimenImageDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonSpecimenImageDelete.Name = "toolStripButtonSpecimenImageDelete";
+            toolStripButtonSpecimenImageDelete.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonSpecimenImageDelete.Text = "Delete the selected resource";
+            toolStripButtonSpecimenImageDelete.Click += toolStripButtonSpecimenImageDelete_Click;
             // 
             // toolStripButtonOpenSpecimenImageModule
             // 
-            this.toolStripButtonOpenSpecimenImageModule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOpenSpecimenImageModule.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOpenSpecimenImageModule.Image")));
-            this.toolStripButtonOpenSpecimenImageModule.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOpenSpecimenImageModule.Name = "toolStripButtonOpenSpecimenImageModule";
-            this.toolStripButtonOpenSpecimenImageModule.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonOpenSpecimenImageModule.Text = "Open DiversityResources";
-            this.toolStripButtonOpenSpecimenImageModule.Visible = false;
+            toolStripButtonOpenSpecimenImageModule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonOpenSpecimenImageModule.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonOpenSpecimenImageModule.Image");
+            toolStripButtonOpenSpecimenImageModule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonOpenSpecimenImageModule.Name = "toolStripButtonOpenSpecimenImageModule";
+            toolStripButtonOpenSpecimenImageModule.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonOpenSpecimenImageModule.Text = "Open DiversityResources";
+            toolStripButtonOpenSpecimenImageModule.Visible = false;
             // 
             // toolStripButtonImagesSpecimenShowAll
             // 
-            this.toolStripButtonImagesSpecimenShowAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonImagesSpecimenShowAll.Image = global::DiversityCollection.Resource.ImageList;
-            this.toolStripButtonImagesSpecimenShowAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImagesSpecimenShowAll.Name = "toolStripButtonImagesSpecimenShowAll";
-            this.toolStripButtonImagesSpecimenShowAll.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonImagesSpecimenShowAll.Text = "Show all resources of the specimen";
-            this.toolStripButtonImagesSpecimenShowAll.Visible = false;
-            this.toolStripButtonImagesSpecimenShowAll.Click += new System.EventHandler(this.toolStripButtonImagesSpecimenShowAll_Click);
+            toolStripButtonImagesSpecimenShowAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonImagesSpecimenShowAll.Image = Resource.ImageList;
+            toolStripButtonImagesSpecimenShowAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonImagesSpecimenShowAll.Name = "toolStripButtonImagesSpecimenShowAll";
+            toolStripButtonImagesSpecimenShowAll.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonImagesSpecimenShowAll.Text = "Show all resources of the specimen";
+            toolStripButtonImagesSpecimenShowAll.Visible = false;
+            toolStripButtonImagesSpecimenShowAll.Click += toolStripButtonImagesSpecimenShowAll_Click;
             // 
             // toolStripButtonImageDescription
             // 
-            this.toolStripButtonImageDescription.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonImageDescription.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonImageDescription.Image = global::DiversityCollection.Resource.Properties;
-            this.toolStripButtonImageDescription.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImageDescription.Name = "toolStripButtonImageDescription";
-            this.toolStripButtonImageDescription.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonImageDescription.Text = "Edit the description of the selected resource";
-            this.toolStripButtonImageDescription.Visible = false;
-            this.toolStripButtonImageDescription.Click += new System.EventHandler(this.toolStripButtonImageDescription_Click);
+            toolStripButtonImageDescription.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            toolStripButtonImageDescription.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonImageDescription.Image = Resource.Properties;
+            toolStripButtonImageDescription.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonImageDescription.Name = "toolStripButtonImageDescription";
+            toolStripButtonImageDescription.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonImageDescription.Text = "Edit the description of the selected resource";
+            toolStripButtonImageDescription.Visible = false;
+            toolStripButtonImageDescription.Click += toolStripButtonImageDescription_Click;
             // 
             // toolStripButtonImageUp
             // 
-            this.toolStripButtonImageUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonImageUp.Image = global::DiversityCollection.Resource.ArrowUp;
-            this.toolStripButtonImageUp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImageUp.Name = "toolStripButtonImageUp";
-            this.toolStripButtonImageUp.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonImageUp.ToolTipText = "Move image upwards";
-            this.toolStripButtonImageUp.Click += new System.EventHandler(this.toolStripButtonImageUp_Click);
+            toolStripButtonImageUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonImageUp.Image = Resource.ArrowUp;
+            toolStripButtonImageUp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonImageUp.Name = "toolStripButtonImageUp";
+            toolStripButtonImageUp.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonImageUp.ToolTipText = "Move image upwards";
+            toolStripButtonImageUp.Click += toolStripButtonImageUp_Click;
             // 
             // toolStripButtonImageDown
             // 
-            this.toolStripButtonImageDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonImageDown.Image = global::DiversityCollection.Resource.ArrowDown;
-            this.toolStripButtonImageDown.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonImageDown.Name = "toolStripButtonImageDown";
-            this.toolStripButtonImageDown.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonImageDown.Text = "toolStripButton1";
-            this.toolStripButtonImageDown.ToolTipText = "move image downwards";
-            this.toolStripButtonImageDown.Click += new System.EventHandler(this.toolStripButtonImageDown_Click);
+            toolStripButtonImageDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonImageDown.Image = Resource.ArrowDown;
+            toolStripButtonImageDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonImageDown.Name = "toolStripButtonImageDown";
+            toolStripButtonImageDown.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonImageDown.Text = "toolStripButton1";
+            toolStripButtonImageDown.ToolTipText = "move image downwards";
+            toolStripButtonImageDown.Click += toolStripButtonImageDown_Click;
             // 
             // toolStripDropDownButtonImageDisplayOrder
             // 
-            this.toolStripDropDownButtonImageDisplayOrder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButtonImageDisplayOrder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemImageDisplayOrderUriUp,
-            this.toolStripMenuItemImageDisplayOrderUriDown,
-            this.toolStripMenuItemImageDisplayOrderDateUp,
-            this.toolStripMenuItemImageDisplayOrderDateDown});
-            this.toolStripDropDownButtonImageDisplayOrder.Image = global::DiversityCollection.Resource.ArrowUpDown;
-            this.toolStripDropDownButtonImageDisplayOrder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonImageDisplayOrder.Name = "toolStripDropDownButtonImageDisplayOrder";
-            this.toolStripDropDownButtonImageDisplayOrder.Size = new System.Drawing.Size(29, 20);
-            this.toolStripDropDownButtonImageDisplayOrder.Text = "Set the display order for the images";
+            toolStripDropDownButtonImageDisplayOrder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripDropDownButtonImageDisplayOrder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemImageDisplayOrderUriUp, toolStripMenuItemImageDisplayOrderUriDown, toolStripMenuItemImageDisplayOrderDateUp, toolStripMenuItemImageDisplayOrderDateDown });
+            toolStripDropDownButtonImageDisplayOrder.Image = Resource.ArrowUpDown;
+            toolStripDropDownButtonImageDisplayOrder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripDropDownButtonImageDisplayOrder.Name = "toolStripDropDownButtonImageDisplayOrder";
+            toolStripDropDownButtonImageDisplayOrder.Size = new System.Drawing.Size(29, 20);
+            toolStripDropDownButtonImageDisplayOrder.Text = "Set the display order for the images";
             // 
             // toolStripMenuItemImageDisplayOrderUriUp
             // 
-            this.toolStripMenuItemImageDisplayOrderUriUp.Name = "toolStripMenuItemImageDisplayOrderUriUp";
-            this.toolStripMenuItemImageDisplayOrderUriUp.Size = new System.Drawing.Size(162, 22);
-            this.toolStripMenuItemImageDisplayOrderUriUp.Text = "URI ascending";
-            this.toolStripMenuItemImageDisplayOrderUriUp.ToolTipText = "Sort by URI resp. name upwards";
-            this.toolStripMenuItemImageDisplayOrderUriUp.Click += new System.EventHandler(this.toolStripMenuItemImageDisplayOrderUriUp_Click);
+            toolStripMenuItemImageDisplayOrderUriUp.Name = "toolStripMenuItemImageDisplayOrderUriUp";
+            toolStripMenuItemImageDisplayOrderUriUp.Size = new System.Drawing.Size(162, 22);
+            toolStripMenuItemImageDisplayOrderUriUp.Text = "URI ascending";
+            toolStripMenuItemImageDisplayOrderUriUp.ToolTipText = "Sort by URI resp. name upwards";
+            toolStripMenuItemImageDisplayOrderUriUp.Click += toolStripMenuItemImageDisplayOrderUriUp_Click;
             // 
             // toolStripMenuItemImageDisplayOrderUriDown
             // 
-            this.toolStripMenuItemImageDisplayOrderUriDown.Name = "toolStripMenuItemImageDisplayOrderUriDown";
-            this.toolStripMenuItemImageDisplayOrderUriDown.Size = new System.Drawing.Size(162, 22);
-            this.toolStripMenuItemImageDisplayOrderUriDown.Text = "URI descending";
-            this.toolStripMenuItemImageDisplayOrderUriDown.ToolTipText = "Sort by URI resp. name downwards";
-            this.toolStripMenuItemImageDisplayOrderUriDown.Click += new System.EventHandler(this.toolStripMenuItemImageDisplayOrderUriDown_Click);
+            toolStripMenuItemImageDisplayOrderUriDown.Name = "toolStripMenuItemImageDisplayOrderUriDown";
+            toolStripMenuItemImageDisplayOrderUriDown.Size = new System.Drawing.Size(162, 22);
+            toolStripMenuItemImageDisplayOrderUriDown.Text = "URI descending";
+            toolStripMenuItemImageDisplayOrderUriDown.ToolTipText = "Sort by URI resp. name downwards";
+            toolStripMenuItemImageDisplayOrderUriDown.Click += toolStripMenuItemImageDisplayOrderUriDown_Click;
             // 
             // toolStripMenuItemImageDisplayOrderDateUp
             // 
-            this.toolStripMenuItemImageDisplayOrderDateUp.Name = "toolStripMenuItemImageDisplayOrderDateUp";
-            this.toolStripMenuItemImageDisplayOrderDateUp.Size = new System.Drawing.Size(162, 22);
-            this.toolStripMenuItemImageDisplayOrderDateUp.Text = "Date ascending";
-            this.toolStripMenuItemImageDisplayOrderDateUp.ToolTipText = "Sort by date of creation upwards";
-            this.toolStripMenuItemImageDisplayOrderDateUp.Click += new System.EventHandler(this.toolStripMenuItemImageDisplayOrderDateUp_Click);
+            toolStripMenuItemImageDisplayOrderDateUp.Name = "toolStripMenuItemImageDisplayOrderDateUp";
+            toolStripMenuItemImageDisplayOrderDateUp.Size = new System.Drawing.Size(162, 22);
+            toolStripMenuItemImageDisplayOrderDateUp.Text = "Date ascending";
+            toolStripMenuItemImageDisplayOrderDateUp.ToolTipText = "Sort by date of creation upwards";
+            toolStripMenuItemImageDisplayOrderDateUp.Click += toolStripMenuItemImageDisplayOrderDateUp_Click;
             // 
             // toolStripMenuItemImageDisplayOrderDateDown
             // 
-            this.toolStripMenuItemImageDisplayOrderDateDown.Name = "toolStripMenuItemImageDisplayOrderDateDown";
-            this.toolStripMenuItemImageDisplayOrderDateDown.Size = new System.Drawing.Size(162, 22);
-            this.toolStripMenuItemImageDisplayOrderDateDown.Text = "Date descending";
-            this.toolStripMenuItemImageDisplayOrderDateDown.ToolTipText = "Sort by date of creation downwards";
-            this.toolStripMenuItemImageDisplayOrderDateDown.Click += new System.EventHandler(this.toolStripMenuItemImageDisplayOrderDateDown_Click);
-            // 
-            // listBoxSpecimenImage
-            // 
-            this.listBoxSpecimenImage.Dock = System.Windows.Forms.DockStyle.Left;
-            this.listBoxSpecimenImage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBoxSpecimenImage.FormattingEnabled = true;
-            this.listBoxSpecimenImage.IntegralHeight = false;
-            this.listBoxSpecimenImage.ItemHeight = 50;
-            this.listBoxSpecimenImage.Location = new System.Drawing.Point(0, 0);
-            this.listBoxSpecimenImage.Name = "listBoxSpecimenImage";
-            this.listBoxSpecimenImage.ScrollAlwaysVisible = true;
-            this.listBoxSpecimenImage.Size = new System.Drawing.Size(72, 480);
-            this.listBoxSpecimenImage.TabIndex = 0;
-            this.listBoxSpecimenImage.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxSpecimenImage_DrawItem);
-            this.listBoxSpecimenImage.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.listBoxSpecimenImage_MeasureItem);
-            this.listBoxSpecimenImage.SelectedIndexChanged += new System.EventHandler(this.listBoxSpecimenImage_SelectedIndexChanged);
-            // 
-            // imageListForm
-            // 
-            this.imageListForm.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListForm.ImageStream")));
-            this.imageListForm.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListForm.Images.SetKeyName(0, "");
-            // 
-            // imageListSpecimenImages
-            // 
-            this.imageListSpecimenImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageListSpecimenImages.ImageSize = new System.Drawing.Size(50, 50);
-            this.imageListSpecimenImages.TransparentColor = System.Drawing.Color.Transparent;
+            toolStripMenuItemImageDisplayOrderDateDown.Name = "toolStripMenuItemImageDisplayOrderDateDown";
+            toolStripMenuItemImageDisplayOrderDateDown.Size = new System.Drawing.Size(162, 22);
+            toolStripMenuItemImageDisplayOrderDateDown.Text = "Date descending";
+            toolStripMenuItemImageDisplayOrderDateDown.ToolTipText = "Sort by date of creation downwards";
+            toolStripMenuItemImageDisplayOrderDateDown.Click += toolStripMenuItemImageDisplayOrderDateDown_Click;
             // 
             // toolStripButtonUseWebView
             // 
-            this.toolStripButtonUseWebView.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonUseWebView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonUseWebView.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonUseWebView.Image")));
-            this.toolStripButtonUseWebView.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonUseWebView.Name = "toolStripButtonUseWebView";
-            this.toolStripButtonUseWebView.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonUseWebView.Text = "toolStripButton1";
-            this.toolStripButtonUseWebView.Click += new System.EventHandler(this.toolStripButtonUseWebView_Click);
+            toolStripButtonUseWebView.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            toolStripButtonUseWebView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonUseWebView.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonUseWebView.Image");
+            toolStripButtonUseWebView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonUseWebView.Name = "toolStripButtonUseWebView";
+            toolStripButtonUseWebView.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonUseWebView.Text = "toolStripButton1";
+            toolStripButtonUseWebView.Click += toolStripButtonUseWebView_Click;
+            // 
+            // listBoxSpecimenImage
+            // 
+            listBoxSpecimenImage.Dock = System.Windows.Forms.DockStyle.Left;
+            listBoxSpecimenImage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            listBoxSpecimenImage.FormattingEnabled = true;
+            listBoxSpecimenImage.IntegralHeight = false;
+            listBoxSpecimenImage.ItemHeight = 50;
+            listBoxSpecimenImage.Location = new System.Drawing.Point(0, 0);
+            listBoxSpecimenImage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            listBoxSpecimenImage.Name = "listBoxSpecimenImage";
+            listBoxSpecimenImage.ScrollAlwaysVisible = true;
+            listBoxSpecimenImage.Size = new System.Drawing.Size(83, 557);
+            listBoxSpecimenImage.TabIndex = 0;
+            listBoxSpecimenImage.DrawItem += listBoxSpecimenImage_DrawItem;
+            listBoxSpecimenImage.MeasureItem += listBoxSpecimenImage_MeasureItem;
+            listBoxSpecimenImage.SelectedIndexChanged += listBoxSpecimenImage_SelectedIndexChanged;
+            // 
+            // imageListForm
+            // 
+            imageListForm.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            imageListForm.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageListForm.ImageStream");
+            imageListForm.TransparentColor = System.Drawing.Color.Transparent;
+            imageListForm.Images.SetKeyName(0, "");
+            // 
+            // imageListSpecimenImages
+            // 
+            imageListSpecimenImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            imageListSpecimenImages.ImageSize = new System.Drawing.Size(50, 50);
+            imageListSpecimenImages.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // UserControl_SpecimenImages
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBoxImage);
-            this.Name = "UserControl_SpecimenImages";
-            this.Size = new System.Drawing.Size(742, 499);
-            this.groupBoxImage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
-            this.splitContainerImage.Panel1.ResumeLayout(false);
-            this.splitContainerImage.Panel2.ResumeLayout(false);
-            this.splitContainerImage.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerImage)).EndInit();
-            this.splitContainerImage.ResumeLayout(false);
-            this.tabControlSpecimenImage.ResumeLayout(false);
-            this.tabPageSpecimenImageType.ResumeLayout(false);
-            this.tableLayoutPanelSpecimenImage.ResumeLayout(false);
-            this.tableLayoutPanelSpecimenImage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpecimenImageWithholdingReason)).EndInit();
-            this.tabPageSpecimenImageIPR.ResumeLayout(false);
-            this.tableLayoutPanelSpecimenImageIPR.ResumeLayout(false);
-            this.tableLayoutPanelSpecimenImageIPR.PerformLayout();
-            this.groupBoxImageLicense.ResumeLayout(false);
-            this.tableLayoutPanelImageLicense.ResumeLayout(false);
-            this.tableLayoutPanelImageLicense.PerformLayout();
-            this.tabPageSpecimenImageProperty.ResumeLayout(false);
-            this.tableLayoutPanelImageProperty.ResumeLayout(false);
-            this.tableLayoutPanelImageProperty.PerformLayout();
-            this.toolStripImageProperty.ResumeLayout(false);
-            this.toolStripImageProperty.PerformLayout();
-            this.toolStripImagePropertyFilter.ResumeLayout(false);
-            this.toolStripImagePropertyFilter.PerformLayout();
-            this.tabPageSpecimenImageExif.ResumeLayout(false);
-            this.toolStripSpecimenImage.ResumeLayout(false);
-            this.toolStripSpecimenImage.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(groupBoxImage);
+            Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            Name = "UserControl_SpecimenImages";
+            Size = new System.Drawing.Size(866, 576);
+            groupBoxImage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBoxIcon).EndInit();
+            splitContainerImage.Panel1.ResumeLayout(false);
+            splitContainerImage.Panel2.ResumeLayout(false);
+            splitContainerImage.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerImage).EndInit();
+            splitContainerImage.ResumeLayout(false);
+            tabControlSpecimenImage.ResumeLayout(false);
+            tabPageSpecimenImageType.ResumeLayout(false);
+            tableLayoutPanelSpecimenImage.ResumeLayout(false);
+            tableLayoutPanelSpecimenImage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxSpecimenImageWithholdingReason).EndInit();
+            tabPageSpecimenImageIPR.ResumeLayout(false);
+            tableLayoutPanelSpecimenImageIPR.ResumeLayout(false);
+            tableLayoutPanelSpecimenImageIPR.PerformLayout();
+            groupBoxImageLicense.ResumeLayout(false);
+            tableLayoutPanelImageLicense.ResumeLayout(false);
+            tableLayoutPanelImageLicense.PerformLayout();
+            tabPageSpecimenImageProperty.ResumeLayout(false);
+            tableLayoutPanelImageProperty.ResumeLayout(false);
+            tableLayoutPanelImageProperty.PerformLayout();
+            toolStripImageProperty.ResumeLayout(false);
+            toolStripImageProperty.PerformLayout();
+            toolStripImagePropertyFilter.ResumeLayout(false);
+            toolStripImagePropertyFilter.PerformLayout();
+            tabPageSpecimenImageExif.ResumeLayout(false);
+            toolStripSpecimenImage.ResumeLayout(false);
+            toolStripSpecimenImage.PerformLayout();
+            ResumeLayout(false);
 
         }
 

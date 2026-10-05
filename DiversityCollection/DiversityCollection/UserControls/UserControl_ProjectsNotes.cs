@@ -91,6 +91,8 @@ namespace DiversityCollection.UserControls
             DiversityWorkbench.Entity.setEntity(this, this.toolTip);
 
             this.CheckIfClientIsUpToDate();
+
+            this.pictureBoxProject.Visible = false;
         }
 
         #region Project

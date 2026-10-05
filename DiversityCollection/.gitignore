@@ -1,3 +1,4 @@
+.github/*
 app.config
 Properties/Settings.settings
 Properties/Settings.Designer.cs

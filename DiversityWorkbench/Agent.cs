@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -913,11 +914,21 @@ namespace DiversityWorkbench
                     {
                         ValidAgentName = dt.Rows[0][0].ToString();
                         UrlAcceptedName = _SC.BaseURL + dt.Rows[0][1].ToString();
+                        if (!dt.Rows[0][2].Equals(System.DBNull.Value))
+                        {
+                            SQL = "SELECT [AgentName], A.AgentID, SynonymToAgentID FROM " + _SC.Prefix() + "Agent A  WHERE A.AgentID IN (" + dt.Rows[0][2].ToString() + ")";
+                            dt.Rows.Clear();
+                            ad.SelectCommand.CommandText = SQL;
+                            ad.Fill(dt);
+                            ValidAgentName = dt.Rows[0][0].ToString();
+                            UrlAcceptedName = _SC.BaseURL + dt.Rows[0][1].ToString();
+                        }
                     }
                 }
             }
             catch (System.Exception ex)
             {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
             return ValidAgentName;
         }
@@ -1352,10 +1363,17 @@ namespace DiversityWorkbench
                 }
                 //string sProjectID = "";
                 //sProjectID = ProjectID(IDs).ToString();
-                string SQL = "SELECT S.AgentID FROM " + _SC.Prefix() + "Agent S, " + _SC.Prefix() + "Agent N WHERE S.AgentID = N.SynonymToAgentID " +
-                    " AND N.AgentID IN ( " + IDs + ") " +
-                    " OR S.AgentID IN ( " + IDs + ") " +
-                    " GROUP BY S.AgentID";
+                //string SQL = "SELECT S.AgentID FROM " + _SC.Prefix() + "Agent S, " + _SC.Prefix() + "Agent N WHERE S.AgentID = N.SynonymToAgentID " +
+                //    " AND N.AgentID IN ( " + IDs + ") " +
+                //    " OR S.AgentID IN ( " + IDs + ") " +
+                //    " GROUP BY S.AgentID";
+
+                string SQL = "SELECT N.AgentID FROM " + _SC.Prefix() + "Agent N WHERE N.AgentID IN( " + IDs + ")  GROUP BY N.AgentID " +
+                    " UNION " +
+                    " SELECT S.AgentID FROM " + _SC.Prefix() + "Agent S, " + _SC.Prefix() + "Agent N WHERE S.AgentID = N.SynonymToAgentID  AND N.AgentID IN (" + IDs + ") " +
+                    " GROUP BY S.AgentID ";
+
+
                 Microsoft.Data.SqlClient.SqlDataAdapter ad = new Microsoft.Data.SqlClient.SqlDataAdapter(SQL, _SC.ConnectionString);
                 ad.Fill(DT);
                 //System.Data.DataTable dt = new System.Data.DataTable();
@@ -1379,6 +1397,7 @@ namespace DiversityWorkbench
             }
             catch (System.Exception ex)
             {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
 

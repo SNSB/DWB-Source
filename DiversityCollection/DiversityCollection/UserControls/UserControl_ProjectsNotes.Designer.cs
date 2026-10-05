@@ -29,444 +29,451 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl_ProjectsNotes));
-            this.splitContainerOverviewProject = new System.Windows.Forms.SplitContainer();
-            this.pictureBoxProject = new System.Windows.Forms.PictureBox();
-            this.groupBoxProjects = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelProjects = new System.Windows.Forms.TableLayoutPanel();
-            this.listBoxProjectsNoAccess = new System.Windows.Forms.ListBox();
-            this.listBoxProjectsReadOnly = new System.Windows.Forms.ListBox();
-            this.listBoxProjects = new System.Windows.Forms.ListBox();
-            this.toolStripNoAccess = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonNoAccessDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripReadOnly = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonReadOnlyDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripProjects = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonProjectNew = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonProjectNoAccessNew = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonProjectDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparatorProject = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonProjectOpen = new System.Windows.Forms.ToolStripButton();
-            this.splitContainerOverviewNotesExternal = new System.Windows.Forms.SplitContainer();
-            this.groupBoxNotes = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanelNotes = new System.Windows.Forms.TableLayoutPanel();
-            this.labelInternalNotes = new System.Windows.Forms.Label();
-            this.labelOriginalNotes = new System.Windows.Forms.Label();
-            this.labelAdditionalNotes = new System.Windows.Forms.Label();
-            this.labelProblems = new System.Windows.Forms.Label();
-            this.textBoxOriginalNotes = new System.Windows.Forms.TextBox();
-            this.textBoxAdditionalNotes = new System.Windows.Forms.TextBox();
-            this.textBoxProblems = new System.Windows.Forms.TextBox();
-            this.textBoxInternalNotes = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerOverviewProject)).BeginInit();
-            this.splitContainerOverviewProject.Panel1.SuspendLayout();
-            this.splitContainerOverviewProject.Panel2.SuspendLayout();
-            this.splitContainerOverviewProject.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProject)).BeginInit();
-            this.groupBoxProjects.SuspendLayout();
-            this.tableLayoutPanelProjects.SuspendLayout();
-            this.toolStripNoAccess.SuspendLayout();
-            this.toolStripReadOnly.SuspendLayout();
-            this.toolStripProjects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerOverviewNotesExternal)).BeginInit();
-            this.splitContainerOverviewNotesExternal.Panel1.SuspendLayout();
-            this.splitContainerOverviewNotesExternal.SuspendLayout();
-            this.groupBoxNotes.SuspendLayout();
-            this.tableLayoutPanelNotes.SuspendLayout();
-            this.SuspendLayout();
+            splitContainerOverviewProject = new System.Windows.Forms.SplitContainer();
+            groupBoxProjects = new System.Windows.Forms.GroupBox();
+            pictureBoxProject = new System.Windows.Forms.PictureBox();
+            tableLayoutPanelProjects = new System.Windows.Forms.TableLayoutPanel();
+            listBoxProjectsNoAccess = new System.Windows.Forms.ListBox();
+            listBoxProjectsReadOnly = new System.Windows.Forms.ListBox();
+            listBoxProjects = new System.Windows.Forms.ListBox();
+            toolStripNoAccess = new System.Windows.Forms.ToolStrip();
+            toolStripButtonNoAccessDelete = new System.Windows.Forms.ToolStripButton();
+            toolStripReadOnly = new System.Windows.Forms.ToolStrip();
+            toolStripButtonReadOnlyDelete = new System.Windows.Forms.ToolStripButton();
+            toolStripProjects = new System.Windows.Forms.ToolStrip();
+            toolStripButtonProjectNew = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonProjectNoAccessNew = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonProjectDelete = new System.Windows.Forms.ToolStripButton();
+            toolStripSeparatorProject = new System.Windows.Forms.ToolStripSeparator();
+            toolStripButtonProjectOpen = new System.Windows.Forms.ToolStripButton();
+            splitContainerOverviewNotesExternal = new System.Windows.Forms.SplitContainer();
+            groupBoxNotes = new System.Windows.Forms.GroupBox();
+            tableLayoutPanelNotes = new System.Windows.Forms.TableLayoutPanel();
+            labelInternalNotes = new System.Windows.Forms.Label();
+            labelOriginalNotes = new System.Windows.Forms.Label();
+            labelAdditionalNotes = new System.Windows.Forms.Label();
+            labelProblems = new System.Windows.Forms.Label();
+            textBoxOriginalNotes = new System.Windows.Forms.TextBox();
+            textBoxAdditionalNotes = new System.Windows.Forms.TextBox();
+            textBoxProblems = new System.Windows.Forms.TextBox();
+            textBoxInternalNotes = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)splitContainerOverviewProject).BeginInit();
+            splitContainerOverviewProject.Panel1.SuspendLayout();
+            splitContainerOverviewProject.Panel2.SuspendLayout();
+            splitContainerOverviewProject.SuspendLayout();
+            groupBoxProjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProject).BeginInit();
+            tableLayoutPanelProjects.SuspendLayout();
+            toolStripNoAccess.SuspendLayout();
+            toolStripReadOnly.SuspendLayout();
+            toolStripProjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerOverviewNotesExternal).BeginInit();
+            splitContainerOverviewNotesExternal.Panel1.SuspendLayout();
+            splitContainerOverviewNotesExternal.SuspendLayout();
+            groupBoxNotes.SuspendLayout();
+            tableLayoutPanelNotes.SuspendLayout();
+            SuspendLayout();
             // 
             // imageListDataWithholding
             // 
-            this.imageListDataWithholding.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListDataWithholding.ImageStream")));
-            this.imageListDataWithholding.Images.SetKeyName(0, "Stop3.ico");
-            this.imageListDataWithholding.Images.SetKeyName(1, "Stop3Grey.ico");
+            imageListDataWithholding.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageListDataWithholding.ImageStream");
+            imageListDataWithholding.Images.SetKeyName(0, "Stop3.ico");
+            imageListDataWithholding.Images.SetKeyName(1, "Stop3Grey.ico");
             // 
             // splitContainerOverviewProject
             // 
-            this.splitContainerOverviewProject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerOverviewProject.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerOverviewProject.Name = "splitContainerOverviewProject";
+            splitContainerOverviewProject.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerOverviewProject.Location = new System.Drawing.Point(0, 0);
+            splitContainerOverviewProject.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            splitContainerOverviewProject.Name = "splitContainerOverviewProject";
             // 
             // splitContainerOverviewProject.Panel1
             // 
-            this.splitContainerOverviewProject.Panel1.Controls.Add(this.pictureBoxProject);
-            this.splitContainerOverviewProject.Panel1.Controls.Add(this.groupBoxProjects);
+            splitContainerOverviewProject.Panel1.Controls.Add(groupBoxProjects);
             // 
             // splitContainerOverviewProject.Panel2
             // 
-            this.splitContainerOverviewProject.Panel2.Controls.Add(this.splitContainerOverviewNotesExternal);
-            this.splitContainerOverviewProject.Size = new System.Drawing.Size(638, 256);
-            this.splitContainerOverviewProject.SplitterDistance = 194;
-            this.splitContainerOverviewProject.TabIndex = 1;
-            // 
-            // pictureBoxProject
-            // 
-            this.pictureBoxProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxProject.Image = global::DiversityCollection.Resource.Project1;
-            this.pictureBoxProject.Location = new System.Drawing.Point(179, 0);
-            this.pictureBoxProject.Name = "pictureBoxProject";
-            this.pictureBoxProject.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxProject.TabIndex = 27;
-            this.pictureBoxProject.TabStop = false;
+            splitContainerOverviewProject.Panel2.Controls.Add(splitContainerOverviewNotesExternal);
+            splitContainerOverviewProject.Size = new System.Drawing.Size(744, 295);
+            splitContainerOverviewProject.SplitterDistance = 226;
+            splitContainerOverviewProject.SplitterWidth = 5;
+            splitContainerOverviewProject.TabIndex = 1;
             // 
             // groupBoxProjects
             // 
-            this.groupBoxProjects.AccessibleName = "CollectionProject";
-            this.groupBoxProjects.Controls.Add(this.tableLayoutPanelProjects);
-            this.groupBoxProjects.Controls.Add(this.toolStripProjects);
-            this.groupBoxProjects.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxProjects.ForeColor = System.Drawing.Color.Red;
-            this.groupBoxProjects.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxProjects.Name = "groupBoxProjects";
-            this.groupBoxProjects.Size = new System.Drawing.Size(194, 256);
-            this.groupBoxProjects.TabIndex = 26;
-            this.groupBoxProjects.TabStop = false;
-            this.groupBoxProjects.Text = "Projects";
+            groupBoxProjects.AccessibleName = "CollectionProject";
+            groupBoxProjects.Controls.Add(pictureBoxProject);
+            groupBoxProjects.Controls.Add(tableLayoutPanelProjects);
+            groupBoxProjects.Controls.Add(toolStripProjects);
+            groupBoxProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            groupBoxProjects.ForeColor = System.Drawing.Color.Red;
+            groupBoxProjects.Location = new System.Drawing.Point(0, 0);
+            groupBoxProjects.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxProjects.Name = "groupBoxProjects";
+            groupBoxProjects.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxProjects.Size = new System.Drawing.Size(226, 295);
+            groupBoxProjects.TabIndex = 26;
+            groupBoxProjects.TabStop = false;
+            groupBoxProjects.Text = "Projects";
+            // 
+            // pictureBoxProject
+            // 
+            pictureBoxProject.Image = Resource.Project1;
+            pictureBoxProject.Location = new System.Drawing.Point(211, 0);
+            pictureBoxProject.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBoxProject.Name = "pictureBoxProject";
+            pictureBoxProject.Size = new System.Drawing.Size(16, 16);
+            pictureBoxProject.TabIndex = 27;
+            pictureBoxProject.TabStop = false;
+            pictureBoxProject.Visible = false;
             // 
             // tableLayoutPanelProjects
             // 
-            this.tableLayoutPanelProjects.ColumnCount = 2;
-            this.tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelProjects.Controls.Add(this.listBoxProjectsNoAccess, 0, 0);
-            this.tableLayoutPanelProjects.Controls.Add(this.listBoxProjectsReadOnly, 0, 1);
-            this.tableLayoutPanelProjects.Controls.Add(this.listBoxProjects, 0, 2);
-            this.tableLayoutPanelProjects.Controls.Add(this.toolStripNoAccess, 1, 0);
-            this.tableLayoutPanelProjects.Controls.Add(this.toolStripReadOnly, 1, 1);
-            this.tableLayoutPanelProjects.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelProjects.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanelProjects.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelProjects.Name = "tableLayoutPanelProjects";
-            this.tableLayoutPanelProjects.RowCount = 3;
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelProjects.Size = new System.Drawing.Size(188, 214);
-            this.tableLayoutPanelProjects.TabIndex = 30;
+            tableLayoutPanelProjects.ColumnCount = 2;
+            tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelProjects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelProjects.Controls.Add(listBoxProjectsNoAccess, 0, 0);
+            tableLayoutPanelProjects.Controls.Add(listBoxProjectsReadOnly, 0, 1);
+            tableLayoutPanelProjects.Controls.Add(listBoxProjects, 0, 2);
+            tableLayoutPanelProjects.Controls.Add(toolStripNoAccess, 1, 0);
+            tableLayoutPanelProjects.Controls.Add(toolStripReadOnly, 1, 1);
+            tableLayoutPanelProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelProjects.Location = new System.Drawing.Point(4, 16);
+            tableLayoutPanelProjects.Margin = new System.Windows.Forms.Padding(0);
+            tableLayoutPanelProjects.Name = "tableLayoutPanelProjects";
+            tableLayoutPanelProjects.RowCount = 3;
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelProjects.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelProjects.Size = new System.Drawing.Size(218, 253);
+            tableLayoutPanelProjects.TabIndex = 30;
             // 
             // listBoxProjectsNoAccess
             // 
-            this.listBoxProjectsNoAccess.BackColor = System.Drawing.Color.Pink;
-            this.listBoxProjectsNoAccess.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxProjectsNoAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxProjectsNoAccess.ForeColor = System.Drawing.Color.Red;
-            this.listBoxProjectsNoAccess.FormattingEnabled = true;
-            this.listBoxProjectsNoAccess.IntegralHeight = false;
-            this.listBoxProjectsNoAccess.Location = new System.Drawing.Point(0, 0);
-            this.listBoxProjectsNoAccess.Margin = new System.Windows.Forms.Padding(0);
-            this.listBoxProjectsNoAccess.Name = "listBoxProjectsNoAccess";
-            this.listBoxProjectsNoAccess.Size = new System.Drawing.Size(164, 30);
-            this.listBoxProjectsNoAccess.TabIndex = 28;
+            listBoxProjectsNoAccess.BackColor = System.Drawing.Color.Pink;
+            listBoxProjectsNoAccess.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxProjectsNoAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            listBoxProjectsNoAccess.ForeColor = System.Drawing.Color.Red;
+            listBoxProjectsNoAccess.FormattingEnabled = true;
+            listBoxProjectsNoAccess.IntegralHeight = false;
+            listBoxProjectsNoAccess.ItemHeight = 13;
+            listBoxProjectsNoAccess.Location = new System.Drawing.Point(0, 0);
+            listBoxProjectsNoAccess.Margin = new System.Windows.Forms.Padding(0);
+            listBoxProjectsNoAccess.Name = "listBoxProjectsNoAccess";
+            listBoxProjectsNoAccess.Size = new System.Drawing.Size(194, 34);
+            listBoxProjectsNoAccess.TabIndex = 28;
             // 
             // listBoxProjectsReadOnly
             // 
-            this.listBoxProjectsReadOnly.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.listBoxProjectsReadOnly.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxProjectsReadOnly.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxProjectsReadOnly.ForeColor = System.Drawing.Color.DimGray;
-            this.listBoxProjectsReadOnly.FormattingEnabled = true;
-            this.listBoxProjectsReadOnly.IntegralHeight = false;
-            this.listBoxProjectsReadOnly.Location = new System.Drawing.Point(0, 30);
-            this.listBoxProjectsReadOnly.Margin = new System.Windows.Forms.Padding(0);
-            this.listBoxProjectsReadOnly.Name = "listBoxProjectsReadOnly";
-            this.listBoxProjectsReadOnly.Size = new System.Drawing.Size(164, 44);
-            this.listBoxProjectsReadOnly.TabIndex = 29;
+            listBoxProjectsReadOnly.BackColor = System.Drawing.SystemColors.ControlLight;
+            listBoxProjectsReadOnly.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxProjectsReadOnly.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            listBoxProjectsReadOnly.ForeColor = System.Drawing.Color.DimGray;
+            listBoxProjectsReadOnly.FormattingEnabled = true;
+            listBoxProjectsReadOnly.IntegralHeight = false;
+            listBoxProjectsReadOnly.ItemHeight = 13;
+            listBoxProjectsReadOnly.Location = new System.Drawing.Point(0, 34);
+            listBoxProjectsReadOnly.Margin = new System.Windows.Forms.Padding(0);
+            listBoxProjectsReadOnly.Name = "listBoxProjectsReadOnly";
+            listBoxProjectsReadOnly.Size = new System.Drawing.Size(194, 50);
+            listBoxProjectsReadOnly.TabIndex = 29;
             // 
             // listBoxProjects
             // 
-            this.tableLayoutPanelProjects.SetColumnSpan(this.listBoxProjects, 2);
-            this.listBoxProjects.DisplayMember = "Project";
-            this.listBoxProjects.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxProjects.IntegralHeight = false;
-            this.listBoxProjects.Location = new System.Drawing.Point(0, 74);
-            this.listBoxProjects.Margin = new System.Windows.Forms.Padding(0);
-            this.listBoxProjects.Name = "listBoxProjects";
-            this.listBoxProjects.Size = new System.Drawing.Size(188, 140);
-            this.listBoxProjects.TabIndex = 26;
-            this.listBoxProjects.ValueMember = "ProjectID";
+            tableLayoutPanelProjects.SetColumnSpan(listBoxProjects, 2);
+            listBoxProjects.DisplayMember = "Project";
+            listBoxProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            listBoxProjects.IntegralHeight = false;
+            listBoxProjects.ItemHeight = 13;
+            listBoxProjects.Location = new System.Drawing.Point(0, 84);
+            listBoxProjects.Margin = new System.Windows.Forms.Padding(0);
+            listBoxProjects.Name = "listBoxProjects";
+            listBoxProjects.Size = new System.Drawing.Size(218, 169);
+            listBoxProjects.TabIndex = 26;
+            listBoxProjects.ValueMember = "ProjectID";
             // 
             // toolStripNoAccess
             // 
-            this.toolStripNoAccess.Dock = System.Windows.Forms.DockStyle.Right;
-            this.toolStripNoAccess.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripNoAccess.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonNoAccessDelete});
-            this.toolStripNoAccess.Location = new System.Drawing.Point(164, 0);
-            this.toolStripNoAccess.Name = "toolStripNoAccess";
-            this.toolStripNoAccess.Size = new System.Drawing.Size(24, 30);
-            this.toolStripNoAccess.TabIndex = 30;
-            this.toolStripNoAccess.Text = "toolStrip1";
+            toolStripNoAccess.Dock = System.Windows.Forms.DockStyle.Right;
+            toolStripNoAccess.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStripNoAccess.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonNoAccessDelete });
+            toolStripNoAccess.Location = new System.Drawing.Point(194, 0);
+            toolStripNoAccess.Name = "toolStripNoAccess";
+            toolStripNoAccess.Size = new System.Drawing.Size(24, 34);
+            toolStripNoAccess.TabIndex = 30;
+            toolStripNoAccess.Text = "toolStrip1";
             // 
             // toolStripButtonNoAccessDelete
             // 
-            this.toolStripButtonNoAccessDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonNoAccessDelete.Image = global::DiversityCollection.Resource.Delete;
-            this.toolStripButtonNoAccessDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNoAccessDelete.Name = "toolStripButtonNoAccessDelete";
-            this.toolStripButtonNoAccessDelete.Size = new System.Drawing.Size(21, 20);
-            this.toolStripButtonNoAccessDelete.Text = "Remove dataset from not accessible project";
-            this.toolStripButtonNoAccessDelete.Click += new System.EventHandler(this.toolStripButtonNoAccessDelete_Click);
+            toolStripButtonNoAccessDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonNoAccessDelete.Image = Resource.Delete;
+            toolStripButtonNoAccessDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonNoAccessDelete.Name = "toolStripButtonNoAccessDelete";
+            toolStripButtonNoAccessDelete.Size = new System.Drawing.Size(21, 20);
+            toolStripButtonNoAccessDelete.Text = "Remove dataset from not accessible project";
+            toolStripButtonNoAccessDelete.Click += toolStripButtonNoAccessDelete_Click;
             // 
             // toolStripReadOnly
             // 
-            this.toolStripReadOnly.Dock = System.Windows.Forms.DockStyle.Right;
-            this.toolStripReadOnly.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripReadOnly.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonReadOnlyDelete});
-            this.toolStripReadOnly.Location = new System.Drawing.Point(164, 30);
-            this.toolStripReadOnly.Name = "toolStripReadOnly";
-            this.toolStripReadOnly.Size = new System.Drawing.Size(24, 44);
-            this.toolStripReadOnly.TabIndex = 31;
-            this.toolStripReadOnly.Text = "toolStrip1";
+            toolStripReadOnly.Dock = System.Windows.Forms.DockStyle.Right;
+            toolStripReadOnly.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStripReadOnly.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonReadOnlyDelete });
+            toolStripReadOnly.Location = new System.Drawing.Point(194, 34);
+            toolStripReadOnly.Name = "toolStripReadOnly";
+            toolStripReadOnly.Size = new System.Drawing.Size(24, 50);
+            toolStripReadOnly.TabIndex = 31;
+            toolStripReadOnly.Text = "toolStrip1";
             // 
             // toolStripButtonReadOnlyDelete
             // 
-            this.toolStripButtonReadOnlyDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonReadOnlyDelete.Image = global::DiversityCollection.Resource.Delete;
-            this.toolStripButtonReadOnlyDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonReadOnlyDelete.Name = "toolStripButtonReadOnlyDelete";
-            this.toolStripButtonReadOnlyDelete.Size = new System.Drawing.Size(29, 20);
-            this.toolStripButtonReadOnlyDelete.Text = "Remove dataset from ReadOnly project";
-            this.toolStripButtonReadOnlyDelete.Click += new System.EventHandler(this.toolStripButtonReadOnlyDelete_Click);
+            toolStripButtonReadOnlyDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonReadOnlyDelete.Image = Resource.Delete;
+            toolStripButtonReadOnlyDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonReadOnlyDelete.Name = "toolStripButtonReadOnlyDelete";
+            toolStripButtonReadOnlyDelete.Size = new System.Drawing.Size(21, 20);
+            toolStripButtonReadOnlyDelete.Text = "Remove dataset from ReadOnly project";
+            toolStripButtonReadOnlyDelete.Click += toolStripButtonReadOnlyDelete_Click;
             // 
             // toolStripProjects
             // 
-            this.toolStripProjects.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStripProjects.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonProjectNew,
-            this.toolStripButtonProjectNoAccessNew,
-            this.toolStripButtonProjectDelete,
-            this.toolStripSeparatorProject,
-            this.toolStripButtonProjectOpen});
-            this.toolStripProjects.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.toolStripProjects.Location = new System.Drawing.Point(3, 230);
-            this.toolStripProjects.Name = "toolStripProjects";
-            this.toolStripProjects.Size = new System.Drawing.Size(188, 23);
-            this.toolStripProjects.TabIndex = 27;
-            this.toolStripProjects.Text = "toolStripProjects";
+            toolStripProjects.Dock = System.Windows.Forms.DockStyle.Bottom;
+            toolStripProjects.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonProjectNew, toolStripButtonProjectNoAccessNew, toolStripButtonProjectDelete, toolStripSeparatorProject, toolStripButtonProjectOpen });
+            toolStripProjects.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            toolStripProjects.Location = new System.Drawing.Point(4, 269);
+            toolStripProjects.Name = "toolStripProjects";
+            toolStripProjects.Size = new System.Drawing.Size(218, 23);
+            toolStripProjects.TabIndex = 27;
+            toolStripProjects.Text = "toolStripProjects";
             // 
             // toolStripButtonProjectNew
             // 
-            this.toolStripButtonProjectNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonProjectNew.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonProjectNew.Image")));
-            this.toolStripButtonProjectNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonProjectNew.Name = "toolStripButtonProjectNew";
-            this.toolStripButtonProjectNew.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonProjectNew.Text = "Enter a new project for the specimen";
-            this.toolStripButtonProjectNew.Click += new System.EventHandler(this.toolStripButtonProjectNew_Click);
+            toolStripButtonProjectNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonProjectNew.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonProjectNew.Image");
+            toolStripButtonProjectNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonProjectNew.Name = "toolStripButtonProjectNew";
+            toolStripButtonProjectNew.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonProjectNew.Text = "Enter a new project for the specimen";
+            toolStripButtonProjectNew.Click += toolStripButtonProjectNew_Click;
             // 
             // toolStripButtonProjectNoAccessNew
             // 
-            this.toolStripButtonProjectNoAccessNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonProjectNoAccessNew.Image = global::DiversityCollection.Resource.NewRed;
-            this.toolStripButtonProjectNoAccessNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonProjectNoAccessNew.Name = "toolStripButtonProjectNoAccessNew";
-            this.toolStripButtonProjectNoAccessNew.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonProjectNoAccessNew.Text = "Add a project where you have no access to";
-            this.toolStripButtonProjectNoAccessNew.Click += new System.EventHandler(this.toolStripButtonProjectNoAccessNew_Click);
+            toolStripButtonProjectNoAccessNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonProjectNoAccessNew.Image = Resource.NewRed;
+            toolStripButtonProjectNoAccessNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonProjectNoAccessNew.Name = "toolStripButtonProjectNoAccessNew";
+            toolStripButtonProjectNoAccessNew.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonProjectNoAccessNew.Text = "Add a project where you have no access to";
+            toolStripButtonProjectNoAccessNew.Click += toolStripButtonProjectNoAccessNew_Click;
             // 
             // toolStripButtonProjectDelete
             // 
-            this.toolStripButtonProjectDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonProjectDelete.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonProjectDelete.Image")));
-            this.toolStripButtonProjectDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonProjectDelete.Name = "toolStripButtonProjectDelete";
-            this.toolStripButtonProjectDelete.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonProjectDelete.Text = "Remove specimen from select project";
-            this.toolStripButtonProjectDelete.Click += new System.EventHandler(this.toolStripButtonProjectDelete_Click);
+            toolStripButtonProjectDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonProjectDelete.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonProjectDelete.Image");
+            toolStripButtonProjectDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonProjectDelete.Name = "toolStripButtonProjectDelete";
+            toolStripButtonProjectDelete.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonProjectDelete.Text = "Remove specimen from select project";
+            toolStripButtonProjectDelete.Click += toolStripButtonProjectDelete_Click;
             // 
             // toolStripSeparatorProject
             // 
-            this.toolStripSeparatorProject.Name = "toolStripSeparatorProject";
-            this.toolStripSeparatorProject.Size = new System.Drawing.Size(6, 23);
+            toolStripSeparatorProject.Name = "toolStripSeparatorProject";
+            toolStripSeparatorProject.Size = new System.Drawing.Size(6, 23);
             // 
             // toolStripButtonProjectOpen
             // 
-            this.toolStripButtonProjectOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonProjectOpen.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonProjectOpen.Image")));
-            this.toolStripButtonProjectOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonProjectOpen.Name = "toolStripButtonProjectOpen";
-            this.toolStripButtonProjectOpen.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonProjectOpen.Text = "Open DiversityProjects";
-            this.toolStripButtonProjectOpen.Click += new System.EventHandler(this.toolStripButtonProjectOpen_Click);
+            toolStripButtonProjectOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButtonProjectOpen.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonProjectOpen.Image");
+            toolStripButtonProjectOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonProjectOpen.Name = "toolStripButtonProjectOpen";
+            toolStripButtonProjectOpen.Size = new System.Drawing.Size(23, 20);
+            toolStripButtonProjectOpen.Text = "Open DiversityProjects";
+            toolStripButtonProjectOpen.Click += toolStripButtonProjectOpen_Click;
             // 
             // splitContainerOverviewNotesExternal
             // 
-            this.splitContainerOverviewNotesExternal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerOverviewNotesExternal.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerOverviewNotesExternal.Name = "splitContainerOverviewNotesExternal";
-            this.splitContainerOverviewNotesExternal.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            splitContainerOverviewNotesExternal.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerOverviewNotesExternal.Location = new System.Drawing.Point(0, 0);
+            splitContainerOverviewNotesExternal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            splitContainerOverviewNotesExternal.Name = "splitContainerOverviewNotesExternal";
+            splitContainerOverviewNotesExternal.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainerOverviewNotesExternal.Panel1
             // 
-            this.splitContainerOverviewNotesExternal.Panel1.Controls.Add(this.groupBoxNotes);
-            this.splitContainerOverviewNotesExternal.Panel2Collapsed = true;
-            this.splitContainerOverviewNotesExternal.Size = new System.Drawing.Size(440, 256);
-            this.splitContainerOverviewNotesExternal.SplitterDistance = 25;
-            this.splitContainerOverviewNotesExternal.TabIndex = 29;
+            splitContainerOverviewNotesExternal.Panel1.Controls.Add(groupBoxNotes);
+            splitContainerOverviewNotesExternal.Panel2Collapsed = true;
+            splitContainerOverviewNotesExternal.Size = new System.Drawing.Size(513, 295);
+            splitContainerOverviewNotesExternal.SplitterDistance = 29;
+            splitContainerOverviewNotesExternal.SplitterWidth = 5;
+            splitContainerOverviewNotesExternal.TabIndex = 29;
             // 
             // groupBoxNotes
             // 
-            this.groupBoxNotes.AccessibleName = "CollectionSpecimen.Notes";
-            this.groupBoxNotes.Controls.Add(this.tableLayoutPanelNotes);
-            this.groupBoxNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxNotes.ForeColor = System.Drawing.Color.Black;
-            this.groupBoxNotes.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxNotes.Name = "groupBoxNotes";
-            this.groupBoxNotes.Size = new System.Drawing.Size(440, 256);
-            this.groupBoxNotes.TabIndex = 28;
-            this.groupBoxNotes.TabStop = false;
-            this.groupBoxNotes.Text = "Notes";
+            groupBoxNotes.AccessibleName = "CollectionSpecimen.Notes";
+            groupBoxNotes.Controls.Add(tableLayoutPanelNotes);
+            groupBoxNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            groupBoxNotes.ForeColor = System.Drawing.Color.Black;
+            groupBoxNotes.Location = new System.Drawing.Point(0, 0);
+            groupBoxNotes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxNotes.Name = "groupBoxNotes";
+            groupBoxNotes.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxNotes.Size = new System.Drawing.Size(513, 295);
+            groupBoxNotes.TabIndex = 28;
+            groupBoxNotes.TabStop = false;
+            groupBoxNotes.Text = "Notes";
             // 
             // tableLayoutPanelNotes
             // 
-            this.tableLayoutPanelNotes.ColumnCount = 2;
-            this.tableLayoutPanelNotes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelNotes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelNotes.Controls.Add(this.labelInternalNotes, 0, 2);
-            this.tableLayoutPanelNotes.Controls.Add(this.labelOriginalNotes, 0, 0);
-            this.tableLayoutPanelNotes.Controls.Add(this.labelAdditionalNotes, 0, 1);
-            this.tableLayoutPanelNotes.Controls.Add(this.labelProblems, 0, 3);
-            this.tableLayoutPanelNotes.Controls.Add(this.textBoxOriginalNotes, 1, 0);
-            this.tableLayoutPanelNotes.Controls.Add(this.textBoxAdditionalNotes, 1, 1);
-            this.tableLayoutPanelNotes.Controls.Add(this.textBoxProblems, 1, 3);
-            this.tableLayoutPanelNotes.Controls.Add(this.textBoxInternalNotes, 1, 2);
-            this.tableLayoutPanelNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanelNotes.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanelNotes.Name = "tableLayoutPanelNotes";
-            this.tableLayoutPanelNotes.RowCount = 4;
-            this.tableLayoutPanelNotes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tableLayoutPanelNotes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tableLayoutPanelNotes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
-            this.tableLayoutPanelNotes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tableLayoutPanelNotes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelNotes.Size = new System.Drawing.Size(434, 237);
-            this.tableLayoutPanelNotes.TabIndex = 0;
+            tableLayoutPanelNotes.ColumnCount = 2;
+            tableLayoutPanelNotes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelNotes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelNotes.Controls.Add(labelInternalNotes, 0, 2);
+            tableLayoutPanelNotes.Controls.Add(labelOriginalNotes, 0, 0);
+            tableLayoutPanelNotes.Controls.Add(labelAdditionalNotes, 0, 1);
+            tableLayoutPanelNotes.Controls.Add(labelProblems, 0, 3);
+            tableLayoutPanelNotes.Controls.Add(textBoxOriginalNotes, 1, 0);
+            tableLayoutPanelNotes.Controls.Add(textBoxAdditionalNotes, 1, 1);
+            tableLayoutPanelNotes.Controls.Add(textBoxProblems, 1, 3);
+            tableLayoutPanelNotes.Controls.Add(textBoxInternalNotes, 1, 2);
+            tableLayoutPanelNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tableLayoutPanelNotes.Location = new System.Drawing.Point(4, 16);
+            tableLayoutPanelNotes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanelNotes.Name = "tableLayoutPanelNotes";
+            tableLayoutPanelNotes.RowCount = 4;
+            tableLayoutPanelNotes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            tableLayoutPanelNotes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            tableLayoutPanelNotes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
+            tableLayoutPanelNotes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            tableLayoutPanelNotes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanelNotes.Size = new System.Drawing.Size(505, 276);
+            tableLayoutPanelNotes.TabIndex = 0;
             // 
             // labelInternalNotes
             // 
-            this.labelInternalNotes.AccessibleName = "CollectionSpecimen.InternalNotes";
-            this.labelInternalNotes.AutoSize = true;
-            this.labelInternalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelInternalNotes.Location = new System.Drawing.Point(3, 121);
-            this.labelInternalNotes.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.labelInternalNotes.Name = "labelInternalNotes";
-            this.labelInternalNotes.Size = new System.Drawing.Size(56, 56);
-            this.labelInternalNotes.TabIndex = 6;
-            this.labelInternalNotes.Text = "Internal:";
-            this.labelInternalNotes.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            labelInternalNotes.AccessibleName = "CollectionSpecimen.InternalNotes";
+            labelInternalNotes.AutoSize = true;
+            labelInternalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelInternalNotes.Location = new System.Drawing.Point(4, 141);
+            labelInternalNotes.Margin = new System.Windows.Forms.Padding(4, 3, 0, 0);
+            labelInternalNotes.Name = "labelInternalNotes";
+            labelInternalNotes.Size = new System.Drawing.Size(56, 65);
+            labelInternalNotes.TabIndex = 6;
+            labelInternalNotes.Text = "Internal:";
+            labelInternalNotes.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // labelOriginalNotes
             // 
-            this.labelOriginalNotes.AccessibleName = "CollectionSpecimen.OriginalNotes";
-            this.labelOriginalNotes.AutoSize = true;
-            this.labelOriginalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelOriginalNotes.Location = new System.Drawing.Point(3, 3);
-            this.labelOriginalNotes.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.labelOriginalNotes.Name = "labelOriginalNotes";
-            this.labelOriginalNotes.Size = new System.Drawing.Size(56, 56);
-            this.labelOriginalNotes.TabIndex = 0;
-            this.labelOriginalNotes.Text = "Original:";
-            this.labelOriginalNotes.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            labelOriginalNotes.AccessibleName = "CollectionSpecimen.OriginalNotes";
+            labelOriginalNotes.AutoSize = true;
+            labelOriginalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelOriginalNotes.Location = new System.Drawing.Point(4, 3);
+            labelOriginalNotes.Margin = new System.Windows.Forms.Padding(4, 3, 0, 0);
+            labelOriginalNotes.Name = "labelOriginalNotes";
+            labelOriginalNotes.Size = new System.Drawing.Size(56, 66);
+            labelOriginalNotes.TabIndex = 0;
+            labelOriginalNotes.Text = "Original:";
+            labelOriginalNotes.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // labelAdditionalNotes
             // 
-            this.labelAdditionalNotes.AccessibleName = "CollectionSpecimen.AdditionalNotes";
-            this.labelAdditionalNotes.AutoSize = true;
-            this.labelAdditionalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAdditionalNotes.Location = new System.Drawing.Point(3, 62);
-            this.labelAdditionalNotes.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.labelAdditionalNotes.Name = "labelAdditionalNotes";
-            this.labelAdditionalNotes.Size = new System.Drawing.Size(56, 56);
-            this.labelAdditionalNotes.TabIndex = 1;
-            this.labelAdditionalNotes.Text = "Additional:";
-            this.labelAdditionalNotes.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            labelAdditionalNotes.AccessibleName = "CollectionSpecimen.AdditionalNotes";
+            labelAdditionalNotes.AutoSize = true;
+            labelAdditionalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelAdditionalNotes.Location = new System.Drawing.Point(4, 72);
+            labelAdditionalNotes.Margin = new System.Windows.Forms.Padding(4, 3, 0, 0);
+            labelAdditionalNotes.Name = "labelAdditionalNotes";
+            labelAdditionalNotes.Size = new System.Drawing.Size(56, 66);
+            labelAdditionalNotes.TabIndex = 1;
+            labelAdditionalNotes.Text = "Additional:";
+            labelAdditionalNotes.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // labelProblems
             // 
-            this.labelProblems.AccessibleName = "CollectionSpecimen.Problems";
-            this.labelProblems.AutoSize = true;
-            this.labelProblems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProblems.Location = new System.Drawing.Point(3, 180);
-            this.labelProblems.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.labelProblems.Name = "labelProblems";
-            this.labelProblems.Size = new System.Drawing.Size(56, 57);
-            this.labelProblems.TabIndex = 2;
-            this.labelProblems.Text = "Problems:";
-            this.labelProblems.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            labelProblems.AccessibleName = "CollectionSpecimen.Problems";
+            labelProblems.AutoSize = true;
+            labelProblems.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelProblems.Location = new System.Drawing.Point(4, 209);
+            labelProblems.Margin = new System.Windows.Forms.Padding(4, 3, 0, 0);
+            labelProblems.Name = "labelProblems";
+            labelProblems.Size = new System.Drawing.Size(56, 67);
+            labelProblems.TabIndex = 2;
+            labelProblems.Text = "Problems:";
+            labelProblems.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxOriginalNotes
             // 
-            this.textBoxOriginalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxOriginalNotes.Location = new System.Drawing.Point(59, 0);
-            this.textBoxOriginalNotes.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
-            this.textBoxOriginalNotes.Multiline = true;
-            this.textBoxOriginalNotes.Name = "textBoxOriginalNotes";
-            this.textBoxOriginalNotes.Size = new System.Drawing.Size(372, 56);
-            this.textBoxOriginalNotes.TabIndex = 3;
+            textBoxOriginalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxOriginalNotes.Location = new System.Drawing.Point(60, 0);
+            textBoxOriginalNotes.Margin = new System.Windows.Forms.Padding(0, 0, 4, 3);
+            textBoxOriginalNotes.Multiline = true;
+            textBoxOriginalNotes.Name = "textBoxOriginalNotes";
+            textBoxOriginalNotes.Size = new System.Drawing.Size(441, 66);
+            textBoxOriginalNotes.TabIndex = 3;
             // 
             // textBoxAdditionalNotes
             // 
-            this.textBoxAdditionalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxAdditionalNotes.Location = new System.Drawing.Point(59, 59);
-            this.textBoxAdditionalNotes.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
-            this.textBoxAdditionalNotes.Multiline = true;
-            this.textBoxAdditionalNotes.Name = "textBoxAdditionalNotes";
-            this.textBoxAdditionalNotes.Size = new System.Drawing.Size(372, 56);
-            this.textBoxAdditionalNotes.TabIndex = 4;
+            textBoxAdditionalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxAdditionalNotes.Location = new System.Drawing.Point(60, 69);
+            textBoxAdditionalNotes.Margin = new System.Windows.Forms.Padding(0, 0, 4, 3);
+            textBoxAdditionalNotes.Multiline = true;
+            textBoxAdditionalNotes.Name = "textBoxAdditionalNotes";
+            textBoxAdditionalNotes.Size = new System.Drawing.Size(441, 66);
+            textBoxAdditionalNotes.TabIndex = 4;
             // 
             // textBoxProblems
             // 
-            this.textBoxProblems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxProblems.Location = new System.Drawing.Point(59, 177);
-            this.textBoxProblems.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
-            this.textBoxProblems.Multiline = true;
-            this.textBoxProblems.Name = "textBoxProblems";
-            this.textBoxProblems.Size = new System.Drawing.Size(372, 57);
-            this.textBoxProblems.TabIndex = 5;
+            textBoxProblems.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxProblems.Location = new System.Drawing.Point(60, 206);
+            textBoxProblems.Margin = new System.Windows.Forms.Padding(0, 0, 4, 3);
+            textBoxProblems.Multiline = true;
+            textBoxProblems.Name = "textBoxProblems";
+            textBoxProblems.Size = new System.Drawing.Size(441, 67);
+            textBoxProblems.TabIndex = 5;
             // 
             // textBoxInternalNotes
             // 
-            this.textBoxInternalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxInternalNotes.Location = new System.Drawing.Point(59, 118);
-            this.textBoxInternalNotes.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
-            this.textBoxInternalNotes.Multiline = true;
-            this.textBoxInternalNotes.Name = "textBoxInternalNotes";
-            this.textBoxInternalNotes.Size = new System.Drawing.Size(372, 56);
-            this.textBoxInternalNotes.TabIndex = 7;
+            textBoxInternalNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBoxInternalNotes.Location = new System.Drawing.Point(60, 138);
+            textBoxInternalNotes.Margin = new System.Windows.Forms.Padding(0, 0, 4, 3);
+            textBoxInternalNotes.Multiline = true;
+            textBoxInternalNotes.Name = "textBoxInternalNotes";
+            textBoxInternalNotes.Size = new System.Drawing.Size(441, 65);
+            textBoxInternalNotes.TabIndex = 7;
             // 
             // UserControl_ProjectsNotes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainerOverviewProject);
-            this.Name = "UserControl_ProjectsNotes";
-            this.Size = new System.Drawing.Size(638, 256);
-            this.splitContainerOverviewProject.Panel1.ResumeLayout(false);
-            this.splitContainerOverviewProject.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerOverviewProject)).EndInit();
-            this.splitContainerOverviewProject.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProject)).EndInit();
-            this.groupBoxProjects.ResumeLayout(false);
-            this.groupBoxProjects.PerformLayout();
-            this.tableLayoutPanelProjects.ResumeLayout(false);
-            this.tableLayoutPanelProjects.PerformLayout();
-            this.toolStripNoAccess.ResumeLayout(false);
-            this.toolStripNoAccess.PerformLayout();
-            this.toolStripReadOnly.ResumeLayout(false);
-            this.toolStripReadOnly.PerformLayout();
-            this.toolStripProjects.ResumeLayout(false);
-            this.toolStripProjects.PerformLayout();
-            this.splitContainerOverviewNotesExternal.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerOverviewNotesExternal)).EndInit();
-            this.splitContainerOverviewNotesExternal.ResumeLayout(false);
-            this.groupBoxNotes.ResumeLayout(false);
-            this.tableLayoutPanelNotes.ResumeLayout(false);
-            this.tableLayoutPanelNotes.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(splitContainerOverviewProject);
+            Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            Name = "UserControl_ProjectsNotes";
+            Size = new System.Drawing.Size(744, 295);
+            splitContainerOverviewProject.Panel1.ResumeLayout(false);
+            splitContainerOverviewProject.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerOverviewProject).EndInit();
+            splitContainerOverviewProject.ResumeLayout(false);
+            groupBoxProjects.ResumeLayout(false);
+            groupBoxProjects.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxProject).EndInit();
+            tableLayoutPanelProjects.ResumeLayout(false);
+            tableLayoutPanelProjects.PerformLayout();
+            toolStripNoAccess.ResumeLayout(false);
+            toolStripNoAccess.PerformLayout();
+            toolStripReadOnly.ResumeLayout(false);
+            toolStripReadOnly.PerformLayout();
+            toolStripProjects.ResumeLayout(false);
+            toolStripProjects.PerformLayout();
+            splitContainerOverviewNotesExternal.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerOverviewNotesExternal).EndInit();
+            splitContainerOverviewNotesExternal.ResumeLayout(false);
+            groupBoxNotes.ResumeLayout(false);
+            tableLayoutPanelNotes.ResumeLayout(false);
+            tableLayoutPanelNotes.PerformLayout();
+            ResumeLayout(false);
 
         }
 

@@ -2678,7 +2678,7 @@ namespace DiversityCollection
                     System.Xml.Xsl.XslCompiledTransform XSLT = new System.Xml.Xsl.XslCompiledTransform();
                     System.Xml.Xsl.XsltSettings XsltSettings = new System.Xml.Xsl.XsltSettings(true, true);
                     System.Xml.XmlResolver resolver = new System.Xml.XmlUrlResolver();
-                    XSLT.Load(this._XslFile.FullName);
+                    XSLT.Load(this._XslFile.FullName, XsltSettings, resolver);
 
                     // Load the file to transform.
                     System.Xml.XPath.XPathDocument doc = new System.Xml.XPath.XPathDocument(this._XmlFile.FullName);

@@ -143,6 +143,8 @@ namespace DiversityCollection.UserControls
             this.CheckIfClientIsUpToDate();
 
             DiversityWorkbench.Settings.WebViewUsage(this.toolStripButtonWebView);
+
+            this.pictureBoxIcon.Visible = false;
         }
 
         private void initRemoteConnections()

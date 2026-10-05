@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -7907,9 +7908,10 @@ namespace DiversityCollection.Forms
         private void customizeDisplayToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool ShowAcceptedNames = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowAcceptedNames;
+            bool ShowValidAgentName = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowValidAgentName;
             this.CustomizeDisplay(FormCustomizeDisplay.Customization.All);
             this.diversityDescriptionsToolStripMenuItem.Checked = DiversityWorkbench.Settings.ScannedModuleIsScanned(DiversityWorkbench.WorkbenchUnit.ModuleType.Descriptions);
-            if (ShowAcceptedNames != DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowAcceptedNames)
+            if (ShowAcceptedNames != DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowAcceptedNames || ShowValidAgentName != DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.ShowValidAgentName)
                 this.UserControl_Identification.SetOptions();
             this.toolStripButtonOverviewHierarchyDisplayLocationHierarchy.Visible = DiversityCollection.Forms.FormCollectionSpecimenSettings.Default.UseCollectionLocation;
         }
@@ -9221,12 +9223,16 @@ namespace DiversityCollection.Forms
         {
             try
             {
-                string Manual = this.helpProviderDiversityCollection.HelpNamespace;
-                System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(Manual);
-                info.UseShellExecute = true;
-                System.Diagnostics.Process.Start(info);
+                //string Manual = this.helpProviderDiversityCollection.HelpNamespace;
+                //System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(Manual);
+                //info.UseShellExecute = true;
+                System.Diagnostics.Process.Start(new ProcessStartInfo
+                {
+                    FileName = "https://www.diversityworkbench.de/manual/dwb/modules/diversitycollection/index.html",
+                    UseShellExecute = true
+                });
             }
-            catch { }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
 
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -9239,13 +9245,19 @@ namespace DiversityCollection.Forms
         {
             try
             {
-                string Manual = this.helpProviderDiversityCollection.HelpNamespace;
-                System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(Manual);
-                info.UseShellExecute = true;
-                System.Diagnostics.Process.Start(info);
+                //string Manual = this.helpProviderDiversityCollection.HelpNamespace;
+                //System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(Manual);
+                //info.UseShellExecute = true;
+                //System.Diagnostics.Process.Start(info);
+                System.Diagnostics.Process.Start(new ProcessStartInfo
+                {
+                    FileName = "https://www.diversityworkbench.de/manual/dwb/modules/diversitycollection/download_dc/index.html#current-version",
+                    UseShellExecute = true
+                });
             }
-            catch { }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
+
 
         #region Feedback
 
