@@ -573,20 +573,28 @@ namespace DiversityWorkbench.UserControls
 
         private void buttonOpenResource_Click(object sender, EventArgs e)
         {
-            if (this.textBoxResourcePath.Text.Length == 0 || this.textBoxResourcePath.Text.ToLower().StartsWith("color://#")) return;
-            StopPlayback();
-            if (this._NoAccessPath != "")
-            {
-                // Open system browser
-                System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(this._NoAccessPath);
-                info.UseShellExecute = true;
-                System.Diagnostics.Process.Start(info);
+            try { 
+                if (this.textBoxResourcePath.Text.Length == 0 || this.textBoxResourcePath.Text.ToLower().StartsWith("color://#")) return;
+                StopPlayback();
+                if (this._NoAccessPath != "")
+                {
+                    // Open system browser
+                    System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(this._NoAccessPath);
+                    info.UseShellExecute = true;
+                    System.Diagnostics.Process.Start(info);
+                }
+                else
+                {
+                    // Open internal form
+                    DiversityWorkbench.Forms.FormImage f = new DiversityWorkbench.Forms.FormImage(this.textBoxResourcePath.Text);
+                    f.Show();
+                }
             }
-            else
+            catch (System.Exception ex)
             {
-                // Open internal form
-                DiversityWorkbench.Forms.FormImage f = new DiversityWorkbench.Forms.FormImage(this.textBoxResourcePath.Text);
-                f.Show();
+                MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
 

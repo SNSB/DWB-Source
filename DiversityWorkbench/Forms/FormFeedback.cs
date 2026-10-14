@@ -713,6 +713,8 @@ namespace DiversityWorkbench.Forms
             }
             catch (Exception ex)
             {
+                MessageBox.Show($"Send reply failed:\n{ex.Message}", "Send failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }

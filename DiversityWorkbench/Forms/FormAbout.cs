@@ -123,11 +123,16 @@ namespace DiversityWorkbench.Forms
             catch (System.ComponentModel.Win32Exception noBrowser)
             {
                 if (noBrowser.ErrorCode == -2147467259)
+                {
                     MessageBox.Show(noBrowser.Message);
+                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(noBrowser);
+                }
+
             }
             catch (System.Exception other)
             {
                 MessageBox.Show(other.Message);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(other);
             }
         }
 
@@ -143,11 +148,15 @@ namespace DiversityWorkbench.Forms
             catch (System.ComponentModel.Win32Exception noBrowser)
             {
                 if (noBrowser.ErrorCode == -2147467259)
+                {
                     MessageBox.Show(noBrowser.Message);
+                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(noBrowser);
+                }
             }
             catch (System.Exception other)
             {
                 MessageBox.Show(other.Message);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(other);
             }
         }
 
@@ -171,10 +180,22 @@ namespace DiversityWorkbench.Forms
 
         private void linkLabelDotNet_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string URL = "https://dotnet.microsoft.com/download/dotnet-framework/net48";
-            System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(URL);
-            info.UseShellExecute = true;
-            System.Diagnostics.Process.Start(info);
+            try
+            {
+                string URL = "https://dotnet.microsoft.com/download/dotnet-framework/net48";
+                System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(URL);
+                info.UseShellExecute = true;
+                System.Diagnostics.Process.Start(info);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(
+                   $"Unable to verify if email client is configured: {ex.Message}",
+                   "Error",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
         }
 
         //protected virtual void setDescription() 

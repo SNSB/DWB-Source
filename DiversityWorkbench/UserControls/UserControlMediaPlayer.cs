@@ -185,12 +185,20 @@ namespace DiversityWorkbench.UserControls
 
         private void buttonExternalBrowser_Click(object sender, EventArgs e)
         {
-            if (this.textBoxFile.Text != null)
+            try { 
+                if (this.textBoxFile.Text != null)
+                {
+                    this.StopPlayback();
+                    System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(this.textBoxFile.Text);
+                    info.UseShellExecute = true;
+                    System.Diagnostics.Process.Start(info);
+                }
+            }
+            catch (System.Exception ex)
             {
-                this.StopPlayback();
-                System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(this.textBoxFile.Text);
-                info.UseShellExecute = true;
-                System.Diagnostics.Process.Start(info);
+                MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
         #endregion

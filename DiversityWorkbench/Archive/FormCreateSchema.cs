@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -107,8 +109,43 @@ namespace DiversityWorkbench.Archive
 
         private void buttonDirectory_Click(object sender, EventArgs e)
         {
-            if (System.IO.Directory.Exists(this.ArchiveFolder()))
-                System.Diagnostics.Process.Start("explorer.exe", this.ArchiveFolder());
+            try
+            {
+                string archiveFolder = this.ArchiveFolder();
+
+                if (string.IsNullOrWhiteSpace(archiveFolder))
+                {
+                    MessageBox.Show("Archive folder path could not be determined.", "Configuration Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!Directory.Exists(archiveFolder))
+                {
+                    MessageBox.Show($"Archive folder does not exist:\n{archiveFolder}", "Directory Not Found",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "explorer.exe",
+                    Arguments = $"\"{archiveFolder}\"",
+                    UseShellExecute = true
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show($"Access denied when creating or accessing the archive folder.\n\n{ex.Message}",
+                    "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unable to open archive folder:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
         }
 
         private void buttonAddToSelection_Click(object sender, EventArgs e)
@@ -155,23 +192,25 @@ namespace DiversityWorkbench.Archive
 
         private string ArchiveFolder()
         {
-            string Folder = "";
-            Folder = this.textBoxArchiveFolder.Text;
-            Folder += DiversityWorkbench.Settings.ModuleName + "_";
-            Folder += this.Version().Replace(".", "") + "_";
-            Folder += System.DateTime.Now.ToString("yyyy-MM-dd");//.Year.ToString();
-            //if (System.DateTime.Now.Month < 10)
-            //    Folder += "0";
-            //Folder += System.DateTime.Now.Month.ToString();
-            //if (System.DateTime.Now.Day < 10)
-            //    Folder += "0";
-            //Folder += System.DateTime.Now.Day.ToString();
-            System.IO.DirectoryInfo D = new System.IO.DirectoryInfo(Folder);
-            if (!D.Exists)
-                D.Create();
-            return Folder;
-        }
+            string folder = this.textBoxArchiveFolder.Text;
 
+            if (string.IsNullOrWhiteSpace(folder))
+            {
+                throw new InvalidOperationException("Archive folder path is not configured.");
+            }
+
+            folder += DiversityWorkbench.Settings.ModuleName + "_";
+            folder += this.Version().Replace(".", "") + "_";
+            folder += DateTime.Now.ToString("yyyy-MM-dd");
+
+            DirectoryInfo dirInfo = new DirectoryInfo(folder);
+            if (!dirInfo.Exists)
+            {
+                dirInfo.Create();
+            }
+
+            return folder;
+        }
 
     }
 }

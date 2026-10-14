@@ -938,7 +938,16 @@ namespace DiversityWorkbench.Forms
                 {
                     System.Data.DataTable dt = this._DtEnum.Copy();
                     System.Data.DataRow Rnull = dt.NewRow();
-                    Rnull[0] = "";
+                    string ColumnType = dt.Columns[0].DataType.ToString();
+                    switch (ColumnType)
+                    {
+                        case "System.Int32":
+                            Rnull[0] = System.DBNull.Value;
+                            break;
+                        default:
+                            Rnull[0] = "";
+                            break;
+                    }
                     dt.Rows.Add(Rnull);
                     System.Data.DataRow[] RR = dt.Select(this._ParentKeyColumn + " = '" + R[this._KeyColumn].ToString() + "'", "");
                     if (RR.Length > 0)
@@ -951,14 +960,18 @@ namespace DiversityWorkbench.Forms
                     }
                     System.Data.DataRow[] Rself = dt.Select(this._KeyColumn + " = '" + R[this._KeyColumn].ToString() + "'", "");
                     Rself[0].Delete();
-                    DiversityWorkbench.Forms.FormGetStringFromList f = new DiversityWorkbench.Forms.FormGetStringFromList(dt, this._KeyColumn, this._KeyColumn, "Parent entry", "Please select the superior entry for " + R[this._KeyColumn].ToString() + " from the list");
+                    string DisplayColumn = this._KeyColumn;
+                    if (dt.Columns[this._KeyColumn].DataType.ToString() == "System.Int32")
+                        DisplayColumn = this._DisplayColumn;
+                    DiversityWorkbench.Forms.FormGetStringFromList f = new DiversityWorkbench.Forms.FormGetStringFromList(dt, DisplayColumn, this._KeyColumn, "Parent entry", "Please select the superior entry for " + R[DisplayColumn].ToString() + " from the list");
                     f.ShowDialog();
                     if (f.DialogResult == System.Windows.Forms.DialogResult.OK)
                     {
                         R.BeginEdit();
                         if (f.SelectedString.Length > 0)
                         {
-                            R[this._ParentKeyColumn] = f.SelectedString;
+
+                            R[this._ParentKeyColumn] = f.SelectedValue;
                             Parent = f.SelectedString;
                         }
                         else
@@ -975,6 +988,7 @@ namespace DiversityWorkbench.Forms
             }
             catch (System.Exception ex)
             {
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
 

@@ -646,16 +646,33 @@ namespace DiversityWorkbench.Import
 
         private void sNSBToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(this.sNSBToolStripMenuItem.Tag.ToString());
-            info.UseShellExecute = true;
-            System.Diagnostics.Process.Start(info);
+            try { 
+                System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(this.sNSBToolStripMenuItem.Tag.ToString());
+                info.UseShellExecute = true;
+                System.Diagnostics.Process.Start(info);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
         }
 
         private void zFMKToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(this.zFMKToolStripMenuItem.Tag.ToString());
-            info.UseShellExecute = true;
-            System.Diagnostics.Process.Start(info);
+            try
+            {
+                System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(this.zFMKToolStripMenuItem.Tag.ToString());
+                info.UseShellExecute = true;
+                System.Diagnostics.Process.Start(info);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
         }
 
         private void toolStripButtonRemoveSchema_Click(object sender, EventArgs e)
@@ -949,19 +966,28 @@ namespace DiversityWorkbench.Import
 
         private void buttonOpenRecordSQL_Click(object sender, EventArgs e)
         {
-            if (RecordSQL.LastRecordFile != null && RecordSQL.LastRecordFile.Length > 0)
+            try
             {
-                System.IO.FileInfo fileInfo = new System.IO.FileInfo(RecordSQL.LastRecordFile);
-                if (fileInfo.Exists)
+                if (RecordSQL.LastRecordFile != null && RecordSQL.LastRecordFile.Length > 0)
                 {
-                    System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(fileInfo.FullName);
-                    info.UseShellExecute = true;
-                    System.Diagnostics.Process.Start(info);
+                    System.IO.FileInfo fileInfo = new System.IO.FileInfo(RecordSQL.LastRecordFile);
+                    if (fileInfo.Exists)
+                    {
+                        System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(fileInfo.FullName);
+                        info.UseShellExecute = true;
+                        System.Diagnostics.Process.Start(info);
+                    }
                 }
+                else
+                    System.Windows.Forms.MessageBox.Show("No file present");
             }
-            else
-                System.Windows.Forms.MessageBox.Show("No file present");
-        }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
+}
 
         #endregion
 

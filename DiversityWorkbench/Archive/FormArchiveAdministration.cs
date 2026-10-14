@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -318,9 +320,37 @@ namespace DiversityWorkbench.Archive
 
         private void buttonDirectory_Click(object sender, EventArgs e)
         {
-            string ArchDir = DiversityWorkbench.WorkbenchResources.WorkbenchDirectory.Folder(WorkbenchResources.WorkbenchDirectory.FolderType.Archive);
-            if (System.IO.Directory.Exists(ArchDir))
-                System.Diagnostics.Process.Start("explorer.exe", ArchDir);
+            try
+            {
+                string archiveDir = DiversityWorkbench.WorkbenchResources.WorkbenchDirectory.Folder(WorkbenchResources.WorkbenchDirectory.FolderType.Archive);
+
+                if (string.IsNullOrWhiteSpace(archiveDir))
+                {
+                    MessageBox.Show("Archive directory path is not configured.", "Configuration Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!Directory.Exists(archiveDir))
+                {
+                    MessageBox.Show($"Archive directory does not exist:\n{archiveDir}", "Directory Not Found",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "explorer.exe",
+                    Arguments = $"\"{archiveDir}\"",
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unable to open directory:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
         }
 
         #endregion

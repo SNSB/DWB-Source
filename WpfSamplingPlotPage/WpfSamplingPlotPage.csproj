@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
@@ -10,6 +10,7 @@
     <FileVersion>$(Version)</FileVersion>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <Version>7.1.5</Version>
+    <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DocumentationFile>bin\Debug\WpfSamplingPlotPage.XML</DocumentationFile>
@@ -118,10 +119,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2">
-      <Version>1.0.4078.44</Version>
+      <Version>1.0.4258.31</Version>
     </PackageReference>
-    <PackageReference Include="System.Data.OleDb" Version="10.0.10" />
-    <PackageReference Include="System.IO.Ports" Version="10.0.10" />
+    <PackageReference Include="System.Data.OleDb" Version="10.0.12" />
+    <PackageReference Include="System.IO.Ports" Version="10.0.12" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeoConversion\GeoConversion.csproj" />

@@ -1,6 +1,7 @@
 ﻿//#define DEBUG
 
 using DiversityWorkbench.Forms;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,6 +9,7 @@ using System.Net.Mail;
 using System.Reflection;
 using System.Text;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace DiversityWorkbench
 {
@@ -16,54 +18,8 @@ namespace DiversityWorkbench
 
         public static void SendFeedback(string Module, string Version)
         {
-            // #34
-
-            // Check if a connection to the central Feedback database is possible
-            //bool ConnectionPossible = false;
-            //string SQL = "SELECT COUNT(*) FROM DiversityWorkbenchFeedback.dbo.Feedback";
-            //Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
-            //Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SQL, con);
-            try
-            {
-                SendMail(Version, "", "");
-
-                //con.Open();
-                //C.ExecuteNonQuery();
-                //con.Close();
-                //ConnectionPossible = true;
-            }
-            catch
-            {
-                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(new Exception("Sending e-mail failed"));
-                //// no direct connection - try via IP
-                //try
-                //{
-                //    if (con.State == System.Data.ConnectionState.Open) con.Close();
-                //    con = new Microsoft.Data.SqlClient.SqlConnection(ConnectionStringFeedbackReading);
-                //    C.Connection = con;
-                //    con.Open();
-                //    C.CommandText = "SELECT COUNT(*) FROM DiversityWorkbenchFeedback.dbo.Feedback";
-                //    C.ExecuteNonQuery();
-                //    con.Close();
-                //    ConnectionPossible = true;
-                //}
-                //catch
-                //{
-                //    // no connection
-                //    ConnectionPossible = false;
-                //}
-            }
-            //if (!ConnectionPossible)
-            //{
-            //    System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo("mailto:weiss@bsm.mwn.de?subject=Feedback%20" + Module + "%20" + Version);
-            //    info.UseShellExecute = true;
-            //    System.Diagnostics.Process.Start(info);
-            //}
-            //else
-            //{
-            //    DiversityWorkbench.Forms.FormFeedback f = new DiversityWorkbench.Forms.FormFeedback(Module, Version, con);
-            //    f.ShowDialog();
-            //}
+            //try/catch in SendMail included
+            SendMail(Version, "", "");
         }
 
         /// <summary>
@@ -75,18 +31,8 @@ namespace DiversityWorkbench
         /// <param name="ID">Optional: The ID of the current dataset</param>
         public static void SendFeedback(string Module, string Version, string Query, string ID)
         {
-            try
-            {
-                // #34
-
-                SendMail(Version, Query, ID);
-                //DiversityWorkbench.Forms.FormFeedback f = new DiversityWorkbench.Forms.FormFeedback(Module, Version, Query, ID);
-                //f.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-            }
+            //try/catch in SendMail included
+            SendMail(Version, Query, ID);
         }
 
         public static void FeedbackHistory(string Module)
@@ -158,7 +104,7 @@ namespace DiversityWorkbench
                     System.Windows.Forms.MessageBox.Show("No connection to the feedback database possible");
                 }
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
@@ -222,80 +168,88 @@ namespace DiversityWorkbench
         /// <param name="ID">The ID if available</param>
         public static void SendMail(string Version, string Query, string ID)
         {
-            // #252
-            if (!IsMailClientConfigured())
-            {
-                MessageBox.Show("No mail client configured. Please send an email with your feedback.", "No mail client", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            // #34
-            System.Globalization.CultureInfo cultureInfo = System.Globalization.CultureInfo.InstalledUICulture;
-            string subject = " ";
-            string sDatabase = "";
-            string sUser = "";
-            string sMessage = "";
-            string sQuery = "";
-
-            switch (cultureInfo.Name)
-            {
-                case "de_DE":
-                    subject = "Rückmeldung ";
-                    sDatabase = "Datenbank";
-                    sUser = "Benutzer";
-                    sMessage = "Bitte hier das Anliegen und Bilder einfügen:";
-                    sQuery = "Suche";
-                    break;
-                default:
-                    subject = "Feedback ";
-                    sDatabase = "Database";
-                    sUser = "User";
-                    sMessage = "Please enter your subject including screenshots here:";
-                    sQuery = "Query";
-                    break;
-            }
-
-            if (DiversityWorkbench.Settings.ModuleName != null && DiversityWorkbench.Settings.ModuleName.Length > 0)
-            {
-                subject += DiversityWorkbench.Settings.ModuleName;
-            }
-
-            string body = sMessage + "\r\n\r\n\r\n";
-            if (Version != null && Version.Length > 0)
-            {
-                body += "Version: " + Version + "\r\n";
-            }
-            if (DiversityWorkbench.Settings.DatabaseName != null && DiversityWorkbench.Settings.DatabaseName.Length > 0)
-            {
-                body += "\r\n" + sDatabase + ": " + DiversityWorkbench.Settings.DatabaseName + "\r\n";
-                if (DiversityWorkbench.Settings.DatabaseUser != null && DiversityWorkbench.Settings.DatabaseUser.Length > 0 
-                    && DiversityWorkbench.Settings.Password != null && DiversityWorkbench.Settings.Password.Length > 0)
-                    body += sUser + ": " + DiversityWorkbench.Settings.DatabaseUser + "\r\n";
-                else if (DiversityWorkbench.Settings.CurrentUserName().Length > 0)
-                    body += sUser + ": " + DiversityWorkbench.Settings.CurrentUserName() + "\r\n";
-            }
-            if (Query != null && Query != "")
-            {
-                body += "\r\n" + sQuery + ":\r\n" + Query + "\r\n";
-            }
-            if (ID != null && ID != "")
-            {
-                body += "\r\nID: " + ID + "\r\n";
-            }
-            if(ErrorLog().Length > 0)
-            {
-                body += "\r\nError log:\r\n" + ErrorLog() + "\r\n";
-            }
-            subject = Uri.EscapeDataString(subject);
-            body = Uri.EscapeDataString(body);
-            // #252
             try
             {
+                // #252
+                if (!MailClientIsConfigured())
+                {
+                    System.Windows.Forms.MessageBox.Show("No mail client configured. Please send an email with your feedback.", "No mail client", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // #34
+                System.Globalization.CultureInfo cultureInfo = System.Globalization.CultureInfo.InstalledUICulture;
+                string subject = " ";
+                string sDatabase = "";
+                string sUser = "";
+                string sMessage = "";
+                string sQuery = "";
+
+                switch (cultureInfo.Name)
+                {
+                    case "de_DE":
+                        subject = "Rückmeldung ";
+                        sDatabase = "Datenbank";
+                        sUser = "Benutzer";
+                        sMessage = "Bitte hier das Anliegen und Bilder einfügen:";
+                        sQuery = "Suche";
+                        break;
+                    default:
+                        subject = "Feedback ";
+                        sDatabase = "Database";
+                        sUser = "User";
+                        sMessage = "Please enter your subject including screenshots here:";
+                        sQuery = "Query";
+                        break;
+                }
+
+                if (DiversityWorkbench.Settings.ModuleName != null && DiversityWorkbench.Settings.ModuleName.Length > 0)
+                {
+                    subject += DiversityWorkbench.Settings.ModuleName;
+                }
+
+                string body = sMessage + "\r\n\r\n\r\n";
+                if (Version != null && Version.Length > 0)
+                {
+                    body += "Version: " + Version + "\r\n";
+                }
+                if (DiversityWorkbench.Settings.DatabaseName != null && DiversityWorkbench.Settings.DatabaseName.Length > 0)
+                {
+                    body += "\r\n" + sDatabase + ": " + DiversityWorkbench.Settings.DatabaseName + "\r\n";
+                    if (DiversityWorkbench.Settings.DatabaseUser != null && DiversityWorkbench.Settings.DatabaseUser.Length > 0
+                        && DiversityWorkbench.Settings.Password != null && DiversityWorkbench.Settings.Password.Length > 0)
+                        body += sUser + ": " + DiversityWorkbench.Settings.DatabaseUser + "\r\n";
+                    else if (DiversityWorkbench.Settings.CurrentUserName().Length > 0)
+                        body += sUser + ": " + DiversityWorkbench.Settings.CurrentUserName() + "\r\n";
+                }
+                if (Query != null && Query != "")
+                {
+                    body += "\r\n" + sQuery + ":\r\n" + Query + "\r\n";
+                }
+                if (ID != null && ID != "")
+                {
+                    body += "\r\nID: " + ID + "\r\n";
+                }
+                if (ErrorLog().Length > 0)
+                {
+                    body += "\r\nError log:\r\n" + ErrorLog() + "\r\n";
+                }
+                subject = Uri.EscapeDataString(subject);
+                body = Uri.EscapeDataString(body);
+
                 System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo("mailto:" + _SupportMailAccount + "?subject=" + subject + "&body=" + body);
                 info.UseShellExecute = true;
                 System.Diagnostics.Process.Start(info);
             }
-            catch(System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(
+                   $"Unable to send e-mail: {ex.Message}",
+                   "Error",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
         }
 
         /// <summary>
@@ -306,25 +260,24 @@ namespace DiversityWorkbench
         /// <param name="Body">Body of the email</param>
         public static void SendMail(string Subject, string Body)
         {
-            string subject = Uri.EscapeDataString(Subject);
-            string body = Uri.EscapeDataString(Body);
-            System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo("mailto:" + _SupportMailAccount + "?subject=" + subject +"&body=" + body);
-            info.UseShellExecute = true;
-            System.Diagnostics.Process.Start(info);
+            try
+            {
+                string subject = Uri.EscapeDataString(Subject);
+                string body = Uri.EscapeDataString(Body);
+                System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo("mailto:" + _SupportMailAccount + "?subject=" + subject + "&body=" + body);
+                info.UseShellExecute = true;
+                System.Diagnostics.Process.Start(info);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(
+                   $"Unable to send e-mail: {ex.Message}",
+                   "Error",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
         }
-
-        //public static void SendFeedback(System.Windows.Forms.Form fParent, string Version, string Query, string ID)
-        //{
-        //    try
-        //    {
-        //        DiversityWorkbench.Forms.FormFeedback f = new DiversityWorkbench.Forms.FormFeedback(Version, Query, ID, DiversityWorkbench.Forms.FormFeedback.FormState.Reporting);
-        //        f.ShowDialog();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-        //    }
-        //}
 
         public static void FeedbackHistory()
         {
@@ -407,11 +360,26 @@ namespace DiversityWorkbench
                 Process.Start(psi);
                 return true;
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                // You can log ex.Message for diagnostics
-                return false;
+                System.Windows.Forms.MessageBox.Show(
+                   $"Unable to verify if email client is configured: {ex.Message}",
+                   "Error",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
+            return false;
+        }
+
+        public static bool MailClientIsConfigured()
+        {
+            using var key = Registry.ClassesRoot.OpenSubKey(@"mailto\shell\open\command");
+            if (key == null)
+                return false;
+
+            var cmd = key.GetValue(null) as string;
+            return !string.IsNullOrWhiteSpace(cmd);
         }
     }
 }

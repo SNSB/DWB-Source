@@ -3836,7 +3836,16 @@ namespace DiversityWorkbench.Forms
 
         private void linkLabelResource_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(this.linkLabelResource.Text);
+            try
+            {
+                System.Diagnostics.Process.Start(this.linkLabelResource.Text);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
         }
 
         #endregion

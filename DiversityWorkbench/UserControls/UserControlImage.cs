@@ -182,7 +182,6 @@ namespace DiversityWorkbench.UserControls
         {
             if (this.webBrowserNoMedia.Url != null && this._MediumType != DiversityWorkbench.Forms.FormFunctions.Medium.Ignore)
             {
-                //System.Diagnostics.Process.Start(this.webBrowserNoMedia.Url.ToString());
                 try
                 {
                     string url = this.webBrowserNoMedia.Url.ToString();
@@ -195,6 +194,7 @@ namespace DiversityWorkbench.UserControls
                 catch (Exception ex)
                 {
                     MessageBox.Show($"An error occurred while trying to open with an external browser: {ex.Message}");
+                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
                 }
             }
         }

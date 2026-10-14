@@ -334,9 +334,11 @@ namespace DiversityWorkbench.UserControls
                 };
                 System.Diagnostics.Process.Start(info);
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                MessageBox.Show("Failed to open URL: " + ex.Message);
+                MessageBox.Show($"Failed to open URL:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
 

@@ -1,0 +1,13 @@
+﻿app.config
+*Log.htm
+Properties/Settings.settings
+Properties/Settings.Designer.cs
+DiversityProjectsSetup/Debug/*
+DiversityProjectsSetup/Release/*
+DiversityProjectsAllInOneSetup/Debug/*
+DiversityProjectsAllInOneSetup/Release/*
+bin/
+obj/
+*.vs/
+*.suo
+*.user

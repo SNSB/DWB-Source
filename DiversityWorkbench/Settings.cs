@@ -933,8 +933,8 @@ namespace DiversityWorkbench
                 string ConStr = "";
                 try
                 {
-                    if (DiversityWorkbench.WorkbenchSettings.Default.DatabaseServer.Length == 0 ||
-                        DiversityWorkbench.WorkbenchSettings.Default.DatabaseName.Length == 0)
+                    // only check for database server!
+                    if (DiversityWorkbench.WorkbenchSettings.Default.DatabaseServer.Length == 0)
                         return "";
                     ConStr += "Data Source=" + DiversityWorkbench.WorkbenchSettings.Default.DatabaseServer;
                     if (DiversityWorkbench.WorkbenchSettings.Default.DatabasePort != 1433) ConStr += "," + DiversityWorkbench.WorkbenchSettings.Default.DatabasePort.ToString();
@@ -943,13 +943,13 @@ namespace DiversityWorkbench
                     if (DiversityWorkbench.WorkbenchSettings.Default.IsTrustedConnection)
                     {
                         ConStr += "Integrated Security=True;";
-                        ConStr += "TrustServerCertificate=True";
+                        ConStr += "TrustServerCertificate=true";
                     }
                     else
                     {
                         ConStr += "User ID=" + DiversityWorkbench.WorkbenchSettings.Default.DatabaseUser + ";";
                         ConStr += "Password=" + DiversityWorkbench.Settings.Password;
-                        ConStr += ";TrustServerCertificate=True";
+                        ConStr += ";TrustServerCertificate=true";
                         if (DiversityWorkbench.WorkbenchSettings.Default.DatabaseUser.Length == 0 ||
                             DiversityWorkbench.Settings.Password.Length == 0)
                             return "";
@@ -957,7 +957,10 @@ namespace DiversityWorkbench
 
                     // Encrypted connection
                     if (ConStr.Length > 0 && DiversityWorkbench.Settings.IsEncryptedConnection)
-                        ConStr += ";Encrypt=true;TrustServerCertificate=true";
+                        if (!ConStr.Contains("Encrypt=true"))
+                            ConStr += ";Encrypt=true;";
+                        if (!ConStr.Contains("TrustServerCertificate=true"))
+                            ConStr += "TrustServerCertificate=true";
                     try
                     {
                         Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(ConStr);
@@ -1045,7 +1048,7 @@ namespace DiversityWorkbench
                     if (DiversityWorkbench.WorkbenchSettings.Default.DatabaseUser.Length == 0 ||
                         DiversityWorkbench.Settings.Password.Length == 0)
                         return "";
-                    ConStr += "; TrustServerCertificate=True";
+                    ConStr += "; TrustServerCertificate=true";
                 }
                 ConStr += ";Connection Timeout=" + Timeout.ToString() + ";";
 

@@ -255,11 +255,20 @@ namespace DiversityWorkbench.Forms
 
         private void toolStripButtonSystemBrowser_Click(object sender, EventArgs e)
         {
-            if (this.userControlWebView.Url != null)
+            try
             {
-                System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(this.userControlWebView.Url.ToString());
-                info.UseShellExecute = true;
-                System.Diagnostics.Process.Start(info);
+                if (this.userControlWebView.Url != null)
+                {
+                    System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(this.userControlWebView.Url.ToString());
+                    info.UseShellExecute = true;
+                    System.Diagnostics.Process.Start(info);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
 

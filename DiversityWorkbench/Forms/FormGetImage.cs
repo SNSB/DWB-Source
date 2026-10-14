@@ -405,6 +405,9 @@ namespace DiversityWorkbench.Forms
                 catch (System.Exception ex)
                 {
                     X = "";
+                    MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
                 }
                 return X;
             }

@@ -357,8 +357,10 @@ namespace DiversityWorkbench.UserControls
                     this.panelModulePath.Visible = true;
                 }
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
+                MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
@@ -383,10 +385,12 @@ namespace DiversityWorkbench.UserControls
                     DiversityWorkbench.Forms.FormWebBrowser f = new DiversityWorkbench.Forms.FormWebBrowser(fi.FullName);
                     f.ShowExternal = true;
                     f.ShowDialog();
-                    // System.Diagnostics.Process.Start(fi.FullName);
+
                 }
-                catch (Exception ex)
+                catch (System.Exception ex)
                 {
+                    MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
                 }
             }
@@ -407,40 +411,48 @@ namespace DiversityWorkbench.UserControls
                 Path = "";
                 this.panelModulePath.Visible = true;
             }
-            if (Path.Length == 0)
-            {
-                System.Windows.Forms.MessageBox.Show("Please set the path to the application");
-                this.panelModulePath.Visible = true;
-                return;
-            }
-            if (this._SC_createEntry == null)
-            {
-                System.Collections.Generic.List<string> L = new List<string>();
-                foreach (System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.ServerConnection> KV in this._WU.ServerConnections())
-                    L.Add(KV.Key);
-                DiversityWorkbench.Forms.FormGetStringFromList f = new DiversityWorkbench.Forms.FormGetStringFromList(L, "Select database", "Please select the database where the description should be created", true);
-                f.ShowDialog();
-                if (f.DialogResult == DialogResult.OK)
+            try { 
+                if (Path.Length == 0)
                 {
-                    this._SC_createEntry = this._WU.ServerConnections()[f.SelectedString];
+                    System.Windows.Forms.MessageBox.Show("Please set the path to the application");
+                    this.panelModulePath.Visible = true;
+                    return;
+                }
+                if (this._SC_createEntry == null)
+                {
+                    System.Collections.Generic.List<string> L = new List<string>();
+                    foreach (System.Collections.Generic.KeyValuePair<string, DiversityWorkbench.ServerConnection> KV in this._WU.ServerConnections())
+                        L.Add(KV.Key);
+                    DiversityWorkbench.Forms.FormGetStringFromList f = new DiversityWorkbench.Forms.FormGetStringFromList(L, "Select database", "Please select the database where the description should be created", true);
+                    f.ShowDialog();
+                    if (f.DialogResult == DialogResult.OK)
+                    {
+                        this._SC_createEntry = this._WU.ServerConnections()[f.SelectedString];
+                    }
+                    else
+                        return;
+                }
+                string Database = this._SC_createEntry.DatabaseName;
+                string Server = this._SC_createEntry.DatabaseServer;
+                string Port = this._SC_createEntry.DatabaseServerPort.ToString();
+                string URI = DiversityWorkbench.Settings.ServerConnection.BaseURL + this._ID;
+                if (Path.Length > 0)
+                {
+                    string Arguments = "createitem " + Server + " " + Port + " " + Database + " " + URI;
+                    if (!DiversityWorkbench.Settings.IsTrustedConnection)
+                        Arguments += " " + DiversityWorkbench.Settings.DatabaseUser + " " + DiversityWorkbench.Settings.Password;
+                    System.Diagnostics.Process.Start(Path, Arguments);
                 }
                 else
-                    return;
+                {
+                    System.Windows.Forms.MessageBox.Show("Please set the path to the application");
+                }
             }
-            string Database = this._SC_createEntry.DatabaseName;
-            string Server = this._SC_createEntry.DatabaseServer;
-            string Port = this._SC_createEntry.DatabaseServerPort.ToString();
-            string URI = DiversityWorkbench.Settings.ServerConnection.BaseURL + this._ID;
-            if (Path.Length > 0)
+            catch (System.Exception ex)
             {
-                string Arguments = "createitem " + Server + " " + Port + " " + Database + " " + URI;
-                if (!DiversityWorkbench.Settings.IsTrustedConnection)
-                    Arguments += " " + DiversityWorkbench.Settings.DatabaseUser + " " + DiversityWorkbench.Settings.Password;
-                System.Diagnostics.Process.Start(Path, Arguments);
-            }
-            else
-            {
-                System.Windows.Forms.MessageBox.Show("Please set the path to the application");
+                MessageBox.Show($"Error:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
 

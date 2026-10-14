@@ -6877,35 +6877,54 @@ namespace DiversityWorkbench.Forms
             return OK;
         }
 
-
-        public static string SqlExecuteScalar(string SqlCommand, bool IgnoreException = false)
+        public static string SqlExecuteScalar(string SqlCommand)
         {
-            // #235
-            if (String.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionString))
+            return SqlExecuteScalar(SqlCommand, null, false);
+        }
+
+        //SQL-String + IgnoreException
+        public static string SqlExecuteScalar(string SqlCommand, bool IgnoreException)
+        {
+            return SqlExecuteScalar(SqlCommand, null, IgnoreException);
+        }
+
+        // SQL-String + Parameter + optional IgnoreException
+        public static string SqlExecuteScalar(string SqlCommand, Dictionary<string, object> parameters, bool IgnoreException = false)
+        {
+            if (string.IsNullOrEmpty(DiversityWorkbench.Settings.ConnectionString))
                 return "";
 
-            string Result = "";
-            if (DiversityWorkbench.Settings.ConnectionString.Length == 0)
-                return Result;
-            Microsoft.Data.SqlClient.SqlConnection con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString);
-            try
+            string result = "";
+
+            using (var con = new Microsoft.Data.SqlClient.SqlConnection(DiversityWorkbench.Settings.ConnectionString))
             {
-                Microsoft.Data.SqlClient.SqlCommand C = new Microsoft.Data.SqlClient.SqlCommand(SqlCommand, con);
-                C.CommandTimeout = DiversityWorkbench.Settings.TimeoutDatabase;
-                con.Open();
-                Result = C.ExecuteScalar()?.ToString() ?? "";
+                try
+                {
+                    using (var cmd = new Microsoft.Data.SqlClient.SqlCommand(SqlCommand, con))
+                    {
+                        cmd.CommandTimeout = DiversityWorkbench.Settings.TimeoutDatabase;
+
+                        // Add parameters if provided
+                        if (parameters != null)
+                        {
+                            foreach (var param in parameters)
+                            {
+                                cmd.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
+                            }
+                        }
+
+                        con.Open();
+                        result = cmd.ExecuteScalar()?.ToString() ?? "";
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    if (!IgnoreException)
+                        DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex, SqlCommand);
+                }
             }
-            catch (System.Exception ex)
-            {
-                if (!IgnoreException)
-                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex, SqlCommand);
-            }
-            finally
-            {
-                con.Close();
-                con.Dispose();
-            }
-            return Result;
+
+            return result;
         }
 
         public static string SqlExecuteScalar(string SqlCommand, string ConnectionString)
@@ -6955,9 +6974,6 @@ namespace DiversityWorkbench.Forms
             }
             return Result;
         }
-
-
-
 
         public static string SqlExecuteScalar(string SqlCommand, string ConnectionString, ref string Message)
         {

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -131,7 +133,35 @@ namespace DiversityWorkbench.WorkbenchResources
 
         private void ButtonOpenDirectory_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", DiversityWorkbench.WorkbenchResources.WorkbenchDirectory.WorkbenchDirectoryModule());
+            try { 
+                string dir = DiversityWorkbench.WorkbenchResources.WorkbenchDirectory.WorkbenchDirectoryModule();
+                if (string.IsNullOrWhiteSpace(dir))
+                {
+                    MessageBox.Show("Directory path is not configured.", "Configuration Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!Directory.Exists(dir))
+                {
+                    MessageBox.Show($"Directory does not exist:\n{dir}", "Directory Not Found",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "explorer.exe",
+                    Arguments = $"\"{dir}\"",
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unable to open directory:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
         }
 
         #region Options

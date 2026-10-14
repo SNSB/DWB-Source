@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -237,67 +239,47 @@ namespace DiversityWorkbench.Archive
         {
         }
 
-        //private void WriteTextProtocol()
-        //{
-        //    try
-        //    {
-        //        using (System.IO.StreamWriter sw = System.IO.File.CreateText(this.ArchiveFolder() + "\\Protocol.txt"))
-        //        {
-        //            sw.WriteLine("Archive for: " + DiversityWorkbench.Settings.ModuleName);
-        //            sw.WriteLine("Created at: " + System.DateTime.Now.ToShortDateString() + " " + System.DateTime.Now.ToLocalTime());
-        //            sw.WriteLine("Created by: " + System.Environment.UserName);
-        //            sw.WriteLine("Server: " + DiversityWorkbench.Settings.DatabaseServer);
-        //            sw.WriteLine("Database: " + DiversityWorkbench.Settings.DatabaseName);
-        //            string SQL = "SELECT dbo.Version()";
-        //            string Version = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
-        //            if (Version.Length > 0)
-        //                sw.WriteLine("Database version: " + Version);
-        //            sw.WriteLine("SERVERNAME: " + DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar("select @@SERVERNAME"));
-        //            sw.WriteLine("BaseURL: " + DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar("select dbo.BaseURL()"));
-        //            sw.WriteLine("LastChanges: " + DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar("select dbo." + this._DataArchive.LastChangesInArchiveDataRetrievalFunction() + "(" + this._DataArchive.RestrictionValue + ")"));
-        //            sw.Close();
-        //            sw.Dispose();
-        //        }
-        //    }
-        //    catch (System.Exception ex)
-        //    {
-        //        DiversityWorkbench.ExceptionHandling.WriteToLog("FormCreateArchive", "ArchiveData()", ex.Message, DiversityWorkbench.Settings.ModuleName);
-        //    }
-        //}
-
         private string ArchiveFolder()
         {
-            string Folder = "";
+            string folder = "";
+
             if (_RunAsBackground)
             {
-                Folder = this._DirectoryForArchive;
-                string SQL = "SELECT " + this._DataArchive.DisplayColumn + " FROM " + this._DataArchive.RootTable + " WHERE " + this._DataArchive.ValueColumn + " = " + this._DataArchive.RestrictionValue;
-                string Archive = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(SQL);
-                if (Archive.Trim().Length > 0)
+                folder = this._DirectoryForArchive;
+
+                // Use parameterized query to prevent SQL injection
+                string sql = $"SELECT [{this._DataArchive.DisplayColumn}] FROM [{this._DataArchive.RootTable}] WHERE [{this._DataArchive.ValueColumn}] = @RestrictionValue";
+                var parameters = new Dictionary<string, object> { { "@RestrictionValue", this._DataArchive.RestrictionValue } };
+                string archive = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, parameters);
+
+                if (!string.IsNullOrWhiteSpace(archive))
                 {
-                    Archive = Archive.Trim().Replace(" ", "_").Replace(".", "_");
-                    Folder += "\\" + Archive + "_";
+                    archive = archive.Trim().Replace(" ", "_").Replace(".", "_");
+                    folder += "\\" + archive + "_";
                 }
             }
             else
             {
-                Folder = this.textBoxArchiveFolder.Text;
-                System.Data.DataRowView R = (System.Data.DataRowView)this.comboBoxRootSelection.SelectedItem;
-                if (!Folder.EndsWith("\\"))
-                    Folder += "\\";
-                Folder += R["Display"].ToString() + "_";
+                folder = this.textBoxArchiveFolder.Text;
+
+                if (this.comboBoxRootSelection.SelectedItem != null)
+                {
+                    var rowView = (System.Data.DataRowView)this.comboBoxRootSelection.SelectedItem;
+                    if (!folder.EndsWith("\\"))
+                        folder += "\\";
+                    folder += rowView["Display"]?.ToString() + "_";
+                }
             }
-            Folder += System.DateTime.Now.Year.ToString();
-            if (System.DateTime.Now.Month < 10)
-                Folder += "0";
-            Folder += System.DateTime.Now.Month.ToString();
-            if (System.DateTime.Now.Day < 10)
-                Folder += "0";
-            Folder += System.DateTime.Now.Day.ToString();
-            System.IO.DirectoryInfo D = new System.IO.DirectoryInfo(Folder);
-            if (!D.Exists)
-                D.Create();
-            return Folder;
+
+            // Append timestamp: YYYYMMDD
+            folder += DateTime.Now.ToString("yyyyMMdd");
+
+            // Create directory if it doesn't exist
+            DirectoryInfo dirInfo = new DirectoryInfo(folder);
+            if (!dirInfo.Exists)
+                dirInfo.Create();
+
+            return folder;
         }
 
         private System.Collections.Generic.List<Archive.Table> ParentTables(string TableName)
@@ -334,8 +316,43 @@ namespace DiversityWorkbench.Archive
 
         private void buttonDirectory_Click(object sender, EventArgs e)
         {
-            if (System.IO.Directory.Exists(this.ArchiveFolder()))
-                System.Diagnostics.Process.Start("explorer.exe", this.ArchiveFolder());
+            try
+            {
+                string archiveFolder = this.ArchiveFolder();
+
+                if (string.IsNullOrWhiteSpace(archiveFolder))
+                {
+                    MessageBox.Show("Archive folder path could not be determined.", "Configuration Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!Directory.Exists(archiveFolder))
+                {
+                    MessageBox.Show($"Archive folder does not exist:\n{archiveFolder}", "Directory Not Found",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "explorer.exe",
+                    Arguments = $"\"{archiveFolder}\"",
+                    UseShellExecute = true
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show($"Access denied when creating or accessing the archive folder.\n\n{ex.Message}",
+                    "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unable to open archive folder:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
+            }
         }
 
         private void checkBoxIncludeLog_Click(object sender, EventArgs e)

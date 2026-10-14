@@ -9985,20 +9985,12 @@ namespace DiversityWorkbench.Forms
                 if (fileInfo != null && fileInfo.Exists)
                 {
                     Process.Start("notepad.exe", fileInfo.FullName);
-
-                    //this.openFileDialog.InitialDirectory = fileInfo.DirectoryName;
-                    //this.openFileDialog.Filter = "(" + fileInfo.Name + ")|*.md";
-                    //this.openFileDialog.ShowDialog();
-                    //this.openFileDialog.OpenFile();
-
-                    //DiversityWorkbench.Forms.FormWebBrowser form = new FormWebBrowser(fileInfo.FullName);
-                    //form.Text = "Link: " + this.dataGridViewHugoLinksMissing.Rows[this.dataGridViewHugoLinksMissing.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
-                    //form.ShowDialog();
                 }
             }
             catch (System.Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
 

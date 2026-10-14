@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DiversityWorkbench.Forms
@@ -1401,31 +1402,54 @@ namespace DiversityWorkbench.Forms
                             }
                             break;
                         case EditAction.Transfer:
-                            string Value = "";
-
-                            if (this.dataGridView.SelectedCells[i].GetType() == typeof(System.Windows.Forms.DataGridViewComboBoxCell))
+                            if (this.comboBoxEditInsert.SelectedValue == null)
                             {
-                                System.Windows.Forms.DataGridViewComboBoxCell CBC = (System.Windows.Forms.DataGridViewComboBoxCell)this.dataGridView.SelectedCells[i];
-                                if (CBC.DataSource.GetType() == typeof(System.Data.DataTable))
+                                System.Windows.Forms.MessageBox.Show("Please select a target column for the transfer", "No Target", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                            else if (this.comboBoxEditInsert.SelectedValue.ToString() == this.dataGridView.Columns[this.dataGridView.SelectedCells[i].ColumnIndex].DataPropertyName)
+                            {
+                                System.Windows.Forms.MessageBox.Show("You can not transfer values into the same column", "Self as Target", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                            string Value = this.dataGridView.SelectedCells[i].Value.ToString();
+
+                            if (this.comboBoxEditInsert.SelectedValue != null)
+                            {
+                                string selectedTargetColumn = this.comboBoxEditInsert.SelectedValue.ToString();
+
+                                var col = this.dataGridView.Columns
+                                    .Cast<DataGridViewColumn>()
+                                    .FirstOrDefault(c => c.DataPropertyName == selectedTargetColumn);
+
+                                int index = col?.Index ?? -1;
+
+                                this.dataGridView.Rows[this.dataGridView.SelectedCells[i].RowIndex].Cells[index].Value = Value;
+
+                                if (this.dataGridView.SelectedCells[i].GetType() == typeof(System.Windows.Forms.DataGridViewComboBoxCell))
                                 {
-                                    System.Data.DataTable T = (System.Data.DataTable)CBC.DataSource;
-                                    if (T.Rows[0][0].Equals(System.DBNull.Value))
+                                    System.Windows.Forms.DataGridViewComboBoxCell CBC = (System.Windows.Forms.DataGridViewComboBoxCell)this.dataGridView.SelectedCells[i];
+                                    if (CBC.DataSource.GetType() == typeof(System.Data.DataTable))
                                     {
-                                        CBC.Value = null;// System.DBNull.Value;
+                                        System.Data.DataTable T = (System.Data.DataTable)CBC.DataSource;
+                                        if (T.Rows[0][0].Equals(System.DBNull.Value))
+                                        {
+                                            CBC.Value = null;// System.DBNull.Value;
+                                        }
                                     }
                                 }
-                            }
-                            //this.dataGridView.SelectedCells[i].Value = null;// System.DBNull.Value;
-                            this.dataGridView.SelectedCells[i].Value = System.DBNull.Value;
-                            if (this.dataGridView.SelectedCells[i].Value != null)
-                            {
+                                //this.dataGridView.SelectedCells[i].Value = null;// System.DBNull.Value;
                                 this.dataGridView.SelectedCells[i].Value = System.DBNull.Value;
                                 if (this.dataGridView.SelectedCells[i].Value != null)
-                                    this.dataGridView.SelectedCells[i].Value = null;
-                            }
-                            if (this.dataGridView.SelectedCells[i].ValueType.FullName == "System.DateTime")
-                            {
-                                this.dataGridView.SelectedCells[i].Value = System.DBNull.Value;
+                                {
+                                    this.dataGridView.SelectedCells[i].Value = System.DBNull.Value;
+                                    if (this.dataGridView.SelectedCells[i].Value != null)
+                                        this.dataGridView.SelectedCells[i].Value = null;
+                                }
+                                if (this.dataGridView.SelectedCells[i].ValueType.FullName == "System.DateTime")
+                                {
+                                    this.dataGridView.SelectedCells[i].Value = System.DBNull.Value;
+                                }
                             }
                             break;
                     }
@@ -1637,7 +1661,7 @@ namespace DiversityWorkbench.Forms
             catch (System.Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
-
+                DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
 

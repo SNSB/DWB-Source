@@ -1,6 +1,8 @@
 using Microsoft.SqlServer.Management.XEvent;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace DiversityWorkbench
 {
@@ -93,25 +95,43 @@ namespace DiversityWorkbench
 
         public static void ShowErrorLog()
         {
-            System.IO.FileInfo E = new System.IO.FileInfo(ErrorLogFilePath);
-            if (E.Exists)
+            if (string.IsNullOrWhiteSpace(ErrorLogFilePath))
             {
-                try
-                {
-                    System.IO.FileInfo fileObj = new System.IO.FileInfo(E.FullName);
-                    fileObj.Attributes = System.IO.FileAttributes.ReadOnly;
-                    System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(fileObj.FullName);
-                    info.UseShellExecute = true;
-                    System.Diagnostics.Process.Start(info);
-                }
-                catch (Exception ex)
-                {
-                    DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
-                }
+                MessageBox.Show("Error log file path is not configured.", "Configuration Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            FileInfo errorLogFile = new FileInfo(ErrorLogFilePath);
+
+            if (!errorLogFile.Exists)
             {
-                System.Windows.Forms.MessageBox.Show("No ErrorLog present");
+                MessageBox.Show("No error log file present.", "No Error Log",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            try
+            {
+                // Set file to read-only before opening'!
+                errorLogFile.Attributes = FileAttributes.ReadOnly;
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = errorLogFile.FullName,
+                    UseShellExecute = true
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show($"Access denied to the error log file.\n\n{ex.Message}",
+                    "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unable to open error log file:\n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Note: Can't write to error log here as we're trying to open it
             }
         }
 
