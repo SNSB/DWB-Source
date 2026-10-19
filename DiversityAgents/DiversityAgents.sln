@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiversityAgents", "DiversityAgents\DiversityAgents.csproj", "{704B9B1D-DFDA-40B4-9FEF-D25BAB37FF3F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiversityWorkbench", "..\DiversityWorkbench\DiversityWorkbench.csproj", "{2373B67D-E77F-468F-A6DA-D125EE971503}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DWBServices", "..\DWBServices\DWBServices.csproj", "{ABBDB2FE-DB10-4470-908E-95F3C135BFAA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoConversion", "..\GeoConversion\GeoConversion.csproj", "{E2D1E911-4EEF-4559-AB7E-14F8896B1076}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfControls", "..\WpfControls\WpfControls.csproj", "{6D7B8146-CFF4-42D0-AEF4-4C1495606129}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfSamplingPlotPage", "..\WpfSamplingPlotPage\WpfSamplingPlotPage.csproj", "{EE19F3AF-13A5-490A-A659-72C3F3FBD4EC}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DiversityAgentsAllInOneSetup", "DiversityAgents\DiversityAgentsAllInOneSetup\DiversityAgentsAllInOneSetup.vdproj", "{55E1AB25-4D0F-4BAD-BE83-785258DFC645}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{704B9B1D-DFDA-40B4-9FEF-D25BAB37FF3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{704B9B1D-DFDA-40B4-9FEF-D25BAB37FF3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{704B9B1D-DFDA-40B4-9FEF-D25BAB37FF3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{704B9B1D-DFDA-40B4-9FEF-D25BAB37FF3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2373B67D-E77F-468F-A6DA-D125EE971503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2373B67D-E77F-468F-A6DA-D125EE971503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2373B67D-E77F-468F-A6DA-D125EE971503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2373B67D-E77F-468F-A6DA-D125EE971503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABBDB2FE-DB10-4470-908E-95F3C135BFAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABBDB2FE-DB10-4470-908E-95F3C135BFAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABBDB2FE-DB10-4470-908E-95F3C135BFAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABBDB2FE-DB10-4470-908E-95F3C135BFAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2D1E911-4EEF-4559-AB7E-14F8896B1076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2D1E911-4EEF-4559-AB7E-14F8896B1076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2D1E911-4EEF-4559-AB7E-14F8896B1076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2D1E911-4EEF-4559-AB7E-14F8896B1076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D7B8146-CFF4-42D0-AEF4-4C1495606129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D7B8146-CFF4-42D0-AEF4-4C1495606129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D7B8146-CFF4-42D0-AEF4-4C1495606129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D7B8146-CFF4-42D0-AEF4-4C1495606129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE19F3AF-13A5-490A-A659-72C3F3FBD4EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE19F3AF-13A5-490A-A659-72C3F3FBD4EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE19F3AF-13A5-490A-A659-72C3F3FBD4EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE19F3AF-13A5-490A-A659-72C3F3FBD4EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55E1AB25-4D0F-4BAD-BE83-785258DFC645}.Debug|Any CPU.ActiveCfg = Debug
+		{55E1AB25-4D0F-4BAD-BE83-785258DFC645}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E34B22FF-06BC-43E3-8ACC-5A022702EDD8}
+	EndGlobalSection
+EndGlobal

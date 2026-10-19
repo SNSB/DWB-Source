@@ -5782,7 +5782,7 @@ namespace DiversityWorkbench.UserControls
                     "JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE pk_tc ON pk.CONSTRAINT_NAME = pk_tc.CONSTRAINT_NAME AND pk_tc.ORDINAL_POSITION = fk.ORDINAL_POSITION " +
                     "WHERE pk.TABLE_SCHEMA + '.' + pk.TABLE_NAME = @ParentTable AND fk.TABLE_SCHEMA + '.' + fk.TABLE_NAME = @ChildTable " +
                     "ORDER BY rc.CONSTRAINT_NAME, fk.ORDINAL_POSITION;";
-                System.Data.DataTable dataTable = DiversityWorkbench.Forms.FormFunctions.DataTable(sql, this.Connection, "Links");
+                System.Data.DataTable dataTable = DiversityWorkbench.Forms.FormFunctions.DataTable(sql, this.Connection.ConnectionString, "Links");
                 foreach (System.Data.DataRow dataRow in dataTable.Rows)
                 {
                     var parent = Tuple.Create(dataRow[0].ToString(), dataRow[1].ToString());
@@ -5798,6 +5798,10 @@ namespace DiversityWorkbench.UserControls
         private string _OptimizedQueryBaseTable;
         private string OptimizedQueryBaseTable(string ViewOrTableName)
         {
+            string connectionString = this.Connection.ConnectionString;
+            if (connectionString.Length == 0)
+                connectionString = DiversityWorkbench.Settings.ConnectionString;
+
             if (_OptimizedQueryBaseTable != null && ViewOrTableName == UserControlQueryList.QueryMainTable)
             {
                 return _OptimizedQueryBaseTable;
@@ -5805,35 +5809,49 @@ namespace DiversityWorkbench.UserControls
             string basetable = "";
             basetable = ViewOrTableName;
             string sql = "SELECT T.TABLE_TYPE FROM " + Prefix(false) + "INFORMATION_SCHEMA.TABLES T WHERE T.TABLE_NAME = '" + ViewOrTableName + "'";
-            string TABLE_TYPE = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, this.Connection);
+            string TABLE_TYPE = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, connectionString);
 
             if (TABLE_TYPE == "VIEW")
             {
-                sql = "SELECT " + //TOP 1 " +
-                    "referenced_entity_name AS TableName " +
-                    "FROM sys.sql_expression_dependencies " +
-                    "WHERE referencing_id = OBJECT_ID('dbo." + ViewOrTableName + "') " +
-                    "AND referenced_entity_name NOT LIKE '%[_]%'";
-                System.Data.DataTable dtBaseTables = DiversityWorkbench.Forms.FormFunctions.DataTable(sql, this.Connection.ConnectionString);
-                foreach(System.Data.DataRow dataRow in dtBaseTables.Rows)
+                if (Forms.FormFunctions.hasPermissionOnViewDefinition)
                 {
-                    if (ViewOrTableName.IndexOf(dataRow[0].ToString()) > -1)
-                    {
-                        basetable = dataRow[0].ToString();
-                        break;
-                    }
-                }
-                if (basetable.Length == 0)
-                {
-                    sql = "SELECT TOP 1 " +
+                    sql = "SELECT " + //TOP 1 " +
                         "referenced_entity_name AS TableName " +
                         "FROM sys.sql_expression_dependencies " +
                         "WHERE referencing_id = OBJECT_ID('dbo." + ViewOrTableName + "') " +
                         "AND referenced_entity_name NOT LIKE '%[_]%'";
-                    basetable = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, this.Connection);
+                    System.Data.DataTable dtBaseTables = DiversityWorkbench.Forms.FormFunctions.DataTable(sql, connectionString);
+                    foreach(System.Data.DataRow dataRow in dtBaseTables.Rows)
+                    {
+                        if (ViewOrTableName.IndexOf(dataRow[0].ToString()) > -1)
+                        {
+                            basetable = dataRow[0].ToString();
+                            break;
+                        }
+                    }
+                    if (basetable.Length == 0)
+                    {
+                        sql = "SELECT TOP 1 " +
+                            "referenced_entity_name AS TableName " +
+                            "FROM sys.sql_expression_dependencies " +
+                            "WHERE referencing_id = OBJECT_ID('dbo." + ViewOrTableName + "') " +
+                            "AND referenced_entity_name NOT LIKE '%[_]%'";
+                        basetable = DiversityWorkbench.Forms.FormFunctions.SqlExecuteScalar(sql, connectionString);
+                    }
+                }
+                else
+                {
+                    // try text fix
+                    if (basetable.IndexOf("_") > -1)
+                    {
+                        string baseObject = basetable.Substring(0, basetable.IndexOf("_"));
+                        sql = "select count(*) from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = '" + baseObject + "'";
+                        if (FormFunctions.SqlExecuteScalar(sql) == "1")
+                            basetable = baseObject;
+                    }
                 }
             }
-            if (_OptimizedQueryBaseTable == null && ViewOrTableName == UserControlQueryList.QueryMainTable)
+            if (_OptimizedQueryBaseTable == null && ViewOrTableName == UserControlQueryList.QueryMainTable && basetable.Length > 0)
             {
                 _OptimizedQueryBaseTable = basetable;
             }

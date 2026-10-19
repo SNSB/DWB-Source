@@ -1,0 +1,12 @@
+app.config
+Properties/Settings.settings
+Properties/Settings.Designer.cs
+DiversityAgentsSetup/Debug/*
+DiversityAgentsSetup/Release/*
+DiversityAgentsAllInOneSetup/Debug/*
+DiversityAgentsAllInOneSetup/Release/*
+bin/
+obj/
+*.vs/
+*.suo
+*.user

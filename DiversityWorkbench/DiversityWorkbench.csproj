@@ -20,7 +20,7 @@
     <AssemblyVersion>$(Version)</AssemblyVersion>
     <FileVersion>$(Version)</FileVersion>
     <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
-    <Version>7.1.8</Version>
+    <Version>7.1.9</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -165,11 +165,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Update="PostgresSettings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>PostgresSettings.settings</DependentUpon>
     </Compile>
     <Compile Update="Prometheus\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -524,7 +519,7 @@
     </PackageReference>
     <PackageReference Include="HtmlTextWriter" Version="3.0.2" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.90.1" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.91.0" />
     <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="181.37.1" />
     <PackageReference Include="Microsoft.SqlServer.Types" Version="170.1000.7" />
     <PackageReference Include="Microsoft.Web.WebView2">
@@ -538,17 +533,17 @@
     </PackageReference>
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="System.Data.OleDb" Version="10.0.12" />
+    <PackageReference Include="System.Data.OleDb" Version="10.0.13" />
     <PackageReference Include="System.Data.SQLite">
       <Version>2.0.4</Version>
     </PackageReference>
-    <PackageReference Include="System.Formats.Asn1" Version="10.0.12" />
+    <PackageReference Include="System.Formats.Asn1" Version="10.0.13" />
     <PackageReference Include="System.IO.FileSystem.AccessControl" Version="5.0.0" />
-    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.12" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="10.0.652802" />
     <PackageReference Include="System.Windows.Forms.DataVisualization" Version="1.0.0-prerelease.20110.1" />
 	<PackageReference Include="System.Text.Json">
-		  <Version>10.0.12</Version>
+		  <Version>10.0.13</Version>
 	 </PackageReference>
   </ItemGroup>
   <ItemGroup>

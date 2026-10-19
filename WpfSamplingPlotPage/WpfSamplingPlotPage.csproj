@@ -9,7 +9,7 @@
     <AssemblyVersion>$(Version)</AssemblyVersion>
     <FileVersion>$(Version)</FileVersion>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
-    <Version>7.1.5</Version>
+    <Version>7.1.6</Version>
     <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -121,8 +121,8 @@
     <PackageReference Include="Microsoft.Web.WebView2">
       <Version>1.0.4258.31</Version>
     </PackageReference>
-    <PackageReference Include="System.Data.OleDb" Version="10.0.12" />
-    <PackageReference Include="System.IO.Ports" Version="10.0.12" />
+    <PackageReference Include="System.Data.OleDb" Version="10.0.13" />
+    <PackageReference Include="System.IO.Ports" Version="10.0.13" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeoConversion\GeoConversion.csproj" />

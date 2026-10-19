@@ -1595,6 +1595,19 @@ namespace DiversityWorkbench.Forms
             }
         }
 
+        public static bool hasPermissionOnViewDefinition
+        {
+            get
+            {
+                string SQL = "SELECT count(*) FROM fn_my_permissions(NULL, 'DATABASE') WHERE permission_name = 'VIEW DEFINITION';";
+                string Result = SqlExecuteScalar(SQL).ToString();
+                int i;
+                if (int.TryParse(Result, out i) && i > 0)
+                    return true;
+                return false;
+            }
+        }
+
 
         #endregion
 
