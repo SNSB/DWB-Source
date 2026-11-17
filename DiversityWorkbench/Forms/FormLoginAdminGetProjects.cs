@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiversityWorkbench.DwbManual;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -106,6 +107,9 @@ namespace DiversityWorkbench.Forms
             this._CallingServerConnection = ServerConnection;
             this.labelProjectsMissing.Text = "Projects missing in database " + this._CallingServerConnection.DatabaseName;
             this.initDatabaseList();
+            this.KeyPreview = true;
+            this.KeyDown += Form_KeyDown;
+
         }
 
         public FormLoginAdminGetProjects(System.Data.DataTable DtProjectProxy, DiversityWorkbench.ServerConnection ServerConnection, string ProjectsDatabase, string HelpNamespace)
@@ -620,6 +624,64 @@ namespace DiversityWorkbench.Forms
         }
 
         #endregion
+
+        #region Manual
+
+        /// <summary>
+        /// #35
+        /// setting the keyword for the help provider
+        /// </summary>
+        public void setKeyword(string Keyword)
+        {
+            this.helpProvider.SetHelpKeyword(this, Keyword);
+        }
+
+
+
+        /// <summary>
+        /// Adding event deletates to form and controls
+        /// </summary>
+        /// <returns></returns>
+        private async System.Threading.Tasks.Task InitManual()
+        {
+            try
+            {
+
+                DiversityWorkbench.DwbManual.Hugo manual = new Hugo(this.helpProvider, this);
+                if (manual != null)
+                {
+                    await manual.addKeyDownF1ToForm();
+                }
+            }
+            catch (Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+        }
+
+        /// <summary>
+        /// ensure that init is only done once
+        /// </summary>
+        private bool _InitManualDone = false;
+
+
+        /// <summary>
+        /// KeyDown of the form adding event deletates to form and controls within the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void Form_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (!_InitManualDone)
+                {
+                    await this.InitManual();
+                    _InitManualDone = true;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        #endregion
+
 
     }
 }

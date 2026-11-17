@@ -1,3 +1,4 @@
+using DiversityWorkbench.DwbManual;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -960,7 +961,7 @@ namespace DiversityWorkbench.Forms
         private static bool _ShowServerActiviyForPostgres = false;
         private static readonly int _PostgresProcessActivityAge = 30;
 
-        public static void ShowServerActiviy(int? Width = null, int? Height = null, bool ForPostgres = false)
+        public static void ShowServerActiviy(int? Width = null, int? Height = null, bool ForPostgres = false, string Keyword = "")
         {
             // Markus 3.5.23: Auch fuer Postgres verwendet, Anpassung daran und Oeffnen nur als Dialog
             _ShowServerActiviyForPostgres = ForPostgres;
@@ -988,6 +989,14 @@ namespace DiversityWorkbench.Forms
                         B.Dock = System.Windows.Forms.DockStyle.Bottom;
                         B.Height = 26;
                         FormServerActivity.Controls.Add(B);
+
+                        if (Keyword.Length > 0)
+                        {
+                            FormServerActivity.KeyPreview = true;
+                            System.Windows.Forms.HelpProvider helpProvider = new System.Windows.Forms.HelpProvider();
+                            helpProvider.SetHelpKeyword(FormServerActivity, Keyword);
+                            InitManual(FormServerActivity, helpProvider);
+                        }
 
                         System.Windows.Forms.Button Bkill = new System.Windows.Forms.Button();
                         Bkill.Text = "Kill selected process";
@@ -1044,6 +1053,53 @@ namespace DiversityWorkbench.Forms
             }
             catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
+
+        #region Manual
+
+        /// <summary>
+        /// Adding event deletates to form and controls
+        /// </summary>
+        /// <returns></returns>
+        private static async System.Threading.Tasks.Task InitManual(System.Windows.Forms.Form form, System.Windows.Forms.HelpProvider helpProvider)
+        {
+            try
+            {
+
+                DiversityWorkbench.DwbManual.Hugo manual = new Hugo(helpProvider, form);
+                if (manual != null)
+                {
+                    await manual.addKeyDownF1ToForm();
+                }
+            }
+            catch (Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+        }
+
+        /// <summary>
+        /// ensure that init is only done once
+        /// </summary>
+        private static bool _InitManualDone = false;
+
+
+        /// <summary>
+        /// KeyDown of the form adding event deletates to form and controls within the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //private static async void Form_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (!_InitManualDone)
+        //        {
+        //            await InitManual();
+        //            _InitManualDone = true;
+        //        }
+        //    }
+        //    catch (Exception ex) { MessageBox.Show(ex.Message); }
+        //}
+
+        #endregion
+
 
         private static System.Data.DataTable DtServerActivity;
 
@@ -1255,21 +1311,25 @@ namespace DiversityWorkbench.Forms
 
         public void setControlsAccordingToPermissions(System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<DatabaseGrant, System.Collections.Generic.List<System.Windows.Forms.Control>>> DataControlDictionary)
         {
-            foreach (System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.Dictionary<DatabaseGrant, System.Collections.Generic.List<System.Windows.Forms.Control>>>
-                KV_Table in DataControlDictionary)
+            try
             {
-                bool OK;
-                string TableName = KV_Table.Key;
-                foreach (System.Collections.Generic.KeyValuePair<DatabaseGrant, System.Collections.Generic.List<System.Windows.Forms.Control>>
-                    KV_Controls in KV_Table.Value)
+                foreach (System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.Dictionary<DatabaseGrant, System.Collections.Generic.List<System.Windows.Forms.Control>>>
+                    KV_Table in DataControlDictionary)
                 {
-                    OK = this.getObjectPermissions(TableName, KV_Controls.Key.ToString());
-                    foreach (System.Windows.Forms.Control C in KV_Controls.Value)
+                    bool OK;
+                    string TableName = KV_Table.Key;
+                    foreach (System.Collections.Generic.KeyValuePair<DatabaseGrant, System.Collections.Generic.List<System.Windows.Forms.Control>>
+                        KV_Controls in KV_Table.Value)
                     {
-                        this.setDataControlEnabled(C, OK);
+                        OK = this.getObjectPermissions(TableName, KV_Controls.Key.ToString());
+                        foreach (System.Windows.Forms.Control C in KV_Controls.Value)
+                        {
+                            this.setDataControlEnabled(C, OK);
+                        }
                     }
                 }
             }
+            catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
         }
 
         public void setObjectsAccordingToPermission(
@@ -1366,54 +1426,84 @@ namespace DiversityWorkbench.Forms
 
         public void setDataControlEnabled(System.Windows.Forms.Control Cont, bool Enabled)
         {
-            foreach (System.Windows.Forms.Control C in Cont.Controls)
+            if (Cont.GetType() == typeof(System.Windows.Forms.ToolStrip))
             {
-                if (C.GetType() == typeof(System.Windows.Forms.TextBox))
+                try
                 {
-                    try
-                    {
-                        System.Windows.Forms.TextBox T = (System.Windows.Forms.TextBox)C;
-                        T.ReadOnly = !Enabled;
-                    }
-                    catch { }
+                    foreach (System.Windows.Forms.ToolStripItem T in ((System.Windows.Forms.ToolStrip)Cont).Items)
+                        T.Enabled = Enabled;
                 }
-                if (C.GetType() == typeof(System.Windows.Forms.MaskedTextBox))
+                catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+            }
+            else
+            {
+                foreach (System.Windows.Forms.Control C in Cont.Controls)
                 {
-                    try
+                    if (C.GetType() == typeof(System.Windows.Forms.TextBox))
                     {
-                        System.Windows.Forms.MaskedTextBox T = (System.Windows.Forms.MaskedTextBox)C;
-                        T.ReadOnly = !Enabled;
+                        try
+                        {
+                            System.Windows.Forms.TextBox T = (System.Windows.Forms.TextBox)C;
+                            T.ReadOnly = !Enabled;
+                        }
+                        catch { }
                     }
-                    catch { }
-                }
-                else if (C.GetType() == typeof(System.Windows.Forms.CheckBox)
-                    || C.GetType() == typeof(System.Windows.Forms.DateTimePicker)
-                    || C.GetType() == typeof(System.Windows.Forms.NumericUpDown)
-                    || C.GetType() == typeof(DiversityWorkbench.UserControls.UserControlDatePanel)
-                    || C.GetType() == typeof(DiversityWorkbench.UserControls.UserControlModuleRelatedEntry)
-                    || C.GetType() == typeof(System.Windows.Forms.ToolStrip)
-                    || C.GetType() == typeof(System.Windows.Forms.ListBox)
-                    || C.GetType() == typeof(System.Windows.Forms.ComboBox)
-                    || C.GetType() == typeof(System.Windows.Forms.Button))
-                {
-                    try
+                    if (C.GetType() == typeof(System.Windows.Forms.MaskedTextBox))
                     {
-                        C.Enabled = Enabled;
+                        try
+                        {
+                            System.Windows.Forms.MaskedTextBox T = (System.Windows.Forms.MaskedTextBox)C;
+                            T.ReadOnly = !Enabled;
+                        }
+                        catch { }
                     }
-                    catch { }
+                    else if (C.GetType() == typeof(System.Windows.Forms.RichTextBox))
+                    {
+                        try
+                        {
+                            System.Windows.Forms.RichTextBox T = (System.Windows.Forms.RichTextBox)C;
+                            T.ReadOnly = !Enabled;
+                        }
+                        catch { }
+                    }
+                    else if (C.GetType() == typeof(System.Windows.Forms.ToolStrip))
+                    {
+                        try
+                        {
+                            foreach (System.Windows.Forms.ToolStripItem T in ((System.Windows.Forms.ToolStrip)C).Items)
+                                T.Enabled = Enabled;
+                        }
+                        catch (System.Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+                    }
+                    else if (C.GetType() == typeof(System.Windows.Forms.CheckBox)
+                        || C.GetType() == typeof(System.Windows.Forms.DateTimePicker)
+                        || C.GetType() == typeof(System.Windows.Forms.NumericUpDown)
+                        || C.GetType() == typeof(DiversityWorkbench.UserControls.UserControlDatePanel)
+                        || C.GetType() == typeof(DiversityWorkbench.UserControls.UserControlModuleRelatedEntry)
+                        //|| C.GetType() == typeof(System.Windows.Forms.ToolStrip)
+                        || C.GetType() == typeof(System.Windows.Forms.ListBox)
+                        || C.GetType() == typeof(System.Windows.Forms.ComboBox)
+                        || C.GetType() == typeof(System.Windows.Forms.Button))
+                    {
+                        try
+                        {
+                            C.Enabled = Enabled;
+                        }
+                        catch { }
+                    }
+                    else if (C.GetType() == typeof(System.Windows.Forms.GroupBox)
+                        || C.GetType() == typeof(System.Windows.Forms.Panel)
+                        || C.GetType() == typeof(System.Windows.Forms.TabControl)
+                        || C.GetType() == typeof(System.Windows.Forms.TableLayoutPanel)
+                        || C.GetType() == typeof(System.Windows.Forms.SplitContainer)
+                        || C.GetType() == typeof(System.Windows.Forms.SplitterPanel)
+                        || C.GetType() == typeof(DiversityWorkbench.UserControls.UserControlLocalList)
+                        //|| C.GetType() == typeof(DiversityWorkbench.UserControls.UserControlModuleRelatedEntry)
+                        //|| C.GetType() == typeof(DiversityWorkbench.UserControlDatePanel)
+                        || C.GetType() == typeof(DiversityWorkbench.UserControls.UserControlURI)
+                        || C.GetType() == typeof(System.Windows.Forms.TabPage))
+                        this.setDataControlEnabled(C, Enabled);
                 }
-                else if (C.GetType() == typeof(System.Windows.Forms.GroupBox)
-                    || C.GetType() == typeof(System.Windows.Forms.Panel)
-                    || C.GetType() == typeof(System.Windows.Forms.TabControl)
-                    || C.GetType() == typeof(System.Windows.Forms.TableLayoutPanel)
-                    || C.GetType() == typeof(System.Windows.Forms.SplitContainer)
-                    || C.GetType() == typeof(System.Windows.Forms.SplitterPanel)
-                    || C.GetType() == typeof(DiversityWorkbench.UserControls.UserControlLocalList)
-                    //|| C.GetType() == typeof(DiversityWorkbench.UserControls.UserControlModuleRelatedEntry)
-                    //|| C.GetType() == typeof(DiversityWorkbench.UserControlDatePanel)
-                    || C.GetType() == typeof(DiversityWorkbench.UserControls.UserControlURI)
-                    || C.GetType() == typeof(System.Windows.Forms.TabPage))
-                    this.setDataControlEnabled(C, Enabled);
             }
         }
 

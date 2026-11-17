@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties coreWebView2CreationProperties1 = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,9 +39,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDocumentation));
-            Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties coreWebView2CreationProperties2 = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
-            Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties coreWebView2CreationProperties3 = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
-            Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties coreWebView2CreationProperties4 = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
             splitContainerDocu = new System.Windows.Forms.SplitContainer();
             tableLayoutPanelDocumentationTabelList = new System.Windows.Forms.TableLayoutPanel();
             labelDocuTables = new System.Windows.Forms.Label();
@@ -1623,13 +1619,6 @@
             // userControlWebViewHtml
             // 
             userControlWebViewHtml.AllowScripting = false;
-            coreWebView2CreationProperties1.AdditionalBrowserArguments = null;
-            coreWebView2CreationProperties1.BrowserExecutableFolder = null;
-            coreWebView2CreationProperties1.IsInPrivateModeEnabled = null;
-            coreWebView2CreationProperties1.Language = null;
-            coreWebView2CreationProperties1.ProfileName = null;
-            coreWebView2CreationProperties1.UserDataFolder = "C:\\Users\\mweiss\\AppData\\Local\\DiversityWorkbench\\NETwebView";
-            userControlWebViewHtml.CreationProperties = coreWebView2CreationProperties1;
             userControlWebViewHtml.Dock = System.Windows.Forms.DockStyle.Fill;
             userControlWebViewHtml.Location = new System.Drawing.Point(0, 0);
             userControlWebViewHtml.Margin = new System.Windows.Forms.Padding(0);
@@ -4123,13 +4112,6 @@
             // userControlWebViewDocuContent
             // 
             userControlWebViewDocuContent.AllowScripting = false;
-            coreWebView2CreationProperties2.AdditionalBrowserArguments = null;
-            coreWebView2CreationProperties2.BrowserExecutableFolder = null;
-            coreWebView2CreationProperties2.IsInPrivateModeEnabled = null;
-            coreWebView2CreationProperties2.Language = null;
-            coreWebView2CreationProperties2.ProfileName = null;
-            coreWebView2CreationProperties2.UserDataFolder = "C:\\Users\\mweiss\\AppData\\Local\\DiversityWorkbench\\NETwebView";
-            userControlWebViewDocuContent.CreationProperties = coreWebView2CreationProperties2;
             userControlWebViewDocuContent.Dock = System.Windows.Forms.DockStyle.Fill;
             userControlWebViewDocuContent.Location = new System.Drawing.Point(4, 3);
             userControlWebViewDocuContent.Margin = new System.Windows.Forms.Padding(0);
@@ -5036,13 +5018,6 @@
             // 
             userControlWebViewChmIndexFile.AllowScripting = false;
             tableLayoutPanelChm.SetColumnSpan(userControlWebViewChmIndexFile, 4);
-            coreWebView2CreationProperties3.AdditionalBrowserArguments = null;
-            coreWebView2CreationProperties3.BrowserExecutableFolder = null;
-            coreWebView2CreationProperties3.IsInPrivateModeEnabled = null;
-            coreWebView2CreationProperties3.Language = null;
-            coreWebView2CreationProperties3.ProfileName = null;
-            coreWebView2CreationProperties3.UserDataFolder = "C:\\Users\\mweiss\\AppData\\Local\\DiversityWorkbench\\NETwebView";
-            userControlWebViewChmIndexFile.CreationProperties = coreWebView2CreationProperties3;
             userControlWebViewChmIndexFile.Dock = System.Windows.Forms.DockStyle.Fill;
             userControlWebViewChmIndexFile.Location = new System.Drawing.Point(240, 87);
             userControlWebViewChmIndexFile.Margin = new System.Windows.Forms.Padding(0);
@@ -5057,13 +5032,6 @@
             // 
             userControlWebViewChmKeywordFile.AllowScripting = false;
             tableLayoutPanelChm.SetColumnSpan(userControlWebViewChmKeywordFile, 4);
-            coreWebView2CreationProperties4.AdditionalBrowserArguments = null;
-            coreWebView2CreationProperties4.BrowserExecutableFolder = null;
-            coreWebView2CreationProperties4.IsInPrivateModeEnabled = null;
-            coreWebView2CreationProperties4.Language = null;
-            coreWebView2CreationProperties4.ProfileName = null;
-            coreWebView2CreationProperties4.UserDataFolder = "C:\\Users\\mweiss\\AppData\\Local\\DiversityWorkbench\\NETwebView";
-            userControlWebViewChmKeywordFile.CreationProperties = coreWebView2CreationProperties4;
             userControlWebViewChmKeywordFile.Dock = System.Windows.Forms.DockStyle.Fill;
             userControlWebViewChmKeywordFile.Location = new System.Drawing.Point(240, 290);
             userControlWebViewChmKeywordFile.Margin = new System.Windows.Forms.Padding(0);

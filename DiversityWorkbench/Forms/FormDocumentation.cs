@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using DiversityWorkbench.DwbManual;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -113,6 +114,8 @@ namespace DiversityWorkbench.Forms
         public FormDocumentation()
         {
             InitializeComponent();
+            this.KeyPreview = true;
+            this.KeyDown += Form_KeyDown;
             this.initForm();
         }
 
@@ -1229,13 +1232,9 @@ namespace DiversityWorkbench.Forms
             if (Path.Length > 0)
             {
                 System.Uri u = new Uri(Path);
-                //this.webxBrowserDocuHtml.Url = u;
                 this.userControlWebViewHtml.Url = null;
                 this.userControlWebViewHtml.Navigate(u);
 
-                //this.userControlWebViewHtml.Refresh();
-                //this.userControlWebViewHtml.NavigateToDocument(Path);
-                //this.userControlWebViewHtml.AllowScripting = true;
                 System.Windows.Forms.MessageBox.Show("Documentation file created:\r\n" + Path);
                 this.buttonOpenHtmlFolder.Tag = Path;
             }
@@ -4824,17 +4823,6 @@ namespace DiversityWorkbench.Forms
                 DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex);
             }
         }
-
-
-        /*
-         * <meta name="database" content="DiversityAgents_Base">
-<meta name="version" content="4.6.24">
-<meta name="clientversion" content="4.3.44">
-<meta name="creation" content="2023-04-04">
-<meta name="creator" content="mweiss">
-
-            */
-
 
         private void createDocuHtmlMetadata(System.Xml.XmlWriter W)
         {
@@ -10120,6 +10108,64 @@ namespace DiversityWorkbench.Forms
         #endregion
 
         #endregion
+
+        #region Manual
+
+        /// <summary>
+        /// #35
+        /// setting the keyword for the help provider
+        /// </summary>
+        public void setKeyword(string Keyword)
+        {
+            this.helpProvider.SetHelpKeyword(this, Keyword);
+        }
+
+
+
+        /// <summary>
+        /// Adding event deletates to form and controls
+        /// </summary>
+        /// <returns></returns>
+        private async System.Threading.Tasks.Task InitManual()
+        {
+            try
+            {
+
+                DiversityWorkbench.DwbManual.Hugo manual = new Hugo(this.helpProvider, this);
+                if (manual != null)
+                {
+                    await manual.addKeyDownF1ToForm();
+                }
+            }
+            catch (Exception ex) { DiversityWorkbench.ExceptionHandling.WriteToErrorLogFile(ex); }
+        }
+
+        /// <summary>
+        /// ensure that init is only done once
+        /// </summary>
+        private bool _InitManualDone = false;
+
+
+        /// <summary>
+        /// KeyDown of the form adding event deletates to form and controls within the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void Form_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (!_InitManualDone)
+                {
+                    await this.InitManual();
+                    _InitManualDone = true;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        #endregion
+
 
     }
 }

@@ -692,18 +692,43 @@ namespace WpfSamplingPlotPage
         /// </summary>
         private async void InitializeWebView(string url = null)
         {
-#if DEBUG
-            // Start of form designer crashes if async init is done, therefore do not perform this in debug mode
-            return;
-#endif
+//#if DEBUG
+//            // Start of form designer crashes if async init is done, therefore do not perform this in debug mode
+//            return;
+//#endif
 
-            // Set the user data location folder to temp folder
-            // MessageBox.Show("InitializeWebView");
             if (_UserDataFolder == null)
-                _UserDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\DiversityWorkbench\NETWebView2";
+            {
+                _UserDataFolder = Environment.GetEnvironmentVariable("DIVERSITYWORKBENCH_WEBVIEW2_USER_DATA_FOLDER");
+
+                if (string.IsNullOrWhiteSpace(_UserDataFolder))
+                {
+                    var processId = System.Diagnostics.Process.GetCurrentProcess().Id;
+                    var processName = System.Diagnostics.Process.GetCurrentProcess().ProcessName;
+
+                    foreach (var invalidChar in System.IO.Path.GetInvalidFileNameChars())
+                    {
+                        processName = processName.Replace(invalidChar, '_');
+                    }
+
+                    _UserDataFolder = System.IO.Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                        "DiversityWorkbench",
+                        "NETWebView",
+                        processName,
+                        $"Session_{processId}");
+
+                    Directory.CreateDirectory(_UserDataFolder);
+
+                    Environment.SetEnvironmentVariable(
+                        "DIVERSITYWORKBENCH_WEBVIEW2_USER_DATA_FOLDER",
+                        _UserDataFolder,
+                        EnvironmentVariableTarget.Process);
+                }
+            }
 
             var env = await CoreWebView2Environment.CreateAsync(null, _UserDataFolder);
-            await m_WebBrowser.EnsureCoreWebView2Async(env);
+            await m_WebBrowser.EnsureCoreWebView2Async(env);      
         }
 
         /// <summary>

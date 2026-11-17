@@ -1,0 +1,10 @@
+app.config
+Settings.settings
+Settings.Designer.cs
+DiversitySamplingPlots/DiversitySamplingPlotsAllInOneSetup/Debug/*
+DiversitySamplingPlots/DiversitySamplingPlotsAllInOneSetup/Release/*
+bin/
+obj/
+*.vs/
+*.suo
+*.user

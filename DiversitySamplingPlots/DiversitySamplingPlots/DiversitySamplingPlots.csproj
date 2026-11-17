@@ -1,0 +1,148 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<UseWPF>true</UseWPF>
+		<RootNamespace>DiversitySamplingPlots</RootNamespace>
+		<AssemblyName>DiversitySamplingPlots</AssemblyName>
+		<ApplicationIcon>Resources\DiversitySamplingPlots.ico</ApplicationIcon>
+		<ApplicationManifest>app.Manifest</ApplicationManifest>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<LangVersion>latest</LangVersion>
+		<Platforms>AnyCPU;x64</Platforms>
+		<!-- Block Windows SDK metadata references -->
+		<CsWinRTEnabled>false</CsWinRTEnabled>
+		<DisableImplicitNamespaceImports>false</DisableImplicitNamespaceImports>
+		<SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
+		<PublishUrl>publish\</PublishUrl>
+		<StartupObject>DiversitySamplingPlots.Program</StartupObject>
+		<Version>4.6.0</Version>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<FileVersion>$(Version)</FileVersion>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<DefineConstants>TRACE</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<DefineConstants>TRACE</DefineConstants>
+		<PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+	<!-- Explicitly exclude Windows SDK contracts -->
+	<ItemGroup>
+		<Reference Remove="Windows" />
+		<PackageReference Remove="Microsoft.Windows.SDK.Contracts" />
+	</ItemGroup>
+	<ItemGroup>
+		<!-- NuGet Packages - Add modern equivalents if the above DLLs don't exist -->
+		<PackageReference Include="log4net" Version="3.5.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="2.3.0" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.14" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.3.1" />
+		<PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.28000.2957" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.14" />
+		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+		<PackageReference Include="System.Threading.Channels" Version="10.0.14" Condition="!Exists('..\DiversityWorkbench\DLL\System\System.Threading.Channels.dll')" />
+	</ItemGroup>
+	<ItemGroup>
+		<!-- DataSet XSD Files -->
+		<None Update="Datasets\DataSetProperty.xsd">
+			<Generator>MSDataSetGenerator</Generator>
+			<LastGenOutput>DataSetProperty.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Datasets\DataSetSamplingPlot.xsd">
+			<Generator>MSDataSetGenerator</Generator>
+			<LastGenOutput>DataSetSamplingPlot1.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Settings Files -->
+		<None Update="Forms\FormDiversitySamplingPlotsSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>FormDiversitySamplingPlotsSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Forms\FormReplicationSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>FormReplicationSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Maintenance\FormMaintenanceSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>FormMaintenanceSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Resources - SDK auto-includes Content files, but you can be explicit -->
+		<Content Include="Resources\**\*.ico" />
+		<Content Include="Resources\**\*.png" />
+		<Content Include="Resources\DatabaseUpdates\*.SQL" />
+		<Compile Remove="DiversitySamplingPlotsSetup\**" />
+		<EmbeddedResource Remove="DiversitySamplingPlotsSetup\**" />
+		<None Remove="DiversitySamplingPlotsSetup\**" />
+		<Page Remove="DiversitySamplingPlotsSetup\**" />
+		<Compile Remove="Properties\AssemblyInfo.cs" />
+		<Content Include="DiversitySamplingPlots.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\DiversityWorkbench\DiversityWorkbench.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Auto-generated files - SDK auto-discovers .cs files, but ensure Designer files are included -->
+		<Compile Update="Forms\FormDiversitySamplingPlotsSettings.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>FormDiversitySamplingPlotsSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Forms\FormReplicationSettings.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>FormReplicationSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Maintenance\FormMaintenanceSettings.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>FormMaintenanceSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<AutoGen>True</AutoGen>
+			<DesignTime>True</DesignTime>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+		</Compile>
+	</ItemGroup>
+
+</Project>

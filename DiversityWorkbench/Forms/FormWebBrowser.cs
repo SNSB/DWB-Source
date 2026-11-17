@@ -50,7 +50,7 @@ namespace DiversityWorkbench.Forms
             if (!Navigate(URL))
                 Navigate(_SearchAddress + URL);
             else
-                _FormStartAddress = this.userControlWebView.Url.ToString();
+                _FormStartAddress = URL;
             this.Websites = new List<Uri>();
         }
 
@@ -163,7 +163,7 @@ namespace DiversityWorkbench.Forms
         // Updates the URL in TextBoxAddress upon navigation.
         private void userControlWebView_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
-            this.textBoxURL.Text = userControlWebView.Url.ToString();
+            this.textBoxURL.Text = userControlWebView.Url?.ToString() ?? "";
             int i;
             bool OK = false;
             for (i = 0; i < this.Websites.Count; i++)
@@ -239,7 +239,7 @@ namespace DiversityWorkbench.Forms
 
         private void toolStripButtonFile_Click(object sender, EventArgs e)
         {
-            string URL = this.userControlWebView.Url.AbsolutePath;
+            string URL = this.userControlWebView.Url?.AbsolutePath ?? "";
             System.IO.FileInfo fi = new System.IO.FileInfo(URL);
             if (fi.Exists)
                 this.openFileDialog.InitialDirectory = fi.DirectoryName;

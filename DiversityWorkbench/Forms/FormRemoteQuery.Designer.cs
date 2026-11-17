@@ -31,8 +31,6 @@ namespace DiversityWorkbench.Forms
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties coreWebView2CreationProperties1 = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
-            Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties coreWebView2CreationProperties2 = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRemoteQuery));
             splitContainerMain = new System.Windows.Forms.SplitContainer();
             splitContainerQueries = new System.Windows.Forms.SplitContainer();
@@ -744,13 +742,6 @@ namespace DiversityWorkbench.Forms
             // userControlWebViewURI
             // 
             userControlWebViewURI.AllowScripting = true;
-            coreWebView2CreationProperties1.AdditionalBrowserArguments = null;
-            coreWebView2CreationProperties1.BrowserExecutableFolder = null;
-            coreWebView2CreationProperties1.IsInPrivateModeEnabled = null;
-            coreWebView2CreationProperties1.Language = null;
-            coreWebView2CreationProperties1.ProfileName = null;
-            coreWebView2CreationProperties1.UserDataFolder = "C:\\Users\\mweiss\\AppData\\Local\\DiversityWorkbench\\NETwebView";
-            userControlWebViewURI.CreationProperties = coreWebView2CreationProperties1;
             userControlWebViewURI.Dock = System.Windows.Forms.DockStyle.Fill;
             userControlWebViewURI.Location = new System.Drawing.Point(0, 0);
             userControlWebViewURI.Margin = new System.Windows.Forms.Padding(0);
@@ -837,13 +828,6 @@ namespace DiversityWorkbench.Forms
             // userControlWebViewResource
             // 
             userControlWebViewResource.AllowScripting = false;
-            coreWebView2CreationProperties2.AdditionalBrowserArguments = null;
-            coreWebView2CreationProperties2.BrowserExecutableFolder = null;
-            coreWebView2CreationProperties2.IsInPrivateModeEnabled = null;
-            coreWebView2CreationProperties2.Language = null;
-            coreWebView2CreationProperties2.ProfileName = null;
-            coreWebView2CreationProperties2.UserDataFolder = "C:\\Users\\mweiss\\AppData\\Local\\DiversityWorkbench\\NETwebView";
-            userControlWebViewResource.CreationProperties = coreWebView2CreationProperties2;
             userControlWebViewResource.Dock = System.Windows.Forms.DockStyle.Fill;
             userControlWebViewResource.Location = new System.Drawing.Point(0, 0);
             userControlWebViewResource.Margin = new System.Windows.Forms.Padding(0);
